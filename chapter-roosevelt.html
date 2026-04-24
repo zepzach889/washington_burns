@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cornelius Roosevelt II Presidency, 1905–1911 — Washington Burns</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:       #f6f1e9;
+    --paper-mid:   #ede7d8;
+    --paper-dark:  #e4dccb;
+    --ink:         #191510;
+    --ink-mid:     #36302a;
+    --ink-light:   #78706a;
+    --ink-faint:   #b8b0a8;
+    --red:         #8b1a1a;
+    --red-dark:    #6a1212;
+    --rule:        #191510;
+    --rule-light:  rgba(25,21,16,0.15);
+
+    /* Party colors */
+    --federalist:      #C4601A;
+    --democrat:        #1e7a48;
+    --spa:             #a01e1e;
+    --jca:             #b8900a;
+    --republican-hist: #1A4F8A;
+    --dem-rep:         #4a5a62;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* Party stripe */
+  .party-stripe {
+    height: 4px;
+    background: linear-gradient(90deg,
+      #C4601A 0%,   #C4601A 25%,
+      #1e7a48 25%,  #1e7a48 50%,
+      #a01e1e 50%,  #a01e1e 75%,
+      #b8900a 75%,  #b8900a 100%);
+  }
+
+  /* =========
+     MASTHEAD
+     ========= */
+  .masthead {
+    background: var(--paper);
+    padding: 0 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .masthead-topbar {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10.5px;
+    color: var(--ink-light);
+    letter-spacing: 0.03em;
+  }
+  .masthead-topbar a { color: var(--ink-light); text-decoration: none; transition: color 0.15s; }
+  .masthead-topbar a:hover { color: var(--red); }
+  .masthead-topbar-sep { color: var(--ink-faint); margin: 0 0.4rem; }
+  .masthead-center {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 1.25rem 0 1rem;
+  }
+  .masthead-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    letter-spacing: 0.07em;
+    line-height: 0.88;
+    color: var(--ink);
+  }
+  .masthead-title .burns { color: var(--red); }
+  .masthead-rule-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 0.7rem 0 0.55rem;
+  }
+  .mrr-thick { width: 140px; height: 3px; background: var(--ink); }
+  .mrr-thin  { width: 140px; height: 1px; background: var(--ink); }
+  .mrr-diam  { width: 6px; height: 6px; background: var(--ink); transform: rotate(45deg); flex-shrink: 0; }
+  .masthead-tagline {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--ink-light);
+    letter-spacing: 0.05em;
+  }
+
+  /* ===
+     NAV
+     === */
+  nav {
+    background: var(--ink);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-top: 3px solid var(--red);
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+  .nav-inner a {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: rgba(246,241,233,0.75);
+    text-decoration: none;
+    padding: 0.75rem 0.95rem;
+    display: block;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .nav-inner a:hover  { color: #fff; border-bottom-color: var(--red); }
+  .nav-inner a.active { color: #fff; border-bottom-color: var(--red); }
+
+  /* ===========
+     BREADCRUMB
+     =========== */
+  .breadcrumb {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0.75rem 2rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    color: var(--ink-light);
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--rule-light);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .breadcrumb a { color: var(--ink-light); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--red); }
+  .breadcrumb-sep { color: var(--ink-faint); }
+
+  /* ============
+     PREV / NEXT
+     ============ */
+  .chapter-nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .chapter-nav-link {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--rule-light);
+    transition: all 0.15s;
+  }
+  .chapter-nav-link:hover { color: var(--red); border-color: var(--red); background: var(--paper-mid); }
+  .chapter-nav-link.disabled { opacity: 0.3; pointer-events: none; }
+  .chapter-nav-center {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* =====================
+     CHAPTER HERO HEADER
+     ===================== */
+  .chapter-hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 2rem 0;
+  }
+
+  /* Section flag */
+  .section-flag {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 2px double var(--rule);
+  }
+  .flag-tag {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    background: var(--red);
+    color: var(--paper);
+    padding: 3px 9px;
+    white-space: nowrap;
+  }
+  .flag-kicker {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12.5px;
+    font-style: italic;
+    color: var(--ink-light);
+  }
+
+  /* Hero grid: portrait + identity + party bar */
+  .hero-identity {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 2rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 3px solid var(--rule);
+    margin-bottom: 2rem;
+    align-items: start;
+  }
+
+  /* Portrait */
+  .portrait-block { }
+  .portrait-img {
+    width: 180px;
+    height: 220px;
+    background: var(--paper-dark);
+    border: 1px solid var(--rule-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .portrait-img-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--ink-faint);
+    opacity: 0.4;
+  }
+  .portrait-img-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .portrait-caption {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9.5px;
+    color: var(--ink-faint);
+    font-style: italic;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* Identity text */
+  .identity-block { }
+  .identity-number {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .party-pip {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .chapter-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.2rem;
+    line-height: 0.92;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.6rem;
+  }
+  .chapter-years {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-light);
+    margin-bottom: 1rem;
+  }
+  .identity-summary {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.6rem 0;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Quick meta strip */
+  .identity-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+  .meta-field { }
+  .meta-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .meta-val {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13px;
+    color: var(--ink);
+    font-style: italic;
+  }
+  .meta-party-chip {
+    display: inline-block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 2px 8px;
+    border-radius: 2px;
+    color: #fff;
+  }
+
+  /* ================
+     MAIN BODY GRID
+     ================ */
+  .chapter-body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  /* ============
+     MAIN COLUMN
+     ============ */
+  .chapter-main { }
+
+  /* Sub-chapter list (for multi-part presidencies) */
+  .subchapter-list {
+    background: var(--paper-mid);
+    border: 1px solid var(--rule);
+    padding: 1rem 1.1rem;
+    margin-bottom: 2rem;
+  }
+  .subchapter-list-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+  .subchapter-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    text-decoration: none;
+  }
+  .subchapter-item:last-child { border-bottom: none; }
+  .subchapter-num {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--red);
+    flex-shrink: 0;
+    width: 18px;
+  }
+  .subchapter-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--ink-mid);
+    flex: 1;
+    line-height: 1.4;
+    transition: color 0.15s;
+  }
+  .subchapter-item:hover .subchapter-title { color: var(--red); }
+  .subchapter-years {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9.5px;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+  }
+
+  /* Article text sections */
+  .article-section {
+    margin-bottom: 2.25rem;
+  }
+  .article-section-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-bottom: 0.15rem;
+    padding-top: 0.25rem;
+  }
+  .article-section-rule {
+    height: 2px;
+    background: var(--ink);
+    margin-bottom: 0.9rem;
+  }
+  .article-body {
+    font-size: 14.5px;
+    line-height: 1.88;
+    color: var(--ink-mid);
+  }
+  .article-body p + p { margin-top: 0.85rem; }
+  .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(139,26,26,0.3); }
+  .article-body a:hover { border-bottom-color: var(--red); }
+  .article-body em { font-style: italic; }
+  .article-body strong { font-weight: 700; color: var(--ink); }
+
+  /* Inline pull quote */
+  .pull-quote {
+    border-top: 3px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9rem 0.5rem;
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+  .pull-quote p {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+  .pull-quote cite {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    font-style: normal;
+    display: block;
+    margin-top: 0.4rem;
+  }
+
+  /* Image placeholder block */
+  .img-placeholder {
+    background: var(--paper-dark);
+    border: 1px solid var(--rule-light);
+    width: 100%;
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.5rem 0 0.5rem;
+  }
+  .img-placeholder-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--ink-faint);
+    opacity: 0.35;
+    border-radius: 3px;
+  }
+  .img-placeholder-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .img-caption {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10.5px;
+    color: var(--ink-light);
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+  }
+
+  /* =========
+     SIDEBAR
+     ========= */
+  .chapter-sidebar {
+    position: sticky;
+    top: 3.5rem;
+  }
+
+  .sidebar-box {
+    background: var(--paper-mid);
+    border: 1px solid var(--rule);
+    padding: 1rem 1.1rem;
+    margin-bottom: 1rem;
+  }
+  .sidebar-box-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Facts rows */
+  .facts-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.38rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    gap: 0.5rem;
+  }
+  .facts-row:last-child { border-bottom: none; }
+  .facts-key {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    color: var(--ink-light);
+    flex-shrink: 0;
+  }
+  .facts-val {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 11px;
+    color: var(--ink);
+    text-align: right;
+    font-style: italic;
+    line-height: 1.4;
+  }
+  .facts-val-party {
+    display: inline-block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 2px 6px;
+    border-radius: 2px;
+    color: #fff;
+  }
+
+  /* Table of contents */
+  .toc-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.38rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 8.5px;
+    font-weight: 600;
+    color: var(--red);
+    flex-shrink: 0;
+    width: 16px;
+  }
+  .toc-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10.5px;
+    color: var(--ink-light);
+    line-height: 1.45;
+    transition: color 0.15s;
+  }
+  .toc-item:hover .toc-label { color: var(--red); }
+  .toc-item.active .toc-label { color: var(--ink); font-weight: 600; }
+
+  /* Sidebar nav links */
+  .sidebar-nav-link {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    transition: color 0.15s;
+  }
+  .sidebar-nav-link:last-child { border-bottom: none; }
+  .sidebar-nav-link:hover { color: var(--red); }
+
+  /* Bottom prev/next */
+  .chapter-nav-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--rule-light);
+  }
+
+  /* ======
+     FOOTER
+     ====== */
+  footer {
+    background: var(--ink);
+    border-top: 3px solid var(--red);
+    padding: 1.5rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.12em;
+    color: var(--paper);
+  }
+  .footer-brand span { color: var(--red); }
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .footer-links a { color: rgba(246,241,233,0.5); text-decoration: none; transition: color 0.15s; }
+  .footer-links a:hover { color: var(--paper); }
+  .footer-copy {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    color: rgba(246,241,233,0.35);
+    letter-spacing: 0.04em;
+  }
+
+  /* Smooth scroll */
+  html { scroll-behavior: smooth; }
+
+  /* Animations */
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  body { animation: fadeIn 0.3s ease; }
+</style>
+</head>
+<body>
+
+<div class="party-stripe"></div>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-topbar">
+    <span>Point of Divergence: August 24, 1814</span>
+    <span>
+      <a href="https://washingtonburns.miraheze.org">Miraheze Wiki</a>
+      <span class="masthead-topbar-sep">·</span>
+      <a href="https://www.alternatehistory.com">AlternateHistory.com</a>
+      <span class="masthead-topbar-sep">·</span>
+      <a href="presidential-explorer.html">Presidential Explorer</a>
+    </span>
+    <span>All text © 2025 Zachary Anderson</span>
+  </div>
+  <div class="masthead-center">
+    <div class="masthead-title">Washington <span class="burns">Burns</span></div>
+    <div class="masthead-rule-row">
+      <div class="mrr-thick"></div>
+      <div class="mrr-diam"></div>
+      <div class="mrr-thin"></div>
+      <div class="mrr-diam"></div>
+      <div class="mrr-thick"></div>
+    </div>
+    <div class="masthead-tagline">A Work of Alternate History by Zachary Anderson</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+    <a href="index.html">Home</a>
+    <a href="#">Point of Divergence</a>
+    <a href="#" class="active">Primary Chapters</a>
+    <a href="#">Supplemental</a>
+    <a href="#">Short Stories</a>
+    <a href="#">People</a>
+    <a href="#">Maps</a>
+    <a href="presidential-explorer.html">Presidential Explorer</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span class="breadcrumb-sep">›</span>
+  <a href="#">Primary Chapters</a>
+  <span class="breadcrumb-sep">›</span>
+  <span>The C. Roosevelt II Presidency</span>
+</div>
+
+<!-- PREV / NEXT — TOP -->
+<div class="chapter-nav">
+  <a href="#" class="chapter-nav-link">← The Landon Presidency, 1903–1905</a>
+  <span class="chapter-nav-center">Chapter 23 of 44</span>
+  <a href="#" class="chapter-nav-link">The Hannah Presidency, 1911–1917 →</a>
+</div>
+
+<!-- CHAPTER HERO -->
+<div class="chapter-hero">
+
+  <div class="section-flag">
+    <span class="flag-tag">Chapter</span>
+    <span class="flag-kicker">Primary Chapters · The Progressive Era · 1905–1911</span>
+  </div>
+
+  <div class="hero-identity">
+
+    <!-- Portrait -->
+    <div class="portrait-block">
+      <div class="portrait-img">
+        <div class="portrait-img-icon"></div>
+        <div class="portrait-img-label">Portrait placeholder</div>
+      </div>
+      <div class="portrait-caption">Cornelius Roosevelt II<br>23rd President of the United States</div>
+    </div>
+
+    <!-- Identity -->
+    <div class="identity-block">
+      <div class="identity-number">
+        <span class="party-pip" style="background: var(--democrat);"></span>
+        23rd President of the United States
+      </div>
+      <div class="chapter-headline">The Cornelius Roosevelt II Presidency</div>
+      <div class="chapter-years">March 1905 – January 1911</div>
+      <div class="identity-summary">
+        A son of the famous Roosevelt family of the District of Manhattan, Cornelius Roosevelt II came to office in unusual circumstances — succeeding Peter Landon after the Caribbean War placed America at the center of international affairs. His six years were defined by the war's aftermath, the Coastal Rebellion, and a dramatic restructuring of American institutions.
+      </div>
+      <div class="identity-meta">
+        <div class="meta-field">
+          <span class="meta-label">Party</span>
+          <span class="meta-val"><span class="meta-party-chip" style="background:var(--democrat);">Democrat</span></span>
+        </div>
+        <div class="meta-field">
+          <span class="meta-label">Vice President</span>
+          <span class="meta-val">Patrick Hannah</span>
+        </div>
+        <div class="meta-field">
+          <span class="meta-label">Home State</span>
+          <span class="meta-val">District of Manhattan</span>
+        </div>
+        <div class="meta-field">
+          <span class="meta-label">Preceded by</span>
+          <span class="meta-val">Peter Landon (#22)</span>
+        </div>
+        <div class="meta-field">
+          <span class="meta-label">Succeeded by</span>
+          <span class="meta-val">Patrick Hannah (#24)</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CHAPTER BODY -->
+<div class="chapter-body">
+
+  <!-- MAIN COLUMN -->
+  <div class="chapter-main">
+
+    <!-- Sub-chapter list -->
+    <div class="subchapter-list">
+      <div class="subchapter-list-title">In This Chapter</div>
+      <a href="#background" class="subchapter-item">
+        <span class="subchapter-num">I</span>
+        <span class="subchapter-title">Background & Election of 1904</span>
+        <span class="subchapter-years">1903–1905</span>
+      </a>
+      <a href="#caribbean" class="subchapter-item">
+        <span class="subchapter-num">II</span>
+        <span class="subchapter-title">The Caribbean War & Treaty of Copenhagen</span>
+        <span class="subchapter-years">1905–1906</span>
+      </a>
+      <a href="#rebellion" class="subchapter-item">
+        <span class="subchapter-num">III</span>
+        <span class="subchapter-title">The Coastal Rebellion & the End of the Republican Party</span>
+        <span class="subchapter-years">1905</span>
+      </a>
+      <a href="#reform" class="subchapter-item">
+        <span class="subchapter-num">IV</span>
+        <span class="subchapter-title">Domestic Reform & the Federal Investigative Service</span>
+        <span class="subchapter-years">1906–1909</span>
+      </a>
+      <a href="#olympics" class="subchapter-item">
+        <span class="subchapter-num">V</span>
+        <span class="subchapter-title">The First World Olympic Games & Legacy</span>
+        <span class="subchapter-years">1910–1911</span>
+      </a>
+    </div>
+
+    <!-- Section I -->
+    <div class="article-section" id="background">
+      <div class="article-section-heading">I. Background & Election of 1904</div>
+      <div class="article-section-rule"></div>
+      <div class="article-body">
+        <p>Cornelius Roosevelt II was not the candidate the Democratic Party had expected to run in 1904. The sudden death of President Alexander Fleak in March of 1903, and the subsequent succession of Peter Landon — the first Black president in American history — had reshuffled the political landscape considerably. Landon, constitutionally ineligible to seek a full term having served the remainder of Fleak's, declined to seek the Democratic nomination.</p>
+        <p>Roosevelt, a congressman from the District of Manhattan and a scion of one of the most prominent political families in the Northeast, had long been considered a future presidential candidate. His family name carried enormous weight, though it also came with the burden of comparison. He was considered sharp, energetic, and occasionally impulsive — qualities that would define his presidency as much as any policy agenda.</p>
+        <p>The election of 1904 was dominated by the aftermath of the Caribbean War, which had begun in the final months of the Fleak administration. Roosevelt campaigned on a platform of decisive resolution to the conflict, expanded federal authority in the Coastal South, and continued investment in the United States Railway Commission — the beloved institution that had anchored Democratic politics since Beck's era.</p>
+      </div>
+
+      <div class="img-placeholder">
+        <div class="img-placeholder-icon"></div>
+        <div class="img-placeholder-label">Image placeholder — election map, 1904</div>
+      </div>
+      <div class="img-caption">The electoral map of 1904. Roosevelt carried the West and much of the North; the Republicans held their last significant strongholds in the Coastal South.</div>
+    </div>
+
+    <!-- Section II -->
+    <div class="article-section" id="caribbean">
+      <div class="article-section-heading">II. The Caribbean War & Treaty of Copenhagen</div>
+      <div class="article-section-rule"></div>
+      <div class="article-body">
+        <p>Roosevelt inherited a war already underway. The Caribbean War — triggered by Spain's aggressive posture toward American commercial interests in Cuba and Puerto Rico — had begun under Fleak and been managed by Landon in the interregnum. By the time Roosevelt took the oath of office, American naval forces had already achieved several significant victories, but a diplomatic resolution remained elusive.</p>
+        <p>The administration's foreign policy team, led by Secretary of the Exterior James Holt, spent much of 1905 working through British and Dutch intermediaries to bring Spain to the table. The Treaty of Copenhagen, signed in June of 1906, formally ended the war. Its terms were considered favorable to the United States: Spain ceded effective control of its Caribbean territories, guaranteed American commercial access, and paid a modest indemnity. Roosevelt traveled to Copenhagen personally to sign — only the second sitting president to leave American soil, after Littlefield's Canadian visit in 1880.</p>
+
+        <div class="pull-quote">
+          <p>[ Pull quote from the Copenhagen signing or Caribbean War to be added ]</p>
+          <cite>— Placeholder · Source · 1906</cite>
+        </div>
+
+        <p>The treaty was celebrated across party lines, though the JCA — increasingly isolationist in its foreign policy outlook — objected to what it characterized as unnecessary entanglement in European-adjacent affairs. The first International Peace Council, held in London in 1907, was in part a direct outgrowth of the diplomatic architecture Roosevelt's team had built during the Copenhagen negotiations.</p>
+      </div>
+    </div>
+
+    <!-- Section III -->
+    <div class="article-section" id="rebellion">
+      <div class="article-section-heading">III. The Coastal Rebellion & the End of the Republican Party</div>
+      <div class="article-section-rule"></div>
+      <div class="article-body">
+        <p>The most consequential domestic event of the Roosevelt presidency was one he did not seek and did not expect. In the spring of 1905, a coalition of Coastal South political leaders — drawing on longstanding resentment of federal authority, the <em>Keyman v. Virginia</em> ruling of 1903, and accumulated grievances stretching back to Reconstruction — declared a general refusal to comply with federal law and called for a restructuring of the constitutional order.</p>
+        <p>The Coastal Rebellion, as it came to be known, was never a military conflict in the traditional sense. There were no armies, no formal declarations of war. It was instead a constitutional crisis — a coordinated act of nullification by state governments in Virginia, the Carolinas, Georgia, and Florida. Roosevelt's response was swift and unambiguous: federal marshals were dispatched, the Federal Investigative Service was created to coordinate enforcement, and the Army was placed on standby alert in the region.</p>
+        <p>The Rebellion collapsed within months. Its leaders, miscalculating the national mood and the administration's resolve, found themselves without the broader support they had expected. The Republican Party — already weakened by decades of regional contraction — was irrevocably associated with the Rebellion in the public mind. By the 1906 midterms, it had ceased to exist as a national political force. Its remaining officeholders drifted toward the JCA or retired from politics entirely.</p>
+      </div>
+
+      <div class="img-placeholder">
+        <div class="img-placeholder-icon"></div>
+        <div class="img-placeholder-label">Image placeholder — Coastal Rebellion map or editorial cartoon</div>
+      </div>
+      <div class="img-caption">The five states of the Coastal South at the heart of the Rebellion, 1905.</div>
+    </div>
+
+    <!-- Section IV -->
+    <div class="article-section" id="reform">
+      <div class="article-section-heading">IV. Domestic Reform & the Federal Investigative Service</div>
+      <div class="article-section-rule"></div>
+      <div class="article-body">
+        <p>With the Rebellion crushed and the Caribbean War resolved, Roosevelt turned to a domestic agenda in the middle years of his term. The Federal Investigative Service — created in 1905–06 as an emergency measure — was formalized and expanded into a permanent federal law enforcement agency. The Federal Park Service was also established in this period, creating a framework for the preservation of natural lands as federal parks.</p>
+        <p>"Hail, Columbia!" was formally designated as the national anthem in 1905, a largely symbolic but widely popular act. The song had been the unofficial anthem for decades; Roosevelt's formalization of it was received as a moment of national unity following the turmoil of the Rebellion year.</p>
+        <p>The administration's economic record was mixed. The USRC continued to expand under federal management, and Roosevelt oversaw significant new extensions into the Southwest. But agricultural prices remained volatile, and the administration's response to a series of labor disputes in the industrial Northeast was criticized by the SPA as insufficiently pro-worker and by the JCA as federal overreach — a preview of the four-party legislative arithmetic that would increasingly define American governance.</p>
+      </div>
+    </div>
+
+    <!-- Section V -->
+    <div class="article-section" id="olympics">
+      <div class="article-section-heading">V. The First World Olympic Games & Legacy</div>
+      <div class="article-section-rule"></div>
+      <div class="article-body">
+        <p>In the final year of his term, Roosevelt had the satisfaction of seeing American athletes compete in the first World Olympic Games, held in Athens in 1910. The Games — organized by the newly founded World Olympic Committee — were a diplomatic as well as athletic occasion, and the Roosevelt administration had been quietly supportive of their development for several years through the International Peace Council framework.</p>
+        <p>The Brandt Memorial, dedicated on October 17, 1910 in Franklin, marked another milestone of the year — a moment of reflection on the republic's history that Roosevelt presided over with evident pride. His relationship to the legacy of Hugo Brandt, the great Democratic president of the Reconstruction era, was a conscious through-line of his own political identity.</p>
+        <p>Roosevelt left office in January 1911 with approval ratings that reflected a complicated legacy. The Coastal Rebellion's crushing had made him a hero to those who believed in federal authority; the Caribbean War's resolution had demonstrated American diplomatic capability on a world stage. His domestic record was more ambiguous. He handed the presidency to his vice president, Patrick Hannah of Platte, who would face a very different set of challenges in the years ahead.</p>
+      </div>
+    </div>
+
+  </div><!-- end chapter-main -->
+
+  <!-- SIDEBAR -->
+  <div class="chapter-sidebar">
+
+    <!-- Quick Facts -->
+    <div class="sidebar-box">
+      <div class="sidebar-box-title">Quick Reference</div>
+      <div class="facts-row">
+        <span class="facts-key">President</span>
+        <span class="facts-val">Cornelius Roosevelt II</span>
+      </div>
+      <div class="facts-row">
+        <span class="facts-key">Number</span>
+        <span class="facts-val">23rd</span>
+      </div>
+      <div class="facts-row">
+        <span class="facts-key">Term</span>
+        <span class="facts-val">Mar 1905 – Jan 1911</span>
+      </div>
+      <div class="facts-row">
+        <span class="facts-key">Party</span>
+        <span class="facts-val"><span class="facts-val-party" style="background:var(--democrat);">Democrat</span></span>
+      </div>
+      <div class="facts-row">
+        <span class="facts-key">Vice President</span>
+        <span class="facts-val">Patrick Hannah</span>
+      </div>
+      <div class="facts-row">
+        <span class="facts-key">Home State</span>
+        <span class="facts-val">District of Manhattan</span>
+      </div>
+      <div class="facts-row">
+        <span class="facts-key">Preceded by</span>
+        <span class="facts-val">Peter Landon</span>
+      </div>
+      <div class="facts-row">
+        <span class="facts-key">Succeeded by</span>
+        <span class="facts-val">Patrick Hannah</span>
+      </div>
+    </div>
+
+    <!-- Key Events -->
+    <div class="sidebar-box">
+      <div class="sidebar-box-title">Key Events</div>
+      <div class="facts-row">
+        <span class="facts-key">1905–06</span>
+        <span class="facts-val">Caribbean War</span>
+      </div>
+      <div class="facts-row">
+        <span class="facts-key">1905</span>
+        <span class="facts-val">Coastal Rebellion crushed</span>
+      </div>
+      <div class="facts-row">
+        <span class="facts-key">1905</span>
+        <span class="facts-val">Republican Party destroyed nationally</span>
+      </div>
+      <div class="facts-row">
+        <span class="facts-key">1905</span>
+        <span class="facts-val">"Hail, Columbia!" national anthem</span>
+      </div>
+      <div class="facts-row">
+        <span class="facts-key">1905–06</span>
+        <span class="facts-val">Federal Investigative Service created</span>
+      </div>
+      <div class="facts-row">
+        <span class="facts-key">1906</span>
+        <span class="facts-val">Treaty of Copenhagen</span>
+      </div>
+      <div class="facts-row">
+        <span class="facts-key">1907</span>
+        <span class="facts-val">1st International Peace Council, London</span>
+      </div>
+      <div class="facts-row">
+        <span class="facts-key">1910</span>
+        <span class="facts-val">First World Olympic Games, Athens</span>
+      </div>
+      <div class="facts-row">
+        <span class="facts-key">1910</span>
+        <span class="facts-val">Brandt Memorial dedicated</span>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="sidebar-box">
+      <div class="sidebar-box-title">Contents</div>
+      <a href="#background" class="toc-item active">
+        <span class="toc-num">I</span>
+        <span class="toc-label">Background & Election of 1904</span>
+      </a>
+      <a href="#caribbean" class="toc-item">
+        <span class="toc-num">II</span>
+        <span class="toc-label">The Caribbean War & Treaty of Copenhagen</span>
+      </a>
+      <a href="#rebellion" class="toc-item">
+        <span class="toc-num">III</span>
+        <span class="toc-label">The Coastal Rebellion</span>
+      </a>
+      <a href="#reform" class="toc-item">
+        <span class="toc-num">IV</span>
+        <span class="toc-label">Domestic Reform & the FIS</span>
+      </a>
+      <a href="#olympics" class="toc-item">
+        <span class="toc-num">V</span>
+        <span class="toc-label">Olympic Games & Legacy</span>
+      </a>
+    </div>
+
+    <!-- Related -->
+    <div class="sidebar-box">
+      <div class="sidebar-box-title">Related</div>
+      <a href="#" class="sidebar-nav-link">← Peter Landon Presidency</a>
+      <a href="#" class="sidebar-nav-link">Patrick Hannah Presidency →</a>
+      <a href="#" class="sidebar-nav-link">Caribbean War</a>
+      <a href="#" class="sidebar-nav-link">Coastal Rebellion</a>
+      <a href="#" class="sidebar-nav-link">Republican Party (historical)</a>
+      <a href="presidential-explorer.html" class="sidebar-nav-link">Presidential Explorer</a>
+    </div>
+
+  </div><!-- end sidebar -->
+
+</div><!-- end chapter-body -->
+
+<!-- PREV / NEXT — BOTTOM -->
+<div class="chapter-nav-bottom">
+  <a href="#" class="chapter-nav-link">← The Landon Presidency, 1903–1905</a>
+  <span class="chapter-nav-center">Chapter 23 of 44</span>
+  <a href="#" class="chapter-nav-link">The Hannah Presidency, 1911–1917 →</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Washington <span>Burns</span></div>
+    <div class="footer-links">
+      <a href="https://washingtonburns.miraheze.org">Miraheze Wiki</a>
+      <a href="https://www.alternatehistory.com">AlternateHistory.com</a>
+      <a href="presidential-explorer.html">Presidential Explorer</a>
+    </div>
+    <div class="footer-copy">All text © 2025 Zachary Anderson</div>
+  </div>
+</footer>
+
+</body>
+</html>

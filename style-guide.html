@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Washington Burns — Site Style Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:       #f6f1e9;
+    --paper-mid:   #ede7d8;
+    --paper-dark:  #e4dccb;
+    --ink:         #191510;
+    --ink-mid:     #36302a;
+    --ink-light:   #78706a;
+    --ink-faint:   #b8b0a8;
+    --red:         #8b1a1a;
+    --red-dark:    #6a1212;
+    --rule:        #191510;
+    --rule-light:  rgba(25,21,16,0.15);
+
+    /* Party colors */
+    --federalist:      #C4601A;
+    --democrat:        #1e7a48;
+    --spa:             #a01e1e;
+    --jca:             #b8900a;
+    --republican-hist: #1A4F8A;
+    --dem-rep:         #4a5a62;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* Guide header */
+  .guide-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2rem 2.5rem;
+    border-bottom: 4px solid var(--red);
+  }
+  .guide-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .guide-header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+  }
+  .guide-header h1 span { color: var(--red); }
+  .guide-header p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(246,241,233,0.5);
+    text-transform: uppercase;
+  }
+
+  /* TOC nav */
+  .toc {
+    background: var(--paper-mid);
+    border-bottom: 1px solid var(--rule-light);
+    padding: 0.75rem 2.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .toc-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .toc a {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    padding: 0.4rem 0.75rem;
+    border-right: 1px solid var(--rule-light);
+    transition: color 0.15s;
+    white-space: nowrap;
+  }
+  .toc a:first-child { padding-left: 0; }
+  .toc a:hover { color: var(--red); }
+
+  /* Main content */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 2.5rem;
+  }
+
+  /* Section */
+  .sg-section {
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 2px solid var(--rule);
+  }
+  .sg-section:last-child { border-bottom: none; }
+
+  .sg-section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+  .sg-section-subtitle {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--rule-light);
+  }
+
+  /* Subsection */
+  .sg-sub {
+    margin-bottom: 2.5rem;
+  }
+  .sg-sub-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .sg-sub-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule-light);
+  }
+
+  /* Demo box */
+  .demo {
+    background: var(--paper);
+    border: 1px solid var(--rule-light);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .demo-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  /* Code block */
+  .code {
+    background: var(--ink);
+    color: #c8d0da;
+    padding: 1rem 1.25rem;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+    white-space: pre;
+  }
+  .code .cm { color: #6a7a8a; font-style: italic; }
+  .code .kw { color: #c9a84c; }
+  .code .st { color: #7ec8a0; }
+  .code .nm { color: #e8a87c; }
+
+  /* Spec table */
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 13px;
+  }
+  .spec-table th {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 2px solid var(--rule);
+    background: var(--paper-mid);
+  }
+  .spec-table td {
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid var(--rule-light);
+    vertical-align: top;
+  }
+  .spec-table td:first-child {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-light);
+    white-space: nowrap;
+  }
+  .spec-table code {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    background: var(--paper-dark);
+    padding: 1px 5px;
+    border-radius: 2px;
+    color: var(--ink-mid);
+  }
+
+  /* Color swatches */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1px;
+    background: var(--rule-light);
+    border: 1px solid var(--rule-light);
+    margin-bottom: 1.5rem;
+  }
+  .swatch {
+    background: var(--paper);
+    padding: 0.75rem;
+  }
+  .swatch-color {
+    height: 48px;
+    border-radius: 3px;
+    margin-bottom: 0.6rem;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .swatch-name {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .swatch-hex {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: var(--ink-light);
+  }
+  .swatch-usage {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    color: var(--ink-faint);
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+
+  /* Party stripe demo */
+  .party-stripe-demo {
+    height: 12px;
+    background: linear-gradient(90deg,
+      #C4601A 0%,   #C4601A 25%,
+      #1e7a48 25%,  #1e7a48 50%,
+      #a01e1e 50%,  #a01e1e 75%,
+      #b8900a 75%,  #b8900a 100%);
+    margin-bottom: 1rem;
+    border-radius: 2px;
+  }
+
+  /* ========================
+     ACTUAL SITE COMPONENTS
+     ======================== */
+
+  /* Masthead demo */
+  .demo-masthead {
+    text-align: center;
+    padding: 1.25rem 0 1rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 0.25rem;
+  }
+  .demo-masthead-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    letter-spacing: 0.07em;
+    line-height: 0.9;
+    color: var(--ink);
+  }
+  .demo-masthead-title .burns { color: var(--red); }
+  .demo-masthead-rule-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin: 0.6rem 0 0.5rem;
+  }
+  .mrr-thick { width: 120px; height: 3px; background: var(--ink); }
+  .mrr-thin  { width: 120px; height: 1px; background: var(--ink); }
+  .mrr-diam  { width: 6px; height: 6px; background: var(--ink); transform: rotate(45deg); flex-shrink: 0; }
+  .demo-masthead-tagline {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 11px;
+    font-style: italic;
+    color: var(--ink-light);
+  }
+
+  /* Nav demo */
+  .demo-nav {
+    background: var(--ink);
+    border-top: 3px solid var(--red);
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  .demo-nav a {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: rgba(246,241,233,0.6);
+    text-decoration: none;
+    padding: 0.7rem 0.85rem;
+    display: block;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+  }
+  .demo-nav a.active { color: #fff; border-bottom-color: var(--red); }
+
+  /* Section flag */
+  .demo-flag {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 2px double var(--rule);
+    margin-bottom: 1rem;
+  }
+  .flag-tag {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3px 9px;
+  }
+  .flag-kicker {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--ink-light);
+  }
+
+  /* Headline sizes */
+  .hl-xl {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.6rem;
+    line-height: 0.92;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+  .hl-lg {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    line-height: 0.95;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+  .hl-md {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.05;
+    color: var(--ink);
+    letter-spacing: 0.03em;
+  }
+
+  /* Deck */
+  .demo-deck {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--ink-mid);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.55rem 0;
+    margin: 0.75rem 0;
+    line-height: 1.55;
+  }
+
+  /* Body text */
+  .demo-body {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14.5px;
+    line-height: 1.88;
+    color: var(--ink-mid);
+  }
+
+  /* Pull quote */
+  .demo-pullquote {
+    border-top: 3px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9rem 0.5rem;
+    text-align: center;
+  }
+  .demo-pullquote p {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+  .demo-pullquote cite {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    font-style: normal;
+    display: block;
+    margin-top: 0.4rem;
+  }
+
+  /* Facts box */
+  .demo-facts {
+    background: var(--paper-mid);
+    border: 1px solid var(--rule);
+    padding: 1rem 1.1rem;
+  }
+  .demo-facts-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+  .facts-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.38rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    gap: 0.5rem;
+  }
+  .facts-row:last-child { border-bottom: none; }
+  .facts-key {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10.5px;
+    color: var(--ink-light);
+    flex-shrink: 0;
+  }
+  .facts-val {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 11.5px;
+    color: var(--ink);
+    text-align: right;
+    font-style: italic;
+  }
+
+  /* Recent box */
+  .demo-recent {
+    background: var(--paper-mid);
+    border: 1px solid var(--rule);
+    padding: 1rem 1.1rem;
+  }
+  .demo-recent-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+  .recent-item { padding: 0.4rem 0; border-bottom: 1px solid var(--rule-light); }
+  .recent-item:last-child { border-bottom: none; }
+  .recent-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .recent-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12.5px;
+    font-style: italic;
+    color: var(--ink-mid);
+    line-height: 1.5;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    display: inline-block;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--ink);
+    color: var(--paper);
+    border: 1px solid var(--ink);
+    margin-right: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .btn-secondary {
+    display: inline-block;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--rule);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Nav card */
+  .demo-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 2px solid var(--rule);
+    border-left: 1px solid var(--rule-light);
+  }
+  .demo-nav-card {
+    border-right: 1px solid var(--rule-light);
+    border-bottom: 1px solid var(--rule-light);
+    padding: 1.1rem;
+    text-decoration: none;
+    display: block;
+  }
+  .nav-card-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.4rem;
+    display: block;
+  }
+  .nav-card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+  }
+  .nav-card-desc {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    color: var(--ink-light);
+    line-height: 1.65;
+  }
+
+  /* Party chips */
+  .party-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+  .party-chip {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .party-chip.jca { color: #3a2800; }
+
+  /* Rules demo */
+  .rule-demo { margin-bottom: 0.75rem; }
+  .rule-demo-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    color: var(--ink-light);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+  .r-thick  { height: 3px; background: var(--ink); }
+  .r-thin   { height: 1px; background: var(--ink); }
+  .r-double { border-top: 3px solid var(--ink); border-bottom: 1px solid var(--ink); height: 6px; }
+  .r-light  { height: 1px; background: var(--rule-light); }
+  .r-pair   { display: flex; align-items: center; gap: 0.5rem; }
+  .r-pair .mrr-thick { width: 80px; }
+  .r-pair .mrr-thin  { width: 80px; }
+</style>
+</head>
+<body>
+
+<div class="guide-header">
+  <div class="guide-header-inner">
+    <h1>Washington <span>Burns</span> — Site Style Guide</h1>
+    <p>Version 1.0 · Last updated 2025</p>
+  </div>
+</div>
+
+<div class="toc">
+  <div class="toc-inner">
+    <a href="#colors">Colors</a>
+    <a href="#typography">Typography</a>
+    <a href="#rules">Rules & Ornaments</a>
+    <a href="#masthead">Masthead</a>
+    <a href="#nav">Navigation</a>
+    <a href="#flags">Section Flags</a>
+    <a href="#headlines">Headlines & Text</a>
+    <a href="#sidebar">Sidebar Components</a>
+    <a href="#buttons">Buttons</a>
+    <a href="#cards">Nav Cards</a>
+    <a href="#parties">Party Colors</a>
+    <a href="#footer">Footer</a>
+    <a href="#chapter-breadcrumb">Chapter: Breadcrumb & Prev/Next</a>
+    <a href="#chapter-hero">Chapter: Hero Block</a>
+    <a href="#chapter-subchapters">Chapter: Sections & Images</a>
+    <a href="#chapter-sidebar">Chapter: Sidebar</a>
+    <a href="#chapter-template">Chapter: Full Template</a>
+  </div>
+</div>
+
+<main>
+
+  <!-- COLORS -->
+  <div class="sg-section" id="colors">
+    <div class="sg-section-title">Colors</div>
+    <div class="sg-section-subtitle">Core palette — all values are CSS custom properties defined in :root</div>
+
+    <div class="sg-sub">
+      <div class="sg-sub-title">Paper & Ink</div>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#f6f1e9;"></div>
+          <div class="swatch-name">--paper</div>
+          <div class="swatch-hex">#f6f1e9</div>
+          <div class="swatch-usage">Page background, primary surface</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#ede7d8;"></div>
+          <div class="swatch-name">--paper-mid</div>
+          <div class="swatch-hex">#ede7d8</div>
+          <div class="swatch-usage">Sidebar boxes, facts boxes, hover states</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#e4dccb;"></div>
+          <div class="swatch-name">--paper-dark</div>
+          <div class="swatch-hex">#e4dccb</div>
+          <div class="swatch-usage">Secondary hover, deeper surfaces</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#191510;"></div>
+          <div class="swatch-name">--ink</div>
+          <div class="swatch-hex">#191510</div>
+          <div class="swatch-usage">Primary text, nav bg, buttons, rules</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#36302a;"></div>
+          <div class="swatch-name">--ink-mid</div>
+          <div class="swatch-hex">#36302a</div>
+          <div class="swatch-usage">Body text, deck text</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#78706a;"></div>
+          <div class="swatch-name">--ink-light</div>
+          <div class="swatch-hex">#78706a</div>
+          <div class="swatch-usage">Labels, secondary text, kicker text</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#b8b0a8;"></div>
+          <div class="swatch-name">--ink-faint</div>
+          <div class="swatch-hex">#b8b0a8</div>
+          <div class="swatch-usage">Column rules, placeholder text, dividers</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#8b1a1a;"></div>
+          <div class="swatch-name">--red</div>
+          <div class="swatch-hex">#8b1a1a</div>
+          <div class="swatch-usage">Accent color — nav stripe, section tags, card labels, links</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#6a1212;"></div>
+          <div class="swatch-name">--red-dark</div>
+          <div class="swatch-hex">#6a1212</div>
+          <div class="swatch-usage">Hover state for red elements</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHY -->
+  <div class="sg-section" id="typography">
+    <div class="sg-section-title">Typography</div>
+    <div class="sg-section-subtitle">Three typefaces — each with a specific role. Never substitute.</div>
+
+    <table class="spec-table">
+      <tr>
+        <th>Typeface</th>
+        <th>Source</th>
+        <th>Weight(s)</th>
+        <th>Used for</th>
+      </tr>
+      <tr>
+        <td>Bebas Neue</td>
+        <td>Google Fonts</td>
+        <td>400 (only weight)</td>
+        <td>Masthead title, all headlines, nav card titles, pull quotes, footer brand</td>
+      </tr>
+      <tr>
+        <td>Libre Baskerville</td>
+        <td>Google Fonts</td>
+        <td>400 regular, 400 italic, 700 bold</td>
+        <td>Body text, deck text, masthead tagline, sidebar values (italic), pull quote attribution</td>
+      </tr>
+      <tr>
+        <td>Source Sans 3</td>
+        <td>Google Fonts</td>
+        <td>300, 400, 600</td>
+        <td>All UI labels, navigation links, section tags, box titles, metadata, topbar text</td>
+      </tr>
+    </table>
+
+    <div class="sg-sub">
+      <div class="sg-sub-title">Type scale</div>
+      <table class="spec-table">
+        <tr><th>Element</th><th>Font</th><th>Size</th><th>Weight/Style</th><th>Letter spacing</th></tr>
+        <tr><td>Masthead title</td><td>Bebas Neue</td><td>7rem</td><td>400</td><td>0.07em</td></tr>
+        <tr><td>Lead headline</td><td>Bebas Neue</td><td>3.6rem</td><td>400</td><td>0.02em</td></tr>
+        <tr><td>Subpage headline</td><td>Bebas Neue</td><td>2.4rem</td><td>400</td><td>0.02em</td></tr>
+        <tr><td>Nav card title</td><td>Bebas Neue</td><td>1.4rem</td><td>400</td><td>0.04em</td></tr>
+        <tr><td>Pull quote</td><td>Bebas Neue</td><td>1.55rem</td><td>400</td><td>0.03em</td></tr>
+        <tr><td>Deck / standfirst</td><td>Libre Baskerville</td><td>14.5px</td><td>400 italic</td><td>normal</td></tr>
+        <tr><td>Body text</td><td>Libre Baskerville</td><td>14.5px</td><td>400</td><td>normal</td></tr>
+        <tr><td>Sidebar values</td><td>Libre Baskerville</td><td>11.5px</td><td>400 italic</td><td>normal</td></tr>
+        <tr><td>Masthead tagline</td><td>Libre Baskerville</td><td>12.5px</td><td>400 italic</td><td>0.05em</td></tr>
+        <tr><td>Nav links</td><td>Source Sans 3</td><td>10.5px</td><td>600</td><td>0.13em</td></tr>
+        <tr><td>Section tags / labels</td><td>Source Sans 3</td><td>9px</td><td>600</td><td>0.22em</td></tr>
+        <tr><td>Topbar / metadata</td><td>Source Sans 3</td><td>10.5px</td><td>400</td><td>0.03em</td></tr>
+        <tr><td>Card descriptions</td><td>Source Sans 3</td><td>11.5px</td><td>400</td><td>normal</td></tr>
+        <tr><td>Facts box keys</td><td>Source Sans 3</td><td>10.5px</td><td>400</td><td>normal</td></tr>
+        <tr><td>Pull quote cite</td><td>Source Sans 3</td><td>9.5px</td><td>400 (not italic)</td><td>0.13em, uppercase</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- RULES & ORNAMENTS -->
+  <div class="sg-section" id="rules">
+    <div class="sg-section-title">Rules & Ornaments</div>
+    <div class="sg-section-subtitle">Horizontal rules carry meaning. Use the right one in the right place.</div>
+
+    <div class="demo">
+      <div class="rule-demo">
+        <div class="rule-demo-label">Thick rule — 3px solid --ink · Used: above lead section, above pull quote, top of nav card grid</div>
+        <div class="r-thick"></div>
+      </div>
+      <div class="rule-demo">
+        <div class="rule-demo-label">Thin rule — 1px solid --ink · Used: below deck, below masthead topbar</div>
+        <div class="r-thin"></div>
+      </div>
+      <div class="rule-demo">
+        <div class="rule-demo-label">Double rule — CSS border-top 3px + border-bottom 1px · Used: below section flags</div>
+        <div class="r-double"></div>
+      </div>
+      <div class="rule-demo">
+        <div class="rule-demo-label">Light rule — 1px rgba(25,21,16,0.15) · Used: column dividers, sidebar rows, table rows</div>
+        <div class="r-light"></div>
+      </div>
+      <div class="rule-demo">
+        <div class="rule-demo-label">Masthead rule ornament — thick + diamond + thin + diamond + thick · Used: under masthead title only</div>
+        <div class="r-pair demo-masthead-rule-row" style="justify-content:flex-start;">
+          <div class="mrr-thick"></div>
+          <div class="mrr-diam"></div>
+          <div class="mrr-thin"></div>
+          <div class="mrr-diam"></div>
+          <div class="mrr-thick"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-sub">
+      <div class="sg-sub-title">Party stripe</div>
+      <div class="demo">
+        <div class="demo-label">Always appears as the first element in the page, above everything. Height: 4px.</div>
+        <div class="party-stripe-demo"></div>
+        <div style="font-family:'Source Sans 3',sans-serif;font-size:11px;color:var(--ink-light);margin-top:0.5rem;">
+          Left to right: Federalist (#C4601A) · Democrat (#1e7a48) · SPA (#a01e1e) · JCA (#b8900a) — each 25% of width
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MASTHEAD -->
+  <div class="sg-section" id="masthead">
+    <div class="sg-section-title">Masthead</div>
+    <div class="sg-section-subtitle">The site identity block. Appears on every page above the sticky nav.</div>
+
+    <div class="demo">
+      <div class="demo-label">Rendered example</div>
+      <div style="font-family:'Source Sans 3',sans-serif;font-size:10px;color:var(--ink-light);padding:0.4rem 0;border-bottom:1px solid var(--rule-light);display:flex;justify-content:space-between;margin-bottom:0.25rem;">
+        <span>Point of Divergence: August 24, 1814</span>
+        <span>Miraheze Wiki · AlternateHistory.com · Presidential Explorer</span>
+        <span>All text © 2025 Zachary Anderson</span>
+      </div>
+      <div class="demo-masthead">
+        <div class="demo-masthead-title">Washington <span class="burns">Burns</span></div>
+        <div class="demo-masthead-rule-row">
+          <div class="mrr-thick"></div>
+          <div class="mrr-diam"></div>
+          <div class="mrr-thin"></div>
+          <div class="mrr-diam"></div>
+          <div class="mrr-thick"></div>
+        </div>
+        <div class="demo-masthead-tagline">A Work of Alternate History by Zachary Anderson</div>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <tr><th>Element</th><th>Spec</th></tr>
+      <tr><td>Topbar background</td><td>--paper (same as page)</td></tr>
+      <tr><td>Topbar border</td><td>1px solid --rule-light, bottom only</td></tr>
+      <tr><td>Title "Washington"</td><td>Bebas Neue 7rem, color: --ink</td></tr>
+      <tr><td>Title "Burns"</td><td>Bebas Neue 7rem, color: --red</td></tr>
+      <tr><td>Rule ornament</td><td>Thick (180px × 3px) + diamond (6px rotated) + thin (180px × 1px) + diamond + thick</td></tr>
+      <tr><td>Tagline</td><td>Libre Baskerville 12.5px italic, color: --ink-light, letter-spacing: 0.05em</td></tr>
+      <tr><td>Bottom border</td><td>1px solid --rule (full-width)</td></tr>
+    </table>
+  </div>
+
+  <!-- NAV -->
+  <div class="sg-section" id="nav">
+    <div class="sg-section-title">Navigation</div>
+    <div class="sg-section-subtitle">Sticky nav bar. Stays visible as user scrolls. Red top border, not bottom.</div>
+
+    <div class="demo">
+      <div class="demo-label">Rendered example</div>
+      <div class="demo-nav">
+        <a href="#" class="active">Home</a>
+        <a href="#">Point of Divergence</a>
+        <a href="#">Primary Chapters</a>
+        <a href="#">Short Stories</a>
+        <a href="#">People</a>
+        <a href="presidential-explorer.html">Presidential Explorer</a>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <tr><th>Element</th><th>Spec</th></tr>
+      <tr><td>Background</td><td>--ink (#191510)</td></tr>
+      <tr><td>Top border</td><td>3px solid --red. Note: top, not bottom.</td></tr>
+      <tr><td>Link font</td><td>Source Sans 3, 10.5px, weight 600, uppercase, letter-spacing 0.13em</td></tr>
+      <tr><td>Link color (default)</td><td>rgba(246,241,233, 0.75) — slightly muted paper</td></tr>
+      <tr><td>Link color (hover/active)</td><td>#ffffff + 3px red bottom border</td></tr>
+      <tr><td>Active indicator</td><td>3px solid --red bottom border (margin-bottom: -3px to sit flush)</td></tr>
+      <tr><td>z-index</td><td>100</td></tr>
+    </table>
+
+    <div style="margin-top:1rem;font-family:'Source Sans 3',sans-serif;font-size:12px;color:var(--ink-light);">
+      <strong>Nav items (in order):</strong> Home · Point of Divergence · Primary Chapters · Supplemental · Short Stories · People · Maps · Presidential Explorer
+    </div>
+  </div>
+
+  <!-- SECTION FLAGS -->
+  <div class="sg-section" id="flags">
+    <div class="sg-section-title">Section Flags</div>
+    <div class="sg-section-subtitle">Used to introduce major content sections. Always includes a tag and a kicker.</div>
+
+    <div class="demo">
+      <div class="demo-label">Rendered example</div>
+      <div class="demo-flag">
+        <span class="flag-tag">Welcome</span>
+        <span class="flag-kicker">An alternate history exploring two centuries of divergent America</span>
+      </div>
+      <div class="demo-flag" style="margin-top:1rem;">
+        <span class="flag-tag" style="background:var(--red);">Chapter</span>
+        <span class="flag-kicker">The Crawford Presidency · 1817–1821</span>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <tr><th>Element</th><th>Spec</th></tr>
+      <tr><td>Container border</td><td>2px double --rule, bottom only. Padding-bottom: 0.55rem.</td></tr>
+      <tr><td>Tag background</td><td>--ink for general sections. --red for chapter/article sections.</td></tr>
+      <tr><td>Tag text</td><td>Source Sans 3, 9px, weight 600, uppercase, letter-spacing 0.22em, color --paper</td></tr>
+      <tr><td>Tag padding</td><td>3px top/bottom, 9px left/right</td></tr>
+      <tr><td>Kicker text</td><td>Libre Baskerville, 12.5px, italic, color --ink-light</td></tr>
+    </table>
+  </div>
+
+  <!-- HEADLINES & TEXT -->
+  <div class="sg-section" id="headlines">
+    <div class="sg-section-title">Headlines & Body Text</div>
+    <div class="sg-section-subtitle">Three headline sizes for three contexts. One body style. One deck style.</div>
+
+    <div class="demo">
+      <div class="demo-label">Lead headline (home page, major articles)</div>
+      <div class="hl-xl">What if Washington Never Rose Again?</div>
+    </div>
+    <div class="demo">
+      <div class="demo-label">Subpage headline (chapter pages, secondary articles)</div>
+      <div class="hl-lg">The Crawford Presidency, 1817–1821</div>
+    </div>
+    <div class="demo">
+      <div class="demo-label">Nav card / section title</div>
+      <div class="hl-md">Primary Chapters</div>
+    </div>
+    <div class="demo">
+      <div class="demo-label">Deck / standfirst — appears between headline and body, ruled above and below</div>
+      <div class="demo-deck">On August 24, 1814, British forces burned Washington City. In our history, it was rebuilt. In this timeline, it was not — and the two centuries that followed diverged profoundly from our own.</div>
+    </div>
+    <div class="demo">
+      <div class="demo-label">Body text — Libre Baskerville 14.5px, line-height 1.88, color --ink-mid. Two columns on wide layouts with 1px --ink-faint column rule.</div>
+      <div class="demo-body">In this world, the United States abandoned its original capital and relocated westward, founding Franklin in the District of Washington on the Ohio River — where Cincinnati stands in our own timeline. The aftermath of the War of 1812 proved far worse for the young republic.</div>
+    </div>
+    <div class="demo">
+      <div class="demo-label">Pull quote — Bebas Neue, thick rule above, thin rule below</div>
+      <div class="demo-pullquote">
+        <p>"While we carry our banner ever westward, we shall not forsake the nurturing of our oldest settlements."</p>
+        <cite>— Alexander Hamilton Jr. · Inaugural Address · Franklin, D.W. · March 4, 1827</cite>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR COMPONENTS -->
+  <div class="sg-section" id="sidebar">
+    <div class="sg-section-title">Sidebar Components</div>
+    <div class="sg-section-subtitle">Two box types used in the right-hand sidebar. Both use --paper-mid background with 1px --rule border.</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+      <div>
+        <div class="sg-sub-title">Facts box</div>
+        <div class="demo-facts">
+          <div class="demo-facts-title">Quick Facts</div>
+          <div class="facts-row"><span class="facts-key">Divergence</span><span class="facts-val">Aug. 24, 1814</span></div>
+          <div class="facts-row"><span class="facts-key">Capital</span><span class="facts-val">Franklin, D.W.</span></div>
+          <div class="facts-row"><span class="facts-key">Presidential term</span><span class="facts-val">Single six years</span></div>
+          <div class="facts-row"><span class="facts-key">Presidents</span><span class="facts-val">44</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sg-sub-title">Recently Added box</div>
+        <div class="demo-recent">
+          <div class="demo-recent-title">Recently Added</div>
+          <div class="recent-item">
+            <span class="recent-label">Chapter</span>
+            <span class="recent-title">The C. Roosevelt Presidency, 1905–1911</span>
+          </div>
+          <div class="recent-item">
+            <span class="recent-label">Short Story</span>
+            <span class="recent-title">October 1909 — Arthur Caldwell, Millhaven, Ohio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table" style="margin-top:1.5rem;">
+      <tr><th>Element</th><th>Spec</th></tr>
+      <tr><td>Box background</td><td>--paper-mid</td></tr>
+      <tr><td>Box border</td><td>1px solid --rule (all sides)</td></tr>
+      <tr><td>Box padding</td><td>1rem 1.1rem</td></tr>
+      <tr><td>Box title</td><td>Source Sans 3, 9px, weight 600, uppercase, letter-spacing 0.22em. Border-bottom: 2px solid --rule.</td></tr>
+      <tr><td>Facts key</td><td>Source Sans 3, 10.5px, color --ink-light</td></tr>
+      <tr><td>Facts value</td><td>Libre Baskerville, 11.5px, italic, color --ink, text-align right</td></tr>
+      <tr><td>Row divider</td><td>1px solid --rule-light, bottom of each row</td></tr>
+      <tr><td>Recent label</td><td>Source Sans 3, 9px, weight 600, uppercase, color --red</td></tr>
+      <tr><td>Recent title</td><td>Libre Baskerville, 12.5px, italic, color --ink-mid</td></tr>
+    </table>
+  </div>
+
+  <!-- BUTTONS -->
+  <div class="sg-section" id="buttons">
+    <div class="sg-section-title">Buttons</div>
+    <div class="sg-section-subtitle">Two button types. Primary for main CTA. Secondary for supporting actions.</div>
+
+    <div class="demo">
+      <div class="demo-label">Primary button — ink background, hover: red</div>
+      <a href="#" class="btn-primary">Begin Reading →</a>
+      <div class="demo-label" style="margin-top:1rem;">Secondary button — transparent background with ink border</div>
+      <a href="#" class="btn-secondary">Presidential Explorer →</a>
+    </div>
+
+    <table class="spec-table">
+      <tr><th>Element</th><th>Primary</th><th>Secondary</th></tr>
+      <tr><td>Background</td><td>--ink</td><td>transparent</td></tr>
+      <tr><td>Text color</td><td>--paper</td><td>--ink</td></tr>
+      <tr><td>Border</td><td>1px solid --ink</td><td>1px solid --rule</td></tr>
+      <tr><td>Hover background</td><td>--red</td><td>--paper-dark</td></tr>
+      <tr><td>Font</td><td colspan="2">Source Sans 3, 10px, weight 600, uppercase, letter-spacing 0.16em</td></tr>
+      <tr><td>Padding</td><td colspan="2">0.75rem top/bottom, 1rem left/right (full-width in sidebar)</td></tr>
+    </table>
+  </div>
+
+  <!-- NAV CARDS -->
+  <div class="sg-section" id="cards">
+    <div class="sg-section-title">Navigation Cards</div>
+    <div class="sg-section-subtitle">Used in the "Explore" section at the bottom of the home page. 4-column grid on wide screens.</div>
+
+    <div class="demo">
+      <div class="demo-label">Rendered example (2-column for space)</div>
+      <div class="demo-card-grid">
+        <a href="#" class="demo-nav-card">
+          <span class="nav-card-label">Start here</span>
+          <div class="nav-card-title">Point of Divergence</div>
+          <div class="nav-card-desc">August 24, 1814. The British burn Washington more thoroughly. Everything begins here.</div>
+        </a>
+        <a href="#" class="demo-nav-card">
+          <span class="nav-card-label">The narrative</span>
+          <div class="nav-card-title">Primary Chapters</div>
+          <div class="nav-card-desc">The full timeline, presidency by presidency, from Crawford through the present day.</div>
+        </a>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <tr><th>Element</th><th>Spec</th></tr>
+      <tr><td>Grid border</td><td>Border-top: 2px solid --rule. Border-left: 1px solid --rule-light. Cards supply right and bottom borders.</td></tr>
+      <tr><td>Card border</td><td>1px solid --rule-light, right and bottom</td></tr>
+      <tr><td>Card padding</td><td>1.3rem 1.2rem 1.5rem</td></tr>
+      <tr><td>Card hover</td><td>background: --paper-mid</td></tr>
+      <tr><td>Label</td><td>Source Sans 3, 9px, weight 600, uppercase, letter-spacing 0.2em, color --red</td></tr>
+      <tr><td>Title</td><td>Bebas Neue, 1.4rem, letter-spacing 0.04em, color --ink</td></tr>
+      <tr><td>Description</td><td>Source Sans 3, 11.5px, color --ink-light, line-height 1.65</td></tr>
+      <tr><td>Arrow on hover</td><td>Source Sans 3, 10px, weight 600, color --red. Position: absolute, bottom-right. Opacity 0 → 1 on hover.</td></tr>
+    </table>
+  </div>
+
+  <!-- PARTY COLORS -->
+  <div class="sg-section" id="parties">
+    <div class="sg-section-title">Party Colors</div>
+    <div class="sg-section-subtitle">Used for the party stripe and any party-coded UI elements (presidential explorer, etc.). Never used as general accent colors on the main site — that role belongs to --red.</div>
+
+    <div class="party-chips">
+      <div class="party-chip" style="background:#C4601A;">Federalist #C4601A</div>
+      <div class="party-chip" style="background:#1e7a48;">Democrat #1e7a48</div>
+      <div class="party-chip" style="background:#a01e1e;">Social Progressive Alliance #a01e1e</div>
+      <div class="party-chip jca" style="background:#b8900a;">Jeffersonian Constitutional Alliance #b8900a</div>
+      <div class="party-chip" style="background:#1A4F8A;">Republican (historical) #1A4F8A</div>
+      <div class="party-chip" style="background:#4a5a62;">Democratic-Republican (historical) #4a5a62</div>
+    </div>
+
+    <table class="spec-table">
+      <tr><th>Party</th><th>Hex</th><th>Text on color</th><th>Notes</th></tr>
+      <tr><td>Federalist</td><td><code>#C4601A</code></td><td>#ffffff</td><td>Burnt orange</td></tr>
+      <tr><td>Democrat</td><td><code>#1e7a48</code></td><td>#ffffff</td><td>Sea green</td></tr>
+      <tr><td>Social Progressive Alliance (SPA)</td><td><code>#a01e1e</code></td><td>#ffffff</td><td>Firebrick red — distinct from --red accent</td></tr>
+      <tr><td>Jeffersonian Constitutional Alliance (JCA)</td><td><code>#b8900a</code></td><td>#3a2800 (dark brown)</td><td>Goldenrod — use dark text, not white</td></tr>
+      <tr><td>Republican (historical)</td><td><code>#1A4F8A</code></td><td>#ffffff</td><td>Navy blue — defunct party</td></tr>
+      <tr><td>Democratic-Republican (historical)</td><td><code>#4a5a62</code></td><td>#ffffff</td><td>Slate grey — defunct party</td></tr>
+    </table>
+
+    <div style="margin-top:1rem;">
+      <div class="sg-sub-title">Party stripe order</div>
+      <div class="party-stripe-demo" style="height:16px;border-radius:0;"></div>
+      <div style="font-family:'Source Sans 3',sans-serif;font-size:11px;color:var(--ink-light);margin-top:0.5rem;">
+        Left → right: Federalist · Democrat · SPA · JCA. Each 25% of width. Always 4px tall. Always first element on the page.
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="sg-section" id="footer">
+    <div class="sg-section-title">Footer</div>
+    <div class="sg-section-subtitle">Dark footer echoing the nav. Red top border. Three-column layout: brand / links / copyright.</div>
+
+    <div class="demo">
+      <div class="demo-label">Rendered example</div>
+      <div style="background:var(--ink);border-top:3px solid var(--red);padding:1.5rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.12em;color:var(--paper);">Washington <span style="color:var(--red);">Burns</span></div>
+          <div style="display:flex;gap:1.5rem;font-family:'Source Sans 3',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">
+            <a href="#" style="color:rgba(246,241,233,0.5);text-decoration:none;">Miraheze Wiki</a>
+            <a href="#" style="color:rgba(246,241,233,0.5);text-decoration:none;">AlternateHistory.com</a>
+            <a href="#" style="color:rgba(246,241,233,0.5);text-decoration:none;">Presidential Explorer</a>
+          </div>
+          <div style="font-family:'Source Sans 3',sans-serif;font-size:10px;color:rgba(246,241,233,0.35);letter-spacing:0.04em;">All text © 2025 Zachary Anderson</div>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <tr><th>Element</th><th>Spec</th></tr>
+      <tr><td>Background</td><td>--ink</td></tr>
+      <tr><td>Top border</td><td>3px solid --red</td></tr>
+      <tr><td>Brand</td><td>Bebas Neue, 1.4rem, letter-spacing 0.12em. "Washington" in --paper, "Burns" in --red.</td></tr>
+      <tr><td>Links</td><td>Source Sans 3, 10px, weight 600, uppercase, letter-spacing 0.1em. Color: rgba(246,241,233,0.5). Hover: --paper.</td></tr>
+      <tr><td>Copyright</td><td>Source Sans 3, 10px, color: rgba(246,241,233,0.35)</td></tr>
+    </table>
+  </div>
+
+
+  <!-- CHAPTER PAGE COMPONENTS -->
+  <div class="sg-section" id="chapter-breadcrumb">
+    <div class="sg-section-title">Chapter Page — Breadcrumb & Prev/Next</div>
+    <div class="sg-section-subtitle">Navigation elements unique to chapter/article pages. Prev/Next appears at both top and bottom.</div>
+
+    <div class="sg-sub">
+      <div class="sg-sub-title">Breadcrumb</div>
+      <div class="demo">
+        <div class="demo-label">Rendered example</div>
+        <div style="font-family:'Source Sans 3',sans-serif;font-size:10px;color:var(--ink-light);letter-spacing:0.08em;padding:0.6rem 0;border-bottom:1px solid var(--rule-light);display:flex;align-items:center;gap:0.5rem;">
+          <a href="#" style="color:var(--ink-light);text-decoration:none;">Home</a>
+          <span style="color:var(--ink-faint);">›</span>
+          <a href="#" style="color:var(--ink-light);text-decoration:none;">Primary Chapters</a>
+          <span style="color:var(--ink-faint);">›</span>
+          <span>The C. Roosevelt II Presidency</span>
+        </div>
+      </div>
+      <table class="spec-table">
+        <tr><th>Element</th><th>Spec</th></tr>
+        <tr><td>Font</td><td>Source Sans 3, 10px, letter-spacing 0.08em, color --ink-light</td></tr>
+        <tr><td>Links</td><td>color --ink-light, hover --red, no underline</td></tr>
+        <tr><td>Separator</td><td>› character, color --ink-faint</td></tr>
+        <tr><td>Border</td><td>border-bottom: 1px solid --rule-light</td></tr>
+        <tr><td>Padding</td><td>0.75rem 2rem</td></tr>
+        <tr><td>Format</td><td>Always: Home › Primary Chapters › [Chapter Name]</td></tr>
+      </table>
+    </div>
+
+    <div class="sg-sub">
+      <div class="sg-sub-title">Previous / Next bar</div>
+      <div class="demo">
+        <div class="demo-label">Rendered example</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid var(--rule-light);">
+          <a href="#" style="font-family:'Source Sans 3',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-light);text-decoration:none;padding:0.4rem 0.75rem;border:1px solid var(--rule-light);">← The Landon Presidency, 1903–1905</a>
+          <span style="font-family:'Source Sans 3',sans-serif;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-faint);">Chapter 23 of 44</span>
+          <a href="#" style="font-family:'Source Sans 3',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-light);text-decoration:none;padding:0.4rem 0.75rem;border:1px solid var(--rule-light);">The Hannah Presidency, 1911–1917 →</a>
+        </div>
+      </div>
+      <table class="spec-table">
+        <tr><th>Element</th><th>Spec</th></tr>
+        <tr><td>Layout</td><td>flex, justify-content space-between, align-items center</td></tr>
+        <tr><td>Link font</td><td>Source Sans 3, 10px, weight 600, uppercase, letter-spacing 0.12em, color --ink-light</td></tr>
+        <tr><td>Link border</td><td>1px solid --rule-light, padding 0.4rem 0.75rem</td></tr>
+        <tr><td>Link hover</td><td>color --red, border-color --red, background --paper-mid</td></tr>
+        <tr><td>Center label</td><td>Source Sans 3, 9px, uppercase, letter-spacing 0.15em, color --ink-faint</td></tr>
+        <tr><td>Disabled link</td><td>opacity 0.3, pointer-events none (first/last chapter)</td></tr>
+        <tr><td>Placement</td><td>Top: border-bottom 1px --rule-light. Bottom: border-top 1px --rule-light.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- CHAPTER HERO -->
+  <div class="sg-section" id="chapter-hero">
+    <div class="sg-section-title">Chapter Page — Hero Identity Block</div>
+    <div class="sg-section-subtitle">The chapter-specific hero. Replaces the home page lead grid. Portrait + full identity information.</div>
+
+    <div class="demo">
+      <div class="demo-label">Rendered example (simplified)</div>
+      <div style="display:grid;grid-template-columns:180px 1fr;gap:2rem;padding-bottom:1.5rem;border-bottom:3px solid var(--rule);align-items:start;">
+        <!-- Portrait -->
+        <div>
+          <div style="width:180px;height:220px;background:var(--paper-dark);border:1px solid var(--rule-light);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;margin-bottom:0.5rem;">
+            <div style="width:48px;height:48px;border-radius:50%;background:var(--ink-faint);opacity:0.4;"></div>
+            <div style="font-family:'Source Sans 3',sans-serif;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-faint);">Portrait placeholder</div>
+          </div>
+          <div style="font-family:'Source Sans 3',sans-serif;font-size:9.5px;color:var(--ink-faint);font-style:italic;text-align:center;line-height:1.4;">Cornelius Roosevelt II<br>23rd President</div>
+        </div>
+        <!-- Identity -->
+        <div>
+          <div style="font-family:'Source Sans 3',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-light);margin-bottom:0.4rem;display:flex;align-items:center;gap:0.6rem;">
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--democrat);flex-shrink:0;"></span>
+            23rd President of the United States
+          </div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:2.8rem;line-height:0.92;color:var(--ink);letter-spacing:0.02em;margin-bottom:0.5rem;">The Cornelius Roosevelt II Presidency</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.08em;color:var(--ink-light);margin-bottom:0.85rem;">March 1905 – January 1911</div>
+          <div style="font-family:'Libre Baskerville',serif;font-size:13.5px;font-style:italic;color:var(--ink-mid);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:0.55rem 0;margin-bottom:1rem;line-height:1.6;">A son of the famous Roosevelt family of the District of Manhattan, Cornelius Roosevelt II came to office in unusual circumstances — succeeding Peter Landon after the Caribbean War placed America at the center of international affairs.</div>
+          <div style="display:flex;flex-wrap:wrap;gap:1.25rem;">
+            <div><div style="font-family:'Source Sans 3',sans-serif;font-size:8.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:2px;">Party</div><span style="font-family:'Source Sans 3',sans-serif;font-size:9.5px;font-weight:600;background:var(--democrat);color:#fff;padding:2px 8px;border-radius:2px;">Democrat</span></div>
+            <div><div style="font-family:'Source Sans 3',sans-serif;font-size:8.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:2px;">Vice President</div><div style="font-family:'Libre Baskerville',serif;font-size:13px;font-style:italic;color:var(--ink);">Patrick Hannah</div></div>
+            <div><div style="font-family:'Source Sans 3',sans-serif;font-size:8.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:2px;">Home State</div><div style="font-family:'Libre Baskerville',serif;font-size:13px;font-style:italic;color:var(--ink);">District of Manhattan</div></div>
+            <div><div style="font-family:'Source Sans 3',sans-serif;font-size:8.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:2px;">Preceded by</div><div style="font-family:'Libre Baskerville',serif;font-size:13px;font-style:italic;color:var(--ink);">Peter Landon (#22)</div></div>
+            <div><div style="font-family:'Source Sans 3',sans-serif;font-size:8.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:2px;">Succeeded by</div><div style="font-family:'Libre Baskerville',serif;font-size:13px;font-style:italic;color:var(--ink);">Patrick Hannah (#24)</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="spec-table" style="margin-top:1.5rem;">
+      <tr><th>Element</th><th>Spec</th></tr>
+      <tr><td>Grid</td><td>180px + 1fr. Gap: 2rem. Align-items: start. Border-bottom: 3px solid --rule. Padding-bottom: 1.75rem.</td></tr>
+      <tr><td>Portrait size</td><td>180px × 220px. Background --paper-dark, border 1px solid --rule-light.</td></tr>
+      <tr><td>Portrait caption</td><td>Source Sans 3, 9.5px, italic, color --ink-faint, text-align center.</td></tr>
+      <tr><td>Number line</td><td>Source Sans 3, 10px, weight 600, uppercase, letter-spacing 0.2em, color --ink-light. Includes 10px circular party pip.</td></tr>
+      <tr><td>Party pip</td><td>10px circle, border-radius 50%, background = president's party color variable.</td></tr>
+      <tr><td>Chapter headline</td><td>Bebas Neue, 3.2rem, letter-spacing 0.02em, color --ink, line-height 0.92.</td></tr>
+      <tr><td>Years</td><td>Bebas Neue, 1.4rem, letter-spacing 0.08em, color --ink-light.</td></tr>
+      <tr><td>Summary deck</td><td>Libre Baskerville, 14px, italic, color --ink-mid. Ruled above and below. Padding 0.6rem 0.</td></tr>
+      <tr><td>Meta label</td><td>Source Sans 3, 8.5px, weight 600, uppercase, letter-spacing 0.18em, color --ink-faint.</td></tr>
+      <tr><td>Meta value</td><td>Libre Baskerville, 13px, italic, color --ink.</td></tr>
+      <tr><td>Party chip in meta</td><td>Source Sans 3, 9.5px, weight 600, letter-spacing 0.1em, background = party color, color #fff (or #3a2800 for JCA). Padding 2px 8px.</td></tr>
+    </table>
+  </div>
+
+  <!-- SUB-CHAPTER LIST -->
+  <div class="sg-section" id="chapter-subchapters">
+    <div class="sg-section-title">Chapter Page — Sub-chapter List & Article Sections</div>
+    <div class="sg-section-subtitle">The "In This Chapter" navigation list and the section heading style used within chapter body text.</div>
+
+    <div class="sg-sub">
+      <div class="sg-sub-title">Sub-chapter list</div>
+      <div class="demo">
+        <div class="demo-label">Rendered example</div>
+        <div style="background:var(--paper-mid);border:1px solid var(--rule);padding:1rem 1.1rem;margin-bottom:0;">
+          <div style="font-family:'Source Sans 3',sans-serif;font-size:9px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink);border-bottom:2px solid var(--rule);padding-bottom:0.4rem;margin-bottom:0.75rem;">In This Chapter</div>
+          <div style="display:flex;align-items:baseline;gap:0.75rem;padding:0.45rem 0;border-bottom:1px solid var(--rule-light);text-decoration:none;">
+            <span style="font-family:'Source Sans 3',sans-serif;font-size:9px;font-weight:600;color:var(--red);width:18px;flex-shrink:0;">I</span>
+            <span style="font-family:'Libre Baskerville',serif;font-size:13px;font-style:italic;color:var(--ink-mid);flex:1;">Background & Election of 1904</span>
+            <span style="font-family:'Source Sans 3',sans-serif;font-size:9.5px;color:var(--ink-faint);flex-shrink:0;">1903–1905</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:0.75rem;padding:0.45rem 0;border-bottom:1px solid var(--rule-light);">
+            <span style="font-family:'Source Sans 3',sans-serif;font-size:9px;font-weight:600;color:var(--red);width:18px;flex-shrink:0;">II</span>
+            <span style="font-family:'Libre Baskerville',serif;font-size:13px;font-style:italic;color:var(--ink-mid);flex:1;">The Caribbean War & Treaty of Copenhagen</span>
+            <span style="font-family:'Source Sans 3',sans-serif;font-size:9.5px;color:var(--ink-faint);flex-shrink:0;">1905–1906</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:0.75rem;padding:0.45rem 0;">
+            <span style="font-family:'Source Sans 3',sans-serif;font-size:9px;font-weight:600;color:var(--red);width:18px;flex-shrink:0;">III</span>
+            <span style="font-family:'Libre Baskerville',serif;font-size:13px;font-style:italic;color:var(--ink-mid);flex:1;">The Coastal Rebellion & the End of the Republican Party</span>
+            <span style="font-family:'Source Sans 3',sans-serif;font-size:9.5px;color:var(--ink-faint);flex-shrink:0;">1905</span>
+          </div>
+        </div>
+      </div>
+      <table class="spec-table" style="margin-top:1rem;">
+        <tr><th>Element</th><th>Spec</th></tr>
+        <tr><td>Container</td><td>Same as facts box: --paper-mid bg, 1px --rule border, 1rem 1.1rem padding.</td></tr>
+        <tr><td>Title</td><td>Source Sans 3, 9px, weight 600, uppercase, letter-spacing 0.22em. Border-bottom: 2px solid --rule.</td></tr>
+        <tr><td>Row number</td><td>Source Sans 3, 9px, weight 600, color --red. Width 18px, flex-shrink 0. Roman numerals (I, II, III...).</td></tr>
+        <tr><td>Row title</td><td>Libre Baskerville, 13px, italic, color --ink-mid, flex 1. Hover: color --red.</td></tr>
+        <tr><td>Row years</td><td>Source Sans 3, 9.5px, color --ink-faint, flex-shrink 0.</td></tr>
+        <tr><td>Row divider</td><td>1px solid --rule-light, bottom of each row except last.</td></tr>
+      </table>
+    </div>
+
+    <div class="sg-sub">
+      <div class="sg-sub-title">Article section heading</div>
+      <div class="demo">
+        <div class="demo-label">Rendered example</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.04em;color:var(--ink);margin-bottom:0.15rem;">I. Background & Election of 1904</div>
+        <div style="height:2px;background:var(--ink);margin-bottom:0.9rem;"></div>
+        <div style="font-family:'Libre Baskerville',serif;font-size:14.5px;line-height:1.88;color:var(--ink-mid);">Body text follows the heading and rule. Libre Baskerville, 14.5px, line-height 1.88, color --ink-mid. This is the standard reading text for all narrative content.</div>
+      </div>
+      <table class="spec-table">
+        <tr><th>Element</th><th>Spec</th></tr>
+        <tr><td>Heading</td><td>Bebas Neue, 1.6rem, letter-spacing 0.04em, color --ink. Margin-bottom 0.15rem.</td></tr>
+        <tr><td>Rule beneath heading</td><td>Height 2px, background --ink, margin-bottom 0.9rem. This is the only 2px rule — all other structural rules are 3px (thick) or 1px (thin/light).</td></tr>
+        <tr><td>Section spacing</td><td>Each section separated by margin-bottom 2.25rem.</td></tr>
+      </table>
+    </div>
+
+    <div class="sg-sub">
+      <div class="sg-sub-title">Image placeholder block</div>
+      <div class="demo">
+        <div class="demo-label">Rendered example</div>
+        <div style="background:var(--paper-dark);border:1px solid var(--rule-light);width:100%;height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;margin-bottom:0.5rem;">
+          <div style="width:40px;height:40px;background:var(--ink-faint);opacity:0.35;border-radius:3px;"></div>
+          <div style="font-family:'Source Sans 3',sans-serif;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-faint);">Image placeholder — election map, 1904</div>
+        </div>
+        <div style="font-family:'Source Sans 3',sans-serif;font-size:10.5px;color:var(--ink-light);font-style:italic;text-align:center;line-height:1.5;">The electoral map of 1904. Caption text goes here in Source Sans 3 10.5px italic.</div>
+      </div>
+      <table class="spec-table">
+        <tr><th>Element</th><th>Spec</th></tr>
+        <tr><td>Container</td><td>Background --paper-dark, border 1px solid --rule-light, width 100%, height 240px (default, adjustable).</td></tr>
+        <tr><td>Placeholder icon</td><td>40px × 40px, background --ink-faint, opacity 0.35, border-radius 3px.</td></tr>
+        <tr><td>Placeholder label</td><td>Source Sans 3, 9px, uppercase, letter-spacing 0.15em, color --ink-faint. Describes what image will go here.</td></tr>
+        <tr><td>Caption</td><td>Source Sans 3, 10.5px, italic, color --ink-light, text-align center, line-height 1.5. Margin-bottom 1.25rem.</td></tr>
+        <tr><td>Real image</td><td>When replacing: img tag, object-fit cover, width/height 100%, inside the container div.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- CHAPTER SIDEBAR COMPONENTS -->
+  <div class="sg-section" id="chapter-sidebar">
+    <div class="sg-section-title">Chapter Page — Sidebar Components</div>
+    <div class="sg-section-subtitle">Four sidebar boxes unique to chapter pages. Sidebar is 240px wide and position: sticky at top 3.5rem.</div>
+
+    <div class="sg-sub">
+      <div class="sg-sub-title">Key Events box</div>
+      <div class="demo">
+        <div class="demo-label">Rendered example</div>
+        <div style="background:var(--paper-mid);border:1px solid var(--rule);padding:1rem 1.1rem;">
+          <div style="font-family:'Source Sans 3',sans-serif;font-size:9px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink);border-bottom:2px solid var(--rule);padding-bottom:0.4rem;margin-bottom:0.75rem;">Key Events</div>
+          <div class="facts-row"><span class="facts-key">1905–06</span><span class="facts-val">Caribbean War</span></div>
+          <div class="facts-row"><span class="facts-key">1905</span><span class="facts-val">Coastal Rebellion crushed</span></div>
+          <div class="facts-row"><span class="facts-key">1906</span><span class="facts-val">Treaty of Copenhagen</span></div>
+          <div class="facts-row" style="border-bottom:none;"><span class="facts-key">1910</span><span class="facts-val">First World Olympic Games, Athens</span></div>
+        </div>
+      </div>
+      <table class="spec-table" style="margin-top:1rem;">
+        <tr><th>Element</th><th>Spec</th></tr>
+        <tr><td>Container</td><td>Same as facts box: --paper-mid bg, 1px --rule border, 1rem 1.1rem padding.</td></tr>
+        <tr><td>Row key (year)</td><td>Source Sans 3, 10px, color --ink-light.</td></tr>
+        <tr><td>Row value (event)</td><td>Libre Baskerville, 11px, italic, color --ink, text-align right, line-height 1.4.</td></tr>
+      </table>
+    </div>
+
+    <div class="sg-sub">
+      <div class="sg-sub-title">Table of Contents box</div>
+      <div class="demo">
+        <div class="demo-label">Rendered example — first item shown as active</div>
+        <div style="background:var(--paper-mid);border:1px solid var(--rule);padding:1rem 1.1rem;">
+          <div style="font-family:'Source Sans 3',sans-serif;font-size:9px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink);border-bottom:2px solid var(--rule);padding-bottom:0.4rem;margin-bottom:0.75rem;">Contents</div>
+          <div style="display:flex;align-items:baseline;gap:0.5rem;padding:0.38rem 0;border-bottom:1px solid var(--rule-light);">
+            <span style="font-family:'Source Sans 3',sans-serif;font-size:8.5px;font-weight:600;color:var(--red);width:16px;flex-shrink:0;">I</span>
+            <span style="font-family:'Source Sans 3',sans-serif;font-size:10.5px;color:var(--ink);font-weight:600;line-height:1.45;">Background & Election of 1904</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:0.5rem;padding:0.38rem 0;border-bottom:1px solid var(--rule-light);">
+            <span style="font-family:'Source Sans 3',sans-serif;font-size:8.5px;font-weight:600;color:var(--red);width:16px;flex-shrink:0;">II</span>
+            <span style="font-family:'Source Sans 3',sans-serif;font-size:10.5px;color:var(--ink-light);line-height:1.45;">The Caribbean War</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:0.5rem;padding:0.38rem 0;">
+            <span style="font-family:'Source Sans 3',sans-serif;font-size:8.5px;font-weight:600;color:var(--red);width:16px;flex-shrink:0;">III</span>
+            <span style="font-family:'Source Sans 3',sans-serif;font-size:10.5px;color:var(--ink-light);line-height:1.45;">The Coastal Rebellion</span>
+          </div>
+        </div>
+      </div>
+      <table class="spec-table" style="margin-top:1rem;">
+        <tr><th>Element</th><th>Spec</th></tr>
+        <tr><td>Container</td><td>Same as facts box.</td></tr>
+        <tr><td>Number</td><td>Source Sans 3, 8.5px, weight 600, color --red, width 16px, flex-shrink 0.</td></tr>
+        <tr><td>Label (default)</td><td>Source Sans 3, 10.5px, color --ink-light, line-height 1.45.</td></tr>
+        <tr><td>Label (active)</td><td>color --ink, font-weight 600.</td></tr>
+        <tr><td>Label (hover)</td><td>color --red.</td></tr>
+        <tr><td>Each item links to</td><td>Section anchor (#background, #caribbean, etc.) — smooth scroll via html { scroll-behavior: smooth }</td></tr>
+      </table>
+    </div>
+
+    <div class="sg-sub">
+      <div class="sg-sub-title">Related Links box</div>
+      <div class="demo">
+        <div class="demo-label">Rendered example</div>
+        <div style="background:var(--paper-mid);border:1px solid var(--rule);padding:1rem 1.1rem;">
+          <div style="font-family:'Source Sans 3',sans-serif;font-size:9px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink);border-bottom:2px solid var(--rule);padding-bottom:0.4rem;margin-bottom:0.75rem;">Related</div>
+          <a href="#" style="display:block;font-family:'Source Sans 3',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-light);text-decoration:none;padding:0.45rem 0;border-bottom:1px solid var(--rule-light);">← Peter Landon Presidency</a>
+          <a href="#" style="display:block;font-family:'Source Sans 3',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-light);text-decoration:none;padding:0.45rem 0;border-bottom:1px solid var(--rule-light);">Patrick Hannah Presidency →</a>
+          <a href="#" style="display:block;font-family:'Source Sans 3',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-light);text-decoration:none;padding:0.45rem 0;border-bottom:1px solid var(--rule-light);">Caribbean War</a>
+          <a href="#" style="display:block;font-family:'Source Sans 3',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-light);text-decoration:none;padding:0.45rem 0;">Presidential Explorer</a>
+        </div>
+      </div>
+      <table class="spec-table" style="margin-top:1rem;">
+        <tr><th>Element</th><th>Spec</th></tr>
+        <tr><td>Container</td><td>Same as facts box.</td></tr>
+        <tr><td>Link font</td><td>Source Sans 3, 10px, weight 600, uppercase, letter-spacing 0.12em, color --ink-light.</td></tr>
+        <tr><td>Link padding</td><td>0.45rem 0. Border-bottom: 1px solid --rule-light. Last item: no border.</td></tr>
+        <tr><td>Hover</td><td>color --red.</td></tr>
+        <tr><td>Typical contents</td><td>← Previous presidency, Next presidency →, then related topics (wars, events, institutions).</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- UPDATED PAGE TEMPLATES -->
+  <div class="sg-section" id="chapter-template">
+    <div class="sg-section-title">Chapter Page — Full Template Structure</div>
+    <div class="sg-section-subtitle">Complete top-to-bottom structure for all chapter/article pages.</div>
+
+    <div class="demo">
+      <div class="demo-label">Page structure (top to bottom)</div>
+      <div style="font-family:'Source Sans 3',sans-serif;font-size:12px;color:var(--ink-mid);line-height:2;">
+        <div style="display:flex;gap:1rem;padding:0.3rem 0;border-bottom:1px solid var(--rule-light);">
+          <span style="color:var(--ink-faint);width:20px;text-align:right;flex-shrink:0;">1</span>
+          <span>Party stripe (4px)</span>
+        </div>
+        <div style="display:flex;gap:1rem;padding:0.3rem 0;border-bottom:1px solid var(--rule-light);">
+          <span style="color:var(--ink-faint);width:20px;text-align:right;flex-shrink:0;">2</span>
+          <span>Masthead (topbar + Bebas Neue title + rule ornament + tagline)</span>
+        </div>
+        <div style="display:flex;gap:1rem;padding:0.3rem 0;border-bottom:1px solid var(--rule-light);">
+          <span style="color:var(--ink-faint);width:20px;text-align:right;flex-shrink:0;">3</span>
+          <span>Sticky nav bar (--ink bg, red top border)</span>
+        </div>
+        <div style="display:flex;gap:1rem;padding:0.3rem 0;border-bottom:1px solid var(--rule-light);">
+          <span style="color:var(--ink-faint);width:20px;text-align:right;flex-shrink:0;">4</span>
+          <span>Breadcrumb (Home › Primary Chapters › Chapter Name)</span>
+        </div>
+        <div style="display:flex;gap:1rem;padding:0.3rem 0;border-bottom:1px solid var(--rule-light);">
+          <span style="color:var(--ink-faint);width:20px;text-align:right;flex-shrink:0;">5</span>
+          <span>Prev/Next bar — top (border-bottom 1px --rule-light)</span>
+        </div>
+        <div style="display:flex;gap:1rem;padding:0.3rem 0;border-bottom:1px solid var(--rule-light);">
+          <span style="color:var(--ink-faint);width:20px;text-align:right;flex-shrink:0;">6</span>
+          <span>Section flag (red tag — "Chapter" + era/date kicker)</span>
+        </div>
+        <div style="display:flex;gap:1rem;padding:0.3rem 0;border-bottom:1px solid var(--rule-light);">
+          <span style="color:var(--ink-faint);width:20px;text-align:right;flex-shrink:0;">7</span>
+          <span>Hero identity block (portrait + headline + years + deck + meta strip)</span>
+        </div>
+        <div style="display:flex;gap:1rem;padding:0.3rem 0;border-bottom:1px solid var(--rule-light);">
+          <span style="color:var(--ink-faint);width:20px;text-align:right;flex-shrink:0;">8</span>
+          <span>Chapter body grid: <strong>1fr main</strong> + <strong>240px sidebar</strong> (gap 2.5rem)</span>
+        </div>
+        <div style="display:flex;gap:1rem;padding:0.3rem 0;border-bottom:1px solid var(--rule-light);padding-left:2rem;">
+          <span style="color:var(--ink-faint);width:20px;text-align:right;flex-shrink:0;">↳</span>
+          <span>Main: Sub-chapter list → Article sections (heading + 2px rule + body + optional image/pull quote)</span>
+        </div>
+        <div style="display:flex;gap:1rem;padding:0.3rem 0;border-bottom:1px solid var(--rule-light);padding-left:2rem;">
+          <span style="color:var(--ink-faint);width:20px;text-align:right;flex-shrink:0;">↳</span>
+          <span>Sidebar (sticky 3.5rem): Quick Reference → Key Events → Table of Contents → Related Links</span>
+        </div>
+        <div style="display:flex;gap:1rem;padding:0.3rem 0;border-bottom:1px solid var(--rule-light);">
+          <span style="color:var(--ink-faint);width:20px;text-align:right;flex-shrink:0;">9</span>
+          <span>Prev/Next bar — bottom (border-top 1px --rule-light)</span>
+        </div>
+        <div style="display:flex;gap:1rem;padding:0.3rem 0;">
+          <span style="color:var(--ink-faint);width:20px;text-align:right;flex-shrink:0;">10</span>
+          <span>Footer (--ink bg, 3px --red top border)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>

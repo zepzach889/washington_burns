@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Washington Burns Timeline — Presidential Explorer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --federalist: #C4601A;
+    --federalist-light: #f5e6d8;
+    --federalist-dark: #7a3a0e;
+    --democrat: #1e7a48;
+    --democrat-light: #d8f0e4;
+    --democrat-dark: #0e4a28;
+    --republican-hist: #1a3f7a;
+    --republican-hist-light: #d8e4f5;
+    --republican-hist-dark: #0e2248;
+    --spa: #a01e1e;
+    --spa-light: #f5d8d8;
+    --spa-dark: #5c1010;
+    --jca: #b8900a;
+    --jca-light: #faf0d0;
+    --jca-dark: #6b5200;
+    --demrep: #4a5a62;
+    --demrep-light: #e0e6ea;
+    --demrep-dark: #2a363c;
+    --unaffiliated: #6b6560;
+    --unaffiliated-light: #ede9e6;
+    --unaffiliated-dark: #3a3330;
+    --bg: #f7f4ef;
+    --bg-card: #ffffff;
+    --bg-panel: #f2ede6;
+    --text-primary: #1a1612;
+    --text-secondary: #5a5248;
+    --text-muted: #8a8178;
+    --border: rgba(0,0,0,0.1);
+    --border-strong: rgba(0,0,0,0.2);
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* Header */
+  header {
+    background: #1a1612;
+    color: #f0ebe2;
+    padding: 2.5rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.015) 40px,
+      rgba(255,255,255,0.015) 80px
+    );
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--federalist), var(--democrat), var(--spa), var(--jca), var(--republican-hist));
+  }
+  .header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .header-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(240,235,226,0.5);
+    margin-bottom: 0.6rem;
+  }
+  header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f0ebe2;
+    line-height: 1.15;
+    margin-bottom: 0.4rem;
+  }
+  header p {
+    font-size: 13px;
+    color: rgba(240,235,226,0.55);
+    font-style: italic;
+    font-weight: 300;
+  }
+  .header-meta {
+    margin-top: 1.25rem;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .header-stat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(240,235,226,0.4);
+  }
+  .header-stat span {
+    color: rgba(240,235,226,0.75);
+    font-weight: 500;
+  }
+
+  /* Controls */
+  .controls {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .controls-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .filter-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+  .filter-pills {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border-strong);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .pill:hover { background: var(--bg-panel); }
+  .pill.active { color: #fff; border-color: transparent; }
+  .pill[data-party="all"].active { background: var(--text-primary); }
+  .pill[data-party="federalist"].active { background: var(--federalist); }
+  .pill[data-party="democrat"].active { background: var(--democrat); }
+  .pill[data-party="spa"].active { background: var(--spa); }
+  .pill[data-party="jca"].active { background: var(--jca); color: var(--jca-dark); }
+  .pill[data-party="republican"].active { background: var(--republican-hist); }
+  .pill[data-party="dem-rep"].active { background: var(--demrep); }
+
+  /* Main content */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 2rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .legend-swatch {
+    width: 10px; height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* Era sections */
+  .era {
+    margin-bottom: 2.5rem;
+  }
+  .era-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .era-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .era-years {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* President rows */
+  .pres-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 5px;
+    transition: opacity 0.2s;
+  }
+  .pres-row.filtered-out {
+    display: none;
+  }
+  .pres-num {
+    width: 36px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    padding-top: 12px;
+    text-align: right;
+    padding-right: 10px;
+  }
+  .pres-main {
+    flex: 1;
+  }
+  .pres-bar {
+    height: 42px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    cursor: pointer;
+    transition: filter 0.12s, transform 0.1s;
+    position: relative;
+    user-select: none;
+  }
+  .pres-bar:hover {
+    filter: brightness(0.92);
+    transform: translateX(2px);
+  }
+  .pres-bar:active { transform: translateX(1px); }
+
+  .pres-name {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+  }
+  .pres-term-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    opacity: 0.75;
+    margin-left: 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .pres-tags {
+    display: flex;
+    gap: 5px;
+    margin-left: 10px;
+    flex-shrink: 0;
+  }
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .tag-sacrosanct {
+    background: rgba(255,255,255,0.2);
+    color: inherit;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .tag-died { background: rgba(0,0,0,0.2); color: inherit; }
+  .tag-resigned { background: rgba(0,0,0,0.15); color: inherit; }
+  .tag-first { background: rgba(255,255,255,0.22); color: inherit; }
+  .tag-acting { background: rgba(0,0,0,0.15); color: inherit; }
+
+  /* Detail panel */
+  .detail-panel {
+    display: none;
+    margin: 4px 0 6px 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.1rem 1.25rem;
+    box-shadow: var(--shadow);
+    animation: slideDown 0.18s ease;
+  }
+  .detail-panel.open { display: block; }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .dp-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.1rem;
+  }
+  .dp-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 0.9rem;
+    font-weight: 300;
+  }
+  .dp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 0.9rem;
+  }
+  .dp-field { }
+  .dp-field-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+  .dp-field-val {
+    font-size: 13px;
+    color: var(--text-primary);
+    font-weight: 400;
+  }
+  .dp-party-chip {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+  .dp-notes {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    font-style: italic;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--border);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .dp-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 0.6rem;
+  }
+  .dp-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: var(--bg-panel);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+  .dp-badge.sacrosanct {
+    background: #1a1612;
+    color: #f0ebe2;
+    border-color: #1a1612;
+  }
+
+  /* Party color assignments */
+  .party-federalist    { background: var(--federalist); color: #fff; }
+  .party-democrat      { background: var(--democrat); color: #fff; }
+  .party-spa           { background: var(--spa); color: #fff; }
+  .party-jca           { background: var(--jca); color: var(--jca-dark); }
+  .party-republican    { background: var(--republican-hist); color: #fff; }
+  .party-dem-rep       { background: var(--demrep); color: #fff; }
+  .party-unaffiliated  { background: var(--unaffiliated); color: #fff; }
+
+  .chip-federalist    { background: var(--federalist-light); color: var(--federalist-dark); }
+  .chip-democrat      { background: var(--democrat-light); color: var(--democrat-dark); }
+  .chip-spa           { background: var(--spa-light); color: var(--spa-dark); }
+  .chip-jca           { background: var(--jca-light); color: var(--jca-dark); }
+  .chip-republican    { background: var(--republican-hist-light); color: var(--republican-hist-dark); }
+  .chip-dem-rep       { background: var(--demrep-light); color: var(--demrep-dark); }
+  .chip-unaffiliated  { background: var(--unaffiliated-light); color: var(--unaffiliated-dark); }
+
+  /* Acting president styling */
+  .pres-bar.acting {
+    opacity: 0.85;
+    border: 2px dashed rgba(255,255,255,0.4);
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    letter-spacing: 0.06em;
+  }
+  footer a { color: var(--text-muted); }
+
+  /* No results */
+  .no-results {
+    text-align: center;
+    padding: 3rem;
+    font-style: italic;
+    color: var(--text-muted);
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-eyebrow">Alternate History Reference</div>
+    <h1>Washington Burns Timeline<br>Presidential Explorer</h1>
+    <p>Point of divergence: August 24, 1814 — Capital relocated to Franklin, District of Washington</p>
+    <div class="header-meta">
+      <div class="header-stat">Presidents: <span>44</span></div>
+      <div class="header-stat">Span: <span>1789–present</span></div>
+      <div class="header-stat">Capital: <span>Franklin, D.W.</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="controls-inner">
+    <div class="filter-label">Filter by party</div>
+    <div class="filter-pills">
+      <button class="pill active" data-party="all">All</button>
+      <button class="pill" data-party="dem-rep">Dem-Republican</button>
+      <button class="pill" data-party="federalist">Federalist</button>
+      <button class="pill" data-party="democrat">Democrat</button>
+      <button class="pill" data-party="republican">Republican (hist.)</button>
+      <button class="pill" data-party="spa">Social Progressive</button>
+      <button class="pill" data-party="jca">JCA</button>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--demrep)"></div>Democratic-Republican</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--federalist)"></div>Federalist</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--democrat)"></div>Democrat</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--republican-hist)"></div>Republican (historical)</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--spa)"></div>Social Progressive Alliance</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--jca)"></div>Jeffersonian Constitutional Alliance</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--unaffiliated)"></div>Unaffiliated</div>
+  </div>
+
+  <div id="timeline"></div>
+  <div class="no-results" id="no-results">No presidents match this filter.</div>
+</main>
+
+<footer>
+  washingtonburns.miraheze.org &nbsp;·&nbsp; Washington Burns Timeline © Zachary Anderson &nbsp;·&nbsp; All content is alternate history fiction
+</footer>
+
+<script>
+const PARTIES = {
+  'unaffiliated': { label: 'Unaffiliated', key: 'unaffiliated' },
+  'dem-rep':      { label: 'Democratic-Republican', key: 'dem-rep' },
+  'federalist':   { label: 'Federalist', key: 'federalist' },
+  'democrat':     { label: 'Democrat', key: 'democrat' },
+  'republican':   { label: 'Republican (historical)', key: 'republican' },
+  'spa':          { label: 'Social Progressive Alliance', key: 'spa' },
+  'jca':          { label: 'Jeffersonian Constitutional Alliance', key: 'jca' },
+};
+
+const presidents = [
+  // Early Republic
+  { num: 1,  name: 'George Washington', state: 'Virginia', party: 'unaffiliated', term: '1789–1797', vp: 'John Adams', notes: 'First President of the United States. Presidency predates the point of divergence; essentially identical to OTL.', badges: [] },
+  { num: 2,  name: 'John Adams', state: 'Massachusetts', party: 'federalist', term: '1797–1801', vp: 'Thomas Jefferson', notes: 'Predates the point of divergence.', badges: [] },
+  { num: 3,  name: 'Thomas Jefferson', state: 'Virginia', party: 'dem-rep', term: '1801–1809', vp: 'Aaron Burr / George Clinton', notes: 'Predates the point of divergence.', badges: [] },
+  { num: 4,  name: 'James Madison', state: 'Virginia', party: 'dem-rep', term: '1809–1817', vp: 'Elbridge Gerry / vacant', notes: 'Point of divergence occurs during his second term — the more thorough burning of Washington City in August 1814 leads to the permanent relocation of the capital to Franklin, District of Washington.', badges: ['Point of Divergence'] },
+  // Party Realignment
+  { num: 5,  name: 'William Crawford', state: 'Georgia', party: 'dem-rep', term: '1817–1821', vp: 'Daniel D. Tompkins', notes: 'Grand Compromise of 1817 passed during his term, establishing the new constitution and setting the capital relocation in motion.', badges: ['Grand Compromise'] },
+  { num: 6,  name: 'Henry Clay', state: 'Kentucky', party: 'democrat', term: '1821–1827', vp: 'Unknown', notes: 'First Democrat to serve as president following the fracture of the Democratic-Republican Party.', badges: [] },
+  { num: 7,  name: 'Alexander Hamilton Jr.', state: 'New York', party: 'federalist', term: '1827–1833', vp: 'Hiram Gillet', notes: 'First president inaugurated in Franklin, District of Washington. His election was decided by the House of Representatives after no candidate secured a majority. Dogged by accusations of a corrupt bargain with Thomas Worthington. Oversaw the opening of Congress Hall.', badges: ['First inaugurated in Franklin'] },
+  { num: 8,  name: 'John C. Calhoun', state: 'South Carolina', party: 'republican', term: '1833–1836 ✦', vp: 'Geoffry Billings', notes: 'Assassinated May 9, 1836. Established the USRC (United States Railway Commission) in 1834. The 16th Amendment (plurality electoral college) passed early in his term. First president of the Republican Party.', badges: ['✦ Assassinated', 'USRC Founded'] },
+  { num: 9,  name: 'Giles Brandon', state: 'Unknown', party: 'republican', term: '1836–1839', vp: 'Vacant', notes: 'Succeeded to the presidency on the assassination of Calhoun. Attempted to run for a full term in 1838 but lost to Victor Yates. Supreme Court ruled he was eligible to run having served less than half a term.', badges: ['Succeeded on assassination'] },
+  // Antebellum
+  { num: 10, name: 'Victor Yates', state: 'Pennsylvania', party: 'democrat', term: '1839–1845', vp: 'Wilbur Haines', notes: 'The Grantham Act of 1839 — requiring a balance between slave and free states when admitting new states — passed during his term.', badges: ['Grantham Act'] },
+  { num: 11, name: 'Wilbur Haines', state: 'Kentucky', party: 'democrat', term: '1845–1851', vp: 'Unknown', notes: '', badges: [] },
+  { num: 12, name: 'Robert Lee', state: 'Virginia', party: 'republican', term: '1851–1856 ✦', vp: 'Unknown', notes: 'Assassinated January 6, 1856. No middle initial used in this timeline.', badges: ['✦ Assassinated'] },
+  { num: 13, name: 'James Hawthorne', state: 'Unknown', party: 'republican', term: '1856–1860 ✦', vp: 'Unknown', notes: 'Resigned October 17, 1860. His actions contributed to the fractures that led to the War Between the States. The Boston Ultimatum demanding his resignation was delivered March 9, 1860.', badges: ['✦ Resigned', 'War Between the States'] },
+  { num: '00', name: 'Hugo Brandt (Acting)', state: 'Ohio', party: 'democrat', term: '1858–1863', vp: '—', notes: 'Acting President of the Free States during the War Between the States. Speaker of the House who assumed leadership of the northern states during the constitutional crisis.', badges: ['Acting President', 'Free States'], acting: true },
+  // Reconstruction
+  { num: 14, name: 'Hugo Brandt', state: 'Ohio', party: 'democrat', term: '1863–1869', vp: 'Ulysses Portman (Ext. Sec.)', notes: 'First president under the Constitution of 1861. Born 1812 to German immigrant parents in Ohio. His father helped build Congress Hall. Led the Free States through the War Between the States and oversaw Reconstruction. Nominated former Confederate leader Ulysses Portman as Secretary of the Exterior in a gesture of reconciliation.', badges: ['First under 1861 Constitution', 'War Between the States'] },
+  { num: 15, name: 'John P. Quincy', state: 'Unknown', party: 'democrat', term: '1869–1873 ✦', vp: 'Unknown', notes: 'Resigned June 1, 1873 amid the Clark Scandal — first presidential resignation in American history.', badges: ['✦ Resigned', 'Clark Scandal'] },
+  { num: 16, name: 'Bradley Kinder', state: 'Unknown', party: 'democrat', term: '1873–1875', vp: 'Vacant', notes: 'Succeeded on the resignation of Quincy. Oversaw an education summit in August 1873 and the addition of Metropotamia as the 35th state.', badges: ['Succeeded on resignation'] },
+  // Gilded Era
+  { num: 17, name: 'Horace Littlefield', state: 'New York', party: 'federalist', term: '1875–1881', vp: 'Frederick Bailey', notes: 'Frederick Bailey — formerly enslaved, abolitionist orator — was the first Black man on a major party ticket as VP. Littlefield oversaw the opening of the George Washington Bridge (1877) and the Museum of the United States (1879). Made the first presidential visit to foreign soil, traveling to Canada in 1880.', badges: ['First Black VP nominee'] },
+  { num: 18, name: 'Theodore Drake', state: 'Unknown', party: 'democrat', term: '1881–1887', vp: 'Unknown', notes: '', badges: [] },
+  { num: 19, name: 'Leeland Rowling', state: 'Unknown', party: 'federalist', term: '1887–1893', vp: 'Unknown', notes: '', badges: [] },
+  { num: 20, name: 'Colin Beck', state: 'Unknown', party: 'federalist', term: '1893–1899', vp: 'Unknown', notes: '"The Engineer President." Created the Departments of Health, Transportation, and Education in 1894. Fully legalized unions in 1898. The First Amendment to the 1861 Constitution passed during his term.', badges: ['Dept. of Health / Transport / Education'] },
+  // Progressive Era
+  { num: 21, name: 'Alexander Fleak', state: 'Unknown', party: 'federalist', term: '1899–1903 ✦', vp: 'Peter Landon', notes: 'Died in office March 4, 1903. The Great European War began in 1899 during his term. Established the Federal Arbitration Bureau in 1901.', badges: ['✦ Died in office', 'Great European War begins'] },
+  { num: 22, name: 'Peter Landon', state: 'Unknown', party: 'federalist', term: '1903–1905', vp: 'Vacant', notes: 'First Black president, by succession. Keyman v. Virginia (1903) — the "Separate AND Equal" doctrine — decided during his term.', badges: ['First Black president (by succession)'] },
+  { num: 23, name: 'Cornelius Roosevelt II', state: 'District of Manhattan', party: 'democrat', term: 'Mar 1905–Jan 1911', vp: 'Patrick Hannah', notes: 'Caribbean War (1905–1906). Crushed the Coastal Rebellion in 1905, destroying the Republican Party nationally. "Hail, Columbia!" designated national anthem in 1905. Treaty of Copenhagen ends the Caribbean War in 1906. Federal Investigative Service created 1905–06. Federal Park Service created. First World Olympic Games held in Athens, 1910.', badges: ['Caribbean War', 'Coastal Rebellion'] },
+  { num: 24, name: 'Patrick Hannah', state: 'Platte', party: 'democrat', term: 'Jan 1911–Jan 1917', vp: 'Lucas Grant', notes: 'Fourth Amendment to the 1861 Constitution (runoff system; shorter transition period) passed in 1911. Third International Peace Council, Oslo, 1911 — equivalent to the Geneva Convention. Sinking of the Hyperion, 1913. Fourth International Peace Council, Philadelphia, 1913. Attorney General removed by Congress in 1915. Fifth International Peace Council, Rome, 1915 — first serious discussion of a permanent league of nations.', badges: ['4th Amendment — runoff system'] },
+  { num: 25, name: 'James P. Roosevelt Jr.', state: 'District of Manhattan', party: 'jca', term: 'Jan 1917–Mar 1921 ✦', vp: 'Alden Gunther', notes: 'Died in office. First JCA president. Alden Gunther succeeded to the presidency.', badges: ['✦ Died in office'] },
+  { num: 26, name: 'Alden Gunther', state: 'Florida', party: 'jca', term: 'Mar 1921–Jan 1923', vp: 'Vacant', notes: 'Succeeded on the death of Roosevelt. VP position remained vacant for the remainder of the term.', badges: ['Succeeded on death'] },
+  { num: 27, name: 'Lance Hawkins', state: 'New Jersey', party: 'federalist', term: 'Jan 1923–Jan 1929', vp: 'Lynne Powell', notes: 'Lynne Powell (New Jersey) — first female VP. Former senator, built career on labor reform and women\'s rights. More active than most VPs, chairing federal commissions and liaising with the SPA caucus. First North American Conference (1925 or 1926) produced the North American Trade Council framework. USRC institutionally restored and expanded. Morrison v. South Carolina confirmed the end of Separate AND Equal in practice.', badges: ['First female VP'] },
+  { num: 28, name: 'Benjamin King', state: 'Ohio', party: 'democrat', term: 'Jan 1929–Jan 1935', vp: 'Leon Palmer', notes: 'Pragmatic, infrastructure-minded Democrat. USRC expansion into rural areas. Federal Aviation Bureau established. Radio regulation expanded via Federal Communications Bureau. Second North American Conference (1930) — North American Open Trade Agreement. Supreme Court ruling (Morrison v. South Carolina) formally ends Separate AND Equal. Prussia invades UER territories in 1932 — beginning of the Global War. Preparation Act passed late 1932. Third North American Conference (1932) — North American Mutual Defense Pact.', badges: ['Global War begins', 'North American Trade Agreement'] },
+  // Global War Era
+  { num: 29, name: 'Leon Palmer', state: 'Kentucky', party: 'democrat', term: 'Jan 1935–Jan 1941', vp: 'Alexander Gates', notes: 'Led America through the Global War. Congress declared war on Spain in early 1934 (under King); Palmer entered office as the war expanded into the Pacific theater (spring 1935). Near-fall of Chosŏn — defensive line at Busan, winter 1935–1936. Allied counteroffensive in Korea began 1936. Prussian democratic revolution 1937. Formal European armistice autumn 1938. Treaty of Geneva signed spring 1939. Asian ceasefire late 1940. Fourth North American Conference (San Francisco, 1940) — Pan-American Passport established. Global Peace Council founded. Patricia Perry (Federalist, Connecticut) served as Secretary General — first female Secretary General.', badges: ['Global War', 'Treaty of Geneva'] },
+  { num: 30, name: 'Henry Freeman', state: 'Virginia', party: 'federalist', term: 'Jan 1941–Jan 1947', vp: 'Eleanor Marsh', notes: 'First elected Black president. His election is monumental but not shocking — the culmination of a long arc of normalized Black political participation since 1861. Inherited unresolved Asian diplomatic settlement from Palmer. The "Palmer and Freeman lost Asia" argument becomes standard JCA rhetoric through the Nolan/Priest era.', badges: ['First elected Black president', 'Sacrosanct'] },
+  // Postwar Era
+  { num: 31, name: 'James Nolan', state: 'Tennessee', party: 'jca', term: 'Jan 1947–Jan 1953', vp: 'Timothy Priest', notes: 'Hard-right JCA presidency. McCarthyism-adjacent social conservatism. Backlash against the postwar progressive moment and American overseas commitments. "Palmer and Freeman lost Asia" rhetoric peaks.', badges: [] },
+  { num: 32, name: 'Timothy Priest', state: 'Georgia', party: 'jca', term: 'Jan 1953–Jan 1959', vp: 'Daniel Ford', notes: 'Second consecutive JCA presidency. Continued social conservatism and backlash politics. His term ends with Georgina Lincoln\'s election — the reaction against Nolan/Priest produces the first Socialist presidential victory.', badges: [] },
+  { num: 33, name: 'Georgina Lincoln', state: 'Indiana', party: 'spa', term: 'Jan 1959–Jan 1965', vp: 'TBD', notes: 'First woman president. First Socialist president. Her election is a direct reaction against the Nolan/Priest era. SACROSANCT — this event is inviolable canon.', badges: ['First woman president', 'First Socialist president', 'Sacrosanct'] },
+  // Modern Era
+  { num: 34, name: 'Cassandra Schultz', state: 'Ohio', party: 'federalist', term: 'Jan 1965–Jan 1971', vp: 'TBD', notes: '', badges: [] },
+  { num: 35, name: 'Julius Langston', state: 'Louisiana', party: 'spa', term: 'Jan 1971–Jan 1977', vp: 'TBD', notes: '', badges: [] },
+  { num: 36, name: 'Richard Whitmore', state: 'Indiana', party: 'democrat', term: 'Jan 1977–Jan 1983', vp: 'TBD', notes: '', badges: [] },
+  { num: 37, name: 'Jesse Pike', state: 'Massachusetts', party: 'spa', term: 'Jan 1983–Jan 1989', vp: 'TBD', notes: 'Outed as gay after the Global War era; became a major civil rights symbol. Elected to Congress, then the Senate, then the presidency. Presided over marriage equality. SACROSANCT — this event is inviolable canon.', badges: ['Marriage equality', 'Sacrosanct'] },
+  { num: 38, name: 'Regina Holman', state: 'Georgia', party: 'federalist', term: 'Jan 1989–Jan 1995', vp: 'TBD', notes: '', badges: [] },
+  { num: 39, name: 'Victor Liu', state: 'Oregon', party: 'spa', term: 'Jan 1995–Jan 2001', vp: 'TBD', notes: '', badges: [] },
+  { num: 40, name: 'Stephen Mercer', state: 'Missouri', party: 'democrat', term: 'Jan 2001–Jan 2007', vp: 'TBD', notes: '', badges: [] },
+  { num: 41, name: 'Eleanor Sinclair', state: 'Tennessee', party: 'democrat', term: 'Jan 2007–Jan 2013', vp: 'TBD', notes: '', badges: [] },
+  { num: 42, name: 'Xavier Hudson', state: 'Texas', party: 'federalist', term: 'Jan 2013–Jan 2019', vp: 'TBD', notes: '', badges: [] },
+  { num: 43, name: 'Naomi Clearwater', state: 'Lakota', party: 'spa', term: 'Jan 2019–Jan 2025', vp: 'TBD', notes: 'From Lakota, a U.S. state in this timeline.', badges: [] },
+  { num: 44, name: 'Sophia Nakamura', state: 'Oregon', party: 'spa', term: 'Jan 2025–present', vp: 'TBD', notes: 'Incumbent president.', badges: ['Incumbent'] },
+];
+
+const eras = [
+  { title: 'Early Republic', years: '1789–1820', indices: [0, 1, 2, 3] },
+  { title: 'Party Realignment Era', years: '1821–1838', indices: [4, 5, 6, 7, 8] },
+  { title: 'Antebellum Era', years: '1839–1860', indices: [9, 10, 11, 12] },
+  { title: 'War Between the States & Reconstruction', years: '1858–1875', indices: [13, 14, 15, 16] },
+  { title: 'Gilded Era', years: '1875–1905', indices: [17, 18, 19, 20] },
+  { title: 'Progressive Era', years: '1899–1935', indices: [21, 22, 23, 24, 25, 26, 27, 28] },
+  { title: 'Global War Era', years: '1935–1947', indices: [29, 30] },
+  { title: 'Postwar Era', years: '1947–1965', indices: [31, 32, 33] },
+  { title: 'Modern Era', years: '1965–present', indices: [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44] },
+];
+
+let openRowIdx = null;
+let activeFilter = 'all';
+
+function buildTimeline() {
+  const tl = document.getElementById('timeline');
+  tl.innerHTML = '';
+
+  eras.forEach(era => {
+    const section = document.createElement('div');
+    section.className = 'era';
+
+    const header = document.createElement('div');
+    header.className = 'era-header';
+    header.innerHTML = `<div class="era-title">${era.title}</div><div class="era-years">${era.years}</div>`;
+    section.appendChild(header);
+
+    era.indices.forEach(idx => {
+      const p = presidents[idx];
+      const partyKey = p.party;
+
+      const row = document.createElement('div');
+      row.className = 'pres-row';
+      row.dataset.party = partyKey;
+      row.dataset.idx = idx;
+
+      const num = document.createElement('div');
+      num.className = 'pres-num';
+      num.textContent = p.num;
+      row.appendChild(num);
+
+      const main = document.createElement('div');
+      main.className = 'pres-main';
+
+      const bar = document.createElement('div');
+      bar.className = `pres-bar party-${partyKey}${p.acting ? ' acting' : ''}`;
+
+      const name = document.createElement('span');
+      name.className = 'pres-name';
+      name.textContent = p.name;
+      bar.appendChild(name);
+
+      const termLabel = document.createElement('span');
+      termLabel.className = 'pres-term-label';
+      termLabel.textContent = p.term;
+      bar.appendChild(termLabel);
+
+      const tags = document.createElement('div');
+      tags.className = 'pres-tags';
+      if (p.badges.includes('Sacrosanct')) {
+        const t = document.createElement('span');
+        t.className = 'tag tag-sacrosanct';
+        t.textContent = '🔒';
+        tags.appendChild(t);
+      }
+      if (p.badges.some(b => b.includes('Died') || b.includes('Assassinated'))) {
+        const t = document.createElement('span');
+        t.className = 'tag tag-died';
+        t.textContent = '✦';
+        tags.appendChild(t);
+      }
+      if (p.badges.some(b => b.includes('Resigned'))) {
+        const t = document.createElement('span');
+        t.className = 'tag tag-resigned';
+        t.textContent = '✦';
+        tags.appendChild(t);
+      }
+      if (p.badges.includes('Incumbent')) {
+        const t = document.createElement('span');
+        t.className = 'tag tag-first';
+        t.textContent = 'Incumbent';
+        tags.appendChild(t);
+      }
+      bar.appendChild(tags);
+      main.appendChild(bar);
+
+      // Detail panel
+      const detail = document.createElement('div');
+      detail.className = 'detail-panel';
+      detail.id = `dp-${idx}`;
+
+      const partyInfo = PARTIES[partyKey] || { label: partyKey };
+
+      detail.innerHTML = `
+        <div class="dp-name">${p.name}</div>
+        <div class="dp-subtitle">${p.num !== '00' ? `#${p.num} · ` : ''}${p.term} · ${p.state || '—'}</div>
+        <div class="dp-grid">
+          <div class="dp-field">
+            <div class="dp-field-label">Party</div>
+            <div class="dp-field-val"><span class="dp-party-chip chip-${partyKey}">${partyInfo.label}</span></div>
+          </div>
+          <div class="dp-field">
+            <div class="dp-field-label">Vice President</div>
+            <div class="dp-field-val">${p.vp || '—'}</div>
+          </div>
+          <div class="dp-field">
+            <div class="dp-field-label">Home State</div>
+            <div class="dp-field-val">${p.state || '—'}</div>
+          </div>
+        </div>
+        ${p.notes ? `<div class="dp-notes">${p.notes}</div>` : ''}
+        ${p.badges.length > 0 ? `<div class="dp-badges">${p.badges.map(b => `<span class="dp-badge${b === 'Sacrosanct' ? ' sacrosanct' : ''}">${b}</span>`).join('')}</div>` : ''}
+      `;
+
+      main.appendChild(detail);
+      row.appendChild(main);
+      section.appendChild(row);
+
+      bar.addEventListener('click', () => {
+        if (openRowIdx !== null && openRowIdx !== idx) {
+          const prev = document.getElementById(`dp-${openRowIdx}`);
+          if (prev) prev.classList.remove('open');
+        }
+        detail.classList.toggle('open');
+        openRowIdx = detail.classList.contains('open') ? idx : null;
+      });
+    });
+
+    tl.appendChild(section);
+  });
+}
+
+function applyFilter(party) {
+  activeFilter = party;
+  const rows = document.querySelectorAll('.pres-row');
+  let visible = 0;
+  rows.forEach(row => {
+    const match = party === 'all' || row.dataset.party === party;
+    row.classList.toggle('filtered-out', !match);
+    if (match) visible++;
+  });
+  document.getElementById('no-results').style.display = visible === 0 ? 'block' : 'none';
+
+  // Hide era sections that are entirely empty
+  document.querySelectorAll('.era').forEach(era => {
+    const hasVisible = [...era.querySelectorAll('.pres-row')].some(r => !r.classList.contains('filtered-out'));
+    era.style.display = hasVisible ? '' : 'none';
+  });
+
+  document.querySelectorAll('.pill').forEach(p => {
+    p.classList.toggle('active', p.dataset.party === party);
+  });
+
+  // Close open panel if filtered out
+  if (openRowIdx !== null) {
+    const openRow = document.querySelector(`[data-idx="${openRowIdx}"]`);
+    if (openRow && openRow.classList.contains('filtered-out')) {
+      const dp = document.getElementById(`dp-${openRowIdx}`);
+      if (dp) dp.classList.remove('open');
+      openRowIdx = null;
+    }
+  }
+}
+
+document.querySelectorAll('.pill').forEach(pill => {
+  pill.addEventListener('click', () => applyFilter(pill.dataset.party));
+});
+
+buildTimeline();
+</script>
+</body>
+</html>
