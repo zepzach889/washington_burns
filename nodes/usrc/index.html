@@ -26,36 +26,34 @@
   .usrc-nav a:hover { background: rgba(255,255,255,0.06); color: #fff; }
   .usrc-nav a.active { color: #fff; border-bottom: 2px solid var(--usrc-red); }
 
-  .usrc-body { max-width: 1000px; margin: 0 auto; padding: 24px; }
+  .usrc-body { max-width: 1060px; margin: 0 auto; padding: 24px; }
 
-  /* CLOCK */
-  .usrc-clock-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 8px; }
-  .usrc-clock { font-family: monospace; font-size: 22px; font-weight: 700; color: var(--usrc-dark); letter-spacing: 0.05em; }
+  .usrc-clock-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 8px; }
+  .usrc-clock { font-family: monospace; font-size: 24px; font-weight: 700; color: var(--usrc-dark); letter-spacing: 0.05em; }
   .usrc-clock-label { font-size: 10px; color: var(--text-tertiary); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
   .usrc-date-display { font-size: 12px; color: var(--text-secondary); }
 
-  /* NETWORK STATUS */
   .usrc-network-head { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 10px; }
-  .usrc-corridor-status-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 28px; }
+  .usrc-corridor-status-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 28px; }
   .usrc-cs-card { background: #fff; border: 0.5px solid var(--border); border-radius: 8px; padding: 10px 12px; border-top: 3px solid #ccc; }
-  .usrc-cs-card.status-ok     { border-top-color: #3B6D11; }
-  .usrc-cs-card.status-minor  { border-top-color: #B8860B; }
-  .usrc-cs-card.status-major  { border-top-color: var(--usrc-red); }
-  .usrc-cs-name { font-size: 11px; font-weight: 700; color: var(--text-primary); margin-bottom: 3px; }
+  .usrc-cs-card.status-ok    { border-top-color: #3B6D11; }
+  .usrc-cs-card.status-minor { border-top-color: #B8860B; }
+  .usrc-cs-card.status-major { border-top-color: var(--usrc-red); }
+  .usrc-cs-name { font-size: 11px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
   .usrc-cs-badge { font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; border-radius: 3px; display: inline-block; }
   .usrc-cs-badge.ok    { background: #E8F5E9; color: #3B6D11; }
   .usrc-cs-badge.minor { background: #FFF8E1; color: #B8860B; }
   .usrc-cs-badge.major { background: #FDECEA; color: var(--usrc-red); }
 
-  /* DEPARTURES */
   .usrc-dept-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; }
   .usrc-dept-title { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); }
   .usrc-dept-sub { font-size: 11px; color: var(--text-tertiary); }
 
-  .usrc-corridor-block { margin-bottom: 24px; }
+  .usrc-corridor-block { margin-bottom: 28px; }
   .usrc-corridor-label { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 2px solid var(--usrc-dark); }
   .usrc-corridor-name { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--usrc-dark); }
-  .usrc-corridor-badge { font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; border-radius: 3px; }
+  .usrc-corridor-route { font-size: 11px; color: var(--text-tertiary); margin-bottom: 8px; font-style: italic; }
+  .usrc-corridor-badge { font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; border-radius: 3px; flex-shrink: 0; }
   .usrc-corridor-badge.ok    { background: #E8F5E9; color: #3B6D11; }
   .usrc-corridor-badge.minor { background: #FFF8E1; color: #B8860B; }
   .usrc-corridor-badge.major { background: #FDECEA; color: var(--usrc-red); }
@@ -68,20 +66,14 @@
   .usrc-train-dest { color: var(--text-primary); font-weight: 500; }
   .usrc-train-time { font-weight: 700; color: var(--usrc-dark); font-family: monospace; font-size: 13px; }
   .usrc-badge { font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 3px; white-space: nowrap; }
-  .usrc-badge.on-time  { background: #E8F5E9; color: #3B6D11; }
+  .usrc-badge.on-time       { background: #E8F5E9; color: #3B6D11; }
   .usrc-badge.delayed-minor { background: #FFF8E1; color: #B8860B; }
   .usrc-badge.delayed-major { background: #FDECEA; color: var(--usrc-red); }
-  .usrc-badge.arrived  { background: var(--bg-secondary); color: var(--text-tertiary); }
   .usrc-delay-reason { font-size: 10px; color: var(--text-tertiary); margin-top: 2px; }
-
   .usrc-no-trains { font-size: 12px; color: var(--text-tertiary); font-style: italic; padding: 10px 0; }
 
-  @media (max-width: 700px) {
-    .usrc-corridor-status-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 480px) {
-    .usrc-corridor-status-grid { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 800px) { .usrc-corridor-status-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .usrc-corridor-status-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -128,18 +120,14 @@
   </div>
 
   <div class="usrc-network-head">Network Status Overview</div>
-  <div class="usrc-corridor-status-grid" id="usrc-network-overview">
-    <!-- filled by JS -->
-  </div>
+  <div class="usrc-corridor-status-grid" id="usrc-network-overview"></div>
 
   <div class="usrc-dept-head">
     <div class="usrc-dept-title">Franklin Central — Upcoming Departures</div>
-    <div class="usrc-dept-sub">Next services from all corridors</div>
+    <div class="usrc-dept-sub">Showing next services · Times are local</div>
   </div>
 
-  <div id="usrc-boards">
-    <!-- filled by JS -->
-  </div>
+  <div id="usrc-boards"></div>
 
 </div>
 
@@ -173,70 +161,95 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// ── TIMETABLE DATA ──
-// Times as [hour, minute]
+// ── CORRIDOR DATA ──
+// Note: Mountain Corridor originates at Ft. Calhoun (no Franklin departure)
 const CORRIDORS = [
   {
     id: 'northeast',
     name: 'Northeast Corridor',
+    route: 'Franklin · Pittsburgh · Georgetown · Baltimore · Philadelphia · Manhattan · Brooklyn · Boston',
+    originFranklin: true,
     trains: [
-      { num: 'NE-4',  dest: 'Pittsburgh · Philadelphia · New York',   dep: [6,10] },
-      { num: 'NE-8',  dest: 'Pittsburgh · Philadelphia',               dep: [8,30] },
-      { num: 'NE-12', dest: 'Pittsburgh · Philadelphia · New York · Boston', dep: [10,15] },
-      { num: 'NE-16', dest: 'Pittsburgh Exp.',                         dep: [12,45] },
-      { num: 'NE-20', dest: 'Pittsburgh · Philadelphia · New York',   dep: [14,00] },
-      { num: 'NE-24', dest: 'Pittsburgh · Philadelphia',               dep: [16,30] },
-      { num: 'NE-28', dest: 'Pittsburgh · Philadelphia · New York',   dep: [18,55] },
-      { num: 'NE-32', dest: 'Pittsburgh Exp.',                         dep: [21,10] },
+      { num: 'NE-4',  dest: 'Pittsburgh · Philadelphia · Manhattan',            dep: [6,10] },
+      { num: 'NE-8',  dest: 'Pittsburgh · Philadelphia · Manhattan · Brooklyn', dep: [8,30] },
+      { num: 'NE-12', dest: 'Pittsburgh · Georgetown · Baltimore · Philadelphia · Manhattan · Brooklyn · Boston', dep: [10,15] },
+      { num: 'NE-16', dest: 'Pittsburgh Exp.',                                   dep: [12,45] },
+      { num: 'NE-20', dest: 'Pittsburgh · Philadelphia · Manhattan',            dep: [14,00] },
+      { num: 'NE-24', dest: 'Pittsburgh · Georgetown · Baltimore · Philadelphia · Manhattan · Brooklyn', dep: [16,30] },
+      { num: 'NE-28', dest: 'Pittsburgh · Philadelphia · Manhattan · Brooklyn · Boston', dep: [18,55] },
+      { num: 'NE-32', dest: 'Pittsburgh Exp.',                                   dep: [21,10] },
     ]
   },
   {
     id: 'calumet',
     name: 'Calumet Corridor',
+    route: 'Franklin · Indianapolis · Calumet · Cedar Rapids · Mahkato · St. Anthony',
+    originFranklin: true,
     trains: [
-      { num: 'CA-3',  dest: 'Columbus · Indianapolis · Calumet',       dep: [6,45] },
-      { num: 'CA-7',  dest: 'Indianapolis · Calumet · Milwaukee',      dep: [9,00] },
-      { num: 'CA-11', dest: 'Indianapolis Exp.',                        dep: [11,30] },
-      { num: 'CA-15', dest: 'Columbus · Indianapolis · Calumet · Minneapolis', dep: [13,20] },
-      { num: 'CA-19', dest: 'Indianapolis · Calumet',                  dep: [15,50] },
-      { num: 'CA-23', dest: 'Columbus · Indianapolis · Calumet',       dep: [18,10] },
-      { num: 'CA-27', dest: 'Indianapolis Exp.',                        dep: [20,40] },
+      { num: 'CA-3',  dest: 'Indianapolis · Calumet',                           dep: [6,45] },
+      { num: 'CA-7',  dest: 'Indianapolis · Calumet · Cedar Rapids · St. Anthony', dep: [9,00] },
+      { num: 'CA-11', dest: 'Indianapolis Exp.',                                 dep: [11,30] },
+      { num: 'CA-15', dest: 'Indianapolis · Calumet · Cedar Rapids · Mahkato · St. Anthony', dep: [13,20] },
+      { num: 'CA-19', dest: 'Indianapolis · Calumet',                           dep: [15,50] },
+      { num: 'CA-23', dest: 'Indianapolis · Calumet · Cedar Rapids',            dep: [18,10] },
+      { num: 'CA-27', dest: 'Indianapolis Exp.',                                 dep: [20,40] },
     ]
   },
   {
-    id: 'southern',
-    name: 'Southern Corridor',
+    id: 'southern-atlantic',
+    name: 'Southern Atlantic Corridor',
+    route: 'Franklin · Lexington · Nashville · Atlanta · Savannah · Charleston · Richmond',
+    originFranklin: true,
     trains: [
-      { num: 'SO-2',  dest: 'Lexington · Nashville · Atlanta',         dep: [7,15] },
-      { num: 'SO-6',  dest: 'Lexington · Nashville',                   dep: [9,40] },
-      { num: 'SO-10', dest: 'Lexington · Nashville · Atlanta · Savannah', dep: [11,55] },
-      { num: 'SO-14', dest: 'Lexington · Nashville · Memphis',         dep: [14,25] },
-      { num: 'SO-18', dest: 'Nashville · Atlanta Exp.',                dep: [16,00] },
-      { num: 'SO-22', dest: 'Lexington · Nashville · Atlanta',         dep: [19,30] },
-      { num: 'SO-26', dest: 'Nashville Exp.',                          dep: [22,05] },
+      { num: 'SA-2',  dest: 'Lexington · Nashville · Atlanta',                  dep: [7,00] },
+      { num: 'SA-6',  dest: 'Lexington · Nashville · Atlanta · Savannah',       dep: [9,30] },
+      { num: 'SA-10', dest: 'Lexington · Nashville Exp.',                        dep: [11,50] },
+      { num: 'SA-14', dest: 'Lexington · Nashville · Atlanta · Savannah · Charleston · Richmond', dep: [13,45] },
+      { num: 'SA-18', dest: 'Lexington · Nashville · Atlanta',                  dep: [16,15] },
+      { num: 'SA-22', dest: 'Lexington · Nashville · Atlanta · Savannah · Charleston', dep: [19,00] },
+      { num: 'SA-26', dest: 'Lexington · Nashville Exp.',                        dep: [21,40] },
+    ]
+  },
+  {
+    id: 'southern-gulf',
+    name: 'Southern Gulf Corridor',
+    route: 'Franklin · Lexington · Nashville · Memphis · New Orleans · Mobile',
+    originFranklin: true,
+    trains: [
+      { num: 'SG-1',  dest: 'Lexington · Nashville · Memphis',                  dep: [7,30] },
+      { num: 'SG-5',  dest: 'Lexington · Nashville · Memphis · New Orleans',    dep: [10,00] },
+      { num: 'SG-9',  dest: 'Lexington · Nashville Exp.',                        dep: [12,20] },
+      { num: 'SG-13', dest: 'Lexington · Nashville · Memphis · New Orleans · Mobile', dep: [14,50] },
+      { num: 'SG-17', dest: 'Lexington · Nashville · Memphis',                  dep: [17,30] },
+      { num: 'SG-21', dest: 'Lexington · Nashville · Memphis · New Orleans',    dep: [20,10] },
     ]
   },
   {
     id: 'prairie',
     name: 'Prairie Corridor',
+    route: 'Franklin · Indianapolis · Calumet · St. Louis · Ft. Calhoun · Hugosville',
+    originFranklin: true,
     trains: [
-      { num: 'PR-1',  dest: 'St. Louis · Ft. Calhoun · Hugosville',   dep: [7,00] },
-      { num: 'PR-5',  dest: 'St. Louis Exp.',                          dep: [10,20] },
-      { num: 'PR-9',  dest: 'St. Louis · Ft. Calhoun',                dep: [13,10] },
-      { num: 'PR-13', dest: 'St. Louis · Ft. Calhoun · Hugosville',   dep: [15,35] },
-      { num: 'PR-17', dest: 'St. Louis Exp.',                          dep: [18,45] },
-      { num: 'PR-21', dest: 'St. Louis · Ft. Calhoun · Hugosville',   dep: [21,50] },
+      { num: 'PR-1',  dest: 'Indianapolis · Calumet · St. Louis',               dep: [7,15] },
+      { num: 'PR-5',  dest: 'Indianapolis · Calumet · St. Louis · Ft. Calhoun · Hugosville', dep: [10,00] },
+      { num: 'PR-9',  dest: 'Indianapolis · Calumet · St. Louis',               dep: [12,30] },
+      { num: 'PR-13', dest: 'Indianapolis · Calumet · St. Louis · Ft. Calhoun · Hugosville', dep: [15,20] },
+      { num: 'PR-17', dest: 'Indianapolis · Calumet · St. Louis',               dep: [18,30] },
+      { num: 'PR-21', dest: 'Indianapolis · Calumet · St. Louis · Ft. Calhoun · Hugosville', dep: [21,45] },
     ]
   },
   {
     id: 'mountain',
     name: 'Mountain Corridor',
+    route: 'Ft. Calhoun · Metropolis · Lakota City · Crossings · Lewis · New Boston · Astoria',
+    originFranklin: false,
+    note: 'Connects at Ft. Calhoun via Prairie Corridor',
     trains: [
-      { num: 'MT-2',  dest: 'Hugosville · Salt Lake · Portland (Oregon)', dep: [8,00] },
-      { num: 'MT-6',  dest: 'Hugosville · Salt Lake · Clark · Olympia (Washingtonia)', dep: [11,00] },
-      { num: 'MT-10', dest: 'Hugosville · Salt Lake',                  dep: [14,30] },
-      { num: 'MT-14', dest: 'Hugosville · Salt Lake · Portland (Oregon)', dep: [17,45] },
-      { num: 'MT-18', dest: 'Hugosville Exp.',                         dep: [20,15] },
+      { num: 'MT-2',  dest: 'Ft. Calhoun · Metropolis · Lakota City · Crossings · Lewis · Astoria', dep: [7,45] },
+      { num: 'MT-6',  dest: 'Ft. Calhoun · Metropolis · Lakota City',           dep: [11,15] },
+      { num: 'MT-10', dest: 'Ft. Calhoun · Metropolis · Lakota City · Crossings · Lewis · New Boston · Astoria', dep: [14,00] },
+      { num: 'MT-14', dest: 'Ft. Calhoun · Metropolis',                         dep: [17,30] },
+      { num: 'MT-18', dest: 'Ft. Calhoun · Metropolis · Lakota City · Crossings · Lewis · Astoria', dep: [20,45] },
     ]
   },
 ];
@@ -248,53 +261,21 @@ const DELAY_REASONS = [
 ];
 
 // ── DELAY ENGINE ──
-// 1 in 8 chance per train; short/medium/long weighted
+// Seeded per corridor+train so status cards and boards always agree
 function generateDelay() {
   if (Math.random() > 1/8) return null;
   const roll = Math.random();
   let minutes;
-  if (roll < 0.55)      minutes = 5  + Math.floor(Math.random() * 11); // 5–15 minor
-  else if (roll < 0.85) minutes = 16 + Math.floor(Math.random() * 30); // 16–45 minor
-  else                  minutes = 46 + Math.floor(Math.random() * 45); // 46–90 major
+  if (roll < 0.55)      minutes = 5  + Math.floor(Math.random() * 11);  // 5–15
+  else if (roll < 0.85) minutes = 16 + Math.floor(Math.random() * 30);  // 16–45
+  else                  minutes = 46 + Math.floor(Math.random() * 45);  // 46–90
   const reason = DELAY_REASONS[Math.floor(Math.random() * DELAY_REASONS.length)];
   return { minutes, reason };
 }
 
-// ── BUILD TIMETABLE ──
-function getUpcoming(trains, delayMap, limit = 4) {
-  const now  = new Date();
-  const nowM = now.getHours() * 60 + now.getMinutes();
-
-  // attach scheduled minute and delay to each train
-  const annotated = trains.map((t, i) => {
-    const schedM = t.dep[0] * 60 + t.dep[1];
-    const delay  = delayMap[i];
-    const effM   = schedM + (delay ? delay.minutes : 0);
-    return { ...t, schedM, delay, effM };
-  });
-
-  // upcoming = not yet departed (effective time > now - 2 min grace)
-  let upcoming = annotated.filter(t => t.effM >= nowM - 2);
-
-  // if fewer than limit, roll over to next day's first trains
-  if (upcoming.length < limit) {
-    const nextDay = annotated
-      .filter(t => t.effM < nowM - 2)
-      .map(t => ({ ...t, schedM: t.schedM + 1440, effM: t.effM + 1440, nextDay: true }));
-    upcoming = [...upcoming, ...nextDay];
-  }
-
-  return upcoming.slice(0, limit);
-}
-
-function formatDepTime(h, m) {
-  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
-}
-
-function corridorWorstStatus(trains, delayMap) {
+function corridorWorstStatus(delayMap) {
   let worst = 'ok';
-  trains.forEach((t, i) => {
-    const d = delayMap[i];
+  delayMap.forEach(d => {
     if (!d) return;
     if (d.minutes >= 46) worst = 'major';
     else if (worst !== 'major') worst = 'minor';
@@ -308,60 +289,92 @@ function statusLabel(s) {
   return 'Normal Operations';
 }
 
+function formatTime(h, m) {
+  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+}
+
+function getUpcoming(trains, delayMap, limit) {
+  const now  = new Date();
+  const nowM = now.getHours() * 60 + now.getMinutes();
+
+  const annotated = trains.map((t, i) => {
+    const schedM = t.dep[0] * 60 + t.dep[1];
+    const delay  = delayMap[i];
+    const effM   = schedM + (delay ? delay.minutes : 0);
+    return { ...t, schedM, delay, effM };
+  });
+
+  let upcoming = annotated.filter(t => t.effM >= nowM - 2);
+
+  if (upcoming.length < limit) {
+    const nextDay = annotated
+      .filter(t => t.effM < nowM - 2)
+      .map(t => ({ ...t, schedM: t.schedM + 1440, effM: t.effM + 1440, nextDay: true }));
+    upcoming = [...upcoming, ...nextDay];
+  }
+
+  return upcoming.slice(0, limit);
+}
+
 // ── RENDER ──
 function render() {
-  // Pre-generate delays for all trains (stable for this page load)
+  // Generate ALL delays up front — shared between overview and boards
   const allDelayMaps = CORRIDORS.map(c => c.trains.map(() => generateDelay()));
 
   // Network overview
   const overview = document.getElementById('usrc-network-overview');
   overview.innerHTML = CORRIDORS.map((c, ci) => {
-    const status = corridorWorstStatus(c.trains, allDelayMaps[ci]);
+    const status = corridorWorstStatus(allDelayMaps[ci]);
     return `<div class="usrc-cs-card status-${status}">
       <div class="usrc-cs-name">${c.name}</div>
       <span class="usrc-cs-badge ${status}">${statusLabel(status)}</span>
     </div>`;
   }).join('');
 
-  // Departure boards
+  // Departure boards — Franklin-origin corridors get 4 trains; Mountain gets 3
   const boards = document.getElementById('usrc-boards');
   boards.innerHTML = CORRIDORS.map((c, ci) => {
     const delayMap = allDelayMaps[ci];
-    const status   = corridorWorstStatus(c.trains, delayMap);
-    const upcoming = getUpcoming(c.trains, delayMap);
+    const status   = corridorWorstStatus(delayMap);
+    const limit    = c.originFranklin ? 4 : 3;
+    const upcoming = getUpcoming(c.trains, delayMap, limit);
+
+    const noteHtml = c.note
+      ? `<div style="font-size:11px;color:var(--text-tertiary);margin-bottom:6px;font-style:italic;">⚠ ${c.note}</div>`
+      : '';
 
     const rows = upcoming.length === 0
       ? `<tr><td colspan="4" class="usrc-no-trains">No further departures — see tomorrow's timetable</td></tr>`
-      : upcoming.map((t, i) => {
-          const delay   = t.delay;
-          const effH    = Math.floor(t.effM % 1440 / 60);
-          const effMin  = t.effM % 60;
-          const schedStr = formatDepTime(t.dep[0], t.dep[1]);
-          const effStr   = formatDepTime(effH, effMin);
+      : upcoming.map(t => {
+          const delay    = t.delay;
+          const effH     = Math.floor((t.effM % 1440) / 60);
+          const effMin   = t.effM % 60;
+          const schedStr = formatTime(t.dep[0], t.dep[1]);
+          const effStr   = formatTime(effH, effMin);
+          const nextNote = t.nextDay ? ' <span style="font-size:10px;color:var(--text-tertiary)">(tomorrow)</span>' : '';
 
-          let badgeClass, badgeText, timeDisplay, reasonHtml = '';
+          let badgeClass, badgeText, timeCell, reasonHtml = '';
+
           if (!delay) {
-            badgeClass  = 'on-time';
-            badgeText   = 'On Time';
-            timeDisplay = `<span class="usrc-train-time">${schedStr}</span>`;
+            badgeClass = 'on-time';
+            badgeText  = 'On Time';
+            timeCell   = `<span class="usrc-train-time">${schedStr}</span>`;
           } else if (delay.minutes >= 46) {
-            badgeClass  = 'delayed-major';
-            badgeText   = `+${delay.minutes} min`;
-            timeDisplay = `<span class="usrc-train-time" style="text-decoration:line-through;color:var(--text-tertiary);font-size:11px">${schedStr}</span> <span class="usrc-train-time" style="color:var(--usrc-red)">${effStr}</span>`;
-            reasonHtml  = `<div class="usrc-delay-reason">${delay.reason}</div>`;
+            badgeClass = 'delayed-major';
+            badgeText  = `+${delay.minutes} min`;
+            timeCell   = `<span class="usrc-train-time" style="text-decoration:line-through;color:var(--text-tertiary);font-size:11px">${schedStr}</span>&nbsp;<span class="usrc-train-time" style="color:var(--usrc-red)">${effStr}</span>`;
+            reasonHtml = `<div class="usrc-delay-reason">${delay.reason}</div>`;
           } else {
-            badgeClass  = 'delayed-minor';
-            badgeText   = `+${delay.minutes} min`;
-            timeDisplay = `<span class="usrc-train-time" style="text-decoration:line-through;color:var(--text-tertiary);font-size:11px">${schedStr}</span> <span class="usrc-train-time" style="color:#B8860B">${effStr}</span>`;
-            reasonHtml  = `<div class="usrc-delay-reason">${delay.reason}</div>`;
+            badgeClass = 'delayed-minor';
+            badgeText  = `+${delay.minutes} min`;
+            timeCell   = `<span class="usrc-train-time" style="text-decoration:line-through;color:var(--text-tertiary);font-size:11px">${schedStr}</span>&nbsp;<span class="usrc-train-time" style="color:#B8860B">${effStr}</span>`;
+            reasonHtml = `<div class="usrc-delay-reason">${delay.reason}</div>`;
           }
-
-          const nextDayNote = t.nextDay ? ' <span style="font-size:10px;color:var(--text-tertiary)">(tomorrow)</span>' : '';
 
           return `<tr>
             <td><span class="usrc-train-num">${t.num}</span></td>
-            <td><span class="usrc-train-dest">${t.dest}${nextDayNote}</span></td>
-            <td>${timeDisplay}</td>
+            <td><span class="usrc-train-dest">${t.dest}${nextNote}</span></td>
+            <td>${timeCell}</td>
             <td><span class="usrc-badge ${badgeClass}">${badgeText}</span>${reasonHtml}</td>
           </tr>`;
         }).join('');
@@ -371,6 +384,8 @@ function render() {
         <span class="usrc-corridor-name">${c.name}</span>
         <span class="usrc-corridor-badge ${status}">${statusLabel(status)}</span>
       </div>
+      <div class="usrc-corridor-route">${c.route}</div>
+      ${noteHtml}
       <table class="usrc-train-table">
         <thead><tr>
           <th>Train</th><th>Destination</th><th>Departs</th><th>Status</th>
