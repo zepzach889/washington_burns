@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waymark — Find your node on the Link</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+  .wm-hero { padding: 52px 20px 32px; display: flex; flex-direction: column; align-items: center; background: var(--paper); }
+  .wm-wordmark { font-family: 'DM Serif Display', serif; font-size: 64px; letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
+  .wm-wordmark span { color: var(--blue); }
+  .wm-tagline { font-size: 11px; color: var(--text-tertiary); margin-bottom: 28px; letter-spacing: 0.10em; text-transform: uppercase; font-weight: 500; }
+  .wm-search-wrap { width: 100%; max-width: 580px; position: relative; margin-bottom: 14px; }
+  .wm-search { width: 100%; padding: 15px 72px 15px 22px; border-radius: 32px; border: 1.5px solid var(--border-mid); background: #fff; font-size: 15px; font-family: 'DM Sans', sans-serif; color: var(--text-primary); outline: none; transition: border-color 0.15s, box-shadow 0.15s; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .wm-search:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(24,95,165,0.08); }
+  .wm-search::placeholder { color: var(--text-tertiary); }
+  .wm-search-btn { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: var(--blue); border: none; border-radius: 24px; padding: 8px 20px; font-size: 12px; font-weight: 600; color: #fff; cursor: pointer; font-family: 'DM Sans', sans-serif; letter-spacing: 0.02em; transition: background 0.1s; }
+  .wm-search-btn:hover { background: var(--blue-dark); }
+  .wm-quicklinks { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .wm-ql { font-size: 11px; color: var(--blue); cursor: pointer; padding: 4px 11px; border-radius: 12px; background: var(--blue-light); border: 0.5px solid var(--blue-mid); font-family: 'DM Sans', sans-serif; font-weight: 500; transition: background 0.1s; text-decoration: none; }
+  .wm-ql:hover { background: var(--blue-mid); }
+
+  .wm-portal { display: grid; grid-template-columns: 1fr 300px; max-width: 1100px; margin: 0 auto; width: 100%; }
+  .wm-main { padding: 24px 24px 32px; border-right: 0.5px solid var(--border); }
+
+  .wm-lead { background: var(--blue-light); border-left: 3px solid var(--blue); padding: 14px 16px; border-radius: 0 8px 8px 0; margin-bottom: 20px; cursor: pointer; transition: background 0.1s; text-decoration: none; display: block; }
+  .wm-lead:hover { background: var(--blue-mid); }
+  .wm-lead-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 5px; }
+  .wm-lead-hed { font-family: 'DM Serif Display', serif; font-size: 20px; line-height: 1.25; color: var(--blue-dark); margin-bottom: 5px; }
+  .wm-lead-dek { font-size: 13px; color: var(--blue); line-height: 1.5; }
+  .wm-lead-meta { font-size: 10px; color: #378ADD; margin-top: 8px; font-weight: 500; }
+
+  .wm-headline { display: block; text-decoration: none; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 0.5px solid var(--border); cursor: pointer; }
+  .wm-headline:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .wm-hl-hed { font-family: 'DM Serif Display', serif; font-size: 17px; line-height: 1.3; color: var(--text-primary); margin-bottom: 4px; transition: color 0.1s; }
+  .wm-headline:hover .wm-hl-hed { color: var(--blue); }
+  .wm-hl-dek { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+  .wm-hl-meta { font-size: 10px; color: var(--text-tertiary); margin-top: 5px; font-weight: 500; }
+
+  .wm-sidebar { padding: 24px 16px; display: flex; flex-direction: column; gap: 18px; background: var(--bg-secondary); }
+  .wm-widget { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .wm-widget-head { background: var(--bg-tertiary); padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); border-bottom: 0.5px solid var(--border); }
+  .wm-widget-body { padding: 12px; }
+  .wm-temp { font-size: 30px; font-weight: 300; line-height: 1; margin-bottom: 4px; }
+  .wm-city { font-size: 12px; color: var(--text-secondary); margin-bottom: 2px; }
+  .wm-cond { font-size: 11px; color: var(--text-tertiary); }
+  .wm-weather-loading { font-size: 12px; color: var(--text-tertiary); font-style: italic; }
+  .wm-market-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-size: 12px; }
+  .wm-market-row:last-child { border-bottom: none; }
+  .wm-ticker { color: var(--text-secondary); font-weight: 600; font-size: 11px; }
+  .wm-price { color: var(--text-primary); font-weight: 500; }
+  .wm-chg { font-size: 11px; font-weight: 500; }
+  .wm-chg.up { color: var(--green); }
+  .wm-chg.dn { color: var(--red); }
+  .wm-shortcut-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .wm-shortcut { background: var(--bg-secondary); border-radius: 8px; padding: 9px 10px; font-size: 11px; color: var(--text-secondary); cursor: pointer; border: 0.5px solid var(--border); font-family: 'DM Sans', sans-serif; text-align: left; transition: all 0.1s; font-weight: 500; text-decoration: none; display: block; }
+  .wm-shortcut:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+  .wm-shortcut-icon { font-size: 13px; display: block; margin-bottom: 3px; color: var(--text-tertiary); }
+
+  @media (max-width: 700px) {
+    .wm-portal { grid-template-columns: 1fr; }
+    .wm-sidebar { border-top: 0.5px solid var(--border); }
+    .wm-wordmark { font-size: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wm-topbar">
+  <a class="wm-topbar-logo" href="/">Way<span>mark</span></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" placeholder="link://nan.waymark.biz.usa" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn" title="Navigate">→</button>
+  </div>
+  <div class="wm-lang-switcher">
+    <button class="wm-lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="wm-lang-btn" onclick="setLang('fr')">FR</button>
+    <button class="wm-lang-btn" onclick="setLang('es')">ES</button>
+  </div>
+</div>
+
+<div class="wm-hero">
+  <div class="wm-wordmark">Way<span>mark</span></div>
+  <div class="wm-tagline" id="wm-tagline">Find your node on the Link</div>
+  <div class="wm-search-wrap">
+    <input class="wm-search" id="wm-search" type="text" />
+    <button class="wm-search-btn" id="wm-search-btn">Find</button>
+  </div>
+  <div class="wm-quicklinks">
+    <a class="wm-ql" href="./nodes/assembly/">NAU Assembly</a>
+    <a class="wm-ql" href="./nodes/usrc/">USRC Rail Status</a>
+    <a class="wm-ql" href="./nodes/franklin-observer/">Franklin Observer</a>
+    <a class="wm-ql" href="./nodes/fps/">Federal Parks</a>
+    <a class="wm-ql" href="./nodes/abn/">ABN News</a>
+  </div>
+</div>
+
+<hr class="wm-divider">
+
+<div class="wm-portal">
+  <div class="wm-main">
+    <div class="wm-section-label" id="wm-headlines-label">Today's Headlines — <span id="wm-date"></span></div>
+
+    <a class="wm-lead" href="./nodes/franklin-observer/">
+      <div class="wm-lead-tag">NAU Politics</div>
+      <div class="wm-lead-hed">Nakamura Signals Compromise Path on NAU Constitution Ratification</div>
+      <div class="wm-lead-dek">The US President says she will not oppose a full Assembly vote on the constitutional consolidation project, ending weeks of ambiguity over the American position.</div>
+      <div class="wm-lead-meta">Franklin Observer · 2 hours ago</div>
+    </a>
+
+    <a class="wm-headline" href="./nodes/abn/">
+      <div class="wm-tag green">World</div>
+      <div class="wm-hl-hed">China Opens HuaWang to Broader Interlink Access; 61% of Households Now Connected</div>
+      <div class="wm-hl-dek">Post-2019 reform commitments continue to bear fruit as access restrictions are rolled back, though the GPC's digital rights commission warns progress remains uneven.</div>
+      <div class="wm-hl-meta">ABN News · 4 hours ago</div>
+    </a>
+
+    <a class="wm-headline" href="./nodes/assembly/">
+      <div class="wm-tag red">NAU Assembly</div>
+      <div class="wm-hl-hed">NAU Council Backs Continental Currency Stabilisation Framework</div>
+      <div class="wm-hl-dek">The Council's economic committee has endorsed a framework to harmonise exchange arrangements across all six member states ahead of full monetary union.</div>
+      <div class="wm-hl-meta">NAU Assembly · Calumet · 5 hours ago</div>
+    </a>
+
+    <a class="wm-headline" href="./nodes/usrc/">
+      <div class="wm-tag purple">Rail</div>
+      <div class="wm-hl-hed">USRC Reports Record Ridership on Ohio Corridor for Third Straight Quarter</div>
+      <div class="wm-hl-dek">The Franklin–Pittsburgh–Philadelphia mainline carried 4.1 million passengers in Q1, the highest figure since the corridor's 1971 electrification.</div>
+      <div class="wm-hl-meta">USRC Public Affairs · 6 hours ago</div>
+    </a>
+
+    <a class="wm-headline" href="./nodes/abn/">
+      <div class="wm-tag rose">Culture</div>
+      <div class="wm-hl-hed">First Open-Network TC Drama in NAU–UER Co-Production Confirmed for Autumn</div>
+      <div class="wm-hl-dek">The six-part series, set during the Global War, will broadcast simultaneously across NANet and ResEu member states.</div>
+      <div class="wm-hl-meta">Franklin Observer · 8 hours ago</div>
+    </a>
+  </div>
+
+  <div class="wm-sidebar">
+
+    <div class="wm-widget">
+      <div class="wm-widget-head" id="w-weather-head">Franklin, D.W. — Weather</div>
+      <div class="wm-widget-body" id="wm-weather-body">
+        <div class="wm-weather-loading" id="w-weather-loading">Fetching conditions…</div>
+      </div>
+    </div>
+
+    <div class="wm-widget">
+      <div class="wm-widget-head" id="w-markets-head">NAX Markets</div>
+      <div class="wm-widget-body">
+        <div class="wm-market-row"><span class="wm-ticker">NAX Comp</span><span class="wm-price">14,882</span><span class="wm-chg up">▲ 0.4%</span></div>
+        <div class="wm-market-row"><span class="wm-ticker">CTL</span><span class="wm-price">Ȼ1.000</span><span class="wm-chg">— 0.0%</span></div>
+        <div class="wm-market-row"><span class="wm-ticker">EuroMark</span><span class="wm-price">EM 0.874</span><span class="wm-chg dn">▼ 0.2%</span></div>
+        <div class="wm-market-row"><span class="wm-ticker">UKP</span><span class="wm-price">£1.142</span><span class="wm-chg up">▲ 0.1%</span></div>
+      </div>
+    </div>
+
+    <div class="wm-widget">
+      <div class="wm-widget-head" id="w-shortcuts-head">My Shortcuts</div>
+      <div class="wm-widget-body">
+        <div class="wm-shortcut-grid">
+          <a class="wm-shortcut" href="./nodes/assembly/"><span class="wm-shortcut-icon">◈</span>NAU Assembly</a>
+          <a class="wm-shortcut" href="./nodes/usrc/"><span class="wm-shortcut-icon">◎</span>USRC Arrivals</a>
+          <a class="wm-shortcut" href="./nodes/franklin-observer/"><span class="wm-shortcut-icon">◉</span>Franklin Observer</a>
+          <a class="wm-shortcut" href="./nodes/washington-house/"><span class="wm-shortcut-icon">◇</span>Washington House</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wm-footer">
+  <span>link://nan.waymark.biz.usa &nbsp;·&nbsp; NANet Node &nbsp;·&nbsp; © <span id="wm-year"></span> Waymark Search Corp.</span>
+  <div class="wm-footer-links">
+    <a href="#" id="f-about">About</a>
+    <a href="#" id="f-privacy">Privacy</a>
+    <a href="#" id="f-terms">Terms of Service</a>
+    <a href="#" id="f-access">Accessibility</a>
+    <a href="#" id="f-status">NANet Status</a>
+  </div>
+</div>
+
+<script src="router.js"></script>
+<script>
+// ── TRANSLATIONS ──
+const UI = {
+  en: {
+    tagline:       'Find your node on the Link',
+    searchHolder:  'Search the Link…',
+    searchBtn:     'Find',
+    headlinesLabel:'Today\'s Headlines',
+    weatherHead:   'Franklin, D.W. — Weather',
+    weatherLoading:'Fetching conditions…',
+    weatherUnavail:'Conditions unavailable',
+    marketsHead:   'NAX Markets',
+    shortcutsHead: 'My Shortcuts',
+    fAbout:        'About',
+    fPrivacy:      'Privacy',
+    fTerms:        'Terms of Service',
+    fAccess:       'Accessibility',
+    fStatus:       'NANet Status',
+    months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+    dateFormat: (d,m,y) => `${d} ${m}, ${y}`,
+  },
+  fr: {
+    tagline:       'Trouvez votre nœud sur le Lien',
+    searchHolder:  'Rechercher sur le Lien…',
+    searchBtn:     'Chercher',
+    headlinesLabel:'Titres du jour',
+    weatherHead:   'Franklin, D.W. — Météo',
+    weatherLoading:'Récupération des conditions…',
+    weatherUnavail:'Conditions indisponibles',
+    marketsHead:   'Marchés NAX',
+    shortcutsHead: 'Mes raccourcis',
+    fAbout:        'À propos',
+    fPrivacy:      'Confidentialité',
+    fTerms:        'Conditions d\'utilisation',
+    fAccess:       'Accessibilité',
+    fStatus:       'État du NANet',
+    months: ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'],
+    dateFormat: (d,m,y) => `${d} ${m} ${y}`,
+  },
+  es: {
+    tagline:       'Encuentre su nodo en el Enlace',
+    searchHolder:  'Buscar en el Enlace…',
+    searchBtn:     'Buscar',
+    headlinesLabel:'Titulares de hoy',
+    weatherHead:   'Franklin, D.W. — El Tiempo',
+    weatherLoading:'Obteniendo condiciones…',
+    weatherUnavail:'Condiciones no disponibles',
+    marketsHead:   'Mercados NAX',
+    shortcutsHead: 'Mis accesos directos',
+    fAbout:        'Acerca de',
+    fPrivacy:      'Privacidad',
+    fTerms:        'Términos de servicio',
+    fAccess:       'Accesibilidad',
+    fStatus:       'Estado del NANet',
+    months: ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
+    dateFormat: (d,m,y) => `${d} de ${m} de ${y}`,
+  }
+};
+
+let currentLang = 'en';
+
+function formatDate(lang) {
+  const t = UI[lang];
+  const d = new Date();
+  return t.dateFormat(d.getDate(), t.months[d.getMonth()], d.getFullYear());
+}
+
+function applyLang(code) {
+  const t = UI[code];
+  currentLang = code;
+  document.getElementById('wm-tagline').textContent        = t.tagline;
+  document.getElementById('wm-search').placeholder         = t.searchHolder;
+  document.getElementById('wm-search-btn').textContent     = t.searchBtn;
+  document.getElementById('wm-date').textContent           = formatDate(code);
+  document.getElementById('w-weather-head').textContent    = t.weatherHead;
+  document.getElementById('w-markets-head').textContent    = t.marketsHead;
+  document.getElementById('w-shortcuts-head').textContent  = t.shortcutsHead;
+  document.getElementById('f-about').textContent           = t.fAbout;
+  document.getElementById('f-privacy').textContent         = t.fPrivacy;
+  document.getElementById('f-terms').textContent           = t.fTerms;
+  document.getElementById('f-access').textContent          = t.fAccess;
+  document.getElementById('f-status').textContent          = t.fStatus;
+
+  // headlines label preserves the date span
+  document.getElementById('wm-headlines-label').innerHTML =
+    t.headlinesLabel + ' — <span id="wm-date">' + formatDate(code) + '</span>';
+
+  // weather loading text (if still loading)
+  const wl = document.getElementById('w-weather-loading');
+  if (wl) wl.textContent = t.weatherLoading;
+
+  document.querySelectorAll('.wm-lang-btn').forEach(b =>
+    b.classList.toggle('active', b.textContent === code.toUpperCase())
+  );
+}
+
+function setLang(code) { applyLang(code); }
+
+// ── INIT ──
+applyLang('en');
+document.getElementById('wm-year').textContent = new Date().getFullYear();
+initAddressBar('nan.waymark.biz.usa');
+
+// ── LIVE WEATHER — Open-Meteo, Cincinnati OH (Franklin, D.W.) ──
+async function fetchWeather() {
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=39.1031&longitude=-84.5120&current=temperature_2m,weathercode,windspeed_10m,winddirection_10m&temperature_unit=celsius&windspeed_unit=kmh&timezone=America%2FNew_York';
+  try {
+    const res  = await fetch(url);
+    const data = await res.json();
+    const c    = data.current;
+    const temp = Math.round(c.temperature_2m);
+    const wind = Math.round(c.windspeed_10m);
+    const dir  = degreesToCardinal(c.winddirection_10m);
+    const cond = weatherCodeToDesc(c.weathercode);
+    document.getElementById('wm-weather-body').innerHTML = `
+      <div class="wm-temp">${temp}°</div>
+      <div class="wm-city">Franklin, District of Washington</div>
+      <div class="wm-cond">${cond} · Wind ${wind} km/h ${dir}</div>
+    `;
+  } catch (e) {
+    const t = UI[currentLang];
+    document.getElementById('wm-weather-body').innerHTML = `
+      <div class="wm-city">Franklin, District of Washington</div>
+      <div class="wm-cond">${t.weatherUnavail}</div>
+    `;
+  }
+}
+
+function degreesToCardinal(deg) {
+  return ['N','NE','E','SE','S','SW','W','NW'][Math.round(deg / 45) % 8];
+}
+
+function weatherCodeToDesc(code) {
+  if (code === 0)  return 'Clear skies';
+  if (code <= 2)   return 'Partly cloudy';
+  if (code === 3)  return 'Overcast';
+  if (code <= 49)  return 'Foggy';
+  if (code <= 59)  return 'Drizzle';
+  if (code <= 69)  return 'Rain';
+  if (code <= 79)  return 'Snow';
+  if (code <= 82)  return 'Rain showers';
+  if (code <= 86)  return 'Snow showers';
+  if (code <= 99)  return 'Thunderstorm';
+  return 'Variable';
+}
+
+fetchWeather();
+</script>
+</body>
+</html>
