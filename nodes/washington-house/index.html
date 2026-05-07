@@ -3,86 +3,245 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Washington House — Official Residence of the President</title>
+<title>Washington House — Official Residence of the President</title>
 <link rel="stylesheet" href="../../shared.css">
 <style>
+  :root {
+    --wh-blue: #1B3A6B;
+    --wh-blue-dark: #102444;
+    --wh-blue-mid: #2A4E8A;
+    --wh-gold: #B8972A;
+    --wh-gold-light: #D4AE4A;
+  }
+
+  /* ── HERO ── */
   .wh-hero {
-    background: linear-gradient(160deg, #1B2E1B 0%, #2D4A2D 60%, #3D5C3D 100%);
-    color: #fff;
-    padding: 40px 24px 32px;
-    text-align: center;
     position: relative;
+    background: var(--wh-blue-dark);
     overflow: hidden;
   }
-  .wh-hero::before {
-    content: '';
+
+  .wh-hero-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center 40%;
+    display: block;
+    mask-image: radial-gradient(ellipse 80% 100% at 50% 50%, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 100% at 50% 50%, black 40%, transparent 100%);
+    opacity: 0.85;
+  }
+
+  .wh-hero-overlay {
     position: absolute;
     inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background:
+      linear-gradient(to right, var(--wh-blue-dark) 0%, transparent 25%, transparent 75%, var(--wh-blue-dark) 100%),
+      linear-gradient(to bottom, transparent 40%, var(--wh-blue-dark) 100%);
+    pointer-events: none;
   }
-  .wh-kicker { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 10px; font-weight: 600; position: relative; }
-  .wh-title { font-family: 'DM Serif Display', serif; font-size: 40px; letter-spacing: -0.01em; line-height: 1.1; color: #fff; position: relative; }
-  .wh-subtitle { font-size: 13px; color: rgba(255,255,255,0.65); margin-top: 8px; position: relative; }
-  .wh-address-tag { display: inline-block; margin-top: 14px; font-size: 11px; background: rgba(255,255,255,0.12); border: 0.5px solid rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 12px; color: rgba(255,255,255,0.8); font-family: monospace; position: relative; }
 
-  .wh-nav { display: flex; justify-content: center; gap: 0; background: #2D4A2D; flex-wrap: wrap; }
-  .wh-nav a { font-size: 12px; color: rgba(255,255,255,0.70); text-decoration: none; padding: 10px 18px; font-weight: 500; transition: all 0.1s; }
+  .wh-hero-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0 20px 20px;
+    color: #fff;
+  }
+
+  .wh-kicker {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--wh-gold-light);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  .wh-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 40px;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: #fff;
+  }
+
+  .wh-subtitle {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 6px;
+  }
+
+  .wh-address-tag {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 11px;
+    background: rgba(255,255,255,0.10);
+    border: 0.5px solid rgba(255,255,255,0.2);
+    padding: 4px 12px;
+    border-radius: 12px;
+    color: rgba(255,255,255,0.75);
+    font-family: monospace;
+  }
+
+  /* ── NAV ── */
+  .wh-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    background: var(--wh-blue);
+    flex-wrap: wrap;
+    border-bottom: 2px solid var(--wh-gold);
+  }
+
+  .wh-nav a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.70);
+    text-decoration: none;
+    padding: 10px 18px;
+    font-weight: 500;
+    transition: all 0.1s;
+  }
+
   .wh-nav a:hover { background: rgba(255,255,255,0.08); color: #fff; }
-  .wh-nav a.active { color: #C8E6C9; border-bottom: 2px solid #C8E6C9; }
+  .wh-nav a.active { color: var(--wh-gold-light); border-bottom: 2px solid var(--wh-gold-light); }
 
-  .wh-body { display: grid; grid-template-columns: 1fr 300px; max-width: 1100px; margin: 0 auto; }
+  /* ── BODY ── */
+  .wh-body {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
   .wh-main { padding: 28px 24px; border-right: 0.5px solid var(--border); }
   .wh-sidebar { padding: 24px 16px; background: var(--bg-secondary); }
 
+  /* ── PRESIDENT CARD ── */
   .wh-president-card {
     display: flex;
     gap: 20px;
     background: #fff;
     border: 0.5px solid var(--border);
+    border-top: 3px solid var(--wh-gold);
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 24px;
     align-items: flex-start;
   }
-  .wh-president-portrait { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #2D4A2D, #1B2E1B); display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; }
-  .wh-president-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 4px; }
-  .wh-president-name { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--text-primary); line-height: 1.1; margin-bottom: 3px; }
-  .wh-president-detail { font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
-  .wh-president-term { display: inline-block; font-size: 10px; font-weight: 700; background: var(--blue-light); color: var(--blue); padding: 2px 8px; border-radius: 4px; margin-top: 6px; }
 
-  .wh-statement { background: var(--bg-secondary); border-left: 3px solid #2D4A2D; border-radius: 0 8px 8px 0; padding: 16px 18px; margin-bottom: 24px; }
-  .wh-statement-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #2D4A2D; margin-bottom: 6px; }
+  .wh-president-portrait {
+    width: 90px;
+    height: 110px;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid var(--wh-gold);
+    background: var(--bg-secondary);
+  }
+
+  .wh-president-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .wh-president-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 4px; }
+  .wh-president-name { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--text-primary); line-height: 1.1; margin-bottom: 4px; }
+  .wh-president-detail { font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
+  .wh-president-term {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    background: #EBF0FA;
+    color: var(--wh-blue);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 6px;
+  }
+
+  /* ── STATEMENT ── */
+  .wh-statement {
+    background: #EBF0FA;
+    border-left: 3px solid var(--wh-blue);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 18px;
+    margin-bottom: 24px;
+  }
+
+  .wh-statement-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wh-blue); margin-bottom: 6px; }
   .wh-statement-text { font-family: 'DM Serif Display', serif; font-size: 16px; line-height: 1.5; color: var(--text-primary); font-style: italic; }
   .wh-statement-attr { font-size: 11px; color: var(--text-tertiary); margin-top: 8px; }
 
+  /* ── SECTIONS ── */
   .wh-section { margin-bottom: 24px; }
-  .wh-section-hed { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text-primary); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1.5px solid #2D4A2D; }
+  .wh-section-hed {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1.5px solid var(--wh-gold);
+  }
 
+  /* ── VISIT CARDS ── */
   .wh-visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .wh-visit-card { background: #fff; border: 0.5px solid var(--border); border-radius: 8px; padding: 14px; }
   .wh-visit-icon { font-size: 22px; margin-bottom: 6px; }
   .wh-visit-title { font-weight: 600; font-size: 13px; color: var(--text-primary); margin-bottom: 4px; }
   .wh-visit-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
-  .wh-visit-link { display: inline-block; margin-top: 8px; font-size: 11px; color: #2D4A2D; font-weight: 600; text-decoration: none; }
+  .wh-visit-link { display: inline-block; margin-top: 8px; font-size: 11px; color: var(--wh-blue); font-weight: 600; text-decoration: none; }
+  .wh-visit-link:hover { color: var(--wh-blue-mid); }
 
+  /* ── NEWS ── */
   .wh-news-item { padding: 12px 0; border-bottom: 0.5px solid var(--border); }
   .wh-news-item:last-child { border-bottom: none; }
   .wh-news-title { font-family: 'DM Serif Display', serif; font-size: 15px; color: var(--text-primary); margin-bottom: 3px; }
   .wh-news-meta { font-size: 11px; color: var(--text-tertiary); }
 
+  /* ── WING DIAGRAM ── */
+  .wh-wings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .wh-wing {
+    background: #fff;
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    border-left: 3px solid var(--wh-gold);
+  }
+  .wh-wing-name { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--wh-blue); margin-bottom: 3px; }
+  .wh-wing-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* ── WIDGETS ── */
   .wh-widget { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
   .wh-widget:last-child { margin-bottom: 0; }
-  .wh-widget-head { background: #2D4A2D; padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+  .wh-widget-head { background: var(--wh-blue); padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); border-bottom: 1px solid var(--wh-gold); }
   .wh-widget-body { padding: 12px; font-size: 12px; }
+
   .wh-schedule-row { padding: 6px 0; border-bottom: 0.5px solid var(--border); }
   .wh-schedule-row:last-child { border-bottom: none; }
-  .wh-schedule-time { font-weight: 600; color: var(--text-primary); font-size: 11px; }
-  .wh-schedule-event { color: var(--text-secondary); font-size: 12px; }
+  .wh-schedule-time { font-weight: 600; color: var(--wh-blue); font-size: 11px; font-family: monospace; }
+  .wh-schedule-event { color: var(--text-secondary); font-size: 12px; margin-top: 1px; }
+
+  .wh-fact-row { padding: 5px 0; border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; gap: 8px; }
+  .wh-fact-row:last-child { border-bottom: none; }
+  .wh-fact-label { color: var(--text-secondary); }
+  .wh-fact-val { font-weight: 600; color: var(--text-primary); text-align: right; }
 
   @media (max-width: 700px) {
     .wh-body { grid-template-columns: 1fr; }
     .wh-visit-grid { grid-template-columns: 1fr; }
+    .wh-wings { grid-template-columns: 1fr; }
     .wh-title { font-size: 30px; }
+    .wh-hero-img { height: 200px; }
   }
 </style>
 </head>
@@ -101,11 +260,16 @@
   </div>
 </div>
 
+<!-- HERO -->
 <div class="wh-hero">
-  <div class="wh-kicker">Official Residence &amp; Office of the President</div>
-  <div class="wh-title">The Washington House</div>
-  <div class="wh-subtitle">Franklin, District of Washington &nbsp;·&nbsp; Established 1820</div>
-  <div class="wh-address-tag">link://nan.washingtonhouse.gov.usa</div>
+  <img class="wh-hero-img" src="../../images/washington-house/Washington%20House%20Standard.png" alt="Washington House" />
+  <div class="wh-hero-overlay"></div>
+  <div class="wh-hero-text">
+    <div class="wh-kicker">Official Residence &amp; Office of the President of the United States</div>
+    <div class="wh-title">Washington House</div>
+    <div class="wh-subtitle">Franklin, District of Washington &nbsp;·&nbsp; Established 1827</div>
+    <div class="wh-address-tag">link://nan.washingtonhouse.gov.usa</div>
+  </div>
 </div>
 
 <nav class="wh-nav">
@@ -121,64 +285,98 @@
 <div class="wh-body">
   <div class="wh-main">
 
+    <!-- PRESIDENT CARD -->
     <div class="wh-president-card">
-      <div class="wh-president-portrait">👤</div>
+      <div class="wh-president-portrait">
+        <img src="../../images/washington-house/44-Photo-Nakamura.png" alt="President Sophia R. Nakamura" />
+      </div>
       <div>
         <div class="wh-president-label">44th President of the United States</div>
         <div class="wh-president-name">Sophia R. Nakamura</div>
-        <div class="wh-president-detail">Socialist Party of America · Inaugurated January 1, 2025<br>Born: Seattle, California · Previously: Senator (SPA–California, 2013–2025)</div>
+        <div class="wh-president-detail">
+          Socialist Party of America · Inaugurated February 11, 2025<br>
+          Born: New Boston, Oregon<br>
+          Previously: Senator (SPA–Oregon, 2013–2025)
+        </div>
         <span class="wh-president-term">Term: 2025–2031</span>
       </div>
     </div>
 
+    <!-- STATEMENT -->
     <div class="wh-statement">
-      <div class="wh-statement-label">Statement from the President · 13 March 2027</div>
+      <div class="wh-statement-label">Statement from the President · 13 March 2026</div>
       <div class="wh-statement-text">"The Assembly exists to debate these questions — that is precisely what it was designed to do. If the people's representatives, meeting the standard our Constitution demands, choose to open that conversation, I will not stand in their way."</div>
-      <div class="wh-statement-attr">— President Nakamura, on the Constitutional Convention question · Issued through the Office of Communications</div>
+      <div class="wh-statement-attr">— President Nakamura, on the NAU Constitutional Consolidation question · Issued through the Office of Communications</div>
     </div>
 
+    <!-- BRIEFING ROOM -->
     <div class="wh-section">
       <div class="wh-section-hed">From the Briefing Room</div>
       <div class="wh-news-item">
         <div class="wh-news-title">President Nakamura to Address NAU Economic Summit in Montréal, April 3–4</div>
-        <div class="wh-news-meta">Office of the Press Secretary · 12 March 2027</div>
+        <div class="wh-news-meta">Office of the Press Secretary · 12 March 2026</div>
       </div>
       <div class="wh-news-item">
-        <div class="wh-news-title">Executive Order 2027-14: Expansion of Federal Parks Service Mandate in Northern Territories</div>
-        <div class="wh-news-meta">Office of the President · 10 March 2027</div>
+        <div class="wh-news-title">Executive Order 2026-11: Federal Parks Service Acquisition of Silver Creek Lands, Oregon</div>
+        <div class="wh-news-meta">Office of the President · 10 March 2026</div>
       </div>
       <div class="wh-news-item">
         <div class="wh-news-title">Statement on USRC Q1 Ridership Record: "A testament to what public investment delivers."</div>
-        <div class="wh-news-meta">Office of Communications · 8 March 2027</div>
+        <div class="wh-news-meta">Office of Communications · 8 March 2026</div>
       </div>
     </div>
 
+    <!-- PLAN YOUR VISIT -->
     <div class="wh-section">
       <div class="wh-section-hed">Plan Your Visit</div>
       <div class="wh-visit-grid">
         <div class="wh-visit-card">
           <div class="wh-visit-icon">🏛</div>
           <div class="wh-visit-title">Public Tours</div>
-          <div class="wh-visit-desc">Tours of the Washington House's 14 public rooms are available Tuesday through Saturday, 9 a.m. to 12 noon. Book in advance through the visitor portal.</div>
+          <div class="wh-visit-desc">Tours of Washington House's State and West Wings are available Tuesday through Saturday, 9 a.m. to noon. Includes the Reception Hall, State Dining Room, and Ballroom.</div>
           <a class="wh-visit-link" href="#">Book a Tour →</a>
         </div>
         <div class="wh-visit-card">
           <div class="wh-visit-icon">🌳</div>
           <div class="wh-visit-title">The Grounds</div>
-          <div class="wh-visit-desc">The Washington House gardens, including the historic Ohio Terrace and the Memorial Grove, are open to the public daily during daylight hours.</div>
+          <div class="wh-visit-desc">The gardens of President's Square and the south-facing grounds behind Washington House are open to the public daily during daylight hours.</div>
           <a class="wh-visit-link" href="#">Visitor Information →</a>
         </div>
         <div class="wh-visit-card">
           <div class="wh-visit-icon">📜</div>
-          <div class="wh-visit-title">History & Architecture</div>
-          <div class="wh-visit-desc">Built between 1816 and 1820, the Washington House has been the seat of executive power since the 8th Presidency of James Monroe.</div>
+          <div class="wh-visit-title">History &amp; Architecture</div>
+          <div class="wh-visit-desc">Designed by Kemp &amp; Ogden and built between 1821 and 1827, Washington House has been the seat of executive power since the administration of President Alexander Hamilton Jr.</div>
           <a class="wh-visit-link" href="#">Explore the History →</a>
         </div>
         <div class="wh-visit-card">
           <div class="wh-visit-icon">🎓</div>
-          <div class="wh-visit-title">School & Group Visits</div>
-          <div class="wh-visit-desc">Educational programmes for school groups are available by appointment. The Washington House hosts over 40,000 student visitors each year.</div>
+          <div class="wh-visit-title">School &amp; Group Visits</div>
+          <div class="wh-visit-desc">Educational programmes for school groups are available by appointment. Washington House hosts over 40,000 student visitors each year.</div>
           <a class="wh-visit-link" href="#">Group Enquiries →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARCHITECTURE -->
+    <div class="wh-section">
+      <div class="wh-section-hed">The Four Wings</div>
+      <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:12px;">Washington House is a square structure enclosing a central courtyard, creating four distinct wings each with its own purpose.</p>
+      <div class="wh-wings">
+        <div class="wh-wing">
+          <div class="wh-wing-name">North Wing — State</div>
+          <div class="wh-wing-desc">Ceremonial heart of Washington House. Home to the Presidential Study, the Reception Hall, and the formal offices of the presidency.</div>
+        </div>
+        <div class="wh-wing">
+          <div class="wh-wing-name">East Wing — Executive</div>
+          <div class="wh-wing-desc">The working wing. Houses the President's working office, the Cabinet Room, the Press Office, and senior staff. Not open to the public.</div>
+        </div>
+        <div class="wh-wing">
+          <div class="wh-wing-name">West Wing — Public &amp; Diplomatic</div>
+          <div class="wh-wing-desc">Open to visitors and dignitaries. Contains the Ballroom, State Dining Room, Diplomatic Reception Room, and guest quarters for visiting heads of state.</div>
+        </div>
+        <div class="wh-wing">
+          <div class="wh-wing-name">South Wing — Private Residence</div>
+          <div class="wh-wing-desc">Private home of the First Family. Opens onto the south gardens. Not open to the public.</div>
         </div>
       </div>
     </div>
@@ -186,6 +384,7 @@
   </div>
 
   <div class="wh-sidebar">
+
     <div class="wh-widget">
       <div class="wh-widget-head">Today's Schedule</div>
       <div class="wh-widget-body">
@@ -195,7 +394,7 @@
         </div>
         <div class="wh-schedule-row">
           <div class="wh-schedule-time">10:30 a.m.</div>
-          <div class="wh-schedule-event">Meeting with Senate Finance leadership (Currency Stability Act)</div>
+          <div class="wh-schedule-event">Meeting with Congressional leadership on NAU Constitutional Consolidation</div>
         </div>
         <div class="wh-schedule-row">
           <div class="wh-schedule-time">1:00 p.m.</div>
@@ -210,14 +409,25 @@
 
     <div class="wh-widget">
       <div class="wh-widget-head">Washington House Facts</div>
-      <div class="wh-widget-body" style="font-size:12px; line-height:1.7;">
-        <div style="padding:5px 0; border-bottom:0.5px solid var(--border);"><strong>Built:</strong> 1816–1820</div>
-        <div style="padding:5px 0; border-bottom:0.5px solid var(--border);"><strong>Architect:</strong> Benjamin Henry Latrobe</div>
-        <div style="padding:5px 0; border-bottom:0.5px solid var(--border);"><strong>Rooms:</strong> 132 (14 open to public)</div>
-        <div style="padding:5px 0; border-bottom:0.5px solid var(--border);"><strong>Grounds:</strong> 18 acres, Ohio River frontage</div>
-        <div style="padding:5px 0;"><strong>Last renovation:</strong> East Wing, 2027</div>
+      <div class="wh-widget-body">
+        <div class="wh-fact-row"><span class="wh-fact-label">Built</span><span class="wh-fact-val">1821–1827</span></div>
+        <div class="wh-fact-row"><span class="wh-fact-label">Architects</span><span class="wh-fact-val">Kemp &amp; Ogden</span></div>
+        <div class="wh-fact-row"><span class="wh-fact-label">First Occupant</span><span class="wh-fact-val">Pres. Hamilton Jr., 1827</span></div>
+        <div class="wh-fact-row"><span class="wh-fact-label">Structure</span><span class="wh-fact-val">Four wings, central courtyard</span></div>
+        <div class="wh-fact-row"><span class="wh-fact-label">Location</span><span class="wh-fact-val">South bank, Ohio River</span></div>
+        <div class="wh-fact-row"><span class="wh-fact-label">Address</span><span class="wh-fact-val">1 President's Square, Franklin</span></div>
+        <div class="wh-fact-row"><span class="wh-fact-label">Public Rooms</span><span class="wh-fact-val">14 (State &amp; West Wings)</span></div>
       </div>
     </div>
+
+    <div class="wh-widget">
+      <div class="wh-widget-head">Getting Here</div>
+      <div class="wh-widget-body" style="font-size:12px;color:var(--text-secondary);line-height:1.7;">
+        <div style="margin-bottom:6px;"><strong style="color:var(--text-primary);">By Rail</strong><br>Franklin Central Station · Union Avenue southbound to President's Square</div>
+        <div><strong style="color:var(--text-primary);">On Foot</strong><br>South end of Union Avenue · President's Square fronts the North Wing</div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -232,6 +442,11 @@
 </div>
 
 <script src="../../router.js"></script>
-<script>initAddressBar('nan.washingtonhouse.gov.usa');</script>
+<script>
+  initAddressBar('nan.washingtonhouse.gov.usa');
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const d = new Date();
+  document.getElementById('wh-widget-date') && (document.getElementById('wh-widget-date').textContent = `${d.getDate()} ${MONTHS[d.getMonth()]}, ${d.getFullYear()}`);
+</script>
 </body>
 </html>
