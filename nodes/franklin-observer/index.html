@@ -6,6 +6,14 @@
 <title>The Franklin Observer</title>
 <link rel="stylesheet" href="../../shared.css">
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+  @font-face {
+    font-family: 'Chomsky';
+    src: url('https://cdn.jsdelivr.net/gh/ctrlcctrlv/chomsky@main/dist/Chomsky.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   .fo-header {
     border-bottom: 3px solid #1a1410;
     padding: 20px 24px 14px;
@@ -13,7 +21,13 @@
     background: var(--paper);
   }
   .fo-kicker { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 6px; font-weight: 600; }
-  .fo-nameplate { font-family: 'DM Serif Display', serif; font-size: 52px; letter-spacing: -0.02em; line-height: 1; color: var(--text-primary); }
+  .fo-nameplate {
+    font-family: 'Chomsky', 'DM Serif Display', serif;
+    font-size: 72px;
+    line-height: 1;
+    color: var(--text-primary);
+    letter-spacing: 0.01em;
+  }
   .fo-dateline { font-size: 11px; color: var(--text-tertiary); letter-spacing: 0.05em; border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); padding: 5px 0; margin-top: 10px; }
 
   .fo-nav { display: flex; justify-content: center; gap: 0; border-bottom: 0.5px solid var(--border); flex-wrap: wrap; }
@@ -71,7 +85,7 @@
   @media (max-width: 700px) {
     .fo-body { grid-template-columns: 1fr; }
     .fo-col-divider { display: none; }
-    .fo-nameplate { font-size: 36px; }
+    .fo-nameplate { font-size: 48px; }
   }
 </style>
 </head>
@@ -124,23 +138,20 @@
 <script>
 initAddressBar('nan.franklin-ob.pr.usa');
 
-// ── DATE ──
-const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MONTHS  = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAYS    = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const EDITIONS = ['Morning Edition','Midday Edition','Afternoon Edition','Final Edition'];
 
-const now      = new Date();
+const now       = new Date();
 const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
-const hour     = now.getHours();
-const edition  = hour < 10 ? EDITIONS[0] : hour < 13 ? EDITIONS[1] : hour < 17 ? EDITIONS[2] : EDITIONS[3];
-const dateStr  = `${DAYS[now.getDay()]}, ${now.getDate()} ${MONTHS[now.getMonth()]} ${now.getFullYear()}`;
+const hour      = now.getHours();
+const edition   = hour < 10 ? EDITIONS[0] : hour < 13 ? EDITIONS[1] : hour < 17 ? EDITIONS[2] : EDITIONS[3];
+const dateStr   = `${DAYS[now.getDay()]}, ${now.getDate()} ${MONTHS[now.getMonth()]} ${now.getFullYear()}`;
 
 document.getElementById('fo-dateline').innerHTML =
   `${dateStr} &nbsp;·&nbsp; ${edition} &nbsp;·&nbsp; link://nan.franklin-ob.pr.usa &nbsp;·&nbsp; Ȼ0.80`;
 
-// ── CONTENT POOLS ──
-
-// Lead stories (col 1) — rotate daily
+// ── LEADS (rotate daily) ──
 const LEADS = [
   {
     label: 'politics',
@@ -163,24 +174,24 @@ const LEADS = [
       'Congress passed the USRC Infrastructure Modernisation Act on Wednesday by a margin of 312 to 88, delivering one of the largest single investments in the Railway Company\'s history and drawing praise from across the political spectrum.',
       'The bill, backed by a broad coalition of SPA, Federalist, and Democrat members, directs Ȼ2.1 billion toward electrification upgrades on the Northeast and Prairie Corridors and the construction of three new Franklin Central platforms.',
       'President Nakamura is expected to sign the bill at a ceremony at Franklin Central Station next week. The USRC\'s Director called it "a generational investment in the backbone of this nation."',
-      'JCA members largely voted against the bill on fiscal grounds, though several from states with heavy rail usage crossed the aisle. The bill now heads to the President\'s desk.'
+      'JCA members largely voted against the bill on fiscal grounds, though several from states with heavy rail usage crossed the aisle.'
     ]
   },
   {
     label: 'national',
-    hed: 'Federal Parks Service Designates Silver Creek as New Federal Park',
+    hed: 'Congress Debates Designation of New Federal Park in Appalachia',
     byline: 'By Ruth Calloway, Environment Correspondent · Franklin',
-    dek: 'Executive Order signed at Washington House adds Oregon waterfall reserve to the FPS network, bringing total to 57 parks.',
+    dek: 'A bipartisan bill would add a second protected area in the Appalachian highlands, bringing the Federal Parks total to 58.',
     body: [
-      'President Nakamura signed Executive Order 2026-11 on Friday, designating Silver Creek in Oregon as the newest Federal Park and bringing the national total to 57 protected sites under the Federal Parks Service.',
-      'The designation, which had been under review since 2023, protects a remarkable concentration of waterfalls and old-growth forest in the Oregon lowlands. FPS Director Halverson called it "one of the most beautiful and underappreciated landscapes in the country."',
-      'The signing ceremony was held in the Washington House West Wing Reception Room, with a delegation from the Oregon state government in attendance.',
-      'Environmental groups praised the designation, while some local landowners expressed concern about access restrictions. The FPS said a public comment period on management plans would open next month.'
+      'A bipartisan group of lawmakers introduced legislation this week to designate a new Federal Park in the central Appalachian highlands, which if passed would bring the total number of Federal Parks to 58 and mark the first new designation since the FPS network was last expanded in 2021.',
+      'The proposed Allegheny Federal Park would protect over 200 square miles of ridgeline forest and river valley in the heart of the Appalachian range, an area that conservation groups have long identified as a priority for federal protection.',
+      'Federal Parks Service Director Halverson expressed strong support for the designation, calling the proposed site "one of the last significant unprotected wilderness areas in the eastern United States." The bill has backing from both SPA and Federalist members.',
+      'JCA members from the region have raised concerns about the economic impact on local timber and mining interests, and have signalled they will seek amendments before the bill reaches a floor vote.'
     ]
   }
 ];
 
-// National stories (col 2) — pool of 6, pick 3 daily
+// ── NATIONAL POOL (6 stories, show 3 daily) ──
 const ALL_NATIONAL = [
   {
     hed: 'NAU Assembly Advances Continental Currency Stabilisation Framework',
@@ -203,18 +214,18 @@ const ALL_NATIONAL = [
     meta: 'United Press · Franklin · 4 hours ago'
   },
   {
-    hed: 'FIS Director Appointed by Nakamura After Months-Long Vacancy',
+    hed: 'FIS Director Confirmed by Senate After Months-Long Vacancy',
     dek: 'The Federal Investigative Service will have new leadership for the first time in three years following the Senate\'s confirmation of the President\'s nominee.',
     meta: 'Observer Staff · 7 hours ago'
   },
   {
-    hed: 'University of the United States Marks 200th Year with Grand Celebrations',
-    dek: 'Founded in 1825, the UUS will hold a week of events in Franklin this spring to mark its bicentennial, drawing alumni from across the country.',
-    meta: 'Observer Arts & Culture · 11 hours ago'
+    hed: 'Department of Education Report: Urban-Rural Literacy Gap Narrows for Third Consecutive Year',
+    dek: 'The annual report shows measurable improvement in rural literacy rates across Prairie and Mountain states, though the gap with urban centres remains significant.',
+    meta: 'United Press · Franklin · 11 hours ago'
   }
 ];
 
-// World & Culture stories (col 3) — pool of 6, pick 3 daily
+// ── WORLD/CULTURE POOL (6 stories, show 3 daily) ──
 const ALL_WORLD = [
   {
     label: 'world',
@@ -224,8 +235,8 @@ const ALL_WORLD = [
   },
   {
     label: 'world',
-    hed: 'UER Parliament in Paris Debates Nordic Incorporation Framework',
-    dek: 'The Union of European Republics is considering extending its borders northward, with parliamentary factions divided on whether Scandinavian incorporation serves the Republic\'s strategic interests.',
+    hed: 'UER Premier Faces Parliamentary Challenge Over State Media Reforms',
+    dek: 'The governing coalition in Paris is under pressure from opposition factions as a contentious bill to restructure state broadcasting enters its second reading in the National Assembly.',
     meta: 'Observer World Desk · 7 hours ago'
   },
   {
@@ -236,8 +247,8 @@ const ALL_WORLD = [
   },
   {
     label: 'world',
-    hed: 'Russian Confederation Elections Draw International Observers',
-    dek: 'Voting is underway across the Confederation\'s twelve constituent republics, with results expected to consolidate the ruling coalition\'s grip on the Federal Assembly.',
+    hed: 'Russian Imperial Duma Deadlocked Over Modernisation Package as Tsar Urges Compromise',
+    dek: 'Tsar Nicholas IV has appealed directly to Duma factions to break a weeks-long impasse over an industrial modernisation bill, warning that delay risks Russian competitiveness with Western rivals.',
     meta: 'Observer World Desk · 10 hours ago'
   },
   {
@@ -248,27 +259,21 @@ const ALL_WORLD = [
   },
   {
     label: 'culture',
-    hed: 'Franklin Orchestra to Tour UER Cities This Summer',
-    dek: 'The National Orchestra\'s first European tour since 2019 will take in Paris, Lyon, Hamburg, and Vienna over six weeks beginning in June.',
+    hed: 'Franklin National Orchestra Announces European Tour — Paris, Lyon, Munich, and Hamburg Among Stops',
+    dek: 'The tour spans four countries: the UER (Paris, Lyon, Munich), the German Republic (Hamburg), the Kingdom of Austria (Vienna), and Britain (London). Performances begin in June.',
     meta: 'Observer Arts · 12 hours ago'
   }
 ];
 
 // ── PICK STORIES ──
 const lead = LEADS[dayOfYear % LEADS.length];
-
 const nat1 = ALL_NATIONAL[dayOfYear % ALL_NATIONAL.length];
 const nat2 = ALL_NATIONAL[(dayOfYear + 2) % ALL_NATIONAL.length];
 const nat3 = ALL_NATIONAL[(dayOfYear + 4) % ALL_NATIONAL.length];
+const w1   = ALL_WORLD[dayOfYear % ALL_WORLD.length];
+const w2   = ALL_WORLD[(dayOfYear + 2) % ALL_WORLD.length];
+const w3   = ALL_WORLD[(dayOfYear + 4) % ALL_WORLD.length];
 
-const w1 = ALL_WORLD[dayOfYear % ALL_WORLD.length];
-const w2 = ALL_WORLD[(dayOfYear + 2) % ALL_WORLD.length];
-const w3 = ALL_WORLD[(dayOfYear + 4) % ALL_WORLD.length];
-
-// Ensure world col has one world + one culture if possible
-const worldStories = [w1, w2, w3];
-
-// ── RENDER ──
 function storyHtml(s) {
   return `<div class="fo-story">
     <div class="fo-story-hed">${s.hed}</div>
@@ -277,15 +282,14 @@ function storyHtml(s) {
   </div>`;
 }
 
-// Determine world col label splits
 let col3Html = '';
 let lastLabel = '';
-worldStories.forEach(s => {
+[w1, w2, w3].forEach(s => {
   if (s.label !== lastLabel) {
-    const labelClass = s.label === 'world' ? 'world' : 'culture';
-    const labelText  = s.label === 'world' ? 'World' : 'Culture';
+    const cls  = s.label === 'world' ? 'world' : 'culture';
+    const text = s.label === 'world' ? 'World' : 'Culture';
     if (lastLabel !== '') col3Html += '<hr class="fo-section-divider">';
-    col3Html += `<div class="fo-col-label ${labelClass}">${labelText}</div>`;
+    col3Html += `<div class="fo-col-label ${cls}">${text}</div>`;
     lastLabel = s.label;
   }
   col3Html += storyHtml(s);
@@ -301,18 +305,14 @@ document.getElementById('fo-body').innerHTML = `
       ${lead.body.map(p => `<p>${p}</p>`).join('')}
     </div>
   </div>
-
   <div class="fo-col-divider"></div>
-
   <div class="fo-col">
     <div class="fo-col-label national">National</div>
     ${storyHtml(nat1)}
     ${storyHtml(nat2)}
     ${storyHtml(nat3)}
   </div>
-
   <div class="fo-col-divider"></div>
-
   <div class="fo-col">
     ${col3Html}
   </div>
