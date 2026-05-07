@@ -14,21 +14,45 @@
   }
   .fo-kicker { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 6px; font-weight: 600; }
   .fo-nameplate { font-family: 'DM Serif Display', serif; font-size: 52px; letter-spacing: -0.02em; line-height: 1; color: var(--text-primary); }
-  .fo-dateline { font-size: 11px; color: var(--text-tertiary); margin-top: 8px; letter-spacing: 0.05em; border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); padding: 5px 0; margin-top: 10px; }
-  .fo-nav { display: flex; justify-content: center; gap: 20px; padding: 10px 24px; border-bottom: 0.5px solid var(--border); flex-wrap: wrap; }
-  .fo-nav a { font-size: 12px; font-weight: 600; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; }
-  .fo-nav a:hover { color: var(--text-primary); }
+  .fo-dateline { font-size: 11px; color: var(--text-tertiary); letter-spacing: 0.05em; border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); padding: 5px 0; margin-top: 10px; }
+
+  .fo-nav { display: flex; justify-content: center; gap: 0; border-bottom: 0.5px solid var(--border); flex-wrap: wrap; }
+  .fo-nav a { font-size: 12px; font-weight: 600; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; padding: 10px 16px; border-right: 0.5px solid var(--border); transition: all 0.1s; }
+  .fo-nav a:hover { background: var(--bg-secondary); color: var(--text-primary); }
+  .fo-nav a.politics  { border-top: 3px solid #993C1D; }
+  .fo-nav a.world     { border-top: 3px solid #0F6E56; }
+  .fo-nav a.business  { border-top: 3px solid #185FA5; }
+  .fo-nav a.rail      { border-top: 3px solid #533AB7; }
+  .fo-nav a.culture   { border-top: 3px solid #993556; }
+  .fo-nav a.science   { border-top: 3px solid #2D5A1A; }
+  .fo-nav a.opinion   { border-top: 3px solid #8B6914; }
 
   .fo-body {
     display: grid;
     grid-template-columns: 1fr 0.5px 1fr 0.5px 1fr;
-    gap: 0;
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0;
   }
-  .fo-col { padding: 20px 20px; }
+  .fo-col { padding: 20px; }
   .fo-col-divider { background: var(--border); width: 0.5px; }
+
+  .fo-col-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 14px;
+    padding: 4px 8px;
+    display: inline-block;
+    border-radius: 3px;
+  }
+  .fo-col-label.politics  { background: #993C1D; }
+  .fo-col-label.world     { background: #0F6E56; }
+  .fo-col-label.business  { background: #185FA5; }
+  .fo-col-label.rail      { background: #533AB7; }
+  .fo-col-label.culture   { background: #993556; }
+  .fo-col-label.national  { background: #1a1410; }
 
   .fo-lead-hed { font-family: 'DM Serif Display', serif; font-size: 28px; line-height: 1.2; margin-bottom: 8px; color: var(--text-primary); }
   .fo-lead-dek { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 8px; }
@@ -37,12 +61,12 @@
   .fo-body-text p { margin-bottom: 10px; }
 
   .fo-story { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 0.5px solid var(--border); }
-  .fo-story:last-child { border-bottom: none; }
+  .fo-story:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
   .fo-story-hed { font-family: 'DM Serif Display', serif; font-size: 18px; line-height: 1.25; color: var(--text-primary); margin-bottom: 5px; }
   .fo-story-dek { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 5px; }
   .fo-story-meta { font-size: 10px; color: var(--text-tertiary); font-weight: 500; }
 
-  .fo-col-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 14px; padding-bottom: 6px; border-bottom: 1.5px solid var(--text-primary); }
+  .fo-section-divider { border: none; border-top: 0.5px solid var(--border); margin: 16px 0; }
 
   @media (max-width: 700px) {
     .fo-body { grid-template-columns: 1fr; }
@@ -57,7 +81,7 @@
   <a class="wm-topbar-logo" href="../../">Way<span>mark</span></a>
   <div class="wm-address-wrap" id="wm-address-wrap">
     <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
-    <button class="wm-go-btn" id="wm-go-btn" title="Navigate">→</button>
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
   </div>
   <div class="wm-lang-switcher">
     <button class="wm-lang-btn active">EN</button>
@@ -67,84 +91,27 @@
 </div>
 
 <div class="fo-header">
-  <div class="fo-kicker">Established 1821 · Franklin, District of Washington</div>
+  <div class="fo-kicker">Established 1843 · Franklin, District of Washington</div>
   <div class="fo-nameplate">The Franklin Observer</div>
-  <div class="fo-dateline">Friday, 14 March 2027 &nbsp;·&nbsp; Final Edition &nbsp;·&nbsp; link://nan.franklin-ob.pr.usa &nbsp;·&nbsp; Ȼ0.80</div>
+  <div class="fo-dateline" id="fo-dateline"></div>
 </div>
 
 <nav class="fo-nav">
-  <a href="#">Politics</a>
-  <a href="#">World</a>
-  <a href="#">Business</a>
-  <a href="#">Rail & Transport</a>
-  <a href="#">Culture</a>
-  <a href="#">Science</a>
-  <a href="#">Opinion</a>
+  <a href="#" class="politics">Politics</a>
+  <a href="#" class="world">World</a>
+  <a href="#" class="business">Business</a>
+  <a href="#" class="rail">Rail &amp; Transport</a>
+  <a href="#" class="culture">Culture</a>
+  <a href="#" class="science">Science</a>
+  <a href="#" class="opinion">Opinion</a>
 </nav>
 
-<div class="fo-body">
-  <!-- COL 1: Lead story -->
-  <div class="fo-col">
-    <div class="fo-col-label">Top Story</div>
-    <div class="fo-lead-hed">Nakamura Signals Compromise Path on Constitutional Convention</div>
-    <div class="fo-byline">By Eleanor Voss, Political Correspondent · Franklin</div>
-    <div class="fo-lead-dek">President says she will not block Assembly vote if quorum conditions are met, breaking weeks of silence on the referendum question.</div>
-    <div class="fo-body-text">
-      <p>President Sophia Nakamura signalled late Thursday that she would not use executive discretion to block an Assembly vote on convening a constitutional convention, provided that the measure meets the quorum threshold required under the 1861 Constitution.</p>
-      <p>The statement, delivered through her Communications Director in a brief evening address from the Washington House, represents the first substantive break from weeks of presidential silence on what has become the defining domestic question of her term.</p>
-      <p>Federalist and SPA floor leaders hailed the signal as clearing the way for a floor vote as early as next month. Democrat and JCA leadership were more cautious, with JCA whip Senator Malone of Georgia calling the statement "deliberately ambiguous."</p>
-      <p>The convention question — whether to open the NAU's foundational compact to revision for the first time since 1912 — has split the Assembly along lines that do not neatly follow party affiliation.</p>
-    </div>
-  </div>
-
-  <div class="fo-col-divider"></div>
-
-  <!-- COL 2: Secondary stories -->
-  <div class="fo-col">
-    <div class="fo-col-label">National</div>
-    <div class="fo-story">
-      <div class="fo-story-hed">Senate Finance Panel Advances Currency Stability Act</div>
-      <div class="fo-story-dek">The bill would peg Canadian and Texan exchange rates to the Continental for the first time, a significant step toward NAU monetary union.</div>
-      <div class="fo-story-meta">Assembly Tribune · 5 hours ago</div>
-    </div>
-    <div class="fo-story">
-      <div class="fo-story-hed">USRC Ohio Corridor Sets Ridership Record for Third Straight Quarter</div>
-      <div class="fo-story-dek">4.1 million passengers on the Franklin–Pittsburgh–Philadelphia mainline in Q1, the highest figure since the corridor's 1971 electrification.</div>
-      <div class="fo-story-meta">USRC Public Affairs · 6 hours ago</div>
-    </div>
-    <div class="fo-story">
-      <div class="fo-story-hed">Washington House Opens New East Wing to Public Visitors</div>
-      <div class="fo-story-dek">The renovation, the first major structural change since the Landon restoration of 1909, adds 14 rooms to the public tour circuit.</div>
-      <div class="fo-story-meta">Observer Staff · 9 hours ago</div>
-    </div>
-  </div>
-
-  <div class="fo-col-divider"></div>
-
-  <!-- COL 3: World & Culture -->
-  <div class="fo-col">
-    <div class="fo-col-label">World</div>
-    <div class="fo-story">
-      <div class="fo-story-hed">HuaWang Dismantling Enters Third Phase</div>
-      <div class="fo-story-dek">Interlink access now reaches 61% of Chinese households as the GPC's digital rights commission presses for faster progress.</div>
-      <div class="fo-story-meta">InterPress Wire · 4 hours ago</div>
-    </div>
-    <div class="fo-story">
-      <div class="fo-story-hed">UER Parliament Debates Northern Expansion Framework</div>
-      <div class="fo-story-dek">The proposed accession of three Scandinavian states to the Union of European Republics has reached a critical procedural juncture in Strasbourg.</div>
-      <div class="fo-story-meta">Observer World Desk · 7 hours ago</div>
-    </div>
-    <div class="fo-col-label" style="margin-top:20px;">Culture</div>
-    <div class="fo-story">
-      <div class="fo-story-hed">NAU–UER Co-Production Drama Set During Global War Confirmed for Autumn</div>
-      <div class="fo-story-dek">The six-part TC series will air simultaneously on the NANet and across UER member states — a first for open-network broadcasting.</div>
-      <div class="fo-story-meta">Observer Arts · 8 hours ago</div>
-    </div>
-  </div>
+<div class="fo-body" id="fo-body">
+  <!-- filled by JS -->
 </div>
 
 <div class="wm-footer">
-  <span>link://nan.franklin-ob.pr.usa &nbsp;·&nbsp; The Franklin Observer &nbsp;·&nbsp; Est. 1821 &nbsp;·&nbsp; Franklin, D.W.</span>
+  <span>link://nan.franklin-ob.pr.usa &nbsp;·&nbsp; The Franklin Observer &nbsp;·&nbsp; Est. 1843 &nbsp;·&nbsp; Franklin, D.W.</span>
   <div class="wm-footer-links">
     <a href="#">About</a>
     <a href="#">Subscribe</a>
@@ -154,6 +121,202 @@
 </div>
 
 <script src="../../router.js"></script>
-<script>initAddressBar('nan.franklin-ob.pr.usa');</script>
+<script>
+initAddressBar('nan.franklin-ob.pr.usa');
+
+// ── DATE ──
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const EDITIONS = ['Morning Edition','Midday Edition','Afternoon Edition','Final Edition'];
+
+const now      = new Date();
+const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+const hour     = now.getHours();
+const edition  = hour < 10 ? EDITIONS[0] : hour < 13 ? EDITIONS[1] : hour < 17 ? EDITIONS[2] : EDITIONS[3];
+const dateStr  = `${DAYS[now.getDay()]}, ${now.getDate()} ${MONTHS[now.getMonth()]} ${now.getFullYear()}`;
+
+document.getElementById('fo-dateline').innerHTML =
+  `${dateStr} &nbsp;·&nbsp; ${edition} &nbsp;·&nbsp; link://nan.franklin-ob.pr.usa &nbsp;·&nbsp; Ȼ0.80`;
+
+// ── CONTENT POOLS ──
+
+// Lead stories (col 1) — rotate daily
+const LEADS = [
+  {
+    label: 'politics',
+    hed: 'Nakamura Signals Compromise Path on NAU Constitutional Consolidation',
+    byline: 'By Eleanor Voss, Political Correspondent · Franklin',
+    dek: 'US President says she will not oppose a full Assembly vote on the consolidation project, ending weeks of ambiguity over the American position.',
+    body: [
+      'President Sophia Nakamura signalled late Thursday that she would not oppose an NAU Assembly vote on the Constitutional Consolidation Act, a sweeping proposal to bring together more than eighty years of ad-hoc treaties, founding compacts, and institutional arrangements into a single governing document.',
+      'The statement, delivered through her Communications Director from Washington House, represents the first substantive break from weeks of presidential silence on the question. The consolidation effort has been the defining issue of the 18th Assembly session.',
+      'SPA and Federalist leaders in Congress welcomed Nakamura\'s position, while JCA floor leader Representative Aldridge of Tennessee called it "overreach into a continental matter that is not the President\'s to decide." Democrats were more measured.',
+      'In Calumet, NAU Assembly Unionist and Labour bloc leaders said the statement removed the last major obstacle to scheduling a floor vote. CC bloc leader Whitfield of Texas said his group remained firmly opposed to any document that, in his words, "writes a constitution for a country that does not exist."'
+    ]
+  },
+  {
+    label: 'politics',
+    hed: 'Congress Passes USRC Modernisation Funding Bill by Wide Margin',
+    byline: 'By Marcus Hendry, Capitol Correspondent · Franklin',
+    dek: 'Bipartisan majority approves Ȼ2.1 billion for Northeast and Prairie Corridor upgrades over the next six years.',
+    body: [
+      'Congress passed the USRC Infrastructure Modernisation Act on Wednesday by a margin of 312 to 88, delivering one of the largest single investments in the Railway Company\'s history and drawing praise from across the political spectrum.',
+      'The bill, backed by a broad coalition of SPA, Federalist, and Democrat members, directs Ȼ2.1 billion toward electrification upgrades on the Northeast and Prairie Corridors and the construction of three new Franklin Central platforms.',
+      'President Nakamura is expected to sign the bill at a ceremony at Franklin Central Station next week. The USRC\'s Director called it "a generational investment in the backbone of this nation."',
+      'JCA members largely voted against the bill on fiscal grounds, though several from states with heavy rail usage crossed the aisle. The bill now heads to the President\'s desk.'
+    ]
+  },
+  {
+    label: 'national',
+    hed: 'Federal Parks Service Designates Silver Creek as New Federal Park',
+    byline: 'By Ruth Calloway, Environment Correspondent · Franklin',
+    dek: 'Executive Order signed at Washington House adds Oregon waterfall reserve to the FPS network, bringing total to 57 parks.',
+    body: [
+      'President Nakamura signed Executive Order 2026-11 on Friday, designating Silver Creek in Oregon as the newest Federal Park and bringing the national total to 57 protected sites under the Federal Parks Service.',
+      'The designation, which had been under review since 2023, protects a remarkable concentration of waterfalls and old-growth forest in the Oregon lowlands. FPS Director Halverson called it "one of the most beautiful and underappreciated landscapes in the country."',
+      'The signing ceremony was held in the Washington House West Wing Reception Room, with a delegation from the Oregon state government in attendance.',
+      'Environmental groups praised the designation, while some local landowners expressed concern about access restrictions. The FPS said a public comment period on management plans would open next month.'
+    ]
+  }
+];
+
+// National stories (col 2) — pool of 6, pick 3 daily
+const ALL_NATIONAL = [
+  {
+    hed: 'NAU Assembly Advances Continental Currency Stabilisation Framework',
+    dek: 'The NAU/18-042 bill, backed by a Labour-Unionist majority, moves to a full Assembly floor vote after clearing the Economic Affairs Committee.',
+    meta: 'United Press · Calumet · 5 hours ago'
+  },
+  {
+    hed: 'USRC Northeast Corridor Sets New Q1 Ridership Record',
+    dek: '4.1 million passengers on the Franklin–Pittsburgh–Philadelphia mainline, the highest quarterly figure in the corridor\'s history.',
+    meta: 'Observer Staff · 6 hours ago'
+  },
+  {
+    hed: 'Washington House West Wing Reopens After Two-Year Restoration',
+    dek: 'The public and diplomatic wing, closed since 2024 for its most comprehensive renovation since the full structural restoration of 1957–1961, reopened to visitors this week.',
+    meta: 'Observer Staff · 9 hours ago'
+  },
+  {
+    hed: 'Congress Debates Federal Arbitration Bureau Reauthorisation',
+    dek: 'A coalition of SPA and Federalist members is pushing for expanded powers for the Bureau, while JCA members argue the agency has overstepped its mandate.',
+    meta: 'United Press · Franklin · 4 hours ago'
+  },
+  {
+    hed: 'FIS Director Appointed by Nakamura After Months-Long Vacancy',
+    dek: 'The Federal Investigative Service will have new leadership for the first time in three years following the Senate\'s confirmation of the President\'s nominee.',
+    meta: 'Observer Staff · 7 hours ago'
+  },
+  {
+    hed: 'University of the United States Marks 200th Year with Grand Celebrations',
+    dek: 'Founded in 1825, the UUS will hold a week of events in Franklin this spring to mark its bicentennial, drawing alumni from across the country.',
+    meta: 'Observer Arts & Culture · 11 hours ago'
+  }
+];
+
+// World & Culture stories (col 3) — pool of 6, pick 3 daily
+const ALL_WORLD = [
+  {
+    label: 'world',
+    hed: 'China Opens HuaWang to Broader Interlink Access',
+    dek: 'Post-2019 reform commitments continue as access restrictions are lifted for 61% of Chinese households. The GPC\'s digital rights commission warns progress remains uneven.',
+    meta: 'United Press · 4 hours ago'
+  },
+  {
+    label: 'world',
+    hed: 'UER Parliament in Paris Debates Nordic Incorporation Framework',
+    dek: 'The Union of European Republics is considering extending its borders northward, with parliamentary factions divided on whether Scandinavian incorporation serves the Republic\'s strategic interests.',
+    meta: 'Observer World Desk · 7 hours ago'
+  },
+  {
+    label: 'world',
+    hed: 'Britain and NAU Sign Five-Year Trade Renewal Agreement',
+    dek: 'The agreement, signed in London, locks in preferential tariff arrangements across key manufacturing and agricultural sectors for both parties.',
+    meta: 'United Press · London · 6 hours ago'
+  },
+  {
+    label: 'world',
+    hed: 'Russian Confederation Elections Draw International Observers',
+    dek: 'Voting is underway across the Confederation\'s twelve constituent republics, with results expected to consolidate the ruling coalition\'s grip on the Federal Assembly.',
+    meta: 'Observer World Desk · 10 hours ago'
+  },
+  {
+    label: 'culture',
+    hed: 'NAU–UER Co-Production TC Drama Set During Global War Confirmed for Autumn',
+    dek: 'The six-part series will broadcast simultaneously across NANet and UER member channels — a first for open-network international co-production.',
+    meta: 'Observer Arts · 8 hours ago'
+  },
+  {
+    label: 'culture',
+    hed: 'Franklin Orchestra to Tour UER Cities This Summer',
+    dek: 'The National Orchestra\'s first European tour since 2019 will take in Paris, Lyon, Hamburg, and Vienna over six weeks beginning in June.',
+    meta: 'Observer Arts · 12 hours ago'
+  }
+];
+
+// ── PICK STORIES ──
+const lead = LEADS[dayOfYear % LEADS.length];
+
+const nat1 = ALL_NATIONAL[dayOfYear % ALL_NATIONAL.length];
+const nat2 = ALL_NATIONAL[(dayOfYear + 2) % ALL_NATIONAL.length];
+const nat3 = ALL_NATIONAL[(dayOfYear + 4) % ALL_NATIONAL.length];
+
+const w1 = ALL_WORLD[dayOfYear % ALL_WORLD.length];
+const w2 = ALL_WORLD[(dayOfYear + 2) % ALL_WORLD.length];
+const w3 = ALL_WORLD[(dayOfYear + 4) % ALL_WORLD.length];
+
+// Ensure world col has one world + one culture if possible
+const worldStories = [w1, w2, w3];
+
+// ── RENDER ──
+function storyHtml(s) {
+  return `<div class="fo-story">
+    <div class="fo-story-hed">${s.hed}</div>
+    <div class="fo-story-dek">${s.dek}</div>
+    <div class="fo-story-meta">${s.meta}</div>
+  </div>`;
+}
+
+// Determine world col label splits
+let col3Html = '';
+let lastLabel = '';
+worldStories.forEach(s => {
+  if (s.label !== lastLabel) {
+    const labelClass = s.label === 'world' ? 'world' : 'culture';
+    const labelText  = s.label === 'world' ? 'World' : 'Culture';
+    if (lastLabel !== '') col3Html += '<hr class="fo-section-divider">';
+    col3Html += `<div class="fo-col-label ${labelClass}">${labelText}</div>`;
+    lastLabel = s.label;
+  }
+  col3Html += storyHtml(s);
+});
+
+document.getElementById('fo-body').innerHTML = `
+  <div class="fo-col">
+    <div class="fo-col-label ${lead.label}">Top Story</div>
+    <div class="fo-lead-hed">${lead.hed}</div>
+    <div class="fo-byline">${lead.byline}</div>
+    <div class="fo-lead-dek">${lead.dek}</div>
+    <div class="fo-body-text">
+      ${lead.body.map(p => `<p>${p}</p>`).join('')}
+    </div>
+  </div>
+
+  <div class="fo-col-divider"></div>
+
+  <div class="fo-col">
+    <div class="fo-col-label national">National</div>
+    ${storyHtml(nat1)}
+    ${storyHtml(nat2)}
+    ${storyHtml(nat3)}
+  </div>
+
+  <div class="fo-col-divider"></div>
+
+  <div class="fo-col">
+    ${col3Html}
+  </div>
+`;
+</script>
 </body>
 </html>
