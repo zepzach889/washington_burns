@@ -17,10 +17,22 @@ for (const [addr, path] of Object.entries(ROUTES)) {
   PATH_TO_ADDRESS[path] = addr;
 }
 
+// Auto-detect base path for GitHub Pages subdirectory deployments
+// e.g. https://user.github.io/washington_burns/ → base = '/washington_burns'
+function getBase() {
+  if (window.WM_BASE !== undefined) return window.WM_BASE;
+  const parts = window.location.pathname.split('/');
+  // If deployed at a subdirectory (GitHub Pages project site), first segment is the repo name
+  if (parts.length > 1 && parts[1] !== '') {
+    return '/' + parts[1];
+  }
+  return '';
+}
+
 function navigate(rawInput) {
   let input = rawInput.trim().replace(/^link:\/\//, '').replace(/\/$/, '');
   if (ROUTES[input]) {
-    const base = window.WM_BASE || '';
+    const base = getBase();
     window.location.href = base + ROUTES[input];
     return;
   }
