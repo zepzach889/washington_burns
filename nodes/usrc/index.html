@@ -3,74 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USRC — United States Railway Commission</title>
+<title>USRC — United States Railway Company</title>
 <link rel="stylesheet" href="../../shared.css">
 <style>
-  :root { --usrc-blue: #003A70; --usrc-gold: #C8962A; }
+  :root { --usrc-red: #B8001E; --usrc-dark: #1a1a1a; }
 
   .usrc-header {
-    background: var(--usrc-blue);
+    background: var(--usrc-dark);
     color: #fff;
-    padding: 16px 24px;
+    padding: 14px 24px;
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 16px;
+    border-bottom: 4px solid var(--usrc-red);
   }
-  .usrc-seal { font-size: 32px; line-height: 1; }
+  .usrc-seal { font-size: 30px; }
   .usrc-brand-name { font-family: 'DM Serif Display', serif; font-size: 22px; letter-spacing: -0.01em; line-height: 1.1; }
-  .usrc-brand-sub { font-size: 11px; color: rgba(255,255,255,0.65); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+  .usrc-brand-sub { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
 
-  .usrc-nav { background: #002454; display: flex; gap: 0; overflow-x: auto; }
-  .usrc-nav a { font-size: 12px; color: rgba(255,255,255,0.75); text-decoration: none; padding: 10px 18px; font-weight: 500; white-space: nowrap; border-right: 0.5px solid rgba(255,255,255,0.1); transition: background 0.1s, color 0.1s; }
-  .usrc-nav a:hover { background: rgba(255,255,255,0.08); color: #fff; }
-  .usrc-nav a.active { background: var(--usrc-gold); color: #fff; }
+  .usrc-nav { background: #111; display: flex; overflow-x: auto; }
+  .usrc-nav a { font-size: 12px; color: rgba(255,255,255,0.65); text-decoration: none; padding: 10px 18px; font-weight: 500; white-space: nowrap; border-right: 0.5px solid rgba(255,255,255,0.08); transition: all 0.1s; }
+  .usrc-nav a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+  .usrc-nav a.active { color: #fff; border-bottom: 2px solid var(--usrc-red); }
 
   .usrc-body { max-width: 1000px; margin: 0 auto; padding: 24px; }
 
-  .usrc-status-banner {
-    background: #E8F5E9;
-    border: 1px solid #C8E6C9;
-    border-left: 4px solid var(--green);
-    border-radius: 6px;
-    padding: 12px 16px;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  /* CLOCK */
+  .usrc-clock-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 8px; }
+  .usrc-clock { font-family: monospace; font-size: 22px; font-weight: 700; color: var(--usrc-dark); letter-spacing: 0.05em; }
+  .usrc-clock-label { font-size: 10px; color: var(--text-tertiary); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+  .usrc-date-display { font-size: 12px; color: var(--text-secondary); }
+
+  /* NETWORK STATUS */
+  .usrc-network-head { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 10px; }
+  .usrc-corridor-status-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 28px; }
+  .usrc-cs-card { background: #fff; border: 0.5px solid var(--border); border-radius: 8px; padding: 10px 12px; border-top: 3px solid #ccc; }
+  .usrc-cs-card.status-ok     { border-top-color: #3B6D11; }
+  .usrc-cs-card.status-minor  { border-top-color: #B8860B; }
+  .usrc-cs-card.status-major  { border-top-color: var(--usrc-red); }
+  .usrc-cs-name { font-size: 11px; font-weight: 700; color: var(--text-primary); margin-bottom: 3px; }
+  .usrc-cs-badge { font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; border-radius: 3px; display: inline-block; }
+  .usrc-cs-badge.ok    { background: #E8F5E9; color: #3B6D11; }
+  .usrc-cs-badge.minor { background: #FFF8E1; color: #B8860B; }
+  .usrc-cs-badge.major { background: #FDECEA; color: var(--usrc-red); }
+
+  /* DEPARTURES */
+  .usrc-dept-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; }
+  .usrc-dept-title { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); }
+  .usrc-dept-sub { font-size: 11px; color: var(--text-tertiary); }
+
+  .usrc-corridor-block { margin-bottom: 24px; }
+  .usrc-corridor-label { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 2px solid var(--usrc-dark); }
+  .usrc-corridor-name { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--usrc-dark); }
+  .usrc-corridor-badge { font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; border-radius: 3px; }
+  .usrc-corridor-badge.ok    { background: #E8F5E9; color: #3B6D11; }
+  .usrc-corridor-badge.minor { background: #FFF8E1; color: #B8860B; }
+  .usrc-corridor-badge.major { background: #FDECEA; color: var(--usrc-red); }
+
+  .usrc-train-table { width: 100%; border-collapse: collapse; }
+  .usrc-train-table th { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); padding: 4px 8px; text-align: left; border-bottom: 0.5px solid var(--border); }
+  .usrc-train-table td { font-size: 12px; padding: 8px 8px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
+  .usrc-train-table tr:last-child td { border-bottom: none; }
+  .usrc-train-num { font-weight: 700; color: var(--usrc-red); font-family: monospace; }
+  .usrc-train-dest { color: var(--text-primary); font-weight: 500; }
+  .usrc-train-time { font-weight: 700; color: var(--usrc-dark); font-family: monospace; font-size: 13px; }
+  .usrc-badge { font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 3px; white-space: nowrap; }
+  .usrc-badge.on-time  { background: #E8F5E9; color: #3B6D11; }
+  .usrc-badge.delayed-minor { background: #FFF8E1; color: #B8860B; }
+  .usrc-badge.delayed-major { background: #FDECEA; color: var(--usrc-red); }
+  .usrc-badge.arrived  { background: var(--bg-secondary); color: var(--text-tertiary); }
+  .usrc-delay-reason { font-size: 10px; color: var(--text-tertiary); margin-top: 2px; }
+
+  .usrc-no-trains { font-size: 12px; color: var(--text-tertiary); font-style: italic; padding: 10px 0; }
+
+  @media (max-width: 700px) {
+    .usrc-corridor-status-grid { grid-template-columns: 1fr 1fr; }
   }
-  .usrc-status-icon { font-size: 18px; }
-  .usrc-status-text { font-size: 13px; font-weight: 600; color: var(--green); }
-  .usrc-status-sub { font-size: 11px; color: #555; margin-top: 1px; }
-
-  .usrc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-
-  .usrc-corridor { background: #fff; border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; }
-  .usrc-corridor-head { background: var(--usrc-blue); color: #fff; padding: 10px 14px; font-size: 12px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
-  .usrc-corridor-status { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-  .usrc-corridor-status.on-time { color: #90EE90; }
-  .usrc-corridor-status.delayed { color: #FFD700; }
-  .usrc-corridor-body { padding: 12px 14px; }
-
-  .usrc-train-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 0.5px solid var(--border); font-size: 12px; }
-  .usrc-train-row:last-child { border-bottom: none; }
-  .usrc-train-num { font-weight: 700; color: var(--usrc-blue); min-width: 52px; }
-  .usrc-train-dest { color: var(--text-secondary); flex: 1; }
-  .usrc-train-time { font-weight: 600; color: var(--text-primary); }
-  .usrc-train-badge { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; margin-left: 6px; }
-  .usrc-train-badge.on-time { background: #E8F5E9; color: var(--green); }
-  .usrc-train-badge.delayed { background: #FFF8E1; color: #B8860B; }
-  .usrc-train-badge.arrived { background: var(--bg-secondary); color: var(--text-tertiary); }
-
-  .usrc-aside { background: #fff; border: 0.5px solid var(--border); border-radius: 8px; padding: 14px; }
-  .usrc-aside-head { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 10px; padding-bottom: 8px; border-bottom: 0.5px solid var(--border); }
-  .usrc-stat-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 12px; border-bottom: 0.5px solid var(--border); }
-  .usrc-stat-row:last-child { border-bottom: none; }
-  .usrc-stat-label { color: var(--text-secondary); }
-  .usrc-stat-val { font-weight: 600; color: var(--text-primary); }
-
-  .usrc-record-note { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 6px 6px 0; padding: 10px 14px; margin-top: 16px; font-size: 12px; color: var(--blue-dark); line-height: 1.5; }
-
-  @media (max-width: 680px) { .usrc-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 480px) {
+    .usrc-corridor-status-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -91,13 +102,13 @@
 <div class="usrc-header">
   <div class="usrc-seal">🚂</div>
   <div>
-    <div class="usrc-brand-name">United States Railway Commission</div>
-    <div class="usrc-brand-sub">Serving the Nation Since 1832 · link://nan.usrc.gov.usa</div>
+    <div class="usrc-brand-name">United States Railway Company</div>
+    <div class="usrc-brand-sub">Serving the Nation Since 1834 · link://nan.usrc.gov.usa</div>
   </div>
 </div>
 
 <nav class="usrc-nav">
-  <a href="#" class="active">Arrivals & Departures</a>
+  <a href="#" class="active">Network Status</a>
   <a href="#">Journey Planner</a>
   <a href="#">Timetables</a>
   <a href="#">Fares & Passes</a>
@@ -108,130 +119,32 @@
 
 <div class="usrc-body">
 
-  <div class="usrc-status-banner">
-    <div class="usrc-status-icon">✓</div>
+  <div class="usrc-clock-bar">
     <div>
-      <div class="usrc-status-text">All Major Corridors Operating Normally</div>
-      <div class="usrc-status-sub">Last updated: Friday, 14 March 2027 · 11:42 a.m. Franklin Time</div>
+      <div class="usrc-clock" id="usrc-clock">--:--:--</div>
+      <div class="usrc-clock-label">Local Time</div>
     </div>
+    <div class="usrc-date-display" id="usrc-date"></div>
   </div>
 
-  <div class="wm-section-label">Franklin Central — Live Departures</div>
-
-  <div class="usrc-grid">
-    <div class="usrc-corridor">
-      <div class="usrc-corridor-head">
-        <span>Ohio Corridor (East)</span>
-        <span class="usrc-corridor-status on-time">● On Time</span>
-      </div>
-      <div class="usrc-corridor-body">
-        <div class="usrc-train-row">
-          <span class="usrc-train-num">No. 14</span>
-          <span class="usrc-train-dest">Pittsburgh · Philadelphia</span>
-          <span class="usrc-train-time">12:05</span>
-          <span class="usrc-train-badge on-time">On Time</span>
-        </div>
-        <div class="usrc-train-row">
-          <span class="usrc-train-num">No. 22</span>
-          <span class="usrc-train-dest">Pittsburgh · Exp.</span>
-          <span class="usrc-train-time">13:30</span>
-          <span class="usrc-train-badge on-time">On Time</span>
-        </div>
-        <div class="usrc-train-row">
-          <span class="usrc-train-num">No. 6</span>
-          <span class="usrc-train-dest">Columbus · Cleveland</span>
-          <span class="usrc-train-time">14:15</span>
-          <span class="usrc-train-badge on-time">On Time</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="usrc-corridor">
-      <div class="usrc-corridor-head">
-        <span>Ohio Corridor (West)</span>
-        <span class="usrc-corridor-status on-time">● On Time</span>
-      </div>
-      <div class="usrc-corridor-body">
-        <div class="usrc-train-row">
-          <span class="usrc-train-num">No. 31</span>
-          <span class="usrc-train-dest">Indianapolis · St. Louis</span>
-          <span class="usrc-train-time">12:20</span>
-          <span class="usrc-train-badge on-time">On Time</span>
-        </div>
-        <div class="usrc-train-row">
-          <span class="usrc-train-num">No. 9</span>
-          <span class="usrc-train-dest">Louisville · Nashville</span>
-          <span class="usrc-train-time">13:00</span>
-          <span class="usrc-train-badge delayed">+18 min</span>
-        </div>
-        <div class="usrc-train-row">
-          <span class="usrc-train-num">No. 47</span>
-          <span class="usrc-train-dest">Chicago Exp.</span>
-          <span class="usrc-train-time">15:45</span>
-          <span class="usrc-train-badge on-time">On Time</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="usrc-corridor">
-      <div class="usrc-corridor-head">
-        <span>Southern Corridor</span>
-        <span class="usrc-corridor-status on-time">● On Time</span>
-      </div>
-      <div class="usrc-corridor-body">
-        <div class="usrc-train-row">
-          <span class="usrc-train-num">No. 55</span>
-          <span class="usrc-train-dest">Atlanta · Savannah</span>
-          <span class="usrc-train-time">12:50</span>
-          <span class="usrc-train-badge on-time">On Time</span>
-        </div>
-        <div class="usrc-train-row">
-          <span class="usrc-train-num">No. 18</span>
-          <span class="usrc-train-dest">Memphis · New Orleans</span>
-          <span class="usrc-train-time">14:00</span>
-          <span class="usrc-train-badge on-time">On Time</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="usrc-corridor">
-      <div class="usrc-corridor-head">
-        <span>Great Lakes Corridor</span>
-        <span class="usrc-corridor-status delayed">● Minor Delays</span>
-      </div>
-      <div class="usrc-corridor-body">
-        <div class="usrc-train-row">
-          <span class="usrc-train-num">No. 3</span>
-          <span class="usrc-train-dest">Toledo · Detroit · Windsor</span>
-          <span class="usrc-train-time">12:10</span>
-          <span class="usrc-train-badge delayed">+12 min</span>
-        </div>
-        <div class="usrc-train-row">
-          <span class="usrc-train-num">No. 71</span>
-          <span class="usrc-train-dest">Buffalo · Toronto</span>
-          <span class="usrc-train-time">13:55</span>
-          <span class="usrc-train-badge on-time">On Time</span>
-        </div>
-      </div>
-    </div>
+  <div class="usrc-network-head">Network Status Overview</div>
+  <div class="usrc-corridor-status-grid" id="usrc-network-overview">
+    <!-- filled by JS -->
   </div>
 
-  <div class="usrc-aside">
-    <div class="usrc-aside-head">Ohio Corridor — Q1 2027 Statistics</div>
-    <div class="usrc-stat-row"><span class="usrc-stat-label">Total Q1 Passengers</span><span class="usrc-stat-val">4,100,412</span></div>
-    <div class="usrc-stat-row"><span class="usrc-stat-label">On-Time Performance</span><span class="usrc-stat-val">94.2%</span></div>
-    <div class="usrc-stat-row"><span class="usrc-stat-label">Daily Departures (Franklin Central)</span><span class="usrc-stat-val">142</span></div>
-    <div class="usrc-stat-row"><span class="usrc-stat-label">Network Route Miles</span><span class="usrc-stat-val">48,300</span></div>
-    <div class="usrc-stat-row"><span class="usrc-stat-label">Est. 2027 Annual Passengers</span><span class="usrc-stat-val">16.4 million</span></div>
-    <div class="usrc-record-note">
-      ★ Q1 2027 marks the third consecutive record quarter on the Ohio Corridor — the highest ridership since the corridor's electrification in 1971.
-    </div>
+  <div class="usrc-dept-head">
+    <div class="usrc-dept-title">Franklin Central — Upcoming Departures</div>
+    <div class="usrc-dept-sub">Next services from all corridors</div>
+  </div>
+
+  <div id="usrc-boards">
+    <!-- filled by JS -->
   </div>
 
 </div>
 
 <div class="wm-footer">
-  <span>link://nan.usrc.gov.usa &nbsp;·&nbsp; United States Railway Commission &nbsp;·&nbsp; A Federal Agency of the NAU</span>
+  <span>link://nan.usrc.gov.usa &nbsp;·&nbsp; United States Railway Company &nbsp;·&nbsp; A Federal Enterprise of the NAU</span>
   <div class="wm-footer-links">
     <a href="#">Accessibility</a>
     <a href="#">Privacy</a>
@@ -241,6 +154,234 @@
 </div>
 
 <script src="../../router.js"></script>
-<script>initAddressBar('nan.usrc.gov.usa');</script>
+<script>
+initAddressBar('nan.usrc.gov.usa');
+
+// ── DATE & CLOCK ──
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+function updateClock() {
+  const now = new Date();
+  const hh  = String(now.getHours()).padStart(2,'0');
+  const mm  = String(now.getMinutes()).padStart(2,'0');
+  const ss  = String(now.getSeconds()).padStart(2,'0');
+  document.getElementById('usrc-clock').textContent = `${hh}:${mm}:${ss}`;
+  document.getElementById('usrc-date').textContent  =
+    `${DAYS[now.getDay()]}, ${now.getDate()} ${MONTHS[now.getMonth()]} ${now.getFullYear()}`;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// ── TIMETABLE DATA ──
+// Times as [hour, minute]
+const CORRIDORS = [
+  {
+    id: 'northeast',
+    name: 'Northeast Corridor',
+    trains: [
+      { num: 'NE-4',  dest: 'Pittsburgh · Philadelphia · New York',   dep: [6,10] },
+      { num: 'NE-8',  dest: 'Pittsburgh · Philadelphia',               dep: [8,30] },
+      { num: 'NE-12', dest: 'Pittsburgh · Philadelphia · New York · Boston', dep: [10,15] },
+      { num: 'NE-16', dest: 'Pittsburgh Exp.',                         dep: [12,45] },
+      { num: 'NE-20', dest: 'Pittsburgh · Philadelphia · New York',   dep: [14,00] },
+      { num: 'NE-24', dest: 'Pittsburgh · Philadelphia',               dep: [16,30] },
+      { num: 'NE-28', dest: 'Pittsburgh · Philadelphia · New York',   dep: [18,55] },
+      { num: 'NE-32', dest: 'Pittsburgh Exp.',                         dep: [21,10] },
+    ]
+  },
+  {
+    id: 'calumet',
+    name: 'Calumet Corridor',
+    trains: [
+      { num: 'CA-3',  dest: 'Columbus · Indianapolis · Calumet',       dep: [6,45] },
+      { num: 'CA-7',  dest: 'Indianapolis · Calumet · Milwaukee',      dep: [9,00] },
+      { num: 'CA-11', dest: 'Indianapolis Exp.',                        dep: [11,30] },
+      { num: 'CA-15', dest: 'Columbus · Indianapolis · Calumet · Minneapolis', dep: [13,20] },
+      { num: 'CA-19', dest: 'Indianapolis · Calumet',                  dep: [15,50] },
+      { num: 'CA-23', dest: 'Columbus · Indianapolis · Calumet',       dep: [18,10] },
+      { num: 'CA-27', dest: 'Indianapolis Exp.',                        dep: [20,40] },
+    ]
+  },
+  {
+    id: 'southern',
+    name: 'Southern Corridor',
+    trains: [
+      { num: 'SO-2',  dest: 'Lexington · Nashville · Atlanta',         dep: [7,15] },
+      { num: 'SO-6',  dest: 'Lexington · Nashville',                   dep: [9,40] },
+      { num: 'SO-10', dest: 'Lexington · Nashville · Atlanta · Savannah', dep: [11,55] },
+      { num: 'SO-14', dest: 'Lexington · Nashville · Memphis',         dep: [14,25] },
+      { num: 'SO-18', dest: 'Nashville · Atlanta Exp.',                dep: [16,00] },
+      { num: 'SO-22', dest: 'Lexington · Nashville · Atlanta',         dep: [19,30] },
+      { num: 'SO-26', dest: 'Nashville Exp.',                          dep: [22,05] },
+    ]
+  },
+  {
+    id: 'prairie',
+    name: 'Prairie Corridor',
+    trains: [
+      { num: 'PR-1',  dest: 'St. Louis · Ft. Calhoun · Hugosville',   dep: [7,00] },
+      { num: 'PR-5',  dest: 'St. Louis Exp.',                          dep: [10,20] },
+      { num: 'PR-9',  dest: 'St. Louis · Ft. Calhoun',                dep: [13,10] },
+      { num: 'PR-13', dest: 'St. Louis · Ft. Calhoun · Hugosville',   dep: [15,35] },
+      { num: 'PR-17', dest: 'St. Louis Exp.',                          dep: [18,45] },
+      { num: 'PR-21', dest: 'St. Louis · Ft. Calhoun · Hugosville',   dep: [21,50] },
+    ]
+  },
+  {
+    id: 'mountain',
+    name: 'Mountain Corridor',
+    trains: [
+      { num: 'MT-2',  dest: 'Hugosville · Salt Lake · Portland (Oregon)', dep: [8,00] },
+      { num: 'MT-6',  dest: 'Hugosville · Salt Lake · Clark · Olympia (Washingtonia)', dep: [11,00] },
+      { num: 'MT-10', dest: 'Hugosville · Salt Lake',                  dep: [14,30] },
+      { num: 'MT-14', dest: 'Hugosville · Salt Lake · Portland (Oregon)', dep: [17,45] },
+      { num: 'MT-18', dest: 'Hugosville Exp.',                         dep: [20,15] },
+    ]
+  },
+];
+
+const DELAY_REASONS = [
+  'Track maintenance', 'Weather conditions', 'Operational delay',
+  'Signal fault', 'Infrastructure inspection', 'Crew availability',
+  'Freight clearance', 'Scheduled works overrun'
+];
+
+// ── DELAY ENGINE ──
+// 1 in 8 chance per train; short/medium/long weighted
+function generateDelay() {
+  if (Math.random() > 1/8) return null;
+  const roll = Math.random();
+  let minutes;
+  if (roll < 0.55)      minutes = 5  + Math.floor(Math.random() * 11); // 5–15 minor
+  else if (roll < 0.85) minutes = 16 + Math.floor(Math.random() * 30); // 16–45 minor
+  else                  minutes = 46 + Math.floor(Math.random() * 45); // 46–90 major
+  const reason = DELAY_REASONS[Math.floor(Math.random() * DELAY_REASONS.length)];
+  return { minutes, reason };
+}
+
+// ── BUILD TIMETABLE ──
+function getUpcoming(trains, delayMap, limit = 4) {
+  const now  = new Date();
+  const nowM = now.getHours() * 60 + now.getMinutes();
+
+  // attach scheduled minute and delay to each train
+  const annotated = trains.map((t, i) => {
+    const schedM = t.dep[0] * 60 + t.dep[1];
+    const delay  = delayMap[i];
+    const effM   = schedM + (delay ? delay.minutes : 0);
+    return { ...t, schedM, delay, effM };
+  });
+
+  // upcoming = not yet departed (effective time > now - 2 min grace)
+  let upcoming = annotated.filter(t => t.effM >= nowM - 2);
+
+  // if fewer than limit, roll over to next day's first trains
+  if (upcoming.length < limit) {
+    const nextDay = annotated
+      .filter(t => t.effM < nowM - 2)
+      .map(t => ({ ...t, schedM: t.schedM + 1440, effM: t.effM + 1440, nextDay: true }));
+    upcoming = [...upcoming, ...nextDay];
+  }
+
+  return upcoming.slice(0, limit);
+}
+
+function formatDepTime(h, m) {
+  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+}
+
+function corridorWorstStatus(trains, delayMap) {
+  let worst = 'ok';
+  trains.forEach((t, i) => {
+    const d = delayMap[i];
+    if (!d) return;
+    if (d.minutes >= 46) worst = 'major';
+    else if (worst !== 'major') worst = 'minor';
+  });
+  return worst;
+}
+
+function statusLabel(s) {
+  if (s === 'major') return 'Significant Delays';
+  if (s === 'minor') return 'Minor Delays';
+  return 'Normal Operations';
+}
+
+// ── RENDER ──
+function render() {
+  // Pre-generate delays for all trains (stable for this page load)
+  const allDelayMaps = CORRIDORS.map(c => c.trains.map(() => generateDelay()));
+
+  // Network overview
+  const overview = document.getElementById('usrc-network-overview');
+  overview.innerHTML = CORRIDORS.map((c, ci) => {
+    const status = corridorWorstStatus(c.trains, allDelayMaps[ci]);
+    return `<div class="usrc-cs-card status-${status}">
+      <div class="usrc-cs-name">${c.name}</div>
+      <span class="usrc-cs-badge ${status}">${statusLabel(status)}</span>
+    </div>`;
+  }).join('');
+
+  // Departure boards
+  const boards = document.getElementById('usrc-boards');
+  boards.innerHTML = CORRIDORS.map((c, ci) => {
+    const delayMap = allDelayMaps[ci];
+    const status   = corridorWorstStatus(c.trains, delayMap);
+    const upcoming = getUpcoming(c.trains, delayMap);
+
+    const rows = upcoming.length === 0
+      ? `<tr><td colspan="4" class="usrc-no-trains">No further departures — see tomorrow's timetable</td></tr>`
+      : upcoming.map((t, i) => {
+          const delay   = t.delay;
+          const effH    = Math.floor(t.effM % 1440 / 60);
+          const effMin  = t.effM % 60;
+          const schedStr = formatDepTime(t.dep[0], t.dep[1]);
+          const effStr   = formatDepTime(effH, effMin);
+
+          let badgeClass, badgeText, timeDisplay, reasonHtml = '';
+          if (!delay) {
+            badgeClass  = 'on-time';
+            badgeText   = 'On Time';
+            timeDisplay = `<span class="usrc-train-time">${schedStr}</span>`;
+          } else if (delay.minutes >= 46) {
+            badgeClass  = 'delayed-major';
+            badgeText   = `+${delay.minutes} min`;
+            timeDisplay = `<span class="usrc-train-time" style="text-decoration:line-through;color:var(--text-tertiary);font-size:11px">${schedStr}</span> <span class="usrc-train-time" style="color:var(--usrc-red)">${effStr}</span>`;
+            reasonHtml  = `<div class="usrc-delay-reason">${delay.reason}</div>`;
+          } else {
+            badgeClass  = 'delayed-minor';
+            badgeText   = `+${delay.minutes} min`;
+            timeDisplay = `<span class="usrc-train-time" style="text-decoration:line-through;color:var(--text-tertiary);font-size:11px">${schedStr}</span> <span class="usrc-train-time" style="color:#B8860B">${effStr}</span>`;
+            reasonHtml  = `<div class="usrc-delay-reason">${delay.reason}</div>`;
+          }
+
+          const nextDayNote = t.nextDay ? ' <span style="font-size:10px;color:var(--text-tertiary)">(tomorrow)</span>' : '';
+
+          return `<tr>
+            <td><span class="usrc-train-num">${t.num}</span></td>
+            <td><span class="usrc-train-dest">${t.dest}${nextDayNote}</span></td>
+            <td>${timeDisplay}</td>
+            <td><span class="usrc-badge ${badgeClass}">${badgeText}</span>${reasonHtml}</td>
+          </tr>`;
+        }).join('');
+
+    return `<div class="usrc-corridor-block">
+      <div class="usrc-corridor-label">
+        <span class="usrc-corridor-name">${c.name}</span>
+        <span class="usrc-corridor-badge ${status}">${statusLabel(status)}</span>
+      </div>
+      <table class="usrc-train-table">
+        <thead><tr>
+          <th>Train</th><th>Destination</th><th>Departs</th><th>Status</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+  }).join('');
+}
+
+render();
+</script>
 </body>
 </html>
