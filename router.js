@@ -7,7 +7,7 @@ const ROUTES = {
   'nan.usrc.gov.usa':                 '/nodes/usrc/',
   'nan.assembly.nau':                 '/nodes/assembly/',
   'nan.washingtonhouse.gov.usa':      '/nodes/washington-house/',
-  'nan.amhistory.edu.usa':            '/nodes/amhistory/',
+  'nan.mususa.edu.usa':               '/nodes/amhistory/',
   'nan.abnnews.pr.usa':               '/nodes/abn/',
   'nan.fps.gov.usa':                  '/nodes/fps/',
 };
