@@ -100,45 +100,10 @@
 <div class="wm-portal">
   <div class="wm-main">
     <div class="wm-section-label" id="wm-headlines-label">Today's Headlines — <span id="wm-date"></span></div>
-
-    <a class="wm-lead" href="./nodes/franklin-observer/">
-      <div class="wm-lead-tag">NAU Politics</div>
-      <div class="wm-lead-hed">Nakamura Signals Compromise Path on NAU Constitution Ratification</div>
-      <div class="wm-lead-dek">The US President says she will not oppose a full Assembly vote on the constitutional consolidation project, ending weeks of ambiguity over the American position.</div>
-      <div class="wm-lead-meta">Franklin Observer · 2 hours ago</div>
-    </a>
-
-    <a class="wm-headline" href="./nodes/abn/">
-      <div class="wm-tag green">World</div>
-      <div class="wm-hl-hed">China Opens HuaWang to Broader Interlink Access; 61% of Households Now Connected</div>
-      <div class="wm-hl-dek">Post-2019 reform commitments continue to bear fruit as access restrictions are rolled back, though the GPC's digital rights commission warns progress remains uneven.</div>
-      <div class="wm-hl-meta">ABN News · 4 hours ago</div>
-    </a>
-
-    <a class="wm-headline" href="./nodes/assembly/">
-      <div class="wm-tag red">NAU Assembly</div>
-      <div class="wm-hl-hed">NAU Council Backs Continental Currency Stabilisation Framework</div>
-      <div class="wm-hl-dek">The Council's economic committee has endorsed a framework to harmonise exchange arrangements across all six member states ahead of full monetary union.</div>
-      <div class="wm-hl-meta">NAU Assembly · Calumet · 5 hours ago</div>
-    </a>
-
-    <a class="wm-headline" href="./nodes/usrc/">
-      <div class="wm-tag purple">Rail</div>
-      <div class="wm-hl-hed">USRC Reports Record Ridership on Ohio Corridor for Third Straight Quarter</div>
-      <div class="wm-hl-dek">The Franklin–Pittsburgh–Philadelphia mainline carried 4.1 million passengers in Q1, the highest figure since the corridor's 1971 electrification.</div>
-      <div class="wm-hl-meta">USRC Public Affairs · 6 hours ago</div>
-    </a>
-
-    <a class="wm-headline" href="./nodes/abn/">
-      <div class="wm-tag rose">Culture</div>
-      <div class="wm-hl-hed">First Open-Network TC Drama in NAU–UER Co-Production Confirmed for Autumn</div>
-      <div class="wm-hl-dek">The six-part series, set during the Global War, will broadcast simultaneously across NANet and ResEu member states.</div>
-      <div class="wm-hl-meta">Franklin Observer · 8 hours ago</div>
-    </a>
+    <div id="wm-headlines"></div>
   </div>
 
   <div class="wm-sidebar">
-
     <div class="wm-widget">
       <div class="wm-widget-head" id="w-weather-head">Franklin, D.W. — Weather</div>
       <div class="wm-widget-body" id="wm-weather-body">
@@ -182,63 +147,13 @@
 </div>
 
 <script src="router.js"></script>
+<script src="stories.js"></script>
 <script>
 // ── TRANSLATIONS ──
 const UI = {
-  en: {
-    tagline:       'Find your node on the Link',
-    searchHolder:  'Search the Link…',
-    searchBtn:     'Find',
-    headlinesLabel:'Today\'s Headlines',
-    weatherHead:   'Franklin, D.W. — Weather',
-    weatherLoading:'Fetching conditions…',
-    weatherUnavail:'Conditions unavailable',
-    marketsHead:   'NAX Markets',
-    shortcutsHead: 'My Shortcuts',
-    fAbout:        'About',
-    fPrivacy:      'Privacy',
-    fTerms:        'Terms of Service',
-    fAccess:       'Accessibility',
-    fStatus:       'NANet Status',
-    months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
-    dateFormat: (d,m,y) => `${d} ${m}, ${y}`,
-  },
-  fr: {
-    tagline:       'Trouvez votre nœud sur le Lien',
-    searchHolder:  'Rechercher sur le Lien…',
-    searchBtn:     'Chercher',
-    headlinesLabel:'Titres du jour',
-    weatherHead:   'Franklin, D.W. — Météo',
-    weatherLoading:'Récupération des conditions…',
-    weatherUnavail:'Conditions indisponibles',
-    marketsHead:   'Marchés NAX',
-    shortcutsHead: 'Mes raccourcis',
-    fAbout:        'À propos',
-    fPrivacy:      'Confidentialité',
-    fTerms:        'Conditions d\'utilisation',
-    fAccess:       'Accessibilité',
-    fStatus:       'État du NANet',
-    months: ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'],
-    dateFormat: (d,m,y) => `${d} ${m} ${y}`,
-  },
-  es: {
-    tagline:       'Encuentre su nodo en el Enlace',
-    searchHolder:  'Buscar en el Enlace…',
-    searchBtn:     'Buscar',
-    headlinesLabel:'Titulares de hoy',
-    weatherHead:   'Franklin, D.W. — El Tiempo',
-    weatherLoading:'Obteniendo condiciones…',
-    weatherUnavail:'Condiciones no disponibles',
-    marketsHead:   'Mercados NAX',
-    shortcutsHead: 'Mis accesos directos',
-    fAbout:        'Acerca de',
-    fPrivacy:      'Privacidad',
-    fTerms:        'Términos de servicio',
-    fAccess:       'Accesibilidad',
-    fStatus:       'Estado del NANet',
-    months: ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
-    dateFormat: (d,m,y) => `${d} de ${m} de ${y}`,
-  }
+  en: { tagline: 'Find your node on the Link', searchHolder: 'Search the Link…', searchBtn: 'Find', headlinesLabel: 'Today\'s Headlines', weatherHead: 'Franklin, D.W. — Weather', weatherLoading: 'Fetching conditions…', weatherUnavail: 'Conditions unavailable', marketsHead: 'NAX Markets', shortcutsHead: 'My Shortcuts', fAbout: 'About', fPrivacy: 'Privacy', fTerms: 'Terms of Service', fAccess: 'Accessibility', fStatus: 'NANet Status', months: ['January','February','March','April','May','June','July','August','September','October','November','December'], dateFormat: (d,m,y) => `${d} ${m}, ${y}` },
+  fr: { tagline: 'Trouvez votre nœud sur le Lien', searchHolder: 'Rechercher sur le Lien…', searchBtn: 'Chercher', headlinesLabel: 'Titres du jour', weatherHead: 'Franklin, D.W. — Météo', weatherLoading: 'Récupération des conditions…', weatherUnavail: 'Conditions indisponibles', marketsHead: 'Marchés NAX', shortcutsHead: 'Mes raccourcis', fAbout: 'À propos', fPrivacy: 'Confidentialité', fTerms: 'Conditions d\'utilisation', fAccess: 'Accessibilité', fStatus: 'État du NANet', months: ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'], dateFormat: (d,m,y) => `${d} ${m} ${y}` },
+  es: { tagline: 'Encuentre su nodo en el Enlace', searchHolder: 'Buscar en el Enlace…', searchBtn: 'Buscar', headlinesLabel: 'Titulares de hoy', weatherHead: 'Franklin, D.W. — El Tiempo', weatherLoading: 'Obteniendo condiciones…', weatherUnavail: 'Condiciones no disponibles', marketsHead: 'Mercados NAX', shortcutsHead: 'Mis accesos directos', fAbout: 'Acerca de', fPrivacy: 'Privacidad', fTerms: 'Términos de servicio', fAccess: 'Accesibilidad', fStatus: 'Estado del NANet', months: ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'], dateFormat: (d,m,y) => `${d} de ${m} de ${y}` }
 };
 
 let currentLang = 'en';
@@ -252,30 +167,21 @@ function formatDate(lang) {
 function applyLang(code) {
   const t = UI[code];
   currentLang = code;
-  document.getElementById('wm-tagline').textContent        = t.tagline;
-  document.getElementById('wm-search').placeholder         = t.searchHolder;
-  document.getElementById('wm-search-btn').textContent     = t.searchBtn;
-  document.getElementById('wm-date').textContent           = formatDate(code);
-  document.getElementById('w-weather-head').textContent    = t.weatherHead;
-  document.getElementById('w-markets-head').textContent    = t.marketsHead;
-  document.getElementById('w-shortcuts-head').textContent  = t.shortcutsHead;
-  document.getElementById('f-about').textContent           = t.fAbout;
-  document.getElementById('f-privacy').textContent         = t.fPrivacy;
-  document.getElementById('f-terms').textContent           = t.fTerms;
-  document.getElementById('f-access').textContent          = t.fAccess;
-  document.getElementById('f-status').textContent          = t.fStatus;
-
-  // headlines label preserves the date span
-  document.getElementById('wm-headlines-label').innerHTML =
-    t.headlinesLabel + ' — <span id="wm-date">' + formatDate(code) + '</span>';
-
-  // weather loading text (if still loading)
+  document.getElementById('wm-tagline').textContent       = t.tagline;
+  document.getElementById('wm-search').placeholder        = t.searchHolder;
+  document.getElementById('wm-search-btn').textContent    = t.searchBtn;
+  document.getElementById('w-weather-head').textContent   = t.weatherHead;
+  document.getElementById('w-markets-head').textContent   = t.marketsHead;
+  document.getElementById('w-shortcuts-head').textContent = t.shortcutsHead;
+  document.getElementById('f-about').textContent          = t.fAbout;
+  document.getElementById('f-privacy').textContent        = t.fPrivacy;
+  document.getElementById('f-terms').textContent          = t.fTerms;
+  document.getElementById('f-access').textContent         = t.fAccess;
+  document.getElementById('f-status').textContent         = t.fStatus;
+  document.getElementById('wm-headlines-label').innerHTML = t.headlinesLabel + ' — <span id="wm-date">' + formatDate(code) + '</span>';
   const wl = document.getElementById('w-weather-loading');
   if (wl) wl.textContent = t.weatherLoading;
-
-  document.querySelectorAll('.wm-lang-btn').forEach(b =>
-    b.classList.toggle('active', b.textContent === code.toUpperCase())
-  );
+  document.querySelectorAll('.wm-lang-btn').forEach(b => b.classList.toggle('active', b.textContent === code.toUpperCase()));
 }
 
 function setLang(code) { applyLang(code); }
@@ -285,7 +191,39 @@ applyLang('en');
 document.getElementById('wm-year').textContent = new Date().getFullYear();
 initAddressBar('nan.waymark.biz.usa');
 
-// ── LIVE WEATHER — Open-Meteo, Cincinnati OH (Franklin, D.W.) ──
+// ── RENDER HEADLINES FROM stories.js ──
+const tagColors = { nau: '#993C1D', usa: '#185FA5', world: '#0F6E56', politics: '#993C1D', national: '#1a1410', rail: '#533AB7', culture: '#993556' };
+
+function tagColor(tag) {
+  return tagColors[tag.toLowerCase()] || '#185FA5';
+}
+
+const lead = WAYMARK_HEADLINES[0];
+const rest  = WAYMARK_HEADLINES.slice(1);
+
+let headlinesHtml = `
+  <a class="wm-lead" href="${lead.link}">
+    <div class="wm-lead-tag">${lead.tag}</div>
+    <div class="wm-lead-hed">${lead.hed}</div>
+    <div class="wm-lead-dek">${lead.dek}</div>
+    <div class="wm-lead-meta">${lead.meta}</div>
+  </a>
+`;
+
+rest.forEach(s => {
+  headlinesHtml += `
+    <a class="wm-headline" href="${s.link}">
+      <div class="wm-tag" style="color:${tagColor(s.tag)};font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">${s.tag}</div>
+      <div class="wm-hl-hed">${s.hed}</div>
+      <div class="wm-hl-dek">${s.dek}</div>
+      <div class="wm-hl-meta">${s.meta}</div>
+    </a>
+  `;
+});
+
+document.getElementById('wm-headlines').innerHTML = headlinesHtml;
+
+// ── LIVE WEATHER ──
 async function fetchWeather() {
   const url = 'https://api.open-meteo.com/v1/forecast?latitude=39.1031&longitude=-84.5120&current=temperature_2m,weathercode,windspeed_10m,winddirection_10m&temperature_unit=celsius&windspeed_unit=kmh&timezone=America%2FNew_York';
   try {
@@ -302,29 +240,25 @@ async function fetchWeather() {
       <div class="wm-cond">${cond} · Wind ${wind} km/h ${dir}</div>
     `;
   } catch (e) {
-    const t = UI[currentLang];
     document.getElementById('wm-weather-body').innerHTML = `
       <div class="wm-city">Franklin, District of Washington</div>
-      <div class="wm-cond">${t.weatherUnavail}</div>
+      <div class="wm-cond">${UI[currentLang].weatherUnavail}</div>
     `;
   }
 }
 
-function degreesToCardinal(deg) {
-  return ['N','NE','E','SE','S','SW','W','NW'][Math.round(deg / 45) % 8];
-}
-
+function degreesToCardinal(deg) { return ['N','NE','E','SE','S','SW','W','NW'][Math.round(deg / 45) % 8]; }
 function weatherCodeToDesc(code) {
-  if (code === 0)  return 'Clear skies';
-  if (code <= 2)   return 'Partly cloudy';
-  if (code === 3)  return 'Overcast';
-  if (code <= 49)  return 'Foggy';
-  if (code <= 59)  return 'Drizzle';
-  if (code <= 69)  return 'Rain';
-  if (code <= 79)  return 'Snow';
-  if (code <= 82)  return 'Rain showers';
-  if (code <= 86)  return 'Snow showers';
-  if (code <= 99)  return 'Thunderstorm';
+  if (code === 0) return 'Clear skies';
+  if (code <= 2)  return 'Partly cloudy';
+  if (code === 3) return 'Overcast';
+  if (code <= 49) return 'Foggy';
+  if (code <= 59) return 'Drizzle';
+  if (code <= 69) return 'Rain';
+  if (code <= 79) return 'Snow';
+  if (code <= 82) return 'Rain showers';
+  if (code <= 86) return 'Snow showers';
+  if (code <= 99) return 'Thunderstorm';
   return 'Variable';
 }
 
