@@ -297,7 +297,7 @@ async function fetchWeather() {
     const dir  = degreesToCardinal(c.winddirection_10m);
     const cond = weatherCodeToDesc(c.weathercode);
     document.getElementById('wm-weather-body').innerHTML = `
-      <div class="wm-temp">${temp}°</div>
+      <div class="wm-temp">${temp}°C</div>
       <div class="wm-city">Franklin, District of Washington</div>
       <div class="wm-cond">${cond} · Wind ${wind} km/h ${dir}</div>
     `;
