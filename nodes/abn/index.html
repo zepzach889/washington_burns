@@ -6,44 +6,104 @@
 <title>ABN News — American Broadcast Network</title>
 <link rel="stylesheet" href="../../shared.css">
 <style>
-  .abn-topstrip { background: #C8001E; color: #fff; padding: 4px 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; display: flex; align-items: center; gap: 12px; overflow: hidden; }
-  .abn-breaking-label { background: #fff; color: #C8001E; padding: 1px 6px; border-radius: 2px; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; white-space: nowrap; }
-  .abn-ticker { white-space: nowrap; animation: ticker 30s linear infinite; }
-  @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-200%); } }
+  :root { --abn-red: #C8001E; --abn-dark: #111; --abn-dark2: #1a1a1a; }
 
-  .abn-header { background: #111; color: #fff; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
-  .abn-wordmark { font-family: 'DM Serif Display', serif; font-size: 26px; letter-spacing: 0.04em; color: #fff; }
-  .abn-wordmark span { color: #C8001E; }
-  .abn-tagline { font-size: 10px; color: rgba(255,255,255,0.45); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+  /* TICKER */
+  .abn-topstrip {
+    background: var(--abn-red);
+    color: #fff;
+    padding: 4px 0;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .abn-breaking-label {
+    background: #fff;
+    color: var(--abn-red);
+    padding: 2px 10px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-right: 12px;
+  }
+  .abn-ticker-track {
+    display: flex;
+    overflow: hidden;
+    flex: 1;
+  }
+  .abn-ticker {
+    display: inline-block;
+    white-space: nowrap;
+    animation: ticker 40s linear infinite;
+    padding-right: 60px;
+  }
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .abn-ticker-sep { margin: 0 18px; opacity: 0.5; }
+
+  /* HEADER */
+  .abn-header {
+    background: var(--abn-dark);
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--abn-red);
+  }
+  .abn-brand { display: flex; align-items: baseline; gap: 8px; }
+  .abn-wordmark {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    letter-spacing: 0.06em;
+    color: #fff;
+    line-height: 1;
+  }
+  .abn-news-tag {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--abn-red);
+    text-transform: uppercase;
+    border: 1.5px solid var(--abn-red);
+    padding: 1px 6px;
+    border-radius: 2px;
+    margin-left: 4px;
+  }
+  .abn-tagline { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 3px; }
+  .abn-header-right { display: flex; align-items: center; gap: 16px; }
   .abn-live-badge { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #ff4444; font-weight: 700; letter-spacing: 0.06em; }
-  .abn-live-dot { width: 8px; height: 8px; background: #ff4444; border-radius: 50%; animation: pulse 1.2s ease-in-out infinite; }
+  .abn-live-dot { width: 8px; height: 8px; background: #ff4444; border-radius: 50%; animation: pulse 1.2s ease-in-out infinite; flex-shrink: 0; }
   @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .abn-clock { font-family: monospace; font-size: 13px; color: rgba(255,255,255,0.6); }
 
-  .abn-nav { background: #1a1a1a; display: flex; overflow-x: auto; }
+  /* NAV */
+  .abn-nav { background: var(--abn-dark2); display: flex; overflow-x: auto; }
   .abn-nav a { font-size: 12px; color: rgba(255,255,255,0.60); text-decoration: none; padding: 10px 16px; font-weight: 500; white-space: nowrap; transition: all 0.1s; border-right: 0.5px solid rgba(255,255,255,0.07); }
   .abn-nav a:hover { background: rgba(255,255,255,0.06); color: #fff; }
-  .abn-nav a.active { color: #C8001E; border-bottom: 2px solid #C8001E; }
+  .abn-nav a.active { color: #fff; border-bottom: 2px solid var(--abn-red); }
 
+  /* BODY */
   .abn-body { display: grid; grid-template-columns: 1fr 300px; max-width: 1100px; margin: 0 auto; }
   .abn-main { padding: 24px; border-right: 0.5px solid var(--border); }
   .abn-sidebar { padding: 24px 16px; background: var(--bg-secondary); }
 
-  .abn-lead {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 24px;
-    padding-bottom: 24px;
-    border-bottom: 0.5px solid var(--border);
-  }
-  .abn-lead-img { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 48px; min-height: 140px; }
-  .abn-lead-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #C8001E; margin-bottom: 5px; }
+  /* LEAD */
+  .abn-lead { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 0.5px solid var(--border); }
+  .abn-lead-img { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 52px; min-height: 150px; }
+  .abn-lead-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--abn-red); margin-bottom: 5px; }
   .abn-lead-hed { font-family: 'DM Serif Display', serif; font-size: 22px; line-height: 1.2; color: var(--text-primary); margin-bottom: 6px; }
   .abn-lead-dek { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 6px; }
   .abn-lead-meta { font-size: 10px; color: var(--text-tertiary); font-weight: 500; }
 
-  .abn-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-
+  /* STORY CARDS */
+  .abn-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 24px; }
   .abn-card { background: #fff; border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; }
   .abn-card-img { height: 70px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
   .abn-card-body { padding: 10px 12px; }
@@ -51,25 +111,39 @@
   .abn-card-hed { font-family: 'DM Serif Display', serif; font-size: 14px; line-height: 1.3; color: var(--text-primary); margin-bottom: 4px; }
   .abn-card-meta { font-size: 10px; color: var(--text-tertiary); }
 
-  .abn-world-list { }
+  /* WORLD LIST */
   .abn-world-item { padding: 12px 0; border-bottom: 0.5px solid var(--border); }
   .abn-world-item:last-child { border-bottom: none; }
   .abn-world-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0F6E56; margin-bottom: 3px; }
   .abn-world-hed { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--text-primary); margin-bottom: 3px; line-height: 1.3; }
-  .abn-world-dek { font-size: 12px; color: var(--text-secondary); }
+  .abn-world-dek { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
   .abn-world-meta { font-size: 10px; color: var(--text-tertiary); margin-top: 4px; }
 
+  /* WIDGETS */
   .abn-widget { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
   .abn-widget:last-child { margin-bottom: 0; }
-  .abn-widget-head { background: #111; padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+  .abn-widget-head { background: var(--abn-dark); padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.75); border-bottom: 1px solid var(--abn-red); }
   .abn-widget-body { padding: 12px; font-size: 12px; }
-  .abn-schedule-row { padding: 6px 0; border-bottom: 0.5px solid var(--border); }
-  .abn-schedule-row:last-child { border-bottom: none; }
-  .abn-sched-time { font-weight: 700; color: #C8001E; font-size: 11px; }
-  .abn-sched-show { color: var(--text-primary); font-weight: 500; }
-  .abn-sched-desc { color: var(--text-tertiary); font-size: 11px; }
 
-  @media (max-width: 700px) { .abn-body { grid-template-columns: 1fr; } .abn-lead { grid-template-columns: 1fr; } .abn-grid { grid-template-columns: 1fr; } }
+  .abn-sched-row { padding: 7px 0; border-bottom: 0.5px solid var(--border); }
+  .abn-sched-row:last-child { border-bottom: none; }
+  .abn-sched-row.past { opacity: 0.4; }
+  .abn-sched-row.now { background: #FFF0F0; margin: 0 -12px; padding: 7px 12px; border-left: 3px solid var(--abn-red); }
+  .abn-sched-time { font-weight: 700; color: var(--abn-red); font-size: 11px; font-family: monospace; }
+  .abn-sched-row.past .abn-sched-time { color: var(--text-tertiary); }
+  .abn-sched-show { color: var(--text-primary); font-weight: 500; font-size: 12px; }
+  .abn-sched-desc { color: var(--text-tertiary); font-size: 11px; }
+  .abn-now-badge { display: inline-block; font-size: 9px; font-weight: 800; background: var(--abn-red); color: #fff; padding: 1px 5px; border-radius: 2px; letter-spacing: 0.08em; margin-left: 6px; vertical-align: middle; }
+
+  .abn-mostread-item { padding: 6px 0; border-bottom: 0.5px solid var(--border); color: var(--text-secondary); display: flex; gap: 8px; }
+  .abn-mostread-item:last-child { border-bottom: none; }
+  .abn-mostread-num { font-weight: 700; color: var(--abn-red); flex-shrink: 0; }
+
+  @media (max-width: 700px) {
+    .abn-body { grid-template-columns: 1fr; }
+    .abn-lead { grid-template-columns: 1fr; }
+    .abn-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -87,25 +161,36 @@
   </div>
 </div>
 
+<!-- TICKER -->
 <div class="abn-topstrip">
   <span class="abn-breaking-label">LIVE</span>
-  <span class="abn-ticker">Senate debating Currency Stability Act — floor vote expected 15:00 · USRC Ohio Corridor ridership hits Q1 record · President Nakamura meets Canadian PM Tremblay at Washington House · HuaWang dismantling enters Phase 3 · UER Parliament debates Nordic expansion</span>
+  <div class="abn-ticker-track">
+    <span class="abn-ticker" id="abn-ticker-text"></span>
+  </div>
 </div>
 
+<!-- HEADER -->
 <div class="abn-header">
   <div>
-    <div class="abn-wordmark">AB<span>N</span></div>
-    <div class="abn-tagline">American Broadcast Network · link://nan.abnnews.pr.usa</div>
+    <div class="abn-brand">
+      <span class="abn-wordmark">ABN</span>
+      <span class="abn-news-tag">News</span>
+    </div>
+    <div class="abn-tagline">American Broadcast Network · Manhattan · link://nan.abnnews.pr.usa</div>
   </div>
-  <div class="abn-live-badge"><div class="abn-live-dot"></div>LIVE COVERAGE</div>
+  <div class="abn-header-right">
+    <div class="abn-clock" id="abn-clock"></div>
+    <div class="abn-live-badge"><div class="abn-live-dot"></div>LIVE</div>
+  </div>
 </div>
 
 <nav class="abn-nav">
   <a href="#" class="active">Home</a>
-  <a href="#">NAU Politics</a>
+  <a href="#">USA</a>
+  <a href="#">NAU</a>
   <a href="#">World</a>
   <a href="#">Business</a>
-  <a href="#">Science & Tech</a>
+  <a href="#">Science &amp; Tech</a>
   <a href="#">Culture</a>
   <a href="#">Sport</a>
   <a href="#">Watch Live</a>
@@ -113,111 +198,30 @@
 
 <div class="abn-body">
   <div class="abn-main">
-
     <div class="wm-section-label">Top Story</div>
-    <div class="abn-lead">
-      <div class="abn-lead-img">⚖</div>
-      <div>
-        <div class="abn-lead-tag">NAU Politics</div>
-        <div class="abn-lead-hed">Nakamura Breaks Silence on Constitutional Convention: Will Not Block Assembly Vote</div>
-        <div class="abn-lead-dek">The statement, issued late Thursday through the Office of Communications, was immediately welcomed by Federalist and SPA floor leaders as clearing the way for a vote as soon as April.</div>
-        <div class="abn-lead-meta">ABN Political Desk · Franklin · 2 hours ago</div>
-      </div>
-    </div>
+    <div class="abn-lead" id="abn-lead"></div>
 
     <div class="wm-section-label">Today's Stories</div>
-    <div class="abn-grid">
-      <div class="abn-card">
-        <div class="abn-card-img" style="background:linear-gradient(135deg,#1a3a1a,#2d602d);">🚂</div>
-        <div class="abn-card-body">
-          <div class="abn-card-tag" style="color:#533AB7;">Rail</div>
-          <div class="abn-card-hed">USRC Ohio Corridor Breaks Ridership Record — Third Straight Quarter</div>
-          <div class="abn-card-meta">6 hours ago</div>
-        </div>
-      </div>
-      <div class="abn-card">
-        <div class="abn-card-img" style="background:linear-gradient(135deg,#1a1a3a,#2d2d60);">💱</div>
-        <div class="abn-card-body">
-          <div class="abn-card-tag" style="color:#993C1D;">Finance</div>
-          <div class="abn-card-hed">Currency Stability Act Heads to Senate Floor — Vote Today</div>
-          <div class="abn-card-meta">5 hours ago</div>
-        </div>
-      </div>
-      <div class="abn-card">
-        <div class="abn-card-img" style="background:linear-gradient(135deg,#2a1a1a,#5d2d2d);">📡</div>
-        <div class="abn-card-body">
-          <div class="abn-card-tag" style="color:#0F6E56;">World</div>
-          <div class="abn-card-hed">HuaWang Phase 3: Interlink Now Reaches 61% of Chinese Homes</div>
-          <div class="abn-card-meta">4 hours ago</div>
-        </div>
-      </div>
-    </div>
+    <div class="abn-grid" id="abn-cards"></div>
 
     <div class="wm-section-label">World</div>
-    <div class="abn-world-list">
-      <div class="abn-world-item">
-        <div class="abn-world-tag">UER — Europe</div>
-        <div class="abn-world-hed">UER Parliament Debates Northern Expansion Framework in Strasbourg Session</div>
-        <div class="abn-world-dek">Proposed accession of three Scandinavian states reaches critical procedural juncture; vote expected before summer recess.</div>
-        <div class="abn-world-meta">ABN Europe Desk · 7 hours ago</div>
-      </div>
-      <div class="abn-world-item">
-        <div class="abn-world-tag">Britain</div>
-        <div class="abn-world-hed">London Markets Rise on NAU Currency Stability Act Progress</div>
-        <div class="abn-world-dek">UKP strengthens against the Continental amid optimism about NAU monetary coordination.</div>
-        <div class="abn-world-meta">ABN Finance · 5 hours ago</div>
-      </div>
-      <div class="abn-world-item">
-        <div class="abn-world-tag">China</div>
-        <div class="abn-world-hed">GPC Digital Rights Commission: HuaWang Successor Network Must Guarantee Open Interlink Access</div>
-        <div class="abn-world-dek">Commission issues binding guidance ahead of Phase 4 transition, which is expected to begin later this year.</div>
-        <div class="abn-world-meta">ABN Asia Desk · 9 hours ago</div>
-      </div>
-    </div>
-
+    <div id="abn-world"></div>
   </div>
 
   <div class="abn-sidebar">
     <div class="abn-widget">
-      <div class="abn-widget-head">ABN Schedule — Today</div>
-      <div class="abn-widget-body">
-        <div class="abn-schedule-row">
-          <div class="abn-sched-time">12:00 noon</div>
-          <div class="abn-sched-show">ABN Midday Report</div>
-          <div class="abn-sched-desc">Live from the Assembly, Currency Act floor debate</div>
-        </div>
-        <div class="abn-schedule-row">
-          <div class="abn-sched-time">3:00 p.m.</div>
-          <div class="abn-sched-show">Senate Vote — LIVE</div>
-          <div class="abn-sched-desc">Currency Stability Act — full coverage</div>
-        </div>
-        <div class="abn-schedule-row">
-          <div class="abn-sched-time">5:00 p.m.</div>
-          <div class="abn-sched-show">ABN Evening News</div>
-          <div class="abn-sched-desc">With anchor Patricia Sorensen</div>
-        </div>
-        <div class="abn-schedule-row">
-          <div class="abn-sched-time">7:00 p.m.</div>
-          <div class="abn-sched-show">World Tonight</div>
-          <div class="abn-sched-desc">UER expansion, HuaWang Phase 3</div>
-        </div>
-      </div>
+      <div class="abn-widget-head">ABN News Schedule</div>
+      <div class="abn-widget-body" id="abn-schedule"></div>
     </div>
-
     <div class="abn-widget">
       <div class="abn-widget-head">Most Read</div>
-      <div class="abn-widget-body" style="font-size:12px;">
-        <div style="padding:6px 0; border-bottom:0.5px solid var(--border); color:var(--text-secondary);">1. Nakamura signals convention compromise</div>
-        <div style="padding:6px 0; border-bottom:0.5px solid var(--border); color:var(--text-secondary);">2. Currency Act: what it means for you</div>
-        <div style="padding:6px 0; border-bottom:0.5px solid var(--border); color:var(--text-secondary);">3. USRC record: the Ohio Corridor story</div>
-        <div style="padding:6px 0; color:var(--text-secondary);">4. HuaWang Phase 3 explained</div>
-      </div>
+      <div class="abn-widget-body" id="abn-mostread"></div>
     </div>
   </div>
 </div>
 
 <div class="wm-footer">
-  <span>link://nan.abnnews.pr.usa &nbsp;·&nbsp; American Broadcast Network &nbsp;·&nbsp; Franklin, D.W.</span>
+  <span>link://nan.abnnews.pr.usa &nbsp;·&nbsp; ABN News &nbsp;·&nbsp; American Broadcast Network &nbsp;·&nbsp; Manhattan, District of Manhattan</span>
   <div class="wm-footer-links">
     <a href="#">About ABN</a>
     <a href="#">Editorial Standards</a>
@@ -227,6 +231,219 @@
 </div>
 
 <script src="../../router.js"></script>
-<script>initAddressBar('nan.abnnews.pr.usa');</script>
+<script>
+initAddressBar('nan.abnnews.pr.usa');
+
+// ── CLOCK ──
+function updateClock() {
+  const now = new Date();
+  const hh = String(now.getHours()).padStart(2,'0');
+  const mm = String(now.getMinutes()).padStart(2,'0');
+  document.getElementById('abn-clock').textContent = `${hh}:${mm}`;
+}
+setInterval(updateClock, 10000);
+updateClock();
+
+// ── DATE UTILS ──
+const now       = new Date();
+const hour      = now.getHours();
+const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+const MONTHS    = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAYS      = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+// ── TICKER ITEMS (pool — rotate daily, duplicate for seamless loop) ──
+const ALL_TICKER = [
+  'NAU Assembly advances Continental Currency Stabilisation Framework to floor vote',
+  'USRC Northeast Corridor sets Q1 ridership record — 4.1 million passengers',
+  'President Nakamura signals she will not oppose NAU Constitutional Consolidation vote',
+  'China opens HuaWang to broader Interlink access — 61% of households now connected',
+  'UER Premier faces parliamentary challenge over state media reforms in Paris',
+  'British PM arrives in Franklin for bilateral trade talks with Nakamura',
+  'Russian Imperial Duma deadlocked on modernisation package — Tsar urges compromise',
+  'Franklin National Orchestra announces six-nation European tour beginning June',
+  'Federal Parks Service reports record visitor numbers across all 57 parks in 2025',
+  'NAU Assembly Constitutional Consolidation Act enters committee review phase',
+];
+
+// Pick 5 ticker items daily
+const tickerItems = [];
+for (let i = 0; i < 5; i++) {
+  tickerItems.push(ALL_TICKER[(dayOfYear + i) % ALL_TICKER.length]);
+}
+const tickerText = tickerItems.join(' <span class="abn-ticker-sep">◆</span> ');
+// Duplicate for seamless loop
+const el = document.getElementById('abn-ticker-text');
+el.innerHTML = tickerText + ' <span class="abn-ticker-sep">◆</span> ' + tickerText;
+
+// ── LEAD STORIES (rotate daily) ──
+const LEADS = [
+  {
+    emoji: '⚖',
+    tag: 'NAU',
+    hed: 'Nakamura Signals She Will Not Oppose NAU Constitutional Consolidation Vote',
+    dek: 'The US President\'s statement, issued through the Office of Communications, removes the last major obstacle to an NAU Assembly floor vote on the consolidation project.',
+    meta: 'ABN Political Desk · Franklin · 2 hours ago'
+  },
+  {
+    emoji: '🚂',
+    tag: 'USA',
+    hed: 'Congress Passes USRC Modernisation Bill — Ȼ2.1 Billion for Northeast and Prairie Corridors',
+    dek: 'A broad bipartisan majority approved the largest single investment in the Railway Company\'s history. President Nakamura expected to sign at Franklin Central next week.',
+    meta: 'ABN Political Desk · Franklin · 3 hours ago'
+  },
+  {
+    emoji: '🌐',
+    tag: 'World',
+    hed: 'China Opens HuaWang Network to Broader Interlink Access',
+    dek: 'Post-2019 reform commitments continue as access restrictions are rolled back for 61% of Chinese households. The GPC digital rights commission warns progress remains uneven.',
+    meta: 'ABN Asia Desk · 2 hours ago'
+  }
+];
+
+const lead = LEADS[dayOfYear % LEADS.length];
+document.getElementById('abn-lead').innerHTML = `
+  <div class="abn-lead-img">${lead.emoji}</div>
+  <div>
+    <div class="abn-lead-tag">${lead.tag}</div>
+    <div class="abn-lead-hed">${lead.hed}</div>
+    <div class="abn-lead-dek">${lead.dek}</div>
+    <div class="abn-lead-meta">${lead.meta}</div>
+  </div>
+`;
+
+// ── STORY CARDS (pool of 6, show 3 daily) ──
+const ALL_CARDS = [
+  { emoji: '🚂', bg: 'linear-gradient(135deg,#1a3a1a,#2d602d)', tag: 'Rail', tagColor: '#533AB7',
+    hed: 'USRC Northeast Corridor Sets Third Straight Q1 Record', meta: '6 hours ago' },
+  { emoji: '💱', bg: 'linear-gradient(135deg,#1a1a3a,#2d2d60)', tag: 'NAU', tagColor: '#993C1D',
+    hed: 'NAU/18-042 Currency Framework Moves to Assembly Floor', meta: '5 hours ago' },
+  { emoji: '📡', bg: 'linear-gradient(135deg,#2a1a1a,#5d2d2d)', tag: 'World', tagColor: '#0F6E56',
+    hed: 'China: Interlink Now Reaches 61% of Households as Access Reforms Continue', meta: '4 hours ago' },
+  { emoji: '🏛', bg: 'linear-gradient(135deg,#1a1a1a,#3a3a3a)', tag: 'USA', tagColor: '#185FA5',
+    hed: 'Washington House West Wing Reopens After Two-Year Restoration', meta: '9 hours ago' },
+  { emoji: '📚', bg: 'linear-gradient(135deg,#1a2a3a,#2d4060)', tag: 'USA', tagColor: '#185FA5',
+    hed: 'Education Dept: Urban-Rural Literacy Gap Narrows for Third Year Running', meta: '11 hours ago' },
+  { emoji: '⚡', bg: 'linear-gradient(135deg,#2a2a1a,#505020)', tag: 'Science', tagColor: '#2D5A1A',
+    hed: 'FIS Confirms New Director After Senate Approval Ends Months-Long Vacancy', meta: '7 hours ago' },
+];
+
+const c1 = ALL_CARDS[dayOfYear % ALL_CARDS.length];
+const c2 = ALL_CARDS[(dayOfYear + 2) % ALL_CARDS.length];
+const c3 = ALL_CARDS[(dayOfYear + 4) % ALL_CARDS.length];
+
+document.getElementById('abn-cards').innerHTML = [c1,c2,c3].map(c => `
+  <div class="abn-card">
+    <div class="abn-card-img" style="background:${c.bg}">${c.emoji}</div>
+    <div class="abn-card-body">
+      <div class="abn-card-tag" style="color:${c.tagColor}">${c.tag}</div>
+      <div class="abn-card-hed">${c.hed}</div>
+      <div class="abn-card-meta">${c.meta}</div>
+    </div>
+  </div>
+`).join('');
+
+// ── WORLD STORIES (pool of 6, show 3 daily) ──
+const ALL_WORLD = [
+  { tag: 'UER', hed: 'UER Premier Faces Parliamentary Challenge Over State Media Reforms',
+    dek: 'The governing coalition in Paris is under pressure as a contentious broadcasting reform bill enters its second reading in the National Assembly.',
+    meta: 'ABN Europe Desk · 7 hours ago' },
+  { tag: 'Britain', hed: 'London Markets Rise on NAU Currency Stabilisation Framework Progress',
+    dek: 'The UKP strengthened against the Continental amid optimism about NAU monetary coordination following the Assembly committee vote.',
+    meta: 'ABN Finance · 5 hours ago' },
+  { tag: 'China', hed: 'GPC Digital Rights Commission Sets Phase 4 Interlink Access Timeline',
+    dek: 'The Commission has issued binding guidance requiring full rural household access by 2028, ahead of the expected Phase 4 transition later this year.',
+    meta: 'ABN Asia Desk · 9 hours ago' },
+  { tag: 'Russia', hed: 'Tsar Nicholas IV Urges Duma to Break Modernisation Package Impasse',
+    dek: 'The Tsar made a rare direct appeal to parliamentary factions, warning that continued deadlock risks Russian industrial competitiveness against Western rivals.',
+    meta: 'ABN World Desk · 10 hours ago' },
+  { tag: 'Britain', hed: 'Britain and NAU Sign Five-Year Trade Renewal Agreement in London',
+    dek: 'The agreement locks in preferential tariff arrangements across manufacturing and agricultural sectors, with a joint review scheduled for 2029.',
+    meta: 'ABN World Desk · 6 hours ago' },
+  { tag: 'Canada', hed: 'Canadian PM Tremblay Visits Washington House for Bilateral Talks',
+    dek: 'Trade, the Continental currency framework, and NAU constitutional consolidation were among the topics discussed during the two-day visit.',
+    meta: 'ABN Political Desk · Franklin · 8 hours ago' },
+];
+
+const w1 = ALL_WORLD[dayOfYear % ALL_WORLD.length];
+const w2 = ALL_WORLD[(dayOfYear + 2) % ALL_WORLD.length];
+const w3 = ALL_WORLD[(dayOfYear + 4) % ALL_WORLD.length];
+
+document.getElementById('abn-world').innerHTML = [w1,w2,w3].map(w => `
+  <div class="abn-world-item">
+    <div class="abn-world-tag">${w.tag}</div>
+    <div class="abn-world-hed">${w.hed}</div>
+    <div class="abn-world-dek">${w.dek}</div>
+    <div class="abn-world-meta">${w.meta}</div>
+  </div>
+`).join('');
+
+// ── SCHEDULE (time-based, past shows greyed, current highlighted) ──
+const SCHEDULE = [
+  { h: 6,  m: 0,  show: 'ABN Morning Report', desc: 'Headlines, weather, overnight developments' },
+  { h: 9,  m: 0,  show: 'ABN Midday Preview', desc: 'The stories shaping today' },
+  { h: 12, m: 0,  show: 'ABN Midday Report', desc: 'Full news hour — live from Franklin and Manhattan' },
+  { h: 14, m: 0,  show: 'ABN Afternoon Desk', desc: 'Rolling coverage and analysis' },
+  { h: 17, m: 0,  show: 'ABN Evening News', desc: 'With anchor Patricia Sorensen' },
+  { h: 19, m: 0,  show: 'World Tonight', desc: 'International news in depth' },
+  { h: 21, m: 0,  show: 'ABN Investigates', desc: 'Long-form journalism and special reports' },
+  { h: 23, m: 0,  show: 'ABN Late Report', desc: 'The day\'s final headlines' },
+];
+
+const nowMinutes = hour * 60 + now.getMinutes();
+
+function schedMinutes(s) { return s.h * 60 + s.m; }
+function formatSchedTime(s) {
+  const ampm = s.h < 12 ? 'a.m.' : 'p.m.';
+  const h = s.h === 0 ? 12 : s.h > 12 ? s.h - 12 : s.h;
+  return `${h}:${String(s.m).padStart(2,'0')} ${ampm}`;
+}
+
+// Find current show index
+let currentIdx = -1;
+for (let i = 0; i < SCHEDULE.length; i++) {
+  const start = schedMinutes(SCHEDULE[i]);
+  const end   = i + 1 < SCHEDULE.length ? schedMinutes(SCHEDULE[i+1]) : 24*60;
+  if (nowMinutes >= start && nowMinutes < end) { currentIdx = i; break; }
+}
+
+// Show current + next 3 upcoming; grey out past
+const schedHtml = SCHEDULE.map((s, i) => {
+  const isPast    = schedMinutes(s) + (i+1 < SCHEDULE.length ? 0 : 60) <= nowMinutes && i !== currentIdx;
+  const isCurrent = i === currentIdx;
+  const cls = isPast ? 'abn-sched-row past' : isCurrent ? 'abn-sched-row now' : 'abn-sched-row';
+  const nowBadge = isCurrent ? '<span class="abn-now-badge">NOW</span>' : '';
+  return `<div class="${cls}">
+    <div class="abn-sched-time">${formatSchedTime(s)}${nowBadge}</div>
+    <div class="abn-sched-show">${s.show}</div>
+    <div class="abn-sched-desc">${s.desc}</div>
+  </div>`;
+}).join('');
+
+document.getElementById('abn-schedule').innerHTML = schedHtml;
+
+// ── MOST READ (rotate daily) ──
+const ALL_MOSTREAD = [
+  'Nakamura signals she won\'t oppose NAU consolidation vote',
+  'NAU currency framework: what it means for your savings',
+  'USRC Northeast Corridor breaks ridership record',
+  'China\'s Interlink opening — explained',
+  'Congress passes Ȼ2.1bn USRC modernisation bill',
+  'UER media reforms: why Paris is divided',
+  'Tsar Nicholas IV and the Duma deadlock — explained',
+  'Washington House West Wing reopens — what\'s changed',
+];
+
+const mr = [];
+for (let i = 0; i < 4; i++) {
+  mr.push(ALL_MOSTREAD[(dayOfYear + i * 2) % ALL_MOSTREAD.length]);
+}
+
+document.getElementById('abn-mostread').innerHTML = mr.map((item, i) => `
+  <div class="abn-mostread-item">
+    <span class="abn-mostread-num">${i+1}.</span>
+    <span>${item}</span>
+  </div>
+`).join('');
+</script>
 </body>
 </html>
