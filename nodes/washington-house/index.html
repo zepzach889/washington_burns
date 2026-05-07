@@ -27,17 +27,15 @@
     object-fit: cover;
     object-position: center 40%;
     display: block;
-    mask-image: radial-gradient(ellipse 80% 100% at 50% 50%, black 40%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 100% at 50% 50%, black 40%, transparent 100%);
-    opacity: 0.85;
+    opacity: 0.75;
   }
 
   .wh-hero-overlay {
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(to right, var(--wh-blue-dark) 0%, transparent 25%, transparent 75%, var(--wh-blue-dark) 100%),
-      linear-gradient(to bottom, transparent 40%, var(--wh-blue-dark) 100%);
+      linear-gradient(to right, var(--wh-blue-dark) 0%, transparent 22%, transparent 78%, var(--wh-blue-dark) 100%),
+      linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.72) 100%);
     pointer-events: none;
   }
 
@@ -47,8 +45,9 @@
     left: 0;
     right: 0;
     text-align: center;
-    padding: 0 20px 20px;
+    padding: 24px 20px 22px;
     color: #fff;
+    background: linear-gradient(to top, rgba(10,20,40,0.92) 0%, rgba(10,20,40,0.7) 60%, transparent 100%);
   }
 
   .wh-kicker {
@@ -58,6 +57,7 @@
     color: var(--wh-gold-light);
     margin-bottom: 6px;
     font-weight: 600;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
   }
 
   .wh-title {
@@ -66,23 +66,25 @@
     letter-spacing: -0.01em;
     line-height: 1.1;
     color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
   }
 
   .wh-subtitle {
     font-size: 12px;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.75);
     margin-top: 6px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.7);
   }
 
   .wh-address-tag {
     display: inline-block;
     margin-top: 10px;
     font-size: 11px;
-    background: rgba(255,255,255,0.10);
-    border: 0.5px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.45);
+    border: 0.5px solid rgba(255,255,255,0.25);
     padding: 4px 12px;
     border-radius: 12px;
-    color: rgba(255,255,255,0.75);
+    color: rgba(255,255,255,0.8);
     font-family: monospace;
   }
 
@@ -90,7 +92,6 @@
   .wh-nav {
     display: flex;
     justify-content: center;
-    gap: 0;
     background: var(--wh-blue);
     flex-wrap: wrap;
     border-bottom: 2px solid var(--wh-gold);
@@ -109,13 +110,7 @@
   .wh-nav a.active { color: var(--wh-gold-light); border-bottom: 2px solid var(--wh-gold-light); }
 
   /* ── BODY ── */
-  .wh-body {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
+  .wh-body { display: grid; grid-template-columns: 1fr 300px; max-width: 1100px; margin: 0 auto; }
   .wh-main { padding: 28px 24px; border-right: 0.5px solid var(--border); }
   .wh-sidebar { padding: 24px 16px; background: var(--bg-secondary); }
 
@@ -153,40 +148,17 @@
   .wh-president-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 4px; }
   .wh-president-name { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--text-primary); line-height: 1.1; margin-bottom: 4px; }
   .wh-president-detail { font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
-  .wh-president-term {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    background: #EBF0FA;
-    color: var(--wh-blue);
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-top: 6px;
-  }
+  .wh-president-term { display: inline-block; font-size: 10px; font-weight: 700; background: #EBF0FA; color: var(--wh-blue); padding: 2px 8px; border-radius: 4px; margin-top: 6px; }
 
   /* ── STATEMENT ── */
-  .wh-statement {
-    background: #EBF0FA;
-    border-left: 3px solid var(--wh-blue);
-    border-radius: 0 8px 8px 0;
-    padding: 16px 18px;
-    margin-bottom: 24px;
-  }
-
+  .wh-statement { background: #EBF0FA; border-left: 3px solid var(--wh-blue); border-radius: 0 8px 8px 0; padding: 16px 18px; margin-bottom: 24px; }
   .wh-statement-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wh-blue); margin-bottom: 6px; }
   .wh-statement-text { font-family: 'DM Serif Display', serif; font-size: 16px; line-height: 1.5; color: var(--text-primary); font-style: italic; }
   .wh-statement-attr { font-size: 11px; color: var(--text-tertiary); margin-top: 8px; }
 
   /* ── SECTIONS ── */
   .wh-section { margin-bottom: 24px; }
-  .wh-section-hed {
-    font-family: 'DM Serif Display', serif;
-    font-size: 20px;
-    color: var(--text-primary);
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 1.5px solid var(--wh-gold);
-  }
+  .wh-section-hed { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text-primary); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1.5px solid var(--wh-gold); }
 
   /* ── VISIT CARDS ── */
   .wh-visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -203,20 +175,9 @@
   .wh-news-title { font-family: 'DM Serif Display', serif; font-size: 15px; color: var(--text-primary); margin-bottom: 3px; }
   .wh-news-meta { font-size: 11px; color: var(--text-tertiary); }
 
-  /* ── WING DIAGRAM ── */
-  .wh-wings {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-  .wh-wing {
-    background: #fff;
-    border: 0.5px solid var(--border);
-    border-radius: 6px;
-    padding: 10px 12px;
-    border-left: 3px solid var(--wh-gold);
-  }
+  /* ── WINGS ── */
+  .wh-wings { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+  .wh-wing { background: #fff; border: 0.5px solid var(--border); border-radius: 6px; padding: 10px 12px; border-left: 3px solid var(--wh-gold); }
   .wh-wing-name { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--wh-blue); margin-bottom: 3px; }
   .wh-wing-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
 
@@ -260,7 +221,6 @@
   </div>
 </div>
 
-<!-- HERO -->
 <div class="wh-hero">
   <img class="wh-hero-img" src="../../images/washington-house/Washington%20House%20Standard.png" alt="Washington House" />
   <div class="wh-hero-overlay"></div>
@@ -285,7 +245,6 @@
 <div class="wh-body">
   <div class="wh-main">
 
-    <!-- PRESIDENT CARD -->
     <div class="wh-president-card">
       <div class="wh-president-portrait">
         <img src="../../images/washington-house/44-Photo-Nakamura.png" alt="President Sophia R. Nakamura" />
@@ -302,31 +261,19 @@
       </div>
     </div>
 
-    <!-- STATEMENT -->
-    <div class="wh-statement">
-      <div class="wh-statement-label">Statement from the President · 13 March 2026</div>
-      <div class="wh-statement-text">"The Assembly exists to debate these questions — that is precisely what it was designed to do. If the people's representatives, meeting the standard our Constitution demands, choose to open that conversation, I will not stand in their way."</div>
-      <div class="wh-statement-attr">— President Nakamura, on the NAU Constitutional Consolidation question · Issued through the Office of Communications</div>
+    <!-- STATEMENT — rotates daily -->
+    <div class="wh-statement" id="wh-statement-block">
+      <div class="wh-statement-label" id="wh-statement-label"></div>
+      <div class="wh-statement-text" id="wh-statement-text"></div>
+      <div class="wh-statement-attr" id="wh-statement-attr"></div>
     </div>
 
-    <!-- BRIEFING ROOM -->
+    <!-- BRIEFING ROOM — rotates daily -->
     <div class="wh-section">
       <div class="wh-section-hed">From the Briefing Room</div>
-      <div class="wh-news-item">
-        <div class="wh-news-title">President Nakamura to Address NAU Economic Summit in Montréal, April 3–4</div>
-        <div class="wh-news-meta">Office of the Press Secretary · 12 March 2026</div>
-      </div>
-      <div class="wh-news-item">
-        <div class="wh-news-title">Executive Order 2026-11: Federal Parks Service Acquisition of Silver Creek Lands, Oregon</div>
-        <div class="wh-news-meta">Office of the President · 10 March 2026</div>
-      </div>
-      <div class="wh-news-item">
-        <div class="wh-news-title">Statement on USRC Q1 Ridership Record: "A testament to what public investment delivers."</div>
-        <div class="wh-news-meta">Office of Communications · 8 March 2026</div>
-      </div>
+      <div id="wh-briefing"></div>
     </div>
 
-    <!-- PLAN YOUR VISIT -->
     <div class="wh-section">
       <div class="wh-section-hed">Plan Your Visit</div>
       <div class="wh-visit-grid">
@@ -357,7 +304,6 @@
       </div>
     </div>
 
-    <!-- ARCHITECTURE -->
     <div class="wh-section">
       <div class="wh-section-hed">The Four Wings</div>
       <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:12px;">Washington House is a square structure enclosing a central courtyard, creating four distinct wings each with its own purpose.</p>
@@ -385,26 +331,10 @@
 
   <div class="wh-sidebar">
 
+    <!-- SCHEDULE — rotates by time of day -->
     <div class="wh-widget">
-      <div class="wh-widget-head">Today's Schedule</div>
-      <div class="wh-widget-body">
-        <div class="wh-schedule-row">
-          <div class="wh-schedule-time">9:00 a.m.</div>
-          <div class="wh-schedule-event">Daily intelligence briefing</div>
-        </div>
-        <div class="wh-schedule-row">
-          <div class="wh-schedule-time">10:30 a.m.</div>
-          <div class="wh-schedule-event">Meeting with Congressional leadership on NAU Constitutional Consolidation</div>
-        </div>
-        <div class="wh-schedule-row">
-          <div class="wh-schedule-time">1:00 p.m.</div>
-          <div class="wh-schedule-event">Luncheon with Canadian PM Tremblay</div>
-        </div>
-        <div class="wh-schedule-row">
-          <div class="wh-schedule-time">3:30 p.m.</div>
-          <div class="wh-schedule-event">Press briefing — Office of Communications</div>
-        </div>
-      </div>
+      <div class="wh-widget-head">Public Schedule — <span id="wh-sched-date"></span></div>
+      <div class="wh-widget-body" id="wh-schedule"></div>
     </div>
 
     <div class="wh-widget">
@@ -443,10 +373,104 @@
 
 <script src="../../router.js"></script>
 <script>
-  initAddressBar('nan.washingtonhouse.gov.usa');
-  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const d = new Date();
-  document.getElementById('wh-widget-date') && (document.getElementById('wh-widget-date').textContent = `${d.getDate()} ${MONTHS[d.getMonth()]}, ${d.getFullYear()}`);
+initAddressBar('nan.washingtonhouse.gov.usa');
+
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+const now      = new Date();
+const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+const hour     = now.getHours();
+const dateStr  = `${DAYS[now.getDay()]}, ${now.getDate()} ${MONTHS[now.getMonth()]}`;
+
+// ── ROTATING STATEMENTS (daily) ──
+const STATEMENTS = [
+  {
+    label: 'Statement from the President',
+    date:  '13 March 2026',
+    text:  '"The Assembly exists to debate these questions — that is precisely what it was designed to do. If the people\'s representatives, meeting the standard our Constitution demands, choose to open that conversation, I will not stand in their way."',
+    attr:  '— President Nakamura, on the NAU Constitutional Consolidation question · Office of Communications'
+  },
+  {
+    label: 'Statement from the President',
+    date:  '8 March 2026',
+    text:  '"This is what public investment looks like. Generation after generation, the Railway Company has delivered — and these numbers prove that when we invest in our people, they show up."',
+    attr:  '— President Nakamura, on USRC Q1 ridership record · Office of Communications'
+  },
+  {
+    label: 'Statement from the President',
+    date:  '2 March 2026',
+    text:  '"Oregon\'s forests and waterways belong to all Americans, and it is our solemn obligation to protect them. Silver Creek will endure for generations to come."',
+    attr:  '— President Nakamura, on signing Executive Order 2026-11 · Federal Parks Service ceremony, Franklin'
+  },
+  {
+    label: 'Statement from the President',
+    date:  '24 February 2026',
+    text:  '"We enter these talks not to dominate, but to build — a North America where every nation, large or small, has an equal stake in our shared prosperity."',
+    attr:  '— President Nakamura, ahead of NAU Economic Summit · Office of Communications'
+  },
+];
+
+const stmt = STATEMENTS[dayOfYear % STATEMENTS.length];
+document.getElementById('wh-statement-label').textContent = stmt.label + ' · ' + stmt.date;
+document.getElementById('wh-statement-text').textContent  = stmt.text;
+document.getElementById('wh-statement-attr').textContent  = stmt.attr;
+
+// ── ROTATING BRIEFING ROOM ITEMS (daily, show 3 of 8) ──
+const ALL_BRIEFING = [
+  { title: 'President Nakamura to Address NAU Economic Summit in Montréal, April 3–4', meta: 'Office of the Press Secretary · 12 March 2026' },
+  { title: 'Executive Order 2026-11: Federal Parks Service Acquisition of Silver Creek Lands, Oregon', meta: 'Office of the President · 10 March 2026' },
+  { title: 'Statement on USRC Q1 Ridership Record: "A testament to what public investment delivers."', meta: 'Office of Communications · 8 March 2026' },
+  { title: 'President Nakamura Receives Canadian Prime Minister Tremblay at Washington House', meta: 'Office of the Press Secretary · 7 March 2026' },
+  { title: 'Administration Announces Appointments to the Federal Arbitration Bureau', meta: 'Office of the President · 5 March 2026' },
+  { title: 'Nakamura Signs Reauthorisation of the Caribbean Integration & Development Fund', meta: 'Office of Communications · 3 March 2026' },
+  { title: 'President Issues Statement Supporting NAU Assembly Currency Stabilisation Framework', meta: 'Office of Communications · 28 February 2026' },
+  { title: 'Washington House West Wing Tours Resume Following Renovation of State Dining Room', meta: 'Office of the Press Secretary · 20 February 2026' },
+];
+
+// Pick 3 items based on day of year
+const b1 = ALL_BRIEFING[dayOfYear % ALL_BRIEFING.length];
+const b2 = ALL_BRIEFING[(dayOfYear + 2) % ALL_BRIEFING.length];
+const b3 = ALL_BRIEFING[(dayOfYear + 5) % ALL_BRIEFING.length];
+
+document.getElementById('wh-briefing').innerHTML = [b1, b2, b3].map(b => `
+  <div class="wh-news-item">
+    <div class="wh-news-title">${b.title}</div>
+    <div class="wh-news-meta">${b.meta}</div>
+  </div>
+`).join('');
+
+// ── ROTATING SCHEDULE (time of day) ──
+const SCHEDULE_MORNING = [
+  { time: '8:00 a.m.',  event: 'Daily intelligence briefing' },
+  { time: '9:30 a.m.',  event: 'Meeting with Chief of Staff — weekly priorities review' },
+  { time: '10:30 a.m.', event: 'Congressional leadership call on NAU Constitutional Consolidation' },
+  { time: '12:00 p.m.', event: 'Working luncheon with Secretary of State' },
+];
+
+const SCHEDULE_AFTERNOON = [
+  { time: '1:00 p.m.',  event: 'Bilateral meeting — Canadian PM Tremblay, West Wing Reception Room' },
+  { time: '2:30 p.m.',  event: 'Signing ceremony — Federal Parks Service land designations' },
+  { time: '3:30 p.m.',  event: 'Press briefing — Office of Communications' },
+  { time: '4:30 p.m.',  event: 'Meeting with NAU Council representative on currency framework' },
+];
+
+const SCHEDULE_EVENING = [
+  { time: '5:30 p.m.',  event: 'End of public schedule' },
+  { time: '6:00 p.m.',  event: 'Private dinner — First Family residence, South Wing' },
+  { time: '7:30 p.m.',  event: 'Evening reading — President\'s Study, North Wing' },
+  { time: '(Tomorrow)', event: 'Address to NAU Economic Summit, Montréal — departure 7:00 a.m.' },
+];
+
+const schedule = hour < 12 ? SCHEDULE_MORNING : hour < 17 ? SCHEDULE_AFTERNOON : SCHEDULE_EVENING;
+
+document.getElementById('wh-sched-date').textContent = dateStr;
+document.getElementById('wh-schedule').innerHTML = schedule.map(s => `
+  <div class="wh-schedule-row">
+    <div class="wh-schedule-time">${s.time}</div>
+    <div class="wh-schedule-event">${s.event}</div>
+  </div>
+`).join('');
 </script>
 </body>
 </html>
