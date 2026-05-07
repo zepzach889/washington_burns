@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAU Assembly — North American Union</title>
+<link rel="stylesheet" href="../../shared.css">
+<style>
+  :root { --nau-navy: #1B2A4A; --nau-gold: #B8972A; }
+
+  .nau-header {
+    background: var(--nau-navy);
+    color: #fff;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .nau-brand { display: flex; align-items: center; gap: 14px; }
+  .nau-seal { font-size: 28px; }
+  .nau-title { font-family: 'DM Serif Display', serif; font-size: 20px; letter-spacing: -0.01em; }
+  .nau-subtitle { font-size: 10px; color: rgba(255,255,255,0.55); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+  .nau-session-badge { font-size: 11px; background: var(--nau-gold); color: #fff; padding: 4px 10px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
+
+  .nau-nav { background: #14203A; display: flex; overflow-x: auto; }
+  .nau-nav a { font-size: 12px; color: rgba(255,255,255,0.70); text-decoration: none; padding: 10px 16px; font-weight: 500; white-space: nowrap; border-right: 0.5px solid rgba(255,255,255,0.08); transition: all 0.1s; }
+  .nau-nav a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+  .nau-nav a.active { color: var(--nau-gold); border-bottom: 2px solid var(--nau-gold); }
+
+  .nau-body { display: grid; grid-template-columns: 1fr 280px; max-width: 1100px; margin: 0 auto; }
+  .nau-main { padding: 24px; border-right: 0.5px solid var(--border); }
+  .nau-sidebar { padding: 24px 16px; background: var(--bg-secondary); }
+
+  .nau-floor-banner {
+    background: #FFF8E1;
+    border: 1px solid #FFE082;
+    border-left: 4px solid var(--nau-gold);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+  .nau-floor-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #8B6914; margin-bottom: 4px; }
+  .nau-floor-title { font-family: 'DM Serif Display', serif; font-size: 17px; color: #5D4508; margin-bottom: 3px; }
+  .nau-floor-meta { font-size: 11px; color: #8B6914; }
+
+  .nau-bill { background: #fff; border: 0.5px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; }
+  .nau-bill-num { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 4px; }
+  .nau-bill-title { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--text-primary); margin-bottom: 5px; line-height: 1.3; }
+  .nau-bill-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 8px; }
+  .nau-bill-meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .nau-bill-status { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+  .nau-bill-status.committee { background: var(--blue-light); color: var(--blue); }
+  .nau-bill-status.floor { background: #FFF8E1; color: #8B6914; }
+  .nau-bill-status.passed { background: #E8F5E9; color: var(--green); }
+  .nau-bill-sponsor { font-size: 11px; color: var(--text-tertiary); }
+
+  .nau-widget { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+  .nau-widget:last-child { margin-bottom: 0; }
+  .nau-widget-head { background: var(--bg-tertiary); padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); border-bottom: 0.5px solid var(--border); }
+  .nau-widget-body { padding: 12px; }
+
+  .nau-party-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 0.5px solid var(--border); font-size: 12px; }
+  .nau-party-row:last-child { border-bottom: none; }
+  .nau-party-name { font-weight: 600; }
+  .nau-party-name.spa { color: #8B1A1A; }
+  .nau-party-name.fed { color: #0C447C; }
+  .nau-party-name.dem { color: #2A6832; }
+  .nau-party-name.jca { color: #5D3A8B; }
+  .nau-seats { font-weight: 700; color: var(--text-primary); }
+  .nau-seats-bar { height: 4px; border-radius: 2px; margin-top: 2px; }
+
+  .nau-member-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-size: 12px; }
+  .nau-member-row:last-child { border-bottom: none; }
+  .nau-member-name { font-weight: 500; color: var(--text-primary); }
+  .nau-member-role { font-size: 11px; color: var(--text-tertiary); }
+
+  @media (max-width: 700px) { .nau-body { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="wm-topbar">
+  <a class="wm-topbar-logo" href="../../">Way<span>mark</span></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="wm-lang-switcher">
+    <button class="wm-lang-btn active">EN</button>
+    <button class="wm-lang-btn">FR</button>
+    <button class="wm-lang-btn">ES</button>
+  </div>
+</div>
+
+<div class="nau-header">
+  <div class="nau-brand">
+    <div class="nau-seal">⚖</div>
+    <div>
+      <div class="nau-title">North American Union Assembly</div>
+      <div class="nau-subtitle">link://nan.assembly.nau &nbsp;·&nbsp; Franklin, D.W.</div>
+    </div>
+  </div>
+  <div class="nau-session-badge">114th Session · In Session</div>
+</div>
+
+<nav class="nau-nav">
+  <a href="#" class="active">Floor Activity</a>
+  <a href="#">Bills & Legislation</a>
+  <a href="#">Senate</a>
+  <a href="#">House of Representatives</a>
+  <a href="#">Committees</a>
+  <a href="#">Members</a>
+  <a href="#">Records & Archives</a>
+</nav>
+
+<div class="nau-body">
+  <div class="nau-main">
+    <div class="wm-section-label">Floor Activity — Friday, 14 March 2027</div>
+
+    <div class="nau-floor-banner">
+      <div class="nau-floor-label">Senate — Now on the Floor</div>
+      <div class="nau-floor-title">S. 1142 — North American Currency Stability Act</div>
+      <div class="nau-floor-meta">Second reading · Senate Finance Committee · Debate in progress · Est. vote: 15:00 Franklin Time</div>
+    </div>
+
+    <div class="wm-section-label">Recent & Upcoming Legislation</div>
+
+    <div class="nau-bill">
+      <div class="nau-bill-num">S. 1142</div>
+      <div class="nau-bill-title">North American Currency Stability Act</div>
+      <div class="nau-bill-desc">Would peg Canadian and Texan exchange rates to the Continental and establish a joint monetary oversight panel under NAU authority. Backed by a Federalist-SPA coalition.</div>
+      <div class="nau-bill-meta">
+        <span class="nau-bill-status floor">On Floor</span>
+        <span class="nau-bill-sponsor">Sponsors: Sen. Okafor (Fed–Ohio), Sen. Bertrand (SPA–Québec)</span>
+      </div>
+    </div>
+
+    <div class="nau-bill">
+      <div class="nau-bill-num">H.R. 887</div>
+      <div class="nau-bill-title">Constitutional Convention Enabling Act</div>
+      <div class="nau-bill-desc">Would authorise the convening of a constitutional convention to review the 1861 NAU compact. Requires two-thirds quorum of member-state delegations. Presidential position clarified Thursday evening.</div>
+      <div class="nau-bill-meta">
+        <span class="nau-bill-status committee">Rules Committee</span>
+        <span class="nau-bill-sponsor">Sponsors: Rep. Halverson (Fed–Minnesota), Rep. Dumont (SPA–Montréal)</span>
+      </div>
+    </div>
+
+    <div class="nau-bill">
+      <div class="nau-bill-num">S. 1089</div>
+      <div class="nau-bill-title">Federal Parks Expansion and Preservation Act</div>
+      <div class="nau-bill-desc">Designates eleven new Federal Park territories across the NAU, including three in northern Canada and one in the Hawaiian archipelago. Passed Senate committee 14–3.</div>
+      <div class="nau-bill-meta">
+        <span class="nau-bill-status passed">Passed Committee</span>
+        <span class="nau-bill-sponsor">Sponsor: Sen. Kahananui (Fed–Hawaii)</span>
+      </div>
+    </div>
+
+    <div class="nau-bill">
+      <div class="nau-bill-num">H.R. 902</div>
+      <div class="nau-bill-title">USRC Modernisation and Electrification Fund Act</div>
+      <div class="nau-bill-desc">Appropriates Ȼ4.2 billion over six years for electrification of remaining diesel USRC corridors, with priority given to Southern and Mountain West routes.</div>
+      <div class="nau-bill-meta">
+        <span class="nau-bill-status committee">Transport Committee</span>
+        <span class="nau-bill-sponsor">Sponsor: Rep. Vasquez (Dem–Texas)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="nau-sidebar">
+    <div class="nau-widget">
+      <div class="nau-widget-head">Assembly Composition — 114th Session</div>
+      <div class="nau-widget-body">
+        <div class="nau-party-row">
+          <span class="nau-party-name spa">Socialist Party (SPA)</span>
+          <span class="nau-seats">118</span>
+        </div>
+        <div class="nau-party-row">
+          <span class="nau-party-name fed">Federalist</span>
+          <span class="nau-seats">142</span>
+        </div>
+        <div class="nau-party-row">
+          <span class="nau-party-name dem">Democrat</span>
+          <span class="nau-seats">109</span>
+        </div>
+        <div class="nau-party-row">
+          <span class="nau-party-name jca">JCA</span>
+          <span class="nau-seats">87</span>
+        </div>
+        <div class="nau-party-row">
+          <span class="nau-party-name" style="color:var(--text-tertiary)">Independent</span>
+          <span class="nau-seats">14</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="nau-widget">
+      <div class="nau-widget-head">Leadership</div>
+      <div class="nau-widget-body">
+        <div class="nau-member-row">
+          <div>
+            <div class="nau-member-name">President Nakamura</div>
+            <div class="nau-member-role">NAU President · SPA</div>
+          </div>
+        </div>
+        <div class="nau-member-row">
+          <div>
+            <div class="nau-member-name">Sen. Pres. Okafor</div>
+            <div class="nau-member-role">Senate President · Fed–Ohio</div>
+          </div>
+        </div>
+        <div class="nau-member-row">
+          <div>
+            <div class="nau-member-name">Speaker Dumont</div>
+            <div class="nau-member-role">House Speaker · SPA–Québec</div>
+          </div>
+        </div>
+        <div class="nau-member-row">
+          <div>
+            <div class="nau-member-name">Sen. Minority Ld. Malone</div>
+            <div class="nau-member-role">JCA–Georgia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nau-widget">
+      <div class="nau-widget-head">Next Scheduled Votes</div>
+      <div class="nau-widget-body" style="font-size:12px;">
+        <div style="padding:5px 0; border-bottom:0.5px solid var(--border)"><strong>Today 15:00</strong> — S. 1142 (Currency)</div>
+        <div style="padding:5px 0; border-bottom:0.5px solid var(--border)"><strong>Mon 18 Mar</strong> — H.R. 887 (Convention)</div>
+        <div style="padding:5px 0"><strong>Tue 19 Mar</strong> — S. 1089 (Parks)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wm-footer">
+  <span>link://nan.assembly.nau &nbsp;·&nbsp; North American Union Assembly &nbsp;·&nbsp; Franklin, D.W.</span>
+  <div class="wm-footer-links">
+    <a href="#">About</a>
+    <a href="#">Accessibility</a>
+    <a href="#">Records</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script>initAddressBar('nan.assembly.nau');</script>
+</body>
+</html>

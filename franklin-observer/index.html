@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Franklin Observer</title>
+<link rel="stylesheet" href="../../shared.css">
+<style>
+  .fo-header {
+    border-bottom: 3px solid #1a1410;
+    padding: 20px 24px 14px;
+    text-align: center;
+    background: var(--paper);
+  }
+  .fo-kicker { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 6px; font-weight: 600; }
+  .fo-nameplate { font-family: 'DM Serif Display', serif; font-size: 52px; letter-spacing: -0.02em; line-height: 1; color: var(--text-primary); }
+  .fo-dateline { font-size: 11px; color: var(--text-tertiary); margin-top: 8px; letter-spacing: 0.05em; border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); padding: 5px 0; margin-top: 10px; }
+  .fo-nav { display: flex; justify-content: center; gap: 20px; padding: 10px 24px; border-bottom: 0.5px solid var(--border); flex-wrap: wrap; }
+  .fo-nav a { font-size: 12px; font-weight: 600; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; }
+  .fo-nav a:hover { color: var(--text-primary); }
+
+  .fo-body {
+    display: grid;
+    grid-template-columns: 1fr 0.5px 1fr 0.5px 1fr;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .fo-col { padding: 20px 20px; }
+  .fo-col-divider { background: var(--border); width: 0.5px; }
+
+  .fo-lead-hed { font-family: 'DM Serif Display', serif; font-size: 28px; line-height: 1.2; margin-bottom: 8px; color: var(--text-primary); }
+  .fo-lead-dek { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 8px; }
+  .fo-byline { font-size: 10px; color: var(--text-tertiary); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .fo-body-text { font-size: 13px; line-height: 1.7; color: var(--text-primary); }
+  .fo-body-text p { margin-bottom: 10px; }
+
+  .fo-story { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 0.5px solid var(--border); }
+  .fo-story:last-child { border-bottom: none; }
+  .fo-story-hed { font-family: 'DM Serif Display', serif; font-size: 18px; line-height: 1.25; color: var(--text-primary); margin-bottom: 5px; }
+  .fo-story-dek { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 5px; }
+  .fo-story-meta { font-size: 10px; color: var(--text-tertiary); font-weight: 500; }
+
+  .fo-col-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 14px; padding-bottom: 6px; border-bottom: 1.5px solid var(--text-primary); }
+
+  @media (max-width: 700px) {
+    .fo-body { grid-template-columns: 1fr; }
+    .fo-col-divider { display: none; }
+    .fo-nameplate { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wm-topbar">
+  <a class="wm-topbar-logo" href="../../">Way<span>mark</span></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn" title="Navigate">→</button>
+  </div>
+  <div class="wm-lang-switcher">
+    <button class="wm-lang-btn active">EN</button>
+    <button class="wm-lang-btn">FR</button>
+    <button class="wm-lang-btn">ES</button>
+  </div>
+</div>
+
+<div class="fo-header">
+  <div class="fo-kicker">Established 1821 · Franklin, District of Washington</div>
+  <div class="fo-nameplate">The Franklin Observer</div>
+  <div class="fo-dateline">Friday, 14 March 2027 &nbsp;·&nbsp; Final Edition &nbsp;·&nbsp; link://nan.franklin-ob.pr.usa &nbsp;·&nbsp; Ȼ0.80</div>
+</div>
+
+<nav class="fo-nav">
+  <a href="#">Politics</a>
+  <a href="#">World</a>
+  <a href="#">Business</a>
+  <a href="#">Rail & Transport</a>
+  <a href="#">Culture</a>
+  <a href="#">Science</a>
+  <a href="#">Opinion</a>
+</nav>
+
+<div class="fo-body">
+  <!-- COL 1: Lead story -->
+  <div class="fo-col">
+    <div class="fo-col-label">Top Story</div>
+    <div class="fo-lead-hed">Nakamura Signals Compromise Path on Constitutional Convention</div>
+    <div class="fo-byline">By Eleanor Voss, Political Correspondent · Franklin</div>
+    <div class="fo-lead-dek">President says she will not block Assembly vote if quorum conditions are met, breaking weeks of silence on the referendum question.</div>
+    <div class="fo-body-text">
+      <p>President Sophia Nakamura signalled late Thursday that she would not use executive discretion to block an Assembly vote on convening a constitutional convention, provided that the measure meets the quorum threshold required under the 1861 Constitution.</p>
+      <p>The statement, delivered through her Communications Director in a brief evening address from the Washington House, represents the first substantive break from weeks of presidential silence on what has become the defining domestic question of her term.</p>
+      <p>Federalist and SPA floor leaders hailed the signal as clearing the way for a floor vote as early as next month. Democrat and JCA leadership were more cautious, with JCA whip Senator Malone of Georgia calling the statement "deliberately ambiguous."</p>
+      <p>The convention question — whether to open the NAU's foundational compact to revision for the first time since 1912 — has split the Assembly along lines that do not neatly follow party affiliation.</p>
+    </div>
+  </div>
+
+  <div class="fo-col-divider"></div>
+
+  <!-- COL 2: Secondary stories -->
+  <div class="fo-col">
+    <div class="fo-col-label">National</div>
+    <div class="fo-story">
+      <div class="fo-story-hed">Senate Finance Panel Advances Currency Stability Act</div>
+      <div class="fo-story-dek">The bill would peg Canadian and Texan exchange rates to the Continental for the first time, a significant step toward NAU monetary union.</div>
+      <div class="fo-story-meta">Assembly Tribune · 5 hours ago</div>
+    </div>
+    <div class="fo-story">
+      <div class="fo-story-hed">USRC Ohio Corridor Sets Ridership Record for Third Straight Quarter</div>
+      <div class="fo-story-dek">4.1 million passengers on the Franklin–Pittsburgh–Philadelphia mainline in Q1, the highest figure since the corridor's 1971 electrification.</div>
+      <div class="fo-story-meta">USRC Public Affairs · 6 hours ago</div>
+    </div>
+    <div class="fo-story">
+      <div class="fo-story-hed">Washington House Opens New East Wing to Public Visitors</div>
+      <div class="fo-story-dek">The renovation, the first major structural change since the Landon restoration of 1909, adds 14 rooms to the public tour circuit.</div>
+      <div class="fo-story-meta">Observer Staff · 9 hours ago</div>
+    </div>
+  </div>
+
+  <div class="fo-col-divider"></div>
+
+  <!-- COL 3: World & Culture -->
+  <div class="fo-col">
+    <div class="fo-col-label">World</div>
+    <div class="fo-story">
+      <div class="fo-story-hed">HuaWang Dismantling Enters Third Phase</div>
+      <div class="fo-story-dek">Interlink access now reaches 61% of Chinese households as the GPC's digital rights commission presses for faster progress.</div>
+      <div class="fo-story-meta">InterPress Wire · 4 hours ago</div>
+    </div>
+    <div class="fo-story">
+      <div class="fo-story-hed">UER Parliament Debates Northern Expansion Framework</div>
+      <div class="fo-story-dek">The proposed accession of three Scandinavian states to the Union of European Republics has reached a critical procedural juncture in Strasbourg.</div>
+      <div class="fo-story-meta">Observer World Desk · 7 hours ago</div>
+    </div>
+    <div class="fo-col-label" style="margin-top:20px;">Culture</div>
+    <div class="fo-story">
+      <div class="fo-story-hed">NAU–UER Co-Production Drama Set During Global War Confirmed for Autumn</div>
+      <div class="fo-story-dek">The six-part TC series will air simultaneously on the NANet and across UER member states — a first for open-network broadcasting.</div>
+      <div class="fo-story-meta">Observer Arts · 8 hours ago</div>
+    </div>
+  </div>
+</div>
+
+<div class="wm-footer">
+  <span>link://nan.franklin-ob.pr.usa &nbsp;·&nbsp; The Franklin Observer &nbsp;·&nbsp; Est. 1821 &nbsp;·&nbsp; Franklin, D.W.</span>
+  <div class="wm-footer-links">
+    <a href="#">About</a>
+    <a href="#">Subscribe</a>
+    <a href="#">Archive</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script>initAddressBar('nan.franklin-ob.pr.usa');</script>
+</body>
+</html>
