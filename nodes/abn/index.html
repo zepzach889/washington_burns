@@ -149,11 +149,26 @@
 <body>
 
 <div class="wm-topbar">
-  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
-  <div class="wm-address-wrap" id="wm-address-wrap">
-    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
-    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
   </div>
+  <a class="wm-arc-logo" href="/"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" placeholder="link://nan.waymark.biz.usa" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn" title="Navigate">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+  <div class="arc-bookmarks">
+  <a class="arc-bmark" href="/"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="./nodes/franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="./nodes/abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="./nodes/usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="./nodes/assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="./nodes/washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="./nodes/amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="./nodes/fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
 </div>
 
 <!-- TICKER -->
