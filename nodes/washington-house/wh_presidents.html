@@ -65,105 +65,36 @@
 
   /* ── PRESIDENT ROWS ── */
   .wh-pres-row {
-    border: 0.5px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 6px;
-    cursor: pointer;
-    background: #fff;
-    transition: box-shadow 0.1s;
-  }
-  .wh-pres-row:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-  .wh-pres-row.open { box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+  width: 100%;
+  box-sizing: border-box;
+}
 
-  .wh-pres-summary {
-    display: flex;
-    align-items: center;
-    padding: 10px 14px;
-    gap: 12px;
-  }
+.wh-pres-detail {
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
 
-  .wh-pres-num {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--text-tertiary);
-    font-family: monospace;
-    min-width: 28px;
-    flex-shrink: 0;
-  }
+.wh-detail-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+  font-size: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
 
-  .wh-party-stripe {
-    width: 4px;
-    height: 36px;
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
-
-  .wh-pres-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 16px;
-    color: var(--text-primary);
-    flex: 1;
-    min-width: 0;
-  }
-
-  .wh-pres-term {
-    font-size: 11px;
-    color: var(--text-tertiary);
-    font-family: monospace;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .wh-party-badge {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 2px 7px;
-    border-radius: 3px;
-    color: #fff;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .wh-pres-chevron {
-    font-size: 11px;
-    color: var(--text-tertiary);
-    flex-shrink: 0;
-    transition: transform 0.2s;
-  }
-  .wh-pres-row.open .wh-pres-chevron { transform: rotate(180deg); }
-
-  /* ── EXPANDED CARD ── */
-  .wh-pres-detail {
-    display: none;
-    padding: 0 14px 14px 58px;
-    border-top: 0.5px solid var(--border);
-  }
-  .wh-pres-row.open .wh-pres-detail { display: block; }
-
-  .wh-detail-inner {
-    padding-top: 12px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px 24px;
-    font-size: 12px;
-  }
-
-  .wh-detail-item { }
-  .wh-detail-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 2px; }
-  .wh-detail-val { color: var(--text-primary); line-height: 1.5; }
-
-  .wh-detail-note {
-    grid-column: 1 / -1;
-    font-size: 12px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    padding-top: 6px;
-    border-top: 0.5px solid var(--border);
-    margin-top: 4px;
-  }
+.wh-detail-note {
+  grid-column: 1 / -1;
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding-top: 6px;
+  border-top: 0.5px solid var(--border);
+  margin-top: 4px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
 
   /* ── SPECIAL ROWS ── */
   .wh-pres-row.acting {
