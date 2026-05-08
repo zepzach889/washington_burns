@@ -42,7 +42,6 @@ body {
   top: 0;
   z-index: 100;
   gap: 14px;
-  justify-content: space-between;
 }
 
 .wm-topbar-logo {
@@ -60,7 +59,7 @@ body {
   display: flex;
   align-items: center;
   flex: 1;
-  max-width: 540px;
+  max-width: 100%;
   background: var(--bg-secondary);
   border: 1px solid var(--border-mid);
   border-radius: 22px;
