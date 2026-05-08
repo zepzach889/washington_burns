@@ -174,7 +174,7 @@ const WAYMARK_HEADLINES = [
     hed: FO_WORLD_TODAY[0].hed,
     dek: FO_WORLD_TODAY[0].dek,
     meta: FO_WORLD_TODAY[0].meta,
-    link: './nodes/abn/'
+    link: './nodes/franklin-observer/'
   },
   {
     type: 'story',

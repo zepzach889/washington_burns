@@ -39,12 +39,13 @@
 
   .wm-sidebar { padding: 24px 16px; display: flex; flex-direction: column; gap: 18px; background: var(--bg-secondary); }
   .wm-widget { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; }
-  .wm-widget-head { background: var(--bg-tertiary); padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); border-bottom: 0.5px solid var(--border); }
+  .wm-widget-head { background: var(--bg-tertiary); padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
   .wm-widget-body { padding: 12px; }
   .wm-temp { font-size: 30px; font-weight: 300; line-height: 1; margin-bottom: 4px; }
   .wm-city { font-size: 12px; color: var(--text-secondary); margin-bottom: 2px; }
   .wm-cond { font-size: 11px; color: var(--text-tertiary); }
   .wm-weather-loading { font-size: 12px; color: var(--text-tertiary); font-style: italic; }
+
   .wm-market-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-size: 12px; }
   .wm-market-row:last-child { border-bottom: none; }
   .wm-ticker { color: var(--text-secondary); font-weight: 600; font-size: 11px; }
@@ -52,6 +53,11 @@
   .wm-chg { font-size: 11px; font-weight: 500; }
   .wm-chg.up { color: var(--green); }
   .wm-chg.dn { color: var(--red); }
+  .wm-market-status { font-size: 9px; font-weight: 700; letter-spacing: 0.06em; padding: 2px 6px; border-radius: 3px; }
+  .wm-market-status.open { background: #E8F5E9; color: var(--green); }
+  .wm-market-status.closed { background: var(--bg-tertiary); color: var(--text-tertiary); }
+  .wm-market-status.premarket { background: #FFF8E1; color: #8B6914; }
+
   .wm-shortcut-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
   .wm-shortcut { background: var(--bg-secondary); border-radius: 8px; padding: 9px 10px; font-size: 11px; color: var(--text-secondary); cursor: pointer; border: 0.5px solid var(--border); font-family: 'DM Sans', sans-serif; text-align: left; transition: all 0.1s; font-weight: 500; text-decoration: none; display: block; }
   .wm-shortcut:hover { background: var(--bg-tertiary); color: var(--text-primary); }
@@ -67,7 +73,7 @@
 <body>
 
 <div class="wm-topbar">
-  <a class="wm-topbar-logo" href="/">Way<span>mark</span></a>
+  <a class="wm-arc-logo" href="/"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
   <div class="wm-address-wrap" id="wm-address-wrap">
     <input class="wm-address-input" id="wm-address-input" type="text" placeholder="link://nan.waymark.biz.usa" spellcheck="false" autocomplete="off" />
     <button class="wm-go-btn" id="wm-go-btn" title="Navigate">→</button>
@@ -112,13 +118,11 @@
     </div>
 
     <div class="wm-widget">
-      <div class="wm-widget-head" id="w-markets-head">NAX Markets</div>
-      <div class="wm-widget-body">
-        <div class="wm-market-row"><span class="wm-ticker">NAX Comp</span><span class="wm-price">14,882</span><span class="wm-chg up">▲ 0.4%</span></div>
-        <div class="wm-market-row"><span class="wm-ticker">CTL</span><span class="wm-price">Ȼ1.000</span><span class="wm-chg">— 0.0%</span></div>
-        <div class="wm-market-row"><span class="wm-ticker">EuroMark</span><span class="wm-price">EM 0.874</span><span class="wm-chg dn">▼ 0.2%</span></div>
-        <div class="wm-market-row"><span class="wm-ticker">UKP</span><span class="wm-price">£1.142</span><span class="wm-chg up">▲ 0.1%</span></div>
+      <div class="wm-widget-head">
+        <span id="w-markets-head">NAX Markets</span>
+        <span class="wm-market-status" id="wm-market-status">—</span>
       </div>
+      <div class="wm-widget-body" id="wm-markets-body"></div>
     </div>
 
     <div class="wm-widget">
@@ -186,20 +190,16 @@ function applyLang(code) {
 
 function setLang(code) { applyLang(code); }
 
-// ── INIT ──
 applyLang('en');
 document.getElementById('wm-year').textContent = new Date().getFullYear();
 initAddressBar('nan.waymark.biz.usa');
 
-// ── RENDER HEADLINES FROM stories.js ──
+// ── RENDER HEADLINES ──
 const tagColors = { nau: '#993C1D', usa: '#185FA5', world: '#0F6E56', politics: '#993C1D', national: '#1a1410', rail: '#533AB7', culture: '#993556' };
-
-function tagColor(tag) {
-  return tagColors[tag.toLowerCase()] || '#185FA5';
-}
+function tagColor(tag) { return tagColors[tag.toLowerCase()] || '#185FA5'; }
 
 const lead = WAYMARK_HEADLINES[0];
-const rest  = WAYMARK_HEADLINES.slice(1);
+const rest = WAYMARK_HEADLINES.slice(1);
 
 let headlinesHtml = `
   <a class="wm-lead" href="${lead.link}">
@@ -213,7 +213,7 @@ let headlinesHtml = `
 rest.forEach(s => {
   headlinesHtml += `
     <a class="wm-headline" href="${s.link}">
-      <div class="wm-tag" style="color:${tagColor(s.tag)};font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">${s.tag}</div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;color:${tagColor(s.tag)}">${s.tag}</div>
       <div class="wm-hl-hed">${s.hed}</div>
       <div class="wm-hl-dek">${s.dek}</div>
       <div class="wm-hl-meta">${s.meta}</div>
@@ -222,6 +222,74 @@ rest.forEach(s => {
 });
 
 document.getElementById('wm-headlines').innerHTML = headlinesHtml;
+
+// ── DYNAMIC NAX MARKETS ──
+function seededRand(seed) {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
+
+function buildMarkets() {
+  const now  = new Date();
+  const day  = now.getDay(); // 0=Sun, 6=Sat
+  const hour = now.getHours();
+  const min  = now.getMinutes();
+  const seed = DAY_OF_YEAR * 100;
+
+  // Market hours: 9:30am–4:00pm Eastern, Mon–Fri
+  const isWeekend  = day === 0 || day === 6;
+  const minuteOfDay = hour * 60 + min;
+  const marketOpen  = 9 * 60 + 30;
+  const marketClose = 16 * 60;
+
+  let status, statusClass;
+  if (isWeekend || minuteOfDay >= marketClose) {
+    status = 'Closed'; statusClass = 'closed';
+  } else if (minuteOfDay < marketOpen) {
+    status = 'Pre-Market'; statusClass = 'premarket';
+  } else {
+    status = 'Open'; statusClass = 'open';
+  }
+
+  document.getElementById('wm-market-status').textContent = status;
+  document.getElementById('wm-market-status').className = `wm-market-status ${statusClass}`;
+
+  // Base values seeded by day
+  const naxBase  = 14600 + Math.floor(seededRand(seed + 1) * 600);
+  const naxChg   = (seededRand(seed + 2) * 2 - 1).toFixed(1);
+  const emBase   = 0.820 + seededRand(seed + 3) * 0.12;
+  const emChg    = (seededRand(seed + 4) * 0.8 - 0.4).toFixed(1);
+  const ukpBase  = 1.08 + seededRand(seed + 5) * 0.12;
+  const ukpChg   = (seededRand(seed + 6) * 0.8 - 0.4).toFixed(1);
+
+  // During market hours add small intraday drift
+  let naxDisplay = naxBase;
+  if (status === 'Open') {
+    const drift = Math.floor((seededRand(seed + 7) - 0.5) * 40);
+    naxDisplay = naxBase + drift;
+  }
+
+  function arrow(chg) { return parseFloat(chg) >= 0 ? '▲' : '▼'; }
+  function chgClass(chg) { return parseFloat(chg) >= 0 ? 'up' : 'dn'; }
+  function fmtChg(chg) { return `${arrow(chg)} ${Math.abs(chg)}%`; }
+
+  const rows = [
+    { ticker: 'NAX Comp', price: naxDisplay.toLocaleString(), chg: naxChg },
+    { ticker: 'CTL',      price: 'Ȼ1.000',                   chg: '0.0' },
+    { ticker: 'EuroMark', price: `EM ${emBase.toFixed(3)}`,  chg: emChg },
+    { ticker: 'UKP',      price: `£${ukpBase.toFixed(3)}`,   chg: ukpChg },
+  ];
+
+  document.getElementById('wm-markets-body').innerHTML = rows.map(r => `
+    <div class="wm-market-row">
+      <span class="wm-ticker">${r.ticker}</span>
+      <span class="wm-price">${r.price}</span>
+      <span class="wm-chg ${chgClass(r.chg)}">${fmtChg(r.chg)}</span>
+    </div>
+  `).join('');
+}
+
+buildMarkets();
 
 // ── LIVE WEATHER ──
 async function fetchWeather() {

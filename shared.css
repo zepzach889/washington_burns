@@ -189,3 +189,9 @@ body {
   .wm-topbar { flex-wrap: wrap; }
   .wm-address-wrap { max-width: 100%; order: 3; flex-basis: 100%; }
 }
+
+/* ── WM ARC BROWSER LOGO ── */
+.wm-arc-logo { text-decoration: none; font-family: 'DM Serif Display', serif; font-size: 18px; letter-spacing: 0.04em; flex-shrink: 0; }
+.arc-w { color: #1a1410; }
+.arc-m { color: #185FA5; }
+.arc-tag { color: #5A6A8A; font-style: italic; font-size: 16px; }
