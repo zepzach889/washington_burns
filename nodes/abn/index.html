@@ -247,6 +247,18 @@
 <script>
 initAddressBar('nan.abnnews.pr.usa');
 
+// ── ARC CLOCK ──
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+
 // ── CLOCK ──
 function updateClock() {
   const now = new Date();
