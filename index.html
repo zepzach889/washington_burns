@@ -6,19 +6,16 @@
 <title>Waymark — Find your node on the Link</title>
 <link rel="stylesheet" href="shared.css">
 <style>
-  .wm-hero { padding: 52px 20px 32px; display: flex; flex-direction: column; align-items: center; background: var(--paper); }
-  .wm-wordmark { font-family: 'DM Serif Display', serif; font-size: 64px; letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
+  .wm-hero { padding: 48px 20px 28px; display: flex; flex-direction: column; align-items: center; background: var(--paper); }
+  .wm-wordmark { font-family: 'DM Serif Display', serif; font-size: 64px; letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; cursor: pointer; }
   .wm-wordmark span { color: var(--blue); }
   .wm-tagline { font-size: 11px; color: var(--text-tertiary); margin-bottom: 28px; letter-spacing: 0.10em; text-transform: uppercase; font-weight: 500; }
-  .wm-search-wrap { width: 100%; max-width: 580px; position: relative; margin-bottom: 14px; }
+  .wm-search-wrap { width: 100%; max-width: 580px; position: relative; }
   .wm-search { width: 100%; padding: 15px 72px 15px 22px; border-radius: 32px; border: 1.5px solid var(--border-mid); background: #fff; font-size: 15px; font-family: 'DM Sans', sans-serif; color: var(--text-primary); outline: none; transition: border-color 0.15s, box-shadow 0.15s; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
   .wm-search:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(24,95,165,0.08); }
   .wm-search::placeholder { color: var(--text-tertiary); }
   .wm-search-btn { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: var(--blue); border: none; border-radius: 24px; padding: 8px 20px; font-size: 12px; font-weight: 600; color: #fff; cursor: pointer; font-family: 'DM Sans', sans-serif; letter-spacing: 0.02em; transition: background 0.1s; }
   .wm-search-btn:hover { background: var(--blue-dark); }
-  .wm-quicklinks { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
-  .wm-ql { font-size: 11px; color: var(--blue); cursor: pointer; padding: 4px 11px; border-radius: 12px; background: var(--blue-light); border: 0.5px solid var(--blue-mid); font-family: 'DM Sans', sans-serif; font-weight: 500; transition: background 0.1s; text-decoration: none; }
-  .wm-ql:hover { background: var(--blue-mid); }
 
   .wm-portal { display: grid; grid-template-columns: 1fr 300px; max-width: 1100px; margin: 0 auto; width: 100%; }
   .wm-main { padding: 24px 24px 32px; border-right: 0.5px solid var(--border); }
@@ -37,6 +34,23 @@
   .wm-hl-dek { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
   .wm-hl-meta { font-size: 10px; color: var(--text-tertiary); margin-top: 5px; font-weight: 500; }
 
+  /* SEARCH RESULTS */
+  .wm-search-result { display: block; text-decoration: none; padding: 14px 0; border-bottom: 0.5px solid var(--border); }
+  .wm-search-result:last-child { border-bottom: none; }
+  .wm-search-result:hover .wm-sr-hed { color: var(--blue); }
+  .wm-sr-source { font-size: 10px; color: var(--green); font-weight: 600; font-family: monospace; margin-bottom: 3px; }
+  .wm-sr-hed { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--blue-dark); margin-bottom: 4px; line-height: 1.3; transition: color 0.1s; }
+  .wm-sr-dek { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+  .wm-sr-meta { font-size: 10px; color: var(--text-tertiary); margin-top: 4px; }
+
+  .wm-no-results { padding: 32px 0; text-align: center; }
+  .wm-no-results-hed { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--text-primary); margin-bottom: 8px; }
+  .wm-no-results-dek { font-size: 13px; color: var(--text-tertiary); }
+  .wm-no-results-addr { font-family: monospace; font-size: 11px; color: var(--text-tertiary); margin-top: 16px; }
+
+  .wm-results-label { font-size: 12px; color: var(--text-tertiary); margin-bottom: 16px; }
+  .wm-results-label strong { color: var(--text-primary); }
+
   .wm-sidebar { padding: 24px 16px; display: flex; flex-direction: column; gap: 18px; background: var(--bg-secondary); }
   .wm-widget { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; }
   .wm-widget-head { background: var(--bg-tertiary); padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
@@ -45,7 +59,6 @@
   .wm-city { font-size: 12px; color: var(--text-secondary); margin-bottom: 2px; }
   .wm-cond { font-size: 11px; color: var(--text-tertiary); }
   .wm-weather-loading { font-size: 12px; color: var(--text-tertiary); font-style: italic; }
-
   .wm-market-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-size: 12px; }
   .wm-market-row:last-child { border-bottom: none; }
   .wm-ticker { color: var(--text-secondary); font-weight: 600; font-size: 11px; }
@@ -57,7 +70,6 @@
   .wm-market-status.open { background: #E8F5E9; color: var(--green); }
   .wm-market-status.closed { background: var(--bg-tertiary); color: var(--text-tertiary); }
   .wm-market-status.premarket { background: #FFF8E1; color: #8B6914; }
-
   .wm-shortcut-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
   .wm-shortcut { background: var(--bg-secondary); border-radius: 8px; padding: 9px 10px; font-size: 11px; color: var(--text-secondary); cursor: pointer; border: 0.5px solid var(--border); font-family: 'DM Sans', sans-serif; text-align: left; transition: all 0.1s; font-weight: 500; text-decoration: none; display: block; }
   .wm-shortcut:hover { background: var(--bg-tertiary); color: var(--text-primary); }
@@ -78,7 +90,7 @@
     <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
     <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
   </div>
-  <a class="wm-arc-logo" href="/"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <a class="wm-arc-logo" href="#" onclick="resetToHome(); return false;"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
   <div class="wm-address-wrap" id="wm-address-wrap">
     <input class="wm-address-input" id="wm-address-input" type="text" placeholder="link://nan.waymark.biz.usa" spellcheck="false" autocomplete="off" />
     <button class="wm-go-btn" id="wm-go-btn" title="Navigate">→</button>
@@ -91,7 +103,7 @@
   </div>
 </div>
 <div class="arc-bookmarks">
-  <a class="arc-bmark" href="/"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="#" onclick="resetToHome(); return false;"><span class="arc-bmark-icon">🔍</span>Waymark</a>
   <a class="arc-bmark" href="./nodes/franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
   <a class="arc-bmark" href="./nodes/abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
   <a class="arc-bmark" href="./nodes/usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
@@ -103,27 +115,19 @@
 </div>
 
 <div class="wm-hero">
-  <div class="wm-wordmark">Way<span>mark</span></div>
+  <div class="wm-wordmark" onclick="resetToHome()">Way<span>mark</span></div>
   <div class="wm-tagline" id="wm-tagline">Find your node on the Link</div>
   <div class="wm-search-wrap">
     <input class="wm-search" id="wm-search" type="text" />
     <button class="wm-search-btn" id="wm-search-btn">Find</button>
-  </div>
-  <div class="wm-quicklinks">
-    <a class="wm-ql" href="./nodes/assembly/">NAU Assembly</a>
-    <a class="wm-ql" href="./nodes/usrc/">USRC Rail Status</a>
-    <a class="wm-ql" href="./nodes/franklin-observer/">Franklin Observer</a>
-    <a class="wm-ql" href="./nodes/fps/">Federal Parks</a>
-    <a class="wm-ql" href="./nodes/abn/">ABN News</a>
   </div>
 </div>
 
 <hr class="wm-divider">
 
 <div class="wm-portal">
-  <div class="wm-main">
-    <div class="wm-section-label" id="wm-headlines-label">Today's Headlines — <span id="wm-date"></span></div>
-    <div id="wm-headlines"></div>
+  <div class="wm-main" id="wm-main">
+    <div id="wm-content-area"></div>
   </div>
 
   <div class="wm-sidebar">
@@ -170,17 +174,6 @@
 <script src="router.js"></script>
 <script src="stories.js"></script>
 <script>
-// ── ARC CLOCK ──
-function updateArcClock() {
-  const n = new Date();
-  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  const hh = String(n.getHours()).padStart(2,'0');
-  const mm = String(n.getMinutes()).padStart(2,'0');
-  const el = document.getElementById('arc-clock');
-  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
-}
-setInterval(updateArcClock, 10000);
-updateArcClock();
 // ── TRANSLATIONS ──
 const UI = {
   en: { tagline: 'Find your node on the Link', searchHolder: 'Search the Link…', searchBtn: 'Find', headlinesLabel: 'Today\'s Headlines', weatherHead: 'Franklin, D.W. — Weather', weatherLoading: 'Fetching conditions…', weatherUnavail: 'Conditions unavailable', marketsHead: 'NAX Markets', shortcutsHead: 'My Shortcuts', fAbout: 'About', fPrivacy: 'Privacy', fTerms: 'Terms of Service', fAccess: 'Accessibility', fStatus: 'NANet Status', months: ['January','February','March','April','May','June','July','August','September','October','November','December'], dateFormat: (d,m,y) => `${d} ${m}, ${y}` },
@@ -210,7 +203,6 @@ function applyLang(code) {
   document.getElementById('f-terms').textContent          = t.fTerms;
   document.getElementById('f-access').textContent         = t.fAccess;
   document.getElementById('f-status').textContent         = t.fStatus;
-  document.getElementById('wm-headlines-label').innerHTML = t.headlinesLabel + ' — <span id="wm-date">' + formatDate(code) + '</span>';
   const wl = document.getElementById('w-weather-loading');
   if (wl) wl.textContent = t.weatherLoading;
   document.querySelectorAll('.wm-lang-btn').forEach(b => b.classList.toggle('active', b.textContent === code.toUpperCase()));
@@ -218,84 +210,176 @@ function applyLang(code) {
 
 function setLang(code) { applyLang(code); }
 
+// ── CLOCK ──
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+
 applyLang('en');
 document.getElementById('wm-year').textContent = new Date().getFullYear();
 initAddressBar('nan.waymark.biz.usa');
 
-// ── RENDER HEADLINES ──
+// ── TAG COLORS ──
 const tagColors = { nau: '#993C1D', usa: '#185FA5', world: '#0F6E56', politics: '#993C1D', national: '#1a1410', rail: '#533AB7', culture: '#993556' };
-function tagColor(tag) { return tagColors[tag.toLowerCase()] || '#185FA5'; }
+function tagColor(tag) { return tagColors[(tag||'').toLowerCase()] || '#185FA5'; }
 
-const lead = WAYMARK_HEADLINES[0];
-const rest = WAYMARK_HEADLINES.slice(1);
+// ── RENDER HEADLINES ──
+function renderHeadlines() {
+  const lead = WAYMARK_HEADLINES[0];
+  const rest = WAYMARK_HEADLINES.slice(1);
+  const t = UI[currentLang];
 
-let headlinesHtml = `
-  <a class="wm-lead" href="${lead.link}">
+  let html = `<div class="wm-section-label">${t.headlinesLabel} — ${formatDate(currentLang)}</div>`;
+
+  html += `<a class="wm-lead" href="${lead.link}">
     <div class="wm-lead-tag">${lead.tag}</div>
     <div class="wm-lead-hed">${lead.hed}</div>
     <div class="wm-lead-dek">${lead.dek}</div>
     <div class="wm-lead-meta">${lead.meta}</div>
-  </a>
-`;
+  </a>`;
 
-rest.forEach(s => {
-  headlinesHtml += `
-    <a class="wm-headline" href="${s.link}">
+  rest.forEach(s => {
+    html += `<a class="wm-headline" href="${s.link}">
       <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;color:${tagColor(s.tag)}">${s.tag}</div>
       <div class="wm-hl-hed">${s.hed}</div>
       <div class="wm-hl-dek">${s.dek}</div>
       <div class="wm-hl-meta">${s.meta}</div>
-    </a>
-  `;
+    </a>`;
+  });
+
+  document.getElementById('wm-content-area').innerHTML = html;
+}
+
+// ── SEARCH ──
+// Build a flat searchable index from stories.js pools
+function buildIndex() {
+  const index = [];
+
+  // Site pages — always included
+  const PAGES = [
+    { hed: 'Franklin Observer', dek: 'The Franklin Observer — established 1843. News, politics, world affairs and culture from the capital.', source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/' },
+    { hed: 'USRC Rail Status', dek: 'United States Railway Company — live network status, departures, journey planner and fares.', source: 'nan.usrc.gov.usa', link: './nodes/usrc/' },
+    { hed: 'NAU Assembly', dek: 'North American Union Assembly — 18th Session. Floor activity, legislation, and bloc composition. Calumet.', source: 'nan.assembly.nau', link: './nodes/assembly/' },
+    { hed: 'Washington House', dek: 'Official residence and office of the President of the United States. Franklin, District of Washington.', source: 'nan.washingtonhouse.gov.usa', link: './nodes/washington-house/' },
+    { hed: 'Museum of the United States', dek: 'The national museum and home of the founding documents — Declaration of Independence, Constitution of 1787, Constitution of 1861.', source: 'nan.mususa.edu.usa', link: './nodes/amhistory/' },
+    { hed: 'ABN News', dek: 'American Broadcast Network news — live coverage, world desk, and the ABN Evening News with Patricia Sorensen.', source: 'nan.abnnews.pr.usa', link: './nodes/abn/' },
+    { hed: 'Federal Parks Service', dek: 'Protecting America\'s lands since 1908. 57 Federal Parks across the United States.', source: 'nan.fps.gov.usa', link: './nodes/fps/' },
+    { hed: 'Waymark Search', dek: 'Find your node on the Link. NANet\'s leading search service.', source: 'nan.waymark.biz.usa', link: '#' },
+  ];
+
+  PAGES.forEach(p => index.push({ ...p, type: 'page' }));
+
+  // Observer stories
+  FO_LEADS.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
+  FO_NATIONAL.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
+  FO_WORLD.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
+
+  // ABN stories
+  ABN_LEADS.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
+  ABN_CARDS.forEach(s => index.push({ hed: s.hed, dek: s.hed, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
+  ABN_WORLD.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
+
+  return index;
+}
+
+function doSearch(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) { renderHeadlines(); return; }
+
+  const index = buildIndex();
+  const results = index.filter(item =>
+    item.hed.toLowerCase().includes(q) ||
+    (item.dek && item.dek.toLowerCase().includes(q)) ||
+    (item.source && item.source.toLowerCase().includes(q))
+  );
+
+  // Deduplicate by headline
+  const seen = new Set();
+  const unique = results.filter(r => {
+    if (seen.has(r.hed)) return false;
+    seen.add(r.hed);
+    return true;
+  });
+
+  let html = '';
+
+  if (unique.length === 0) {
+    html = `<div class="wm-no-results">
+      <div class="wm-no-results-hed">No results found for "${query}"</div>
+      <div class="wm-no-results-dek">Try a different search term, or browse the bookmarks above to navigate the Link directly.</div>
+      <div class="wm-no-results-addr">link://nan.waymark.biz.usa/search?q=${encodeURIComponent(query)}</div>
+    </div>`;
+  } else {
+    html = `<div class="wm-results-label">Showing <strong>${unique.length}</strong> result${unique.length !== 1 ? 's' : ''} for "<strong>${query}</strong>"</div>`;
+    unique.forEach(r => {
+      html += `<a class="wm-search-result" href="${r.link}">
+        <div class="wm-sr-source">link://${r.source}</div>
+        <div class="wm-sr-hed">${r.hed}</div>
+        ${r.dek ? `<div class="wm-sr-dek">${r.dek}</div>` : ''}
+      </a>`;
+    });
+  }
+
+  document.getElementById('wm-content-area').innerHTML = html;
+}
+
+// ── RESET TO HOME ──
+function resetToHome() {
+  document.getElementById('wm-search').value = '';
+  renderHeadlines();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── SEARCH EVENTS ──
+document.getElementById('wm-search-btn').addEventListener('click', () => {
+  doSearch(document.getElementById('wm-search').value);
+});
+document.getElementById('wm-search').addEventListener('keydown', e => {
+  if (e.key === 'Enter') doSearch(e.target.value);
+  if (e.key === 'Escape') resetToHome();
 });
 
-document.getElementById('wm-headlines').innerHTML = headlinesHtml;
+// ── INIT ──
+renderHeadlines();
 
 // ── DYNAMIC NAX MARKETS ──
-function seededRand(seed) {
-  const x = Math.sin(seed) * 10000;
-  return x - Math.floor(x);
-}
+function seededRand(seed) { const x = Math.sin(seed) * 10000; return x - Math.floor(x); }
 
 function buildMarkets() {
   const now  = new Date();
-  const day  = now.getDay(); // 0=Sun, 6=Sat
+  const day  = now.getDay();
   const hour = now.getHours();
   const min  = now.getMinutes();
   const seed = DAY_OF_YEAR * 100;
-
-  // Market hours: 9:30am–4:00pm Eastern, Mon–Fri
-  const isWeekend  = day === 0 || day === 6;
+  const isWeekend   = day === 0 || day === 6;
   const minuteOfDay = hour * 60 + min;
   const marketOpen  = 9 * 60 + 30;
   const marketClose = 16 * 60;
 
   let status, statusClass;
-  if (isWeekend || minuteOfDay >= marketClose) {
-    status = 'Closed'; statusClass = 'closed';
-  } else if (minuteOfDay < marketOpen) {
-    status = 'Pre-Market'; statusClass = 'premarket';
-  } else {
-    status = 'Open'; statusClass = 'open';
-  }
+  if (isWeekend || minuteOfDay >= marketClose)  { status = 'Closed';     statusClass = 'closed'; }
+  else if (minuteOfDay < marketOpen)            { status = 'Pre-Market'; statusClass = 'premarket'; }
+  else                                          { status = 'Open';       statusClass = 'open'; }
 
   document.getElementById('wm-market-status').textContent = status;
   document.getElementById('wm-market-status').className = `wm-market-status ${statusClass}`;
 
-  // Base values seeded by day
-  const naxBase  = 14600 + Math.floor(seededRand(seed + 1) * 600);
-  const naxChg   = (seededRand(seed + 2) * 2 - 1).toFixed(1);
-  const emBase   = 0.820 + seededRand(seed + 3) * 0.12;
-  const emChg    = (seededRand(seed + 4) * 0.8 - 0.4).toFixed(1);
-  const ukpBase  = 1.08 + seededRand(seed + 5) * 0.12;
-  const ukpChg   = (seededRand(seed + 6) * 0.8 - 0.4).toFixed(1);
+  const naxBase = 14600 + Math.floor(seededRand(seed + 1) * 600);
+  const naxChg  = (seededRand(seed + 2) * 2 - 1).toFixed(1);
+  const emBase  = 0.820 + seededRand(seed + 3) * 0.12;
+  const emChg   = (seededRand(seed + 4) * 0.8 - 0.4).toFixed(1);
+  const ukpBase = 1.08  + seededRand(seed + 5) * 0.12;
+  const ukpChg  = (seededRand(seed + 6) * 0.8 - 0.4).toFixed(1);
 
-  // During market hours add small intraday drift
   let naxDisplay = naxBase;
-  if (status === 'Open') {
-    const drift = Math.floor((seededRand(seed + 7) - 0.5) * 40);
-    naxDisplay = naxBase + drift;
-  }
+  if (status === 'Open') naxDisplay = naxBase + Math.floor((seededRand(seed + 7) - 0.5) * 40);
 
   function arrow(chg) { return parseFloat(chg) >= 0 ? '▲' : '▼'; }
   function chgClass(chg) { return parseFloat(chg) >= 0 ? 'up' : 'dn'; }
