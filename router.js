@@ -6,6 +6,7 @@ const ROUTES = {
   'nan.franklin-ob.pr.usa':           '/nodes/franklin-observer/',
   'nan.usrc.gov.usa':                 '/nodes/usrc/',
   'nan.assembly.nau':                 '/nodes/assembly/',
+  'nan.nedex.org.nau':                '/nodes/nedex/',
   'nan.washingtonhouse.gov.usa':      '/nodes/washington-house/',
   'nan.mususa.edu.usa':               '/nodes/amhistory/',
   'nan.abnnews.pr.usa':               '/nodes/abn/',
