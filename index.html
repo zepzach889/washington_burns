@@ -72,6 +72,7 @@
 </head>
 <body>
 
+<div class="arc-chrome">
 <div class="wm-topbar">
   <div class="arc-navbtns">
     <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
@@ -82,14 +83,14 @@
     <input class="wm-address-input" id="wm-address-input" type="text" placeholder="link://nan.waymark.biz.usa" spellcheck="false" autocomplete="off" />
     <button class="wm-go-btn" id="wm-go-btn" title="Navigate">→</button>
   </div>
+  <div class="arc-clock" id="arc-clock"></div>
   <div class="wm-lang-switcher">
     <button class="wm-lang-btn active" onclick="setLang('en')">EN</button>
     <button class="wm-lang-btn" onclick="setLang('fr')">FR</button>
     <button class="wm-lang-btn" onclick="setLang('es')">ES</button>
   </div>
-  <div class="arc-clock" id="arc-clock"></div>
 </div>
-  <div class="arc-bookmarks">
+<div class="arc-bookmarks">
   <a class="arc-bmark" href="/"><span class="arc-bmark-icon">🔍</span>Waymark</a>
   <a class="arc-bmark" href="./nodes/franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
   <a class="arc-bmark" href="./nodes/abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
@@ -98,6 +99,7 @@
   <a class="arc-bmark" href="./nodes/washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
   <a class="arc-bmark" href="./nodes/amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
   <a class="arc-bmark" href="./nodes/fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
 </div>
 
 <div class="wm-hero">
