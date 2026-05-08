@@ -31,6 +31,15 @@ body {
   flex-direction: column;
 }
 
+/* ── ARC BROWSER CHROME (sticky wrapper) ── */
+.arc-chrome {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
 /* ── TOPBAR ── */
 .wm-topbar {
   display: flex;
@@ -38,11 +47,7 @@ body {
   padding: 7px 20px;
   border-bottom: 0.5px solid var(--border);
   background: var(--paper);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  gap: 14px;
-  justify-content: space-between;
+  gap: 10px;
 }
 
 .wm-topbar-logo {
@@ -56,11 +61,52 @@ body {
 }
 .wm-topbar-logo span { color: var(--blue); }
 
+/* ── ARC BROWSER LOGO ── */
+.wm-arc-logo {
+  text-decoration: none;
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.wm-arc-logo:visited { color: inherit; }
+.arc-w { color: #1a1410; }
+.arc-m { color: #185FA5; }
+.arc-tag { color: #5A6A8A; font-style: italic; font-size: 16px; }
+
+/* ── ARC NAV BUTTONS ── */
+.arc-navbtns {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.arc-navbtn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 0.5px solid var(--border-mid);
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: background 0.1s, color 0.1s;
+}
+.arc-navbtn:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+.arc-navbtn:visited { color: var(--text-tertiary); }
+
+/* ── ADDRESS BAR ── */
 .wm-address-wrap {
   display: flex;
   align-items: center;
   flex: 1;
-  max-width: 540px;
+  min-width: 0;
   background: var(--bg-secondary);
   border: 1px solid var(--border-mid);
   border-radius: 22px;
@@ -68,7 +114,6 @@ body {
   gap: 6px;
   transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
 }
-
 .wm-address-wrap:focus-within {
   border-color: var(--blue);
   box-shadow: 0 0 0 3px rgba(24,95,165,0.09);
@@ -96,7 +141,6 @@ body {
   padding: 7px 0;
   min-width: 0;
 }
-
 .wm-address-input::placeholder { color: var(--text-tertiary); }
 
 .wm-go-btn {
@@ -105,20 +149,29 @@ body {
   cursor: pointer;
   color: var(--text-tertiary);
   font-size: 15px;
-  padding: 2px 2px;
+  padding: 2px;
   flex-shrink: 0;
   transition: color 0.1s;
   line-height: 1;
 }
 .wm-go-btn:hover { color: var(--blue); }
 
+/* ── ARC CLOCK ── */
+.arc-clock {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  font-family: monospace;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* ── LANGUAGE SWITCHER ── */
 .wm-lang-switcher {
   display: flex;
   gap: 4px;
   align-items: center;
   flex-shrink: 0;
 }
-
 .wm-lang-btn {
   font-size: 11px;
   color: var(--text-tertiary);
@@ -135,6 +188,38 @@ body {
 .wm-lang-btn:hover { color: var(--text-primary); background: var(--bg-secondary); }
 .wm-lang-btn.active { color: var(--blue); border-color: var(--blue-mid); background: var(--blue-light); }
 
+/* ── BOOKMARKS BAR ── */
+.arc-bookmarks {
+  display: flex;
+  align-items: center;
+  padding: 3px 16px;
+  gap: 2px;
+  background: var(--bg-secondary);
+  border-bottom: 0.5px solid var(--border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+}
+.arc-bookmarks::-webkit-scrollbar { display: none; }
+
+.arc-bmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 4px 9px;
+  border-radius: 5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.1s, color 0.1s;
+}
+.arc-bmark:visited { color: var(--text-secondary); }
+.arc-bmark:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+.arc-bmark-icon { font-size: 12px; line-height: 1; }
+
 /* ── FOOTER ── */
 .wm-footer {
   border-top: 0.5px solid var(--border);
@@ -149,7 +234,6 @@ body {
   gap: 8px;
   margin-top: auto;
 }
-
 .wm-footer-links { display: flex; gap: 14px; flex-wrap: wrap; }
 .wm-footer-links a { color: var(--text-tertiary); text-decoration: none; }
 .wm-footer-links a:hover { color: var(--text-secondary); }
@@ -186,13 +270,18 @@ body {
   margin-bottom: 14px;
 }
 
+/* ── MOBILE ── */
 @media (max-width: 680px) {
-  .wm-topbar { flex-wrap: wrap; }
-  .wm-address-wrap { max-width: 100%; order: 3; flex-basis: 100%; }
+  .wm-topbar {
+    flex-wrap: wrap;
+    padding: 6px 12px;
+    gap: 8px;
+  }
+  .arc-navbtns { order: 1; flex-shrink: 0; }
+  .wm-arc-logo { order: 2; flex-shrink: 0; }
+  .arc-clock { order: 3; margin-left: auto; }
+  .wm-lang-switcher { order: 3; }
+  .wm-address-wrap { order: 4; flex-basis: 100%; min-width: 0; }
+  .arc-bookmarks { padding: 3px 8px; gap: 0; }
+  .arc-bmark { padding: 4px 6px; font-size: 10px; }
 }
-
-/* ── WM ARC BROWSER LOGO ── */
-.wm-arc-logo { text-decoration: none; font-family: 'DM Serif Display', serif; font-size: 18px; letter-spacing: 0.04em; flex-shrink: 0; }
-.arc-w { color: #1a1410; }
-.arc-m { color: #185FA5; }
-.arc-tag { color: #5A6A8A; font-style: italic; font-size: 16px; }
