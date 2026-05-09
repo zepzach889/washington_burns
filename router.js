@@ -7,6 +7,8 @@ const ROUTES = {
   'nan.usrc.gov.usa':                 '/nodes/usrc/',
   'nan.assembly.nau':                 '/nodes/assembly/',
   'nan.nedex.org.nau':                '/nodes/nedex/',
+  'nan.nedex.org.nau/uer':            '/nodes/nedex/uer.html',
+  'nan.nedex.org.nau/hugo-brandt':    '/nodes/nedex/hugo-brandt.html',
   'nan.washingtonhouse.gov.usa':      '/nodes/washington-house/',
   'nan.mususa.edu.usa':               '/nodes/amhistory/',
   'nan.abnnews.pr.usa':               '/nodes/abn/',
