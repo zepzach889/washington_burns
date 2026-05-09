@@ -9,6 +9,7 @@ const ROUTES = {
   'nan.nedex.org.nau':                '/nodes/nedex/',
   'nan.nedex.org.nau/california':     '/nodes/nedex/california.html',
   'nan.nedex.org.nau/canada':         '/nodes/nedex/canada.html',
+  'nan.nedex.org.nau/central-america': '/nodes/nedex/central-america.html',
   'nan.nedex.org.nau/mexico':         '/nodes/nedex/mexico.html',
   'nan.nedex.org.nau/uer':            '/nodes/nedex/uer.html',
   'nan.nedex.org.nau/hugo-brandt':    '/nodes/nedex/hugo-brandt.html',
