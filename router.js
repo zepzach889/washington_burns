@@ -16,7 +16,7 @@ const ROUTES = {
   'nan.nedex.org.nau/hist_of_tex':    '/nodes/nedex/hist_of_texas.html',
   'nan.nedex.org.nau/list_of_pres_tex': 'nodes/nedex/list_of_pres_tex.html', 
   'nan.nedex.org.nau/uer':            '/nodes/nedex/uer.html',
-  'nan.nedex.org.nau/list_of_pres_usa': 'nodes/nedex/list_of_pres_usa.html',
+  'nan.nedex.org.nau/list_of_pres_usa': '/nodes/nedex/list_of_pres_usa.html',
   'nan.nedex.org.nau/hugo-brandt':    '/nodes/nedex/hugo-brandt.html',
   'nan.washingtonhouse.gov.usa':      '/nodes/washington-house/',
   'nan.mususa.edu.usa':               '/nodes/amhistory/',
