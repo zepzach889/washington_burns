@@ -223,6 +223,35 @@
 }
 .ndx-prose li { margin-bottom: 5px; font-size: 14px; line-height: 1.6; }
 
+/* ── HISTORY SPECIFIC STYLES ── */
+.ndx-history-event {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 20px;
+  border-left: 2px solid var(--ndx-border-copper);
+}
+
+.ndx-history-event::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  background: var(--ndx-copper);
+  border-radius: 50%;
+}
+
+.ndx-history-date {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--ndx-copper);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
 /* ── INFOBOX ── */
 .ndx-infobox {
   background: var(--ndx-copper-pale);
