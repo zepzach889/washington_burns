@@ -13,6 +13,7 @@ const ROUTES = {
   'nan.nedex.org.nau/mexico':         '/nodes/nedex/mexico.html',
   'nan.nedex.org.nau/ugr':            '/nodes/nedex/german_republic.html',
   'nan.nedex.org.nau/texas':          '/nodes/nedex/texas.html',
+  'nan.nedex.org.nau/hist_of_tex':    '/nodes/nedex/hist_of_texas.html',
   'nan.nedex.org.nau/uer':            '/nodes/nedex/uer.html',
   'nan.nedex.org.nau/hugo-brandt':    '/nodes/nedex/hugo-brandt.html',
   'nan.washingtonhouse.gov.usa':      '/nodes/washington-house/',
