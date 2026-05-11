@@ -252,6 +252,44 @@
   display: block;
 }
 
+/* ── NEDEX TABLE STYLES ── */
+.ndx-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 13px;
+  border: 1px solid var(--ndx-border);
+}
+
+.ndx-table th {
+  background: var(--ndx-copper-pale);
+  color: var(--ndx-text);
+  text-align: left;
+  padding: 10px;
+  border-bottom: 2px solid var(--ndx-copper);
+  font-family: 'DM Serif Display', serif;
+}
+
+.ndx-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--ndx-border);
+  vertical-align: middle;
+}
+
+/* Zebra striping for long lists */
+.ndx-table tr:nth-child(even) {
+  background: var(--ndx-bg-secondary);
+}
+
+.ndx-table tr:hover {
+  background: #fff9f2; /* Light copper tint on hover */
+}
+
+.ndx-table img {
+  border-radius: 4px;
+  border: 1px solid var(--ndx-border);
+}
+
 /* ── INFOBOX ── */
 .ndx-infobox {
   background: var(--ndx-copper-pale);
