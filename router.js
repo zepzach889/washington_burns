@@ -18,6 +18,7 @@ const ROUTES = {
   'nan.nedex.org.nau/uer':            '/nodes/nedex/uer.html',
   'nan.nedex.org.nau/list_of_pres_usa': '/nodes/nedex/list_of_pres_usa.html',
   'nan.nedex.org.nau/george-washington': '/nodes/nedex/george-washington.html',
+  'nan.nedex.org.nau/john-adams':     '/nodes/nedex/john-adams.html',
   'nan.nedex.org.nau/hugo-brandt':    '/nodes/nedex/hugo-brandt.html',
   'nan.washingtonhouse.gov.usa':      '/nodes/washington-house/',
   'nan.mususa.edu.usa':               '/nodes/amhistory/',
