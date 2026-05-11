@@ -25,6 +25,12 @@
   .ndx-featured-head { background: var(--ndx-header); padding: 8px 14px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.75); border-bottom: 1px solid var(--ndx-copper); }
   .ndx-featured-body { padding: 16px 18px; display: grid; grid-template-columns: 80px 1fr; gap: 14px; align-items: start; }
   .ndx-featured-img { width: 80px; height: 100px; background: var(--ndx-header); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 36px; flex-shrink: 0; }
+  .ndx-featured-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  border-radius: 4px; 
+}
   .ndx-featured-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--ndx-text); margin-bottom: 4px; }
   .ndx-featured-sub { font-size: 11px; color: var(--ndx-text-tertiary); margin-bottom: 8px; font-style: italic; }
   .ndx-featured-text { font-size: 13px; color: var(--ndx-text-secondary); line-height: 1.6; }
@@ -101,7 +107,9 @@
     <div class="ndx-featured">
       <div class="ndx-featured-head">Featured Article</div>
       <div class="ndx-featured-body">
-        <div class="ndx-featured-img">🏛️</div>
+      <div class="ndx-featured-img">
+    <img src="../../images/nedex/14-Photo-Brandt.png" alt="Photo of Brandt">
+</div>
         <div>
           <div class="ndx-featured-title">Hugo Brandt</div>
           <div class="ndx-featured-sub">14th President of the United States · 1863–1869</div>
