@@ -83,27 +83,16 @@
 <body>
 
 <div class="wm-topbar">
-  <div class="arc-navbtns">
-    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
-    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
-  </div>
-  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <a class="wm-topbar-logo" href="../../">Way<span>mark</span></a>
   <div class="wm-address-wrap" id="wm-address-wrap">
     <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
     <button class="wm-go-btn" id="wm-go-btn">→</button>
   </div>
-  <div class="arc-clock" id="arc-clock"></div>
-</div>
-<div class="arc-bookmarks">
-  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
-  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
-  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
-  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
-  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
-  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
-  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
-  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
-  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+  <div class="wm-lang-switcher">
+    <button class="wm-lang-btn active">EN</button>
+    <button class="wm-lang-btn">FR</button>
+    <button class="wm-lang-btn">ES</button>
+  </div>
 </div>
 
 <div class="usrc-header">
@@ -147,7 +136,7 @@
 </div>
 
 <div class="wm-footer">
-  <span>link://nan.usrc.gov.usa &nbsp;·&nbsp; United States Railway Company &nbsp;·&nbsp; A Federal Enterprise of the United States</span>
+  <span>link://nan.usrc.gov.usa &nbsp;·&nbsp; United States Railway Company &nbsp;·&nbsp; A Federal Enterprise of the NAU</span>
   <div class="wm-footer-links">
     <a href="#">Accessibility</a>
     <a href="#">Privacy</a>
@@ -160,18 +149,6 @@
 <script>
 initAddressBar('nan.usrc.gov.usa');
 
-// ── ARC CLOCK ──
-function updateArcClock() {
-  const n = new Date();
-  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  const hh = String(n.getHours()).padStart(2,'0');
-  const mm = String(n.getMinutes()).padStart(2,'0');
-  const el = document.getElementById('arc-clock');
-  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
-}
-setInterval(updateArcClock, 10000);
-updateArcClock();
-  
 // ── DATE & CLOCK ──
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -287,17 +264,29 @@ const DELAY_REASONS = [
   'Freight clearance', 'Scheduled works overrun'
 ];
 
-// ── DELAY ENGINE ──
-// Seeded per corridor+train so status cards and boards always agree
-function generateDelay() {
-  if (Math.random() > 1/8) return null;
-  const roll = Math.random();
+// ── SEEDED DELAY ENGINE ──
+// All delays seeded by date + corridor index + train index
+// so they are consistent across page refreshes and between
+// the network overview and individual departure boards.
+
+const _now = new Date();
+const _dayOfYear = Math.floor((_now - new Date(_now.getFullYear(), 0, 0)) / 86400000);
+
+function seededRand(seed) {
+  const x = Math.sin(seed + 1) * 10000;
+  return x - Math.floor(x);
+}
+
+function generateDelay(corridorIdx, trainIdx) {
+  const seed = _dayOfYear * 1000 + corridorIdx * 50 + trainIdx;
+  if (seededRand(seed) > 1/8) return null;
+  const roll = seededRand(seed + 1);
   let minutes;
-  if (roll < 0.55)      minutes = 5  + Math.floor(Math.random() * 11);  // 5–15
-  else if (roll < 0.85) minutes = 16 + Math.floor(Math.random() * 30);  // 16–45
-  else                  minutes = 46 + Math.floor(Math.random() * 45);  // 46–90
-  const reason = DELAY_REASONS[Math.floor(Math.random() * DELAY_REASONS.length)];
-  return { minutes, reason };
+  if (roll < 0.55)      minutes = 5  + Math.floor(seededRand(seed + 2) * 11);  // 5–15
+  else if (roll < 0.85) minutes = 16 + Math.floor(seededRand(seed + 3) * 30);  // 16–45
+  else                  minutes = 46 + Math.floor(seededRand(seed + 4) * 45);  // 46–90
+  const reasonIdx = Math.floor(seededRand(seed + 5) * DELAY_REASONS.length);
+  return { minutes, reason: DELAY_REASONS[reasonIdx] };
 }
 
 function corridorWorstStatus(delayMap) {
@@ -346,7 +335,7 @@ function getUpcoming(trains, delayMap, limit) {
 // ── RENDER ──
 function render() {
   // Generate ALL delays up front — shared between overview and boards
-  const allDelayMaps = CORRIDORS.map(c => c.trains.map(() => generateDelay()));
+  const allDelayMaps = CORRIDORS.map((c, ci) => c.trains.map((t, ti) => generateDelay(ci, ti)));
 
   // Network overview
   const overview = document.getElementById('usrc-network-overview');
