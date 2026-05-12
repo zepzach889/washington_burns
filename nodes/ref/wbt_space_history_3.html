@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WBT — Space Exploration History</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1714;
+    --ink-mid: #3d3830;
+    --ink-muted: #6b6358;
+    --ink-faint: #9c9488;
+    --paper: #f5f0e8;
+    --paper-mid: #ede8dc;
+    --paper-dark: #ddd7c8;
+    --red: #8b1a1a;
+    --red-light: #c0392b;
+    --gold: #b8860b;
+    --rule: #1a1714;
+    --rule-light: #c8c0b0;
+    --rule-mid: #8b8070;
+    --open: #1a4d6e;
+    --open-bg: #e8f2f8;
+    --hard: #1a4d1a;
+    --hard-bg: #e8f5e8;
+    --warn: #5d3a00;
+    --warn-bg: #fdf3e0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* MASTHEAD */
+  .masthead {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0;
+    border-bottom: 4px solid var(--red);
+  }
+  .masthead-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 1rem;
+  }
+  .masthead-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--paper-dark);
+    margin-bottom: 0.4rem;
+  }
+  .masthead h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--paper);
+    margin-bottom: 0.5rem;
+  }
+  .masthead-sub {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: var(--paper-dark);
+    border-top: 1px solid #3d3830;
+    padding-top: 0.6rem;
+    margin-top: 0.6rem;
+    display: flex;
+    gap: 2rem;
+  }
+  .masthead-sub span { display: flex; align-items: center; gap: 0.4rem; }
+
+  /* LEGEND BAR */
+  .legend-bar {
+    background: var(--paper-mid);
+    border-bottom: 1px solid var(--rule-light);
+    padding: 0.5rem 0;
+  }
+  .legend-bar-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .legend-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-right: 0.5rem;
+  }
+  .pill {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .pill-hard { background: var(--hard-bg); color: var(--hard); border: 1px solid #b0d4b0; }
+  .pill-soft { background: var(--paper-dark); color: var(--ink-mid); border: 1px solid var(--rule-light); }
+  .pill-open { background: var(--open-bg); color: var(--open); border: 1px solid #b0c8d8; }
+  .pill-disrupt { background: #fce8e8; color: var(--red); border: 1px solid #e0b0b0; }
+
+  /* MAIN LAYOUT */
+  .layout {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .sidebar { grid-column: 1; }
+  .main-content { grid-column: 2; }
+  .sidebar {
+    position: sticky;
+    top: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--rule-light) transparent;
+  }
+  .sidebar-box {
+    border: 1px solid var(--rule-light);
+    margin-bottom: 1.5rem;
+    background: var(--paper);
+  }
+  .sidebar-head {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.75rem;
+  }
+  .sidebar-body { padding: 0.75rem; }
+  .toc-item {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: var(--ink-mid);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-item:hover { color: var(--red); }
+  .toc-item .toc-years {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+  .toc-phase {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: 0.4rem 0 0.15rem;
+  }
+  .stat-row {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: var(--ink-mid);
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    display: flex;
+    justify-content: space-between;
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .open-canvas-list {
+    list-style: none;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: var(--ink-mid);
+  }
+  .open-canvas-list li {
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    display: flex;
+    gap: 0.4rem;
+    align-items: baseline;
+  }
+  .open-canvas-list li:last-child { border-bottom: none; }
+  .oc-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--open);
+    flex-shrink: 0;
+    width: 16px;
+  }
+
+  /* MAIN CONTENT */
+  .main-content {}
+
+  /* SECTION HEADERS */
+  .phase-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--ink);
+  }
+  .phase-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.2rem;
+  }
+  .phase-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .phase-years {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    margin-top: 0.2rem;
+  }
+
+  /* MILESTONE ENTRIES */
+  .milestone {
+    margin-bottom: 1.8rem;
+    padding-bottom: 1.8rem;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .milestone:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .milestone-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .milestone-year {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    width: 52px;
+  }
+  .milestone-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    flex: 1;
+  }
+  .milestone-pres {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+  }
+
+  .milestone-body {
+    padding-left: 64px;
+  }
+  .milestone-body p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-mid);
+    margin-bottom: 0.5rem;
+  }
+  .milestone-body p:last-child { margin-bottom: 0; }
+
+  /* OPEN CANVAS INLINE */
+  .oc-inline {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: var(--open);
+    background: var(--open-bg);
+    border-left: 3px solid var(--open);
+    padding: 0.4rem 0.6rem;
+    margin-top: 0.5rem;
+  }
+  .oc-inline strong {
+    font-weight: 600;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.15rem;
+    color: var(--open);
+  }
+
+  /* DISRUPTION BANNER */
+  .disruption-banner {
+    background: #fce8e8;
+    border: 1px solid #e0b0b0;
+    border-left: 4px solid var(--red);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .disruption-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .disruption-text {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: #5a1a1a;
+    line-height: 1.5;
+  }
+  .disruption-text strong { font-weight: 600; }
+
+  /* POLITICAL TABLE */
+  .pol-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    margin-top: 1rem;
+  }
+  .pol-table th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-align: left;
+    padding: 0.4rem 0.6rem;
+    border-bottom: 2px solid var(--rule);
+    background: var(--paper-mid);
+  }
+  .pol-table td {
+    padding: 0.45rem 0.6rem;
+    border-bottom: 1px solid var(--rule-light);
+    color: var(--ink-mid);
+    vertical-align: top;
+  }
+  .pol-table tr:last-child td { border-bottom: none; }
+  .pol-table .milestone-col { font-weight: 500; color: var(--ink); }
+  .party-soc { color: #8b1a1a; font-weight: 600; }
+  .party-fed { color: #1a4d1a; font-weight: 600; }
+  .party-dem { color: #1a1a6e; font-weight: 600; }
+  .party-jca { color: #5d3a00; font-weight: 600; }
+
+  /* PHASE DIVIDER */
+  .phase-section {
+    margin-bottom: 3rem;
+  }
+
+  /* BACKGROUND BOX */
+  .background-box {
+    background: var(--paper-mid);
+    border: 1px solid var(--rule-light);
+    border-left: 4px solid var(--gold);
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-mid);
+  }
+  .background-box strong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: var(--paper-dark);
+    padding: 1.5rem 2rem;
+    margin-top: 3rem;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    border-top: 3px solid var(--red);
+    text-align: center;
+  }
+  footer em { font-style: italic; color: var(--ink-faint); }
+
+  @media (max-width: 700px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; grid-column: 1; }
+    .main-content { grid-column: 1; }
+    .masthead h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-eyebrow">Washington Burns Timeline — Reference Document</div>
+    <h1>Space Exploration History</h1>
+    <div class="masthead-sub">
+      <span>Soft canon unless noted</span>
+      <span>Coverage: 1947–2031</span>
+      <span>Last revised: April 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="legend-bar">
+  <div class="legend-bar-inner">
+    <span class="legend-label">Status:</span>
+    <span class="pill pill-hard">Hard Canon</span>
+    <span class="pill pill-soft">Soft Canon</span>
+    <span class="pill pill-open">Open Canvas</span>
+    <span class="pill pill-disrupt">Disruption</span>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-box">
+      <div class="sidebar-head">Contents</div>
+      <div class="sidebar-body">
+        <div class="toc-phase">Background</div>
+        <a class="toc-item" href="#background">Foundation conditions <span class="toc-years">pre-1947</span></a>
+        <div class="toc-phase">Phase I</div>
+        <a class="toc-item" href="#phase1">Foundation <span class="toc-years">1947–58</span></a>
+        <div class="toc-phase">Phase II</div>
+        <a class="toc-item" href="#phase2">The Moon Program <span class="toc-years">1959–77</span></a>
+        <div class="toc-phase">Phase III</div>
+        <a class="toc-item" href="#phase3">Flags & Permanence <span class="toc-years">1977–89</span></a>
+        <div class="toc-phase">Phase IV</div>
+        <a class="toc-item" href="#phase4">Permanent Presence <span class="toc-years">1989–2007</span></a>
+        <div class="toc-phase">Phase V</div>
+        <a class="toc-item" href="#phase5">Renewal & Intl. <span class="toc-years">2007–19</span></a>
+        <div class="toc-phase">Phase VI</div>
+        <a class="toc-item" href="#phase6">Toward Mars <span class="toc-years">2019–31</span></a>
+        <div class="toc-phase">Reference</div>
+        <a class="toc-item" href="#poltable">Political owners table <span class="toc-years"></span></a>
+        <a class="toc-item" href="#opencanvas">Open canvas items <span class="toc-years"></span></a>
+      </div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sidebar-head">Key Milestones</div>
+      <div class="sidebar-body">
+        <div class="stat-row"><span>NASA founded</span><span class="stat-val">1947–48</span></div>
+        <div class="stat-row"><span>Pioneer One</span><span class="stat-val">1957</span></div>
+        <div class="stat-row"><span>Moon program announced</span><span class="stat-val">1959–60</span></div>
+        <div class="stat-row"><span>First crewed orbit</span><span class="stat-val">1963–65</span></div>
+        <div class="stat-row" style="color: var(--red);"><span>Choson War disruption</span><span class="stat-val">1966–69</span></div>
+        <div class="stat-row"><span>First moon landing</span><span class="stat-val">1977</span></div>
+        <div class="stat-row"><span>China moon landing</span><span class="stat-val">~1982–84</span></div>
+        <div class="stat-row"><span>Lunar Settlement Act</span><span class="stat-val">1984–85</span></div>
+        <div class="stat-row"><span>First permanent crew</span><span class="stat-val">1989–92</span></div>
+        <div class="stat-row" style="color: var(--red);"><span>Ottoman Fracture dip</span><span class="stat-val">late 1990s</span></div>
+        <div class="stat-row"><span>European integration</span><span class="stat-val">2007–13</span></div>
+        <div class="stat-row"><span>Mars reinvestment</span><span class="stat-val">2013–19</span></div>
+        <div class="stat-row"><span>NAU Mars launch</span><span class="stat-val">late 2026</span></div>
+        <div class="stat-row"><span>NAU Mars landing</span><span class="stat-val">2027</span></div>
+        <div class="stat-row"><span>China Mars landing</span><span class="stat-val">2029–30</span></div>
+      </div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sidebar-head">Disruptions</div>
+      <div class="sidebar-body">
+        <div class="stat-row"><span>Choson War</span><span class="stat-val" style="color:var(--red);">Major</span></div>
+        <div class="stat-row"><span>Ottoman Fracture</span><span class="stat-val" style="color:var(--red-light);">Moderate</span></div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <div class="background-box" id="background">
+      <strong>Foundation conditions</strong>
+      The Global War (1932–1940) accelerates rocketry and aerospace research across all major belligerents. NAU rocketry R&D runs through the Continental Defense Command, formally established spring 1942. The NAU fission program is tested in 1951; China tests fission in early 1952. Mature rocket engineering plus a nuclear-armed rival create the structural conditions for a sustained space program. NASA's model is hybrid from the start: genuine scientific infrastructure, with competitive prestige as a secondary driver that intensifies when China achieves specific milestones.
+    </div>
+
+    <!-- PHASE I -->
+    <div class="phase-section" id="phase1">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Phase I</div>
+        <div class="phase-title">Foundation</div>
+        <div class="phase-years">1947–1958 &mdash; Priest and pre-Priest era</div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1947–48</span>
+          <span class="milestone-title">North American Space Agency founded</span>
+          <span class="milestone-pres">Freeman / Nolan</span>
+        </div>
+        <div class="milestone-body">
+          <p>Spun out of CDC rocketry research as its own joint NAU institution. USA, Canada, California, and Texas are primary partners; Mexico participates with observer/limited status reflecting its NAU opt-out posture. Early mandate covers high-altitude atmospheric research, meteorological observation, and communications relay — framed publicly as scientific and peaceful. Military rocketry connection is obvious and not denied; NASA and CDC maintain close institutional relationship throughout this era.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Exact founding date and enabling legislation name. NASA headquarters location — likely a US city, possibly Franklin or a Sun Belt location with existing aerospace infrastructure. Whether Britain's Commonwealth space program exists at this stage.</div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">early 1950s</span>
+          <span class="milestone-title">Pioneer satellite program authorized</span>
+          <span class="milestone-pres">Nolan</span>
+        </div>
+        <div class="milestone-body">
+          <p>Series of progressively more capable research satellites authorized. Intelligence community tracking Chinese rocketry program with growing concern. The Pioneer program is primarily a scientific instrument, but its acceleration in mid-decade will be driven by geopolitical urgency.</p>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1957</span>
+          <span class="milestone-title">Pioneer One — world's first artificial satellite</span>
+          <span class="milestone-pres">Priest (JCA)</span>
+        </div>
+        <div class="milestone-body">
+          <p>Intelligence indicates China is 18–24 months from their own satellite capability; the Priest administration accelerates the Pioneer timeline to ensure the NAU launches first. The launch is a major international moment, broadcast continent-wide. Priest receives the credit — it is one of the few achievements of his administration that history treats without ambivalence. Pioneer One is primarily a research and telemetry satellite; practical applications follow in Pioneer Two and Three (weather, early communications).</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Exact launch date within 1957. Specific orbital parameters and mission profile.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PHASE II -->
+    <div class="phase-section" id="phase2">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Phase II</div>
+        <div class="phase-title">The Moon Program</div>
+        <div class="phase-years">1959–1977 &mdash; Lincoln through Langston</div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1959–60</span>
+          <span class="milestone-title">Moon program announced</span>
+          <span class="milestone-pres">Lincoln (SPA)</span>
+        </div>
+        <div class="milestone-body">
+          <p>Lincoln's early presidency includes a major NASA address framing the moon as humanity's next horizon — explicitly multilateral in framing, not nationalist. Congress approves expanded funding; the lunar program gets a name, budget, and a target timeline aimed at the late 1960s. Lincoln frames the program ideologically: the same cooperative, pluralist model that won the Global War will put humans on the moon.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Name of the lunar program (analog to OTL Apollo but distinct). Whether Lincoln's address has a specific memorable formulation.</div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1962</span>
+          <span class="milestone-title">China's first satellite</span>
+          <span class="milestone-pres">Lincoln (SPA)</span>
+        </div>
+        <div class="milestone-body">
+          <p>Triggers the "competitive jolt" that converts NASA from a scientific infrastructure project into a prestige race in public consciousness. NAU funding surges; congressional debate shifts from "should we?" to "how fast?" China simultaneously announces a crewed spaceflight program, closing the perceived gap faster than expected.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Chinese space program name and institutional structure.</div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1963–65</span>
+          <span class="milestone-title">First NAU crewed orbital missions</span>
+          <span class="milestone-pres">Lincoln (SPA)</span>
+        </div>
+        <div class="milestone-body">
+          <p>Late Lincoln years see the first humans in orbit under the NASA program. Multi-national crews from the start: American mission commanders standard, Canadian and Californian crew members in early missions. Public enthusiasm at a high; the moon feels achievable within the decade.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Names of early astronauts and mission designations. Whether Texas holds a crew seat in this era.</div>
+        </div>
+      </div>
+
+      <div class="disruption-banner">
+        <span class="disruption-label">Disruption<br>Major</span>
+        <div class="disruption-text"><strong>Choson War, 1966–1968/69 (Schultz administration)</strong> — Direct NAU troop involvement; genuine military commitment, not burden-sharing. Aerospace engineers pulled toward military satellite and secure communications work. Moon program timeline slips from "late 1960s" to "early 1970s" — publicly acknowledged, politically controversial. Schultz (Federalist) commits fully despite the awkward optics of a Federalist fighting the same adversary her predecessors were accused of appeasing. NASA budget cut but program not cancelled; institutional momentum too strong.</div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1966–69</span>
+          <span class="milestone-title">Choson War — program disrupted</span>
+          <span class="milestone-pres">Schultz (Fed)</span>
+        </div>
+        <div class="milestone-body">
+          <p>Moon program slips approximately five years. Choson War ends with NAU withdrawal and Choson's independence secured; China does not achieve its objectives. Langston wins the 1970 election partly on program restoration and postwar renewal. NASA reinvestment is a first-budget priority under Langston, with bipartisan support given the program's popularity.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Whether Schultz attempts to protect NASA funding explicitly or accepts cuts as war prioritization. Exact Choson War peace terms and their long-term implications.</div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1975</span>
+          <span class="milestone-title">First crewed lunar orbit</span>
+          <span class="milestone-pres">Langston (SPA)</span>
+        </div>
+        <div class="milestone-body">
+          <p>Three-person crew: one American commander, one Canadian, one Californian. Major international broadcast; genuine NAU-wide celebration. China observes; their own crewed lunar program is approximately eight to ten years behind at this point. The orbit mission is treated as a near-milestone — the landing is clearly imminent.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Whether Texas or Mexico holds a crew seat at this stage. Mission designation.</div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1977</span>
+          <span class="milestone-title">First moon landing</span>
+          <span class="milestone-pres">Langston (SPA)</span>
+        </div>
+        <div class="milestone-body">
+          <p><span class="pill pill-soft" style="vertical-align:middle;margin-right:4px;">Soft Canon — year confirmed</span> Crew composition: American, Canadian, and Californian at minimum. The landing is framed as a NAU achievement and a human achievement — deliberately internationalist in public messaging. Langston explicitly connects it to Lincoln's vision; the JCA argues that Schultz's war cost a decade of delay; Federalists cite the CDC and Pioneer program as the true foundation.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Whether a fourth crew seat exists and who fills it. Landing site. Mission designation and name given to the landing site.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PHASE III -->
+    <div class="phase-section" id="phase3">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Phase III</div>
+        <div class="phase-title">Flags, Footprints, and First Steps Toward Permanence</div>
+        <div class="phase-years">1977–1989 &mdash; Whitmore through early Pike</div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1979–83</span>
+          <span class="milestone-title">Flags and footprints phase</span>
+          <span class="milestone-pres">Whitmore (Dem)</span>
+        </div>
+        <div class="milestone-body">
+          <p>Several additional landing missions, increasingly scientific in character. A Whitmore-era mission leaves a small automated research station on the surface — the first permanent human-made structure on the moon. Public enthusiasm remains high but the program normalizes; it becomes infrastructure rather than historic drama. Serious discussion begins about permanent crewed presence, but no decision is made.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Number and locations of Whitmore-era missions.</div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">~1982–84</span>
+          <span class="milestone-title">China lands on the moon</span>
+          <span class="milestone-pres">Whitmore / Pike</span>
+        </div>
+        <div class="milestone-body">
+          <p>The competitive jolt that converts the permanent base question from scientific to political. China's landing is a genuine achievement; NAU reaction is measured publicly and urgent privately. Pike (takes office 1983) does not frame it as panic — he frames it as inevitability: <em>"The question was never if humans would live on the moon. The question was who would be first to call it home."</em></p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Exact year of Chinese landing within this range.</div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1984–85</span>
+          <span class="milestone-title">Lunar Settlement Act</span>
+          <span class="milestone-pres">Pike (SPA)</span>
+        </div>
+        <div class="milestone-body">
+          <p>Congress authorizes permanent crewed lunar base. Pike connects the decision explicitly to his broader themes: the expansion of who belongs, and the expansion of where humanity can go. Base site is selected; construction is targeted for completion by the late 1980s. The Act is one of the defining legislative achievements of Pike's presidency alongside marriage equality.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Name and location of the base — Pike administration would favor something forward-looking and multilateral, not commemorative. Base site selection likely near a pole for water ice access.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PHASE IV -->
+    <div class="phase-section" id="phase4">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Phase IV</div>
+        <div class="phase-title">Permanent Presence and the Ottoman Disruption</div>
+        <div class="phase-years">1989–2007 &mdash; Holman through Mercer</div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1989–92</span>
+          <span class="milestone-title">Base construction and first permanent crew</span>
+          <span class="milestone-pres">Pike / Holman (Fed)</span>
+        </div>
+        <div class="milestone-body">
+          <p>Construction begins under Pike; first permanent rotating crew arrives under Holman. Initial crew of four to six people, rotating annually, primarily scientific mandate. Holman maintains Pike's framing and commitment — it is a genuinely bipartisan achievement; neither party wants to be seen opposing it.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Composition of first permanent rotation. Nationalities represented beyond USA and Canada.</div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1992–98</span>
+          <span class="milestone-title">Base growth and early economic rationale</span>
+          <span class="milestone-pres">Holman / Liu (SPA)</span>
+        </div>
+        <div class="milestone-body">
+          <p>Crew size grows to ten to fifteen; mission duration extended. Economic rationale begins developing: helium-3 extraction research, materials science, early commercial research partnerships. Liu initiates a robotic Mars probe program in earnest. Britain's Commonwealth space program (UK/Australia/India) achieves crewed orbital capability.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Whether the Commonwealth program joins the lunar base framework at this stage or waits for the European program's consolidation.</div>
+        </div>
+      </div>
+
+      <div class="disruption-banner">
+        <span class="disruption-label">Disruption<br>Moderate</span>
+        <div class="disruption-text"><strong>Ottoman Fracture / GPC involvement in Mesopotamia, late 1990s–early 2000s</strong> — GPC burden-sharing operation; NAU is a significant contributor but not the lead. Disruption is shallower than the Choson War: no direct large-scale ground war for the NAU. NASA budget plateaus rather than cuts; the crewed Mars program is pushed back; lunar base growth slows. Robotic Mars program continues relatively unaffected — probes are cheap relative to troops.</div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">2001–07</span>
+          <span class="milestone-title">Plateau continues</span>
+          <span class="milestone-pres">Mercer (Dem)</span>
+        </div>
+        <div class="milestone-body">
+          <p>Mercer prioritizes GPC commitments and postwar stabilization; space is not a signature issue. Lunar base reaches twenty to twenty-five residents; growth continues but unspectacularly. European joint space program (UER / German Republic / Italy / Spain) achieves crewed orbital capability during this period.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Exact year European program achieves crewed orbital flight. Whether Mercer makes any space policy moves of note.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PHASE V -->
+    <div class="phase-section" id="phase5">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Phase V</div>
+        <div class="phase-title">Renewal and Internationalization</div>
+        <div class="phase-years">2007–2019 &mdash; Sinclair through Hudson</div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">2007–13</span>
+          <span class="milestone-title">Base comes of age — European integration</span>
+          <span class="milestone-pres">Sinclair (Dem)</span>
+        </div>
+        <div class="milestone-body">
+          <p>Ottoman Fracture winding down; resources freeing up. Lunar base reaches thirty to forty residents and begins to feel like a genuine community rather than a research outpost. First non-NAU permanent crew members: European program astronauts join the base under a formal framework agreement. Base develops nascent permanent infrastructure: hydroponic food production, expanded medical facilities, early commercial research partnerships.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Name and structure of the NAU-European space cooperation framework. Whether any early space tourism milestones occur in this period.</div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">2013–19</span>
+          <span class="milestone-title">Mars program reinvestment</span>
+          <span class="milestone-pres">Hudson (Fed)</span>
+        </div>
+        <div class="milestone-body">
+          <p>Hudson treats Mars as a bipartisan infrastructure legacy project — deliberately not framed as ideological. Major crewed Mars program funding authorization; target is a crewed Mars orbital mission in the late 2020s. Lunar base reaches fifty or more residents; first signs of genuine permanent community culture developing. China's lunar presence expands significantly during this period.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Whether China and NAU have any formal lunar cooperation or maintain parallel independent presences. Whether lunar base reaches any population or self-sufficiency milestone of note under Hudson.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PHASE VI -->
+    <div class="phase-section" id="phase6">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Phase VI</div>
+        <div class="phase-title">The Race to Mars</div>
+        <div class="phase-years">2019–2031 &mdash; Clearwater and Nakamura</div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">2019–25</span>
+          <span class="milestone-title">Final preparation — two programs on the pad</span>
+          <span class="milestone-pres">Clearwater</span>
+        </div>
+        <div class="milestone-body">
+          <p>Robotic surface program delivering site surveys and resource assessments. Both the NAU and Chinese programs are visibly in final preparation simultaneously; intelligence about rival launch readiness, public speculation about timelines, and political pressure not to rush at the cost of crew safety define the atmosphere. Lunar base at sixty to eighty residents; first serious discussions of permanent non-rotating residents. European program fully integrated into both lunar operations and Mars planning.</p>
+          <p>By this period the NAU-China relationship has matured into a friendly rivalry rather than a tense standoff — forty-plus years since the Choson War, decades of parallel lunar presence, and shared GPC obligations have normalized the relationship considerably. The race is real but not existential.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Clearwater's party affiliation (Socialist or Federalist). Whether any Mars-adjacent milestones — final robotic pathfinders, hardware tests — fall in Clearwater's term and become public markers of the race.</div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">late 2026</span>
+          <span class="milestone-title">NAU Mars mission launches</span>
+          <span class="milestone-pres">Nakamura (SPA)</span>
+        </div>
+        <div class="milestone-body">
+          <p>Mission launches in the late 2026 window. Nakamura inherits a program that is essentially on the pad when she takes office in January 2025 — the heavy infrastructure work was done under Hudson and Clearwater. The crew is highly international: NAU members at minimum, plus European program and likely British Commonwealth representation; possibly a neutral nation such as Russia or Japan.</p>
+          <p>Note: there is no orbital-only precursor mission. The travel time between Earth and Mars — six to nine months each way — makes an orbit-and-return mission an unacceptable waste of a launch window. The first crewed Mars mission lands, full stop.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Exact crew composition and nationalities. Mission designation and name. Whether China's launch window is publicly known at this point, sharpening the race atmosphere.</div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">2027</span>
+          <span class="milestone-title">First humans land on Mars — NAU mission</span>
+          <span class="milestone-pres">Nakamura (SPA)</span>
+        </div>
+        <div class="milestone-body">
+          <p><span class="pill pill-soft" style="vertical-align:middle;margin-right:4px;">Soft Canon — year confirmed</span> The NAU mission lands on Mars in 2027, one of the defining moments of Nakamura's presidency and of the 21st century. The parallel to 1977 is explicit in public framing — the same way Langston connected the moon landing to Lincoln's vision, Nakamura connects Mars to the full arc from Pioneer One through Pike's Lunar Settlement Act. The crew is the most internationally diverse in spaceflight history.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Landing site. Exact date. The specific formulation of whoever steps out first. Whether the moment is shaped by any awareness of where China's mission stands.</div>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">2029–30</span>
+          <span class="milestone-title">China lands on Mars</span>
+          <span class="milestone-pres">Nakamura (SPA)</span>
+        </div>
+        <div class="milestone-body">
+          <p><span class="pill pill-soft" style="vertical-align:middle;margin-right:4px;">Soft Canon — range confirmed</span> China's mission arrives two to three years after the NAU landing — close enough that historians will argue about what might have been, far enough that there is no ambiguity about who won. The NAU crew may still be on the surface or in transit home when China arrives; the two missions are likely at different sites but in radio contact.</p>
+          <p>The moment is warm rather than frosty. By 2029 the friendly-rivalry framing has taken hold; the NAU publicly congratulates the Chinese crew, a joint broadcast is likely. The image of two flags on Mars — two great powers, both standing on the same red desert, talking to each other across a few hundred kilometers — becomes one of the iconic images of the era. China's landing is a genuine national achievement and is celebrated as such, even in the NAU.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Exact year within 2029–30. Whether any direct crew-to-crew contact occurs. How WBT's media and political class frames China's arrival.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- POLITICAL TABLE -->
+    <div class="phase-section" id="poltable">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Reference</div>
+        <div class="phase-title">Political Owners by Milestone</div>
+      </div>
+      <table class="pol-table">
+        <thead>
+          <tr>
+            <th>Milestone</th>
+            <th>President</th>
+            <th>Party</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="milestone-col">NASA founded</td><td>Freeman / Nolan</td><td><span class="party-fed">Federalist / JCA</span></td><td>CDC spinoff, joint NAU institution</td></tr>
+          <tr><td class="milestone-col">Pioneer One</td><td>Priest</td><td><span class="party-jca">JCA</span></td><td>One of his few positive legacies</td></tr>
+          <tr><td class="milestone-col">Moon program announced</td><td>Lincoln</td><td><span class="party-soc">Socialist</span></td><td>Her signature vision</td></tr>
+          <tr><td class="milestone-col">First crewed orbit</td><td>Lincoln</td><td><span class="party-soc">Socialist</span></td><td>Late term</td></tr>
+          <tr><td class="milestone-col">Choson War disruption</td><td>Schultz</td><td><span class="party-fed">Federalist</span></td><td>First major setback; slips moon ~5 years</td></tr>
+          <tr><td class="milestone-col">Moon landing</td><td>Langston</td><td><span class="party-soc">Socialist</span></td><td>Delayed triumph; connects to Lincoln legacy</td></tr>
+          <tr><td class="milestone-col">Flags and footprints</td><td>Whitmore</td><td><span class="party-dem">Democrat</span></td><td>Normalization phase</td></tr>
+          <tr><td class="milestone-col">China moon landing</td><td>Whitmore / Pike</td><td><span class="party-dem">Dem</span> / <span class="party-soc">SPA</span></td><td>The competitive jolt for base decision</td></tr>
+          <tr><td class="milestone-col">Lunar Settlement Act</td><td>Pike</td><td><span class="party-soc">Socialist</span></td><td>Connected to his broader legacy arc</td></tr>
+          <tr><td class="milestone-col">First permanent crew</td><td>Holman</td><td><span class="party-fed">Federalist</span></td><td>Bipartisan continuity</td></tr>
+          <tr><td class="milestone-col">Ottoman Fracture dip</td><td>Liu / Mercer</td><td><span class="party-soc">SPA</span> / <span class="party-dem">Dem</span></td><td>Shallow plateau; GPC burden-sharing</td></tr>
+          <tr><td class="milestone-col">Base internationalized</td><td>Sinclair</td><td><span class="party-dem">Democrat</span></td><td>European program integration</td></tr>
+          <tr><td class="milestone-col">Mars reinvestment</td><td>Hudson</td><td><span class="party-fed">Federalist</span></td><td>Bipartisan infrastructure framing</td></tr>
+          <tr><td class="milestone-col">NAU Mars landing</td><td>Nakamura</td><td><span class="party-soc">Socialist</span></td><td>2027; program inherited from Hudson/Clearwater</td></tr>
+          <tr><td class="milestone-col">China Mars landing</td><td>Nakamura</td><td><span class="party-soc">Socialist</span></td><td>2029–30; gracious moment, friendly rivalry</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- OPEN CANVAS -->
+    <div class="phase-section" id="opencanvas">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Reference</div>
+        <div class="phase-title">Standing Open Canvas Items</div>
+      </div>
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:1rem;font-family:'Barlow',sans-serif;">Items requiring decisions before writing detailed presidential outlines or wiki articles.</p>
+      <ul class="open-canvas-list" style="background:var(--open-bg);border:1px solid #b0c8d8;padding:0.75rem;">
+        <li><span class="oc-num">1</span>NASA headquarters location</li>
+        <li><span class="oc-num">2</span>Name of the lunar landing program (Lincoln-era authorization)</li>
+        <li><span class="oc-num">3</span>Names of early astronauts and mission designations</li>
+        <li><span class="oc-num">4</span>Exact year of Chinese moon landing (range: ~1982–84)</li>
+        <li><span class="oc-num">5</span>Name and location of permanent lunar base</li>
+        <li><span class="oc-num">6</span>Whether Texas / Mexico hold crew seats in early lunar missions</li>
+        <li><span class="oc-num">7</span>Structure and name of NAU-European space cooperation framework</li>
+        <li><span class="oc-num">8</span>Whether China and NAU have formal lunar cooperation or purely parallel programs</li>
+        <li><span class="oc-num">9</span>Clearwater's party affiliation</li>
+        <li><span class="oc-num">10</span>Mars mission crew composition and nationalities</li>
+        <li><span class="oc-num">11</span>Mars mission designation and landing site</li>
+        <li><span class="oc-num">12</span>Whether any direct crew-to-crew contact occurs between NAU and Chinese Mars missions</li>
+      </ul>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  Washington Burns Timeline — Internal Reference Document &nbsp;|&nbsp;
+  <em>Soft canon unless marked otherwise. All milestone years subject to revision. Open canvas items flagged throughout.</em>
+</footer>
+
+</body>
+</html>

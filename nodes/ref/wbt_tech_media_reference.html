@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Washington Burns TL — Technology & Media Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410;
+    --paper: #f5f0e8;
+    --aged: #e8e0cc;
+    --rust: #8b3a2a;
+    --rust-light: #c4593d;
+    --slate: #3d4a5c;
+    --slate-light: #5a6d84;
+    --gold: #b8860b;
+    --gold-light: #d4a017;
+    --cream: #faf6ee;
+    --border: #c8b99a;
+    --shadow: rgba(26,20,16,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.7;
+    background-image: 
+      radial-gradient(ellipse at 20% 0%, rgba(184,134,11,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, rgba(61,74,92,0.06) 0%, transparent 60%);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .masthead {
+    background-color: var(--ink);
+    color: var(--paper);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .masthead::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(245,240,232,0.03) 40px, rgba(245,240,232,0.03) 41px),
+      repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(245,240,232,0.03) 40px, rgba(245,240,232,0.03) 41px);
+  }
+
+  .masthead-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+
+  .masthead h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+
+  .masthead-sub {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: rgba(245,240,232,0.7);
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .masthead-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 1.5rem;
+    position: relative;
+  }
+
+  .masthead-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: rgba(245,240,232,0.4);
+    position: relative;
+  }
+
+  /* NAV */
+  .toc-bar {
+    background-color: var(--slate);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+
+  .toc-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+    gap: 0;
+  }
+
+  .toc-inner::-webkit-scrollbar { display: none; }
+
+  .toc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    padding: 0.9rem 1.2rem;
+    white-space: nowrap;
+    border-right: 1px solid rgba(245,240,232,0.1);
+  }
+
+  .toc-inner a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.7);
+    text-decoration: none;
+    padding: 0.9rem 1rem;
+    white-space: nowrap;
+    border-right: 1px solid rgba(245,240,232,0.08);
+    transition: all 0.2s;
+  }
+
+  .toc-inner a:hover {
+    color: var(--gold-light);
+    background: rgba(245,240,232,0.05);
+  }
+
+  /* LAYOUT */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  /* TRACK SECTIONS */
+  .track {
+    margin-bottom: 5rem;
+  }
+
+  .track-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .track-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--border);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .track-title-group {}
+
+  .track-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--slate-light);
+    margin-bottom: 0.25rem;
+  }
+
+  .track-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  /* SUBSECTIONS */
+  .subsection {
+    margin-bottom: 2.5rem;
+  }
+
+  .subsection-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--rust);
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--rust);
+  }
+
+  .subsection-title.slate {
+    color: var(--slate);
+    border-left-color: var(--slate);
+  }
+
+  .subsection-title.gold {
+    color: var(--gold);
+    border-left-color: var(--gold);
+  }
+
+  /* CARDS */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 1.25rem 1.5rem;
+    position: relative;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--rust);
+    border-radius: 2px 0 0 2px;
+  }
+
+  .card.slate::before { background: var(--slate); }
+  .card.gold::before { background: var(--gold); }
+  .card.ink::before { background: var(--ink); }
+
+  .card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--slate-light);
+    margin-bottom: 0.4rem;
+  }
+
+  .card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+
+  .card p, .card li {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: #3a3028;
+  }
+
+  .card ul {
+    padding-left: 1.1rem;
+    margin-top: 0.25rem;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin: 1rem 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--rust), var(--slate));
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 1.25rem;
+    padding-left: 0.5rem;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 0.55rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--rust);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--rust);
+  }
+
+  .timeline-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--rust);
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-content {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: #3a3028;
+  }
+
+  .timeline-content strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* TABLES */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1rem 0 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+
+  thead {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--aged);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: rgba(232,224,204,0.3); }
+
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--slate);
+  }
+
+  /* CODE BLOCKS */
+  .code-block {
+    background: var(--ink);
+    color: #a8d8a8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    padding: 1rem 1.25rem;
+    border-radius: 2px;
+    margin: 0.75rem 0;
+    overflow-x: auto;
+    line-height: 1.8;
+  }
+
+  .code-block .comment { color: rgba(168,216,168,0.45); }
+  .code-block .protocol { color: #f0c080; }
+  .code-block .network { color: #80c8f0; }
+  .code-block .site { color: var(--paper); }
+  .code-block .org { color: #f080a0; }
+  .code-block .country { color: #c0a0f0; }
+
+  /* PROSE */
+  .prose {
+    max-width: 72ch;
+  }
+
+  .prose p {
+    margin-bottom: 0.85rem;
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: #2a2018;
+  }
+
+  .prose p:last-child { margin-bottom: 0; }
+
+  /* TERM LIST */
+  .term-list {
+    margin: 0.5rem 0 1rem;
+  }
+
+  .term-item {
+    display: grid;
+    grid-template-columns: minmax(120px, 180px) 1fr;
+    gap: 0.5rem 1.5rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--aged);
+    align-items: baseline;
+  }
+
+  .term-item:last-child { border-bottom: none; }
+
+  .term-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--rust);
+  }
+
+  .term-def {
+    font-size: 0.87rem;
+    line-height: 1.55;
+    color: #3a3028;
+  }
+
+  /* ORG CODE COLUMNS */
+  .org-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .org-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 1rem 1.25rem;
+    border-radius: 2px;
+  }
+
+  .org-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--slate);
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .org-code-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.2rem 0;
+    font-size: 0.8rem;
+  }
+
+  .org-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--rust);
+    min-width: 60px;
+  }
+
+  .org-meaning {
+    color: #3a3028;
+  }
+
+  /* BADGES */
+  .badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  .badge-hard {
+    background: var(--rust);
+    color: white;
+  }
+
+  .badge-soft {
+    background: var(--slate);
+    color: white;
+  }
+
+  .badge-open {
+    background: var(--gold);
+    color: white;
+  }
+
+  /* DIVIDER */
+  .track-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 4rem 0;
+    position: relative;
+  }
+
+  .track-divider::after {
+    content: '◆';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--paper);
+    padding: 0 1rem;
+    color: var(--border);
+    font-size: 0.7rem;
+  }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    border-left: 4px solid var(--gold);
+    padding: 0.75rem 1.25rem;
+    margin: 1.25rem 0;
+    background: rgba(184,134,11,0.05);
+  }
+
+  .pull-quote p {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #4a3a20;
+    line-height: 1.6;
+  }
+
+  /* NOTICE */
+  .notice {
+    background: rgba(61,74,92,0.08);
+    border: 1px solid rgba(61,74,92,0.2);
+    border-radius: 2px;
+    padding: 0.85rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+    color: var(--slate);
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .notice-icon {
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(245,240,232,0.4);
+    text-align: center;
+    padding: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .track-header { flex-direction: column; gap: 0.5rem; }
+    .track-number { font-size: 2.5rem; }
+    .term-item { grid-template-columns: 1fr; gap: 0.1rem; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+
+  /* PRINT */
+  @media print {
+    .toc-bar { display: none; }
+    .track { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-eyebrow">Washington Burns Timeline — Canon Reference</div>
+  <h1>Technology &amp; Media</h1>
+  <div class="masthead-sub">A comprehensive reference for communications, media, and computing history</div>
+  <div class="masthead-rule"></div>
+  <div class="masthead-meta">Point of Divergence: August 1814 &nbsp;·&nbsp; Capital: Franklin, District of Washington &nbsp;·&nbsp; Document Status: Soft Canon</div>
+</header>
+
+<nav class="toc-bar">
+  <div class="toc-inner">
+    <span class="toc-label">Jump to</span>
+    <a href="#track1">Track 1 — Telephone</a>
+    <a href="#track2">Track 2 — Audio &amp; Radio</a>
+    <a href="#track3">Track 3 — Cinema &amp; TC</a>
+    <a href="#track4">Track 4 — Computing</a>
+    <a href="#interlink">The Interlink</a>
+    <a href="#networks">Network Directory</a>
+    <a href="#addresses">Address Guide</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ==================== TRACK 1 ==================== -->
+<section class="track" id="track1">
+  <div class="track-header">
+    <div class="track-number">01</div>
+    <div class="track-title-group">
+      <div class="track-eyebrow">Track One</div>
+      <div class="track-title">The Telephone &amp; the USP&amp;T</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">The Inventors</div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Co-Inventor</div>
+        <h4>Harlan Voss</h4>
+        <p>P&amp;T line supervisor — the network mind. Deep understanding of how the national telegraph infrastructure functions at ground level. Based in Pittsburgh, Pennsylvania.</p>
+      </div>
+      <div class="card slate">
+        <div class="card-label">Co-Inventor</div>
+        <h4>Silas Dunbar</h4>
+        <p>Electrician and instrument maker — the mechanical mind. Close personal connection to Voss (friends or brothers-in-law, TBD). Also Pittsburgh-based.</p>
+      </div>
+    </div>
+    <div class="prose">
+      <p>First successful voice transmission: <strong>1879</strong>. Patent filed early <strong>1880</strong>. Pittsburgh, Pennsylvania is the base of operations — already home to Julius Lowry's steammobile work, establishing western Pennsylvania as a significant innovation corridor.</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">The Voss-Dunbar Settlement (1880–1882)</div>
+    <div class="prose">
+      <p>The USP&amp;T contests the patent on grounds of Voss's P&amp;T employment. Resolved through the courts. Outcome: private parties control manufacturing and equipment; USP&amp;T controls exchange operation and trunk line infrastructure. This settlement is the legal foundation of the American telephone industry — the <strong>hybrid model</strong>.</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">The USP&amp;T — Institutional Name Evolution</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">Pre-1882</div>
+        <div class="timeline-content"><strong>United States Post &amp; Telegraph Office</strong> — the name established in the Littlefield era. Abbreviated USP&amp;T or just P&amp;T.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1882 onward</div>
+        <div class="timeline-content">Name unchanged. "T" informally understood to cover telephone as well as telegraph. USP&amp;T offices serve both telegraph and telephone functions simultaneously through the transition period.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1930s</div>
+        <div class="timeline-content">Formal quiet rename to <strong>United States Post &amp; Telephone Office</strong>. Abbreviation USP&amp;T unchanged. "T" now stands for Telephone rather than Telegraph. Most people barely notice.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">Telegraph Fade-Out</div>
+    <div class="prose">
+      <p>Slightly slower than OTL due to government absorption of operating costs — no profit motive to kill the service artificially early. <strong>Mass medium death: early 1930s.</strong> Specialized survival (maritime, military, remote areas) into the 1940s. Telegraph remains viable for formal written-record communication longer than telephone for personal use.</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">Rollout Timeline</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">Early 1880s</div>
+        <div class="timeline-content">Wealthy businesses in major cities only. <strong>Drake-era budget cuts</strong> slow USP&amp;T exchange construction — meaningful drag on rollout.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Late 1880s</div>
+        <div class="timeline-content">Post-Drake rebuilding accelerates exchange infrastructure. Mid-sized businesses as primary market.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1890s</div>
+        <div class="timeline-content">Standard in business and government. USP&amp;T operators (predominantly women) become a familiar cultural institution.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">~1900</div>
+        <div class="timeline-content">Residential service begins in major cities for middle and upper classes. Rural access essentially nonexistent.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">Payphone Rollout</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">Late 1880s–Early 1890s</div>
+        <div class="timeline-content">Telephone service added at existing USP&amp;T office counters alongside telegraph. Natural extension of existing foot traffic.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Mid-1890s</div>
+        <div class="timeline-content">Booths at USRC train stations, post offices, and major transit hubs.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Early 1900s</div>
+        <div class="timeline-content">Street coin-operated booths in major cities. "Finding a P&amp;T booth" becomes a normal urban activity.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">Private Sector</div>
+    <div class="prose">
+      <p>Four major companies from the telegraph era all move into telephone service. New manufacturing companies emerge, with Pittsburgh a natural hub. Regional operators connect to USP&amp;T trunk lines under licensing arrangements.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card ink">
+        <h4>Atlantic Signal &amp; Dispatch</h4>
+        <p>The most aggressive and litigious. Fought the 1880 Telegraph Standardization Act in court and lost. Pushes hardest into telephone service, constantly testing the Settlement's limits.</p>
+      </div>
+      <div class="card slate">
+        <h4>Pacific Signal Company</h4>
+        <p>Welcomed the standardization act as leveling the playing field. Most cooperative with the hybrid model. Strong in the West.</p>
+      </div>
+      <div class="card">
+        <h4>Continental Telegraph &amp; Wire</h4>
+        <p>Mid-sized, steady. Pivots into manufacturing handsets and exchange equipment as much as operating service.</p>
+      </div>
+      <div class="card">
+        <h4>Southern Wire</h4>
+        <p>Regional strength in the South and Gulf Coast. Last major holdout of pure telegraph service before the medium fades.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">Terminology</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term-name">"telephone"</div>
+        <div class="term-def">Formal name. Universal from the start.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">"phone"</div>
+        <div class="term-def">Standard casual shorthand. Wins quickly over competing terms.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">"ring" (verb)</div>
+        <div class="term-def">Standard verb for making a call. "Ring me when you arrive."</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">"wire" (telegraph only)</div>
+        <div class="term-def">Exclusively telegraph language. <em>Never</em> applied to telephone. The distinction is absolute.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">"the operator"</div>
+        <div class="term-def">Colloquial for USP&amp;T exchange operators. Formally "P&amp;T operators."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">North American Context</div>
+    <div class="card-grid">
+      <div class="card slate">
+        <h4>Canada</h4>
+        <p>Mirrors USP&amp;T model closely with its own federal Post &amp; Telegraph equivalent. Easiest NAU integration partner — compatible institutional structure.</p>
+      </div>
+      <div class="card">
+        <h4>Texas Federation</h4>
+        <p>Private patchwork — strong urban coverage, weak rural, less centralized regulation. Politically contentious NAU integration. Texas's laissez-faire instincts clash with the standardized model.</p>
+      </div>
+      <div class="card">
+        <h4>Mexico</h4>
+        <p>Lags in buildout. Significant foreign (American and British) company presence in telephone infrastructure. Complicated political dimensions as NAU develops.</p>
+      </div>
+    </div>
+    <div class="notice">
+      <span class="notice-icon">◆</span>
+      <span>Cross-border trunk line authority becomes a genuine NAU friction point when the North American Conference framework develops. At least three substantially different telephone regulatory models must eventually talk to each other.</span>
+    </div>
+  </div>
+</section>
+
+<hr class="track-divider">
+
+<!-- ==================== TRACK 2 ==================== -->
+<section class="track" id="track2">
+  <div class="track-header">
+    <div class="track-number">02</div>
+    <div class="track-title-group">
+      <div class="track-eyebrow">Track Two</div>
+      <div class="track-title">Audio Recording, Radio &amp; Broadcast Media</div>
+    </div>
+  </div>
+
+  <!-- AUDIO RECORDING -->
+  <div class="subsection">
+    <div class="subsection-title">The Audiograph — Gideon Macon</div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Inventor</div>
+        <h4>Gideon Macon</h4>
+        <p>Richmond, Virginia. Working/middle class, old Richmond family without old money. Printing and mechanical trades background. <strong>Single inventor</strong> — not a partnership.</p>
+      </div>
+      <div class="card slate">
+        <div class="card-label">The Invention</div>
+        <h4>First Successful Recording: 1882</h4>
+        <p>Disc-based format from the start — no cylinder phase. The device is called the <strong>audiograph</strong>; the practice and industry are called <strong>audiography</strong>.</p>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>1882–1883 is remembered in-universe as "the miracle years" or "the great invention window" — Macon's audiograph (1882), Peterson's electric light (1883), and Lowry's steammobile (1883) all arriving within roughly eighteen months of each other.</p>
+    </div>
+
+    <div class="subsection-title slate">Macon Audiograph Company (MAC)</div>
+    <div class="prose">
+      <p>Incorporated in Richmond, 1883. Philadelphia investor — printing industry or electrical manufacturing background. Macon serves as technical director and public face initially. Gradually pushed out through the late 1880s–early 1890s as professional management takes over and ownership dilutes through successive funding rounds.</p>
+      <p>Macon returns to Richmond — celebrated locally as the city's most famous son, financially comfortable but peripheral to the industry he created. Dies as a respected but somewhat melancholy figure.</p>
+      <p>MAC eventually expands into radio receiver manufacturing during the 1920s boom. <strong>"Buying a MAC"</strong> becomes standard consumer shorthand for both audiograph players and radio sets. MAC sets known for clean industrial design.</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">The Record Labels</div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Long-Term Dominant</div>
+        <h4>Crescent Records</h4>
+        <p>New Orleans anchored. Most artistically prestigious label long-term. Primary label home of Blaze music. Founded when local businessmen realized major labels weren't capturing the city's scene.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Long-Term Dominant</div>
+        <h4>Republic Audiograph Company</h4>
+        <p>The establishment label. Philadelphia or Manhattan headquartered. Orchestral recordings, popular vocal performers, the respectable mainstream middle. "The label your grandmother buys."</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Long-Term Dominant</div>
+        <h4>Macon Records</h4>
+        <p>Carries the inventor's name. Starts as a MAC house label, eventually spun off or sold. Macon himself has little connection to it by the time it matters — a melancholy irony.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Long-Term Dominant</div>
+        <h4>American Audiograph Company</h4>
+        <p>The populist label. Broad catalogue, aggressive distribution. Most associated with working class musical tastes. Willing to record genres Republic turns its nose up at.</p>
+      </div>
+      <div class="card slate">
+        <div class="card-label">Significant Early / Later Fades</div>
+        <h4>Continental Records</h4>
+        <p>Significant early player. Fades as industry consolidates around the dominant four.</p>
+      </div>
+      <div class="card slate">
+        <div class="card-label">Significant Early / Later Fades</div>
+        <h4>Liberty Records</h4>
+        <p>Significant early player. Fades as industry consolidates around the dominant four.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">Blaze — The New Orleans Sound</div>
+    <div class="prose">
+      <p>The defining WBT musical genre emerging from New Orleans in the late 19th/early 20th century. Related to but distinct from OTL jazz — similar ingredients (African American and Creole musical traditions, brass band culture, blues-adjacent tonality, improvisational character) but emerging more publicly and crossing over into mainstream culture faster.</p>
+      <p>The absence of hard Jim Crow means less of the underground/suppressed quality that shaped OTL jazz's early development. Blaze is taken more seriously by mainstream musical institutions earlier and crosses over more rapidly.</p>
+    </div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term-name">"blaze"</div>
+        <div class="term-def">The mainstream and historical term. What the history books, record labels, and radio announcers call it.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">"razz"</div>
+        <div class="term-def">Older insider musician slang. Still used by musicians among themselves even after "blaze" wins as the public term.</div>
+      </div>
+    </div>
+    <div class="notice">
+      <span class="notice-icon">◆</span>
+      <span>New Orleans is unambiguously the recording capital of the country by 1905–1910. MBC's New Orleans roots make it the natural broadcasting home for blaze music — the network and the genre are deeply intertwined.</span>
+    </div>
+  </div>
+
+  <!-- RADIO -->
+  <div class="subsection">
+    <div class="subsection-title gold">Radio — Pioneer Figures</div>
+    <div class="card-grid">
+      <div class="card gold">
+        <div class="card-label">The Voice Breakthrough</div>
+        <h4>Edmund Cray</h4>
+        <p>Physicist, Columbia University, Brooklyn. First successful voice transmission over radio waves: <strong>1903</strong>. First true radio broadcast (small invited audience): <strong>1904</strong>. Celebrated public face of radio's invention. Career academic — content with legacy in contrast to Macon's more melancholy relationship with his own.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">The Naval Engineer</div>
+        <h4>Josiah Pruett</h4>
+        <p>Navy engineer, Franklin naval research installation. Makes shipboard wireless operational through the 1890s. Work classified during development. Becomes chief FBA technical advisor under Hannah — first major public recognition.</p>
+      </div>
+      <div class="card slate">
+        <div class="card-label">The Commercial Bridge</div>
+        <h4>Walter Greer</h4>
+        <p>Manhattan engineer-entrepreneur. Reads Cray's papers in 1904, immediately sees commercial potential. Founds one of earliest commercial stations in Manhattan, <strong>1912–1913</strong>. Seed of what becomes ABN. Better known in business history than public memory.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Radio Development Timeline</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1890s</div>
+        <div class="timeline-content"><strong>Naval development, classified.</strong> Pruett and colleagues working invisibly. Atlantic Signal &amp; Dispatch monitoring nervously. No public hobbyist community.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1900–1904</div>
+        <div class="timeline-content"><strong>Cray's breakthrough.</strong> Voice transmission (1903), demonstration broadcast (1904). Small but growing civilian hobbyist market forming around wireless telegraphy. Naval radio operational and routine (Harrington incident, 1904). MAC begins quietly developing radio receiver components.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1905–1910</div>
+        <div class="timeline-content"><strong>The Hobbyist Decade.</strong> Radio clubs form in most major cities. Technical magazines publish receiver building instructions. Newspaper experimental stations launch (Franklin Courier, Brooklyn Eagle among first). NBS concept discussed in government circles by 1908–1909.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Dec 31, 1910</div>
+        <div class="timeline-content"><strong>Roosevelt's New Year's Address</strong> — first presidential radio broadcast. Reaches "a few hundred" receivers in the Franklin-Dayton corridor. Those who hear it live feel like witnesses to history.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1911–1912</div>
+        <div class="timeline-content"><strong>FBA and NBS established under Hannah.</strong> FBA dual mandate: license private broadcasters, oversee NBS. NBS flagship Franklin station launches. JCA reaction immediate — "Franklin telling you what to think over the wireless." Feeds 1914 midterm JCA wave.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1913</div>
+        <div class="timeline-content"><strong>Hyperion sinking</strong> — 24-hour maritime radio operator regulations mandated. Broad bipartisan support. Creates significant professional class of trained radio workers.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1910s–1920s</div>
+        <div class="timeline-content"><strong>Organic transition from hobby to commercial.</strong> No mass military training pipeline as catalyst (no WWI equivalent). Driven by falling receiver prices, improving programming, advertising money, FBA framework giving operators investment confidence.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1918–1928</div>
+        <div class="timeline-content"><strong>The Boom.</strong> Receiver prices drop dramatically. Blaze music drives listenership. Live sports broadcasting significant by mid-1920s. Regional networks forming and consolidating. NBS finds its identity as broadcaster of record.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Late 1920s–Early 1930s</div>
+        <div class="timeline-content"><strong>Network consolidation.</strong> ABN, MBC, CBC, PBN, SBC fully established. Broadcasting technology improving — radio genuinely pleasurable rather than a technical achievement.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">By 1932</div>
+        <div class="timeline-content"><strong>Radio as embedded in daily life as the telephone.</strong> Palmer's armistice address (1939/1940) one of the most-listened broadcasts in WBT history.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BROADCASTING LANDSCAPE -->
+  <div class="subsection">
+    <div class="subsection-title gold">The Broadcasting Landscape</div>
+
+    <div class="subsection-title slate" style="margin-top:1.5rem;">Regulatory Body</div>
+    <div class="card-grid">
+      <div class="card gold">
+        <div class="card-label">Regulator</div>
+        <h4>Federal Broadcasting Authority (FBA)</h4>
+        <p>Established under Hannah, 1911/1912. Dual mandate: licenses private broadcasters and oversees the NBS. Early years mostly technical standards and licensing. One of Hannah's initiatives that feeds the JCA's federal overreach narrative in the 1914 midterms.</p>
+      </div>
+    </div>
+
+    <div class="subsection-title slate" style="margin-top:1.5rem;">Public Broadcaster</div>
+    <div class="card-grid">
+      <div class="card ink">
+        <div class="card-label">Public / Franklin</div>
+        <h4>National Broadcasting Service (NBS)</h4>
+        <p>Headquartered in Franklin. News, government addresses, educational content, cultural programming. Funded through federal appropriation. Broadcaster of record for major national events. All commercial networks maintain Franklin bureaus alongside it. Structurally independent but financially vulnerable to congressional budget pressure — JCA uses NBS funding fights as a recurring political tool.</p>
+      </div>
+    </div>
+
+    <div class="subsection-title slate" style="margin-top:1.5rem;">Commercial Networks</div>
+    <div class="card-grid">
+      <div class="card rust" style="--card-color: var(--rust);">
+        <div class="card-label">National Giant / Manhattan</div>
+        <h4>American Broadcasting Network (ABN)</h4>
+        <p>The dominant commercial giant. Corporate, advertising-driven, national ambitions from the start. Manhattan-based. Absorbs the Southern Broadcasting Company (SBC) in the <strong>late 1940s/early 1950s</strong> as telecinema economics make SBC's independence untenable. SBC's western fringe markets go to MBC; the SBC name retires, felt as a genuine cultural loss in the South.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">National Giant / New Orleans</div>
+        <h4>Meridian Broadcasting Company (MBC)</h4>
+        <p>The culturally distinct national giant. New Orleans-based. Wears its Mississippi/Gulf South identity as a deliberate brand choice — "the emotional halfway point of the country." Deeply tied to the recorded music industry and blaze music. Close (occasionally controversial) relationship with Crescent Records. Picks up SBC's western fringe markets on ABN absorption.</p>
+      </div>
+      <div class="card slate">
+        <div class="card-label">Strong Second-Tier / Heartland</div>
+        <h4>Continental Broadcasting Company (CBC)</h4>
+        <p>Calumet/Hugosville co-anchored. The heartland network serving industrial Midwest through interior West. Positions itself against both coastal giants. Note: "CBC" also used for Canadian Broadcasting equivalent — occasional in-universe confusion, especially as NAU integration develops.</p>
+      </div>
+      <div class="card slate">
+        <div class="card-label">Pacific Regional / New Boston</div>
+        <h4>Pacific Broadcasting Network (PBN)</h4>
+        <p>New Boston-anchored. Serves Oregon, Clark, and Washingtonia. Significant within its territory. Affiliated with one of the nationals for programming it can't produce independently but maintains distinct regional identity.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Southern Regional (absorbed ~1950s)</div>
+        <h4>Southern Broadcasting Company (SBC)</h4>
+        <p>Atlanta-anchored. Upper South and Appalachian territory. The proud independent Southern voice. Holds out through the radio era and into early telecinema before ABN absorption. Its disappearance felt as a genuine cultural loss in the South.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BROADCAST NEWS & REGULATION -->
+  <div class="subsection">
+    <div class="subsection-title">Broadcast News &amp; Regulatory Framework</div>
+
+    <div class="prose">
+      <p>The NBS is not the only news broadcaster — all commercial networks develop their own news divisions, driven by competitive instinct and direct ties to the newspaper industry that seeded early radio stations. The same newspaper groups that launched experimental stations develop integrated news organizations combining print and broadcast speed.</p>
+    </div>
+
+    <div class="card-grid" style="margin-top:1rem;">
+      <div class="card ink">
+        <h4>NBS News</h4>
+        <p>Nonpartisan public broadcaster. Deep international coverage. Maintains its own independent correspondent network — genuinely editorially independent from wire services. The broadcaster of record for major national events.</p>
+      </div>
+      <div class="card">
+        <h4>ABN News</h4>
+        <p>Most powerful commercial operation. Manhattan location, closest ties to northeastern newspaper establishment. Centrist-establishment perspective. Breaks national stories first most often.</p>
+      </div>
+      <div class="card">
+        <h4>MBC News</h4>
+        <p>Southern and Gulf Coast perspective. Strong regional coverage. Most consistent coverage of civil rights and racial politics, reflecting its New Orleans audience base.</p>
+      </div>
+      <div class="card slate">
+        <h4>CBC News</h4>
+        <p>Heartland perspective. Strong agricultural and industrial coverage. Trusted by farmers and factory workers. Skeptical of coastal establishment narratives.</p>
+      </div>
+      <div class="card slate">
+        <h4>PBN News</h4>
+        <p>Pacific coast perspective. Strong on Pacific trade, California relations, NAU integration stories. The network most likely to cover NAU integration with genuine depth.</p>
+      </div>
+    </div>
+
+    <div class="subsection-title slate" style="margin-top:2rem;">Regulatory Timeline</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1911–1912</div>
+        <div class="timeline-content"><strong>Public Interest Standard</strong> baked into FBA licensing from day one. License conditions require minimum public affairs airtime, news/opinion/entertainment distinction, community needs response. License renewal is the enforcement mechanism.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1920s</div>
+        <div class="timeline-content"><strong>Fairness Doctrine equivalent.</strong> FBA formalizes requirement to present contrasting viewpoints on matters of public controversy. Not equal time — just multiple perspectives represented. Generates JCA opposition but passes.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1930s</div>
+        <div class="timeline-content"><strong>Structural Separation Requirements.</strong> Added as Global War-era conflict-of-interest prevention. News divisions must have independent budgets and editorial leadership. Advertisers cannot have editorial input. Framed as organizational structure regulation, not content regulation.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1950s–1960s</div>
+        <div class="timeline-content"><strong>Single-channel era.</strong> News-entertainment separation exists organizationally within one broadcast operation. Opinion shows exist but are contained — fifteen-minute commentary segments, clearly labeled.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Late 1950s–1960s</div>
+        <div class="timeline-content"><strong>Multi-channel TC era begins.</strong> Networks launch dedicated news and entertainment channels. Opinion programming expands dramatically on news channels. Legal challenge builds.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1969</div>
+        <div class="timeline-content"><strong>Public Broadcasting Alliance v. American Broadcasting Network</strong> filed. ABN's dedicated news channel fills significant airtime with opinion programming during the emotionally charged Choson War period. PBA files formal license renewal challenge.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1970</div>
+        <div class="timeline-content"><strong>The Opinion Ruling.</strong> Late Schultz presidency (Federalist, 1965–1971). Court finds opinion programming cannot be classified as news under FBA structural separation requirements. Opinion shows must air on entertainment channels. Two-channel model required. Major JCA controversy — framed as government censorship. Becomes a 1970 election issue. Langston administration implements framework.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Early 1970s onward</div>
+        <div class="timeline-content"><strong>Two-channel model standard</strong> across all major networks. Opinion-news distinction culturally understood and legally enforced. Framework holds under continuous political pressure — imperfect but meaningfully better than OTL.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAILY LIFE TEXTURE -->
+  <div class="subsection">
+    <div class="subsection-title">Daily Life Texture — Radio Era</div>
+    <div class="card-grid">
+      <div class="card">
+        <h4>The Radio as Furniture</h4>
+        <p>By the late 1920s, the home radio set is a piece of furniture as much as an appliance. MAC sets known for clean industrial design; other manufacturers favor ornate wooden cabinets for the parlor.</p>
+      </div>
+      <div class="card">
+        <h4>Programming Culture</h4>
+        <p>Families organize evenings around schedules. MBC's blaze music hour, ABN's nightly news, NBS Sunday cultural programming become social institutions.</p>
+      </div>
+      <div class="card slate">
+        <h4>Language</h4>
+        <p>"Tuning in" and "tuning out" enter common speech as metaphors almost immediately. "What are you tuned to?" is a standard social question by the mid-1920s. NBS listeners sometimes called "public sets" by commercial fans — mild affectionate insult.</p>
+      </div>
+      <div class="card slate">
+        <h4>Rural Lag</h4>
+        <p>Rural adoption lags urban significantly through the 1920s due to incomplete electrification. The Global War is the first major national event genuinely reaching everyone simultaneously — rural electrification is sufficiently complete by the 1930s.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="track-divider">
+
+<!-- ==================== TRACK 3 ==================== -->
+<section class="track" id="track3">
+  <div class="track-header">
+    <div class="track-number">03</div>
+    <div class="track-title-group">
+      <div class="track-eyebrow">Track Three</div>
+      <div class="track-title">Cinema &amp; Telecinema</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">Cinema — The Inventors</div>
+    <div class="prose">
+      <p>Moving image technology invented nearly simultaneously in three nations in the <strong>early-to-mid 1890s</strong>. First public exhibitions: <strong>1895–1897</strong>. Cinemagraphic halls multiplying through the early 1900s with a meaningful exhibition network by 1906.</p>
+    </div>
+    <div class="card-grid" style="margin-top:1rem;">
+      <div class="card rust">
+        <div class="card-label">American Inventor</div>
+        <h4>Vera Hollis</h4>
+        <p>Brooklyn-born, white, working-class to middle-class background. Connected to Brooklyn's commercial photography and optical instrument culture. First projection to a small private audience: <strong>1894 or 1895</strong>. Builds the independent <strong>Hollis Studio</strong>. Relocates to <strong>St. Augustine, Florida</strong> ~1912–1915 for weather. Other filmmakers follow — Hollis plants the flag. Celebrated as the mother of American cinema.</p>
+      </div>
+      <div class="card slate">
+        <div class="card-label">Prussian Inventor</div>
+        <h4>Otto Haas</h4>
+        <p>Frankfurt am Main based. Technical university tradition — formally trained in optical physics and mechanical engineering. More theoretically oriented. Prussian/German cinema develops reputation for technical precision and artistic seriousness.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Italian Inventor</div>
+        <h4>Marco Conti</h4>
+        <p>Naples based. Theater and performance background — a showman first, technician second. Italian cinema emphasizes spectacle and emotional storytelling rooted in Naples's operatic and theatrical traditions.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">Film Industry Geography</div>
+    <div class="card-grid">
+      <div class="card rust">
+        <h4>St. Augustine, Florida</h4>
+        <p><strong>American film center</strong> — WBT's Hollywood. Year-round sunshine, diverse landscapes, national rail access. Established by Vera Hollis's relocation decision. "Cinema" and "film" terminology standard.</p>
+      </div>
+      <div class="card slate">
+        <h4>Frankfurt am Main</h4>
+        <p><strong>Primary European cinema center.</strong> Prussian technical and commercial infrastructure. German cinema known for precision and artistic seriousness.</p>
+      </div>
+      <div class="card">
+        <h4>Naples</h4>
+        <p><strong>Secondary European center.</strong> Distinct Italian cinema tradition — melodramatic, visually spectacular, operatically influenced.</p>
+      </div>
+      <div class="card gold">
+        <h4>San Diego, Union of the Californias</h4>
+        <p><strong>Californian film center.</strong> Eventually competes with St. Augustine as NAU integration opens borders. SoCal "movies" terminology creates stylistic distinction from St. Augustine's "cinema" tradition.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">Synchronized Sound</div>
+    <div class="prose">
+      <p>The technical pieces are available earlier in WBT than OTL due to the more mature audiography infrastructure — Gideon Macon's disc-based recording technology has been developing since 1882. The challenge of synchronization is solved in the <strong>late 1910s to early 1920s, possibly as early as 1919</strong> — roughly a decade ahead of OTL. The talkie transition in WBT cinema is significantly earlier.</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">Cinema Terminology</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Region</th>
+            <th>Standard Terms</th>
+            <th>Venue Name Evolution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>USA &amp; Canada</strong></td>
+            <td>"Cinema" and "film" — "going to the cinema," "seeing a film," "the film industry"</td>
+            <td>Cinemagraphic hall → Cinema hall → Cinema</td>
+          </tr>
+          <tr>
+            <td><strong>Texas Federation</strong></td>
+            <td>"Moving pictures" → "movies" / "movie theater" — the distinctly Texian vernacular</td>
+            <td>Movie theater</td>
+          </tr>
+          <tr>
+            <td><strong>California (NorCal)</strong></td>
+            <td>"Cinema" — San Francisco's cosmopolitan, internationally connected character</td>
+            <td>Cinema</td>
+          </tr>
+          <tr>
+            <td><strong>California (SoCal)</strong></td>
+            <td>"Movies" — San Diego's Texas-adjacent frontier American character</td>
+            <td>Movie theater</td>
+          </tr>
+          <tr>
+            <td><strong>Universal</strong></td>
+            <td>Productions called "films." People who make them: "filmmakers." Industry: "the film industry" or "cinema."</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TELECINEMA -->
+  <div class="subsection">
+    <div class="subsection-title gold">Telecinema — The Inventors</div>
+    <div class="prose">
+      <p>Telecinema emerges from collaboration between radio engineering and cinema — it inherits the culture and infrastructure of both industries simultaneously. The name "telecinema" reflects this dual origin: cinema transmitted at a distance.</p>
+    </div>
+    <div class="card-grid" style="margin-top:1rem;">
+      <div class="card gold">
+        <div class="card-label">Radio Engineering Side</div>
+        <h4>Arthur Cade</h4>
+        <p>Brooklyn-based. Worked at or near ABN or predecessor stations in the early 1920s. Technically rigorous, thinks in terms of signal transmission and frequency. His contribution: the transmission side — how to get a moving image through a radio wave reliably and with sufficient resolution.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Cinema Side</div>
+        <h4>Joseph Wren</h4>
+        <p>Brooklyn-based. Trained in the Brooklyn film world before Hollis's departure thinned the local industry. His contribution: the imaging side — how to capture a moving image electronically rather than photographically so it can be converted into a transmittable signal.</p>
+      </div>
+    </div>
+    <div class="notice">
+      <span class="notice-icon">◆</span>
+      <span>Cade and Wren meet through overlapping professional circles in Brooklyn in the early-to-mid 1920s. The <strong>Cade-Wren demonstration</strong> — first public showing of moving image transmission — occurs approximately <strong>1929 or 1930</strong>, just as Global War clouds are gathering.</span>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Telecinema Development Timeline</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">Late 1920s</div>
+        <div class="timeline-content"><strong>Laboratory experiments.</strong> First successful transmission — grainy, low-resolution, sent across a Brooklyn rooftop. Unmistakably moving. Reported in scientific press and specialist publications.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Early–Mid 1930s</div>
+        <div class="timeline-content"><strong>Global War period.</strong> Military applications drive some development. War simultaneously slows consumer development (manufacturing redirected) and accelerates technical aspects (military funding). Limited experimental broadcasts in major cities.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Late 1930s</div>
+        <div class="timeline-content"><strong>Postwar launch.</strong> Peace returns, manufacturing capacity frees up. Experimental public broadcasts begin in Franklin, Brooklyn, and other major cities. NBS launches experimental TC service. Commercial networks begin TC operations.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Early 1940s</div>
+        <div class="timeline-content"><strong>Limited consumer sets.</strong> Sparse programming — a few hours per day, mostly news and special events. Sets expensive — upper-middle class and wealthy households only.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1946</div>
+        <div class="timeline-content"><strong>First election broadcast</strong> simultaneously on radio and telecinema. Still new enough that a candidate's "instinctive command of the new telecinema medium" is a meaningful differentiating skill.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Late 1940s–1950s</div>
+        <div class="timeline-content"><strong>Mass market adoption.</strong> TC sets become affordable for middle class families. Programming expands dramatically. SBC's inability to compete in TC era drives its ABN absorption.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Telecinema Terminology &amp; Daily Life</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term-name">"telecinema"</div>
+        <div class="term-def">The technology and industry name. Understood as cinema transmitted at a distance — reflects dual origins.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">"TC set"</div>
+        <div class="term-def">The home receiver. Significant household purchase — families save up for one. Living room centerpiece.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">"watching the TC"</div>
+        <div class="term-def">Standard phrase. "What's on the TC tonight?" enters common speech.</div>
+      </div>
+    </div>
+    <div class="notice" style="margin-top:1rem;">
+      <span class="notice-icon">◆</span>
+      <span>Political candidates begin being coached on TC presentation by the late 1940s — the medium rewards a different kind of performance than radio. The 1946 election broadcast is remembered as a watershed moment — the first time most TC-owning Americans watched a political event unfold in moving images in their own homes.</span>
+    </div>
+  </div>
+</section>
+
+<hr class="track-divider">
+
+<!-- ==================== TRACK 4 ==================== -->
+<section class="track" id="track4">
+  <div class="track-header">
+    <div class="track-number">04</div>
+    <div class="track-title-group">
+      <div class="track-eyebrow">Track Four</div>
+      <div class="track-title">Computing &amp; The Interlink</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">The First Computers</div>
+    <div class="card-grid">
+      <div class="card slate">
+        <div class="card-label">First Machine</div>
+        <h4>The UER Computer (~1943–1945)</h4>
+        <p><strong>Primary motivation</strong>: codebreaking during the Global War (1932–1939). <strong>Secondary</strong>: economic planning for a complex planned economy. Vacuum tubes, room-filling, team of operators required. Classified for several years. Western intelligence pieces together what the UER has built through the mid-to-late 1940s.</p>
+      </div>
+      <div class="card rust">
+        <div class="card-label">American Response</div>
+        <h4>The American Machine (Early–Mid 1950s)</h4>
+        <p>Nolan administration (1947–1953) launches emergency computing program once UER intelligence becomes clear. "The UER has a thinking machine and we don't" fits Nolan-era paranoia perfectly. Sun bomb calculations (NAU test autumn 1951, China early 1952) are a parallel driver. First working machine arrives <strong>end of Nolan or early Priest</strong>. Institutional credit goes to Priest even though Nolan started it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">American Computing Geography</div>
+    <div class="card-grid">
+      <div class="card rust">
+        <div class="card-label">Primary Cluster — Northeast</div>
+        <h4>Philadelphia (Center of Gravity)</h4>
+        <p>University of Pennsylvania is the primary early American computing center. Strongest historical parallel. Existing scientific infrastructure.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Primary Cluster — Northeast</div>
+        <h4>Brooklyn &amp; Boston</h4>
+        <p>Columbia University (Brooklyn) — already established WBT innovation hub. Harvard (Boston) — strong mathematical tradition.</p>
+      </div>
+      <div class="card slate">
+        <div class="card-label">Secondary Cluster — Midwest</div>
+        <h4>Calumet</h4>
+        <p>Hardware manufacturing hub. University of Illinois computing research. Oliver Allen's electrical engineering legacy makes it the natural center for computing hardware production.</p>
+      </div>
+      <div class="card gold">
+        <div class="card-label">Secondary Cluster — Midwest</div>
+        <h4>Mahkato, Minnesota</h4>
+        <p>The distinctive WBT choice. University of Minnesota gives Minnesota a significant computing history role it does not have in OTL. An unexpected location that becomes a key early research center.</p>
+      </div>
+    </div>
+    <div class="notice">
+      <span class="notice-icon">◆</span>
+      <span>No Silicon Valley equivalent within US borders — the Union of the Californias is not part of the USA. California develops its own computing industry independently, centered on <strong>San Francisco</strong>. The question of whether Philadelphia/Brooklyn or San Francisco is the commercial center of gravity is a recurring NAU tension through the 1990s–2000s.</span>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">Computing Terminology</div>
+    <div class="subsection-title slate" style="margin-top:0.5rem; font-size:0.9rem;">Same as OTL</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term-name">computer</div>
+        <div class="term-def">Straightforwardly descriptive. Emerges naturally.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">hardware</div>
+        <div class="term-def">Too good a metaphor to lose. Wins in WBT as in OTL.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">bug</div>
+        <div class="term-def">Universal computing error term.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">program</div>
+        <div class="term-def">General term for computer instructions. Competes with "script" early on.</div>
+      </div>
+    </div>
+    <div class="subsection-title slate" style="margin-top:1rem; font-size:0.9rem;">WBT-Specific or Divergent</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term-name">script</div>
+        <div class="term-def">Early term for a computer program, drawn from broadcasting culture. Used particularly 1940s–1960s before "program" fully dominates. Survives in specific contexts (automated scripts) even after "program" wins.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">apparatus / plant</div>
+        <div class="term-def">Formal/technical terms for a complete computer installation. "The apparatus is down." Used by engineers and institutions talking about whole systems.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">kit</div>
+        <div class="term-def">Informal everyday term for a personal computing setup, particularly in Canada and among younger users. Reflects NAU's British-influenced vocabulary. "What kit are you running?"</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">works</div>
+        <div class="term-def">Casual shorthand for physical components specifically. "Something's wrong with the works." A technician's term when diagnosing a physical problem.</div>
+      </div>
+    </div>
+    <div class="notice" style="margin-top:1rem;">
+      <span class="notice-icon">◆</span>
+      <span><strong>Open Canvas:</strong> The WBT equivalent of "hacking/hacker" (different slang from Philadelphia/Calumet culture rather than MIT); specific vocabulary around node addresses; commercial service provider terminology; WBT equivalents of specific OTL platforms — search engines, social networking, etc.</span>
+    </div>
+  </div>
+</section>
+
+<hr class="track-divider">
+
+<!-- ==================== INTERLINK ==================== -->
+<section class="track" id="interlink">
+  <div class="track-header">
+    <div class="track-number">04b</div>
+    <div class="track-title-group">
+      <div class="track-eyebrow">Track Four — Continued</div>
+      <div class="track-title">The Interlink</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">What Is the Interlink?</div>
+    <div class="prose">
+      <p>The Interlink — colloquially <strong>"The Link"</strong> — is not a single unified network like OTL's internet. It is a <strong>network of networks</strong>: separate national and bloc networks connected through agreed protocols and treaties. Each network develops independently with its own architecture, addressing conventions, and organizational assumptions. The Interlink is the meta-layer connecting them.</p>
+      <p>The protocol identifier in all Interlink addresses is <span class="mono">link://</span> — referencing the Interlink itself.</p>
+    </div>
+
+    <div class="term-list" style="margin-top:1rem;">
+      <div class="term-item">
+        <div class="term-name">The Interlink</div>
+        <div class="term-def">Formal name for the global network of networks.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">The Link</div>
+        <div class="term-def">Colloquial shorthand. "Are you on The Link?"</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">bridge</div>
+        <div class="term-def">A clickable hyperlink — the thing you click to navigate to another node. Completely distinct from "link" despite sharing a root concept. "Send me the bridge," "click the bridge," "I'll bridge you that node."</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">node</div>
+        <div class="term-def">An individual destination or computer on the Interlink. Already a living term in network engineering, adopted naturally into public vocabulary.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-name">on the Link / off the Link</div>
+        <div class="term-def">Connected / not connected to the Interlink.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">Interlink Development Timeline</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1980s</div>
+        <div class="timeline-content"><strong>National/bloc networks developing independently — no international connection.</strong> Each network is a silo. A NANet user cannot reach a ResEu node. Mass consumer adoption within national networks. The Long Boom (from Pike presidency, 1983) creates economic conditions for commercial expansion.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Late 1980s–1990s</div>
+        <div class="timeline-content"><strong>Cross-network pressure builds.</strong> Businesses operating across borders need electronic communication. Academics want to share data. Workarounds proliferate: dedicated bilateral links between specific institutions, physical media exchange, early email-adjacent systems through diplomatic channels.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1998–2000</div>
+        <div class="timeline-content"><strong>Interlink negotiations begin.</strong> Multilateral process hosted through GPC framework and bilateral diplomatic channels. Covers protocol standards, addressing compatibility, governance structure, security, and cost-sharing.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2002–2004</div>
+        <div class="timeline-content"><strong>Interlink Treaty signed.</strong> Initial connections go live between founding members: NANet, ResEu, UKNet, BharatNet, RedSur, AfricaNet, AnZacNet, APN. The Interlink exists. Most of the democratic world is now connected.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2005–2006</div>
+        <div class="timeline-content"><strong>China officially joins — formal two-tier system.</strong> Government and approved commercial nodes fully accessible internationally. Academic institutions have controlled access. Ordinary consumer access heavily filtered through government-controlled gateways. Most Chinese households experience a closed national network despite formal Interlink membership. Becomes a recurring human rights and trade issue.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2007–2009</div>
+        <div class="timeline-content"><strong>RusSet joins.</strong> Informal rather than formal restrictions — state pressure on operators produces practical content control without China's systematic architecture. Messier but real in effect.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2010s</div>
+        <div class="timeline-content"><strong>Full global integration.</strong> Interlink becomes critical infrastructure worldwide. Mobile access transforms usage patterns. Governance disputes intensify. UKNet integration debate begins — ResEu or NANet?</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2019</div>
+        <div class="timeline-content"><strong>Chinese Spring.</strong> Commitment to genuine Interlink access as part of reform settlement. Two-tier HuaWang system begins formal dismantling.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2020s (Nakamura era)</div>
+        <div class="timeline-content"><strong>HuaWang dismantling underway but incomplete.</strong> NAU policy toward China's network opening is active diplomatic question. UKNet integration debate unresolved. NAU Constitution ratification includes Interlink governance provisions.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">The UKNet Integration Debate</div>
+    <div class="card-grid">
+      <div class="card">
+        <h4>The ResEu Option</h4>
+        <p>Geographic logic strong but cultural fit poor. ResEu's architecture reflects French and German institutional priorities. Organization codes alone (.com vs .ent, .gov vs .gouv) would require massive retrofitting of existing British nodes.</p>
+      </div>
+      <div class="card slate">
+        <h4>The NANet Option</h4>
+        <p>Anglophone argument compelling — shared language, shared conventions (.com and .gov already compatible). Significant geopolitical signal: Britain formally aligning with NAU rather than Europe. Some Commonwealth nations (Australia via AnZacNet) would likely follow.</p>
+      </div>
+      <div class="card gold">
+        <h4>The Independence Option</h4>
+        <p>UKNet stays independent, negotiates bilateral agreements with both. Smaller Commonwealth-adjacent nations prefer this. Probably the path of least resistance — default position. Unresolved in the current timeline endpoint.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="track-divider">
+
+<!-- ==================== NETWORK DIRECTORY ==================== -->
+<section class="track" id="networks">
+  <div class="track-header">
+    <div class="track-number">04c</div>
+    <div class="track-title-group">
+      <div class="track-eyebrow">Track Four — Network Reference</div>
+      <div class="track-title">The National &amp; Bloc Networks</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">Network Directory</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Network</th>
+            <th>Full Name</th>
+            <th>Code</th>
+            <th>Character &amp; Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>NANet</strong></td>
+            <td>North American Network</td>
+            <td class="mono">nan.</td>
+            <td>Multinational from day one. Most integrated and standardized. Commercial-oriented from relatively early. Ancestor: NAU Military Computing Network (late 1950s).</td>
+          </tr>
+          <tr>
+            <td><strong>ResEu</strong></td>
+            <td>Réseau Européen</td>
+            <td class="mono">reu.</td>
+            <td>Starts as UER internal network, expands pan-European. French-influenced architecture. More government-controlled in early years, loosening as European politics evolve.</td>
+          </tr>
+          <tr>
+            <td><strong>UKNet</strong></td>
+            <td>UKNet</td>
+            <td class="mono">ukn.</td>
+            <td><strong>No country codes</strong> — Britain is the only nation on this network. Integration debate (ResEu vs. NANet) ongoing and unresolved. Commonwealth periphery (AnZacNet) started in UKNet's orbit.</td>
+          </tr>
+          <tr>
+            <td><strong>RusSet</strong></td>
+            <td>RusSet</td>
+            <td class="mono">rset.</td>
+            <td>Large geography, relatively sparse nodes. State-controlled character. Informal content restrictions rather than China's formal two-tier architecture. Colloquial: "Set."</td>
+          </tr>
+          <tr>
+            <td><strong>HuaWang</strong></td>
+            <td>HuaWang (华网)</td>
+            <td class="mono">hw.</td>
+            <td><strong>No country codes</strong> — China is the only nation on this network. Formal two-tier system 2005–2019+. Post-Chinese Spring dismantling underway but incomplete. Uses Chinese morphemes: Huá (China) + Wǎng (network).</td>
+          </tr>
+          <tr>
+            <td><strong>APN</strong></td>
+            <td>AsiaPac Network</td>
+            <td class="mono">apn.</td>
+            <td>Japan and Korea co-built post-Choson War. SE Asian nations join. More internationally oriented than most networks — reflects Pacific trade connections.</td>
+          </tr>
+          <tr>
+            <td><strong>BharatNet</strong></td>
+            <td>BharatNet</td>
+            <td class="mono">bhn.</td>
+            <td>Independent great power network. Bharat = India's own name for itself in Hindi. Deliberately distinct from British infrastructure legacy. English-dominant addressing reflecting India's linguistic diversity.</td>
+          </tr>
+          <tr>
+            <td><strong>The Shabaka</strong></td>
+            <td>The Shabaka (الشبكة)</td>
+            <td class="mono">shb.</td>
+            <td>Fragmented Ottoman successor landscape — loose federation of national networks rather than unified system. Geographic rather than linguistic naming avoids Arabic/Turkish/Persian dominance question. Joins Interlink in stages through 2000s–2010s.</td>
+          </tr>
+          <tr>
+            <td><strong>RedSur</strong></td>
+            <td>RedSur</td>
+            <td class="mono">rsur.</td>
+            <td>Brazil-anchored, genuinely bilingual Spanish/Portuguese (Red = network in Spanish, Sur = south). Argentina has complicated feelings about Brazilian dominance. Founding Interlink member.</td>
+          </tr>
+          <tr>
+            <td><strong>AfricaNet</strong></td>
+            <td>AfricaNet</td>
+            <td class="mono">afrn.</td>
+            <td>Later development than other networks. More varied linguistic and technical legacy. NAU-influenced organization codes reflecting development assistance relationships.</td>
+          </tr>
+          <tr>
+            <td><strong>AnZacNet</strong></td>
+            <td>AnZacNet</td>
+            <td class="mono">anz.</td>
+            <td>Started in UKNet's orbit, gradually developed independence. Australia/NZ. ANZAC has cultural resonance but military associations — "PacSouth" exists as a more formal alternative name used in some contexts.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">Organization Codes by Network</div>
+    <div class="org-grid">
+      <div class="org-card">
+        <div class="org-card-title">NANet</div>
+        <div class="org-code-item"><span class="org-code">.gov</span><span class="org-meaning">Government</span></div>
+        <div class="org-code-item"><span class="org-code">.biz</span><span class="org-meaning">Commercial</span></div>
+        <div class="org-code-item"><span class="org-code">.org</span><span class="org-meaning">Non-profit</span></div>
+        <div class="org-code-item"><span class="org-code">.edu</span><span class="org-meaning">Educational</span></div>
+        <div class="org-code-item"><span class="org-code">.mil</span><span class="org-meaning">Military</span></div>
+        <div class="org-code-item"><span class="org-code">.nau</span><span class="org-meaning">Pan-NAU institutions</span></div>
+      </div>
+      <div class="org-card">
+        <div class="org-card-title">ResEu</div>
+        <div class="org-code-item"><span class="org-code">.gouv</span><span class="org-meaning">Gouvernement</span></div>
+        <div class="org-code-item"><span class="org-code">.ent</span><span class="org-meaning">Entreprise (commercial)</span></div>
+        <div class="org-code-item"><span class="org-code">.org</span><span class="org-meaning">Non-profit</span></div>
+        <div class="org-code-item"><span class="org-code">.uni</span><span class="org-meaning">Université</span></div>
+        <div class="org-code-item"><span class="org-code">.pub</span><span class="org-meaning">Public institutions</span></div>
+      </div>
+      <div class="org-card">
+        <div class="org-card-title">UKNet</div>
+        <div class="org-code-item"><span class="org-code">.gov</span><span class="org-meaning">Government</span></div>
+        <div class="org-code-item"><span class="org-code">.com</span><span class="org-meaning">Commercial</span></div>
+        <div class="org-code-item"><span class="org-code">.org</span><span class="org-meaning">Non-profit</span></div>
+        <div class="org-code-item"><span class="org-code">.ac</span><span class="org-meaning">Academic</span></div>
+        <div class="org-code-item"><span class="org-code">.cw</span><span class="org-meaning">Commonwealth institutions</span></div>
+      </div>
+      <div class="org-card">
+        <div class="org-card-title">RusSet</div>
+        <div class="org-code-item"><span class="org-code">.gos</span><span class="org-meaning">Gosudarstvo (government)</span></div>
+        <div class="org-code-item"><span class="org-code">.kom</span><span class="org-meaning">Kommercheskiy (commercial)</span></div>
+        <div class="org-code-item"><span class="org-code">.org</span><span class="org-meaning">Non-profit</span></div>
+        <div class="org-code-item"><span class="org-code">.edu</span><span class="org-meaning">Educational (borrowed)</span></div>
+      </div>
+      <div class="org-card">
+        <div class="org-card-title">HuaWang</div>
+        <div class="org-code-item"><span class="org-code">.zheng</span><span class="org-meaning">Zhèngfǔ (government)</span></div>
+        <div class="org-code-item"><span class="org-code">.shang</span><span class="org-meaning">Shāngyè (commercial)</span></div>
+        <div class="org-code-item"><span class="org-code">.org</span><span class="org-meaning">Non-profit (adopted)</span></div>
+        <div class="org-code-item"><span class="org-code">.xue</span><span class="org-meaning">Xuéxiào (educational)</span></div>
+      </div>
+      <div class="org-card">
+        <div class="org-card-title">APN</div>
+        <div class="org-code-item"><span class="org-code">.gov</span><span class="org-meaning">Government</span></div>
+        <div class="org-code-item"><span class="org-code">.co</span><span class="org-meaning">Commercial</span></div>
+        <div class="org-code-item"><span class="org-code">.ac</span><span class="org-meaning">Academic</span></div>
+        <div class="org-code-item"><span class="org-code">.org</span><span class="org-meaning">Non-profit</span></div>
+      </div>
+      <div class="org-card">
+        <div class="org-card-title">BharatNet</div>
+        <div class="org-code-item"><span class="org-code">.gov</span><span class="org-meaning">Government</span></div>
+        <div class="org-code-item"><span class="org-code">.co</span><span class="org-meaning">Commercial (British legacy)</span></div>
+        <div class="org-code-item"><span class="org-code">.ac</span><span class="org-meaning">Academic (British legacy)</span></div>
+        <div class="org-code-item"><span class="org-code">.org</span><span class="org-meaning">Non-profit</span></div>
+        <div class="org-code-item"><span class="org-code">.bha</span><span class="org-meaning">Pan-Indian institutions</span></div>
+      </div>
+      <div class="org-card">
+        <div class="org-card-title">The Shabaka</div>
+        <div class="org-code-item"><span class="org-code">.gov</span><span class="org-meaning">Government</span></div>
+        <div class="org-code-item"><span class="org-code">.shb</span><span class="org-meaning">Commercial (Arabic root)</span></div>
+        <div class="org-code-item"><span class="org-code">.org</span><span class="org-meaning">Non-profit</span></div>
+        <div class="org-code-item"><span class="org-code">.edu</span><span class="org-meaning">Educational</span></div>
+      </div>
+      <div class="org-card">
+        <div class="org-card-title">RedSur</div>
+        <div class="org-code-item"><span class="org-code">.gob</span><span class="org-meaning">Gobierno/Governo (government)</span></div>
+        <div class="org-code-item"><span class="org-code">.com</span><span class="org-meaning">Commercial</span></div>
+        <div class="org-code-item"><span class="org-code">.org</span><span class="org-meaning">Non-profit</span></div>
+        <div class="org-code-item"><span class="org-code">.edu</span><span class="org-meaning">Educational</span></div>
+      </div>
+      <div class="org-card">
+        <div class="org-card-title">AfricaNet</div>
+        <div class="org-code-item"><span class="org-code">.gov</span><span class="org-meaning">Government</span></div>
+        <div class="org-code-item"><span class="org-code">.biz</span><span class="org-meaning">Commercial (NAU-influenced)</span></div>
+        <div class="org-code-item"><span class="org-code">.org</span><span class="org-meaning">Non-profit</span></div>
+        <div class="org-code-item"><span class="org-code">.edu</span><span class="org-meaning">Educational</span></div>
+      </div>
+      <div class="org-card">
+        <div class="org-card-title">AnZacNet</div>
+        <div class="org-code-item"><span class="org-code">.gov</span><span class="org-meaning">Government</span></div>
+        <div class="org-code-item"><span class="org-code">.com</span><span class="org-meaning">Commercial</span></div>
+        <div class="org-code-item"><span class="org-code">.org</span><span class="org-meaning">Non-profit</span></div>
+        <div class="org-code-item"><span class="org-code">.edu</span><span class="org-meaning">Educational</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="track-divider">
+
+<!-- ==================== ADDRESS GUIDE ==================== -->
+<section class="track" id="addresses">
+  <div class="track-header">
+    <div class="track-number">04d</div>
+    <div class="track-title-group">
+      <div class="track-eyebrow">Track Four — Address Reference</div>
+      <div class="track-title">Interlink Address Guide</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">Address Structure</div>
+    <div class="prose">
+      <p>General format: <span class="mono">link://[network].[sitename].[orgcode].[countrycode]</span></p>
+      <p>Country codes absent where the network is purely national (UKNet, HuaWang). Some networks treat country codes as afterthoughts — built as purely national infrastructure before expanding or fragmenting.</p>
+    </div>
+
+    <div class="code-block">
+<span class="comment"># General structure</span>
+<span class="protocol">link://</span><span class="network">[network]</span>.<span class="site">[sitename]</span>.<span class="org">[orgcode]</span>.<span class="country">[countrycode]</span>
+
+<span class="comment"># NANet examples</span>
+<span class="protocol">link://</span><span class="network">nan</span>.washingtonhouse.<span class="org">gov</span>.<span class="country">usa</span>
+<span class="protocol">link://</span><span class="network">nan</span>.upenn.<span class="org">edu</span>.<span class="country">usa</span>
+<span class="protocol">link://</span><span class="network">nan</span>.assembly.<span class="org">gov</span>.<span class="country">nau</span>
+
+<span class="comment"># ResEu examples</span>
+<span class="protocol">link://</span><span class="network">reu</span>.republique.<span class="org">gouv</span>.<span class="country">fra</span>
+<span class="protocol">link://</span><span class="network">reu</span>.example.<span class="org">ent</span>.<span class="country">deu</span>
+
+<span class="comment"># UKNet — no country codes</span>
+<span class="protocol">link://</span><span class="network">ukn</span>.parliament.<span class="org">gov</span>
+<span class="protocol">link://</span><span class="network">ukn</span>.example.<span class="org">com</span>
+
+<span class="comment"># HuaWang — no country codes</span>
+<span class="protocol">link://</span><span class="network">hw</span>.zhongnanhai.<span class="org">zheng</span>
+<span class="protocol">link://</span><span class="network">hw</span>.example.<span class="org">shang</span>
+
+<span class="comment"># Other networks</span>
+<span class="protocol">link://</span><span class="network">rset</span>.kremlin.<span class="org">gos</span>.<span class="country">rus</span>
+<span class="protocol">link://</span><span class="network">apn</span>.example.<span class="org">co</span>.<span class="country">jpn</span>
+<span class="protocol">link://</span><span class="network">bhn</span>.parliament.<span class="org">gov</span>.<span class="country">ind</span>
+<span class="protocol">link://</span><span class="network">shb</span>.example.<span class="org">gov</span>.<span class="country">tur</span>
+<span class="protocol">link://</span><span class="network">rsur</span>.example.<span class="org">com</span>.<span class="country">bra</span>
+<span class="protocol">link://</span><span class="network">afrn</span>.example.<span class="org">org</span>
+<span class="protocol">link://</span><span class="network">anz</span>.example.<span class="org">edu</span>.<span class="country">aus</span>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">NANet Country Codes</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Code</th><th>Nation/Entity</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono">.usa</td><td>United States of America</td></tr>
+          <tr><td class="mono">.can</td><td>Canada</td></tr>
+          <tr><td class="mono">.tex</td><td>Texas Federation</td></tr>
+          <tr><td class="mono">.cal</td><td>Union of the Californias</td></tr>
+          <tr><td class="mono">.mex</td><td>Mexico</td></tr>
+          <tr><td class="mono">.haw</td><td>Hawaii</td></tr>
+          <tr><td class="mono">.nau</td><td>Pan-NAU institutions (NAU Assembly, NAU Court, etc.)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">Networks With Country Codes as Afterthoughts</div>
+    <div class="prose">
+      <p>Networks built as purely national infrastructure have different architectural relationships to country codes. <strong>HuaWang</strong> and <strong>BharatNet</strong> were built as single-nation networks — country codes are redundant and rarely used internally, only appearing in Interlink-facing addresses for external navigation. Early UER nodes in ResEu often lack country codes entirely, added only as non-UER European states joined the network.</p>
+    </div>
+  </div>
+</section>
+
+</div><!-- /container -->
+
+<footer>
+  <p>Washington Burns Timeline — Technology &amp; Media Reference &nbsp;·&nbsp; Soft Canon Document &nbsp;·&nbsp; POD: August 1814</p>
+  <p style="margin-top:0.5rem;">For collaborative worldbuilding use only &nbsp;·&nbsp; All decisions subject to author override</p>
+</footer>
+
+</body>
+</html>

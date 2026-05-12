@@ -1,0 +1,2034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Washington Burns Timeline — Planning Reference</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --ink: #1a1208;
+    --parchment: #f5f0e8;
+    --parchment-dark: #ede6d6;
+    --parchment-mid: #f0ead8;
+    --gold: #8b6914;
+    --gold-light: #c4960f;
+    --gold-pale: #e8d5a0;
+    --rust: #7a2e0e;
+    --rust-light: #a84020;
+    --slate: #2c3e50;
+    --slate-light: #4a6278;
+    --green-dark: #2d4a2d;
+    --green-mid: #4a7c59;
+    --border: #c4a96e;
+    --border-light: #dcc98a;
+    --shadow: rgba(26, 18, 8, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background-color: var(--parchment);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+    background-image: 
+      radial-gradient(ellipse at 20% 20%, rgba(196, 150, 15, 0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(122, 46, 14, 0.03) 0%, transparent 60%);
+  }
+
+  /* SIDEBAR NAV */
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 260px;
+    height: 100vh;
+    background: var(--ink);
+    overflow-y: auto;
+    z-index: 100;
+    border-right: 3px solid var(--gold);
+    padding: 0 0 40px 0;
+  }
+
+  .sidebar-header {
+    padding: 28px 20px 20px;
+    border-bottom: 1px solid rgba(196, 150, 15, 0.3);
+    margin-bottom: 12px;
+  }
+
+  .sidebar-header h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--gold-light);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .sidebar-header p {
+    color: rgba(245, 240, 232, 0.4);
+    font-size: 11px;
+    margin-top: 6px;
+    font-style: italic;
+    font-family: 'Source Serif 4', serif;
+  }
+
+  .nav-section {
+    padding: 0 0 8px 0;
+  }
+
+  .nav-section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(196, 150, 15, 0.5);
+    padding: 12px 20px 6px;
+    display: block;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 7px 20px 7px 24px;
+    color: rgba(245, 240, 232, 0.7);
+    text-decoration: none;
+    font-size: 13px;
+    font-family: 'Source Serif 4', serif;
+    transition: all 0.15s ease;
+    border-left: 2px solid transparent;
+    line-height: 1.3;
+  }
+
+  .nav-link:hover {
+    color: var(--gold-light);
+    border-left-color: var(--gold);
+    background: rgba(196, 150, 15, 0.06);
+    padding-left: 28px;
+  }
+
+  .nav-link.sub {
+    padding-left: 36px;
+    font-size: 12px;
+    color: rgba(245, 240, 232, 0.5);
+  }
+
+  .nav-link.sub:hover {
+    padding-left: 40px;
+    color: var(--gold-pale);
+  }
+
+  /* MAIN CONTENT */
+  .main {
+    margin-left: 260px;
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    padding: 70px 80px 60px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid var(--gold);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 30% 50%, rgba(139, 105, 20, 0.2) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(122, 46, 14, 0.15) 0%, transparent 50%);
+  }
+
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+    position: relative;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 52px;
+    color: var(--parchment);
+    font-weight: 700;
+    line-height: 1.1;
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 em {
+    color: var(--gold-light);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-family: 'Source Serif 4', serif;
+    color: rgba(245, 240, 232, 0.55);
+    font-size: 15px;
+    font-style: italic;
+    position: relative;
+    max-width: 560px;
+    line-height: 1.6;
+  }
+
+  .hero-meta {
+    position: relative;
+    margin-top: 36px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .hero-meta-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(196, 150, 15, 0.5);
+  }
+
+  .hero-meta-value {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    color: rgba(245, 240, 232, 0.7);
+  }
+
+  /* CONTENT AREA */
+  .content {
+    padding: 0 80px 80px;
+    max-width: 960px;
+  }
+
+  /* SECTIONS */
+  .section {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 2px solid var(--border-light);
+  }
+
+  .section:first-child {
+    border-top: none;
+  }
+
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .section h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  .section h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--rust);
+    margin: 32px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .section h4 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--slate);
+    margin: 20px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 12px;
+  }
+
+  .section p {
+    margin-bottom: 14px;
+    color: var(--ink);
+    font-size: 15.5px;
+    max-width: 740px;
+  }
+
+  /* CARDS */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .card {
+    background: var(--parchment-dark);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 20px;
+    position: relative;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+
+  .card.rust::before { background: var(--rust); }
+  .card.slate::before { background: var(--slate); }
+  .card.green::before { background: var(--green-dark); }
+
+  .card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 10px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .card p {
+    font-size: 13.5px;
+    color: rgba(26, 18, 8, 0.75);
+    margin: 0;
+    line-height: 1.6;
+    max-width: none;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    margin: 20px 0;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 90px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 0;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .timeline-year {
+    width: 90px;
+    flex-shrink: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 500;
+    padding-top: 2px;
+    text-align: right;
+    padding-right: 20px;
+  }
+
+  .timeline-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    margin-top: 6px;
+    margin-right: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-dot.rust { background: var(--rust); }
+  .timeline-dot.slate { background: var(--slate); }
+
+  .timeline-content {
+    flex: 1;
+    padding-bottom: 4px;
+  }
+
+  .timeline-content strong {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .timeline-content span {
+    font-size: 13px;
+    color: rgba(26, 18, 8, 0.65);
+    line-height: 1.5;
+  }
+
+  /* PRESIDENT TABLE */
+  .president-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 13.5px;
+  }
+
+  .president-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+    background: var(--parchment-dark);
+  }
+
+  .president-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .president-table tr:hover td {
+    background: rgba(196, 150, 15, 0.04);
+  }
+
+  .party-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  .party-fed { background: rgba(44, 62, 80, 0.12); color: var(--slate); }
+  .party-spa { background: rgba(45, 74, 45, 0.12); color: var(--green-dark); }
+  .party-dem { background: rgba(139, 105, 20, 0.12); color: var(--gold); }
+  .party-jca { background: rgba(122, 46, 14, 0.12); color: var(--rust); }
+
+  /* POWER MATRIX */
+  .power-matrix {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin: 20px 0;
+    font-size: 12px;
+  }
+
+  .matrix-header {
+    background: var(--ink);
+    color: var(--gold-light);
+    padding: 10px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .matrix-cell {
+    background: var(--parchment-dark);
+    border: 1px solid var(--border-light);
+    padding: 10px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(26, 18, 8, 0.8);
+  }
+
+  .matrix-cell.warm { border-left: 3px solid var(--green-mid); }
+  .matrix-cell.cool { border-left: 3px solid var(--slate-light); }
+  .matrix-cell.cold { border-left: 3px solid var(--rust); }
+  .matrix-cell.neutral { border-left: 3px solid var(--gold); }
+  .matrix-cell.self { background: var(--parchment-mid); border-left: 3px solid var(--border); font-style: italic; color: rgba(26,18,8,0.4); text-align: center; }
+
+  /* STATUS PILLS */
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 2px 4px 2px 0;
+  }
+
+  .status.canon { background: rgba(45, 74, 45, 0.15); color: var(--green-dark); border: 1px solid rgba(45, 74, 45, 0.3); }
+  .status.soft { background: rgba(139, 105, 20, 0.12); color: var(--gold); border: 1px solid rgba(139, 105, 20, 0.3); }
+  .status.open { background: rgba(122, 46, 14, 0.1); color: var(--rust); border: 1px solid rgba(122, 46, 14, 0.25); }
+
+  .status::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  .status.canon::before { background: var(--green-mid); }
+  .status.soft::before { background: var(--gold-light); }
+  .status.open::before { background: var(--rust-light); }
+
+  /* CALLOUT BOXES */
+  .callout {
+    border-left: 4px solid var(--gold);
+    background: var(--parchment-dark);
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .callout.warn {
+    border-left-color: var(--rust);
+    background: rgba(122, 46, 14, 0.04);
+  }
+
+  .callout.info {
+    border-left-color: var(--slate);
+    background: rgba(44, 62, 80, 0.04);
+  }
+
+  .callout-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .callout.warn .callout-label { color: var(--rust); }
+  .callout.info .callout-label { color: var(--slate); }
+
+  .callout p {
+    font-size: 14px;
+    margin: 0;
+    max-width: none;
+  }
+
+  /* LISTS */
+  .styled-list {
+    list-style: none;
+    margin: 12px 0 20px;
+  }
+
+  .styled-list li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    font-size: 14.5px;
+    border-bottom: 1px solid rgba(196, 150, 15, 0.1);
+    line-height: 1.6;
+  }
+
+  .styled-list li:last-child { border-bottom: none; }
+
+  .styled-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 8px;
+    top: 10px;
+  }
+
+  .styled-list li strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 40px 0;
+  }
+
+  /* OPEN QUESTIONS */
+  .open-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .open-item {
+    background: rgba(122, 46, 14, 0.04);
+    border: 1px solid rgba(122, 46, 14, 0.2);
+    border-radius: 2px;
+    padding: 14px 16px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .open-item strong {
+    display: block;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+    color: var(--rust);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  /* SCROLLBAR */
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .sidebar::-webkit-scrollbar-thumb { background: rgba(196, 150, 15, 0.3); border-radius: 2px; }
+
+  /* PRINT/UTILITY */
+  .tag {
+    display: inline-block;
+    background: var(--parchment-dark);
+    border: 1px solid var(--border);
+    padding: 1px 7px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--slate);
+    border-radius: 2px;
+    margin: 1px;
+  }
+
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+    .hero, .content { padding-left: 24px; padding-right: 24px; }
+    .hero h1 { font-size: 36px; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h2>Washington Burns TL<br>Planning Reference</h2>
+    <p>Compiled April 2026</p>
+  </div>
+
+  <div class="nav-section">
+    <span class="nav-section-label">Foundation</span>
+    <a href="#canon-rules" class="nav-link">Sacred Canon Rules</a>
+    <a href="#parties" class="nav-link">The Four Parties</a>
+    <a href="#presidents" class="nav-link">Presidential Roster</a>
+  </div>
+
+  <div class="nav-section">
+    <span class="nav-section-label">Postwar World</span>
+    <a href="#world-order" class="nav-link">Five-Pole World Order</a>
+    <a href="#power-relations" class="nav-link">Power Relations Matrix</a>
+    <a href="#sun-bomb" class="nav-link">Sun Bomb Proliferation</a>
+  </div>
+
+  <div class="nav-section">
+    <span class="nav-section-label">NAU</span>
+    <a href="#nau-timeline" class="nav-link">Institutional Timeline</a>
+    <a href="#nau-members" class="nav-link">Members & Structure</a>
+    <a href="#nau-future" class="nav-link">Constitution Project</a>
+  </div>
+
+  <div class="nav-section">
+    <span class="nav-section-label">Major Powers</span>
+    <a href="#china" class="nav-link">China</a>
+    <a href="#britain" class="nav-link">Britain & Commonwealth</a>
+    <a href="#uer" class="nav-link">UER</a>
+    <a href="#russia" class="nav-link">Russia</a>
+    <a href="#germany" class="nav-link">Germany</a>
+  </div>
+
+  <div class="nav-section">
+    <span class="nav-section-label">Regional</span>
+    <a href="#choson-war" class="nav-link">Choson War</a>
+    <a href="#ottoman" class="nav-link">Ottoman Fracture</a>
+    <a href="#india" class="nav-link">India</a>
+    <a href="#africa" class="nav-link">Africa</a>
+    <a href="#algeria" class="nav-link">Algeria</a>
+  </div>
+
+  <div class="nav-section">
+    <span class="nav-section-label">Era Sketches</span>
+    <a href="#era-1940s" class="nav-link">1940s–1950s</a>
+    <a href="#era-1960s" class="nav-link">1960s–1970s</a>
+    <a href="#era-1980s" class="nav-link">1980s–1990s</a>
+    <a href="#era-2000s" class="nav-link">2000s–2010s</a>
+    <a href="#era-2020s" class="nav-link">2020s (Present)</a>
+  </div>
+
+  <div class="nav-section">
+    <span class="nav-section-label">Domestic</span>
+    <a href="#gay-rights" class="nav-link">Homophilia Arc</a>
+    <a href="#institutions" class="nav-link">Key Institutions</a>
+    <a href="#open" class="nav-link">Open Questions</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Washington Burns Timeline — Internal Planning Document</div>
+    <h1>The <em>Post-Global War</em><br>World Reference</h1>
+    <p class="hero-sub">Soft canon, open canvas, and locked anchor points for the unwritten era — 1941 through the present day.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Point of Divergence</span>
+        <span class="hero-meta-value">War of 1812</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Written Through</span>
+        <span class="hero-meta-value">1911 (Cornelius Roosevelt II)</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Outlined Through</span>
+        <span class="hero-meta-value">1952 (Nolan presidency)</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Current President</span>
+        <span class="hero-meta-value">Sophia Nakamura (SPA, 2025–)</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">US Capital</span>
+        <span class="hero-meta-value">Franklin, District of Washington</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- SACRED CANON -->
+    <div class="section" id="canon-rules">
+      <span class="section-eyebrow">Never Violate</span>
+      <h2>Sacred Canon Rules</h2>
+      <p>These points are locked. They cannot be contradicted, revised, or worked around without explicit author decision.</p>
+
+      <div class="card-grid">
+        <div class="card rust">
+          <h4>Political Spectrum</h4>
+          <p>SPA → Federalist → Democrat → JCA (left to right). SPA endorses Federalist in runoffs; JCA endorses Democrat. Never reverse.</p>
+        </div>
+        <div class="card rust">
+          <h4>Georgina Lincoln</h4>
+          <p>Wins presidency 1958, inaugurated January 1959. First woman president. First Socialist president. Sacrosanct.</p>
+        </div>
+        <div class="card rust">
+          <h4>Jesse Pike</h4>
+          <p>Outed as gay post-Global War. Becomes civil rights symbol. Elected Congress, Senate, presidency (1983–1989). Presides over marriage equality.</p>
+        </div>
+        <div class="card rust">
+          <h4>Henry Freeman</h4>
+          <p>First <em>elected</em> Black president (1941–1947, Federalist). Peter Landon (1903–1905) was first by succession. Freeman's election is monumental but not shocking.</p>
+        </div>
+        <div class="card rust">
+          <h4>No Hard Jim Crow</h4>
+          <p>Enforced segregation dead by early 1910s. Black Americans voting and participating fully since 1861. Do not import OTL racial history.</p>
+        </div>
+        <div class="card rust">
+          <h4>USRC</h4>
+          <p>United States Railway Commission — one of America's oldest and most beloved institutions. Never dismantled. Only reformed at margins.</p>
+        </div>
+        <div class="card rust">
+          <h4>Single 6-Year Terms</h4>
+          <p>US presidents serve one six-year term. No re-election. No second terms. Ever.</p>
+        </div>
+        <div class="card rust">
+          <h4>North American Union</h4>
+          <p>Evolves from NAC framework into EU-like organization. Common currency, open borders, coordinated militaries, elected Assembly.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- PARTIES -->
+    <div class="section" id="parties">
+      <span class="section-eyebrow">Political System</span>
+      <h2>The Four Parties</h2>
+
+      <div class="card-grid">
+        <div class="card green">
+          <h4>Social Progressive Alliance (SPA)</h4>
+          <p>Founded as alliance of socialist and progressive groups. Labor first, capital second. Nationalization, social welfare. Very socially progressive. Base: industrial workers, urban immigrants, farm laborers. <em>Equivalent: democratic socialist.</em></p>
+        </div>
+        <div class="card slate">
+          <h4>Federalists</h4>
+          <p>Oldest party. Strong central government, social reform, abolitionism, racial/gender equality. Anti-exploitation but pro-capitalism with mild regulation. Base: New England, Freedmen States, educated professionals, Black Americans.</p>
+        </div>
+        <div class="card">
+          <h4>Democrats</h4>
+          <p>Pro-big government in infrastructure terms. Believe federal investment built the West. Pragmatic on social change. Base: West, infrastructure boosters, moderate farmers, urban machines. Natural governing party. Becomes center-right as JCA withers.</p>
+        </div>
+        <div class="card rust">
+          <h4>Jeffersonian Constitutional Alliance (JCA)</h4>
+          <p>Pro-small government, states over federal, agrarian. Wants social reform slowed. Base: small farmers, rural whites, Western settlers. <em>Withers after Nolan/Priest era. Never again a presidential contender after ~1970s.</em></p>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <span class="callout-label">Long-Term Party Evolution</span>
+        <p>As the JCA withers, space opens for a genuine Green Party which becomes a significant force by the 1990s–2000s, frequently in coalition with the SPA. By the 21st century the real competition is SPA vs. Federalist vs. Democrat in a three-way race.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- PRESIDENTIAL ROSTER -->
+    <div class="section" id="presidents">
+      <span class="section-eyebrow">Hard Canon</span>
+      <h2>Presidential Roster (Post-Global War)</h2>
+      <p>All presidents serve single six-year terms. No exceptions.</p>
+
+      <table class="president-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>President</th>
+            <th>Term</th>
+            <th>Party</th>
+            <th>Key Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>30</td>
+            <td><strong>Henry Freeman</strong></td>
+            <td>1941–1947</td>
+            <td><span class="party-badge party-fed">Federalist</span></td>
+            <td>First elected Black president. Finishes Asian settlement. Founds NAU charter. Abernathy murder/Pike movement begins.</td>
+          </tr>
+          <tr>
+            <td>31</td>
+            <td><strong>James Nolan</strong></td>
+            <td>1947–1953</td>
+            <td><span class="party-badge party-jca">JCA</span></td>
+            <td>Populist demagogue. GPC obstruction. Pruett affair. Homophile purges. NAU sun bomb test autumn 1951. China tests early 1952.</td>
+          </tr>
+          <tr>
+            <td>32</td>
+            <td><strong>Timothy Priest</strong></td>
+            <td>1953–1959</td>
+            <td><span class="party-badge party-jca">JCA</span></td>
+            <td>True believer, less harsh than Nolan. Morton scandal → shuts Morality Office. Pike elected to Congress. McCorker fracture. Thin mandate.</td>
+          </tr>
+          <tr>
+            <td>33</td>
+            <td><strong>Georgina Lincoln</strong></td>
+            <td>1959–1965</td>
+            <td><span class="party-badge party-spa">SPA</span></td>
+            <td><strong>First woman president. First Socialist president.</strong> India independence ~1962–64. Egyptian Canal seizure resolved.</td>
+          </tr>
+          <tr>
+            <td>34</td>
+            <td><strong>Cassandra Schultz</strong></td>
+            <td>1965–1971</td>
+            <td><span class="party-badge party-fed">Federalist</span></td>
+            <td>Choson War 1966–67. CDC bombing of Beijing/Shanghai. NAU Assembly reform push begins. Shaped by war more than anything else.</td>
+          </tr>
+          <tr>
+            <td>35</td>
+            <td><strong>Julius Langston</strong></td>
+            <td>1971–1977</td>
+            <td><span class="party-badge party-spa">SPA</span></td>
+            <td>NAU Assembly established. Finland independence early 1970s. Poland independence mid-1970s. GPC strengthened post-Choson.</td>
+          </tr>
+          <tr>
+            <td>36</td>
+            <td><strong>Richard Whitmore</strong></td>
+            <td>1977–1983</td>
+            <td><span class="party-badge party-dem">Democrat</span></td>
+            <td>Pendulum swing after two Socialists + one Federalist. South Africa racist policies collapse late 1970s. Ottoman Arab provinces agitation grows.</td>
+          </tr>
+          <tr>
+            <td>37</td>
+            <td><strong>Jesse Pike</strong></td>
+            <td>1983–1989</td>
+            <td><span class="party-badge party-spa">SPA</span></td>
+            <td><strong>Marriage equality. First openly gay president.</strong> Genuine China détente. "Long Boom" begins. Hejaz independence mid-1980s.</td>
+          </tr>
+          <tr>
+            <td>38</td>
+            <td><strong>Regina Holman</strong></td>
+            <td>1989–1995</td>
+            <td><span class="party-badge party-fed">Federalist</span></td>
+            <td>Mesopotamia revolt begins ~1987–89. Holman watches but doesn't intervene. German/Prussian reunification process. Long Boom continues.</td>
+          </tr>
+          <tr>
+            <td>39</td>
+            <td><strong>Victor Liu</strong></td>
+            <td>1995–2001</td>
+            <td><span class="party-badge party-spa">SPA</span></td>
+            <td>First Asian-American president. Joins GPC Mesopotamia peacekeeping ~1996. Terror attacks on GPC facilities late 1990s. Boom busts ~1998–2000.</td>
+          </tr>
+          <tr>
+            <td>40</td>
+            <td><strong>Stephen Mercer</strong></td>
+            <td>2001–2007</td>
+            <td><span class="party-badge party-dem">Democrat</span></td>
+            <td>Wins on withdrawal promise. Deadline gambit works — Ottomans negotiate Nov. 15, 2001. Mesopotamia settlement by late 2002/early 2003. GPC reform groundwork.</td>
+          </tr>
+          <tr>
+            <td>41</td>
+            <td><strong>Eleanor Sinclair</strong></td>
+            <td>2007–2013</td>
+            <td><span class="party-badge party-dem">Democrat</span></td>
+            <td>GPC reform process launched. Clean Energy Framework passed. Ottoman successor states stabilizing. German reunification complete.</td>
+          </tr>
+          <tr>
+            <td>42</td>
+            <td><strong>Xavier Hudson</strong></td>
+            <td>2013–2019</td>
+            <td><span class="party-badge party-fed">Federalist</span></td>
+            <td>GPC reform completed. Chinese Spring protest movement builds. NAU deepening debate becomes serious. Chinese Spring coup attempt begins end of term.</td>
+          </tr>
+          <tr>
+            <td>43</td>
+            <td><strong>Naomi Clearwater</strong></td>
+            <td>2019–2025</td>
+            <td><span class="party-badge party-fed">Federalist</span></td>
+            <td>From Lakota (Native state). Chinese coup attempt first months of term — rallies global support, boycott threat, Emperor restored within a week. NAU Constitution discussion begins.</td>
+          </tr>
+          <tr>
+            <td>44</td>
+            <td><strong>Sophia Nakamura</strong></td>
+            <td>2025–2031</td>
+            <td><span class="party-badge party-spa">SPA</span></td>
+            <td>Second Asian-American president. Former mayor of New Boston (OTL Portland, OR), then Senator. Lesbian, married, two teenage children. Green-SPA coalition. NAU Constitution ratification. Mars mission TBD.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="divider">
+
+    <!-- WORLD ORDER -->
+    <div class="section" id="world-order">
+      <span class="section-eyebrow">Soft Canon</span>
+      <h2>The Five-Pole World Order</h2>
+      <p>The postwar world is genuinely multipolar — not a clean bipolar split. The fault line is more geographical great-power rivalry than ideological, with a subtle autocracy-vs-democracy flavor at the margins. The GPC is the primary arena where the world-order fight plays out.</p>
+
+      <h3>The Liberal Spectrum</h3>
+      <p>Running from most to least liberal/open:</p>
+      <div class="card-grid">
+        <div class="card green">
+          <h4>NAU — Most Liberal</h4>
+          <p>Democratic, deeply integrated, elected Assembly, common currency, open borders. The most institutionally advanced bloc.</p>
+        </div>
+        <div class="card green">
+          <h4>UER — Very Liberal</h4>
+          <p>Genuine elections, civil liberties, religious freedom restored post-Holtz. Communalist structure intact but reformed. Stable and confident postwar victor.</p>
+        </div>
+        <div class="card slate">
+          <h4>Britain — Liberal</h4>
+          <p>Constitutional monarchy, parliamentary democracy. Managing imperial decline. More conservative establishment than NAU or UER.</p>
+        </div>
+        <div class="card">
+          <h4>Russia — Partially Liberal</h4>
+          <p>Constitutional monarchy since 1854. Functioning Imperial Duma. Better than China, not as open as Britain. Independent swing actor.</p>
+        </div>
+        <div class="card rust">
+          <h4>China — Least Liberal (initially)</h4>
+          <p>Constitutional monarchy but not free. Press control, restricted personal freedoms. Gradually liberalizes post-Choson War. Genuine democratization by 2019 Chinese Spring.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- POWER MATRIX -->
+    <div class="section" id="power-relations">
+      <span class="section-eyebrow">Soft Canon</span>
+      <h2>Power Relations Matrix</h2>
+      <p>Cross-cutting relationships between the five poles. Messier than OTL Cold War blocs — no clean alliance structure.</p>
+
+      <div style="overflow-x:auto; margin: 20px 0;">
+        <table style="border-collapse:collapse; width:100%; font-size:13px;">
+          <thead>
+            <tr>
+              <th style="background:var(--ink); color:var(--gold-light); padding:10px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.1em; width:100px;"></th>
+              <th style="background:var(--ink); color:var(--gold-light); padding:10px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.1em; text-align:center;">NAU</th>
+              <th style="background:var(--ink); color:var(--gold-light); padding:10px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.1em; text-align:center;">Britain</th>
+              <th style="background:var(--ink); color:var(--gold-light); padding:10px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.1em; text-align:center;">China</th>
+              <th style="background:var(--ink); color:var(--gold-light); padding:10px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.1em; text-align:center;">Russia</th>
+              <th style="background:var(--ink); color:var(--gold-light); padding:10px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.1em; text-align:center;">UER</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="background:var(--ink);color:var(--gold-light);padding:10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;font-weight:500;">NAU</td>
+              <td style="padding:10px;border:1px solid var(--border-light);background:var(--parchment-mid);font-style:italic;color:rgba(26,18,8,0.4);text-align:center;">—</td>
+              <td style="padding:10px;border:1px solid var(--border-light);background:var(--parchment-dark);border-left:3px solid var(--green-mid);">Warm but unequal. Core Allied partnership. Friction over Canadian drift and imperial decline.</td>
+              <td style="padding:10px;border:1px solid var(--border-light);background:var(--parchment-dark);border-left:3px solid var(--rust);">Most fraught. "Lost Asia" grievance. Sun bomb gap closes immediately. Managed tension → détente post-Choson.</td>
+              <td style="padding:10px;border:1px solid var(--border-light);background:var(--parchment-dark);border-left:3px solid var(--gold);">Cautiously warm. Transactional. No major grievances. Cools during Russian-China tilt 1960s.</td>
+              <td style="padding:10px;border:1px solid var(--border-light);background:var(--parchment-dark);border-left:3px solid var(--green-mid);">Complicated but improving. Allied but UER ideologically suspect to US right. Warms under Lincoln.</td>
+            </tr>
+            <tr>
+              <td style="background:var(--ink);color:var(--gold-light);padding:10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;font-weight:500;">Britain</td>
+              <td style="padding:10px;border:1px solid var(--border-light);">&nbsp;</td>
+              <td style="padding:10px;border:1px solid var(--border-light);background:var(--parchment-mid);font-style:italic;color:rgba(26,18,8,0.4);text-align:center;">—</td>
+              <td style="padding:10px;border:1px solid var(--border-light);background:var(--parchment-dark);border-left:3px solid var(--rust);">Actively hostile. Treaty ports kept — live humiliation. Can't do much militarily but resentment shapes policy.</td>
+              <td style="padding:10px;border:1px solid var(--border-light);background:var(--parchment-dark);border-left:3px solid var(--gold);">Great Game shadow but managed carefully. No hot grievance post-war.</td>
+              <td style="padding:10px;border:1px solid var(--border-light);background:var(--parchment-dark);border-left:3px solid var(--slate-light);">Awkward. Allied but Britain's conservative establishment uncomfortable with communalism.</td>
+            </tr>
+            <tr>
+              <td style="background:var(--ink);color:var(--gold-light);padding:10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;font-weight:500;">China</td>
+              <td style="padding:10px;border:1px solid var(--border-light);">&nbsp;</td>
+              <td style="padding:10px;border:1px solid var(--border-light);">&nbsp;</td>
+              <td style="padding:10px;border:1px solid var(--border-light);background:var(--parchment-mid);font-style:italic;color:rgba(26,18,8,0.4);text-align:center;">—</td>
+              <td style="padding:10px;border:1px solid var(--border-light);background:var(--parchment-dark);border-left:3px solid var(--gold);">Working relationship. Russia brokered 1940 ceasefire. Shared Central Asian border tension. Russia tilts toward China 1960s then recalibrates.</td>
+              <td style="padding:10px;border:1px solid var(--border-light);background:var(--parchment-dark);border-left:3px solid var(--slate-light);">UER anti-colonial, ideologically sympathetic to Chinese reform movements but wary of instability.</td>
+            </tr>
+            <tr>
+              <td style="background:var(--ink);color:var(--gold-light);padding:10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;font-weight:500;">Russia</td>
+              <td style="padding:10px;border:1px solid var(--border-light);">&nbsp;</td>
+              <td style="padding:10px;border:1px solid var(--border-light);">&nbsp;</td>
+              <td style="padding:10px;border:1px solid var(--border-light);">&nbsp;</td>
+              <td style="padding:10px;border:1px solid var(--border-light);background:var(--parchment-mid);font-style:italic;color:rgba(26,18,8,0.4);text-align:center;">—</td>
+              <td style="padding:10px;border:1px solid var(--border-light);background:var(--parchment-dark);border-left:3px solid var(--gold);">Two large continental powers sharing long border. Most friction-prone European bilateral. Careful management required.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- SUN BOMB -->
+    <div class="section" id="sun-bomb">
+      <span class="section-eyebrow">Soft Canon</span>
+      <h2>Sun Bomb Proliferation</h2>
+      <p>The "sun bomb" (fission weapon) is developed after the Global War ends — no Hiroshima/Nagasaki equivalent. The term "sun bomb" is the popular press name; official term is "fission weapon."</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-year">Autumn 1951</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>NAU — First test, Nevada high desert</strong>
+            <span>Joint NAU project. Announced as munitions accident, official disclosure 3 days later. Nolan's announcement: "forces of freedom shall never again face a technological disadvantage."</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Early 1952</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>China — Second test</strong>
+            <span>"Sun bomb" becomes popular term in newspaper headlines. NAU window of advantage: months, not years. Immediately supercharges JCA "soft on China" narrative in election year.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">TBD</span>
+          <div class="timeline-dot slate"></div>
+          <div class="timeline-content">
+            <strong>Britain and Russia — Likely next</strong>
+            <span>Timing not yet established. Both are probable next proliferators. German Republic possible but uncertain.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">TBD</span>
+          <div class="timeline-dot slate"></div>
+          <div class="timeline-content">
+            <strong>Global South — Possible candidates</strong>
+            <span>Brazil, India, Australia mentioned as possibilities. Not locked.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="callout-label">Key Rule</span>
+        <p>Sun bombs function as deterrent against major power hot conflicts throughout the postwar era. The Choson War (1966–67) is the primary test — the deterrent holds. Neither side uses them despite Beijing and Shanghai being bombed conventionally.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- NAU -->
+    <div class="section" id="nau-timeline">
+      <span class="section-eyebrow">Soft Canon</span>
+      <h2>North American Union — Institutional Timeline</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-year">1840s–1930s</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>North American Conference framework</strong>
+            <span>Periodic diplomatic gatherings. No permanent institutions. At least four conferences before formal organization.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1940</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Fourth NAC — San Francisco</strong>
+            <span>Pan-American Passport established — free movement across USA, Canada, Texas, California, Mexico. Hawaii associate membership formally established.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1942</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Continental Defense Command (CDC) established</strong>
+            <span>Codifies wartime military coordination into permanent peacetime institution. First genuinely integrated NAU structure. Has federal-level commander.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1945/46</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Fifth NAC — Formal NAU Charter</strong>
+            <span>North American Union formally established as named organization. Council created with small appointed representatives. CDC given legal framework. Basic economic coordination established. Freeman's signature achievement.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1951</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Hawaii — Full membership</strong>
+            <span>Elevated from associate to full member over Nolan's muted resistance. California and Canada wanted it; political cost of visible fight too high.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1954</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Continental Bank and common currency proposed</strong>
+            <span>Takes several years to implement fully. Major NAU institution-building milestone.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1966–67</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>Choson War — CDC bombing decision</strong>
+            <span>CDC makes bombing decision collectively. Democratic accountability demand grows across member states. NAU unity demonstrated and tested.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Late 1960s</span>
+          <div class="timeline-dot slate"></div>
+          <div class="timeline-content">
+            <strong>NAU Assembly reform push begins</strong>
+            <span>Begins during Schultz presidency. Schultz supports in principle but cannot deliver. Passed to Langston.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Early 1970s</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>NAU Assembly established — under Langston</strong>
+            <span>Directly elected. Budgetary oversight and treaty ratification powers. Council retains executive functions. Langston's signature achievement.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2000s–2010s</span>
+          <div class="timeline-dot slate"></div>
+          <div class="timeline-content">
+            <strong>Caribbean and Central American expansion</strong>
+            <span>Happens in stages. Form TBD — full membership, associate membership, or looser arrangement. Mexico has strong opinions about southern neighbors joining.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2019–2025+</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>NAU Constitution project</strong>
+            <span>Discussion begins before Nakamura. Her election signals US support, initiating formal process. Completed during her administration. Rural/urban split is primary fault line (not national). Mexico most significant holdout.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="nau-members">
+        <h3>Members & Structure</h3>
+        <div class="card-grid">
+          <div class="card">
+            <h4>Full Members</h4>
+            <p>USA, Canada, Texas, California, Mexico (founding); Hawaii (1951). Each retains distinct identity, government, and considerable domestic autonomy.</p>
+          </div>
+          <div class="card">
+            <h4>Council</h4>
+            <p>Small, appointed representatives from member states. Retains executive functions. Original governing body from 1945/46 charter.</p>
+          </div>
+          <div class="card">
+            <h4>Assembly</h4>
+            <p>Directly elected. Budgetary oversight, treaty ratification. Established early 1970s under Langston. Fifty years old by Nakamura's presidency.</p>
+          </div>
+          <div class="card">
+            <h4>CDC</h4>
+            <p>Continental Defense Command. Military arm. Federal-level commander. Made Choson War bombing decision collectively — all member governments stood behind it.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="nau-future">
+        <h3>NAU Constitution Project (Nakamura Era)</h3>
+        <p>The NAU Constitution consolidates sixty-plus years of accumulated treaties, amendments, and charter revisions into a single coherent founding document.</p>
+        <ul class="styled-list">
+          <li><strong>Codifies existing institutions</strong> — Council, Assembly, CDC, Continental Bank in single document with clear relationships</li>
+          <li><strong>Formal NAU citizenship</strong> — alongside member state citizenship. Most symbolically significant new element.</li>
+          <li><strong>Clarifies Assembly powers</strong> — expanding them somewhat. The "go further" side's win.</li>
+          <li><strong>NAU judiciary/supreme court</strong> — most structurally significant new institution. Gives framework real enforcement mechanism.</li>
+          <li><strong>Defines expansion framework</strong> — how new members join, what associate membership means going forward.</li>
+        </ul>
+        <div class="callout">
+          <span class="callout-label">Integration Level by 2025</span>
+          <p>More integrated than OTL EU at its peak, less integrated than a true federal state. Member states retain distinct identities and governments. Something like: EU-plus.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- CHINA -->
+    <div class="section" id="china">
+      <span class="section-eyebrow">Soft Canon</span>
+      <h2>China — Arc Summary</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-year">1940s–50s</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Moderate faction dominant</strong>
+            <span>Military development without aggression. Diplomatic GPC pressure for NAU regional drawdown. Pragmatists argue: make China as strong as possible first, no offensive action.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Late 1950s–60s</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>Generational transition — hardliners gain influence</strong>
+            <span>Next generation inherits grievances without the memories of the Global War's cost. Diplomatic tone changes noticeably. Pressure on Japan and Choson intensifies.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1966–67</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>Choson War</strong>
+            <span>Chinese-backed coup in Choson. NAU + Japan respond militarily. Beijing and Shanghai bombed. Moderates use shock to push out hardliners. China negotiates from genuine weakness. See Choson War section.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1970s–80s</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Moderate restoration and cautious liberalization</strong>
+            <span>Hardliners discredited. Moderates begin long process of internal reform. Two-steps-forward-one-step-back rhythm. Press freedom, civil society emerging slowly.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Mid-1980s</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Genuine détente with NAU — under Pike</strong>
+            <span>"Nixon goes to China" but from opposite ideological direction. Pike as civil rights figure opens the door. Blooms into real friendliness in the 1990s.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2015–2019</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>Chinese Spring — Protest movement builds</strong>
+            <span>Younger generation pushes for genuine democratic reform. Pro-reform Emperor vs. conservative military/establishment faction. Coup attempt against Emperor.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Spring 2019</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>Coup attempt — First months of Clearwater presidency</strong>
+            <span>Military detains reform Emperor. Clearwater rallies global support, NAU apparatus, GPC — boycott threat. Mass popular mobilization defends Emperor. Crisis lasts approximately one week. Emperor restored. Coup leaders face civilian trial.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2019–2025</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Democratic reforms embedded</strong>
+            <span>Emperor governs with genuine popular legitimacy. Sweeping constitutional reforms follow. Free press, competitive elections, genuine civil society. Zhongxing dynasty reigns rather than rules.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="callout-label">By Nakamura's Presidency (2025)</span>
+        <p>China is a constitutional monarchy with real democratic institutions — the Zhongxing Emperor as beloved constitutional figurehead. Treaty ports are fully integrated Chinese cities, not a diplomatic issue. China-India bilateral relationship is the most consequential in Asia. China's relationship with NAU is warmest since before the Global War.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- BRITAIN -->
+    <div class="section" id="britain">
+      <span class="section-eyebrow">Soft Canon</span>
+      <h2>Britain & The Commonwealth Arc</h2>
+
+      <h3>British Monarchy (Hard Canon)</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-year">1935–1970</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Charles III</strong>
+            <span>War monarch. Married Lady Elizabeth Carlisle of Canada, June 1928. The personal Anglo-Canadian bond that complicates Commonwealth reform.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1970–2011</span>
+          <div class="timeline-dot slate"></div>
+          <div class="timeline-content">
+            <strong>Charlotte IV</strong>
+            <span>Son William dies in skiing accident 1990. No personal Canadian connection — Commonwealth question becomes politically live.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2011–present</span>
+          <div class="timeline-dot slate"></div>
+          <div class="timeline-content">
+            <strong>Victor I</strong>
+            <span>Son of deceased Prince William.</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>Imperial Commonwealth Arc</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-year">Late 1940s</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Britain floats Imperial Parliament idea</strong>
+            <span>Tory postwar anxiety about diminished standing. Australia, New Zealand, South Africa enthusiastic. Canada and India prominent holdouts.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Early 1950s</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Commonwealth Council compromise</strong>
+            <span>Imperial Parliament shelved. Consultative, non-binding Council instead. Canada joins with explicit reservations. India joins cautiously. South Africa's racial policies create immediate friction with India.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Early 1960s</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>India pushes for full independence</strong>
+            <span>Cites wartime promises (Sapru). Cannot maintain meaningful Commonwealth association while South Africa is member in good standing. Britain negotiates India's independence ~1962–64. Lincoln presidency sympathetic.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1960s–70s</span>
+          <div class="timeline-dot slate"></div>
+          <div class="timeline-content">
+            <strong>Canada's gradual exit</strong>
+            <span>NAU integration deepens. Commonwealth membership becomes ceremonial. Eventual formalization through referendum or parliamentary vote. Canada's constitutional future still open — republic, separate Crown, or continued nominal British Crown connection TBD.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Late 1970s</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>South Africa — Racist policies collapse</strong>
+            <span>No OTL Jim Crow as external validation. Neighboring newly independent African states, GPC pressure, NAU diplomatic pressure all converge. Earlier and cleaner than OTL's 1994.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- RUSSIA -->
+    <div class="section" id="russia">
+      <span class="section-eyebrow">Soft Canon</span>
+      <h2>Russia — Arc Summary</h2>
+      <p>Russia's most important characteristic: the most genuinely independent swing actor. No deep alliance or enmity with anyone. Wild card in multilateral situations.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-year">1940s–50s</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Genuine independence — cashing GPC seat</strong>
+            <span>Maximum flexibility. Neither western nor Chinese aligned. Permanent GPC council seat negotiated as price of late Global War entry.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Late 1950s–60s</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>Quiet tilt toward China begins</strong>
+            <span>Western GPC support for Finnish and Polish independence movements feels like the GPC being used against Russian interests. Russia and China find common cause as powers who feel the system wasn't designed for them.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1966–67</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>Choson War — backs wrong horse</strong>
+            <span>Soft aid to China. Obstructs GPC action. Tries to play intermediary in China's favor. China loses decisively. Russia's support bought nothing. GPC doubles down on Finnish/Polish independence.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Early 1970s</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Finnish independence</strong>
+            <span>Cleaner and earlier. Distinct national identity, strong western sympathy. Russia accepts — loses personal union but gains stable neighbor.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Mid-1970s</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Polish independence</strong>
+            <span>Messier, larger, more economically integrated. Harder negotiation. Both Finland and Poland retain trade relationships with Russia — economic rupture serves nobody.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Late 1970s onward</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Recalibration and return to genuine independence</strong>
+            <span>Choson alignment bought nothing. Obstruction produced punishment. Personal unions gone anyway. Returns to swing-actor role with more humility. Relationship with NAU gradually normalizes. By Pike's presidency: cautiously warm.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- UER -->
+    <div class="section" id="uer">
+      <span class="section-eyebrow">Soft Canon</span>
+      <h2>Union of European Republics</h2>
+      <ul class="styled-list">
+        <li><strong>Founded 1904</strong> from French and South German communist revolutions</li>
+        <li><strong>Post-Holtz reforms complete</strong> — genuine elections, civil liberties, religious freedom. Constructed language retained for official use; French and German co-official.</li>
+        <li><strong>Confident postwar victor</strong> — more legitimate than prewar. Ideological bogeyman for American conservatives despite being a functional democracy.</li>
+        <li><strong>UER-German Republic relationship</strong> — most fraught European bilateral. UER deeply wary of German nationalism revival on its eastern border.</li>
+        <li><strong>Warms to NAU</strong> under Lincoln presidency onward.</li>
+        <li><strong>Peak stability and confidence</strong> in the 1990s — century-old communalist democracy. Green parties strongest here first.</li>
+        <li><strong>Anti-colonial by disposition</strong> — does not claim French colonial inheritance. Supports Algerian reform trajectory without actively destabilizing it.</li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <!-- GERMANY -->
+    <div class="section" id="germany">
+      <span class="section-eyebrow">Soft Canon</span>
+      <h2>Germany — Prussia, Republic, Reunification</h2>
+
+      <div class="card-grid">
+        <div class="card slate">
+          <h4>German Republic</h4>
+          <p>Proclaimed during Global War ~early 1938 after democratic revolution. Reparations, military limitations. GPC observer status → full voting member by 1950s (very temporary observer period). Not on permanent council.</p>
+        </div>
+        <div class="card">
+          <h4>Rump Prussia</h4>
+          <p>Survives as separate diminished state post-Global War. Not a major power but continues to exist. Constitutional monarchy of more conservative character than the German Republic.</p>
+        </div>
+        <div class="card green">
+          <h4>Reunification — 1990s</h4>
+          <p>German Republic and rump Prussia reunify in the 1990s. Pinned as soft canon. Details TBD. Austria stays separate — distinct identity by then. UER buy-in required; happens in context of long boom confidence.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- CHOSON WAR -->
+    <div class="section" id="choson-war">
+      <span class="section-eyebrow">Soft Canon</span>
+      <h2>The Choson War (1966–1967)</h2>
+      <p>The defining postwar conflict. Tests the NAU alliance, the GPC framework, and the sun bomb deterrent simultaneously.</p>
+
+      <h3>Causes</h3>
+      <ul class="styled-list">
+        <li><strong>Chinese hardliner faction</strong> ascendant after generational transition. Views NAU presence in Japan and Choson as permanent affront to Chinese regional hegemony.</li>
+        <li>1940 ceasefire left Choson explicitly neutral but with no enforcement mechanism — twenty-plus years of Chinese economic penetration and political pressure follow.</li>
+        <li>Chinese-backed coup installs pro-Beijing government in Choson.</li>
+      </ul>
+
+      <h3>The War</h3>
+      <ul class="styled-list">
+        <li>NAU and Japan respond militarily — NAU honors commitment, Japan fights on its own doorstep.</li>
+        <li><strong>CDC makes bombing decision collectively</strong> — Beijing and Shanghai bombed by conventional forces. All member governments stand behind decision.</li>
+        <li>Schultz presidency bears some political cost but not all — shared CDC responsibility is the mechanism.</li>
+        <li>Sun bomb deterrent holds — neither side uses them. Moderates' decisive internal argument: NAU retaliation would end the dynasty.</li>
+      </ul>
+
+      <h3>Resolution — Treaty of Delhi</h3>
+      <ul class="styled-list">
+        <li><strong>India brokers the settlement</strong> — first major act of independent Indian diplomacy. Founding moment of Indian non-alignment doctrine.</li>
+        <li>China negotiates from genuine weakness for first time since 1932.</li>
+        <li>GPC-mandated settlement with real enforcement mechanisms — more durable than 1940 ceasefire.</li>
+        <li>Japan and Choson end up closer to NAU or more genuinely independent.</li>
+        <li>China keeps British treaty ports — no clean mechanism for return.</li>
+      </ul>
+
+      <h3>Consequences</h3>
+      <div class="card-grid">
+        <div class="card green">
+          <h4>GPC Strengthened</h4>
+          <p>Emerges with genuine enforcement credibility for first time. Settlement runs through GPC with Russia and UER both backing it.</p>
+        </div>
+        <div class="card green">
+          <h4>NAU More United</h4>
+          <p>Alliance tested and holding. CDC acting decisively becomes proof of concept. Democratic accountability demand produces Assembly reform push.</p>
+        </div>
+        <div class="card rust">
+          <h4>China Chastened</h4>
+          <p>Hardliners discredited. Beijing and Shanghai bombed — punctures "unassailable at home" argument. Moderate faction uses shock to restore control.</p>
+        </div>
+        <div class="card slate">
+          <h4>India Arrives</h4>
+          <p>Treaty of Delhi establishes India as independent great power. Non-aligned doctrine established deliberately. Long-term counterweight to Chinese regional ambitions.</p>
+        </div>
+        <div class="card rust">
+          <h4>Russia Pays Price</h4>
+          <p>Backed wrong horse. GPC doubles down on Finnish/Polish independence. Russia begins recalibration.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- OTTOMAN -->
+    <div class="section" id="ottoman">
+      <span class="section-eyebrow">Soft Canon</span>
+      <h2>The Ottoman Fracture</h2>
+      <p>The Ottoman Empire was on the wrong side of the Global War — armed neutral tilting Prussian. The Geneva settlement imposed joint Allied-Ottoman Suez oversight rather than rewarding Ottoman sovereignty. The postwar mood in Istanbul is humiliation, not confidence.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-year">1940s–50s</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Postwar consolidation — federal structure established</strong>
+            <span>Istanbul establishes genuinely federal arrangement. Syria, Lebanon, Palestine get satisfactory autonomy. Hejaz gets tolerable arrangement. Mesopotamia gets least — oil makes Istanbul intransigent. Egypt pushing for full formalization.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1959–1961</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>Egypt seizes the Canal Zone — declares independence</strong>
+            <span>GPC brokers settlement. Egypt recognized as independent sovereign state. Suez Canal becomes GPC International Zone — administered by GPC, generates revenue funding GPC institutional operations. Settled by 1960/61.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1960s</span>
+          <div class="timeline-dot slate"></div>
+          <div class="timeline-content">
+            <strong>Relatively quiet — nationalism grows steadily</strong>
+            <span>Arab nationalist movements win seats in imperial parliament. Pan-Ottoman project working in the Levant. Mesopotamia increasingly frustrated. Hejaz quietly restless on religious grounds.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1970s</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>Agitation grows — Mesopotamia the flashpoint</strong>
+            <span>Empire's cash cow but most underrepresented. Levant states growing closer to Istanbul (pan-Ottoman working there). Hejaz increasingly at odds with secular modernizer tradition.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Mid-1980s</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>Breaking point — Hejaz first, then Mesopotamia</strong>
+            <span>Hejaz declares independence on religious grounds — relatively clean, Istanbul probably relieved. 1987–89: Mesopotamia erupts in revolt. Kurdish north, Shia south, Sunni center. Ottoman heavy-handedness internationalizes the conflict.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Late 1980s</span>
+          <div class="timeline-dot slate"></div>
+          <div class="timeline-content">
+            <strong>Holman watches — does not intervene</strong>
+            <span>Federalist instinct: cautious about open-ended commitments in messy conflict with no clean good guys. GPC debating but not yet acting.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">~1996</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>Liu joins GPC peacekeeping effort</strong>
+            <span>SPA instinct: multilateral, GPC-led, principled. Slow, expensive, increasingly unpopular. Terror attacks on GPC member facilities late 1990s — embassy truck bombs, that scale. Public exhausted.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2001</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Mercer's deadline gambit</strong>
+            <span>Promises withdrawal within one year if Ottomans don't negotiate. Hard deadline: November 7, 2001. Ottomans call bluff — Mercer gives withdrawal order. Negotiations open November 15th. Ceasefire by end of November.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Late 2002/Early 2003</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Settlement complete</strong>
+            <span>Hejaz: independent kingdom. Mesopotamia: two states — Kurdish state in north, Arab state (mixed Shia/Sunni) in south. US forces remain as peacekeepers during formal talks. Mercer agrees to this.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2007 onward</span>
+          <div class="timeline-dot slate"></div>
+          <div class="timeline-content">
+            <strong>Rump Ottoman Empire</strong>
+            <span>Controls Anatolia, Thrace/Bosphorus, and the Levant (Syria, Lebanon, Palestine — pan-Ottoman project succeeded there). Managing identity crisis of post-imperial existence. Oil role much diminished.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- INDIA -->
+    <div class="section" id="india">
+      <span class="section-eyebrow">Soft Canon</span>
+      <h2>India — Independence and Non-Alignment</h2>
+
+      <div class="card-grid">
+        <div class="card green">
+          <h4>Independence ~1962–1964</h4>
+          <p>Negotiated. Earns wartime promises Sapru extracted from London. Lincoln presidency sympathetic. South Africa's Commonwealth membership accelerates India's departure.</p>
+        </div>
+        <div class="card green">
+          <h4>Treaty of Delhi (1967)</h4>
+          <p>India brokers Choson War settlement. First major act of independent diplomacy. Founding moment of deliberate non-aligned doctrine.</p>
+        </div>
+        <div class="card slate">
+          <h4>Non-Aligned Power</h4>
+          <p>Not NAU-aligned despite American sympathy. Not UER-aligned despite ideological overlap. Not British despite Commonwealth history. Genuinely its own thing.</p>
+        </div>
+        <div class="card">
+          <h4>Long-Term Role</h4>
+          <p>Primary Asian counterweight to Chinese regional ambitions. Most consequential bilateral relationship in Asia by 2025: India-China. Sometimes cooperative, sometimes competitive, never simple.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- AFRICA -->
+    <div class="section" id="africa">
+      <span class="section-eyebrow">Soft Canon</span>
+      <h2>Africa — Postwar Overview</h2>
+
+      <h3>Former Prussian Colonies</h3>
+      <p>Prussian Kongo and Kamerun become GPC trust territories post-Global War. Path to independence in medium-to-long term. Independence in waves through 1950s–1960s. Avoids Allied power scramble for colonial spoils.</p>
+
+      <h3>Former French West Africa</h3>
+      <p>Decolonizes in a spectrum — not a single moment. Three categories:</p>
+      <ul class="styled-list">
+        <li><strong>Early declarers</strong> — administratively coherent territories that peeled off during the war, declared for Allies, seek GPC recognition immediately. <em>Senegal most prominent.</em></li>
+        <li><strong>Negotiated independence</strong> — mid-tier territories organized through GPC framework in mid-to-late 1940s.</li>
+        <li><strong>GPC mandate territories</strong> — least developed interior regions. Independence timeline stretches into 1950s–1960s.</li>
+      </ul>
+
+      <h3>Sokoto Caliphate — Expansion</h3>
+      <p>Expands into adjacent former French Sahel territories post-war. Ottoman diplomatic backing, legitimate GPC sovereign standing. Absorbs territories with strongest existing commercial and cultural ties. Further expansion contested where it bumps into independent aspirations.</p>
+
+      <h3>Established Sovereign African States</h3>
+      <p>Ethiopia, Zanzibar, Sokoto — recognized sovereign players with growing GPC diplomatic weight. Push for accelerating independence timelines. Nucleus of pan-African political consciousness.</p>
+
+      <h3>South Africa</h3>
+      <p>White-governed Commonwealth member. Racial policies becoming systematic. No OTL American Jim Crow as external validation → earlier, stronger international pushback. India's Commonwealth presence creates friction that accelerates India's departure. Racist policies collapse <strong>late 1970s</strong> under GPC and NAU pressure. Full resolution arc TBD but significant.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ALGERIA -->
+    <div class="section" id="algeria">
+      <span class="section-eyebrow">Soft Canon</span>
+      <h2>Algeria — The Bourbon Monarchy</h2>
+
+      <div class="callout warn">
+        <span class="callout-label">Framing Note</span>
+        <p>"Independence" is the wrong frame. The Bourbon monarchy <em>is</em> the Algerian government — there is no colonial power to break from. What develops is a potential <strong>republican revolution</strong> against a settler monarchy, not a colonial independence movement.</p>
+      </div>
+
+      <h3>The Dynastic Line</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-year">1904–1929</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Henri VII — Pretender</strong>
+            <span>Bourbon court in Corsica. Keeps French royalist flame alive. Algeria as primary power base.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1929–1939</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Henri VIII — Last French pretender</strong>
+            <span>Signs extinguishment of French dynastic claim at Geneva 1939 in exchange for Algerian recognition as sovereign state.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1939–~1982</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Theodore I — First King of Algeria proper</strong>
+            <span>Henri VIII's nephew. Born ~1911, takes throne at 28. Mother from established pied-noir family predating 1904 revolution. Initially puppeted by French nationalist faction. Pushes back mid-1940s. Delivers 1948 constitution. Reigns 40+ years. Beloved elder statesman by end.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">~1982 onward</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Theodore II — Bridge generation</strong>
+            <span>Marries <strong>Yasmine</strong> (or Nadia — TBD), daughter of prosperous secular Algerian merchant family. Culturally Muslim, not publicly observant. Educated, bilingual. Marriage signals dynasty's genuine Algerian identity. Their children: first generation that is genuinely both.</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>The 1948 Constitution — Key Provisions</h3>
+      <ul class="styled-list">
+        <li>Formal citizenship for indigenous Algerians</li>
+        <li>Parliamentary representation for indigenous population</li>
+        <li>Arabic as co-official language alongside French</li>
+        <li><strong>Formal separation of church and state</strong> — de-Catholicization. Reverses Corsican court's lean into Catholic identity.</li>
+      </ul>
+
+      <h3>The Settler Population</h3>
+      <p>Higher settler-to-indigenous ratio than OTL — 1904 revolution intensified settlement drive as Algeria became Bourbon power base, not just colony. Three political groups:</p>
+      <ul class="styled-list">
+        <li><strong>Pragmatic pied-noir majority</strong> — Theodore I's core coalition. Algeria is home; stability serves interests. Accept reform.</li>
+        <li><strong>French nationalist faction</strong> — trapped with nowhere to go (UER France is hostile, other colonies becoming republics). Active resistance 1940s–1950s, increasingly marginal by 1960s, absorbed through generational change by 1970s–1980s.</li>
+        <li><strong>Post-1904 and post-1939 arrivals</strong> — most resistant. Came specifically under the Bourbon banner.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="callout-label">Long-Term Trajectory</span>
+        <p>The monarchy survives and becomes genuinely multiethnic — not a colonial state in transition, but a new kind of Mediterranean constitutional monarchy. International community supports reform trajectory; does not push for republican overthrow while genuine progress continues. UER relations permanently awkward but not destabilizing.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ERA SKETCHES -->
+    <div class="section" id="era-1940s">
+      <span class="section-eyebrow">Era Sketches</span>
+      <h2>1940s–1950s</h2>
+      <p>Postwar institution-building. Nolan's erosion attempt. The first sun bombs. The roots of the homophilia movement.</p>
+      <ul class="styled-list">
+        <li>Freeman builds NAU charter, CDC, GPC. Asian settlement finalized — China keeps treaty ports.</li>
+        <li>Abernathy murder 1944, Abernathy Marches, Pike moves to Boston. Homophilia movement born.</li>
+        <li>Nolan 1947: GPC obstruction, refugee backlash, Pruett affair, homophile purges. "America first, America always."</li>
+        <li>Sun bomb tests: NAU autumn 1951, China early 1952.</li>
+        <li>Priest 1953: Morton scandal, Morality Office shuttered, Pike elected to Congress, McCorker fracture.</li>
+        <li>Egypt begins pushing for Canal Zone independence.</li>
+        <li>Commonwealth Council established as Imperial Parliament compromise.</li>
+        <li>GPC trust territory administration of former Prussian colonies begins.</li>
+        <li>German Republic achieves full GPC voting membership ~1950s.</li>
+      </ul>
+    </div>
+
+    <div class="section" id="era-1960s">
+      <span class="section-eyebrow">Era Sketches</span>
+      <h2>1960s–1970s</h2>
+      <p>Lincoln's breakthrough, India's independence, the Choson War, NAU Assembly. The long arc bending.</p>
+      <ul class="styled-list">
+        <li>Lincoln 1959: First woman president, first Socialist. Egypt seizes Canal 1959 → GPC International Zone by 1961. India independence ~1962–64.</li>
+        <li>Schultz 1965: Choson War 1966–67. CDC bombing of Beijing and Shanghai. Treaty of Delhi — India brokers settlement. NAU Assembly reform push begins.</li>
+        <li>Langston 1971: NAU Assembly established. Finland independence early 1970s. Poland independence mid-1970s. Russia recalibrates.</li>
+        <li>Whitmore 1977: Pendulum swing. South Africa racist policies collapse late 1970s. Ottoman Arab province agitation grows.</li>
+        <li>Green parties emerging as political force through 1970s.</li>
+        <li>Canadian drift from Commonwealth becoming functionally complete.</li>
+      </ul>
+    </div>
+
+    <div class="section" id="era-1980s">
+      <span class="section-eyebrow">Era Sketches</span>
+      <h2>1980s–1990s — The Long Boom</h2>
+      <p>Pike's legacy. Genuine détente. The long boom. Ottoman fracture begins.</p>
+      <ul class="styled-list">
+        <li>Pike 1983: Marriage equality. Genuine China détente — inverse "Nixon goes to China." Long Boom begins.</li>
+        <li>Hejaz independence mid-1980s — relatively clean break on religious grounds.</li>
+        <li>Mesopotamia revolt 1987–89 — Kurdish north, Shia south, Sunni center. Ottoman heavy-handedness.</li>
+        <li>Holman 1989: Watches Mesopotamia, does not intervene. German/Prussian reunification process. Long Boom continues.</li>
+        <li>German Republic and rump Prussia reunify in the 1990s. Austria stays separate.</li>
+        <li>Liu 1995: First Asian-American president. Joins GPC Mesopotamia peacekeeping ~1996. Terror attacks on GPC facilities. Boom busts ~1998–2000.</li>
+        <li>Green parties serious legislative force by 1990s.</li>
+        <li>China-India bilateral becomes most consequential Asian relationship.</li>
+      </ul>
+    </div>
+
+    <div class="section" id="era-2000s">
+      <span class="section-eyebrow">Era Sketches</span>
+      <h2>2000s–2010s</h2>
+      <p>Twelve years of Democrat governance. Ottoman settlement. GPC reform. Chinese Spring.</p>
+      <ul class="styled-list">
+        <li>Mercer 2001: Deadline gambit. Ottomans negotiate Nov. 15. Settlement by late 2002/early 2003 — Hejaz kingdom, Kurdish state, Arab Mesopotamian state. GPC reform groundwork laid.</li>
+        <li>Sinclair 2007: GPC reform process launched. Clean Energy Framework. Ottoman successor states stabilizing.</li>
+        <li>Hudson 2013: GPC reform completed. Chinese Spring protest movement builds through term. NAU deepening debate becomes serious.</li>
+        <li>Chinese coup attempt — end of Hudson's term / start of Clearwater's (spring 2019).</li>
+      </ul>
+    </div>
+
+    <div class="section" id="era-2020s">
+      <span class="section-eyebrow">Era Sketches</span>
+      <h2>2020s — Nakamura's World</h2>
+      <p>Realistic but hopeful. The arc bending toward something better.</p>
+      <ul class="styled-list">
+        <li>Clearwater 2019: Chinese coup attempt first months — rallies global support, Emperor restored within a week. NAU Constitution discussion begins. Climate legislation advances.</li>
+        <li>Nakamura 2025: Green-SPA coalition. Former mayor of New Boston (OTL Portland), then Senator. Lesbian, married, two teenage children. Second Asian-American president.</li>
+        <li>NAU Constitution ratification — Nakamura's signature domestic legacy.</li>
+        <li>China fully democratic constitutional monarchy — Zhongxing Emperor as beloved figurehead.</li>
+        <li>Climate governance the defining policy challenge.</li>
+        <li>GPC reform completion — loose ends from Sinclair/Hudson era.</li>
+        <li>Mars mission — TBD, possibly under Clearwater or Nakamura. Separate space race thread needed.</li>
+      </ul>
+
+      <div class="callout">
+        <span class="callout-label">Tonal Note — Sacred</span>
+        <p>The 2020s in WBT should feel <strong>realistic but more hopeful than OTL</strong>. Real problems, real conflicts, real political friction — but the arc bends toward something better. Not utopia. Not doom. A world where the long work has produced genuine progress.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- HOMOPHILIA ARC -->
+    <div class="section" id="gay-rights">
+      <span class="section-eyebrow">Hard Canon</span>
+      <h2>The Homophilia Arc — Jesse Pike</h2>
+      <p>Movement preferred term: <strong>"homophilia"</strong> (not yet settled whether universal or contested in-universe).</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-year">~1916</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Jesse Pike born</strong>
+            <span>Rural Brandt.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1936</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Drafted, age 20</strong>
+            <span>Serves on UER-Prussian front. Decorated record. Encounters homophilia literature/community on leave in London, Paris, occupation-era Frankfurt.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1942</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Wounded, returns home</strong>
+            <span>Celebrated local hero.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Winter 1943</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>Outed by former lover</strong>
+            <span>Local/regional scandal only. Takes shelter with Episcopal priest George Abernathy.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Autumn 1944</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>Abernathy murdered</strong>
+            <span>Killed for publicly defending Pike. Killer never conclusively identified. Freeman condemns murder; says nothing about what it means. His silence noted.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1944–45</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>First Abernathy Marches</strong>
+            <span>Franklin, Boston, New York, Calumet, Indianapolis, and smaller cities. First public demonstrations defending homophilic Americans' right to exist without fear.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Early 1945</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Pike moves to Boston</strong>
+            <span>Prominent activist by end of Freeman's term.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Nolan era</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>Pruett affair — purges begin</strong>
+            <span>Homophilia framed as security vulnerability. Executive orders purge homophilic employees from sensitive federal positions. Pike runs for Massachusetts state house.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Priest era, mid-1950s</span>
+          <div class="timeline-dot rust"></div>
+          <div class="timeline-content">
+            <strong>Pike elected to Congress</strong>
+            <span>JCA House attempts to bar him from taking seat. Massachusetts delegation walkout. SPA and Federalists launch quorum-threatening walkout. Lawsuits threatened.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">1983–1989</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <strong>Pike presidency</strong>
+            <span><strong>Marriage equality achieved.</strong> First openly gay president. The culmination of a forty-year arc from Abernathy's murder to the White House.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- INSTITUTIONS -->
+    <div class="section" id="institutions">
+      <span class="section-eyebrow">Hard Canon</span>
+      <h2>Key US Institutions</h2>
+
+      <div class="card-grid">
+        <div class="card green">
+          <h4>USRC — United States Railway Commission</h4>
+          <p>Established 1834. One of America's oldest and most beloved institutions. Permanently vindicated by Global War. Never dismantled — only reformed at margins. Wartime investment produced new rolling stock and urban rail systems.</p>
+        </div>
+        <div class="card slate">
+          <h4>Department of the Armed Forces</h4>
+          <p>Established post-Global War under Freeman. Oversees: Army, Navy, Air Force, Coast Guard, Home Guard, and National Intelligence. Replaces Department of War.</p>
+        </div>
+        <div class="card slate">
+          <h4>Home Guard</h4>
+          <p>Centralized version of OTL National Guard. Part militia, part emergency response, part FEMA equivalent. Federal-level commander.</p>
+        </div>
+        <div class="card slate">
+          <h4>National Intelligence (DNI)</h4>
+          <p>Carved out of Army Intelligence post-Global War. Foreign intelligence gathering only — strict limitation. Equivalent of CIA.</p>
+        </div>
+        <div class="card">
+          <h4>Federal Investigative Service (FIS)</h4>
+          <p>Established C. Roosevelt Administration after Coastal South Uprisings. Under Department of Justice. Domestic investigations only. Strict foreign/domestic intelligence split.</p>
+        </div>
+        <div class="card">
+          <h4>GPC — Global Peace Council</h4>
+          <p>Established Geneva 1939. Headquartered Geneva. Permanent secretariat, regular sessions. Permanent executive council includes NAU, Britain, UER, Russia, China (founding), India (added post-Choson). Suez Canal Zone administered by GPC from ~1961.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- OPEN QUESTIONS -->
+    <div class="section" id="open">
+      <span class="section-eyebrow">Open Canvas</span>
+      <h2>Open Questions & Future Threads</h2>
+      <p>Items not yet settled. Do not treat as canon until explicitly confirmed.</p>
+
+      <div class="open-grid">
+        <div class="open-item">
+          <strong>Space Race</strong>
+          Needs dedicated thread. Who are the major space powers? Milestone timeline? Moon landing — who, when, how many? Mars mission timing and composition?
+        </div>
+        <div class="open-item">
+          <strong>Canada's Constitutional Future</strong>
+          Republic, separate Canadian Crown, or continued nominal British Crown? Question becomes live when Charlotte IV takes throne in 1970 with no Canadian connection.
+        </div>
+        <div class="open-item">
+          <strong>Algeria — Wife's Name</strong>
+          Theodore II's wife: Yasmine or Nadia? Both are finalists. Not yet locked.
+        </div>
+        <div class="open-item">
+          <strong>Sun Bomb Proliferation Sequence</strong>
+          Britain and Russia are likely next after NAU and China. Timing? German Republic? Global South candidates (Brazil, India, Australia)?
+        </div>
+        <div class="open-item">
+          <strong>Priest Outline</strong>
+          Next major task. Domestic story is rich (Morton scandal, Pike seating fight, Freedom to Love veto, McCorker walkout). International context now established.
+        </div>
+        <div class="open-item">
+          <strong>All Presidential Outlines — Lincoln onward</strong>
+          None yet drafted beyond rough era sketches. Major project ahead.
+        </div>
+        <div class="open-item">
+          <strong>NAU Caribbean/Central American Expansion</strong>
+          Happens in stages through 2000s–2020s. Form TBD. Mexico has strong opinions about southern neighbors joining.
+        </div>
+        <div class="open-item">
+          <strong>South Africa Resolution Detail</strong>
+          Racist policies collapse late 1970s. Full arc of how and what comes after not yet developed.
+        </div>
+        <div class="open-item">
+          <strong>Ottoman Successor States in Detail</strong>
+          Kurdish state, Arab Mesopotamian state, Hejaz kingdom, rump Ottoman (Anatolia + Levant) — trajectories post-2003 not developed.
+        </div>
+        <div class="open-item">
+          <strong>Green Party Rise — Detail</strong>
+          Emerges 1970s, serious force 1990s, coalition partner with SPA by 2000s. Specific electoral history not developed.
+        </div>
+        <div class="open-item">
+          <strong>Clearwater and Nakamura — Character Detail</strong>
+          Nakamura: mayor of New Boston → Senator, lesbian, married, two teenage children, second Asian-American president. Clearwater: from Lakota (Native state). Both need fuller development.
+        </div>
+        <div class="open-item">
+          <strong>Chinese Emperor Names</strong>
+          Zhongxing dynasty emperors after the first one not yet named. Reform Emperor (Chinese Spring) needs a name.
+        </div>
+        <div class="open-item">
+          <strong>Naomi Clearwater's Party Clarification</strong>
+          Confirmed Federalist. From Lakota (Native state). Native states are full US states with special allowances for tribal governance.
+        </div>
+        <div class="open-item">
+          <strong>Schultz Character Detail</strong>
+          Federalist, 1965–1971. Defined by Choson War. Beyond that: open canvas.
+        </div>
+      </div>
+
+      <div class="callout info" style="margin-top: 32px;">
+        <span class="callout-label">Next Steps</span>
+        <p>Open new thread for the <strong>Priest outline</strong> using this document as reference. After Priest: Lincoln, then work forward. Space race thread to run parallel. Presidential character development as needed per chapter.</p>
+      </div>
+    </div>
+
+  </div><!-- end content -->
+</div><!-- end main -->
+
+</body>
+</html>
