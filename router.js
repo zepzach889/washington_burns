@@ -7,6 +7,8 @@ const ROUTES = {
   'nan.usrc.gov.usa':                         '/nodes/usrc/',
   'nan.assembly.nau':                         '/nodes/assembly/',
   'nan.nedex.org.nau':                        '/nodes/nedex/',
+  'nan.nedex.org.nau/browse':                 '/nodes/nedex/nedex_browse.html',
+  'nan.nedex.org.nau/categories':             '/nodes/nedex/nedex_categories.html',
   'nan.nedex.org.nau/california':             '/nodes/nedex/california.html',
   'nan.nedex.org.nau/canada':                 '/nodes/nedex/canada.html',
   'nan.nedex.org.nau/central-america':        '/nodes/nedex/central-america.html',
@@ -32,6 +34,7 @@ const ROUTES = {
   'nan.mususa.edu.usa':                       '/nodes/amhistory/',
   'nan.abnnews.pr.usa':                       '/nodes/abn/',
   'nan.fps.gov.usa':                          '/nodes/fps/',
+  'nan.div814.gov.usa':                       '/nodes/ref/',
 };
 
 const PATH_TO_ADDRESS = {};
