@@ -12,6 +12,7 @@ const ROUTES = {
   'nan.nedex.org.nau/central-america':        '/nodes/nedex/central-america.html',
   'nan.nedex.org.nau/mexico':                 '/nodes/nedex/mexico.html',
   'nan.nedex.org.nau/ugr':                    '/nodes/nedex/german_republic.html',
+  'nan.nedex.org.nau/hawaii':                 '/nodes/nedex/hawaii.html',
   'nan.nedex.org.nau/texas':                  '/nodes/nedex/texas.html',
   'nan.nedex.org.nau/hist_of_tex':            '/nodes/nedex/hist_of_texas.html',
   'nan.nedex.org.nau/list_of_pres_tex':       '/nodes/nedex/list_of_pres_tex.html', 
