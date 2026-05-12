@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<!-- TEMPLATE: COUNTRY / NATION
+     1. Replace all [PLACEHOLDERS] with real content
+     2. Delete any infobox rows or sections you don't need
+     3. Add this article to nedex_index.js
+     4. Save as: nodes/nedex/[article-name].html
+     5. Update initAddressBar() and the footer link below
+-->
+<title>[COUNTRY NAME] — Nedex</title>
+<link rel="stylesheet" href="../../shared.css">
+<link rel="stylesheet" href="nedex.css">
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+</div>
+
+<div class="ndx-header">
+  <a class="ndx-logo" href="./">Nedex</a>
+  <span class="ndx-tagline">The Free Encyclopaedia</span>
+  <div class="ndx-search-wrap">
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" />
+    <button class="ndx-search-btn">Search</button>
+  </div>
+</div>
+
+<div class="ndx-subnav">
+  <a href="./">Main Page</a>
+  <a href="#" class="active">Article</a>
+  <a href="#">Talk</a>
+  <a href="#">Edit</a>
+  <a href="#">History</a>
+</div>
+
+<div class="ndx-article-wrap">
+  <div class="ndx-article-body">
+
+    <div class="ndx-article-title">[COUNTRY NAME]</div>
+    <div class="ndx-article-subtitle">[NATIVE NAME IF DIFFERENT] · [GOVERNMENT TYPE] · Founded [YEAR]</div>
+
+    <div class="ndx-toc">
+      <div class="ndx-toc-title">Contents</div>
+      <ol>
+        <li><a href="#history">History</a></li>
+        <li><a href="#government">Government</a></li>
+        <li><a href="#geography">Geography</a></li>
+        <li><a href="#economy">Economy</a></li>
+        <li><a href="#foreign">Foreign Relations</a></li>
+      </ol>
+    </div>
+
+    <div class="ndx-prose">
+
+      <!-- OPTIONAL: flag image -->
+      <div class="ndx-prose-img">
+        <img src="../../images/nedex/[FLAG-FILENAME]" alt="Flag of [COUNTRY]" />
+        <div class="ndx-prose-caption">Flag of [COUNTRY NAME]</div>
+      </div>
+
+      <p>The <strong>[COUNTRY NAME]</strong> is [ONE SENTENCE DESCRIPTION — type of state, location, key characteristics].</p>
+
+      <p>[SECOND PARAGRAPH — founding circumstances, current status, significance in the WBT world.]</p>
+
+      <div class="ndx-clearfix"></div>
+
+      <h2 class="ndx-section-head" id="history">History</h2>
+
+      <p>[FOUNDING AND EARLY HISTORY]</p>
+
+      <div class="ndx-stub-notice">This section will be expanded to cover [TOPIC].</div>
+
+      <h2 class="ndx-section-head" id="government">Government</h2>
+
+      <p>[GOVERNMENTAL STRUCTURE — head of state, legislature, parties, electoral system.]</p>
+
+      <h2 class="ndx-section-head" id="geography">Geography</h2>
+
+      <p>[LOCATION, BORDERS, TERRAIN, NOTABLE FEATURES.]</p>
+
+      <h2 class="ndx-section-head" id="economy">Economy</h2>
+
+      <p>[ECONOMIC CHARACTER — industries, trade, currency, notable resources.]</p>
+
+      <h2 class="ndx-section-head" id="foreign">Foreign Relations</h2>
+
+      <p>[INTERNATIONAL RELATIONSHIPS, TREATY MEMBERSHIPS, DIPLOMATIC POSTURE.]</p>
+
+      <div class="ndx-annotation">
+        <div class="ndx-annotation-head">Historical Note</div>
+        [Any divergence from OTL worth flagging — e.g. why this country exists differently in this timeline.]
+      </div>
+
+      <div class="ndx-categories">
+        <strong>Categories:</strong>
+        <a href="#">Countries</a>
+        <a href="#">[REGION] nations</a>
+        <a href="#">[GOVERNMENT TYPE]</a>
+        <a href="#">Founded [YEAR]</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ndx-article-sidebar">
+
+    <div class="ndx-infobox">
+      <div class="ndx-infobox-img">
+        <img src="../../images/nedex/[FLAG-FILENAME]" alt="Flag of [COUNTRY]" />
+      </div>
+      <div class="ndx-infobox-title">[COUNTRY NAME]</div>
+      <div class="ndx-infobox-sub">[NATIVE NAME IF DIFFERENT]</div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Founded</span><span class="ndx-infobox-val">[YEAR]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">System</span><span class="ndx-infobox-val">[GOVERNMENT TYPE]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Capital</span><span class="ndx-infobox-val">[CAPITAL CITY]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Head of state</span><span class="ndx-infobox-val">[NAME AND TITLE]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Head of govt</span><span class="ndx-infobox-val">[NAME AND TITLE]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Legislature</span><span class="ndx-infobox-val">[NAME OF LEGISLATURE]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Language</span><span class="ndx-infobox-val">[OFFICIAL LANGUAGE(S)]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Currency</span><span class="ndx-infobox-val">[CURRENCY NAME]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Member of</span><span class="ndx-infobox-val">[TREATY ORGS — NAU, GPC, etc.]</span></div>
+    </div>
+
+    <div class="ndx-widget">
+      <div class="ndx-widget-head">See Also</div>
+      <div class="ndx-widget-body">
+        <a class="ndx-widget-link" href="#">[RELATED ARTICLE]</a>
+        <a class="ndx-widget-link" href="#">[RELATED ARTICLE]</a>
+        <a class="ndx-widget-link" href="#">[RELATED ARTICLE]</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="ndx-footer">
+  <span>link://nan.nedex.org.nau/[ARTICLE-SLUG] &nbsp;·&nbsp; Nedex — The Free Encyclopaedia</span>
+  <div class="ndx-footer-links">
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script src="nedex_index.js"></script>
+<script>
+initAddressBar('nan.nedex.org.nau/[ARTICLE-SLUG]');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+</body>
+</html>
