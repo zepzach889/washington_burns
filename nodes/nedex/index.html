@@ -24,22 +24,17 @@
   .ndx-featured { background: #fff; border: 0.5px solid var(--ndx-border); border-radius: 8px; overflow: hidden; margin-bottom: 24px; }
   .ndx-featured-head { background: var(--ndx-header); padding: 8px 14px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.75); border-bottom: 1px solid var(--ndx-copper); }
   .ndx-featured-body { padding: 16px 18px; display: grid; grid-template-columns: 80px 1fr; gap: 14px; align-items: start; }
-  .ndx-featured-img { width: 80px; height: 100px; background: var(--ndx-header); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 36px; flex-shrink: 0; }
-  .ndx-featured-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  border-radius: 4px; 
-}
+  .ndx-featured-img { width: 80px; height: 100px; background: var(--ndx-header); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 36px; flex-shrink: 0; overflow: hidden; }
+  .ndx-featured-img img { width: 100%; height: 100%; object-fit: cover; }
   .ndx-featured-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--ndx-text); margin-bottom: 4px; }
   .ndx-featured-sub { font-size: 11px; color: var(--ndx-text-tertiary); margin-bottom: 8px; font-style: italic; }
   .ndx-featured-text { font-size: 13px; color: var(--ndx-text-secondary); line-height: 1.6; }
   .ndx-featured-link { display: inline-block; margin-top: 10px; font-size: 12px; color: var(--ndx-copper); text-decoration: none; font-weight: 600; }
   .ndx-featured-link:hover { text-decoration: underline; }
 
-  .ndx-categories-home { margin-bottom: 24px; }
   .ndx-cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .ndx-cat-card { background: #fff; border: 0.5px solid var(--ndx-border); border-radius: 8px; padding: 12px 14px; }
+  .ndx-cat-card { background: #fff; border: 0.5px solid var(--ndx-border); border-radius: 8px; padding: 12px 14px; text-decoration: none; display: block; transition: box-shadow 0.1s; }
+  .ndx-cat-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
   .ndx-cat-icon { font-size: 20px; margin-bottom: 5px; }
   .ndx-cat-name { font-weight: 700; font-size: 13px; color: var(--ndx-text); margin-bottom: 4px; }
   .ndx-cat-desc { font-size: 11px; color: var(--ndx-text-tertiary); line-height: 1.4; }
@@ -81,7 +76,7 @@
   <a class="ndx-logo" href="./">Nedex</a>
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
-    <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search" />
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" />
     <button class="ndx-search-btn">Search</button>
   </div>
 </div>
@@ -100,57 +95,47 @@
     <div class="ndx-welcome">
       <div class="ndx-welcome-title">Welcome to Nedex</div>
       <div class="ndx-welcome-text">Nedex is the free encyclopaedia of the North American Union and the wider world — a collaborative reference covering history, geography, politics, science, culture, and more. All content is written from a neutral point of view and freely available to all users of the Interlink.</div>
-      <div class="ndx-welcome-stats">Currently hosting <strong>21</strong> article · Growing daily</div>
+      <div class="ndx-welcome-stats">Currently hosting <strong id="ndx-article-count">22</strong> articles · Growing daily</div>
     </div>
 
     <div class="ndx-section-label">Featured Article</div>
     <div class="ndx-featured">
       <div class="ndx-featured-head">Featured Article</div>
-      <div class="ndx-featured-body">
-      <div class="ndx-featured-img">
-    <img src="../../images/nedex/14-Photo-Brandt.png" alt="Photo of Brandt">
-</div>
-        <div>
-          <div class="ndx-featured-title">Hugo Brandt</div>
-          <div class="ndx-featured-sub">14th President of the United States · 1863–1869</div>
-          <div class="ndx-featured-text">Hugo Brandt (1812–1891) was the 14th President of the United States and before that Acting President of the Free State government during the War Between the States. He is regarded by historians as one of the most consequential figures in American history — the man who held the republic together during its greatest crisis, guided it through the abolition of slavery, and oversaw the constitutional convention that produced the Constitution of 1861.</div>
-          <a class="ndx-featured-link" href="hugo-brandt.html">Read full article →</a>
-        </div>
-      </div>
+      <div class="ndx-featured-body" id="ndx-featured-slot"></div>
     </div>
 
     <div class="ndx-section-label">Browse by Category</div>
     <div class="ndx-cat-grid">
-      <div class="ndx-cat-card">
+      <a class="ndx-cat-card" href="nedex_categories.html">
         <div class="ndx-cat-icon">🏛️</div>
-        <div class="ndx-cat-name">Politics & Government</div>
+        <div class="ndx-cat-name">Politics &amp; Government</div>
         <div class="ndx-cat-desc">Presidents, Congress, political parties, NAU institutions, constitutional history</div>
-      </div>
-      <div class="ndx-cat-card">
+      </a>
+      <a class="ndx-cat-card" href="nedex_categories.html">
         <div class="ndx-cat-icon">🌍</div>
-        <div class="ndx-cat-name">Geography & Places</div>
+        <div class="ndx-cat-name">Geography &amp; Places</div>
         <div class="ndx-cat-desc">Cities, states, nations, regions, and physical geography of North America and the world</div>
-      </div>
-      <div class="ndx-cat-card">
+      </a>
+      <a class="ndx-cat-card" href="nedex_categories.html">
         <div class="ndx-cat-icon">⚔️</div>
-        <div class="ndx-cat-name">History & Conflicts</div>
+        <div class="ndx-cat-name">History &amp; Conflicts</div>
         <div class="ndx-cat-desc">Wars, treaties, historical events, and the major turning points of the modern era</div>
-      </div>
-      <div class="ndx-cat-card">
+      </a>
+      <a class="ndx-cat-card" href="nedex_categories.html">
         <div class="ndx-cat-icon">🚂</div>
-        <div class="ndx-cat-name">Science & Technology</div>
+        <div class="ndx-cat-name">Science &amp; Technology</div>
         <div class="ndx-cat-desc">The Interlink, the NANet, the USRC, engineering, industry, and innovation</div>
-      </div>
-      <div class="ndx-cat-card">
+      </a>
+      <a class="ndx-cat-card" href="nedex_categories.html">
         <div class="ndx-cat-icon">🎨</div>
-        <div class="ndx-cat-name">Culture & Society</div>
+        <div class="ndx-cat-name">Culture &amp; Society</div>
         <div class="ndx-cat-desc">Arts, literature, sport, religion, language, and social history</div>
-      </div>
-      <div class="ndx-cat-card">
+      </a>
+      <a class="ndx-cat-card" href="nedex_categories.html">
         <div class="ndx-cat-icon">👤</div>
         <div class="ndx-cat-name">Biographies</div>
         <div class="ndx-cat-desc">Presidents, statespeople, inventors, artists, military figures, and notable persons</div>
-      </div>
+      </a>
     </div>
 
   </div>
@@ -159,39 +144,12 @@
 
     <div class="ndx-widget">
       <div class="ndx-widget-head">Did You Know</div>
-      <div class="ndx-widget-body" style="font-size:12px;color:var(--ndx-text-secondary);line-height:1.6;">
-        <p style="margin-bottom:8px;">…that Washington House, the residence of the President of the United States, was designed by architects <strong>Kemp & Ogden</strong> and completed in 1827?</p>
-        <p style="margin-bottom:8px;">…that the <strong>USRC</strong>, founded in 1834, is one of the oldest continuously operating federal enterprises in the United States?</p>
-        <p>…that <strong>Hugo Brandt's</strong> father helped build Congress Hall in Franklin in the 1820s — the same building Brandt would later govern from?</p>
-      </div>
+      <div class="ndx-widget-body" id="ndx-dyk-slot" style="font-size:12px;color:var(--ndx-text-secondary);line-height:1.6;"></div>
     </div>
 
     <div class="ndx-widget">
       <div class="ndx-widget-head">Recent Articles</div>
-      <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="california.html">Union of the Californias</a>
-        <a class="ndx-widget-link" href="canada.html">Dominion of Canada</a>
-        <a class="ndx-widget-link" href="central-america.html">Federal Republic of Central America</a>
-        <a class="ndx-widget-link" href="mexico.html">Empire of Mexico</a>
-        <a class="ndx-widget-link" href="texas.html">Texas Federation</a>
-        <a class="ndx-widget-link" href="hist_of_texas.html">History of the Texas Federation</a>
-        <a class="ndx-widget-link" href="list_of_pres_tex.html">Presidents of the Texas Federation</a>
-        <a class="ndx-widget-link" href="uer.html">Union of European Republics</a>
-        <a class="ndx-widget-link" href="german_republic.html">United German Republic</a>
-        <a class="ndx-widget-link" href="hawaii.html">Kingdom of Hawaii</a>
-        <a class="ndx-widget-link" href="list_of_pres_usa.html">Presidents of the United States</a>
-        <a class="ndx-widget-link" href="george-washington.html">George Washington</a>
-        <a class="ndx-widget-link" href="john-adams.html">John Adams</a>
-        <a class="ndx-widget-link" href="thomas-jefferson.html">Thomas Jefferson</a>
-        <a class="ndx-widget-link" href="james-madison.html">James Madison</a>
-        <a class="ndx-widget-link" href="william-crawford.html">William Crawford</a>
-        <a class="ndx-widget-link" href="henry-clay.html">Henry Clay</a>
-        <a class="ndx-widget-link" href="alexander-hamilton-jr.html">Alexander Hamilton, Jr.</a>
-        <a class="ndx-widget-link" href="john-c-calhoun.html">John C. Calhoun</a>
-        <a class="ndx-widget-link" href="giles-brandon.html">Giles Brandon</a>
-        <a class="ndx-widget-link" href="victor-yates.html">Victor Yates</a>
-        <a class="ndx-widget-link" href="hugo-brandt.html">Hugo Brandt</a>
-      </div>
+      <div class="ndx-widget-body" id="ndx-recent-slot"></div>
     </div>
 
     <div class="ndx-widget">
@@ -215,8 +173,10 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="nedex_index.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau');
+
 function updateArcClock() {
   const n = new Date();
   const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -227,6 +187,34 @@ function updateArcClock() {
 }
 setInterval(updateArcClock, 10000);
 updateArcClock();
+
+// ── ARTICLE COUNT ──
+document.getElementById('ndx-article-count').textContent = NEDEX_COUNT;
+
+// ── FEATURED ARTICLE ──
+const f = NEDEX_FEATURED_TODAY;
+const imgHtml = f.img.startsWith('../../')
+  ? `<img src="${f.img}" alt="${f.title}">`
+  : f.img;
+document.getElementById('ndx-featured-slot').innerHTML = `
+  <div class="ndx-featured-img">${imgHtml}</div>
+  <div>
+    <div class="ndx-featured-title">${f.title}</div>
+    <div class="ndx-featured-sub">${f.subtitle}</div>
+    <div class="ndx-featured-text">${f.summary}</div>
+    <a class="ndx-featured-link" href="${f.file}">Read full article →</a>
+  </div>
+`;
+
+// ── DID YOU KNOW ──
+document.getElementById('ndx-dyk-slot').innerHTML = NEDEX_DYK_TODAY
+  .map(fact => `<p style="margin-bottom:8px;">…${fact}</p>`)
+  .join('');
+
+// ── RECENT ARTICLES ──
+document.getElementById('ndx-recent-slot').innerHTML = getNedexRecent(8)
+  .map(a => `<a class="ndx-widget-link" href="${a.file}">${a.title}</a>`)
+  .join('');
 </script>
 </body>
 </html>
