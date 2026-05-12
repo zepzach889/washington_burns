@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Articles — Nedex</title>
+<link rel="stylesheet" href="../../shared.css">
+<link rel="stylesheet" href="nedex.css">
+<style>
+  .ndx-browse-body { max-width: 900px; margin: 0 auto; padding: 28px 24px 40px; }
+  .ndx-browse-search { display: flex; gap: 8px; margin-bottom: 24px; }
+  .ndx-browse-input { flex: 1; padding: 10px 16px; border: 1px solid var(--ndx-border); border-radius: 24px; font-size: 13px; font-family: 'DM Sans', sans-serif; outline: none; background: #fff; color: var(--ndx-text); }
+  .ndx-browse-input:focus { border-color: var(--ndx-copper); box-shadow: 0 0 0 3px rgba(200,120,32,0.08); }
+  .ndx-browse-btn { background: var(--ndx-copper); color: #fff; border: none; border-radius: 24px; padding: 10px 20px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .ndx-count { font-size: 12px; color: var(--ndx-text-tertiary); margin-bottom: 20px; }
+  .ndx-alpha-nav { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 20px; }
+  .ndx-alpha-btn { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; border: 0.5px solid var(--ndx-border); background: #fff; color: var(--ndx-text-secondary); cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.1s; }
+  .ndx-alpha-btn:hover, .ndx-alpha-btn.active { background: var(--ndx-copper); color: #fff; border-color: var(--ndx-copper); }
+  .ndx-article-list { display: flex; flex-direction: column; gap: 0; }
+  .ndx-article-entry { display: flex; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 0.5px solid var(--ndx-border); }
+  .ndx-article-entry:last-child { border-bottom: none; }
+  .ndx-article-link { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--ndx-link); text-decoration: none; flex-shrink: 0; }
+  .ndx-article-link:hover { text-decoration: underline; }
+  .ndx-article-blurb { font-size: 12px; color: var(--ndx-text-secondary); line-height: 1.5; }
+  .ndx-article-cats { font-size: 10px; color: var(--ndx-text-tertiary); margin-top: 2px; }
+  .ndx-no-results { padding: 32px 0; text-align: center; font-size: 13px; color: var(--ndx-text-tertiary); font-style: italic; }
+  .ndx-letter-head { font-size: 22px; font-family: 'DM Serif Display', serif; color: var(--ndx-copper); padding: 16px 0 6px; border-bottom: 1.5px solid var(--ndx-border-copper); margin-bottom: 8px; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+</div>
+
+<div class="ndx-header">
+  <a class="ndx-logo" href="./">Nedex</a>
+  <span class="ndx-tagline">The Free Encyclopaedia</span>
+  <div class="ndx-search-wrap">
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-header-search" />
+    <button class="ndx-search-btn">Search</button>
+  </div>
+</div>
+
+<div class="ndx-subnav">
+  <a href="./">Main Page</a>
+  <a href="#" class="active">Browse Articles</a>
+  <a href="categories.html">Categories</a>
+  <a href="#">Recent Changes</a>
+  <a href="#">About Nedex</a>
+</div>
+
+<div class="ndx-browse-body">
+  <h1 style="font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:16px;color:var(--ndx-text);">Browse Articles</h1>
+
+  <div class="ndx-browse-search">
+    <input class="ndx-browse-input" type="text" id="browse-filter" placeholder="Filter articles…" />
+  </div>
+
+  <div class="ndx-count" id="browse-count"></div>
+
+  <div class="ndx-alpha-nav" id="alpha-nav"></div>
+
+  <div class="ndx-article-list" id="browse-list"></div>
+</div>
+
+<div class="ndx-footer">
+  <span>link://nan.nedex.org.nau/browse &nbsp;·&nbsp; Nedex — The Free Encyclopaedia</span>
+  <div class="ndx-footer-links">
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script src="nedex-index.js"></script>
+<script>
+initAddressBar('nan.nedex.org.nau/browse');
+
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+
+// Sort articles alphabetically
+const sorted = [...NEDEX_ARTICLES].sort((a, b) => a.title.localeCompare(b.title));
+
+// Get unique first letters
+const letters = [...new Set(sorted.map(a => a.title[0].toUpperCase()))];
+
+// Build alpha nav
+const alphaNav = document.getElementById('alpha-nav');
+letters.forEach(l => {
+  const btn = document.createElement('button');
+  btn.className = 'ndx-alpha-btn';
+  btn.textContent = l;
+  btn.onclick = () => {
+    document.getElementById('section-' + l)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.ndx-alpha-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  };
+  alphaNav.appendChild(btn);
+});
+
+function renderList(articles) {
+  const list = document.getElementById('browse-list');
+  const count = document.getElementById('browse-count');
+  count.textContent = `${articles.length} article${articles.length !== 1 ? 's' : ''}`;
+
+  if (articles.length === 0) {
+    list.innerHTML = '<div class="ndx-no-results">No articles match your search.</div>';
+    return;
+  }
+
+  // Group by first letter
+  const byLetter = {};
+  articles.forEach(a => {
+    const l = a.title[0].toUpperCase();
+    if (!byLetter[l]) byLetter[l] = [];
+    byLetter[l].push(a);
+  });
+
+  let html = '';
+  Object.keys(byLetter).sort().forEach(l => {
+    html += `<div class="ndx-letter-head" id="section-${l}">${l}</div>`;
+    byLetter[l].forEach(a => {
+      html += `<div class="ndx-article-entry">
+        <div>
+          <a class="ndx-article-link" href="${a.file}">${a.title}</a>
+          <div class="ndx-article-blurb">${a.blurb}</div>
+          <div class="ndx-article-cats">${a.categories.join(' · ')}</div>
+        </div>
+      </div>`;
+    });
+  });
+
+  list.innerHTML = html;
+}
+
+// Initial render
+renderList(sorted);
+
+// Filter on input
+document.getElementById('browse-filter').addEventListener('input', function() {
+  const q = this.value.toLowerCase().trim();
+  if (!q) { renderList(sorted); return; }
+  const filtered = sorted.filter(a =>
+    a.title.toLowerCase().includes(q) ||
+    a.blurb.toLowerCase().includes(q) ||
+    a.categories.some(c => c.toLowerCase().includes(q))
+  );
+  renderList(filtered);
+});
+</script>
+</body>
+</html>
