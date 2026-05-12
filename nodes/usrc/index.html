@@ -9,9 +9,10 @@
 <link rel="manifest" href="/washington_burns/site.webmanifest">
 <title>USRC — United States Railway Company</title>
 <link rel="stylesheet" href="../../shared.css">
+
 <style>
   :root { --usrc-red: #B8001E; --usrc-dark: #1a1a1a; }
-
+ 
   .usrc-header {
     background: var(--usrc-dark);
     color: #fff;
@@ -24,19 +25,19 @@
   .usrc-seal { font-size: 30px; }
   .usrc-brand-name { font-family: 'DM Serif Display', serif; font-size: 22px; letter-spacing: -0.01em; line-height: 1.1; }
   .usrc-brand-sub { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
-
+ 
   .usrc-nav { background: #111; display: flex; overflow-x: auto; }
   .usrc-nav a { font-size: 12px; color: rgba(255,255,255,0.65); text-decoration: none; padding: 10px 18px; font-weight: 500; white-space: nowrap; border-right: 0.5px solid rgba(255,255,255,0.08); transition: all 0.1s; }
   .usrc-nav a:hover { background: rgba(255,255,255,0.06); color: #fff; }
   .usrc-nav a.active { color: #fff; border-bottom: 2px solid var(--usrc-red); }
-
+ 
   .usrc-body { max-width: 1060px; margin: 0 auto; padding: 24px; }
-
+ 
   .usrc-clock-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 8px; }
   .usrc-clock { font-family: monospace; font-size: 24px; font-weight: 700; color: var(--usrc-dark); letter-spacing: 0.05em; }
   .usrc-clock-label { font-size: 10px; color: var(--text-tertiary); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
   .usrc-date-display { font-size: 12px; color: var(--text-secondary); }
-
+ 
   .usrc-network-head { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 10px; }
   .usrc-corridor-status-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 28px; }
   .usrc-cs-card { background: #fff; border: 0.5px solid var(--border); border-radius: 8px; padding: 10px 12px; border-top: 3px solid #ccc; }
@@ -48,11 +49,11 @@
   .usrc-cs-badge.ok    { background: #E8F5E9; color: #3B6D11; }
   .usrc-cs-badge.minor { background: #FFF8E1; color: #B8860B; }
   .usrc-cs-badge.major { background: #FDECEA; color: var(--usrc-red); }
-
+ 
   .usrc-dept-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; }
   .usrc-dept-title { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); }
   .usrc-dept-sub { font-size: 11px; color: var(--text-tertiary); }
-
+ 
   .usrc-corridor-block { margin-bottom: 28px; }
   .usrc-corridor-label { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 2px solid var(--usrc-dark); }
   .usrc-corridor-name { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--usrc-dark); }
@@ -61,7 +62,7 @@
   .usrc-corridor-badge.ok    { background: #E8F5E9; color: #3B6D11; }
   .usrc-corridor-badge.minor { background: #FFF8E1; color: #B8860B; }
   .usrc-corridor-badge.major { background: #FDECEA; color: var(--usrc-red); }
-
+ 
   .usrc-train-table { width: 100%; border-collapse: collapse; }
   .usrc-train-table th { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); padding: 4px 8px; text-align: left; border-bottom: 0.5px solid var(--border); }
   .usrc-train-table td { font-size: 12px; padding: 8px 8px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
@@ -75,13 +76,13 @@
   .usrc-badge.delayed-major { background: #FDECEA; color: var(--usrc-red); }
   .usrc-delay-reason { font-size: 10px; color: var(--text-tertiary); margin-top: 2px; }
   .usrc-no-trains { font-size: 12px; color: var(--text-tertiary); font-style: italic; padding: 10px 0; }
-
+ 
   @media (max-width: 800px) { .usrc-corridor-status-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 480px) { .usrc-corridor-status-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
-
+ 
 <div class="wm-topbar">
   <a class="wm-topbar-logo" href="../../">Way<span>mark</span></a>
   <div class="wm-address-wrap" id="wm-address-wrap">
@@ -94,7 +95,7 @@
     <button class="wm-lang-btn">ES</button>
   </div>
 </div>
-
+ 
 <div class="usrc-header">
   <div class="usrc-seal">🚂</div>
   <div>
@@ -102,7 +103,7 @@
     <div class="usrc-brand-sub">Serving the Nation Since 1834 · link://nan.usrc.gov.usa</div>
   </div>
 </div>
-
+ 
 <nav class="usrc-nav">
   <a href="#" class="active">Network Status</a>
   <a href="#">Journey Planner</a>
@@ -112,9 +113,9 @@
   <a href="#">About USRC</a>
   <a href="#">Freight</a>
 </nav>
-
+ 
 <div class="usrc-body">
-
+ 
   <div class="usrc-clock-bar">
     <div>
       <div class="usrc-clock" id="usrc-clock">--:--:--</div>
@@ -122,19 +123,19 @@
     </div>
     <div class="usrc-date-display" id="usrc-date"></div>
   </div>
-
+ 
   <div class="usrc-network-head">Network Status Overview</div>
   <div class="usrc-corridor-status-grid" id="usrc-network-overview"></div>
-
+ 
   <div class="usrc-dept-head">
     <div class="usrc-dept-title">Franklin Central — Upcoming Departures</div>
     <div class="usrc-dept-sub">Showing next services · Times are local</div>
   </div>
-
+ 
   <div id="usrc-boards"></div>
-
+ 
 </div>
-
+ 
 <div class="wm-footer">
   <span>link://nan.usrc.gov.usa &nbsp;·&nbsp; United States Railway Company &nbsp;·&nbsp; A Federal Enterprise of the NAU</span>
   <div class="wm-footer-links">
@@ -144,15 +145,15 @@
     <a href="#">Contact</a>
   </div>
 </div>
-
+ 
 <script src="../../router.js"></script>
 <script>
 initAddressBar('nan.usrc.gov.usa');
-
+ 
 // ── DATE & CLOCK ──
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-
+ 
 function updateClock() {
   const now = new Date();
   const hh  = String(now.getHours()).padStart(2,'0');
@@ -164,7 +165,7 @@ function updateClock() {
 }
 setInterval(updateClock, 1000);
 updateClock();
-
+ 
 // ── CORRIDOR DATA ──
 // Note: Mountain Corridor originates at Ft. Calhoun (no Franklin departure)
 const CORRIDORS = [
@@ -257,26 +258,26 @@ const CORRIDORS = [
     ]
   },
 ];
-
+ 
 const DELAY_REASONS = [
   'Track maintenance', 'Weather conditions', 'Operational delay',
   'Signal fault', 'Infrastructure inspection', 'Crew availability',
   'Freight clearance', 'Scheduled works overrun'
 ];
-
+ 
 // ── SEEDED DELAY ENGINE ──
 // All delays seeded by date + corridor index + train index
 // so they are consistent across page refreshes and between
 // the network overview and individual departure boards.
-
+ 
 const _now = new Date();
 const _dayOfYear = Math.floor((_now - new Date(_now.getFullYear(), 0, 0)) / 86400000);
-
+ 
 function seededRand(seed) {
   const x = Math.sin(seed + 1) * 10000;
   return x - Math.floor(x);
 }
-
+ 
 function generateDelay(corridorIdx, trainIdx) {
   const seed = _dayOfYear * 1000 + corridorIdx * 50 + trainIdx;
   if (seededRand(seed) > 1/8) return null;
@@ -288,7 +289,7 @@ function generateDelay(corridorIdx, trainIdx) {
   const reasonIdx = Math.floor(seededRand(seed + 5) * DELAY_REASONS.length);
   return { minutes, reason: DELAY_REASONS[reasonIdx] };
 }
-
+ 
 function corridorWorstStatus(delayMap) {
   let worst = 'ok';
   delayMap.forEach(d => {
@@ -298,67 +299,69 @@ function corridorWorstStatus(delayMap) {
   });
   return worst;
 }
-
+ 
 function statusLabel(s) {
   if (s === 'major') return 'Significant Delays';
   if (s === 'minor') return 'Minor Delays';
   return 'Normal Operations';
 }
-
+ 
 function formatTime(h, m) {
   return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
 }
-
+ 
 function getUpcoming(trains, delayMap, limit) {
   const now  = new Date();
   const nowM = now.getHours() * 60 + now.getMinutes();
-
+ 
   const annotated = trains.map((t, i) => {
     const schedM = t.dep[0] * 60 + t.dep[1];
     const delay  = delayMap[i];
     const effM   = schedM + (delay ? delay.minutes : 0);
     return { ...t, schedM, delay, effM };
   });
-
+ 
   let upcoming = annotated.filter(t => t.effM >= nowM - 2);
-
+ 
   if (upcoming.length < limit) {
     const nextDay = annotated
       .filter(t => t.effM < nowM - 2)
       .map(t => ({ ...t, schedM: t.schedM + 1440, effM: t.effM + 1440, nextDay: true }));
     upcoming = [...upcoming, ...nextDay];
   }
-
+ 
   return upcoming.slice(0, limit);
 }
-
+ 
 // ── RENDER ──
 function render() {
-  // Generate ALL delays up front — shared between overview and boards
   const allDelayMaps = CORRIDORS.map((c, ci) => c.trains.map((t, ti) => generateDelay(ci, ti)));
-
-  // Network overview
+ 
+  // Network overview — status based on UPCOMING trains only
   const overview = document.getElementById('usrc-network-overview');
   overview.innerHTML = CORRIDORS.map((c, ci) => {
-    const status = corridorWorstStatus(allDelayMaps[ci]);
+    const delayMap = allDelayMaps[ci];
+    const limit    = c.originFranklin ? 4 : 3;
+    const upcoming = getUpcoming(c.trains, delayMap, limit);
+    const status   = corridorWorstStatus(upcoming.map(t => t.delay));
     return `<div class="usrc-cs-card status-${status}">
       <div class="usrc-cs-name">${c.name}</div>
       <span class="usrc-cs-badge ${status}">${statusLabel(status)}</span>
     </div>`;
   }).join('');
-
-  // Departure boards — Franklin-origin corridors get 4 trains; Mountain gets 3
+ 
+  // Departure boards
   const boards = document.getElementById('usrc-boards');
   boards.innerHTML = CORRIDORS.map((c, ci) => {
     const delayMap = allDelayMaps[ci];
-    const status   = corridorWorstStatus(delayMap);
     const limit    = c.originFranklin ? 4 : 3;
     const upcoming = getUpcoming(c.trains, delayMap, limit);
-
+    const status   = corridorWorstStatus(upcoming.map(t => t.delay));
+ 
     const noteHtml = c.note
       ? `<div style="font-size:11px;color:var(--text-tertiary);margin-bottom:6px;font-style:italic;">⚠ ${c.note}</div>`
       : '';
-
+ 
     const rows = upcoming.length === 0
       ? `<tr><td colspan="4" class="usrc-no-trains">No further departures — see tomorrow's timetable</td></tr>`
       : upcoming.map(t => {
@@ -368,9 +371,9 @@ function render() {
           const schedStr = formatTime(t.dep[0], t.dep[1]);
           const effStr   = formatTime(effH, effMin);
           const nextNote = t.nextDay ? ' <span style="font-size:10px;color:var(--text-tertiary)">(tomorrow)</span>' : '';
-
+ 
           let badgeClass, badgeText, timeCell, reasonHtml = '';
-
+ 
           if (!delay) {
             badgeClass = 'on-time';
             badgeText  = 'On Time';
@@ -386,7 +389,7 @@ function render() {
             timeCell   = `<span class="usrc-train-time" style="text-decoration:line-through;color:var(--text-tertiary);font-size:11px">${schedStr}</span>&nbsp;<span class="usrc-train-time" style="color:#B8860B">${effStr}</span>`;
             reasonHtml = `<div class="usrc-delay-reason">${delay.reason}</div>`;
           }
-
+ 
           return `<tr>
             <td><span class="usrc-train-num">${t.num}</span></td>
             <td><span class="usrc-train-dest">${t.dest}${nextNote}</span></td>
@@ -394,7 +397,7 @@ function render() {
             <td><span class="usrc-badge ${badgeClass}">${badgeText}</span>${reasonHtml}</td>
           </tr>`;
         }).join('');
-
+ 
     return `<div class="usrc-corridor-block">
       <div class="usrc-corridor-label">
         <span class="usrc-corridor-name">${c.name}</span>
@@ -411,7 +414,7 @@ function render() {
     </div>`;
   }).join('');
 }
-
+ 
 render();
 </script>
 </body>
