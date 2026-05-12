@@ -51,3 +51,73 @@ const NEDEX_COUNT = NEDEX_ARTICLES.length;
 function getNedexRecent(n = 5) {
   return [...NEDEX_ARTICLES].reverse().slice(0, n);
 }
+
+// ── FEATURED ARTICLE POOL ──
+// Rotates daily. Each entry: article title, file, image emoji, and a 2-3 sentence summary.
+const NEDEX_FEATURED = [
+  {
+    title: 'Hugo Brandt',
+    file: 'hugo-brandt.html',
+    img: '../../images/nedex/14-Photo-Brandt.png',
+    summary: 'Hugo Brandt (1812–1891) is regarded by historians as one of the most consequential figures in American history — the man who held the republic together during the War Between the States, guided it through the abolition of slavery, and oversaw the constitutional convention that produced the Constitution of 1861. Born to German immigrant parents in Ohio, he became the youngest-ever Speaker of the House before leading the Free States government to victory.'
+  },
+  {
+    title: 'Kingdom of Hawaiʻi',
+    file: 'hawaii.html',
+    img: '../../images/nedex/hawaii.png',
+    subtitle: 'Unitary constitutional monarchy · Pacific Ocean',
+    summary: 'The Kingdom of Hawaiʻi is one of the Pacific\'s preeminent trade and transit states, its capital Honolulu serving as the central waypoint on trans-Pacific routes connecting North America and East Asia. Governed by the Kamehameha Dynasty under a bicameral legislature, the kingdom navigated a century of foreign commercial pressure and emerged as an independent associate member of the North American Union.'
+  },
+  {
+    title: 'Union of European Republics',
+    file: 'uer.html',
+    img: '../../images/nedex/uerflag.png',
+    subtitle: 'Communalist federal republic · Founded 1904',
+    summary: 'The Union of European Republics was born from the simultaneous revolutionary collapse of France and the South German Confederation at the close of the Great European War. The only functioning communalist state in the world, it has been a source of ideological anxiety for conservative governments since its founding, and its survival against Prussian invasion in the Global War demonstrated that the experiment was not a passing moment but a durable state.'
+  },
+  {
+    title: 'Federal Republic of Central America',
+    file: 'central-america.html',
+    img: '../../images/nedex/frca_flag.png',
+    subtitle: 'Federal presidential republic · Founded 1830',
+    summary: 'The Federal Republic of Central America is the only successful federation to emerge from the dissolution of Spanish colonial authority in Central America. Its survival across two centuries is widely attributed to Francisco Morazán\'s political pragmatism in negotiating the Federal Compact of 1836, which defused conservative opposition without sacrificing the federal framework. The republic became a key partner in the construction of the Central American Canal, opened in 1926.'
+  },
+  {
+    title: 'Empire of Mexico',
+    file: 'mexico.html',
+    img: '../../images/nedex/mexico.png',
+    subtitle: 'Constitutional monarchy · Founded 1835',
+    summary: 'The Empire of Mexico was founded in 1835 following a conservative counter-coup against the liberal Mexican Republic. After decades of tension between throne and legislature, Empress Gabriella emerged victorious from a devastating civil war (1913–1921), and the Constitution of 1922 established genuine parliamentary democracy and universal suffrage — making Mexico one of the first nations in the world to grant women the vote.'
+  },
+  {
+    title: 'William Crawford',
+    file: 'william-crawford.html',
+    img: '../../images/nedex/5-Crawford.png',
+    summary: 'William Crawford holds a unique place in American history as the president who oversaw the founding of Franklin and the construction of the new national capital on the Ohio River. Governing in the aftermath of the burning of Washington City in August 1814, Crawford navigated the extraordinary challenge of relocating a federal government and establishing a new seat of power from which all subsequent American history would unfold.'
+  },
+];
+
+// ── DID YOU KNOW POOL ──
+const NEDEX_DYK = [
+  'Washington House, the official residence of the President of the United States, was designed by architects Kemp & Ogden and completed in 1827 — its first occupant was President Alexander Hamilton Jr., son of Founding Father Alexander Hamilton.',
+  'Hugo Brandt\'s father was a stonemason who helped build Congress Hall in Franklin in the 1820s — the same building Brandt would later govern from as Acting President of the Free States.',
+  'The USRC, founded in 1834, is one of the oldest continuously operating federal enterprises in the United States, predating the Constitution of 1861 itself.',
+  'The Kingdom of Hawaiʻi\'s Constitution of 1868 created a bicameral legislature that included property-qualified seats originally designed to give formal representation to the kingdom\'s substantial foreign landowning community.',
+  'The Union of European Republics commissioned a constructed language — Europan — under First Delegate Mathias Holtz, intended to dissolve national identities by replacing French and German as the medium of official life. It survives today in ceremonial use only.',
+  'The Federal Republic of Central America\'s founding president, Francisco Morazán, negotiated the Federal Compact of 1836 — conceding provincial autonomy and Church property rights to conservatives in exchange for the federation\'s survival.',
+  'The Central American Canal, opened in 1926, was built under a tripartite commission representing the United States, the Federal Republic of Central America, and Canada — with canal toll revenues divided roughly equally among the three.',
+  'The Empire of Mexico\'s Empress Gabriella came to power in 1913 at the age of 26, and within months was fighting a civil war against her own brother, who had declared himself Emperor Raul IV.',
+  'Canada\'s capital Aurora was purpose-built on Manitoulin Island in Lake Huron as a compromise between Toronto and Montreal interests — construction began in the mid-1880s and it became the seat of government in the early 1900s.',
+  'The Union of the Californias declared independence in 1844 during the collapse of the Mexican Republic, but formal international recognition did not come until the Second Treaty of New Orleans in 1847, following the Second Mexican War.',
+  'John C. Calhoun, the eighth President of the United States, was assassinated on May 9, 1836 — the first US president to be killed in office. His death set in motion the political crisis that would eventually lead to the War Between the States.',
+  'George Washington\'s decision not to seek a third term established the precedent of the two-term presidency — a tradition that was later codified in law under the Constitution of 1861.',
+];
+
+// Pick today's featured article and DYK items
+const _nedexDayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+const NEDEX_FEATURED_TODAY = NEDEX_FEATURED[_nedexDayOfYear % NEDEX_FEATURED.length];
+const NEDEX_DYK_TODAY = [
+  NEDEX_DYK[_nedexDayOfYear % NEDEX_DYK.length],
+  NEDEX_DYK[(_nedexDayOfYear + 4) % NEDEX_DYK.length],
+  NEDEX_DYK[(_nedexDayOfYear + 8) % NEDEX_DYK.length],
+];
