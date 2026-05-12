@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<!-- TEMPLATE: LIST ARTICLE
+     Use for: lists of presidents, premiers, battles, treaties, etc.
+     1. Replace all [PLACEHOLDERS]
+     2. Add rows to the table as needed
+     3. Add to nedex_index.js
+     4. Save as nodes/nedex/[article-name].html
+-->
+<title>[LIST TITLE] — Nedex</title>
+<link rel="stylesheet" href="../../shared.css">
+<link rel="stylesheet" href="nedex.css">
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+</div>
+
+<div class="ndx-header">
+  <a class="ndx-logo" href="./">Nedex</a>
+  <span class="ndx-tagline">The Free Encyclopaedia</span>
+  <div class="ndx-search-wrap">
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" />
+    <button class="ndx-search-btn">Search</button>
+  </div>
+</div>
+
+<div class="ndx-subnav">
+  <a href="./">Main Page</a>
+  <a href="#" class="active">Article</a>
+  <a href="#">Talk</a>
+  <a href="#">Edit</a>
+  <a href="#">History</a>
+</div>
+
+<div class="ndx-article-wrap">
+  <div class="ndx-article-body">
+
+    <div class="ndx-article-title">[LIST TITLE]</div>
+    <div class="ndx-article-subtitle">[BRIEF DESCRIPTION OF WHAT IS LISTED]</div>
+
+    <div class="ndx-prose">
+
+      <p>[ONE OR TWO SENTENCES explaining what this list covers and any important notes about it.]</p>
+
+      <!-- ERA DIVIDER — use as many as needed, delete if not applicable -->
+      <h2 class="ndx-section-head" id="era1">[ERA OR GROUP NAME — e.g. "The Founding Era"]</h2>
+
+      <table class="ndx-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>[COLUMN 3 — e.g. Party / Country / Date]</th>
+            <th>[COLUMN 4 — e.g. Term / Period]</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Copy and paste rows as needed -->
+          <tr>
+            <td>1</td>
+            <td><a href="[ARTICLE-FILENAME].html">[NAME]</a></td>
+            <td>[PARTY OR VALUE]</td>
+            <td>[TERM OR DATE]</td>
+            <td>[BRIEF NOTE]</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><a href="[ARTICLE-FILENAME].html">[NAME]</a></td>
+            <td>[PARTY OR VALUE]</td>
+            <td>[TERM OR DATE]</td>
+            <td>[BRIEF NOTE]</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>[NAME — no article yet]</td>
+            <td>[PARTY OR VALUE]</td>
+            <td>[TERM OR DATE]</td>
+            <td>[BRIEF NOTE]</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="ndx-section-head" id="era2">[SECOND ERA OR GROUP — delete if not needed]</h2>
+
+      <table class="ndx-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>[COLUMN 3]</th>
+            <th>[COLUMN 4]</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>4</td>
+            <td><a href="#">[NAME]</a></td>
+            <td>[VALUE]</td>
+            <td>[DATE]</td>
+            <td>[NOTE]</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="ndx-annotation">
+        <div class="ndx-annotation-head">Historical Note</div>
+        [Any notes on conventions used in this list, or divergences from OTL numbering/sequencing.]
+      </div>
+
+      <div class="ndx-categories">
+        <strong>Categories:</strong>
+        <a href="#">Lists</a>
+        <a href="#">[TOPIC] lists</a>
+        <a href="#">[COUNTRY OR INSTITUTION]</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ndx-article-sidebar">
+
+    <div class="ndx-widget">
+      <div class="ndx-widget-head">About This List</div>
+      <div class="ndx-widget-body" style="font-size:12px;color:var(--ndx-text-secondary);line-height:1.6;">
+        [Brief note about the list — total entries, date range covered, any special conventions.]
+      </div>
+    </div>
+
+    <div class="ndx-widget">
+      <div class="ndx-widget-head">See Also</div>
+      <div class="ndx-widget-body">
+        <a class="ndx-widget-link" href="#">[RELATED ARTICLE]</a>
+        <a class="ndx-widget-link" href="#">[RELATED ARTICLE]</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="ndx-footer">
+  <span>link://nan.nedex.org.nau/[ARTICLE-SLUG] &nbsp;·&nbsp; Nedex — The Free Encyclopaedia</span>
+  <div class="ndx-footer-links">
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script src="nedex_index.js"></script>
+<script>
+initAddressBar('nan.nedex.org.nau/[ARTICLE-SLUG]');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+</body>
+</html>
