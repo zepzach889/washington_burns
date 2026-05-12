@@ -95,18 +95,6 @@ const ABN_WORLD = [
   { tag: 'Canada', hed: 'Canadian PM Tremblay Visits Washington House for Bilateral Talks', dek: 'Trade, the Continental currency framework, and NAU constitutional consolidation were among the topics discussed during the two-day visit.', meta: 'ABN Political Desk · Franklin · 8 hours ago' }
 ];
 
-const ABN_TICKER_POOL = [
-  'NAU Assembly advances Continental Currency Stabilisation Framework to floor vote',
-  'USRC Northeast Corridor sets Q1 ridership record — 4.1 million passengers',
-  'President Nakamura signals she will not oppose NAU Constitutional Consolidation vote',
-  'China opens HuaWang to broader Interlink access — 61% of households now connected',
-  'UER Premier faces parliamentary challenge over state media reforms in Paris',
-  'British PM arrives in Franklin for bilateral trade talks with Nakamura',
-  'Russian Imperial Duma deadlocked on modernisation package — Tsar urges compromise',
-  'Franklin National Orchestra announces six-nation European tour beginning June',
-  'Federal Parks Service reports record visitor numbers across all 57 parks in 2025',
-  'NAU Assembly Constitutional Consolidation Act enters committee review phase'
-];
 
 const ABN_MOSTREAD = [
   'Nakamura signals she won\'t oppose NAU consolidation vote',
@@ -146,7 +134,11 @@ const ABN_WORLD_TODAY    = [
   ABN_WORLD[(DAY_OF_YEAR + 2) % ABN_WORLD.length],
   ABN_WORLD[(DAY_OF_YEAR + 4) % ABN_WORLD.length]
 ];
-const ABN_TICKER_TODAY   = Array.from({length: 5}, (_, i) => ABN_TICKER_POOL[(DAY_OF_YEAR + i) % ABN_TICKER_POOL.length]);
+const ABN_TICKER_TODAY   = [
+  ABN_LEAD_TODAY.hed,
+  ...ABN_CARDS_TODAY.map(c => c.hed),
+  ...ABN_WORLD_TODAY.map(w => w.hed),
+].filter((v, i, a) => a.indexOf(v) === i); // deduplicate
 const ABN_MOSTREAD_TODAY = Array.from({length: 4}, (_, i) => ABN_MOSTREAD[(DAY_OF_YEAR + i * 2) % ABN_MOSTREAD.length]);
 
 // ── WAYMARK HEADLINES (derived from daily picks) ──
