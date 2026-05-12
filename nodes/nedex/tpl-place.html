@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<!-- TEMPLATE: PLACE / CITY
+     Use for: cities, towns, regions, geographic features
+     1. Replace all [PLACEHOLDERS]
+     2. Add to nedex_index.js
+     3. Save as nodes/nedex/[article-name].html
+-->
+<title>[PLACE NAME] — Nedex</title>
+<link rel="stylesheet" href="../../shared.css">
+<link rel="stylesheet" href="nedex.css">
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+</div>
+
+<div class="ndx-header">
+  <a class="ndx-logo" href="./">Nedex</a>
+  <span class="ndx-tagline">The Free Encyclopaedia</span>
+  <div class="ndx-search-wrap">
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" />
+    <button class="ndx-search-btn">Search</button>
+  </div>
+</div>
+
+<div class="ndx-subnav">
+  <a href="./">Main Page</a>
+  <a href="#" class="active">Article</a>
+  <a href="#">Talk</a>
+  <a href="#">Edit</a>
+  <a href="#">History</a>
+</div>
+
+<div class="ndx-article-wrap">
+  <div class="ndx-article-body">
+
+    <div class="ndx-article-title">[PLACE NAME]</div>
+    <div class="ndx-article-subtitle">[TYPE — City / Capital / Region / etc.] · [COUNTRY OR STATE]</div>
+
+    <div class="ndx-toc">
+      <div class="ndx-toc-title">Contents</div>
+      <ol>
+        <li><a href="#history">History</a></li>
+        <li><a href="#geography">Geography</a></li>
+        <li><a href="#government">Government</a></li>
+        <li><a href="#economy">Economy</a></li>
+        <li><a href="#culture">Culture and landmarks</a></li>
+      </ol>
+    </div>
+
+    <div class="ndx-prose">
+
+      <div class="ndx-prose-img">
+        <img src="../../images/nedex/[IMAGE-FILENAME]" alt="[PLACE NAME]" />
+        <div class="ndx-prose-caption">[Caption — e.g. View of downtown [CITY], c. 1920]</div>
+      </div>
+
+      <p><strong>[PLACE NAME]</strong> is [ONE SENTENCE — what kind of place, where it is, why it matters].</p>
+
+      <p>[SECOND PARAGRAPH — founding, growth, current character, significance in the WBT world.]</p>
+
+      <div class="ndx-clearfix"></div>
+
+      <h2 class="ndx-section-head" id="history">History</h2>
+
+      <p>[FOUNDING AND DEVELOPMENT through major eras.]</p>
+
+      <div class="ndx-stub-notice">This section will be expanded to cover [TOPIC].</div>
+
+      <h2 class="ndx-section-head" id="geography">Geography</h2>
+
+      <p>[PHYSICAL SETTING — location, terrain, climate, neighboring areas.]</p>
+
+      <h2 class="ndx-section-head" id="government">Government</h2>
+
+      <p>[LOCAL GOVERNMENT STRUCTURE — mayor, council, federal/state relationship.]</p>
+
+      <h2 class="ndx-section-head" id="economy">Economy</h2>
+
+      <p>[MAJOR INDUSTRIES, EMPLOYERS, TRADE, ECONOMIC CHARACTER.]</p>
+
+      <h2 class="ndx-section-head" id="culture">Culture and landmarks</h2>
+
+      <p>[NOTABLE BUILDINGS, INSTITUTIONS, CULTURAL LIFE, THINGS THE CITY IS KNOWN FOR.]</p>
+
+      <div class="ndx-annotation">
+        <div class="ndx-annotation-head">Historical Note</div>
+        [Any divergence from OTL worth explaining — e.g. why this city exists or differs in this timeline.]
+      </div>
+
+      <div class="ndx-categories">
+        <strong>Categories:</strong>
+        <a href="#">Places</a>
+        <a href="#">Cities</a>
+        <a href="#">[COUNTRY] cities</a>
+        <a href="#">[STATE OR REGION]</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ndx-article-sidebar">
+
+    <div class="ndx-infobox">
+      <div class="ndx-infobox-img">
+        <img src="../../images/nedex/[IMAGE-FILENAME]" alt="[PLACE NAME]" />
+      </div>
+      <div class="ndx-infobox-title">[PLACE NAME]</div>
+      <div class="ndx-infobox-sub">[TAGLINE OR NICKNAME IF ANY]</div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Country</span><span class="ndx-infobox-val">[COUNTRY]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">State/Province</span><span class="ndx-infobox-val">[STATE OR PROVINCE]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Status</span><span class="ndx-infobox-val">[e.g. Capital city · Federal district · Major port]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Founded</span><span class="ndx-infobox-val">[YEAR]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Population</span><span class="ndx-infobox-val">[APPROX. POPULATION]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Notable for</span><span class="ndx-infobox-val">[KEY FEATURE OR ROLE]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">USRC station</span><span class="ndx-infobox-val">[STATION NAME IF APPLICABLE]</span></div>
+    </div>
+
+    <div class="ndx-widget">
+      <div class="ndx-widget-head">See Also</div>
+      <div class="ndx-widget-body">
+        <a class="ndx-widget-link" href="#">[RELATED ARTICLE]</a>
+        <a class="ndx-widget-link" href="#">[RELATED ARTICLE]</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="ndx-footer">
+  <span>link://nan.nedex.org.nau/[ARTICLE-SLUG] &nbsp;·&nbsp; Nedex — The Free Encyclopaedia</span>
+  <div class="ndx-footer-links">
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script src="nedex_index.js"></script>
+<script>
+initAddressBar('nan.nedex.org.nau/[ARTICLE-SLUG]');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+</body>
+</html>
