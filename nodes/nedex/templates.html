@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>Article Templates — Nedex</title>
+<link rel="stylesheet" href="../../shared.css">
+<link rel="stylesheet" href="nedex.css">
+<style>
+  .ndx-tpl-body { max-width: 1000px; margin: 0 auto; padding: 28px 24px 40px; }
+</style>
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+</div>
+
+<div class="ndx-header">
+  <a class="ndx-logo" href="./">Nedex</a>
+  <span class="ndx-tagline">The Free Encyclopaedia</span>
+  <div class="ndx-search-wrap">
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" />
+    <button class="ndx-search-btn">Search</button>
+  </div>
+</div>
+
+<div class="ndx-subnav">
+  <a href="./">Main Page</a>
+  <a href="nedex_browse.html">Browse Articles</a>
+  <a href="nedex_categories.html">Categories</a>
+  <a href="#">Recent Changes</a>
+  <a href="#" class="active">Templates</a>
+</div>
+
+<div class="ndx-tpl-body">
+  <h1 style="font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:6px;color:var(--ndx-text);">Article Templates</h1>
+  <p style="font-size:13px;color:var(--ndx-text-secondary);margin-bottom:24px;">Download a starter template, fill in the placeholder text in <code style="background:var(--ndx-copper-pale);padding:1px 5px;border-radius:3px;font-size:11px;">[SQUARE BRACKETS]</code>, and upload to <code style="background:var(--ndx-copper-pale);padding:1px 5px;border-radius:3px;font-size:11px;">nodes/nedex/</code>. Then add one line to <code style="background:var(--ndx-copper-pale);padding:1px 5px;border-radius:3px;font-size:11px;">nedex_index.js</code>.</p>
+
+  <div class="ndx-tpl-grid">
+
+    <div class="ndx-tpl-card">
+      <div class="ndx-tpl-card-head">
+        <div class="ndx-tpl-card-icon">👤</div>
+        <div class="ndx-tpl-card-title">Biography</div>
+      </div>
+      <div class="ndx-tpl-card-body">
+        <div class="ndx-tpl-card-desc">For people — presidents, statespeople, military figures, inventors, artists, and other notable persons.</div>
+        <div class="ndx-tpl-card-fields"><strong>Infobox fields:</strong> Born · Died · Office · Term · Party · Home state · Spouse · Profession</div>
+        <a class="ndx-tpl-btn" href="tpl-biography.html">Download Template →</a>
+      </div>
+    </div>
+
+    <div class="ndx-tpl-card">
+      <div class="ndx-tpl-card-head">
+        <div class="ndx-tpl-card-icon">🌍</div>
+        <div class="ndx-tpl-card-title">Country / Nation</div>
+      </div>
+      <div class="ndx-tpl-card-body">
+        <div class="ndx-tpl-card-desc">For sovereign states, dominions, empires, federations, and other political entities.</div>
+        <div class="ndx-tpl-card-fields"><strong>Infobox fields:</strong> Founded · System · Capital · Head of state · Legislature · Language · Currency · Member of</div>
+        <a class="ndx-tpl-btn" href="tpl-country.html">Download Template →</a>
+      </div>
+    </div>
+
+    <div class="ndx-tpl-card">
+      <div class="ndx-tpl-card-head">
+        <div class="ndx-tpl-card-icon">⚔️</div>
+        <div class="ndx-tpl-card-title">Historical Event</div>
+      </div>
+      <div class="ndx-tpl-card-body">
+        <div class="ndx-tpl-card-desc">For wars, treaties, disasters, revolutions, elections, and other significant events.</div>
+        <div class="ndx-tpl-card-fields"><strong>Infobox fields:</strong> Date · Location · Participants · Outcome · Casualties · Significance</div>
+        <a class="ndx-tpl-btn" href="tpl-event.html">Download Template →</a>
+      </div>
+    </div>
+
+    <div class="ndx-tpl-card">
+      <div class="ndx-tpl-card-head">
+        <div class="ndx-tpl-card-icon">🏙️</div>
+        <div class="ndx-tpl-card-title">Place / City</div>
+      </div>
+      <div class="ndx-tpl-card-body">
+        <div class="ndx-tpl-card-desc">For cities, towns, geographic features, regions, and other places.</div>
+        <div class="ndx-tpl-card-fields"><strong>Infobox fields:</strong> Country · Status · Population · Founded · Government · Notable for</div>
+        <a class="ndx-tpl-btn" href="tpl-place.html">Download Template →</a>
+      </div>
+    </div>
+
+    <div class="ndx-tpl-card">
+      <div class="ndx-tpl-card-head">
+        <div class="ndx-tpl-card-icon">🏛️</div>
+        <div class="ndx-tpl-card-title">Institution</div>
+      </div>
+      <div class="ndx-tpl-card-body">
+        <div class="ndx-tpl-card-desc">For government agencies, railways, political parties, legislative bodies, universities, and organisations.</div>
+        <div class="ndx-tpl-card-fields"><strong>Infobox fields:</strong> Founded · Type · Jurisdiction · Head · Headquarters · Parent body</div>
+        <a class="ndx-tpl-btn" href="tpl-institution.html">Download Template →</a>
+      </div>
+    </div>
+
+    <div class="ndx-tpl-card">
+      <div class="ndx-tpl-card-head">
+        <div class="ndx-tpl-card-icon">📋</div>
+        <div class="ndx-tpl-card-title">List</div>
+      </div>
+      <div class="ndx-tpl-card-body">
+        <div class="ndx-tpl-card-desc">For list articles — presidents, premiers, monarchs, battles, treaties, and other enumerations.</div>
+        <div class="ndx-tpl-card-fields"><strong>Includes:</strong> Sortable table, era dividers, color-coded rows, notes column</div>
+        <a class="ndx-tpl-btn" href="tpl-list.html">Download Template →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- IMAGE GUIDE -->
+  <h2 style="font-family:'DM Serif Display',serif;font-size:20px;margin-bottom:12px;padding-bottom:6px;border-bottom:1.5px solid var(--ndx-border-copper);color:var(--ndx-text);">Adding Images in Prose</h2>
+
+  <div class="ndx-tpl-guide">
+    <div class="ndx-tpl-guide-title">Floating image (right-aligned, text wraps around)</div>
+    <p style="font-size:12px;color:var(--ndx-text-secondary);margin-bottom:8px;">Use for portrait photos, flags, maps, and other images that sit alongside text. Default width is 220px.</p>
+    <pre>&lt;div class="ndx-prose-img"&gt;
+  &lt;img src="../../images/nedex/[FILENAME]" alt="[DESCRIPTION]" /&gt;
+  &lt;div class="ndx-prose-caption"&gt;[Caption text here]&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Your prose text wraps around the image here...&lt;/p&gt;
+
+&lt;!-- Add this after the section to clear the float --&gt;
+&lt;div class="ndx-clearfix"&gt;&lt;/div&gt;</pre>
+  </div>
+
+  <div class="ndx-tpl-guide">
+    <div class="ndx-tpl-guide-title">Full-width image (sits between paragraphs)</div>
+    <p style="font-size:12px;color:var(--ndx-text-secondary);margin-bottom:8px;">Use for wide images like landscapes, building exteriors, or group photos.</p>
+    <pre>&lt;div class="ndx-prose-img-full"&gt;
+  &lt;img src="../../images/nedex/[FILENAME]" alt="[DESCRIPTION]" /&gt;
+  &lt;div class="ndx-prose-caption"&gt;[Caption text here]&lt;/div&gt;
+&lt;/div&gt;</pre>
+  </div>
+
+  <div class="ndx-tpl-guide">
+    <div class="ndx-tpl-guide-title">Annotation / Author Note</div>
+    <p style="font-size:12px;color:var(--ndx-text-secondary);margin-bottom:8px;">Use to add historical context, explain a divergence from OTL, or flag something for future expansion.</p>
+    <pre>&lt;div class="ndx-annotation"&gt;
+  &lt;div class="ndx-annotation-head"&gt;Historical Note&lt;/div&gt;
+  [Your annotation text here]
+&lt;/div&gt;</pre>
+  </div>
+
+  <div class="ndx-tpl-guide">
+    <div class="ndx-tpl-guide-title">Stub / Section in Development</div>
+    <p style="font-size:12px;color:var(--ndx-text-secondary);margin-bottom:8px;">Use for sections that aren't written yet.</p>
+    <pre>&lt;div class="ndx-stub-notice"&gt;This section will be expanded to cover [TOPIC].&lt;/div&gt;</pre>
+  </div>
+
+</div>
+
+<div class="ndx-footer">
+  <span>link://nan.nedex.org.nau/templates &nbsp;·&nbsp; Nedex — The Free Encyclopaedia</span>
+  <div class="ndx-footer-links">
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script src="nedex_index.js"></script>
+<script>
+initAddressBar('nan.nedex.org.nau/templates');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+</body>
+</html>
