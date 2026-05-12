@@ -22,6 +22,7 @@ const ROUTES = {
   'nan.nedex.org.nau/thomas-jefferson': '/nodes/nedex/thomas-jefferson.html',
   'nan.nedex.org.nau/james-madison':  '/nodes/nedex/james-madison.html',
   'nan.nedex.org.nau/william-crawford': '/nodes/nedex/william-crawford.html',
+  'nan.nedex.org.nau/henry-clay':     '/nodes/nedex/henry-clay.html',
   'nan.nedex.org.nau/hugo-brandt':    '/nodes/nedex/hugo-brandt.html',
   'nan.washingtonhouse.gov.usa':      '/nodes/washington-house/',
   'nan.mususa.edu.usa':               '/nodes/amhistory/',
