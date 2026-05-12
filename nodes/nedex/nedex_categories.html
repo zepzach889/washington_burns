@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Categories — Nedex</title>
+<link rel="stylesheet" href="../../shared.css">
+<link rel="stylesheet" href="nedex.css">
+<style>
+  .ndx-cats-body { max-width: 900px; margin: 0 auto; padding: 28px 24px 40px; }
+  .ndx-cat-section { margin-bottom: 32px; }
+  .ndx-cat-section-head { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--ndx-text); padding-bottom: 6px; border-bottom: 1.5px solid var(--ndx-border-copper); margin-bottom: 12px; }
+  .ndx-cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .ndx-cat-card { background: #fff; border: 0.5px solid var(--ndx-border); border-radius: 8px; padding: 10px 14px; cursor: pointer; transition: box-shadow 0.1s; }
+  .ndx-cat-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .ndx-cat-card-name { font-weight: 600; font-size: 13px; color: var(--ndx-text); margin-bottom: 2px; }
+  .ndx-cat-card-count { font-size: 11px; color: var(--ndx-copper); }
+  .ndx-cat-articles { display: none; margin-top: 6px; padding-top: 6px; border-top: 0.5px solid var(--ndx-border); }
+  .ndx-cat-card.open .ndx-cat-articles { display: block; }
+  .ndx-cat-article-link { display: block; font-size: 12px; color: var(--ndx-link); text-decoration: none; padding: 3px 0; border-bottom: 0.5px solid var(--ndx-border); }
+  .ndx-cat-article-link:last-child { border-bottom: none; }
+  .ndx-cat-article-link:hover { text-decoration: underline; }
+  @media (max-width: 600px) { .ndx-cat-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+</div>
+
+<div class="ndx-header">
+  <a class="ndx-logo" href="./">Nedex</a>
+  <span class="ndx-tagline">The Free Encyclopaedia</span>
+  <div class="ndx-search-wrap">
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" />
+    <button class="ndx-search-btn">Search</button>
+  </div>
+</div>
+
+<div class="ndx-subnav">
+  <a href="./">Main Page</a>
+  <a href="browse.html">Browse Articles</a>
+  <a href="#" class="active">Categories</a>
+  <a href="#">Recent Changes</a>
+  <a href="#">About Nedex</a>
+</div>
+
+<div class="ndx-cats-body">
+  <h1 style="font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:6px;color:var(--ndx-text);">Categories</h1>
+  <p style="font-size:13px;color:var(--ndx-text-secondary);margin-bottom:24px;">Click any category to expand its article list.</p>
+  <div id="cats-container"></div>
+</div>
+
+<div class="ndx-footer">
+  <span>link://nan.nedex.org.nau/categories &nbsp;·&nbsp; Nedex — The Free Encyclopaedia</span>
+  <div class="ndx-footer-links">
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script src="nedex-index.js"></script>
+<script>
+initAddressBar('nan.nedex.org.nau/categories');
+
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+
+// Group categories into sections
+const CAT_SECTIONS = [
+  { label: 'Geography & Nations',  cats: ['Countries', 'North American nations', 'European nations', 'Pacific nations', 'NAU member states', 'NAU associate members', 'Federal republics', 'Parliamentary republics', 'Constitutional monarchies', 'Communalist states', 'British Empire'] },
+  { label: 'People & Biographies', cats: ['Biographies', 'Presidents of the United States', 'Heads of government', 'Federalist Party politicians', 'Democrat Party politicians', 'Republican Party politicians', 'Democratic-Republican politicians', 'Unaffiliated politicians', 'Texas Federation'] },
+  { label: 'History',              cats: ['History', 'North American history', 'Founding Era', 'Republican Era', 'War Between the States', 'Global War belligerents'] },
+  { label: 'Lists & Reference',    cats: ['Lists'] },
+  { label: 'International',        cats: ['Global War belligerents', 'Global Peace Council members'] },
+];
+
+// Build category map
+const catMap = {};
+NEDEX_ARTICLES.forEach(a => {
+  a.categories.forEach(c => {
+    if (!catMap[c]) catMap[c] = [];
+    catMap[c].push(a);
+  });
+});
+
+const container = document.getElementById('cats-container');
+
+CAT_SECTIONS.forEach(section => {
+  const sectionCats = section.cats.filter(c => catMap[c] && catMap[c].length > 0);
+  if (sectionCats.length === 0) return;
+
+  let html = `<div class="ndx-cat-section">
+    <div class="ndx-cat-section-head">${section.label}</div>
+    <div class="ndx-cat-grid">`;
+
+  sectionCats.forEach(cat => {
+    const articles = catMap[cat] || [];
+    const links = articles.map(a => `<a class="ndx-cat-article-link" href="${a.file}">${a.title}</a>`).join('');
+    html += `<div class="ndx-cat-card" onclick="this.classList.toggle('open')">
+      <div class="ndx-cat-card-name">${cat}</div>
+      <div class="ndx-cat-card-count">${articles.length} article${articles.length !== 1 ? 's' : ''}</div>
+      <div class="ndx-cat-articles">${links}</div>
+    </div>`;
+  });
+
+  html += `</div></div>`;
+  container.innerHTML += html;
+});
+</script>
+</body>
+</html>
