@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<!-- TEMPLATE: BIOGRAPHY
+     1. Replace all [PLACEHOLDERS] with real content
+     2. Delete any infobox rows you don't need
+     3. Add this article to nedex_index.js
+     4. Save as: nodes/nedex/[article-name].html
+     5. Update initAddressBar() and the footer link below
+-->
+<title>[FULL NAME] — Nedex</title>
+<link rel="stylesheet" href="../../shared.css">
+<link rel="stylesheet" href="nedex.css">
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+</div>
+
+<div class="ndx-header">
+  <a class="ndx-logo" href="./">Nedex</a>
+  <span class="ndx-tagline">The Free Encyclopaedia</span>
+  <div class="ndx-search-wrap">
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" />
+    <button class="ndx-search-btn">Search</button>
+  </div>
+</div>
+
+<div class="ndx-subnav">
+  <a href="./">Main Page</a>
+  <a href="#" class="active">Article</a>
+  <a href="#">Talk</a>
+  <a href="#">Edit</a>
+  <a href="#">History</a>
+</div>
+
+<div class="ndx-article-wrap">
+  <div class="ndx-article-body">
+
+    <div class="ndx-article-title">[FULL NAME]</div>
+    <div class="ndx-article-subtitle">[TITLE OR ROLE] · [YEARS ACTIVE OR LIFESPAN]</div>
+
+    <div class="ndx-toc">
+      <div class="ndx-toc-title">Contents</div>
+      <ol>
+        <li><a href="#early-life">Early life and background</a></li>
+        <li><a href="#career">Career</a>
+          <ol>
+            <li><a href="#early-career">Early career</a></li>
+            <li><a href="#major-role">[MAJOR ROLE OR PERIOD]</a></li>
+          </ol>
+        </li>
+        <li><a href="#later-life">Later life</a></li>
+        <li><a href="#legacy">Legacy</a></li>
+      </ol>
+    </div>
+
+    <div class="ndx-prose">
+
+      <!-- OPTIONAL: floating portrait image -->
+      <div class="ndx-prose-img">
+        <img src="../../images/nedex/[IMAGE-FILENAME]" alt="Portrait of [NAME]" />
+        <div class="ndx-prose-caption">[Caption — e.g. Official portrait, c. 1870]</div>
+      </div>
+
+      <p><strong>[FULL NAME]</strong> ([BIRTH YEAR]–[DEATH YEAR OR "present"]) was [ONE SENTENCE BIOGRAPHICAL SUMMARY — who they were, what they are known for, why they matter].</p>
+
+      <p>[SECOND INTRODUCTORY PARAGRAPH — expand on their significance, their era, their key achievement or role.]</p>
+
+      <div class="ndx-clearfix"></div>
+
+      <h2 class="ndx-section-head" id="early-life">Early life and background</h2>
+
+      <p>[BIRTHPLACE, FAMILY BACKGROUND, EDUCATION. Keep to 2-3 paragraphs.]</p>
+
+      <div class="ndx-stub-notice">This section will be expanded to cover [TOPIC].</div>
+
+      <h2 class="ndx-section-head" id="career">Career</h2>
+
+      <h3 class="ndx-sub-head" id="early-career">Early career</h3>
+
+      <p>[EARLY CAREER DETAILS — first positions, formative experiences, early reputation.]</p>
+
+      <h3 class="ndx-sub-head" id="major-role">[MAJOR ROLE OR PERIOD]</h3>
+
+      <p>[THE MAIN SUBSTANCE OF THEIR CAREER OR SIGNIFICANCE.]</p>
+
+      <!-- OPTIONAL: annotation box for historical context -->
+      <div class="ndx-annotation">
+        <div class="ndx-annotation-head">Historical Note</div>
+        [Any divergence from OTL or context worth flagging for readers.]
+      </div>
+
+      <h2 class="ndx-section-head" id="later-life">Later life</h2>
+
+      <p>[POST-CAREER, RETIREMENT, DEATH IF APPLICABLE.]</p>
+
+      <h2 class="ndx-section-head" id="legacy">Legacy</h2>
+
+      <p>[HOW THEY ARE REMEMBERED. Monuments, historical reputation, influence.]</p>
+
+      <!-- OPTIONAL: full-width image -->
+      <div class="ndx-prose-img-full">
+        <img src="../../images/nedex/[IMAGE-FILENAME]" alt="[DESCRIPTION]" />
+        <div class="ndx-prose-caption">[Caption text]</div>
+      </div>
+
+      <div class="ndx-categories">
+        <strong>Categories:</strong>
+        <a href="#">Biographies</a>
+        <a href="#">[PARTY] politicians</a>
+        <a href="#">[ERA]</a>
+        <a href="#">[BIRTH YEAR] births</a>
+        <a href="#">[DEATH YEAR] deaths</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ndx-article-sidebar">
+
+    <div class="ndx-infobox">
+      <div class="ndx-infobox-img">
+        <img src="../../images/nedex/[IMAGE-FILENAME]" alt="[NAME]" />
+      </div>
+      <div class="ndx-infobox-title">[FULL NAME]</div>
+      <div class="ndx-infobox-sub">[TITLE OR BRIEF DESCRIPTION]</div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">In office</span><span class="ndx-infobox-val">[START YEAR]–[END YEAR]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Preceded by</span><span class="ndx-infobox-val">[PREDECESSOR]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Succeeded by</span><span class="ndx-infobox-val">[SUCCESSOR]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Party</span><span class="ndx-infobox-val">[PARTY]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Born</span><span class="ndx-infobox-val">[YEAR] · [PLACE]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Died</span><span class="ndx-infobox-val">[YEAR] (aged [AGE]) · [PLACE]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Spouse</span><span class="ndx-infobox-val">[NAME] (m. [YEAR])</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Home state</span><span class="ndx-infobox-val">[STATE]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Profession</span><span class="ndx-infobox-val">[PROFESSION(S)]</span></div>
+    </div>
+
+    <div class="ndx-widget">
+      <div class="ndx-widget-head">See Also</div>
+      <div class="ndx-widget-body">
+        <a class="ndx-widget-link" href="#">[RELATED ARTICLE]</a>
+        <a class="ndx-widget-link" href="#">[RELATED ARTICLE]</a>
+        <a class="ndx-widget-link" href="#">[RELATED ARTICLE]</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="ndx-footer">
+  <span>link://nan.nedex.org.nau/[ARTICLE-SLUG] &nbsp;·&nbsp; Nedex — The Free Encyclopaedia</span>
+  <div class="ndx-footer-links">
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script src="nedex_index.js"></script>
+<script>
+initAddressBar('nan.nedex.org.nau/[ARTICLE-SLUG]');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+</body>
+</html>
