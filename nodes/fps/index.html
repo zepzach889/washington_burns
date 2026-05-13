@@ -340,6 +340,7 @@ const PARKS = [
     location: 'Oregon',
     region: 'pnw',
     img: '../../images/parks/hood.jpg',
+    imgPos: 'center top',
     tags: ['Volcanic','Alpine','Climbing','Winter Sports'],
     desc: 'Known by its Multnomah name long before statehood, Wy\'east is a stratovolcano rising above the Oregon forests to over 11,000 feet, offering year-round recreation.',
     lat: 45.3735, lon: -121.6960, tz: 'America/Los_Angeles',
@@ -424,8 +425,8 @@ const potd = PARKS[potdIdx];
 const tipIdx = dayOfYear % potd.tips.length;
 const trailIdx = dayOfYear % potd.trails.length;
 
-document.getElementById('fps-potd-img').style.backgroundImage = 'url("' + potd.img + '")'
-document.getElementById('fps-potd-name').textContent = potd.name;
+document.getElementById('fps-potd-img').style.backgroundImage = 'url("' + potd.img + '")';
+document.getElementById('fps-potd-img').style.backgroundPosition = potd.imgPos || 'center';document.getElementById('fps-potd-name').textContent = potd.name;
 document.getElementById('fps-potd-location').textContent = potd.location;
 document.getElementById('fps-potd-trails').textContent = potd.trails[trailIdx];
 document.getElementById('fps-potd-tip').textContent = potd.tips[tipIdx];
@@ -446,8 +447,7 @@ const weatherCache = {};
 function parkCardHTML(park, weather) {
   const wStr = weather ? (weather.temp + '°C · ' + weather.cond) : 'Fetching...';
   return '<div class="fps-park">' +
-    '<div class="fps-park-img" style="background-image:url(\'' + park.img + '\')">' +
-    '<div class="fps-park-img-label">' + park.location + '</div></div>' +
+    '<div class="fps-park-img" style="background-image:url(\'' + park.img + '\');background-position:' + (park.imgPos || 'center') + '">'    '<div class="fps-park-img-label">' + park.location + '</div></div>' +
     '<div class="fps-park-body">' +
     '<div class="fps-park-name">' + park.name + '</div>' +
     '<div class="fps-park-desc">' + park.desc + '</div>' +
