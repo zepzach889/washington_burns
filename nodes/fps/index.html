@@ -447,8 +447,8 @@ const weatherCache = {};
 function parkCardHTML(park, weather) {
   const wStr = weather ? (weather.temp + '°C · ' + weather.cond) : 'Fetching...';
   return '<div class="fps-park">' +
-    '<div class="fps-park-img" style="background-image:url(\'' + park.img + '\');background-position:' + (park.imgPos || 'center') + '">'    '<div class="fps-park-img-label">' + park.location + '</div></div>' +
-    '<div class="fps-park-body">' +
+    '<div class="fps-park-img" style="background-image:url(\'' + park.img + '\');background-position:' + (park.imgPos || 'center') + '">' +
+    '<div class="fps-park-img-label">' + park.location + '</div></div>' +    '<div class="fps-park-body">' +
     '<div class="fps-park-name">' + park.name + '</div>' +
     '<div class="fps-park-desc">' + park.desc + '</div>' +
     '<div class="fps-park-tags">' + park.tags.map(t => '<span class="fps-tag">' + t + '</span>').join('') + '</div>' +
