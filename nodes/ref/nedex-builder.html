@@ -231,6 +231,81 @@ function generateArticle() {
     ? `<div class="ndx-infobox-img"><img src="../../images/nedex/${image}" alt="${title}" /></div>`
     : `<div class="ndx-infobox-img" style="font-size:48px;display:flex;align-items:center;justify-content:center;height:120px;">📄</div>`;
 
+  // Type-specific infobox rows
+  const INFOBOX_ROWS = {
+    biography: [
+      ['In office',     '[START YEAR]–[END YEAR]'],
+      ['Preceded by',   '[PREDECESSOR]'],
+      ['Succeeded by',  '[SUCCESSOR]'],
+      ['Party',         '[PARTY]'],
+      ['Born',          '[YEAR] · [PLACE]'],
+      ['Died',          '[YEAR] (aged [AGE]) · [PLACE]'],
+      ['Spouse',        '[NAME] (m. [YEAR])'],
+      ['Home state',    '[STATE]'],
+      ['Profession',    '[PROFESSION(S)]'],
+    ],
+    country: [
+      ['Founded',       '[YEAR]'],
+      ['System',        '[GOVERNMENT TYPE]'],
+      ['Capital',       '[CAPITAL CITY]'],
+      ['Head of state', '[NAME AND TITLE]'],
+      ['Head of govt',  '[NAME AND TITLE]'],
+      ['Legislature',   '[NAME OF LEGISLATURE]'],
+      ['Language',      '[OFFICIAL LANGUAGE(S)]'],
+      ['Currency',      '[CURRENCY NAME]'],
+      ['Member of',     '[TREATY ORGS]'],
+    ],
+    event: [
+      ['Date',          '[START]–[END]'],
+      ['Location',      '[LOCATION(S)]'],
+      ['Participants',  '[WHO WAS INVOLVED]'],
+      ['Outcome',       '[RESULT]'],
+      ['Casualties',    '[IF APPLICABLE]'],
+      ['Resulted in',   '[KEY CONSEQUENCE]'],
+    ],
+    place: [
+      ['Country',       '[COUNTRY]'],
+      ['State/Province','[STATE OR PROVINCE]'],
+      ['Status',        '[e.g. Capital city · Major port]'],
+      ['Founded',       '[YEAR]'],
+      ['Population',    '[APPROX. POPULATION]'],
+      ['Notable for',   '[KEY FEATURE OR ROLE]'],
+      ['USRC station',  '[STATION NAME IF APPLICABLE]'],
+    ],
+    institution: [
+      ['Founded',       '[YEAR]'],
+      ['Type',          '[TYPE]'],
+      ['Jurisdiction',  '[JURISDICTION]'],
+      ['Head',          '[CURRENT HEAD AND TITLE]'],
+      ['HQ',            '[HEADQUARTERS LOCATION]'],
+      ['Parent body',   '[PARENT DEPARTMENT OR ORGANISATION]'],
+      ['Members',       '[MEMBERSHIP COUNT IF APPLICABLE]'],
+    ],
+    list: [
+      ['Covers',        '[DATE RANGE OR SCOPE]'],
+      ['Total entries', '[NUMBER]'],
+      ['Source',        '[INSTITUTION OR COUNTRY]'],
+    ],
+  };
+
+  const rows = (INFOBOX_ROWS[type] || INFOBOX_ROWS.biography)
+    .map(([label, val]) => `      <div class="ndx-infobox-row"><span class="ndx-infobox-label">${label}</span><span class="ndx-infobox-val">${val}</span></div>`)
+    .join('\n');
+
+  const TOC_SECTIONS = {
+    biography: [['early-life','Early life and background'],['career','Career'],['later-life','Later life'],['legacy','Legacy']],
+    country:   [['history','History'],['government','Government'],['geography','Geography'],['economy','Economy'],['foreign','Foreign Relations']],
+    event:     [['background','Background'],['course','Course of events'],['outcome','Outcome and aftermath'],['legacy','Legacy and significance']],
+    place:     [['history','History'],['geography','Geography'],['government','Government'],['economy','Economy'],['culture','Culture and landmarks']],
+    institution:[['history','History'],['structure','Structure and function'],['role','Role and significance'],['leadership','Leadership']],
+    list:      [['list','The List']],
+  };
+  const sections = TOC_SECTIONS[type] || TOC_SECTIONS.biography;
+  const tocItems = sections.map(([id, label]) => `        <li><a href="#${id}">${label}</a></li>`).join('\n');
+  const proseSections = sections.map(([id, label]) => `
+      <h2 class="ndx-section-head" id="${id}">${label}</h2>
+      <p>[${label.toUpperCase()} — Fill in content here.]</p>`).join('\n');
+
   const catLinks = cats.map(c => `<a href="#">${c}</a>`).join('\n        ');
 
   generatedHTML = `<!DOCTYPE html>
@@ -300,9 +375,7 @@ function generateArticle() {
     <div class="ndx-toc">
       <div class="ndx-toc-title">Contents</div>
       <ol>
-        <li><a href="#section1">[SECTION 1]</a></li>
-        <li><a href="#section2">[SECTION 2]</a></li>
-        <li><a href="#section3">[SECTION 3]</a></li>
+${tocItems}
       </ol>
     </div>
 
@@ -311,15 +384,7 @@ function generateArticle() {
       <p><strong>${title}</strong> [OPENING PARAGRAPH — who/what this is, why it matters, key facts.]</p>
 
       <p>[SECOND PARAGRAPH — expand on significance.]</p>
-
-      <h2 class="ndx-section-head" id="section1">[SECTION 1 TITLE]</h2>
-      <p>[Section content here.]</p>
-
-      <h2 class="ndx-section-head" id="section2">[SECTION 2 TITLE]</h2>
-      <p>[Section content here.]</p>
-
-      <h2 class="ndx-section-head" id="section3">[SECTION 3 TITLE]</h2>
-      <p>[Section content here.]</p>
+${proseSections}
 
       <div class="ndx-categories">
         <strong>Categories:</strong>
@@ -333,14 +398,13 @@ function generateArticle() {
     <div class="ndx-infobox">
       ${imgHTML}
       <div class="ndx-infobox-title">${title}</div>
-      <div class="ndx-infobox-sub">[SUBTITLE]</div>
-      <div class="ndx-infobox-row"><span class="ndx-infobox-label">[Field]</span><span class="ndx-infobox-val">[Value]</span></div>
-      <div class="ndx-infobox-row"><span class="ndx-infobox-label">[Field]</span><span class="ndx-infobox-val">[Value]</span></div>
-      <div class="ndx-infobox-row"><span class="ndx-infobox-label">[Field]</span><span class="ndx-infobox-val">[Value]</span></div>
+      <div class="ndx-infobox-sub">${sub || '[SUBTITLE]'}</div>
+${rows}
     </div>
     <div class="ndx-widget">
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
+        <a class="ndx-widget-link" href="#">[Related Article]</a>
         <a class="ndx-widget-link" href="#">[Related Article]</a>
         <a class="ndx-widget-link" href="#">[Related Article]</a>
       </div>
