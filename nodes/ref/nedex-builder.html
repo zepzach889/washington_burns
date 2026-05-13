@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>Nedex Article Builder — WBT Ref</title>
+<link rel="stylesheet" href="../../shared.css">
+<style>
+  :root { --ref-dark: #1A1410; --ref-gold: #C8962A; --ref-gold-light: #D4AE4A; }
+  .ref-header { background: var(--ref-dark); padding: 16px 24px; border-bottom: 2px solid var(--ref-gold); display: flex; align-items: center; gap: 12px; }
+  .ref-header-title { font-family: "DM Serif Display", serif; font-size: 20px; color: var(--ref-gold-light); }
+  .ref-header-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; font-family: monospace; }
+  .ref-back { font-size: 11px; color: rgba(255,255,255,0.45); text-decoration: none; margin-left: auto; }
+  .ref-back:hover { color: var(--ref-gold-light); }
+  .ref-body { max-width: 800px; margin: 0 auto; padding: 28px 24px 48px; }
+  .ref-section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1.5px solid var(--ref-gold); }
+  .ref-form { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 24px; }
+  .ref-field { margin-bottom: 14px; }
+  .ref-label { font-size: 11px; font-weight: 700; color: var(--text-secondary); margin-bottom: 4px; display: block; letter-spacing: 0.04em; }
+  .ref-label span { font-weight: 400; color: var(--text-tertiary); margin-left: 4px; }
+  .ref-input { width: 100%; box-sizing: border-box; padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px; font-family: "DM Sans", sans-serif; color: var(--text-primary); background: var(--bg-secondary); outline: none; transition: border-color 0.1s; }
+  .ref-input:focus { border-color: var(--ref-gold); background: #fff; }
+  textarea.ref-input { resize: vertical; min-height: 70px; line-height: 1.5; }
+  select.ref-input { cursor: pointer; }
+  .ref-btn { background: var(--ref-gold); color: #fff; border: none; padding: 10px 20px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: "DM Sans", sans-serif; transition: background 0.1s; }
+  .ref-btn:hover { background: var(--ref-gold-light); }
+  .ref-btn-secondary { background: var(--text-secondary); margin-left: 8px; }
+  .ref-output { background: #1A1A1A; border-radius: 8px; padding: 16px; margin-top: 20px; display: none; }
+  .ref-output-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ref-gold); margin-bottom: 8px; }
+  .ref-output pre { color: #C8FFAA; font-family: monospace; font-size: 12px; line-height: 1.6; white-space: pre-wrap; word-break: break-all; margin: 0; }
+  .ref-copy-btn { background: #2A2A2A; color: rgba(255,255,255,0.7); border: 0.5px solid #444; padding: 6px 14px; border-radius: 4px; font-size: 11px; cursor: pointer; margin-top: 10px; font-family: "DM Sans", sans-serif; }
+  .ref-copy-btn:hover { background: #3A3A3A; color: #fff; }
+  .ref-copied { color: #C8FFAA; font-size: 11px; margin-left: 8px; display: none; }
+  .ref-pool-select { margin-bottom: 20px; }
+  .ref-fields { }
+  .ref-status-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+</style>
+<style>
+  .ref-dl-btn { background: #2D5A1A; color: #fff; border: none; padding: 10px 20px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: "DM Sans", sans-serif; transition: background 0.1s; margin-top: 12px; display: inline-block; }
+  .ref-dl-btn:hover { background: #3D7A24; }
+  .ref-index-box { background: #1A1A1A; border-radius: 8px; padding: 16px; margin-top: 20px; }
+  .ref-index-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ref-gold); margin-bottom: 8px; }
+  .ref-index-pre { color: #C8FFAA; font-family: monospace; font-size: 12px; line-height: 1.6; white-space: pre-wrap; margin: 0; }
+  .ref-tag-input { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 6px; }
+  .ref-tag { background: #E8F5E9; color: #2D5A1A; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px; }
+  .ref-tag-remove { cursor: pointer; color: #999; font-size: 13px; line-height: 1; }
+  .ref-tag-remove:hover { color: #c00; }
+  .ref-add-tag { padding: 4px 10px; border: 1px solid var(--border); border-radius: 4px; font-size: 12px; font-family: "DM Sans", sans-serif; outline: none; }
+  .ref-add-tag:focus { border-color: var(--ref-gold); }
+  .ref-step { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+  .ref-step-num { width: 20px; height: 20px; border-radius: 50%; background: var(--ref-gold); color: #fff; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+</div>
+
+<div class="ref-header">
+  <div>
+    <div class="ref-header-title">Nedex Article Builder</div>
+    <div class="ref-header-sub">nan.div814.gov.usa/nedex-builder · Generates starter HTML + nedex_index.js entry</div>
+  </div>
+  <a class="ref-back" href="index.html">← Reference Portal</a>
+</div>
+
+<div class="ref-body">
+  <div class="ref-section-label">Article Details</div>
+  <div class="ref-form">
+    <div class="ref-field">
+      <label class="ref-label" for="art-type">Article Type</label>
+      <select class="ref-input" id="art-type" onchange="updateFields()">
+        <option value="biography">Biography</option>
+        <option value="country">Country / Nation</option>
+        <option value="event">Historical Event</option>
+        <option value="place">Place / City</option>
+        <option value="institution">Institution</option>
+        <option value="list">List Article</option>
+      </select>
+    </div>
+    <div class="ref-field">
+      <label class="ref-label" for="art-title">Article Title <span>Full name as it will appear on Nedex</span></label>
+      <input class="ref-input" type="text" id="art-title" placeholder="e.g. Henry Freeman" />
+    </div>
+    <div class="ref-field">
+      <label class="ref-label" for="art-slug">URL Slug <span>Filename without .html — lowercase, hyphens only</span></label>
+      <input class="ref-input" type="text" id="art-slug" placeholder="e.g. henry-freeman" />
+    </div>
+    <div class="ref-field">
+      <label class="ref-label" for="art-subtitle">Article Subtitle <span>Brief descriptor shown under the title</span></label>
+      <input class="ref-input" type="text" id="art-subtitle" placeholder="e.g. 30th President of the United States · 1941–1947" />
+    </div>
+    <div class="ref-field">
+      <label class="ref-label" for="art-blurb">One-line Blurb <span>For the Nedex browse/search index</span></label>
+      <input class="ref-input" type="text" id="art-blurb" placeholder="e.g. First elected Black president of the United States (1941–1947)." />
+    </div>
+    <div class="ref-field">
+      <label class="ref-label">Categories <span>Press Enter or comma to add</span></label>
+      <div class="ref-tag-input" id="cat-tags"></div>
+      <input class="ref-add-tag" type="text" id="cat-input" placeholder="Add category…" onkeydown="handleCatKey(event)" />
+      <div style="margin-top:6px;font-size:11px;color:var(--text-tertiary);">Suggested: Biographies · Countries · History · Lists · Presidents of the United States · NAU member states · etc.</div>
+    </div>
+    <div class="ref-field">
+      <label class="ref-label" for="art-image">Infobox Image Filename <span>Leave blank if none yet</span></label>
+      <input class="ref-input" type="text" id="art-image" placeholder="e.g. 30-Photo-Freeman.png" />
+    </div>
+    <div id="type-fields"></div>
+    <div style="margin-top:8px;">
+      <button class="ref-btn" onclick="generateArticle()">Generate Article</button>
+      <button class="ref-dl-btn" onclick="downloadArticle()">Download HTML File</button>
+      <button class="ref-btn ref-btn-secondary" style="margin-left:8px;" onclick="clearAll()">Clear</button>
+    </div>
+  </div>
+
+  <div id="output-area" style="display:none;">
+    <div class="ref-section-label">nedex_index.js Entry</div>
+    <div class="ref-form">
+      <p style="font-size:12px;color:var(--text-secondary);margin-bottom:12px;">Add this line to the <code>NEDEX_ARTICLES</code> array in <code>nedex_index.js</code>:</p>
+      <div class="ref-index-box">
+        <pre class="ref-index-pre" id="index-entry"></pre>
+      </div>
+      <button class="ref-copy-btn" onclick="copyIndex()" style="margin-top:10px;">Copy Index Entry</button>
+      <span class="ref-copied" id="copied-index">✓ Copied!</span>
+    </div>
+
+    <div class="ref-section-label" style="margin-top:24px;">Next Steps</div>
+    <div class="ref-form">
+      <div class="ref-step"><div class="ref-step-num">1</div> Download the HTML file using the button above — it opens in a new tab, save with Cmd+S</div>
+      <div class="ref-step"><div class="ref-step-num">2</div> Upload to <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:3px;">nodes/nedex/</code> on GitHub</div>
+      <div class="ref-step"><div class="ref-step-num">3</div> Add the index entry above to <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:3px;">nedex_index.js</code></div>
+      <div class="ref-step"><div class="ref-step-num">4</div> Add to <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:3px;">router.js</code>: <code style="background:var(--bg-secondary);padding:1px 5px;border-radius:3px;" id="router-hint"></code></div>
+      <div class="ref-step"><div class="ref-step-num">5</div> Fill in the prose sections in the downloaded file — all placeholder text is marked in [SQUARE BRACKETS]</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="wm-footer">
+  <span>nan.div814.gov.usa/nedex-builder · WBT Reference Portal · Private</span>
+</div>
+
+<script src="../../router.js"></script>
+<script>
+initAddressBar('nan.div814.gov.usa/nedex-builder');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = days[n.getDay()] + ' ' + n.getDate() + ' · ' + hh + ':' + mm;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+<script>
+const categories = [];
+
+function handleCatKey(e) {
+  if (e.key === 'Enter' || e.key === ',') {
+    e.preventDefault();
+    const val = document.getElementById('cat-input').value.trim().replace(/,$/, '');
+    if (val && !categories.includes(val)) {
+      categories.push(val);
+      renderTags();
+    }
+    document.getElementById('cat-input').value = '';
+  }
+}
+
+function removeTag(cat) {
+  const idx = categories.indexOf(cat);
+  if (idx > -1) categories.splice(idx, 1);
+  renderTags();
+}
+
+function renderTags() {
+  document.getElementById('cat-tags').innerHTML = categories.map(c =>
+    `<span class="ref-tag">${c} <span class="ref-tag-remove" onclick="removeTag('${c}')">×</span></span>`
+  ).join('');
+}
+
+function updateFields() {
+  // Could add type-specific fields here in future
+  document.getElementById('type-fields').innerHTML = '';
+}
+
+let generatedHTML = '';
+
+function generateArticle() {
+  const title = document.getElementById('art-title').value.trim();
+  const slug  = document.getElementById('art-slug').value.trim();
+  const sub   = document.getElementById('art-subtitle').value.trim();
+  const blurb = document.getElementById('art-blurb').value.trim();
+  const type  = document.getElementById('art-type').value;
+  const image = document.getElementById('art-image').value.trim();
+  const cats  = [...categories];
+
+  if (!title || !slug) {
+    alert('Please fill in at least the Article Title and URL Slug.');
+    return;
+  }
+
+  const imgHTML = image
+    ? `<div class="ndx-infobox-img"><img src="../../images/nedex/${image}" alt="${title}" /></div>`
+    : `<div class="ndx-infobox-img" style="font-size:48px;display:flex;align-items:center;justify-content:center;height:120px;">📄</div>`;
+
+  const catLinks = cats.map(c => `<a href="#">${c}</a>`).join('\n        ');
+
+  generatedHTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>${title} — Nedex</title>
+<link rel="stylesheet" href="../../shared.css">
+<link rel="stylesheet" href="nedex.css">
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+</div>
+
+<div class="ndx-header">
+  <a class="ndx-logo" href="./">Nedex</a>
+  <span class="ndx-tagline">The Free Encyclopaedia</span>
+  <div class="ndx-search-wrap">
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" />
+    <button class="ndx-search-btn">Search</button>
+  </div>
+</div>
+
+<div class="ndx-subnav">
+  <a href="./">Main Page</a>
+  <a href="#" class="active">Article</a>
+  <a href="#">Talk</a>
+  <a href="#">Edit</a>
+  <a href="#">History</a>
+</div>
+
+<div class="ndx-article-wrap">
+  <div class="ndx-article-body">
+
+    <div class="ndx-article-title">${title}</div>
+    <div class="ndx-article-subtitle">${sub || '[SUBTITLE — brief descriptor]'}</div>
+
+    <div class="ndx-toc">
+      <div class="ndx-toc-title">Contents</div>
+      <ol>
+        <li><a href="#section1">[SECTION 1]</a></li>
+        <li><a href="#section2">[SECTION 2]</a></li>
+        <li><a href="#section3">[SECTION 3]</a></li>
+      </ol>
+    </div>
+
+    <div class="ndx-prose">
+
+      <p><strong>${title}</strong> [OPENING PARAGRAPH — who/what this is, why it matters, key facts.]</p>
+
+      <p>[SECOND PARAGRAPH — expand on significance.]</p>
+
+      <h2 class="ndx-section-head" id="section1">[SECTION 1 TITLE]</h2>
+      <p>[Section content here.]</p>
+
+      <h2 class="ndx-section-head" id="section2">[SECTION 2 TITLE]</h2>
+      <p>[Section content here.]</p>
+
+      <h2 class="ndx-section-head" id="section3">[SECTION 3 TITLE]</h2>
+      <p>[Section content here.]</p>
+
+      <div class="ndx-categories">
+        <strong>Categories:</strong>
+        ${catLinks || '<a href="#">[CATEGORY]</a>'}
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ndx-article-sidebar">
+    <div class="ndx-infobox">
+      ${imgHTML}
+      <div class="ndx-infobox-title">${title}</div>
+      <div class="ndx-infobox-sub">[SUBTITLE]</div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">[Field]</span><span class="ndx-infobox-val">[Value]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">[Field]</span><span class="ndx-infobox-val">[Value]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">[Field]</span><span class="ndx-infobox-val">[Value]</span></div>
+    </div>
+    <div class="ndx-widget">
+      <div class="ndx-widget-head">See Also</div>
+      <div class="ndx-widget-body">
+        <a class="ndx-widget-link" href="#">[Related Article]</a>
+        <a class="ndx-widget-link" href="#">[Related Article]</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ndx-footer">
+  <span>link://nan.nedex.org.nau/${slug} &nbsp;·&nbsp; Nedex — The Free Encyclopaedia</span>
+  <div class="ndx-footer-links">
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"><\/script>
+<script src="nedex_index.js"><\/script>
+<script>
+initAddressBar('nan.nedex.org.nau/${slug}');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = days[n.getDay()] + ' ' + n.getDate() + ' · ' + hh + ':' + mm;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+<\/script>
+</body>
+</html>`;
+
+  // Index entry
+  const catsStr = cats.map(c => `'${c}'`).join(', ');
+  const indexEntry = `  { title: '${title}', file: '${slug}.html', categories: [${catsStr}], blurb: '${blurb || '[ADD BLURB]'}' },`;
+  document.getElementById('index-entry').textContent = indexEntry;
+  document.getElementById('router-hint').textContent = `'nan.nedex.org.nau/${slug}': '/nodes/nedex/${slug}.html',`;
+  document.getElementById('output-area').style.display = 'block';
+  document.getElementById('output-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function downloadArticle() {
+  if (!generatedHTML) { generateArticle(); }
+  if (!generatedHTML) return;
+  const slug = document.getElementById('art-slug').value.trim() || 'nedex-article';
+  const blob = new Blob([generatedHTML], { type: 'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = slug + '.html';
+  a.click();
+}
+
+function copyIndex() {
+  const text = document.getElementById('index-entry').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const msg = document.getElementById('copied-index');
+    msg.style.display = 'inline';
+    setTimeout(() => msg.style.display = 'none', 2000);
+  });
+}
+
+function clearAll() {
+  document.getElementById('art-title').value = '';
+  document.getElementById('art-slug').value = '';
+  document.getElementById('art-subtitle').value = '';
+  document.getElementById('art-blurb').value = '';
+  document.getElementById('art-image').value = '';
+  categories.length = 0;
+  renderTags();
+  document.getElementById('output-area').style.display = 'none';
+  generatedHTML = '';
+}
+</script>
+</body>
+</html>

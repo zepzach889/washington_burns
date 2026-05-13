@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>Story Editor — WBT Ref</title>
+<link rel="stylesheet" href="../../shared.css">
+<style>
+  :root { --ref-dark: #1A1410; --ref-gold: #C8962A; --ref-gold-light: #D4AE4A; }
+  .ref-header { background: var(--ref-dark); padding: 16px 24px; border-bottom: 2px solid var(--ref-gold); display: flex; align-items: center; gap: 12px; }
+  .ref-header-title { font-family: "DM Serif Display", serif; font-size: 20px; color: var(--ref-gold-light); }
+  .ref-header-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; font-family: monospace; }
+  .ref-back { font-size: 11px; color: rgba(255,255,255,0.45); text-decoration: none; margin-left: auto; }
+  .ref-back:hover { color: var(--ref-gold-light); }
+  .ref-body { max-width: 800px; margin: 0 auto; padding: 28px 24px 48px; }
+  .ref-section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1.5px solid var(--ref-gold); }
+  .ref-form { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 24px; }
+  .ref-field { margin-bottom: 14px; }
+  .ref-label { font-size: 11px; font-weight: 700; color: var(--text-secondary); margin-bottom: 4px; display: block; letter-spacing: 0.04em; }
+  .ref-label span { font-weight: 400; color: var(--text-tertiary); margin-left: 4px; }
+  .ref-input { width: 100%; box-sizing: border-box; padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px; font-family: "DM Sans", sans-serif; color: var(--text-primary); background: var(--bg-secondary); outline: none; transition: border-color 0.1s; }
+  .ref-input:focus { border-color: var(--ref-gold); background: #fff; }
+  textarea.ref-input { resize: vertical; min-height: 70px; line-height: 1.5; }
+  select.ref-input { cursor: pointer; }
+  .ref-btn { background: var(--ref-gold); color: #fff; border: none; padding: 10px 20px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: "DM Sans", sans-serif; transition: background 0.1s; }
+  .ref-btn:hover { background: var(--ref-gold-light); }
+  .ref-btn-secondary { background: var(--text-secondary); margin-left: 8px; }
+  .ref-output { background: #1A1A1A; border-radius: 8px; padding: 16px; margin-top: 20px; display: none; }
+  .ref-output-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ref-gold); margin-bottom: 8px; }
+  .ref-output pre { color: #C8FFAA; font-family: monospace; font-size: 12px; line-height: 1.6; white-space: pre-wrap; word-break: break-all; margin: 0; }
+  .ref-copy-btn { background: #2A2A2A; color: rgba(255,255,255,0.7); border: 0.5px solid #444; padding: 6px 14px; border-radius: 4px; font-size: 11px; cursor: pointer; margin-top: 10px; font-family: "DM Sans", sans-serif; }
+  .ref-copy-btn:hover { background: #3A3A3A; color: #fff; }
+  .ref-copied { color: #C8FFAA; font-size: 11px; margin-left: 8px; display: none; }
+  .ref-pool-select { margin-bottom: 20px; }
+  .ref-fields { }
+  .ref-status-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+</style>
+</head>
+<body>
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+</div>
+
+<div class="ref-header">
+  <div>
+    <div class="ref-header-title">Story Editor</div>
+    <div class="ref-header-sub">nan.div814.gov.usa/stories · Generates stories.js objects</div>
+  </div>
+  <a class="ref-back" href="index.html">← Reference Portal</a>
+</div>
+
+<div class="ref-body">
+  <div class="ref-section-label">Select Story Pool</div>
+  <div class="ref-form ref-pool-select">
+    <div class="ref-field">
+      <label class="ref-label">Story Pool</label>
+      <select class="ref-input" id="pool-select" onchange="switchPool()">
+        <optgroup label="Franklin Observer">
+          <option value="fo_lead">FO Lead Story</option>
+          <option value="fo_national">FO National Story</option>
+          <option value="fo_world">FO World Story</option>
+        </optgroup>
+        <optgroup label="ABN News">
+          <option value="abn_lead">ABN Lead Story</option>
+          <option value="abn_card">ABN Card Story</option>
+          <option value="abn_world">ABN World Story</option>
+          <option value="abn_mostread">ABN Most Read</option>
+        </optgroup>
+        <optgroup label="Washington House">
+          <option value="wh_statement">WH Presidential Statement</option>
+          <option value="wh_briefing">WH Briefing Room Item</option>
+        </optgroup>
+        <optgroup label="Museum of the US">
+          <option value="mus_event">Museum Event</option>
+        </optgroup>
+        <optgroup label="NAU Assembly">
+          <option value="nau_banner">NAU Floor Banner</option>
+          <option value="nau_bill">NAU Bill</option>
+        </optgroup>
+      </select>
+    </div>
+  </div>
+
+  <div class="ref-section-label">Story Fields</div>
+  <div class="ref-form" id="story-form">
+    <div id="fields-container"></div>
+    <div style="margin-top:8px;">
+      <button class="ref-btn" onclick="generateCode()">Generate Code</button>
+      <button class="ref-btn ref-btn-secondary" onclick="clearFields()">Clear</button>
+    </div>
+    <div class="ref-output" id="output">
+      <div class="ref-output-label">Copy and paste into <code style="color:#fff;background:#333;padding:1px 5px;border-radius:3px;">stories.js</code> — <span id="output-pool-label" style="color:var(--ref-gold);"></span></div>
+      <pre id="output-code"></pre>
+      <button class="ref-copy-btn" onclick="copyCode()">Copy to Clipboard</button>
+      <span class="ref-copied" id="copied-msg">✓ Copied!</span>
+    </div>
+  </div>
+</div>
+
+<div class="wm-footer">
+  <span>nan.div814.gov.usa/stories · WBT Reference Portal · Private</span>
+</div>
+
+<script src="../../router.js"></script>
+<script>
+initAddressBar('nan.div814.gov.usa/stories');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = days[n.getDay()] + ' ' + n.getDate() + ' · ' + hh + ':' + mm;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+<script>
+const POOLS = {
+  fo_lead: {
+    label: 'FO_LEADS array',
+    fields: [
+      { id: 'hed', label: 'Headline', hint: 'Main story headline', type: 'text' },
+      { id: 'dek', label: 'Dek', hint: 'Summary paragraph (2-3 sentences)', type: 'textarea' },
+      { id: 'meta', label: 'Meta', hint: 'e.g. "Franklin Observer Staff · 13 May 2026"', type: 'text' },
+    ],
+    template: (f) => `  {
+    hed:  '${esc(f.hed)}',
+    dek:  '${esc(f.dek)}',
+    meta: '${esc(f.meta)}',
+  },`
+  },
+  fo_national: {
+    label: 'FO_NATIONAL array',
+    fields: [
+      { id: 'hed', label: 'Headline', hint: 'Story headline', type: 'text' },
+      { id: 'dek', label: 'Dek', hint: 'Summary (1-2 sentences)', type: 'textarea' },
+      { id: 'meta', label: 'Meta', hint: 'e.g. "National Desk · 13 May 2026"', type: 'text' },
+    ],
+    template: (f) => `  {
+    hed:  '${esc(f.hed)}',
+    dek:  '${esc(f.dek)}',
+    meta: '${esc(f.meta)}',
+  },`
+  },
+  fo_world: {
+    label: 'FO_WORLD array',
+    fields: [
+      { id: 'hed', label: 'Headline', hint: 'Story headline', type: 'text' },
+      { id: 'dek', label: 'Dek', hint: 'Summary (1-2 sentences)', type: 'textarea' },
+      { id: 'meta', label: 'Meta', hint: 'e.g. "World Desk · 13 May 2026"', type: 'text' },
+    ],
+    template: (f) => `  {
+    hed:  '${esc(f.hed)}',
+    dek:  '${esc(f.dek)}',
+    meta: '${esc(f.meta)}',
+  },`
+  },
+  abn_lead: {
+    label: 'ABN_LEADS array',
+    fields: [
+      { id: 'hed', label: 'Headline', hint: 'Breaking news headline', type: 'text' },
+      { id: 'dek', label: 'Dek', hint: 'Summary (1-2 sentences)', type: 'textarea' },
+      { id: 'tag', label: 'Tag', hint: 'e.g. "BREAKING", "DEVELOPING", "EXCLUSIVE"', type: 'text' },
+      { id: 'meta', label: 'Meta', hint: 'e.g. "ABN News Desk · 13 May 2026"', type: 'text' },
+    ],
+    template: (f) => `  {
+    hed:  '${esc(f.hed)}',
+    dek:  '${esc(f.dek)}',
+    tag:  '${esc(f.tag)}',
+    meta: '${esc(f.meta)}',
+  },`
+  },
+  abn_card: {
+    label: 'ABN_CARDS array',
+    fields: [
+      { id: 'hed', label: 'Headline', hint: 'Story headline', type: 'text' },
+      { id: 'dek', label: 'Dek', hint: 'Summary (1-2 sentences)', type: 'textarea' },
+      { id: 'tag', label: 'Tag', hint: 'e.g. "POLITICS", "ECONOMY", "WORLD"', type: 'text' },
+      { id: 'meta', label: 'Meta', hint: 'e.g. "ABN Politics · 13 May 2026"', type: 'text' },
+    ],
+    template: (f) => `  {
+    hed:  '${esc(f.hed)}',
+    dek:  '${esc(f.dek)}',
+    tag:  '${esc(f.tag)}',
+    meta: '${esc(f.meta)}',
+  },`
+  },
+  abn_world: {
+    label: 'ABN_WORLD array',
+    fields: [
+      { id: 'hed', label: 'Headline', hint: 'World news headline', type: 'text' },
+      { id: 'dek', label: 'Dek', hint: 'Summary (1-2 sentences)', type: 'textarea' },
+      { id: 'tag', label: 'Tag', hint: 'e.g. "UER", "RUSSIA", "BRITAIN"', type: 'text' },
+      { id: 'meta', label: 'Meta', hint: 'e.g. "ABN World Desk · 13 May 2026"', type: 'text' },
+    ],
+    template: (f) => `  {
+    hed:  '${esc(f.hed)}',
+    dek:  '${esc(f.dek)}',
+    tag:  '${esc(f.tag)}',
+    meta: '${esc(f.meta)}',
+  },`
+  },
+  abn_mostread: {
+    label: 'ABN_MOSTREAD array',
+    fields: [
+      { id: 'hed', label: 'Headline', hint: 'Article headline for most read list', type: 'text' },
+    ],
+    template: (f) => `  '${esc(f.hed)}',`
+  },
+  wh_statement: {
+    label: 'STATEMENTS array (Washington House index.html)',
+    fields: [
+      { id: 'label', label: 'Label', hint: 'e.g. "Statement from the President"', type: 'text' },
+      { id: 'date', label: 'Date', hint: 'e.g. "13 May 2026"', type: 'text' },
+      { id: 'text', label: 'Statement Text', hint: 'The full quote — include surrounding quotes in the text', type: 'textarea' },
+      { id: 'attr', label: 'Attribution', hint: 'e.g. "— President Nakamura, on X · Office of Communications"', type: 'text' },
+    ],
+    template: (f) => `  {
+    label: '${esc(f.label)}',
+    date:  '${esc(f.date)}',
+    text:  '${esc(f.text)}',
+    attr:  '${esc(f.attr)}',
+  },`
+  },
+  wh_briefing: {
+    label: 'ALL_BRIEFING array (Washington House index.html)',
+    fields: [
+      { id: 'title', label: 'Title', hint: 'Briefing room headline', type: 'text' },
+      { id: 'meta', label: 'Meta', hint: 'e.g. "Office of the Press Secretary · 13 May 2026"', type: 'text' },
+    ],
+    template: (f) => `  { title: '${esc(f.title)}', meta: '${esc(f.meta)}' },`
+  },
+  mus_event: {
+    label: 'ALL_EVENTS array (Museum index.html)',
+    fields: [
+      { id: 'title', label: 'Event Title', hint: 'Name of the event or programme', type: 'text' },
+      { id: 'time', label: 'Time', hint: 'e.g. "2:00 p.m."', type: 'text' },
+    ],
+    template: (f) => `  { title: '${esc(f.title)}', time: '${esc(f.time)}' },`
+  },
+  nau_banner: {
+    label: 'FLOOR_BANNERS array (NAU Assembly index.html)',
+    fields: [
+      { id: 'label', label: 'Banner Label', hint: 'e.g. "Assembly Floor — Now in Debate"', type: 'text' },
+      { id: 'bill', label: 'Bill / Motion', hint: 'e.g. "NAU/18-042 — Continental Currency Stabilisation Framework"', type: 'text' },
+      { id: 'meta', label: 'Meta', hint: 'e.g. "Second reading · Economic Affairs Committee · Est. vote: 15:00"', type: 'text' },
+    ],
+    template: (f) => `  { label: '${esc(f.label)}', bill: '${esc(f.bill)}', meta: '${esc(f.meta)}' },`
+  },
+  nau_bill: {
+    label: 'ALL_BILLS array (NAU Assembly index.html)',
+    fields: [
+      { id: 'num', label: 'Bill Number', hint: 'e.g. "NAU/18-099"', type: 'text' },
+      { id: 'title', label: 'Bill Title', hint: 'Full name of the bill', type: 'text' },
+      { id: 'desc', label: 'Description', hint: '2-3 sentence summary of the bill', type: 'textarea' },
+      { id: 'status', label: 'Status Class', hint: 'CSS class: committee / floor / passed / failed', type: 'text' },
+      { id: 'statusLabel', label: 'Status Label', hint: 'e.g. "On Floor", "Constitutional Committee", "Passed Committee"', type: 'text' },
+      { id: 'sponsor', label: 'Sponsors', hint: 'e.g. "Mbr. Smith (Lab.–USA), Mbr. Jones (Un.–Canada)"', type: 'text' },
+    ],
+    template: (f) => `  {
+    num: '${esc(f.num)}',
+    title: '${esc(f.title)}',
+    desc: '${esc(f.desc)}',
+    status: '${esc(f.status)}',
+    statusLabel: '${esc(f.statusLabel)}',
+    sponsor: '${esc(f.sponsor)}',
+  },`
+  },
+};
+
+function esc(str) {
+  return (str || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, ' ');
+}
+
+function switchPool() {
+  const pool = POOLS[document.getElementById('pool-select').value];
+  const container = document.getElementById('fields-container');
+  container.innerHTML = pool.fields.map(f => `
+    <div class="ref-field">
+      <label class="ref-label" for="f-${f.id}">${f.label} <span>${f.hint}</span></label>
+      ${f.type === 'textarea'
+        ? `<textarea class="ref-input" id="f-${f.id}" rows="3"></textarea>`
+        : `<input class="ref-input" type="text" id="f-${f.id}" />`
+      }
+    </div>
+  `).join('');
+  document.getElementById('output').style.display = 'none';
+}
+
+function generateCode() {
+  const poolKey = document.getElementById('pool-select').value;
+  const pool = POOLS[poolKey];
+  const values = {};
+  pool.fields.forEach(f => {
+    values[f.id] = document.getElementById('f-' + f.id).value.trim();
+  });
+  const code = pool.template(values);
+  document.getElementById('output-pool-label').textContent = 'Add to: ' + pool.label;
+  document.getElementById('output-code').textContent = code;
+  document.getElementById('output').style.display = 'block';
+  document.getElementById('output').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function clearFields() {
+  document.querySelectorAll('.ref-input:not(select)').forEach(el => el.value = '');
+  document.getElementById('output').style.display = 'none';
+}
+
+function copyCode() {
+  const code = document.getElementById('output-code').textContent;
+  navigator.clipboard.writeText(code).then(() => {
+    const msg = document.getElementById('copied-msg');
+    msg.style.display = 'inline';
+    setTimeout(() => msg.style.display = 'none', 2000);
+  });
+}
+
+// Init
+switchPool();
+</script>
+</body>
+</html>
