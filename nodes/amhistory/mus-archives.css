@@ -1,0 +1,49 @@
+:root { --mus-brown: #2C1810; --mus-brown-mid: #5D3A1A; --mus-gold: #C8962A; --mus-gold-light: #D4AE4A; }
+
+.mus-hero { background: var(--mus-brown); color: #fff; padding: 36px 24px 28px; position: relative; overflow: hidden; }
+.mus-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--mus-gold), var(--mus-brown-mid), var(--mus-gold)); }
+.mus-kicker { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px; font-weight: 600; }
+.mus-title { font-family: "DM Serif Display", serif; font-size: 38px; letter-spacing: -0.01em; line-height: 1.1; }
+.mus-subtitle { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 8px; }
+
+.mus-nav { display: flex; gap: 0; background: #3D2010; overflow-x: auto; }
+.mus-nav a { font-size: 12px; color: rgba(255,255,255,0.65); text-decoration: none; padding: 10px 18px; font-weight: 500; white-space: nowrap; transition: all 0.1s; border-right: 0.5px solid rgba(255,255,255,0.08); }
+.mus-nav a:hover { background: rgba(255,255,255,0.07); color: #fff; }
+.mus-nav a.active { color: var(--mus-gold); border-bottom: 2px solid var(--mus-gold); }
+
+/* ARCHIVES LANDING */
+.arc-body { max-width: 900px; margin: 0 auto; padding: 32px 24px 48px; }
+.arc-intro { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 28px; }
+.arc-doc-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+.arc-doc-card { background: #fff; border: 0.5px solid var(--border); border-top: 3px solid var(--mus-gold); border-radius: 8px; padding: 18px; text-decoration: none; transition: box-shadow 0.1s; display: block; }
+.arc-doc-card:hover { box-shadow: 0 3px 14px rgba(0,0,0,0.1); }
+.arc-doc-icon { font-size: 30px; margin-bottom: 10px; }
+.arc-doc-title { font-family: "DM Serif Display", serif; font-size: 16px; color: var(--text-primary); margin-bottom: 4px; line-height: 1.3; }
+.arc-doc-date { font-size: 11px; color: var(--mus-gold); font-weight: 700; margin-bottom: 8px; }
+.arc-doc-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+
+/* DOCUMENT PAGE */
+.arc-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--mus-brown-mid); text-decoration: none; font-weight: 600; margin-bottom: 20px; padding: 32px 24px 0; display: block; }
+.arc-back:hover { color: var(--mus-brown); }
+
+.arc-doc-header { background: linear-gradient(135deg, #1A0F08 0%, #2C1810 100%); padding: 28px 36px 24px; color: #fff; border-bottom: 2px solid var(--mus-gold); }
+.arc-doc-header-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mus-gold); margin-bottom: 8px; }
+.arc-doc-header-title { font-family: "DM Serif Display", serif; font-size: 30px; line-height: 1.2; margin-bottom: 6px; }
+.arc-doc-header-meta { font-size: 12px; color: rgba(255,255,255,0.6); }
+.arc-doc-header-img { width: 100%; max-height: 260px; object-fit: cover; margin-top: 18px; border-radius: 4px; opacity: 0.85; display: block; }
+
+.arc-doc-body { max-width: 900px; margin: 0 auto; padding: 32px 36px 48px; background: #FDFAF6; font-family: Georgia, serif; font-size: 14px; line-height: 1.9; color: #1A1A1A; }
+.arc-preamble { font-size: 15px; font-style: italic; color: #3A2A1A; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid #D4C4A8; line-height: 1.8; }
+.arc-article { font-family: "DM Serif Display", serif; font-size: 20px; color: var(--mus-brown); margin: 32px 0 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--mus-gold); }
+.arc-section { font-family: "DM Serif Display", serif; font-size: 15px; color: var(--mus-brown-mid); margin: 20px 0 6px; font-style: italic; }
+.arc-para { margin-bottom: 14px; }
+.arc-clause { margin-bottom: 10px; padding-left: 24px; border-left: 2px solid #D4C4A8; margin-left: 8px; }
+.arc-divider { border: none; border-top: 1px solid #D4C4A8; margin: 28px 0; }
+
+.arc-annotation { background: #FFF8E6; border: 0.5px solid #D4AE4A; border-left: 4px solid var(--mus-gold); border-radius: 0 6px 6px 0; padding: 12px 16px; margin: 20px 0; font-family: "DM Sans", sans-serif; font-size: 12px; color: #4A3000; line-height: 1.6; }
+.arc-annotation-head { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mus-gold); margin-bottom: 5px; }
+
+.arc-visitor-note { background: linear-gradient(135deg, #1A0F08, #2C1810); border-radius: 8px; padding: 16px 20px; color: rgba(255,255,255,0.8); font-size: 12px; line-height: 1.6; margin-bottom: 28px; border: 0.5px solid var(--mus-gold); }
+.arc-visitor-note strong { color: var(--mus-gold); display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+
+@media (max-width: 700px) { .arc-doc-grid { grid-template-columns: 1fr; } .arc-doc-body { padding: 20px; } }
