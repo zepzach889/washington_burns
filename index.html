@@ -59,9 +59,17 @@
   .wm-widget { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; }
   .wm-widget-head { background: var(--bg-tertiary); padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
   .wm-widget-body { padding: 12px; }
-  .wm-temp { font-size: 30px; font-weight: 300; line-height: 1; margin-bottom: 4px; }
-  .wm-city { font-size: 12px; color: var(--text-secondary); margin-bottom: 2px; }
-  .wm-cond { font-size: 11px; color: var(--text-tertiary); }
+  /* ── TWO-PANEL WEATHER ── */
+  .wm-weather-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .wm-weather-panel { background: var(--bg-secondary); border-radius: 6px; padding: 10px; }
+  .wm-weather-panel-label { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; }
+  .wm-weather-panel-local { border-left: 2px solid var(--blue); }
+  .wm-weather-panel-rotating { border-left: 2px solid var(--border-mid); }
+  .wm-temp-sm { font-size: 22px; font-weight: 300; line-height: 1; margin-bottom: 3px; }
+  .wm-city-sm { font-size: 11px; color: var(--text-primary); font-weight: 600; margin-bottom: 1px; }
+  .wm-cond-sm { font-size: 10px; color: var(--text-tertiary); line-height: 1.4; }
+  .wm-rotating-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-tertiary); display: inline-block; animation: pulse 2s ease-in-out infinite; }
+  @keyframes wm-pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
   .wm-weather-loading { font-size: 12px; color: var(--text-tertiary); font-style: italic; }
   .wm-market-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-size: 12px; }
   .wm-market-row:last-child { border-bottom: none; }
@@ -78,7 +86,7 @@
   .wm-shortcut { background: var(--bg-secondary); border-radius: 8px; padding: 9px 10px; font-size: 11px; color: var(--text-secondary); cursor: pointer; border: 0.5px solid var(--border); font-family: 'DM Sans', sans-serif; text-align: left; transition: all 0.1s; font-weight: 500; text-decoration: none; display: block; }
   .wm-shortcut:hover { background: var(--bg-tertiary); color: var(--text-primary); }
   .wm-shortcut-icon { font-size: 13px; display: block; margin-bottom: 3px; color: var(--text-tertiary); }
-
+ 
   @media (max-width: 700px) {
     .wm-portal { grid-template-columns: 1fr; }
     .wm-sidebar { border-top: 0.5px solid var(--border); }
@@ -135,13 +143,26 @@
     <div id="wm-content-area"></div>
   </div>
 
-  <div class="wm-sidebar">
-    <div class="wm-widget">
-      <div class="wm-widget-head" id="w-weather-head">Franklin, D.W. — Weather</div>
-      <div class="wm-widget-body" id="wm-weather-body">
-        <div class="wm-weather-loading" id="w-weather-loading">Fetching conditions…</div>
+  <div class="wm-widget">
+  <div class="wm-widget-head">
+    <span id="w-weather-head">Weather</span>
+  </div>
+  <div class="wm-widget-body">
+    <div class="wm-weather-panels">
+      <div class="wm-weather-panel wm-weather-panel-local" id="wm-weather-local">
+        <div class="wm-weather-panel-label">Your Location</div>
+        <div style="font-size:11px;color:var(--text-tertiary);font-style:italic;">Locating…</div>
+      </div>
+      <div class="wm-weather-panel wm-weather-panel-rotating" id="wm-weather-rotating">
+        <div class="wm-weather-panel-label">
+          <span id="wm-rotating-city-label">Franklin, D.W.</span>
+          <span class="wm-rotating-dot"></span>
+        </div>
+        <div style="font-size:11px;color:var(--text-tertiary);font-style:italic;">Fetching…</div>
       </div>
     </div>
+  </div>
+</div>
 
     <div class="wm-widget">
       <div class="wm-widget-head">
@@ -408,30 +429,133 @@ function buildMarkets() {
 
 buildMarkets();
 
-// ── LIVE WEATHER ──
-async function fetchWeather() {
-  const url = 'https://api.open-meteo.com/v1/forecast?latitude=39.1031&longitude=-84.5120&current=temperature_2m,weathercode,windspeed_10m,winddirection_10m&temperature_unit=celsius&windspeed_unit=kmh&timezone=America%2FNew_York';
+/ ── TWO-PANEL WEATHER ──
+ 
+// NAU cities for rotating panel
+const NAU_CITIES = [
+  { name: 'Franklin, D.W.',      country: 'USA',    lat: 39.1031,  lon: -84.5120,  tz: 'America/New_York' },
+  { name: 'Honolulu',            country: 'Hawaii', lat: 21.3069,  lon: -157.8583, tz: 'Pacific/Honolulu' },
+  { name: 'New Boston, Oregon',  country: 'USA',    lat: 45.5051,  lon: -122.6750, tz: 'America/Los_Angeles' },
+  { name: 'Monterey',            country: 'California', lat: 36.6002, lon: -121.8947, tz: 'America/Los_Angeles' },
+  { name: 'Calumet',             country: 'USA',    lat: 41.8781,  lon: -87.6298,  tz: 'America/Chicago' },
+  { name: 'Manhattan',           country: 'USA',    lat: 40.7128,  lon: -74.0060,  tz: 'America/New_York' },
+  { name: 'Aurora',              country: 'Canada', lat: 45.9170,  lon: -82.4634,  tz: 'America/Toronto' },
+  { name: 'Mexico City',         country: 'Mexico', lat: 19.4326,  lon: -99.1332,  tz: 'America/Mexico_City' },
+];
+ 
+// Location → nearest WBT city mapping
+const LOCAL_CITY_MAP = [
+  { minLat: 25,  maxLat: 32,  minLon: -98,  maxLon: -80,  city: 'Mexico City' },
+  { minLat: 30,  maxLat: 37,  minLon: -125, maxLon: -115, city: 'Monterey' },
+  { minLat: 37,  maxLat: 50,  minLon: -125, maxLon: -115, city: 'New Boston, Oregon' },
+  { minLat: 18,  maxLat: 24,  minLon: -162, maxLon: -154, city: 'Honolulu' },
+  { minLat: 40,  maxLat: 48,  minLon: -95,  maxLon: -70,  city: 'Manhattan' },
+  { minLat: 40,  maxLat: 50,  minLon: -85,  maxLon: -70,  city: 'Aurora' },
+  { minLat: 36,  maxLat: 45,  minLon: -92,  maxLon: -82,  city: 'Calumet' },
+];
+ 
+function nearestWBTCity(lat, lon) {
+  for (const r of LOCAL_CITY_MAP) {
+    if (lat >= r.minLat && lat <= r.maxLat && lon >= r.minLon && lon <= r.maxLon) {
+      return NAU_CITIES.find(c => c.name === r.city) || NAU_CITIES[0];
+    }
+  }
+  return NAU_CITIES[0]; // default Franklin
+}
+ 
+function weatherPanelHTML(temp, cond, wind, dir) {
+  return `<div class="wm-temp-sm">${temp}°C</div>
+    <div class="wm-cond-sm">${cond}</div>
+    <div class="wm-cond-sm" style="margin-top:2px;">Wind ${wind} km/h ${dir}</div>`;
+}
+ 
+async function fetchCityWeather(city) {
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current=temperature_2m,weathercode,windspeed_10m,winddirection_10m&temperature_unit=celsius&windspeed_unit=kmh&timezone=${encodeURIComponent(city.tz)}`;
+  const res  = await fetch(url);
+  const data = await res.json();
+  const c    = data.current;
+  return {
+    temp: Math.round(c.temperature_2m),
+    cond: weatherCodeToDesc(c.weathercode),
+    wind: Math.round(c.windspeed_10m),
+    dir:  degreesToCardinal(c.winddirection_10m),
+  };
+}
+ 
+// Local panel
+async function fetchLocalWeather() {
+  const panel = document.getElementById('wm-weather-local');
+  if (!navigator.geolocation) {
+    // Fallback to Franklin
+    try {
+      const w = await fetchCityWeather(NAU_CITIES[0]);
+      panel.innerHTML = `<div class="wm-weather-panel-label">Franklin, D.W.</div>${weatherPanelHTML(w.temp, w.cond, w.wind, w.dir)}`;
+    } catch(e) {
+      panel.innerHTML = `<div class="wm-weather-panel-label">Your Location</div><div class="wm-cond-sm">Unavailable</div>`;
+    }
+    return;
+  }
+  navigator.geolocation.getCurrentPosition(
+    async (pos) => {
+      const city = nearestWBTCity(pos.coords.latitude, pos.coords.longitude);
+      try {
+        const w = await fetchCityWeather(city);
+        panel.innerHTML = `<div class="wm-weather-panel-label">${city.name}</div>${weatherPanelHTML(w.temp, w.cond, w.wind, w.dir)}`;
+      } catch(e) {
+        panel.innerHTML = `<div class="wm-weather-panel-label">${city.name}</div><div class="wm-cond-sm">Unavailable</div>`;
+      }
+    },
+    async () => {
+      // Permission denied — fall back to Franklin
+      try {
+        const w = await fetchCityWeather(NAU_CITIES[0]);
+        panel.innerHTML = `<div class="wm-weather-panel-label">Franklin, D.W.</div>${weatherPanelHTML(w.temp, w.cond, w.wind, w.dir)}`;
+      } catch(e) {
+        panel.innerHTML = `<div class="wm-weather-panel-label">Franklin, D.W.</div><div class="wm-cond-sm">Unavailable</div>`;
+      }
+    }
+  );
+}
+ 
+// Rotating panel
+let _rotatingIdx = DAY_OF_YEAR % NAU_CITIES.length;
+const _rotatingCache = {};
+ 
+async function showRotatingCity() {
+  const city  = NAU_CITIES[_rotatingIdx];
+  const panel = document.getElementById('wm-weather-rotating');
+  document.getElementById('wm-rotating-city-label').textContent = city.name;
+  panel.querySelector('div:last-child')?.remove();
+ 
+  if (_rotatingCache[city.name]) {
+    const w = _rotatingCache[city.name];
+    panel.insertAdjacentHTML('beforeend', `<div>${weatherPanelHTML(w.temp, w.cond, w.wind, w.dir)}</div>`);
+    return;
+  }
+  panel.insertAdjacentHTML('beforeend', `<div style="font-size:11px;color:var(--text-tertiary);font-style:italic;">Fetching…</div>`);
   try {
-    const res  = await fetch(url);
-    const data = await res.json();
-    const c    = data.current;
-    const temp = Math.round(c.temperature_2m);
-    const wind = Math.round(c.windspeed_10m);
-    const dir  = degreesToCardinal(c.winddirection_10m);
-    const cond = weatherCodeToDesc(c.weathercode);
-    document.getElementById('wm-weather-body').innerHTML = `
-      <div class="wm-temp">${temp}°C</div>
-      <div class="wm-city">Franklin, District of Washington</div>
-      <div class="wm-cond">${cond} · Wind ${wind} km/h ${dir}</div>
-    `;
-  } catch (e) {
-    document.getElementById('wm-weather-body').innerHTML = `
-      <div class="wm-city">Franklin, District of Washington</div>
-      <div class="wm-cond">${UI[currentLang].weatherUnavail}</div>
-    `;
+    const w = await fetchCityWeather(city);
+    _rotatingCache[city.name] = w;
+    // Remove loading text and add real data
+    const loading = panel.querySelector('div:last-child');
+    if (loading) loading.remove();
+    panel.insertAdjacentHTML('beforeend', `<div>${weatherPanelHTML(w.temp, w.cond, w.wind, w.dir)}</div>`);
+  } catch(e) {
+    const loading = panel.querySelector('div:last-child');
+    if (loading) loading.textContent = 'Unavailable';
   }
 }
-
+ 
+function advanceRotating() {
+  _rotatingIdx = (_rotatingIdx + 1) % NAU_CITIES.length;
+  showRotatingCity();
+}
+ 
+// Init weather
+fetchLocalWeather();
+showRotatingCity();
+setInterval(advanceRotating, 40000);
+ 
 function degreesToCardinal(deg) { return ['N','NE','E','SE','S','SW','W','NW'][Math.round(deg / 45) % 8]; }
 function weatherCodeToDesc(code) {
   if (code === 0) return 'Clear skies';
@@ -446,8 +570,6 @@ function weatherCodeToDesc(code) {
   if (code <= 99) return 'Thunderstorm';
   return 'Variable';
 }
-
-fetchWeather();
 </script>
 </body>
 </html>
