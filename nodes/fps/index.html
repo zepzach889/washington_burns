@@ -10,119 +10,77 @@
 <title>Federal Parks Service — United States</title>
 <link rel="stylesheet" href="../../shared.css">
 <style>
-  :root {
-    --fps-green: #2D5A1A;
-    --fps-green-light: #3D7A24;
-    --fps-tan: #C8A96A;
-  }
+  :root { --fps-green: #2D5A1A; --fps-green-light: #3D7A24; --fps-tan: #C8A96A; }
 
-  .fps-hero {
-    background: linear-gradient(170deg, #1A3A0A 0%, #2D5A1A 50%, #1E4A10 100%);
-    color: #fff;
-    padding: 32px 24px 28px;
-    position: relative;
-    overflow: hidden;
-  }
-  .fps-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #5A8A3A, #C8A96A, #5A8A3A); }
+  .fps-hero { background: linear-gradient(170deg, #1A3A0A 0%, #2D5A1A 50%, #1E4A10 100%); color: #fff; padding: 32px 24px 28px; position: relative; overflow: hidden; }
+  .fps-hero::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #5A8A3A, #C8A96A, #5A8A3A); }
   .fps-header-inner { display: flex; align-items: center; gap: 16px; }
   .fps-emblem { font-size: 36px; flex-shrink: 0; }
   .fps-dept { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 4px; font-weight: 600; }
-  .fps-title { font-family: 'DM Serif Display', serif; font-size: 32px; letter-spacing: -0.01em; line-height: 1.1; }
+  .fps-title { font-family: "DM Serif Display", serif; font-size: 32px; letter-spacing: -0.01em; line-height: 1.1; }
   .fps-subtitle { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 6px; }
 
-  .fps-nav { background: #1A2E0A; display: flex; overflow-x: auto; }
+  .fps-nav { background: #1A2E0A; display: flex; overflow-x: auto; border-bottom: 2px solid var(--fps-tan); }
   .fps-nav a { font-size: 12px; color: rgba(255,255,255,0.65); text-decoration: none; padding: 10px 18px; font-weight: 500; white-space: nowrap; transition: all 0.1s; border-right: 0.5px solid rgba(255,255,255,0.08); }
   .fps-nav a:hover { background: rgba(255,255,255,0.06); color: #fff; }
   .fps-nav a.active { color: #C8A96A; border-bottom: 2px solid #C8A96A; }
 
   .fps-body { max-width: 1100px; margin: 0 auto; padding: 28px 24px; }
 
-  /* PARK GRID */
-  .fps-park-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 32px; }
+  /* ── PARK OF THE DAY ── */
+  .fps-potd { border-radius: 12px; overflow: hidden; margin-bottom: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+  .fps-potd-img { height: 240px; background-size: cover; background-position: center; position: relative; }
+  .fps-potd-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.75) 100%); }
+  .fps-potd-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 24px; z-index: 1; color: #fff; }
+  .fps-potd-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fps-tan); margin-bottom: 5px; }
+  .fps-potd-name { font-family: "DM Serif Display", serif; font-size: 28px; line-height: 1.1; margin-bottom: 4px; text-shadow: 0 2px 6px rgba(0,0,0,0.5); }
+  .fps-potd-location { font-size: 12px; color: rgba(255,255,255,0.75); }
+  .fps-potd-body { background: #fff; display: grid; grid-template-columns: 1fr 1fr 1fr; border-top: 3px solid var(--fps-green); }
+  .fps-potd-panel { padding: 16px 18px; border-right: 0.5px solid var(--border); }
+  .fps-potd-panel:last-child { border-right: none; }
+  .fps-potd-panel-label { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fps-green); margin-bottom: 6px; }
+  .fps-potd-panel-content { font-size: 13px; color: var(--text-primary); line-height: 1.5; }
+  .fps-potd-panel-sub { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+  .fps-weather-temp { font-size: 28px; font-weight: 300; line-height: 1; }
 
+  /* ── REGION SECTIONS ── */
+  .fps-region { margin-bottom: 36px; }
+  .fps-region-head { font-family: "DM Serif Display", serif; font-size: 20px; color: var(--fps-green); padding-bottom: 8px; border-bottom: 1.5px solid var(--fps-tan); margin-bottom: 16px; }
+  .fps-park-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .fps-park { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
-
-  .fps-park-img {
-    height: 130px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-  }
-  .fps-park-img::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.45) 100%);
-  }
-  .fps-park-img-label {
-    position: absolute;
-    bottom: 8px;
-    left: 10px;
-    right: 10px;
-    z-index: 1;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.85);
-  }
-
-  /* Placeholder for First Capital */
-  .fps-park-img-placeholder {
-    height: 130px;
-    background: linear-gradient(135deg, #2A2520 0%, #3D3028 50%, #2A2520 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  .fps-park-img-placeholder::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.4) 100%);
-  }
-  .fps-placeholder-emoji { font-size: 48px; position: relative; z-index: 1; opacity: 0.85; }
-  .fps-placeholder-label {
-    position: absolute;
-    bottom: 8px;
-    left: 10px;
-    right: 10px;
-    z-index: 2;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.75);
-  }
-
+  .fps-park-img { height: 120px; background-size: cover; background-position: center; position: relative; }
+  .fps-park-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.4) 100%); }
+  .fps-park-img-label { position: absolute; bottom: 7px; left: 10px; right: 10px; z-index: 1; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); }
   .fps-park-body { padding: 12px 14px; flex: 1; display: flex; flex-direction: column; }
-  .fps-park-name { font-family: 'DM Serif Display', serif; font-size: 17px; color: var(--text-primary); margin-bottom: 5px; line-height: 1.2; }
-  .fps-park-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 10px; flex: 1; }
+  .fps-park-name { font-family: "DM Serif Display", serif; font-size: 15px; color: var(--text-primary); margin-bottom: 4px; line-height: 1.2; }
+  .fps-park-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 8px; flex: 1; }
   .fps-park-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 8px; }
   .fps-tag { font-size: 9px; font-weight: 600; padding: 2px 7px; border-radius: 4px; background: #E8F5E9; color: var(--fps-green); }
+  .fps-park-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
+  .fps-park-weather { font-size: 11px; color: var(--text-tertiary); font-family: monospace; }
   .fps-park-link { font-size: 11px; font-weight: 600; color: var(--fps-green); text-decoration: none; }
   .fps-park-link:hover { color: var(--fps-green-light); }
 
-  /* VISIT SECTION */
-  .fps-visit {
-    background: #F1F8EC;
-    border: 0.5px solid #C5E0B0;
-    border-radius: 10px;
-    padding: 20px 24px;
-    margin-bottom: 28px;
-  }
-  .fps-visit-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--fps-green); margin-bottom: 8px; }
+  /* ── PLAN YOUR VISIT ── */
+  .fps-visit { background: #F1F8EC; border: 0.5px solid #C5E0B0; border-radius: 10px; padding: 20px 24px; margin-bottom: 28px; }
+  .fps-visit-title { font-family: "DM Serif Display", serif; font-size: 20px; color: var(--fps-green); margin-bottom: 8px; }
   .fps-visit-desc { font-size: 13px; color: #2D4A1A; line-height: 1.6; margin-bottom: 16px; }
-  .fps-visit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .fps-visit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
   .fps-visit-card { background: #fff; border-radius: 8px; padding: 12px 14px; border: 0.5px solid #C5E0B0; }
   .fps-visit-icon { font-size: 20px; margin-bottom: 5px; }
-  .fps-visit-title2 { font-weight: 600; font-size: 13px; color: var(--text-primary); margin-bottom: 3px; }
-  .fps-visit-desc2 { font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
+  .fps-visit-card-title { font-weight: 600; font-size: 13px; color: var(--text-primary); margin-bottom: 3px; }
+  .fps-visit-card-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* ── TIPS ── */
+  .fps-tip { background: linear-gradient(135deg, #1A3A0A, #2D5A1A); border-radius: 8px; padding: 14px 18px; color: #fff; margin-bottom: 28px; display: flex; gap: 12px; align-items: flex-start; }
+  .fps-tip-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .fps-tip-label { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fps-tan); margin-bottom: 3px; }
+  .fps-tip-text { font-size: 13px; color: rgba(255,255,255,0.9); line-height: 1.6; }
 
   @media (max-width: 800px) {
     .fps-park-grid { grid-template-columns: 1fr 1fr; }
-    .fps-visit-grid { grid-template-columns: 1fr; }
+    .fps-visit-grid { grid-template-columns: 1fr 1fr; }
+    .fps-potd-body { grid-template-columns: 1fr; }
   }
   @media (max-width: 500px) {
     .fps-park-grid { grid-template-columns: 1fr; }
@@ -131,37 +89,39 @@
 </head>
 <body>
 
+<div class="arc-chrome">
 <div class="wm-topbar">
   <div class="arc-navbtns">
-    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
-    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">&#8592;</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">&#8594;</a>
   </div>
   <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
   <div class="wm-address-wrap" id="wm-address-wrap">
     <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
-    <button class="wm-go-btn" id="wm-go-btn">→</button>
+    <button class="wm-go-btn" id="wm-go-btn">&#8594;</button>
   </div>
   <div class="arc-clock" id="arc-clock"></div>
 </div>
 <div class="arc-bookmarks">
-  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
-  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
-  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
-  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
-  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
-  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
-  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
-  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
-  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">&#128269;</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">&#128240;</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">&#128250;</span>ABN News</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">&#128214;</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">&#128642;</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">&#9878;&#65039;</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">&#127963;&#65039;</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">&#127994;</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">&#127794;</span>Federal Parks</a>
+</div>
 </div>
 
 <div class="fps-hero">
   <div class="fps-header-inner">
-    <div class="fps-emblem">🌲</div>
+    <div class="fps-emblem">&#127794;</div>
     <div>
-      <div class="fps-dept">Department of the Interior · Federal Parks Service</div>
+      <div class="fps-dept">Department of the Interior &middot; Federal Parks Service</div>
       <div class="fps-title">Federal Parks Service</div>
-      <div class="fps-subtitle">link://nan.fps.gov.usa &nbsp;·&nbsp; Protecting America's Lands Since 1908</div>
+      <div class="fps-subtitle">link://nan.fps.gov.usa &nbsp;&middot;&nbsp; Protecting America's Lands Since 1908</div>
     </div>
   </div>
 </div>
@@ -169,135 +129,93 @@
 <nav class="fps-nav">
   <a href="#" class="active">Find a Park</a>
   <a href="#">Plan Your Visit</a>
-  <a href="#">Passes & Permits</a>
+  <a href="#">Passes &amp; Permits</a>
   <a href="#">Conservation</a>
-  <a href="#">News & Updates</a>
+  <a href="#">News &amp; Updates</a>
   <a href="#">About FPS</a>
   <a href="#">For Educators</a>
 </nav>
 
 <div class="fps-body">
 
-  <div class="wm-section-label">Featured Parks — <span id="fps-date"></span></div>
+  <div class="wm-section-label">Park of the Day &mdash; <span id="fps-date"></span></div>
 
-  <div class="fps-park-grid">
-
-    <div class="fps-park">
-      <div class="fps-park-img" style="background-image:url('../../images/parks/smokes.jpg')">
-        <div class="fps-park-img-label">Tennessee · North Carolina</div>
-      </div>
-      <div class="fps-park-body">
-        <div class="fps-park-name">Great Smokies Federal Park</div>
-        <div class="fps-park-desc">Ancient Appalachian highlands protecting over 800 square miles of old-growth forest and one of the most biodiverse temperate ecosystems in the world. One of the most visited parks in the nation.</div>
-        <div class="fps-park-tags"><span class="fps-tag">Hiking</span><span class="fps-tag">Wildlife</span><span class="fps-tag">Camping</span><span class="fps-tag">Heritage</span></div>
-        <a class="fps-park-link" href="#">Plan Your Visit →</a>
+  <!-- PARK OF THE DAY -->
+  <div class="fps-potd" id="fps-potd">
+    <div class="fps-potd-img" id="fps-potd-img">
+      <div class="fps-potd-overlay">
+        <div class="fps-potd-tag">Park of the Day</div>
+        <div class="fps-potd-name" id="fps-potd-name">Loading&hellip;</div>
+        <div class="fps-potd-location" id="fps-potd-location"></div>
       </div>
     </div>
-
-    <div class="fps-park">
-      <div class="fps-park-img" style="background-image:url('../../images/parks/crater.jpg')">
-        <div class="fps-park-img-label">Oregon</div>
+    <div class="fps-potd-body">
+      <div class="fps-potd-panel">
+        <div class="fps-potd-panel-label">Current Conditions</div>
+        <div class="fps-weather-temp" id="fps-potd-temp">&mdash;</div>
+        <div class="fps-potd-panel-sub" id="fps-potd-cond">Fetching weather&hellip;</div>
+        <div class="fps-potd-panel-sub" id="fps-potd-wind"></div>
       </div>
-      <div class="fps-park-body">
-        <div class="fps-park-name">Crater Lake Federal Park</div>
-        <div class="fps-park-desc">Formed by the collapse of ancient Mount Mazama roughly 7,700 years ago, Crater Lake is the deepest lake in the United States and renowned for the extraordinary clarity and blue intensity of its waters.</div>
-        <div class="fps-park-tags"><span class="fps-tag">Volcanic</span><span class="fps-tag">Water</span><span class="fps-tag">Geology</span><span class="fps-tag">Winter Sports</span></div>
-        <a class="fps-park-link" href="#">Plan Your Visit →</a>
+      <div class="fps-potd-panel">
+        <div class="fps-potd-panel-label">Trail Status</div>
+        <div class="fps-potd-panel-content" id="fps-potd-trails"></div>
       </div>
-    </div>
-
-    <div class="fps-park">
-      <div class="fps-park-img" style="background-image:url('../../images/parks/capitol_ruins.png')">
-  <div class="fps-park-img-label">Maryland</div>
-</div>
-      <div class="fps-park-body">
-        <div class="fps-park-name">First Capital Federal Park</div>
-        <div class="fps-park-desc">Preserved on the Potomac River, this park encompasses the ruins and grounds of the original federal city destroyed in August 1814. A place of solemn remembrance and national reflection, maintained as a living memorial to the founding era.</div>
-        <div class="fps-park-tags"><span class="fps-tag">Heritage</span><span class="fps-tag">History</span><span class="fps-tag">Memorial</span><span class="fps-tag">Walking</span></div>
-        <a class="fps-park-link" href="#">Plan Your Visit →</a>
+      <div class="fps-potd-panel">
+        <div class="fps-potd-panel-label">Visitor Tip</div>
+        <div class="fps-potd-panel-content" id="fps-potd-tip"></div>
       </div>
     </div>
-
-    <div class="fps-park">
-      <div class="fps-park-img" style="background-image:url('../../images/parks/sacred.jpg')">
-        <div class="fps-park-img-label">Washingtonia · Clark</div>
-      </div>
-      <div class="fps-park-body">
-        <div class="fps-park-name">Sacred Waters Federal Park</div>
-        <div class="fps-park-desc">Home to the world's largest concentration of geysers, hot springs, and hydrothermal features, Sacred Waters straddles the border of Washingtonia and Clark atop one of the most geologically active regions on the continent.</div>
-        <div class="fps-park-tags"><span class="fps-tag">Geothermal</span><span class="fps-tag">Wildlife</span><span class="fps-tag">Wilderness</span><span class="fps-tag">Camping</span></div>
-        <a class="fps-park-link" href="#">Plan Your Visit →</a>
-      </div>
-    </div>
-
-    <div class="fps-park">
-      <div class="fps-park-img" style="background-image:url('../../images/parks/glacier.jpg')">
-        <div class="fps-park-img-label">Washingtonia · Clark</div>
-      </div>
-      <div class="fps-park-body">
-        <div class="fps-park-name">Mistakis Federal Park</div>
-        <div class="fps-park-desc">Named for the Blackfoot word for "backbone of the world," Mistakis preserves a dramatic landscape of glacially carved peaks, alpine meadows, and some of the most pristine wilderness remaining in the American West.</div>
-        <div class="fps-park-tags"><span class="fps-tag">Alpine</span><span class="fps-tag">Glaciers</span><span class="fps-tag">Wildlife</span><span class="fps-tag">Hiking</span></div>
-        <a class="fps-park-link" href="#">Plan Your Visit →</a>
-      </div>
-    </div>
-
-    <div class="fps-park">
-     <div class="fps-park-img" style="background-image:url('../../images/parks/hood.jpg'); background-position: center top;">
-        <div class="fps-park-img-label">Oregon</div>
-      </div>
-      <div class="fps-park-body">
-        <div class="fps-park-name">Wy'east Federal Park</div>
-        <div class="fps-park-desc">Known by its Multnomah name long before statehood, Wy'east is a stratovolcano rising above the Oregon forests to over 11,000 feet, offering year-round recreation from alpine climbing to old-growth forest walks.</div>
-        <div class="fps-park-tags"><span class="fps-tag">Volcanic</span><span class="fps-tag">Alpine</span><span class="fps-tag">Climbing</span><span class="fps-tag">Winter Sports</span></div>
-        <a class="fps-park-link" href="#">Plan Your Visit →</a>
-      </div>
-    </div>
-
-    <div class="fps-park">
-      <div class="fps-park-img" style="background-image:url('../../images/parks/silver_falls.jpg')">
-        <div class="fps-park-img-label">Oregon</div>
-      </div>
-      <div class="fps-park-body">
-        <div class="fps-park-name">Silver Creek Federal Park</div>
-        <div class="fps-park-desc">A jewel of the Oregon lowlands, Silver Creek protects a remarkable concentration of waterfalls — ten major falls within a few miles of trail, including several where the path passes directly behind the cascade.</div>
-        <div class="fps-park-tags"><span class="fps-tag">Waterfalls</span><span class="fps-tag">Hiking</span><span class="fps-tag">Old Growth</span><span class="fps-tag">Family</span></div>
-        <a class="fps-park-link" href="#">Plan Your Visit →</a>
-      </div>
-    </div>
-
-    <div class="fps-park">
-      <div class="fps-park-img" style="background-image:url('../../images/parks/shasta.jpg')">
-        <div class="fps-park-img-label">Oregon · California</div>
-      </div>
-      <div class="fps-park-body">
-        <div class="fps-park-name">Cascades International Park</div>
-        <div class="fps-park-desc">A joint USA–California Federal Park protecting the volcanic spine of the Cascade Range, including Mt. Shasta, Mt. McLaughlin, and the Three Sisters. One of the NAU's landmark cross-border conservation partnerships.</div>
-        <div class="fps-park-tags"><span class="fps-tag">Volcanic</span><span class="fps-tag">International</span><span class="fps-tag">Alpine</span><span class="fps-tag">Wilderness</span></div>
-        <a class="fps-park-link" href="#">Plan Your Visit →</a>
-      </div>
-    </div>
-
   </div>
 
+  <!-- VISITOR TIP OF THE DAY -->
+  <div class="fps-tip" id="fps-tip-bar">
+    <div class="fps-tip-icon">&#128681;</div>
+    <div>
+      <div class="fps-tip-label">Ranger Tip &mdash; <span id="fps-tip-park"></span></div>
+      <div class="fps-tip-text" id="fps-tip-text">Loading&hellip;</div>
+    </div>
+  </div>
+
+  <!-- PARKS BY REGION -->
+  <div class="fps-region">
+    <div class="fps-region-head">Pacific Northwest</div>
+    <div class="fps-park-grid" id="fps-region-pnw"></div>
+  </div>
+
+  <div class="fps-region">
+    <div class="fps-region-head">Mountain West</div>
+    <div class="fps-park-grid" id="fps-region-mw"></div>
+  </div>
+
+  <div class="fps-region">
+    <div class="fps-region-head">Eastern &amp; Historic</div>
+    <div class="fps-park-grid" id="fps-region-east"></div>
+  </div>
+
+  <!-- PLAN YOUR VISIT -->
   <div class="fps-visit">
     <div class="fps-visit-title">Plan Your Federal Parks Visit</div>
-    <div class="fps-visit-desc">The Federal Parks Pass (Ȼ65/year) grants unlimited access to all 57 Federal Parks and Reserves across the United States. Passes are available at all USRC stations and FPS visitor centres. All parks are accessible by USRC rail connection or FPS shuttle service — no automobile required.</div>
+    <div class="fps-visit-desc">The Federal Parks Pass (&#8210;65/year) grants unlimited access to all 57 Federal Parks and Reserves across the United States. Passes are available at all USRC stations and FPS visitor centres. All parks are accessible by USRC rail connection or FPS shuttle service.</div>
     <div class="fps-visit-grid">
       <div class="fps-visit-card">
-        <div class="fps-visit-icon">🎫</div>
-        <div class="fps-visit-title2">Federal Parks Pass</div>
-        <div class="fps-visit-desc2">Ȼ65/year · All 57 parks · Transferable to immediate family · Available at all USRC stations</div>
+        <div class="fps-visit-icon">&#127915;</div>
+        <div class="fps-visit-card-title">Federal Parks Pass</div>
+        <div class="fps-visit-card-desc">&#8210;65/year &middot; All 57 parks &middot; Transferable to immediate family &middot; Available at all USRC stations</div>
       </div>
       <div class="fps-visit-card">
-        <div class="fps-visit-icon">🚂</div>
-        <div class="fps-visit-title2">Rail Access</div>
-        <div class="fps-visit-desc2">All parks within 20 km of a USRC station or FPS shuttle connection — no automobile required</div>
+        <div class="fps-visit-icon">&#128642;</div>
+        <div class="fps-visit-card-title">Rail Access</div>
+        <div class="fps-visit-card-desc">All parks within 20 km of a USRC station or FPS shuttle connection &mdash; no automobile required</div>
       </div>
       <div class="fps-visit-card">
-        <div class="fps-visit-icon">⛺</div>
-        <div class="fps-visit-title2">Camping & Lodges</div>
-        <div class="fps-visit-desc2">Book campsites and FPS lodges up to 6 months in advance through the visitor portal</div>
+        <div class="fps-visit-icon">&#9981;</div>
+        <div class="fps-visit-card-title">Camping &amp; Lodges</div>
+        <div class="fps-visit-card-desc">Book campsites and FPS lodges up to 6 months in advance through the visitor portal</div>
+      </div>
+      <div class="fps-visit-card">
+        <div class="fps-visit-icon">&#127758;</div>
+        <div class="fps-visit-card-title">Accessibility</div>
+        <div class="fps-visit-card-desc">All visitor centres and primary trails are wheelchair accessible. Service animals welcome in all parks.</div>
       </div>
     </div>
   </div>
@@ -305,7 +223,7 @@
 </div>
 
 <div class="wm-footer">
-  <span>link://nan.fps.gov.usa &nbsp;·&nbsp; Federal Parks Service &nbsp;·&nbsp; Department of the Interior &nbsp;·&nbsp; A Federal Enterprise of the United States &nbsp;·&nbsp; Est. 1908</span>
+  <span>link://nan.fps.gov.usa &nbsp;&middot;&nbsp; Federal Parks Service &nbsp;&middot;&nbsp; Department of the Interior &nbsp;&middot;&nbsp; Est. 1908</span>
   <div class="wm-footer-links">
     <a href="#">About FPS</a>
     <a href="#">Accessibility</a>
@@ -316,23 +234,243 @@
 
 <script src="../../router.js"></script>
 <script>
-  initAddressBar('nan.fps.gov.usa');
+initAddressBar('nan.fps.gov.usa');
 
-  // ── ARC CLOCK ──
 function updateArcClock() {
   const n = new Date();
   const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   const hh = String(n.getHours()).padStart(2,'0');
   const mm = String(n.getMinutes()).padStart(2,'0');
   const el = document.getElementById('arc-clock');
-  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+  if (el) el.textContent = days[n.getDay()] + ' ' + n.getDate() + ' · ' + hh + ':' + mm;
 }
 setInterval(updateArcClock, 10000);
 updateArcClock();
-  
-  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const d = new Date();
-  document.getElementById('fps-date').textContent = `${d.getDate()} ${MONTHS[d.getMonth()]}, ${d.getFullYear()}`;
+
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const now = new Date();
+const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+document.getElementById('fps-date').textContent = now.getDate() + ' ' + MONTHS[now.getMonth()] + ', ' + now.getFullYear();
+
+// ── PARK DATA ──
+const PARKS = [
+  {
+    id: 'smokies',
+    name: 'Great Smokies Federal Park',
+    location: 'Tennessee · North Carolina',
+    region: 'east',
+    img: '../../images/parks/smokes.jpg',
+    tags: ['Hiking','Wildlife','Camping','Heritage'],
+    desc: 'Ancient Appalachian highlands protecting over 800 square miles of old-growth forest and one of the most biodiverse temperate ecosystems in the world.',
+    lat: 35.6532, lon: -83.5070, tz: 'America/New_York',
+    trails: ['All primary trails open', 'Clingmans Dome Road seasonal closure check advised', 'Backcountry permits required for overnight'],
+    tips: [
+      'Arrive before 9 a.m. to secure parking at popular trailheads — crowds build quickly after mid-morning.',
+      'Bring layers even in summer — temperatures at elevation can drop 20°F below the valley floor.',
+      'The Appalachian Trail runs through the park — long-distance hikers should register at the visitor centre.',
+    ]
+  },
+  {
+    id: 'crater',
+    name: 'Crater Lake Federal Park',
+    location: 'Oregon',
+    region: 'pnw',
+    img: '../../images/parks/crater.jpg',
+    tags: ['Volcanic','Water','Geology','Winter Sports'],
+    desc: 'Formed by the collapse of ancient Mount Mazama, Crater Lake is the deepest lake in the United States — renowned for the extraordinary clarity and blue intensity of its waters.',
+    lat: 42.9446, lon: -122.1090, tz: 'America/Los_Angeles',
+    trails: ['Rim Drive open seasonally — check FPS alerts', 'Cleetwood Cove Trail (lake access) open summer only', 'Wizard Island boat tours — advance booking required'],
+    tips: [
+      'The Rim Village visitor centre has excellent exhibits on the eruption that created the lake — worth 30 minutes before hitting the trails.',
+      'Sunrise on the east rim offers the clearest water colour — afternoon haze can reduce visibility.',
+      'Snow can fall at any month at the rim elevation — always carry a layer.',
+    ]
+  },
+  {
+    id: 'capitol',
+    name: 'First Capital Federal Park',
+    location: 'Maryland',
+    region: 'east',
+    img: '../../images/parks/capitol_ruins.png',
+    tags: ['Heritage','History','Memorial','Walking'],
+    desc: 'Preserved on the Potomac, this park encompasses the ruins and grounds of the original federal city destroyed in August 1814 — a solemn memorial to the founding era.',
+    lat: 38.8951, lon: -77.0364, tz: 'America/New_York',
+    trails: ['Heritage Walk open daily', 'Ruins viewing platforms accessible year-round', 'Ranger-led tours available weekends May–October'],
+    tips: [
+      'The ranger-led Burning Night walk (offered Friday evenings in summer) is the most moving way to experience the site — book ahead.',
+      'The visitor centre film "August 1814" is only 18 minutes and adds enormous context before walking the ruins.',
+      'The park is particularly atmospheric in the early morning before the tour groups arrive.',
+    ]
+  },
+  {
+    id: 'sacred',
+    name: 'Sacred Waters Federal Park',
+    location: 'Washingtonia · Clark',
+    region: 'mw',
+    img: '../../images/parks/sacred.jpg',
+    tags: ['Geothermal','Wildlife','Wilderness','Camping'],
+    desc: 'Home to the world's largest concentration of geysers, hot springs, and hydrothermal features, straddles one of the most geologically active regions on the continent.',
+    lat: 44.4280, lon: -110.5885, tz: 'America/Denver',
+    trails: ['Boardwalk trails open year-round', 'Backcountry routes may be snow-covered — check conditions', 'Wildlife viewing corridors open — bison right-of-way always'],
+    tips: [
+      'Old Thunderhead geyser erupts approximately every 91 minutes — check the prediction board at the visitor centre on arrival.',
+      'Stay on boardwalks near thermal features — ground crusts can be dangerously thin.',
+      'Bison have the right of way on all park roads and trails — keep 25 metres minimum distance.',
+    ]
+  },
+  {
+    id: 'mistakis',
+    name: 'Mistakis Federal Park',
+    location: 'Washingtonia · Clark',
+    region: 'mw',
+    img: '../../images/parks/glacier.jpg',
+    tags: ['Alpine','Glaciers','Wildlife','Hiking'],
+    desc: 'Named for the Blackfoot word for "backbone of the world," Mistakis preserves a dramatic landscape of glacially carved peaks, alpine meadows, and pristine wilderness.',
+    lat: 48.6962, lon: -113.7180, tz: 'America/Denver',
+    trails: ['Going-to-the-Sun Road open seasonally — check FPS alerts', 'Many high trails snow-covered before July', 'Bear spray required for backcountry travel'],
+    tips: [
+      'Vehicle reservations required for Going-to-the-Sun Road during peak season — book at least 60 days ahead.',
+      'Grizzly bear activity is common — carry bear spray and know how to use it before entering backcountry.',
+      'The Highline Trail is one of the finest day hikes in the country — attempt it early to beat afternoon thunderstorms.',
+    ]
+  },
+  {
+    id: 'wyeast',
+    name: 'Wy'east Federal Park',
+    location: 'Oregon',
+    region: 'pnw',
+    img: '../../images/parks/hood.jpg',
+    tags: ['Volcanic','Alpine','Climbing','Winter Sports'],
+    desc: 'Known by its Multnomah name long before statehood, Wy'east is a stratovolcano rising above the Oregon forests to over 11,000 feet, offering year-round recreation.',
+    lat: 45.3735, lon: -121.6960, tz: 'America/Los_Angeles',
+    trails: ['Timberline Trail open summer — upper sections require mountaineering gear', 'Mirror Lake Trail open year-round', 'Summit climbs require climbing permits'],
+    tips: [
+      'Timberline Lodge is a marvel of Depression-era craftsmanship — worth a visit even if you're not climbing.',
+      'Summit attempts should begin before 3 a.m. to complete the climb before afternoon ice softens dangerously.',
+      'The wildflower meadows around timberline peak in late July — stunning for photography.',
+    ]
+  },
+  {
+    id: 'silver',
+    name: 'Silver Creek Federal Park',
+    location: 'Oregon',
+    region: 'pnw',
+    img: '../../images/parks/silver_falls.jpg',
+    tags: ['Waterfalls','Hiking','Old Growth','Family'],
+    desc: 'A jewel of the Oregon lowlands, Silver Creek protects a remarkable concentration of waterfalls — ten major falls within a few miles of trail, including several walk-behind cascades.',
+    lat: 44.8774, lon: -122.6548, tz: 'America/Los_Angeles',
+    trails: ['Trail of Ten Falls open year-round', 'Some trails slippery when wet — traction devices recommended in winter', 'Canyon Trail accessible year-round'],
+    tips: [
+      'Wear waterproof clothing for the walk-behind falls — you will get wet regardless of the weather.',
+      'The Trail of Ten Falls loop is 13 km — most families complete it in 4–5 hours with stops at each fall.',
+      'Autumn colour peaks in mid-October and the falls run strongest in winter and spring.',
+    ]
+  },
+  {
+    id: 'cascades',
+    name: 'Cascades International Park',
+    location: 'Oregon · California',
+    region: 'pnw',
+    img: '../../images/parks/shasta.jpg',
+    tags: ['Volcanic','International','Alpine','Wilderness'],
+    desc: 'A joint USA–California Federal Park protecting the volcanic spine of the Cascade Range, including Mt. Shasta, Mt. McLaughlin, and the Three Sisters.',
+    lat: 41.4092, lon: -122.1949, tz: 'America/Los_Angeles',
+    trails: ['Lower trails open year-round', 'High routes require mountaineering experience and permits', 'Shasta summit climbs — permit required, check volcanic activity alerts'],
+    tips: [
+      'Mt. Shasta is one of the most volcanically active peaks in the range — check FPS volcano alerts before summit attempts.',
+      'The cross-border nature of the park means USA and California passes are both honoured — check your pass validity at the trailhead station.',
+      'Castle Lake, just outside the park boundary, offers excellent fishing and swimming in a dramatically scenic setting.',
+    ]
+  },
+];
+
+// ── SEEDED RANDOM ──
+function seededRand(seed) { const x = Math.sin(seed + 1) * 10000; return x - Math.floor(x); }
+
+// ── WEATHER HELPERS ──
+function weatherCodeToDesc(code) {
+  if (code === 0) return 'Clear skies';
+  if (code <= 3) return 'Partly cloudy';
+  if (code <= 49) return 'Foggy';
+  if (code <= 59) return 'Drizzle';
+  if (code <= 69) return 'Rain';
+  if (code <= 79) return 'Snow';
+  if (code <= 82) return 'Rain showers';
+  if (code <= 86) return 'Snow showers';
+  if (code <= 99) return 'Thunderstorm';
+  return 'Variable';
+}
+function degreesToCardinal(deg) {
+  const dirs = ['N','NE','E','SE','S','SW','W','NW'];
+  return dirs[Math.round(deg / 45) % 8];
+}
+
+async function fetchParkWeather(park) {
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + park.lat + '&longitude=' + park.lon + '&current=temperature_2m,weathercode,windspeed_10m,winddirection_10m&temperature_unit=celsius&windspeed_unit=kmh&timezone=' + encodeURIComponent(park.tz);
+  const res = await fetch(url);
+  const data = await res.json();
+  const c = data.current;
+  return {
+    temp: Math.round(c.temperature_2m),
+    cond: weatherCodeToDesc(c.weathercode),
+    wind: Math.round(c.windspeed_10m),
+    dir: degreesToCardinal(c.winddirection_10m),
+  };
+}
+
+// ── PARK OF THE DAY ──
+const potdIdx = dayOfYear % PARKS.length;
+const potd = PARKS[potdIdx];
+const tipIdx = dayOfYear % potd.tips.length;
+const trailIdx = dayOfYear % potd.trails.length;
+
+document.getElementById('fps-potd-img').style.backgroundImage = 'url("' + potd.img + '")'
+document.getElementById('fps-potd-name').textContent = potd.name;
+document.getElementById('fps-potd-location').textContent = potd.location;
+document.getElementById('fps-potd-trails').textContent = potd.trails[trailIdx];
+document.getElementById('fps-potd-tip').textContent = potd.tips[tipIdx];
+document.getElementById('fps-tip-park').textContent = potd.name;
+document.getElementById('fps-tip-text').textContent = potd.tips[(tipIdx + 1) % potd.tips.length];
+
+fetchParkWeather(potd).then(w => {
+  document.getElementById('fps-potd-temp').textContent = w.temp + '°C';
+  document.getElementById('fps-potd-cond').textContent = w.cond;
+  document.getElementById('fps-potd-wind').textContent = 'Wind ' + w.wind + ' km/h ' + w.dir;
+}).catch(() => {
+  document.getElementById('fps-potd-cond').textContent = 'Weather unavailable';
+});
+
+// ── RENDER PARK CARDS ──
+const weatherCache = {};
+
+function parkCardHTML(park, weather) {
+  const wStr = weather ? (weather.temp + '°C · ' + weather.cond) : 'Fetching...';
+  return '<div class="fps-park">' +
+    '<div class="fps-park-img" style="background-image:url(\'' + park.img + '\')">' +
+    '<div class="fps-park-img-label">' + park.location + '</div></div>' +
+    '<div class="fps-park-body">' +
+    '<div class="fps-park-name">' + park.name + '</div>' +
+    '<div class="fps-park-desc">' + park.desc + '</div>' +
+    '<div class="fps-park-tags">' + park.tags.map(t => '<span class="fps-tag">' + t + '</span>').join('') + '</div>' +
+    '<div class="fps-park-footer">' +
+    '<span class="fps-park-weather" id="pw-' + park.id + '">' + wStr + '</span>' +
+    '<a class="fps-park-link" href="#">Plan Visit &#8594;</a>' +
+    '</div></div></div>';
+}
+
+const regions = { pnw: 'fps-region-pnw', mw: 'fps-region-mw', east: 'fps-region-east' };
+Object.keys(regions).forEach(r => {
+  const parks = PARKS.filter(p => p.region === r);
+  document.getElementById(regions[r]).innerHTML = parks.map(p => parkCardHTML(p, null)).join('');
+});
+
+// Fetch weather for all park cards asynchronously
+PARKS.forEach(park => {
+  fetchParkWeather(park).then(w => {
+    const el = document.getElementById('pw-' + park.id);
+    if (el) el.textContent = w.temp + '°C · ' + w.cond;
+  }).catch(() => {});
+});
 </script>
 </body>
 </html>
