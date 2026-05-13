@@ -524,11 +524,12 @@
   z-index: 1000;
   max-height: 420px;
   overflow-y: auto;
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;  
   border: 0.5px solid var(--ndx-border);
 }
-.ndx-search-results.open { display: block; }
-.ndx-search-result {
+.ndx-search-results.open { visibility: visible; opacity: 1; pointer-events: auto; }.ndx-search-result {
   display: block;
   padding: 10px 14px;
   border-bottom: 0.5px solid var(--ndx-border);
