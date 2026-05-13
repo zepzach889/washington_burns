@@ -12,13 +12,7 @@
 <style>
   :root { --mus-brown: #2C1810; --mus-brown-mid: #5D3A1A; --mus-gold: #C8962A; }
 
-  .mus-hero {
-    background: var(--mus-brown);
-    color: #fff;
-    padding: 36px 24px 28px;
-    position: relative;
-    overflow: hidden;
-  }
+  .mus-hero { background: var(--mus-brown); color: #fff; padding: 36px 24px 28px; position: relative; overflow: hidden; }
   .mus-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--mus-gold), var(--mus-brown-mid), var(--mus-gold)); }
   .mus-kicker { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px; font-weight: 600; }
   .mus-title { font-family: 'DM Serif Display', serif; font-size: 38px; letter-spacing: -0.01em; line-height: 1.1; }
@@ -33,26 +27,9 @@
   .mus-main { padding: 28px 24px; border-right: 0.5px solid var(--border); }
   .mus-sidebar { padding: 24px 16px; background: var(--bg-secondary); }
 
-  /* FOUNDING DOCUMENTS — special treatment */
-  .mus-archives {
-    background: linear-gradient(135deg, #1A0F08 0%, #2C1810 60%, #3D2010 100%);
-    border-radius: 10px;
-    padding: 20px 22px;
-    margin-bottom: 28px;
-    border: 1px solid var(--mus-gold);
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-  }
-  .mus-archives::before {
-    content: '📜';
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 64px;
-    opacity: 0.12;
-  }
+  /* ARCHIVES BLOCK */
+  .mus-archives { background: linear-gradient(135deg, #1A0F08 0%, #2C1810 60%, #3D2010 100%); border-radius: 10px; padding: 20px 22px; margin-bottom: 28px; border: 1px solid var(--mus-gold); color: #fff; position: relative; overflow: hidden; }
+  .mus-archives::before { content: '📜'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 64px; opacity: 0.12; }
   .mus-archives-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mus-gold); margin-bottom: 6px; }
   .mus-archives-title { font-family: 'DM Serif Display', serif; font-size: 22px; line-height: 1.2; margin-bottom: 8px; color: #fff; }
   .mus-archives-desc { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 12px; }
@@ -64,7 +41,8 @@
 
   /* FEATURED EXHIBITION */
   .mus-featured { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 24px; }
-  .mus-featured-img { background: linear-gradient(135deg, #2C1810 0%, #5D3A1A 50%, #8B4513 100%); height: 130px; display: flex; align-items: center; justify-content: center; font-size: 56px; }
+  .mus-featured-img { height: 130px; overflow: hidden; }
+  .mus-featured-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .mus-featured-body { padding: 16px 18px; }
   .mus-featured-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #8B4513; margin-bottom: 5px; }
   .mus-featured-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--text-primary); margin-bottom: 6px; line-height: 1.2; }
@@ -73,13 +51,16 @@
   .mus-btn { display: inline-block; margin-top: 10px; background: var(--mus-brown); color: #fff; font-size: 11px; font-weight: 600; padding: 7px 16px; border-radius: 6px; text-decoration: none; transition: background 0.1s; }
   .mus-btn:hover { background: var(--mus-brown-mid); }
 
-  /* PERMANENT GALLERIES */
-  .mus-exhibits { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
-  .mus-exhibit { background: #fff; border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; }
-  .mus-exhibit-img { height: 70px; display: flex; align-items: center; justify-content: center; font-size: 32px; }
-  .mus-exhibit-body { padding: 10px 12px; }
-  .mus-exhibit-floor { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 3px; }
-  .mus-exhibit-title { font-size: 13px; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+  /* GALLERY LIST */
+  .mus-gallery-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+  .mus-gallery-item { display: grid; grid-template-columns: 160px 1fr; background: #fff; border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; text-decoration: none; transition: box-shadow 0.1s; }
+  .mus-gallery-item:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.1); }
+  .mus-gallery-img { width: 160px; height: 110px; overflow: hidden; flex-shrink: 0; background: var(--bg-secondary); }
+  .mus-gallery-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .mus-gallery-body { padding: 12px 16px; display: flex; flex-direction: column; justify-content: center; }
+  .mus-gallery-floor { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mus-gold); margin-bottom: 4px; }
+  .mus-gallery-title { font-family: 'DM Serif Display', serif; font-size: 15px; color: var(--text-primary); line-height: 1.3; margin-bottom: 5px; }
+  .mus-gallery-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
 
   /* WIDGETS */
   .mus-widget { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
@@ -90,7 +71,6 @@
   .mus-info-row:last-child { border-bottom: none; }
   .mus-info-label { color: var(--text-secondary); }
   .mus-info-val { font-weight: 600; color: var(--text-primary); text-align: right; font-size: 11px; }
-
   .mus-event-row { padding: 7px 0; border-bottom: 0.5px solid var(--border); }
   .mus-event-row:last-child { border-bottom: none; }
   .mus-event-date { font-weight: 600; color: var(--text-primary); font-size: 11px; }
@@ -98,24 +78,15 @@
 
   @media (max-width: 700px) {
     .mus-body { grid-template-columns: 1fr; }
-    .mus-exhibits { grid-template-columns: 1fr; }
     .mus-title { font-size: 28px; }
-
-  /* ── GALLERY LIST (replaces .mus-exhibits grid) ── */
-  .mus-gallery-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
-  .mus-gallery-item { display: grid; grid-template-columns: 160px 1fr; background: #fff; border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; text-decoration: none; transition: box-shadow 0.1s; }
-  .mus-gallery-item:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.1); }
-  .mus-gallery-img { width: 160px; height: 110px; overflow: hidden; flex-shrink: 0; background: var(--bg-secondary); }
-  .mus-gallery-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .mus-gallery-body { padding: 12px 16px; display: flex; flex-direction: column; justify-content: center; }
-  .mus-gallery-floor { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mus-gold); margin-bottom: 4px; }
-  .mus-gallery-title { font-family: 'DM Serif Display', serif; font-size: 15px; color: var(--text-primary); line-height: 1.3; margin-bottom: 5px; }
-  .mus-gallery-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+    .mus-gallery-item { grid-template-columns: 1fr; }
+    .mus-gallery-img { width: 100%; }
   }
 </style>
 </head>
 <body>
 
+<div class="arc-chrome">
 <div class="wm-topbar">
   <div class="arc-navbtns">
     <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
@@ -139,7 +110,8 @@
   <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
   <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
 </div>
-  
+</div>
+
 <div class="mus-hero">
   <div class="mus-kicker">Franklin, District of Washington · Opened February 22, 1879</div>
   <div class="mus-title">Museum of the United States</div>
@@ -160,7 +132,6 @@
 <div class="mus-body">
   <div class="mus-main">
 
-    <!-- NATIONAL ARCHIVES — special treatment -->
     <div class="wm-section-label">National Archives Gallery</div>
     <div class="mus-archives">
       <div class="mus-archives-tag">Permanent Installation · Lower Level · Free Timed Entry</div>
@@ -172,13 +143,15 @@
         <span class="mus-doc-tag">Constitution of the United States · 1861</span>
       </div>
       <div class="mus-archives-note">Timed entry passes required. Photography permitted without flash. Documents may occasionally be removed from display for conservation.</div>
-<a class="mus-archives-btn" href="archives.html">View the Documents →</a>
+      <a class="mus-archives-btn" href="archives.html">View the Documents →</a>
     </div>
 
-    <!-- FEATURED EXHIBITION -->
     <div class="wm-section-label">Featured Exhibition</div>
     <div class="mus-featured">
-<div class="mus-featured-img"><img src="../../images/amhistory/wash_burns1.jpg" style="width:100%;height:130px;object-fit:cover;display:block;" alt="The Burning and the Building" /></div>      <div class="mus-featured-body">
+      <div class="mus-featured-img">
+        <img src="../../images/amhistory/wash_burns1.jpg" alt="The Burning and the Building" />
+      </div>
+      <div class="mus-featured-body">
         <div class="mus-featured-tag">Special Exhibition — Now Open</div>
         <div class="mus-featured-title">The Burning and the Building: Washington, August 1814</div>
         <div class="mus-featured-desc">A landmark exhibition examining the destruction of the federal city on the Potomac and the extraordinary choices that followed — the debates, the journeys, and the founding of Franklin on the Ohio. Drawing on objects, maps, and personal accounts from the National Collection, the exhibition traces how a catastrophe became a founding moment.</div>
@@ -187,17 +160,11 @@
       </div>
     </div>
 
-    <!-- PERMANENT GALLERIES -->
-   <!-- REPLACE EVERYTHING FROM "PERMANENT GALLERIES" SECTION LABEL DOWN TO THE CLOSING </div> OF mus-exhibits -->
-<!-- i.e. replace from <div class="wm-section-label">Permanent Galleries</div> to the </div> that closes mus-exhibits -->
-
     <div class="wm-section-label">Permanent Galleries</div>
     <div class="mus-gallery-list">
 
       <a class="mus-gallery-item" href="#">
-        <div class="mus-gallery-img">
-          <img src="../../images/amhistory/wash_2_naka.png" alt="The American Presidency" />
-        </div>
+        <div class="mus-gallery-img"><img src="../../images/amhistory/wash_2_naka.png" alt="The American Presidency" /></div>
         <div class="mus-gallery-body">
           <div class="mus-gallery-floor">Level 1 · East Wing</div>
           <div class="mus-gallery-title">The American Presidency: From Washington to Nakamura</div>
@@ -206,9 +173,7 @@
       </a>
 
       <a class="mus-gallery-item" href="#">
-        <div class="mus-gallery-img">
-          <img src="../../images/amhistory/railroad1.jpg" alt="Iron Nation" />
-        </div>
+        <div class="mus-gallery-img"><img src="../../images/amhistory/railroad1.jpg" alt="Iron Nation" /></div>
         <div class="mus-gallery-body">
           <div class="mus-gallery-floor">Level 1 · West Wing</div>
           <div class="mus-gallery-title">Iron Nation: Two Centuries of American Rail</div>
@@ -217,9 +182,7 @@
       </a>
 
       <a class="mus-gallery-item" href="#">
-        <div class="mus-gallery-img">
-          <img src="../../images/amhistory/war_between_states1.png" alt="War Between the States" />
-        </div>
+        <div class="mus-gallery-img"><img src="../../images/amhistory/war_between_states1.png" alt="War Between the States" /></div>
         <div class="mus-gallery-body">
           <div class="mus-gallery-floor">Level 2 · Central Hall</div>
           <div class="mus-gallery-title">War Between the States, 1857–1860: The Crisis That Remade America</div>
@@ -228,9 +191,7 @@
       </a>
 
       <a class="mus-gallery-item" href="#">
-        <div class="mus-gallery-img">
-          <img src="../../images/amhistory/global_war.jpg" alt="The Global War" />
-        </div>
+        <div class="mus-gallery-img"><img src="../../images/amhistory/global_war.jpg" alt="The Global War" /></div>
         <div class="mus-gallery-body">
           <div class="mus-gallery-floor">Level 2 · North Gallery</div>
           <div class="mus-gallery-title">The Global War: America and the World, 1932–1940</div>
@@ -239,9 +200,7 @@
       </a>
 
       <a class="mus-gallery-item" href="#">
-        <div class="mus-gallery-img">
-          <img src="../../images/amhistory/suffrage.jpg" alt="Votes and Voices" />
-        </div>
+        <div class="mus-gallery-img"><img src="../../images/amhistory/suffrage.jpg" alt="Votes and Voices" /></div>
         <div class="mus-gallery-body">
           <div class="mus-gallery-floor">Level 3 · South Gallery</div>
           <div class="mus-gallery-title">Votes and Voices: Two Centuries of American Democracy</div>
@@ -250,9 +209,7 @@
       </a>
 
       <a class="mus-gallery-item" href="#">
-        <div class="mus-gallery-img">
-          <img src="../../images/amhistory/am_arts.jpg" alt="American Arts and Material Culture" />
-        </div>
+        <div class="mus-gallery-img"><img src="../../images/amhistory/am_arts.jpg" alt="American Arts and Material Culture" /></div>
         <div class="mus-gallery-body">
           <div class="mus-gallery-floor">Level 3 · East Gallery</div>
           <div class="mus-gallery-title">American Arts &amp; Material Culture, 1814–Present</div>
@@ -261,6 +218,8 @@
       </a>
 
     </div>
+
+  </div><!-- end mus-main -->
 
   <div class="mus-sidebar">
 
@@ -282,8 +241,9 @@
       <div class="mus-widget-body" id="mus-events"></div>
     </div>
 
-  </div>
-</div>
+  </div><!-- end mus-sidebar -->
+
+</div><!-- end mus-body -->
 
 <div class="wm-footer">
   <span>link://nan.mususa.edu.usa &nbsp;·&nbsp; Museum of the United States &nbsp;·&nbsp; Franklin, D.W. &nbsp;·&nbsp; Est. 1879</span>
@@ -299,7 +259,6 @@
 <script>
 initAddressBar('nan.mususa.edu.usa');
 
-// ── ARC CLOCK ──
 function updateArcClock() {
   const n = new Date();
   const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -313,18 +272,13 @@ updateArcClock();
 
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-
 const now       = new Date();
 const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
 
-// ── LIVE DATE for featured exhibition close date ──
-// Exhibition runs through end of November 2026
-const closeDate = 'Open through 30 November 2026 &nbsp;·&nbsp; West Wing, Level 2';
-document.getElementById('mus-featured-dates').innerHTML = closeDate;
+document.getElementById('mus-featured-dates').innerHTML = 'Open through 30 November 2026 &nbsp;·&nbsp; West Wing, Level 2';
 
-// ── UPCOMING EVENTS (rotate based on day of year, show 3) ──
 const ALL_EVENTS = [
-  { title: 'Curator\'s Talk: The August Letters — Objects from the 1814 Evacuation', time: '2:00 p.m.' },
+  { title: "Curator's Talk: The August Letters — Objects from the 1814 Evacuation", time: '2:00 p.m.' },
   { title: 'Evening Lecture: Freeman and the Postwar Moment', time: '6:00 p.m.' },
   { title: 'Family Day: Rail Through History', time: '10:00 a.m.' },
   { title: 'Archives Gallery: Special Extended Hours — Document Conservation Week', time: '9:00 a.m.' },
@@ -334,21 +288,16 @@ const ALL_EVENTS = [
   { title: 'Lecture: The Global War Through American Eyes', time: '5:30 p.m.' },
 ];
 
-// Generate 3 upcoming event dates relative to today
 function getUpcomingDate(daysAhead) {
   const d = new Date(now);
   d.setDate(d.getDate() + daysAhead);
   return `${DAYS[d.getDay()].slice(0,3)} ${d.getDate()} ${MONTHS[d.getMonth()].slice(0,3)}`;
 }
 
-const e1 = ALL_EVENTS[dayOfYear % ALL_EVENTS.length];
-const e2 = ALL_EVENTS[(dayOfYear + 3) % ALL_EVENTS.length];
-const e3 = ALL_EVENTS[(dayOfYear + 5) % ALL_EVENTS.length];
-
 const events = [
-  { date: getUpcomingDate(2), time: e1.time, title: e1.title },
-  { date: getUpcomingDate(5), time: e2.time, title: e2.title },
-  { date: getUpcomingDate(9), time: e3.time, title: e3.title },
+  { date: getUpcomingDate(2), time: ALL_EVENTS[dayOfYear % ALL_EVENTS.length].time, title: ALL_EVENTS[dayOfYear % ALL_EVENTS.length].title },
+  { date: getUpcomingDate(5), time: ALL_EVENTS[(dayOfYear+3) % ALL_EVENTS.length].time, title: ALL_EVENTS[(dayOfYear+3) % ALL_EVENTS.length].title },
+  { date: getUpcomingDate(9), time: ALL_EVENTS[(dayOfYear+5) % ALL_EVENTS.length].time, title: ALL_EVENTS[(dayOfYear+5) % ALL_EVENTS.length].title },
 ];
 
 document.getElementById('mus-events').innerHTML = events.map(e => `
