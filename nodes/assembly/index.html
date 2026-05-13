@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -10,94 +11,75 @@
 <title>NAU Assembly — North American Union</title>
 <link rel="stylesheet" href="../../shared.css">
 <style>
-  :root { --nau-navy: #1B2A4A; --nau-gold: #B8972A; }
+  :root { --nau-navy: #1B2A4A; --nau-gold: #B8972A; --nau-gold-light: #D4AE4A; }
 
-  .nau-header {
-    background: var(--nau-navy);
-    color: #fff;
-    padding: 14px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-  .nau-brand { display: flex; align-items: center; gap: 14px; }
-  .nau-seal { font-size: 28px; }
-  .nau-title { font-family: 'DM Serif Display', serif; font-size: 20px; letter-spacing: -0.01em; }
-  .nau-subtitle { font-size: 10px; color: rgba(255,255,255,0.55); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
-  .nau-session-badge { font-size: 11px; background: var(--nau-gold); color: #fff; padding: 4px 10px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
+/* ── HERO ── */
+.nau-hero { position: relative; background: var(–nau-navy); overflow: hidden; }
+.nau-hero-img { width: 100%; height: 220px; object-fit: cover; object-position: center 40%; display: block; opacity: 0.65; }
+.nau-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, var(–nau-navy) 0%, transparent 30%, transparent 70%, var(–nau-navy) 100%), linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.75) 100%); pointer-events: none; }
+.nau-hero-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 24px 18px; display: flex; align-items: flex-end; justify-content: space-between; }
+.nau-brand { display: flex; align-items: center; gap: 14px; }
+.nau-seal { font-size: 28px; }
+.nau-title { font-family: ‘DM Serif Display’, serif; font-size: 22px; color: #fff; letter-spacing: -0.01em; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+.nau-subtitle { font-size: 10px; color: rgba(255,255,255,0.55); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+.nau-session-badge { font-size: 11px; background: var(–nau-gold); color: #fff; padding: 4px 10px; border-radius: 4px; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
 
-  .nau-nav { background: #14203A; display: flex; overflow-x: auto; }
-  .nau-nav a { font-size: 12px; color: rgba(255,255,255,0.70); text-decoration: none; padding: 10px 16px; font-weight: 500; white-space: nowrap; border-right: 0.5px solid rgba(255,255,255,0.08); transition: all 0.1s; }
-  .nau-nav a:hover { background: rgba(255,255,255,0.06); color: #fff; }
-  .nau-nav a.active { color: var(--nau-gold); border-bottom: 2px solid var(--nau-gold); }
+.nau-nav { background: #14203A; display: flex; overflow-x: auto; border-bottom: 2px solid var(–nau-gold); }
+.nau-nav a { font-size: 12px; color: rgba(255,255,255,0.70); text-decoration: none; padding: 10px 16px; font-weight: 500; white-space: nowrap; border-right: 0.5px solid rgba(255,255,255,0.08); transition: all 0.1s; }
+.nau-nav a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+.nau-nav a.active { color: var(–nau-gold); border-bottom: 2px solid var(–nau-gold); }
 
-  .nau-body { display: grid; grid-template-columns: 1fr 290px; max-width: 1100px; margin: 0 auto; }
-  .nau-main { padding: 24px; border-right: 0.5px solid var(--border); }
-  .nau-sidebar { padding: 24px 16px; background: var(--bg-secondary); }
+.nau-body { display: grid; grid-template-columns: 1fr 290px; max-width: 1100px; margin: 0 auto; }
+.nau-main { padding: 24px; border-right: 0.5px solid var(–border); }
+.nau-sidebar { padding: 24px 16px; background: var(–bg-secondary); }
 
-  .nau-floor-banner {
-    background: #FFF8E1;
-    border: 1px solid #FFE082;
-    border-left: 4px solid var(--nau-gold);
-    border-radius: 0 6px 6px 0;
-    padding: 12px 16px;
-    margin-bottom: 20px;
-  }
-  .nau-floor-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #8B6914; margin-bottom: 4px; }
-  .nau-floor-title { font-family: 'DM Serif Display', serif; font-size: 17px; color: #5D4508; margin-bottom: 3px; }
-  .nau-floor-meta { font-size: 11px; color: #8B6914; }
+.nau-floor-banner { background: #FFF8E1; border: 1px solid #FFE082; border-left: 4px solid var(–nau-gold); border-radius: 0 6px 6px 0; padding: 12px 16px; margin-bottom: 20px; }
+.nau-floor-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #8B6914; margin-bottom: 4px; }
+.nau-floor-title { font-family: ‘DM Serif Display’, serif; font-size: 17px; color: #5D4508; margin-bottom: 3px; }
+.nau-floor-meta { font-size: 11px; color: #8B6914; }
 
-  .nau-bill { background: #fff; border: 0.5px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; }
-  .nau-bill-num { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 4px; font-family: monospace; }
-  .nau-bill-title { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--text-primary); margin-bottom: 5px; line-height: 1.3; }
-  .nau-bill-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 8px; }
-  .nau-bill-meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-  .nau-bill-status { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
-  .nau-bill-status.committee { background: var(--blue-light); color: var(--blue); }
-  .nau-bill-status.floor { background: #FFF8E1; color: #8B6914; }
-  .nau-bill-status.passed { background: #E8F5E9; color: var(--green); }
-  .nau-bill-sponsor { font-size: 11px; color: var(--text-tertiary); }
+.nau-bill { background: #fff; border: 0.5px solid var(–border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; }
+.nau-bill-num { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(–text-tertiary); margin-bottom: 4px; font-family: monospace; }
+.nau-bill-title { font-family: ‘DM Serif Display’, serif; font-size: 16px; color: var(–text-primary); margin-bottom: 5px; line-height: 1.3; }
+.nau-bill-desc { font-size: 12px; color: var(–text-secondary); line-height: 1.5; margin-bottom: 8px; }
+.nau-bill-meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.nau-bill-status { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+.nau-bill-status.committee { background: var(–blue-light); color: var(–blue); }
+.nau-bill-status.floor { background: #FFF8E1; color: #8B6914; }
+.nau-bill-status.passed { background: #E8F5E9; color: var(–green); }
+.nau-bill-status.failed { background: #FFEBEE; color: #A32D2D; }
+.nau-bill-sponsor { font-size: 11px; color: var(–text-tertiary); }
 
-  .nau-widget { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
-  .nau-widget:last-child { margin-bottom: 0; }
-  .nau-widget-head { background: var(--bg-tertiary); padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); border-bottom: 0.5px solid var(--border); }
-  .nau-widget-body { padding: 12px; }
+.nau-widget { background: #fff; border: 0.5px solid var(–border); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+.nau-widget:last-child { margin-bottom: 0; }
+.nau-widget-head { background: var(–nau-navy); padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.75); border-bottom: 1px solid var(–nau-gold); }
+.nau-widget-body { padding: 12px; }
 
-  .nau-bloc-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-size: 12px; gap: 8px; }
-  .nau-bloc-row:last-child { border-bottom: none; }
-  .nau-bloc-name { font-weight: 600; min-width: 0; }
-  .nau-bloc-name.labour { color: #8B1A1A; }
-  .nau-bloc-name.unionist { color: #0C447C; }
-  .nau-bloc-name.cc { color: #3D2A10; }
-  .nau-bloc-name.green { color: #2D5A1A; }
-  .nau-bloc-name.ind { color: var(--text-tertiary); }
-  .nau-seats { font-weight: 700; color: var(--text-primary); flex-shrink: 0; }
-  .nau-bloc-bar-wrap { flex: 1; height: 5px; background: var(--bg-tertiary); border-radius: 3px; overflow: hidden; margin: 0 6px; }
-  .nau-bloc-bar { height: 100%; border-radius: 3px; }
-  .nau-bloc-bar.labour   { background: #8B1A1A; }
-  .nau-bloc-bar.unionist { background: #0C447C; }
-  .nau-bloc-bar.cc       { background: #3D2A10; }
-  .nau-bloc-bar.green    { background: #2D5A1A; }
-  .nau-bloc-bar.ind      { background: var(--text-tertiary); }
+/* ── SEATING CHART ── */
+.nau-chart-wrap { width: 100%; padding: 8px 0 4px; }
+.nau-chart-svg { width: 100%; height: auto; display: block; }
+.nau-chart-legend { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 8px; padding-top: 8px; border-top: 0.5px solid var(–border); }
+.nau-chart-legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(–text-secondary); }
+.nau-chart-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.nau-members-note { font-size: 10px; color: var(–text-tertiary); line-height: 1.5; margin-top: 8px; }
 
-  .nau-leader-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-size: 12px; }
-  .nau-leader-row:last-child { border-bottom: none; }
-  .nau-leader-name { font-weight: 500; color: var(--text-primary); }
-  .nau-leader-role { font-size: 11px; color: var(--text-tertiary); margin-top: 1px; }
+.nau-leader-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 0.5px solid var(–border); font-size: 12px; }
+.nau-leader-row:last-child { border-bottom: none; }
+.nau-leader-name { font-weight: 500; color: var(–text-primary); }
+.nau-leader-role { font-size: 11px; color: var(–text-tertiary); margin-top: 1px; }
 
-  .nau-vote-row { padding: 5px 0; border-bottom: 0.5px solid var(--border); font-size: 12px; }
-  .nau-vote-row:last-child { border-bottom: none; }
-  .nau-vote-date { font-weight: 600; color: var(--text-primary); font-size: 11px; }
-  .nau-vote-bill { color: var(--text-secondary); }
+.nau-vote-row { padding: 5px 0; border-bottom: 0.5px solid var(–border); font-size: 12px; }
+.nau-vote-row:last-child { border-bottom: none; }
+.nau-vote-date { font-weight: 600; color: var(–text-primary); font-size: 11px; }
+.nau-vote-bill { color: var(–text-secondary); }
 
-  .nau-members-note { font-size: 11px; color: var(--text-tertiary); line-height: 1.5; padding: 10px 12px; background: var(--bg-secondary); border-radius: 6px; margin-top: 8px; }
-
-  @media (max-width: 700px) { .nau-body { grid-template-columns: 1fr; } }
+@media (max-width: 700px) { .nau-body { grid-template-columns: 1fr; } }
 </style>
+
 </head>
 <body>
 
+<div class="arc-chrome">
 <div class="wm-topbar">
   <div class="arc-navbtns">
     <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
@@ -116,184 +98,90 @@
   <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
   <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
   <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
-  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="./"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
   <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
   <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
   <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
 </div>
+</div>
 
-<div class="nau-header">
-  <div class="nau-brand">
-    <div class="nau-seal">⚖</div>
-    <div>
-      <div class="nau-title">North American Union Assembly</div>
-      <div class="nau-subtitle">link://nan.assembly.nau &nbsp;·&nbsp; Calumet, Federal District of Dearborn</div>
+<!-- HERO -->
+
+<div class="nau-hero">
+  <img class="nau-hero-img" src="../../images/nau/nau_assembly1.png" alt="NAU Assembly Chamber" />
+  <div class="nau-hero-overlay"></div>
+  <div class="nau-hero-text">
+    <div class="nau-brand">
+      <div class="nau-seal">⚖</div>
+      <div>
+        <div class="nau-title">North American Union Assembly</div>
+        <div class="nau-subtitle">link://nan.assembly.nau &nbsp;·&nbsp; Calumet, Federal District of Dearborn</div>
+      </div>
     </div>
+    <div class="nau-session-badge" id="nau-session-badge">18th Session · In Session</div>
   </div>
-  <div class="nau-session-badge">18th Session · LIVE</div>
 </div>
 
 <nav class="nau-nav">
   <a href="#" class="active">Floor Activity</a>
-  <a href="#">Bills & Legislation</a>
+  <a href="#">Bills &amp; Legislation</a>
   <a href="#">Members</a>
   <a href="#">Committees</a>
   <a href="#">Executive Council</a>
-  <a href="#">Records & Archives</a>
+  <a href="#">Records &amp; Archives</a>
 </nav>
 
 <div class="nau-body">
   <div class="nau-main">
     <div class="wm-section-label">Floor Activity — <span id="nau-date"></span></div>
-
-    <div class="nau-floor-banner">
-      <div class="nau-floor-label">Assembly Floor — Now in Debate</div>
-      <div class="nau-floor-title">NAU/18-042 — Continental Currency Stabilisation Framework</div>
-      <div class="nau-floor-meta">Second reading · Economic Affairs Committee · Debate in progress · Est. vote: 15:00 Calumet Time</div>
-    </div>
-
-    <div class="wm-section-label">Recent & Upcoming Legislation</div>
-
-    <div class="nau-bill">
-      <div class="nau-bill-num">NAU/18-042</div>
-      <div class="nau-bill-title">Continental Currency Stabilisation Framework Act</div>
-      <div class="nau-bill-desc">Establishes a binding framework to harmonise exchange arrangements across all thirteen member states and codifies the role of the Continental Bank in monetary oversight. Backed by a Labour–Unionist majority.</div>
-      <div class="nau-bill-meta">
-        <span class="nau-bill-status floor">On Floor</span>
-        <span class="nau-bill-sponsor">Sponsors: Mbr. Okafor (Lab.–USA), Mbr. Tremblay (Un.–Canada), Mbr. Reyes (Lab.–Mexico)</span>
-      </div>
-    </div>
-
-    <div class="nau-bill">
-      <div class="nau-bill-num">NAU/18-031</div>
-      <div class="nau-bill-title">NAU Constitutional Consolidation Act</div>
-      <div class="nau-bill-desc">Consolidates sixty years of accumulated treaties, charter revisions, and amendments into a single founding document. Formally establishes NAU citizenship alongside member-state citizenship, expands Assembly oversight powers, and creates a permanent NAU judiciary. Mexico has reserved its position pending review of the judiciary provisions.</div>
-      <div class="nau-bill-meta">
-        <span class="nau-bill-status committee">Constitutional Committee</span>
-        <span class="nau-bill-sponsor">Sponsors: Mbr. Halverson (Un.–USA), Mbr. Dumont (Lab.–Canada), Mbr. Castillo (Un.–California)</span>
-      </div>
-    </div>
-
-    <div class="nau-bill">
-      <div class="nau-bill-num">NAU/18-019</div>
-      <div class="nau-bill-title">Pan-Continental Clean Waters Compact</div>
-      <div class="nau-bill-desc">Establishes binding water quality standards across shared river systems, coastal zones, and the Great Lakes basin. Includes enforcement mechanisms and a joint monitoring agency. Led by the Greens with Labour support; CC bloc opposed on sovereignty grounds.</div>
-      <div class="nau-bill-meta">
-        <span class="nau-bill-status passed">Passed Committee</span>
-        <span class="nau-bill-sponsor">Sponsors: Mbr. Kahananui (Grn.–Hawaii), Mbr. Beaumont (Grn.–Canada), Mbr. Flores (Lab.–FRCA)</span>
-      </div>
-    </div>
-
-    <div class="nau-bill">
-      <div class="nau-bill-num">NAU/18-008</div>
-      <div class="nau-bill-title">Caribbean Integration & Development Fund Reauthorisation</div>
-      <div class="nau-bill-desc">Reauthorises and expands the Fund established at Caribbean member states' accession, providing infrastructure, education, and economic development support. Broad cross-bloc support expected.</div>
-      <div class="nau-bill-meta">
-        <span class="nau-bill-status committee">Development Committee</span>
-        <span class="nau-bill-sponsor">Sponsors: Mbr. Saint-Fleur (Lab.–Haiti), Mbr. Morales (Un.–Dominican Rep.), Mbr. Chen (Un.–California)</span>
-      </div>
-    </div>
+    <div id="nau-floor-banner"></div>
+    <div class="wm-section-label">Recent &amp; Upcoming Legislation</div>
+    <div id="nau-bills"></div>
   </div>
 
   <div class="nau-sidebar">
 
-    <div class="nau-widget">
-      <div class="nau-widget-head">18th Session — Bloc Composition</div>
-      <div class="nau-widget-body">
-        <div class="nau-bloc-row">
-          <span class="nau-bloc-name unionist">Unionists</span>
-          <div class="nau-bloc-bar-wrap"><div class="nau-bloc-bar unionist" style="width:30%"></div></div>
-          <span class="nau-seats">228</span>
-        </div>
-        <div class="nau-bloc-row">
-          <span class="nau-bloc-name labour">Labour</span>
-          <div class="nau-bloc-bar-wrap"><div class="nau-bloc-bar labour" style="width:27%"></div></div>
-          <span class="nau-seats">204</span>
-        </div>
-        <div class="nau-bloc-row">
-          <span class="nau-bloc-name cc">Cont. Conservatives</span>
-          <div class="nau-bloc-bar-wrap"><div class="nau-bloc-bar cc" style="width:19%"></div></div>
-          <span class="nau-seats">144</span>
-        </div>
-        <div class="nau-bloc-row">
-          <span class="nau-bloc-name green">Greens</span>
-          <div class="nau-bloc-bar-wrap"><div class="nau-bloc-bar green" style="width:18%"></div></div>
-          <span class="nau-seats">138</span>
-        </div>
-        <div class="nau-bloc-row">
-          <span class="nau-bloc-name ind">Independent / Other</span>
-          <div class="nau-bloc-bar-wrap"><div class="nau-bloc-bar ind" style="width:5%"></div></div>
-          <span class="nau-seats">36</span>
-        </div>
-        <div class="nau-members-note">750 seats total · 13 member states · Proportional representation with degressive weighting</div>
-      </div>
+```
+<div class="nau-widget">
+  <div class="nau-widget-head">18th Session — Bloc Composition</div>
+  <div class="nau-widget-body">
+    <div class="nau-chart-wrap">
+      <svg class="nau-chart-svg" viewBox="0 0 260 150" xmlns="http://www.w3.org/2000/svg" id="nau-seat-chart"></svg>
     </div>
+    <div class="nau-chart-legend">
+      <div class="nau-chart-legend-item"><div class="nau-chart-legend-dot" style="background:#0C447C"></div>Unionists 228</div>
+      <div class="nau-chart-legend-item"><div class="nau-chart-legend-dot" style="background:#8B1A1A"></div>Labour 204</div>
+      <div class="nau-chart-legend-item"><div class="nau-chart-legend-dot" style="background:#3D2A10"></div>CC 144</div>
+      <div class="nau-chart-legend-item"><div class="nau-chart-legend-dot" style="background:#2D5A1A"></div>Greens 138</div>
+      <div class="nau-chart-legend-item"><div class="nau-chart-legend-dot" style="background:#888"></div>Ind. 36</div>
+    </div>
+    <div class="nau-members-note">750 seats · 13 member states · Proportional representation with degressive weighting</div>
+  </div>
+</div>
 
-    <div class="nau-widget">
-      <div class="nau-widget-head">Assembly Leadership</div>
-      <div class="nau-widget-body">
-        <div class="nau-leader-row">
-          <div>
-            <div class="nau-leader-name">Pres. Marguerite Fontaine</div>
-            <div class="nau-leader-role">Assembly President · Unionist · Canada</div>
-          </div>
-        </div>
-        <div class="nau-leader-row">
-          <div>
-            <div class="nau-leader-name">V.Pres. Rodrigo Vásquez</div>
-            <div class="nau-leader-role">First Vice-President · Labour · Mexico</div>
-          </div>
-        </div>
-        <div class="nau-leader-row">
-          <div>
-            <div class="nau-leader-name">Grp. Ld. Halverson</div>
-            <div class="nau-leader-role">Unionist Group Leader · USA</div>
-          </div>
-        </div>
-        <div class="nau-leader-row">
-          <div>
-            <div class="nau-leader-name">Grp. Ld. Okafor</div>
-            <div class="nau-leader-role">Labour Group Leader · USA</div>
-          </div>
-        </div>
-        <div class="nau-leader-row">
-          <div>
-            <div class="nau-leader-name">Grp. Ld. Beaumont</div>
-            <div class="nau-leader-role">Greens Group Leader · Canada</div>
-          </div>
-        </div>
-        <div class="nau-leader-row">
-          <div>
-            <div class="nau-leader-name">Grp. Ld. Whitfield</div>
-            <div class="nau-leader-role">CC Group Leader · Texas</div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="nau-widget">
+  <div class="nau-widget-head">Assembly Leadership</div>
+  <div class="nau-widget-body">
+    <div class="nau-leader-row"><div><div class="nau-leader-name">Pres. Marguerite Fontaine</div><div class="nau-leader-role">Assembly President · Unionist · Canada</div></div></div>
+    <div class="nau-leader-row"><div><div class="nau-leader-name">V.Pres. Rodrigo Vásquez</div><div class="nau-leader-role">First Vice-President · Labour · Mexico</div></div></div>
+    <div class="nau-leader-row"><div><div class="nau-leader-name">Grp. Ld. Halverson</div><div class="nau-leader-role">Unionist Group Leader · USA</div></div></div>
+    <div class="nau-leader-row"><div><div class="nau-leader-name">Grp. Ld. Okafor</div><div class="nau-leader-role">Labour Group Leader · USA</div></div></div>
+    <div class="nau-leader-row"><div><div class="nau-leader-name">Grp. Ld. Beaumont</div><div class="nau-leader-role">Greens Group Leader · Canada</div></div></div>
+    <div class="nau-leader-row"><div><div class="nau-leader-name">Grp. Ld. Whitfield</div><div class="nau-leader-role">CC Group Leader · Texas</div></div></div>
+  </div>
+</div>
 
-    <div class="nau-widget">
-      <div class="nau-widget-head">Upcoming Votes</div>
-      <div class="nau-widget-body">
-        <div class="nau-vote-row">
-          <div class="nau-vote-date">Today · 15:00</div>
-          <div class="nau-vote-bill">NAU/18-042 — Currency Framework</div>
-        </div>
-        <div class="nau-vote-row">
-          <div class="nau-vote-date">Mon 18 Mar</div>
-          <div class="nau-vote-bill">NAU/18-019 — Clean Waters Compact</div>
-        </div>
-        <div class="nau-vote-row">
-          <div class="nau-vote-date">Wed 20 Mar</div>
-          <div class="nau-vote-bill">NAU/18-031 — Constitution Act (procedural)</div>
-        </div>
-      </div>
-    </div>
+<div class="nau-widget">
+  <div class="nau-widget-head">Upcoming Votes</div>
+  <div class="nau-widget-body" id="nau-votes"></div>
+</div>
+```
 
   </div>
 </div>
 
 <div class="wm-footer">
-  <span>link://nan.assembly.nau &nbsp;·&nbsp; North American Union Assembly &nbsp;·&nbsp; Calumet, Federal District of Calumet</span>
+  <span>link://nan.assembly.nau &nbsp;·&nbsp; North American Union Assembly &nbsp;·&nbsp; Calumet, Federal District of Dearborn</span>
   <div class="wm-footer-links">
     <a href="#">About</a>
     <a href="#">Accessibility</a>
@@ -303,10 +191,11 @@
 </div>
 
 <script src="../../router.js"></script>
-<script>
-  initAddressBar('nan.assembly.nau');
 
-// ── ARC CLOCK ──
+<script>
+initAddressBar('nan.assembly.nau');
+
+// ── CLOCK ──
 function updateArcClock() {
   const n = new Date();
   const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -317,10 +206,158 @@ function updateArcClock() {
 }
 setInterval(updateArcClock, 10000);
 updateArcClock();
-  
-  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const d = new Date();
-  document.getElementById('nau-date').textContent = `${d.getDate()} ${MONTHS[d.getMonth()]}, ${d.getFullYear()}`;
+
+// ── DATE ──
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const now    = new Date();
+const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+document.getElementById('nau-date').textContent = `${now.getDate()} ${MONTHS[now.getMonth()]}, ${now.getFullYear()}`;
+
+// ── SESSION BADGE — in/out of session ──
+const dayOfWeek = now.getDay();
+const inSession = dayOfWeek >= 1 && dayOfWeek <= 5;
+document.getElementById('nau-session-badge').textContent = `18th Session · ${inSession ? 'In Session' : 'Recess'}`;
+
+// ── SEEDED RANDOM ──
+function seededRand(seed) { const x = Math.sin(seed + 1) * 10000; return x - Math.floor(x); }
+
+// ── FLOOR BANNERS (rotate daily) ──
+const FLOOR_BANNERS = [
+  { label: 'Assembly Floor — Now in Debate', bill: 'NAU/18-042 — Continental Currency Stabilisation Framework', meta: 'Second reading · Economic Affairs Committee · Debate in progress · Est. vote: 15:00 Calumet Time' },
+  { label: 'Assembly Floor — Second Reading', bill: 'NAU/18-031 — NAU Constitutional Consolidation Act', meta: 'Constitutional Committee report tabled · General debate open · No vote scheduled today' },
+  { label: 'Assembly Floor — Committee Stage', bill: 'NAU/18-019 — Pan-Continental Clean Waters Compact', meta: 'Line-by-line review · Environment & Sustainability Committee · Session resumes 10:00 Calumet Time' },
+  { label: 'Assembly Floor — Question Time', bill: 'Assembly Questions to the Executive Council', meta: 'Members may submit written questions · Oral questions: 14:00–16:00 Calumet Time' },
+  { label: 'Assembly Floor — Procedural Session', bill: 'NAU/18-008 — Caribbean Integration & Development Fund Reauthorisation', meta: 'First reading · Referred to Development Committee · No debate scheduled' },
+  { label: 'Assembly Floor — Emergency Debate', bill: 'Motion on NAU Response to Mesopotamian Reconstruction Progress', meta: 'Tabled by Labour and Unionist blocs · Debate limited to 3 hours · Vote on motion expected' },
+  { label: 'Assembly Floor — Now in Debate', bill: 'NAU/18-055 — Pacific Trade Framework Renewal', meta: 'Third reading · Trade & External Relations Committee · Vote expected 16:30 Calumet Time' },
+];
+
+const banner = FLOOR_BANNERS[dayOfYear % FLOOR_BANNERS.length];
+document.getElementById('nau-floor-banner').innerHTML = `
+  <div class="nau-floor-banner">
+    <div class="nau-floor-label">${banner.label}</div>
+    <div class="nau-floor-title">${banner.bill}</div>
+    <div class="nau-floor-meta">${banner.meta}</div>
+  </div>
+`;
+
+// ── BILLS (pool of 8, show 4 daily) ──
+const ALL_BILLS = [
+  { num: 'NAU/18-042', title: 'Continental Currency Stabilisation Framework Act', desc: 'Establishes a binding framework to harmonise exchange arrangements across all thirteen member states and codifies the role of the Continental Bank in monetary oversight. Backed by a Labour–Unionist majority.', status: 'floor', statusLabel: 'On Floor', sponsor: 'Mbr. Okafor (Lab.–USA), Mbr. Tremblay (Un.–Canada), Mbr. Reyes (Lab.–Mexico)' },
+  { num: 'NAU/18-031', title: 'NAU Constitutional Consolidation Act', desc: 'Consolidates sixty years of accumulated treaties, charter revisions, and amendments into a single founding document. Formally establishes NAU citizenship alongside member-state citizenship and creates a permanent NAU judiciary. Mexico has reserved its position pending review of the judiciary provisions.', status: 'committee', statusLabel: 'Constitutional Committee', sponsor: 'Mbr. Halverson (Un.–USA), Mbr. Dumont (Lab.–Canada), Mbr. Castillo (Un.–California)' },
+  { num: 'NAU/18-019', title: 'Pan-Continental Clean Waters Compact', desc: 'Establishes binding water quality standards across shared river systems, coastal zones, and the Great Lakes basin. Includes enforcement mechanisms and a joint monitoring agency. Led by the Greens with Labour support; CC bloc opposed on sovereignty grounds.', status: 'passed', statusLabel: 'Passed Committee', sponsor: 'Mbr. Kahananui (Grn.–Hawaii), Mbr. Beaumont (Grn.–Canada), Mbr. Flores (Lab.–FRCA)' },
+  { num: 'NAU/18-008', title: 'Caribbean Integration & Development Fund Reauthorisation', desc: 'Reauthorises and expands the Fund established at Caribbean member states\' accession, providing infrastructure, education, and economic development support. Broad cross-bloc support expected.', status: 'committee', statusLabel: 'Development Committee', sponsor: 'Mbr. Saint-Fleur (Lab.–Haiti), Mbr. Morales (Un.–Dominican Rep.), Mbr. Chen (Un.–California)' },
+  { num: 'NAU/18-055', title: 'Pacific Trade Framework Renewal Act', desc: 'Renews and expands the bilateral trade frameworks governing NAU relations with Japan, China, and the Kingdom of Hawaii. Introduces new provisions on digital trade, intellectual property, and supply chain resilience. Strong Unionist and Labour backing.', status: 'floor', statusLabel: 'On Floor', sponsor: 'Mbr. Nakashima (Un.–USA), Mbr. Kahananui (Grn.–Hawaii), Mbr. Dumont (Lab.–Canada)' },
+  { num: 'NAU/18-061', title: 'NAU Civil Aviation Standards Harmonisation Act', desc: 'Brings all thirteen member states under a single set of safety standards, licensing requirements, and air traffic management protocols. Technical legislation with broad support across all blocs.', status: 'committee', statusLabel: 'Transport Committee', sponsor: 'Mbr. Lavigne (Un.–Canada), Mbr. Torres (Lab.–Mexico), Mbr. Williams (CC–USA)' },
+  { num: 'NAU/18-037', title: 'Interlink Access Equity Resolution', desc: 'Non-binding resolution calling on all member states to achieve universal household Interlink access by 2030 and to remove restrictions on cross-border data flows within the NAU. Greens and Labour co-sponsored; CC bloc abstaining.', status: 'passed', statusLabel: 'Passed — Non-binding', sponsor: 'Mbr. Beaumont (Grn.–Canada), Mbr. Okafor (Lab.–USA), Mbr. Reyes (Lab.–Mexico)' },
+  { num: 'NAU/18-044', title: 'Mutual Recognition of Professional Qualifications Act', desc: 'Requires all member states to recognise professional qualifications — medical, legal, engineering, and teaching — issued by any other member state. Contentious among some provincial governments; Unionist bloc divided.', status: 'committee', statusLabel: 'Legal Affairs Committee', sponsor: 'Mbr. Castillo (Un.–California), Mbr. Vásquez (Lab.–Mexico), Mbr. Tremblay (Un.–Canada)' },
+];
+
+const b1 = ALL_BILLS[dayOfYear % ALL_BILLS.length];
+const b2 = ALL_BILLS[(dayOfYear + 2) % ALL_BILLS.length];
+const b3 = ALL_BILLS[(dayOfYear + 4) % ALL_BILLS.length];
+const b4 = ALL_BILLS[(dayOfYear + 6) % ALL_BILLS.length];
+
+document.getElementById('nau-bills').innerHTML = [b1, b2, b3, b4].map(b => `
+  <div class="nau-bill">
+    <div class="nau-bill-num">${b.num}</div>
+    <div class="nau-bill-title">${b.title}</div>
+    <div class="nau-bill-desc">${b.desc}</div>
+    <div class="nau-bill-meta">
+      <span class="nau-bill-status ${b.status}">${b.statusLabel}</span>
+      <span class="nau-bill-sponsor">Sponsors: ${b.sponsor}</span>
+    </div>
+  </div>
+`).join('');
+
+// ── UPCOMING VOTES (relative to today) ──
+function futureDate(daysAhead) {
+  const d = new Date(now);
+  d.setDate(d.getDate() + daysAhead);
+  // Skip weekends for vote dates
+  while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1);
+  return `${DAYS[d.getDay()].slice(0,3)} ${d.getDate()} ${MONTHS[d.getMonth()].slice(0,3)}`;
+}
+
+const VOTES = [
+  { daysAhead: 0, time: '15:00', bill: `${b1.num} — ${b1.title.split(' ').slice(0,4).join(' ')}…` },
+  { daysAhead: 3, time: '11:00', bill: `${b2.num} — ${b2.title.split(' ').slice(0,4).join(' ')}…` },
+  { daysAhead: 5, time: '14:30', bill: `${b3.num} — ${b3.title.split(' ').slice(0,4).join(' ')}…` },
+];
+
+document.getElementById('nau-votes').innerHTML = VOTES.map((v, i) => `
+  <div class="nau-vote-row">
+    <div class="nau-vote-date">${i === 0 ? `Today · ${v.time}` : `${futureDate(v.daysAhead)} · ${v.time}`}</div>
+    <div class="nau-vote-bill">${v.bill}</div>
+  </div>
+`).join('');
+
+// ── SEMICIRCULAR SEATING CHART ──
+const BLOCS = [
+  { name: 'Unionists', seats: 228, color: '#0C447C' },
+  { name: 'Labour',    seats: 204, color: '#8B1A1A' },
+  { name: 'CC',        seats: 144, color: '#3D2A10' },
+  { name: 'Greens',    seats: 138, color: '#2D5A1A' },
+  { name: 'Ind.',      seats: 36,  color: '#888888' },
+];
+const TOTAL = 750;
+
+// Draw semicircular parliament chart
+// Seats arranged in arcs from left (opposition) to right (government)
+// Left: CC + Ind, Centre: Greens + Labour, Right: Unionists
+const svg = document.getElementById('nau-seat-chart');
+const cx = 130, cy = 140, r_inner = 40, r_outer = 125;
+const ROWS = 5;
+const START_ANG = Math.PI; // left
+const END_ANG   = 0;       // right
+const ANG_SPAN  = Math.PI;
+
+// Order seats left to right: CC, Ind, Greens, Labour, Unionists
+const ORDER = [
+  { color: '#3D2A10', seats: 144 },
+  { color: '#888888', seats: 36  },
+  { color: '#2D5A1A', seats: 138 },
+  { color: '#8B1A1A', seats: 204 },
+  { color: '#0C447C', seats: 228 },
+];
+
+// Calculate total dots
+const DOT_R = 3.2;
+const ROW_DOTS = [30, 38, 46, 54, 62]; // dots per row, inner to outer
+const TOTAL_DOTS = ROW_DOTS.reduce((a,b) => a+b, 0); // 230 — we'll scale
+
+let dots = [];
+ORDER.forEach(bloc => {
+  const count = Math.round((bloc.seats / TOTAL) * TOTAL_DOTS);
+  for (let i = 0; i < count; i++) dots.push(bloc.color);
+});
+// Pad to exact total
+while (dots.length < TOTAL_DOTS) dots.push('#888888');
+dots = dots.slice(0, TOTAL_DOTS);
+
+let dotIdx = 0;
+let svgHTML = '';
+
+for (let row = 0; row < ROWS; row++) {
+  const r = r_inner + (r_outer - r_inner) * (row / (ROWS - 1));
+  const n = ROW_DOTS[row];
+  for (let i = 0; i < n; i++) {
+    if (dotIdx >= dots.length) break;
+    const ang = START_ANG + (ANG_SPAN * i / (n - 1));
+    const x = cx + r * Math.cos(ang);
+    const y = cy + r * Math.sin(ang) * -1; // flip y
+    svgHTML += `<circle cx="${x.toFixed(1)}" cy="${(cy - (y - cy)).toFixed(1)}" r="${DOT_R}" fill="${dots[dotIdx]}" opacity="0.9"/>`;
+    dotIdx++;
+  }
+}
+
+// Speaker position at center
+svgHTML += `<circle cx="${cx}" cy="${cy + 8}" r="5" fill="${'#B8972A'}" opacity="0.9"/>`;
+svgHTML += `<text x="${cx}" y="${cy + 25}" text-anchor="middle" font-size="7" fill="#888" font-family="sans-serif">Speaker</text>`;
+
+svg.innerHTML = svgHTML;
 </script>
+
 </body>
 </html>
