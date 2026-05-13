@@ -4,8 +4,7 @@
 const ROUTES = {
   'nan.waymark.biz.usa':                      '/',
   'nan.franklin-ob.pr.usa':                   '/nodes/franklin-observer/',
-  'nan.usrc.gov.usa':                         '/nodes/usrc/',
-  'nan.assembly.nau':                         '/nodes/assembly/',
+  'nan.abnnews.pr.usa':                       '/nodes/abn/',
   'nan.nedex.org.nau':                        '/nodes/nedex/',
   'nan.nedex.org.nau/browse':                 '/nodes/nedex/nedex_browse.html',
   'nan.nedex.org.nau/categories':             '/nodes/nedex/nedex_categories.html',
@@ -31,11 +30,19 @@ const ROUTES = {
   'nan.nedex.org.nau/giles-brandon':          '/nodes/nedex/giles-brandon.html',
   'nan.nedex.org.nau/victor-yates':           '/nodes/nedex/victor-yates.html',
   'nan.nedex.org.nau/hugo-brandt':            '/nodes/nedex/hugo-brandt.html',
+  'nan.usrc.gov.usa':                         '/nodes/usrc/',
+  'nan.assembly.nau':                         '/nodes/assembly/',
   'nan.washingtonhouse.gov.usa':              '/nodes/washington-house/',
+  'nan.washingtonhouse.gov.usa/presidents':   '/nodes/washington-house/wh_presidents.html',
   'nan.mususa.edu.usa':                       '/nodes/amhistory/',
-  'nan.abnnews.pr.usa':                       '/nodes/abn/',
+  'nan.mususa.edu.usa/archives':              '/nodes/amhistory/archives.html',
+  'nan.mususa.edu.usa/doc-declaration':       '/nodes/amhistory/doc-declaration.html',
+  'nan.mususa.edu.usa/doc-constitution-1787': '/nodes/amhistory/doc-constitution-1787.html',
+  'nan.mususa.edu.usa/doc-constitution-1861': '/nodes/amhistory/doc-constitution-1861.html',
   'nan.fps.gov.usa':                          '/nodes/fps/',
   'nan.div814.gov.usa':                       '/nodes/ref/',
+  'nan.div814.gov.usa/stories':               '/nodes/ref/stories',
+  'nan.div814.gov.usa/nedex-builder':         '/nodes/ref/nedex-builder',
 };
 
 const PATH_TO_ADDRESS = {};
