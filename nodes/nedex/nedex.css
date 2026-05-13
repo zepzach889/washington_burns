@@ -236,13 +236,15 @@
 
 .ndx-infobox-img {
   width: 100%;
-  height: 160px;
   background: var(--ndx-header);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
+  overflow: hidden;
   border-bottom: 0.5px solid var(--ndx-border-copper);
+}
+
+.ndx-infobox-img img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .ndx-infobox-title {
