@@ -20,24 +20,24 @@
   .wm-search::placeholder { color: var(--text-tertiary); }
   .wm-search-btn { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: var(--blue); border: none; border-radius: 24px; padding: 8px 20px; font-size: 12px; font-weight: 600; color: #fff; cursor: pointer; font-family: 'DM Sans', sans-serif; letter-spacing: 0.02em; transition: background 0.1s; }
   .wm-search-btn:hover { background: var(--blue-dark); }
-
+ 
   .wm-portal { display: grid; grid-template-columns: 1fr 300px; max-width: 1100px; margin: 0 auto; width: 100%; }
   .wm-main { padding: 24px 24px 32px; border-right: 0.5px solid var(--border); }
-
+ 
   .wm-lead { background: var(--blue-light); border-left: 3px solid var(--blue); padding: 14px 16px; border-radius: 0 8px 8px 0; margin-bottom: 20px; cursor: pointer; transition: background 0.1s; text-decoration: none; display: block; }
   .wm-lead:hover { background: var(--blue-mid); }
   .wm-lead-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 5px; }
   .wm-lead-hed { font-family: 'DM Serif Display', serif; font-size: 20px; line-height: 1.25; color: var(--blue-dark); margin-bottom: 5px; }
   .wm-lead-dek { font-size: 13px; color: var(--blue); line-height: 1.5; }
   .wm-lead-meta { font-size: 10px; color: #378ADD; margin-top: 8px; font-weight: 500; }
-
+ 
   .wm-headline { display: block; text-decoration: none; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 0.5px solid var(--border); cursor: pointer; }
   .wm-headline:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
   .wm-hl-hed { font-family: 'DM Serif Display', serif; font-size: 17px; line-height: 1.3; color: var(--text-primary); margin-bottom: 4px; transition: color 0.1s; }
   .wm-headline:hover .wm-hl-hed { color: var(--blue); }
   .wm-hl-dek { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
   .wm-hl-meta { font-size: 10px; color: var(--text-tertiary); margin-top: 5px; font-weight: 500; }
-
+ 
   /* SEARCH RESULTS */
   .wm-search-result { display: block; text-decoration: none; padding: 14px 0; border-bottom: 0.5px solid var(--border); }
   .wm-search-result:last-child { border-bottom: none; }
@@ -46,15 +46,15 @@
   .wm-sr-hed { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--blue-dark); margin-bottom: 4px; line-height: 1.3; transition: color 0.1s; }
   .wm-sr-dek { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
   .wm-sr-meta { font-size: 10px; color: var(--text-tertiary); margin-top: 4px; }
-
+ 
   .wm-no-results { padding: 32px 0; text-align: center; }
   .wm-no-results-hed { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--text-primary); margin-bottom: 8px; }
   .wm-no-results-dek { font-size: 13px; color: var(--text-tertiary); }
   .wm-no-results-addr { font-family: monospace; font-size: 11px; color: var(--text-tertiary); margin-top: 16px; }
-
+ 
   .wm-results-label { font-size: 12px; color: var(--text-tertiary); margin-bottom: 16px; }
   .wm-results-label strong { color: var(--text-primary); }
-
+ 
   .wm-sidebar { padding: 24px 16px; display: flex; flex-direction: column; gap: 18px; background: var(--bg-secondary); }
   .wm-widget { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; }
   .wm-widget-head { background: var(--bg-tertiary); padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
@@ -95,7 +95,7 @@
 </style>
 </head>
 <body>
-
+ 
 <div class="arc-chrome">
 <div class="wm-topbar">
   <div class="arc-navbtns">
@@ -118,7 +118,6 @@
   <a class="arc-bmark" href="#" onclick="resetToHome(); return false;"><span class="arc-bmark-icon">🔍</span>Waymark</a>
   <a class="arc-bmark" href="./nodes/franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
   <a class="arc-bmark" href="./nodes/abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
-  <a class="arc-bmark" href="./nodes/nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
   <a class="arc-bmark" href="./nodes/usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
   <a class="arc-bmark" href="./nodes/assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
   <a class="arc-bmark" href="./nodes/washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
@@ -126,7 +125,7 @@
   <a class="arc-bmark" href="./nodes/fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
 </div>
 </div>
-
+ 
 <div class="wm-hero">
   <div class="wm-wordmark" onclick="resetToHome()">Way<span>mark</span></div>
   <div class="wm-tagline" id="wm-tagline">Find your node on the Link</div>
@@ -135,35 +134,36 @@
     <button class="wm-search-btn" id="wm-search-btn">Find</button>
   </div>
 </div>
-
+ 
 <hr class="wm-divider">
-
+ 
 <div class="wm-portal">
   <div class="wm-main" id="wm-main">
     <div id="wm-content-area"></div>
   </div>
-
-  <div class="wm-widget">
-  <div class="wm-widget-head">
-    <span id="w-weather-head">Weather</span>
-  </div>
-  <div class="wm-widget-body">
-    <div class="wm-weather-panels">
-      <div class="wm-weather-panel wm-weather-panel-local" id="wm-weather-local">
-        <div class="wm-weather-panel-label">Your Location</div>
-        <div style="font-size:11px;color:var(--text-tertiary);font-style:italic;">Locating…</div>
+ 
+  <div class="wm-sidebar">
+    <div class="wm-widget">
+      <div class="wm-widget-head">
+        <span id="w-weather-head">Weather</span>
       </div>
-      <div class="wm-weather-panel wm-weather-panel-rotating" id="wm-weather-rotating">
-        <div class="wm-weather-panel-label">
-          <span id="wm-rotating-city-label">Franklin, D.W.</span>
-          <span class="wm-rotating-dot"></span>
+      <div class="wm-widget-body">
+        <div class="wm-weather-panels">
+          <div class="wm-weather-panel wm-weather-panel-local" id="wm-weather-local">
+            <div class="wm-weather-panel-label">Your Location</div>
+            <div style="font-size:11px;color:var(--text-tertiary);font-style:italic;">Locating…</div>
+          </div>
+          <div class="wm-weather-panel wm-weather-panel-rotating" id="wm-weather-rotating">
+            <div class="wm-weather-panel-label">
+              <span id="wm-rotating-city-label">Franklin, D.W.</span>
+              <span class="wm-rotating-dot"></span>
+            </div>
+            <div style="font-size:11px;color:var(--text-tertiary);font-style:italic;">Fetching…</div>
+          </div>
         </div>
-        <div style="font-size:11px;color:var(--text-tertiary);font-style:italic;">Fetching…</div>
       </div>
     </div>
-  </div>
-</div>
-
+ 
     <div class="wm-widget">
       <div class="wm-widget-head">
         <span id="w-markets-head">NAX Markets</span>
@@ -171,7 +171,7 @@
       </div>
       <div class="wm-widget-body" id="wm-markets-body"></div>
     </div>
-
+ 
     <div class="wm-widget">
       <div class="wm-widget-head" id="w-shortcuts-head">My Shortcuts</div>
       <div class="wm-widget-body">
@@ -185,7 +185,7 @@
     </div>
   </div>
 </div>
-
+ 
 <div class="wm-footer">
   <span>link://nan.waymark.biz.usa &nbsp;·&nbsp; NANet Node &nbsp;·&nbsp; © <span id="wm-year"></span> Waymark Search Corp.</span>
   <div class="wm-footer-links">
@@ -196,7 +196,7 @@
     <a href="#" id="f-status">NANet Status</a>
   </div>
 </div>
-
+ 
 <script src="router.js"></script>
 <script src="stories.js"></script>
 <script>
@@ -206,15 +206,15 @@ const UI = {
   fr: { tagline: 'Trouvez votre nœud sur le Lien', searchHolder: 'Rechercher sur le Lien…', searchBtn: 'Chercher', headlinesLabel: 'Titres du jour', weatherHead: 'Franklin, D.W. — Météo', weatherLoading: 'Récupération des conditions…', weatherUnavail: 'Conditions indisponibles', marketsHead: 'Marchés NAX', shortcutsHead: 'Mes raccourcis', fAbout: 'À propos', fPrivacy: 'Confidentialité', fTerms: 'Conditions d\'utilisation', fAccess: 'Accessibilité', fStatus: 'État du NANet', months: ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'], dateFormat: (d,m,y) => `${d} ${m} ${y}` },
   es: { tagline: 'Encuentre su nodo en el Enlace', searchHolder: 'Buscar en el Enlace…', searchBtn: 'Buscar', headlinesLabel: 'Titulares de hoy', weatherHead: 'Franklin, D.W. — El Tiempo', weatherLoading: 'Obteniendo condiciones…', weatherUnavail: 'Condiciones no disponibles', marketsHead: 'Mercados NAX', shortcutsHead: 'Mis accesos directos', fAbout: 'Acerca de', fPrivacy: 'Privacidad', fTerms: 'Términos de servicio', fAccess: 'Accesibilidad', fStatus: 'Estado del NANet', months: ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'], dateFormat: (d,m,y) => `${d} de ${m} de ${y}` }
 };
-
+ 
 let currentLang = 'en';
-
+ 
 function formatDate(lang) {
   const t = UI[lang];
   const d = new Date();
   return t.dateFormat(d.getDate(), t.months[d.getMonth()], d.getFullYear());
 }
-
+ 
 function applyLang(code) {
   const t = UI[code];
   currentLang = code;
@@ -233,9 +233,9 @@ function applyLang(code) {
   if (wl) wl.textContent = t.weatherLoading;
   document.querySelectorAll('.wm-lang-btn').forEach(b => b.classList.toggle('active', b.textContent === code.toUpperCase()));
 }
-
+ 
 function setLang(code) { applyLang(code); }
-
+ 
 // ── CLOCK ──
 function updateArcClock() {
   const n = new Date();
@@ -247,30 +247,30 @@ function updateArcClock() {
 }
 setInterval(updateArcClock, 10000);
 updateArcClock();
-
+ 
 applyLang('en');
 document.getElementById('wm-year').textContent = new Date().getFullYear();
 initAddressBar('nan.waymark.biz.usa');
-
+ 
 // ── TAG COLORS ──
 const tagColors = { nau: '#993C1D', usa: '#185FA5', world: '#0F6E56', politics: '#993C1D', national: '#1a1410', rail: '#533AB7', culture: '#993556' };
 function tagColor(tag) { return tagColors[(tag||'').toLowerCase()] || '#185FA5'; }
-
+ 
 // ── RENDER HEADLINES ──
 function renderHeadlines() {
   const lead = WAYMARK_HEADLINES[0];
   const rest = WAYMARK_HEADLINES.slice(1);
   const t = UI[currentLang];
-
+ 
   let html = `<div class="wm-section-label">${t.headlinesLabel} — ${formatDate(currentLang)}</div>`;
-
+ 
   html += `<a class="wm-lead" href="${lead.link}">
     <div class="wm-lead-tag">${lead.tag}</div>
     <div class="wm-lead-hed">${lead.hed}</div>
     <div class="wm-lead-dek">${lead.dek}</div>
     <div class="wm-lead-meta">${lead.meta}</div>
   </a>`;
-
+ 
   rest.forEach(s => {
     html += `<a class="wm-headline" href="${s.link}">
       <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;color:${tagColor(s.tag)}">${s.tag}</div>
@@ -279,15 +279,15 @@ function renderHeadlines() {
       <div class="wm-hl-meta">${s.meta}</div>
     </a>`;
   });
-
+ 
   document.getElementById('wm-content-area').innerHTML = html;
 }
-
+ 
 // ── SEARCH ──
 // Build a flat searchable index from stories.js pools
 function buildIndex() {
   const index = [];
-
+ 
   // Site pages — always included
   const PAGES = [
     { hed: 'Franklin Observer', dek: 'The Franklin Observer — established 1843. News, politics, world affairs and culture from the capital.', source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/' },
@@ -299,33 +299,33 @@ function buildIndex() {
     { hed: 'Federal Parks Service', dek: 'Protecting America\'s lands since 1908. 57 Federal Parks across the United States.', source: 'nan.fps.gov.usa', link: './nodes/fps/' },
     { hed: 'Waymark Search', dek: 'Find your node on the Link. NANet\'s leading search service.', source: 'nan.waymark.biz.usa', link: '#' },
   ];
-
+ 
   PAGES.forEach(p => index.push({ ...p, type: 'page' }));
-
+ 
   // Observer stories
   FO_LEADS.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
   FO_NATIONAL.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
   FO_WORLD.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
-
+ 
   // ABN stories
   ABN_LEADS.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
   ABN_CARDS.forEach(s => index.push({ hed: s.hed, dek: s.hed, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
   ABN_WORLD.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
-
+ 
   return index;
 }
-
+ 
 function doSearch(query) {
   const q = query.trim().toLowerCase();
   if (!q) { renderHeadlines(); return; }
-
+ 
   const index = buildIndex();
   const results = index.filter(item =>
     item.hed.toLowerCase().includes(q) ||
     (item.dek && item.dek.toLowerCase().includes(q)) ||
     (item.source && item.source.toLowerCase().includes(q))
   );
-
+ 
   // Deduplicate by headline
   const seen = new Set();
   const unique = results.filter(r => {
@@ -333,9 +333,9 @@ function doSearch(query) {
     seen.add(r.hed);
     return true;
   });
-
+ 
   let html = '';
-
+ 
   if (unique.length === 0) {
     html = `<div class="wm-no-results">
       <div class="wm-no-results-hed">No results found for "${query}"</div>
@@ -352,17 +352,17 @@ function doSearch(query) {
       </a>`;
     });
   }
-
+ 
   document.getElementById('wm-content-area').innerHTML = html;
 }
-
+ 
 // ── RESET TO HOME ──
 function resetToHome() {
   document.getElementById('wm-search').value = '';
   renderHeadlines();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
+ 
 // ── SEARCH EVENTS ──
 document.getElementById('wm-search-btn').addEventListener('click', () => {
   doSearch(document.getElementById('wm-search').value);
@@ -371,13 +371,13 @@ document.getElementById('wm-search').addEventListener('keydown', e => {
   if (e.key === 'Enter') doSearch(e.target.value);
   if (e.key === 'Escape') resetToHome();
 });
-
+ 
 // ── INIT ──
 renderHeadlines();
-
+ 
 // ── DYNAMIC NAX MARKETS ──
 function seededRand(seed) { const x = Math.sin(seed) * 10000; return x - Math.floor(x); }
-
+ 
 function buildMarkets() {
   const now  = new Date();
   const day  = now.getDay();
@@ -388,36 +388,36 @@ function buildMarkets() {
   const minuteOfDay = hour * 60 + min;
   const marketOpen  = 9 * 60 + 30;
   const marketClose = 16 * 60;
-
+ 
   let status, statusClass;
   if (isWeekend || minuteOfDay >= marketClose)  { status = 'Closed';     statusClass = 'closed'; }
   else if (minuteOfDay < marketOpen)            { status = 'Pre-Market'; statusClass = 'premarket'; }
   else                                          { status = 'Open';       statusClass = 'open'; }
-
+ 
   document.getElementById('wm-market-status').textContent = status;
   document.getElementById('wm-market-status').className = `wm-market-status ${statusClass}`;
-
+ 
   const naxBase = 14600 + Math.floor(seededRand(seed + 1) * 600);
   const naxChg  = (seededRand(seed + 2) * 2 - 1).toFixed(1);
   const emBase  = 0.820 + seededRand(seed + 3) * 0.12;
   const emChg   = (seededRand(seed + 4) * 0.8 - 0.4).toFixed(1);
   const ukpBase = 1.08  + seededRand(seed + 5) * 0.12;
   const ukpChg  = (seededRand(seed + 6) * 0.8 - 0.4).toFixed(1);
-
+ 
   let naxDisplay = naxBase;
   if (status === 'Open') naxDisplay = naxBase + Math.floor((seededRand(seed + 7) - 0.5) * 40);
-
+ 
   function arrow(chg) { return parseFloat(chg) >= 0 ? '▲' : '▼'; }
   function chgClass(chg) { return parseFloat(chg) >= 0 ? 'up' : 'dn'; }
   function fmtChg(chg) { return `${arrow(chg)} ${Math.abs(chg)}%`; }
-
+ 
   const rows = [
     { ticker: 'NAX Comp', price: naxDisplay.toLocaleString(), chg: naxChg },
     { ticker: 'CTL',      price: 'Ȼ1.000',                   chg: '0.0' },
     { ticker: 'EuroMark', price: `EM ${emBase.toFixed(3)}`,  chg: emChg },
     { ticker: 'UKP',      price: `£${ukpBase.toFixed(3)}`,   chg: ukpChg },
   ];
-
+ 
   document.getElementById('wm-markets-body').innerHTML = rows.map(r => `
     <div class="wm-market-row">
       <span class="wm-ticker">${r.ticker}</span>
@@ -426,10 +426,10 @@ function buildMarkets() {
     </div>
   `).join('');
 }
-
+ 
 buildMarkets();
-
-/ ── TWO-PANEL WEATHER ──
+ 
+// ── TWO-PANEL WEATHER ──
  
 // NAU cities for rotating panel
 const NAU_CITIES = [
