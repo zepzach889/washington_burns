@@ -100,6 +100,17 @@
     .mus-body { grid-template-columns: 1fr; }
     .mus-exhibits { grid-template-columns: 1fr; }
     .mus-title { font-size: 28px; }
+
+  /* ── GALLERY LIST (replaces .mus-exhibits grid) ── */
+  .mus-gallery-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+  .mus-gallery-item { display: grid; grid-template-columns: 160px 1fr; background: #fff; border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; text-decoration: none; transition: box-shadow 0.1s; }
+  .mus-gallery-item:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.1); }
+  .mus-gallery-img { width: 160px; height: 110px; overflow: hidden; flex-shrink: 0; background: var(--bg-secondary); }
+  .mus-gallery-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .mus-gallery-body { padding: 12px 16px; display: flex; flex-direction: column; justify-content: center; }
+  .mus-gallery-floor { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mus-gold); margin-bottom: 4px; }
+  .mus-gallery-title { font-family: 'DM Serif Display', serif; font-size: 15px; color: var(--text-primary); line-height: 1.3; margin-bottom: 5px; }
+  .mus-gallery-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
   }
 </style>
 </head>
@@ -167,8 +178,7 @@
     <!-- FEATURED EXHIBITION -->
     <div class="wm-section-label">Featured Exhibition</div>
     <div class="mus-featured">
-      <div class="mus-featured-img">🔥</div>
-      <div class="mus-featured-body">
+<div class="mus-featured-img"><img src="../../images/amhistory/wash_burns1.jpg" style="width:100%;height:130px;object-fit:cover;display:block;" alt="The Burning and the Building" /></div>      <div class="mus-featured-body">
         <div class="mus-featured-tag">Special Exhibition — Now Open</div>
         <div class="mus-featured-title">The Burning and the Building: Washington, August 1814</div>
         <div class="mus-featured-desc">A landmark exhibition examining the destruction of the federal city on the Potomac and the extraordinary choices that followed — the debates, the journeys, and the founding of Franklin on the Ohio. Drawing on objects, maps, and personal accounts from the National Collection, the exhibition traces how a catastrophe became a founding moment.</div>
@@ -178,53 +188,79 @@
     </div>
 
     <!-- PERMANENT GALLERIES -->
-    <div class="wm-section-label">Permanent Galleries</div>
-    <div class="mus-exhibits">
-      <div class="mus-exhibit">
-        <div class="mus-exhibit-img" style="background:linear-gradient(135deg,#1B2A4A,#2D4060);">🏛</div>
-        <div class="mus-exhibit-body">
-          <div class="mus-exhibit-floor">Level 1 · East Wing</div>
-          <div class="mus-exhibit-title">The American Presidency: From Washington to Nakamura</div>
-        </div>
-      </div>
-      <div class="mus-exhibit">
-        <div class="mus-exhibit-img" style="background:linear-gradient(135deg,#1B3A2A,#2D6040);">🚂</div>
-        <div class="mus-exhibit-body">
-          <div class="mus-exhibit-floor">Level 1 · West Wing</div>
-          <div class="mus-exhibit-title">Iron Nation: Two Centuries of American Rail</div>
-        </div>
-      </div>
-      <div class="mus-exhibit">
-        <div class="mus-exhibit-img" style="background:linear-gradient(135deg,#3A1B2A,#602D40);">⚔</div>
-        <div class="mus-exhibit-body">
-          <div class="mus-exhibit-floor">Level 2 · Central Hall</div>
-          <div class="mus-exhibit-title">War Between the States, 1857–1860: The Crisis That Remade America</div>
-        </div>
-      </div>
-      <div class="mus-exhibit">
-        <div class="mus-exhibit-img" style="background:linear-gradient(135deg,#3A2A1A,#604020);">⚔️🌍</div>
-        <div class="mus-exhibit-body">
-          <div class="mus-exhibit-floor">Level 2 · North Gallery</div>
-          <div class="mus-exhibit-title">The Global War: America and the World, 1932–1940</div>
-        </div>
-      </div>
-      <div class="mus-exhibit">
-        <div class="mus-exhibit-img" style="background:linear-gradient(135deg,#2A3A1B,#405D2D);">🗳</div>
-        <div class="mus-exhibit-body">
-          <div class="mus-exhibit-floor">Level 3 · South Gallery</div>
-          <div class="mus-exhibit-title">Votes and Voices: Two Centuries of American Democracy</div>
-        </div>
-      </div>
-      <div class="mus-exhibit">
-        <div class="mus-exhibit-img" style="background:linear-gradient(135deg,#3A2A1B,#604020);">🎨</div>
-        <div class="mus-exhibit-body">
-          <div class="mus-exhibit-floor">Level 3 · East Gallery</div>
-          <div class="mus-exhibit-title">American Arts &amp; Material Culture, 1814–Present</div>
-        </div>
-      </div>
-    </div>
+   <!-- REPLACE EVERYTHING FROM "PERMANENT GALLERIES" SECTION LABEL DOWN TO THE CLOSING </div> OF mus-exhibits -->
+<!-- i.e. replace from <div class="wm-section-label">Permanent Galleries</div> to the </div> that closes mus-exhibits -->
 
-  </div>
+    <div class="wm-section-label">Permanent Galleries</div>
+    <div class="mus-gallery-list">
+
+      <a class="mus-gallery-item" href="#">
+        <div class="mus-gallery-img">
+          <img src="../../images/amhistory/wash_2_naka.png" alt="The American Presidency" />
+        </div>
+        <div class="mus-gallery-body">
+          <div class="mus-gallery-floor">Level 1 · East Wing</div>
+          <div class="mus-gallery-title">The American Presidency: From Washington to Nakamura</div>
+          <div class="mus-gallery-desc">Two centuries of executive leadership — objects, documents, and portraits tracing every president from the republic's founding to the present day.</div>
+        </div>
+      </a>
+
+      <a class="mus-gallery-item" href="#">
+        <div class="mus-gallery-img">
+          <img src="../../images/amhistory/railroad1.jpg" alt="Iron Nation" />
+        </div>
+        <div class="mus-gallery-body">
+          <div class="mus-gallery-floor">Level 1 · West Wing</div>
+          <div class="mus-gallery-title">Iron Nation: Two Centuries of American Rail</div>
+          <div class="mus-gallery-desc">From the founding of the USRC in 1834 to the modern high-speed network — the story of how rail shaped the American continent.</div>
+        </div>
+      </a>
+
+      <a class="mus-gallery-item" href="#">
+        <div class="mus-gallery-img">
+          <img src="../../images/amhistory/war_between_states1.png" alt="War Between the States" />
+        </div>
+        <div class="mus-gallery-body">
+          <div class="mus-gallery-floor">Level 2 · Central Hall</div>
+          <div class="mus-gallery-title">War Between the States, 1857–1860: The Crisis That Remade America</div>
+          <div class="mus-gallery-desc">The defining conflict of the nineteenth century — from the collapse of the Hawthorne government to the Philadelphia Convention and the Constitution of 1861.</div>
+        </div>
+      </a>
+
+      <a class="mus-gallery-item" href="#">
+        <div class="mus-gallery-img">
+          <img src="../../images/amhistory/global_war.jpg" alt="The Global War" />
+        </div>
+        <div class="mus-gallery-body">
+          <div class="mus-gallery-floor">Level 2 · North Gallery</div>
+          <div class="mus-gallery-title">The Global War: America and the World, 1932–1940</div>
+          <div class="mus-gallery-desc">America's defining international conflict — from the first Prussian advances to the Treaty of Geneva and the founding of the Global Peace Council.</div>
+        </div>
+      </a>
+
+      <a class="mus-gallery-item" href="#">
+        <div class="mus-gallery-img">
+          <img src="../../images/amhistory/suffrage.jpg" alt="Votes and Voices" />
+        </div>
+        <div class="mus-gallery-body">
+          <div class="mus-gallery-floor">Level 3 · South Gallery</div>
+          <div class="mus-gallery-title">Votes and Voices: Two Centuries of American Democracy</div>
+          <div class="mus-gallery-desc">From the first elections under the 1787 Constitution to the Third Amendment and universal suffrage — the long arc of democratic participation in America.</div>
+        </div>
+      </a>
+
+      <a class="mus-gallery-item" href="#">
+        <div class="mus-gallery-img">
+          <img src="../../images/amhistory/am_arts.jpg" alt="American Arts and Material Culture" />
+        </div>
+        <div class="mus-gallery-body">
+          <div class="mus-gallery-floor">Level 3 · East Gallery</div>
+          <div class="mus-gallery-title">American Arts &amp; Material Culture, 1814–Present</div>
+          <div class="mus-gallery-desc">Objects, artworks, and everyday items tracing American material life from the founding of Franklin to the present — furniture, fashion, fine art, and folk tradition.</div>
+        </div>
+      </a>
+
+    </div>
 
   <div class="mus-sidebar">
 
