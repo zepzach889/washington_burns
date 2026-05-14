@@ -172,8 +172,18 @@ function renderList(articles) {
 }
 
 // Initial render
-renderList(sorted);
-
+const urlQ = new URLSearchParams(window.location.search).get('q');
+if (urlQ) {
+  document.getElementById('browse-filter').value = urlQ;
+  const filtered = sorted.filter(a =>
+    a.title.toLowerCase().includes(urlQ.toLowerCase()) ||
+    a.blurb.toLowerCase().includes(urlQ.toLowerCase()) ||
+    a.categories.some(c => c.toLowerCase().includes(urlQ.toLowerCase()))
+  );
+  renderList(filtered);
+} else {
+  renderList(sorted);
+}
 // Filter on input
 document.getElementById('browse-filter').addEventListener('input', function() {
   const q = this.value.toLowerCase().trim();
