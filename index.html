@@ -200,6 +200,7 @@
  
 <script src="router.js"></script>
 <script src="stories.js"></script>
+<script src="./nodes/nedex/nedex_index.js"></script>
 <script>
 // ── TRANSLATIONS ──
 const UI = {
@@ -311,9 +312,20 @@ function buildIndex() {
   // ABN stories
   ABN_LEADS.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
   ABN_CARDS.forEach(s => index.push({ hed: s.hed, dek: s.hed, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
-  ABN_WORLD.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
- 
-  return index;
+ABN_WORLD.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
+
+  // Nedex articles
+  if (typeof NEDEX_ARTICLES !== 'undefined') {
+    NEDEX_ARTICLES.forEach(a => index.push({
+      hed: a.title,
+      dek: a.blurb,
+      source: 'nan.nedex.org.nau',
+      link: './nodes/nedex/' + a.file,
+      type: 'nedex'
+    }));
+  }
+
+  return index; 
 }
  
 function doSearch(query) {
