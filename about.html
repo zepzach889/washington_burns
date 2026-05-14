@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>Author's Note — Washington Burns</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f0ebe0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 48px 20px 64px;
+    font-family: 'DM Serif Display', serif;
+  }
+
+  .page {
+    background: #faf6ef;
+    border: 1px solid #d8cdb0;
+    max-width: 660px;
+    width: 100%;
+    padding: 48px 44px;
+    position: relative;
+  }
+
+  /* Corner brackets */
+  .corner { position: absolute; width: 28px; height: 28px; }
+  .corner.tl { top: 14px; left: 14px; border-top: 2px solid #b8892a; border-left: 2px solid #b8892a; }
+  .corner.tr { top: 14px; right: 14px; border-top: 2px solid #b8892a; border-right: 2px solid #b8892a; }
+  .corner.bl { bottom: 14px; left: 14px; border-bottom: 2px solid #b8892a; border-left: 2px solid #b8892a; }
+  .corner.br { bottom: 14px; right: 14px; border-bottom: 2px solid #b8892a; border-right: 2px solid #b8892a; }
+
+  /* Header ornament */
+  .diamonds { text-align: center; color: #b8892a; font-size: 14px; letter-spacing: 0.4em; margin-bottom: 10px; }
+  .rule-full { width: 100%; height: 1px; background: #b8892a; }
+  .rule-mid  { width: 55%; height: 2.5px; background: #b8892a; margin: 5px auto; }
+  .rule-gap  { margin-bottom: 24px; }
+
+  .page-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 34px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #2a1f0a;
+    margin-bottom: 6px;
+  }
+
+  .page-subtitle {
+    font-size: 11px;
+    font-family: 'DM Sans', sans-serif;
+    text-align: center;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #8b6914;
+    margin-bottom: 32px;
+  }
+
+  /* Section dividers */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 32px 0 14px;
+  }
+  .section-line { flex: 1; height: 0.5px; background: #c8a96a; }
+  .section-diamond { color: #b8892a; font-size: 9px; margin: 0 6px; flex-shrink: 0; }
+  .section-label {
+    font-size: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #8b6914;
+    padding: 0 8px;
+    flex-shrink: 0;
+  }
+
+  /* Body text */
+  .body-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    line-height: 1.85;
+    color: #3d2e10;
+  }
+
+  .body-text p { margin-bottom: 14px; }
+  .body-text p:last-child { margin-bottom: 0; }
+
+  /* Links */
+  .body-text a {
+    color: #8b6914;
+    text-decoration: underline;
+    text-decoration-color: #c8a96a;
+    text-underline-offset: 2px;
+    transition: color 0.1s;
+  }
+  .body-text a:hover { color: #b8892a; }
+
+  /* Byline */
+  .byline {
+    font-size: 11px;
+    font-family: 'DM Sans', sans-serif;
+    text-align: center;
+    color: #8b6914;
+    letter-spacing: 0.12em;
+    margin-top: 32px;
+    padding-top: 20px;
+  }
+
+  /* Footer rules */
+  .foot-rules { margin-top: 14px; }
+
+  /* Back link */
+  .back-wrap {
+    max-width: 660px;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .back-link {
+    font-size: 11px;
+    font-family: 'DM Sans', sans-serif;
+    color: #8b6914;
+    text-decoration: none;
+    letter-spacing: 0.08em;
+  }
+  .back-link:hover { color: #b8892a; }
+
+  @media (max-width: 600px) {
+    .page { padding: 36px 24px; }
+    .page-title { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <div class="diamonds">◆ &nbsp; ◆ &nbsp; ◆</div>
+  <div class="rule-full"></div>
+  <div class="rule-mid"></div>
+  <div class="rule-full rule-gap"></div>
+
+  <div class="page-title">Washington Burns</div>
+  <div class="page-subtitle">An Alternate History &nbsp;·&nbsp; Author's Note</div>
+
+  <div class="body-text">
+
+    <div class="section-head">
+      <div class="section-line"></div>
+      <div class="section-diamond">◆</div>
+      <div class="section-label">About this Project</div>
+      <div class="section-diamond">◆</div>
+      <div class="section-line"></div>
+    </div>
+
+    <p>Washington Burns is an alternate history timeline with a single point of divergence: in August 1814, the destruction of Washington D.C. by British forces was more complete than in our timeline — and the consequences more far-reaching. The United States government relocated to Franklin, a new city on the Ohio River near Cincinnati, and American history diverged from there in ways large and small.</p>
+
+    <p>This site is a creative worldbuilding project simulating a small corner of that world's internet — its newspapers, broadcaster, encyclopaedia, government websites, and public institutions. Everything you encounter here is fiction set in an alternate 2026.</p>
+
+    <p>Washington Burns began as a forum project in 2017 and is currently being rewritten and expanded. The full timeline narrative is available to read at the link below.</p>
+
+    <div class="section-head">
+      <div class="section-line"></div>
+      <div class="section-diamond">◆</div>
+      <div class="section-label">Copyright</div>
+      <div class="section-diamond">◆</div>
+      <div class="section-line"></div>
+    </div>
+
+    <p>All original written content on this site © 2025 Zachary Anderson. Washington Burns is a work of fiction. All persons, nations, institutions, and events depicted are fictional or used in an alternate-historical context.</p>
+
+    <p>Reproduction of original written content without permission is prohibited. Discussion, commentary, and fan works are warmly welcomed — this project exists because of a community of readers and fellow history enthusiasts.</p>
+
+    <div class="section-head">
+      <div class="section-line"></div>
+      <div class="section-diamond">◆</div>
+      <div class="section-label">A Note on Tools &amp; Process</div>
+      <div class="section-diamond">◆</div>
+      <div class="section-line"></div>
+    </div>
+
+    <p>The code for this site was built with the assistance of AI tools. Some images depicting non-real-world subjects — alternate flags, buildings, people, and places that do not exist in our timeline — are AI-generated.</p>
+
+    <p>This project makes use of various research and writing tools in its development. All creative decisions, historical canon, and narrative direction are the author's own.</p>
+
+    <div class="section-head">
+      <div class="section-line"></div>
+      <div class="section-diamond">◆</div>
+      <div class="section-label">Find the Timeline</div>
+      <div class="section-diamond">◆</div>
+      <div class="section-line"></div>
+    </div>
+
+    <p>The full Washington Burns timeline is available to read on <a href="https://sites.google.com/view/washington-burns-tl/home?authuser=0" target="_blank">Google Sites</a>. Community discussion takes place on the <a href="https://www.alternatehistory.com/forum/threads/washington-burns-redux-a-different-path-after-the-war-of-1812.557290/" target="_blank">Alternate History Forums</a>.</p>
+
+  </div>
+
+  <div class="byline">Zachary Anderson &nbsp;·&nbsp; @zepzach889.bsky.social &nbsp;·&nbsp; 2025</div>
+
+  <div class="foot-rules">
+    <div class="rule-full" style="margin-top:14px;"></div>
+    <div class="rule-mid"></div>
+    <div class="rule-full"></div>
+  </div>
+
+</div>
+
+<div class="back-wrap">
+  <a class="back-link" href="index.html">← Return to Waymark</a>
+</div>
+
+</body>
+</html>
