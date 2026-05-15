@@ -316,8 +316,7 @@ fetchParkWeather(potd).then(w => {
 // ── RENDER PARK CARDS ──
 function parkCardHTML(park) {
   const imgStyle = park.img
-    ? 'background-image:url("' + park.img + '");background-position:' + (park.imgPos || 'center top')
-    : 'background:linear-gradient(135deg,#1A3A0A,#2D5A1A)';
+    ? "background-image:url('" + park.img + "');background-position:" + (park.imgPos || 'center top')    : 'background:linear-gradient(135deg,#1A3A0A,#2D5A1A)';
   return '<div class="fps-park">' +
     '<div class="fps-park-img" style="' + imgStyle + '">' +
     '<div class="fps-park-img-label">' + park.location + '</div></div>' +
