@@ -29,7 +29,7 @@
 
   /* ── PARK OF THE DAY ── */
   .fps-potd { border-radius: 12px; overflow: hidden; margin-bottom: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
-  .fps-potd-img { height: 240px; background-size: cover; background-position: center; position: relative; }
+  .fps-potd-img { height: 240px; background-size: cover; background-position: center top; position: relative; }
   .fps-potd-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.75) 100%); }
   .fps-potd-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 24px; z-index: 1; color: #fff; }
   .fps-potd-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fps-tan); margin-bottom: 5px; }
@@ -45,21 +45,37 @@
 
   /* ── REGION SECTIONS ── */
   .fps-region { margin-bottom: 36px; }
-  .fps-region-head { font-family: "DM Serif Display", serif; font-size: 20px; color: var(--fps-green); padding-bottom: 8px; border-bottom: 1.5px solid var(--fps-tan); margin-bottom: 16px; }
-  .fps-park-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .fps-region-head { font-family: "DM Serif Display", serif; font-size: 20px; color: var(--fps-green); padding-bottom: 8px; border-bottom: 1.5px solid var(--fps-tan); margin-bottom: 16px; display: flex; justify-content: space-between; align-items: baseline; }
+  .fps-region-count { font-size: 11px; font-family: "DM Sans", sans-serif; color: var(--text-tertiary); font-weight: 400; }
+  .fps-park-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 14px; }
   .fps-park { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
-  .fps-park-img { height: 120px; background-size: cover; background-position: center; position: relative; }
+  .fps-park-img { height: 110px; background-size: cover; background-position: center top; position: relative; }
   .fps-park-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.4) 100%); }
   .fps-park-img-label { position: absolute; bottom: 7px; left: 10px; right: 10px; z-index: 1; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); }
-  .fps-park-body { padding: 12px 14px; flex: 1; display: flex; flex-direction: column; }
-  .fps-park-name { font-family: "DM Serif Display", serif; font-size: 15px; color: var(--text-primary); margin-bottom: 4px; line-height: 1.2; }
-  .fps-park-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 8px; flex: 1; }
-  .fps-park-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 8px; }
+  .fps-park-body { padding: 10px 12px; flex: 1; display: flex; flex-direction: column; }
+  .fps-park-name { font-family: "DM Serif Display", serif; font-size: 14px; color: var(--text-primary); margin-bottom: 4px; line-height: 1.2; }
+  .fps-park-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 6px; flex: 1; }
+  .fps-park-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px; }
   .fps-tag { font-size: 9px; font-weight: 600; padding: 2px 7px; border-radius: 4px; background: #E8F5E9; color: var(--fps-green); }
-  .fps-park-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
-  .fps-park-weather { font-size: 11px; color: var(--text-tertiary); font-family: monospace; }
+  .fps-park-footer { display: flex; justify-content: space-between; align-items: center; }
+  .fps-park-weather { font-size: 10px; color: var(--text-tertiary); font-family: monospace; }
   .fps-park-link { font-size: 11px; font-weight: 600; color: var(--fps-green); text-decoration: none; }
   .fps-park-link:hover { color: var(--fps-green-light); }
+
+  /* ── ALL PARKS LIST ── */
+  .fps-all-parks { background: #F1F8EC; border: 0.5px solid #C5E0B0; border-radius: 8px; padding: 12px 16px; }
+  .fps-all-parks-label { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fps-green); margin-bottom: 8px; }
+  .fps-park-links { display: flex; flex-wrap: wrap; gap: 4px 0; }
+  .fps-park-link-item { font-size: 12px; color: var(--fps-green); text-decoration: none; padding: 2px 10px 2px 0; }
+  .fps-park-link-item:hover { color: var(--fps-green-light); text-decoration: underline; }
+  .fps-park-link-item::after { content: "·"; color: var(--text-tertiary); margin-left: 10px; }
+  .fps-park-link-item:last-child::after { content: ""; }
+
+  /* ── RANGER TIP ── */
+  .fps-tip { background: linear-gradient(135deg, #1A3A0A, #2D5A1A); border-radius: 8px; padding: 14px 18px; color: #fff; margin-bottom: 28px; display: flex; gap: 12px; align-items: flex-start; }
+  .fps-tip-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .fps-tip-label { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fps-tan); margin-bottom: 3px; }
+  .fps-tip-text { font-size: 13px; color: rgba(255,255,255,0.9); line-height: 1.6; }
 
   /* ── PLAN YOUR VISIT ── */
   .fps-visit { background: #F1F8EC; border: 0.5px solid #C5E0B0; border-radius: 10px; padding: 20px 24px; margin-bottom: 28px; }
@@ -71,20 +87,8 @@
   .fps-visit-card-title { font-weight: 600; font-size: 13px; color: var(--text-primary); margin-bottom: 3px; }
   .fps-visit-card-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
 
-  /* ── TIPS ── */
-  .fps-tip { background: linear-gradient(135deg, #1A3A0A, #2D5A1A); border-radius: 8px; padding: 14px 18px; color: #fff; margin-bottom: 28px; display: flex; gap: 12px; align-items: flex-start; }
-  .fps-tip-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-  .fps-tip-label { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fps-tan); margin-bottom: 3px; }
-  .fps-tip-text { font-size: 13px; color: rgba(255,255,255,0.9); line-height: 1.6; }
-
-  @media (max-width: 800px) {
-    .fps-park-grid { grid-template-columns: 1fr 1fr; }
-    .fps-visit-grid { grid-template-columns: 1fr 1fr; }
-    .fps-potd-body { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 500px) {
-    .fps-park-grid { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 900px) { .fps-park-grid { grid-template-columns: repeat(2, 1fr); } .fps-visit-grid { grid-template-columns: 1fr 1fr; } .fps-potd-body { grid-template-columns: 1fr; } }
+  @media (max-width: 500px) { .fps-park-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -121,7 +125,7 @@
     <div>
       <div class="fps-dept">Department of the Interior &middot; Federal Parks Service</div>
       <div class="fps-title">Federal Parks Service</div>
-      <div class="fps-subtitle">link://nan.fps.gov.usa &nbsp;&middot;&nbsp; Protecting America's Lands Since 1908</div>
+      <div class="fps-subtitle">link://nan.fps.gov.usa &nbsp;&middot;&nbsp; Protecting America's Lands Since 1908 &nbsp;&middot;&nbsp; 57 Parks &amp; Reserves</div>
     </div>
   </div>
 </div>
@@ -140,7 +144,6 @@
 
   <div class="wm-section-label">Park of the Day &mdash; <span id="fps-date"></span></div>
 
-  <!-- PARK OF THE DAY -->
   <div class="fps-potd" id="fps-potd">
     <div class="fps-potd-img" id="fps-potd-img">
       <div class="fps-potd-overlay">
@@ -167,7 +170,6 @@
     </div>
   </div>
 
-  <!-- VISITOR TIP OF THE DAY -->
   <div class="fps-tip" id="fps-tip-bar">
     <div class="fps-tip-icon">&#128681;</div>
     <div>
@@ -176,20 +178,44 @@
     </div>
   </div>
 
-  <!-- PARKS BY REGION -->
+  <!-- PACIFIC NORTHWEST -->
   <div class="fps-region">
-    <div class="fps-region-head">Pacific Northwest</div>
+    <div class="fps-region-head">Pacific Northwest <span class="fps-region-count">10 parks</span></div>
     <div class="fps-park-grid" id="fps-region-pnw"></div>
+    <div class="fps-all-parks">
+      <div class="fps-all-parks-label">All Pacific Northwest Parks</div>
+      <div class="fps-park-links" id="fps-links-pnw"></div>
+    </div>
   </div>
 
+  <!-- MOUNTAIN WEST -->
   <div class="fps-region">
-    <div class="fps-region-head">Mountain West</div>
+    <div class="fps-region-head">Mountain West <span class="fps-region-count">10 parks</span></div>
     <div class="fps-park-grid" id="fps-region-mw"></div>
+    <div class="fps-all-parks">
+      <div class="fps-all-parks-label">All Mountain West Parks</div>
+      <div class="fps-park-links" id="fps-links-mw"></div>
+    </div>
   </div>
 
+  <!-- GREAT PLAINS -->
   <div class="fps-region">
-    <div class="fps-region-head">Eastern &amp; Historic</div>
+    <div class="fps-region-head">Great Plains <span class="fps-region-count">9 parks</span></div>
+    <div class="fps-park-grid" id="fps-region-plains"></div>
+    <div class="fps-all-parks">
+      <div class="fps-all-parks-label">All Great Plains Parks</div>
+      <div class="fps-park-links" id="fps-links-plains"></div>
+    </div>
+  </div>
+
+  <!-- EASTERN & HISTORIC -->
+  <div class="fps-region">
+    <div class="fps-region-head">Eastern &amp; Historic <span class="fps-region-count">28 parks</span></div>
     <div class="fps-park-grid" id="fps-region-east"></div>
+    <div class="fps-all-parks">
+      <div class="fps-all-parks-label">All Eastern &amp; Historic Parks</div>
+      <div class="fps-park-links" id="fps-links-east"></div>
+    </div>
   </div>
 
   <!-- PLAN YOUR VISIT -->
@@ -197,26 +223,10 @@
     <div class="fps-visit-title">Plan Your Federal Parks Visit</div>
     <div class="fps-visit-desc">The Federal Parks Pass (&#8210;65/year) grants unlimited access to all 57 Federal Parks and Reserves across the United States. Passes are available at all USRC stations and FPS visitor centres. All parks are accessible by USRC rail connection or FPS shuttle service.</div>
     <div class="fps-visit-grid">
-      <div class="fps-visit-card">
-        <div class="fps-visit-icon">&#127915;</div>
-        <div class="fps-visit-card-title">Federal Parks Pass</div>
-        <div class="fps-visit-card-desc">&#8210;65/year &middot; All 57 parks &middot; Transferable to immediate family &middot; Available at all USRC stations</div>
-      </div>
-      <div class="fps-visit-card">
-        <div class="fps-visit-icon">&#128642;</div>
-        <div class="fps-visit-card-title">Rail Access</div>
-        <div class="fps-visit-card-desc">All parks within 20 km of a USRC station or FPS shuttle connection &mdash; no automobile required</div>
-      </div>
-      <div class="fps-visit-card">
-        <div class="fps-visit-icon">&#9981;</div>
-        <div class="fps-visit-card-title">Camping &amp; Lodges</div>
-        <div class="fps-visit-card-desc">Book campsites and FPS lodges up to 6 months in advance through the visitor portal</div>
-      </div>
-      <div class="fps-visit-card">
-        <div class="fps-visit-icon">&#127758;</div>
-        <div class="fps-visit-card-title">Accessibility</div>
-        <div class="fps-visit-card-desc">All visitor centres and primary trails are wheelchair accessible. Service animals welcome in all parks.</div>
-      </div>
+      <div class="fps-visit-card"><div class="fps-visit-icon">&#127915;</div><div class="fps-visit-card-title">Federal Parks Pass</div><div class="fps-visit-card-desc">&#8210;65/year &middot; All 57 parks &middot; Transferable to immediate family &middot; Available at all USRC stations</div></div>
+      <div class="fps-visit-card"><div class="fps-visit-icon">&#128642;</div><div class="fps-visit-card-title">Rail Access</div><div class="fps-visit-card-desc">All parks within 20 km of a USRC station or FPS shuttle connection &mdash; no automobile required</div></div>
+      <div class="fps-visit-card"><div class="fps-visit-icon">&#9981;</div><div class="fps-visit-card-title">Camping &amp; Lodges</div><div class="fps-visit-card-desc">Book campsites and FPS lodges up to 6 months in advance through the visitor portal</div></div>
+      <div class="fps-visit-card"><div class="fps-visit-icon">&#127758;</div><div class="fps-visit-card-title">Accessibility</div><div class="fps-visit-card-desc">All visitor centres and primary trails are wheelchair accessible. Service animals welcome in all parks.</div></div>
     </div>
   </div>
 
@@ -224,15 +234,11 @@
 
 <div class="wm-footer">
   <span>link://nan.fps.gov.usa &nbsp;&middot;&nbsp; Federal Parks Service &nbsp;&middot;&nbsp; Department of the Interior &nbsp;&middot;&nbsp; Est. 1908</span>
-  <div class="wm-footer-links">
-    <a href="#">About FPS</a>
-    <a href="#">Accessibility</a>
-    <a href="#">FOIA</a>
-    <a href="#">Contact</a>
-  </div>
+  <div class="wm-footer-links"><a href="#">About FPS</a><a href="#">Accessibility</a><a href="#">FOIA</a><a href="../../about.html">Author's Note</a></div>
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
 <script>
 initAddressBar('nan.fps.gov.usa');
 
@@ -252,146 +258,19 @@ const now = new Date();
 const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
 document.getElementById('fps-date').textContent = now.getDate() + ' ' + MONTHS[now.getMonth()] + ', ' + now.getFullYear();
 
-// ── PARK DATA ──
-const PARKS = [
-  {
-    id: 'smokies',
-    name: 'Great Smokies Federal Park',
-    location: 'Tennessee · North Carolina',
-    region: 'east',
-    img: '../../images/parks/smokes.jpg',
-    tags: ['Hiking','Wildlife','Camping','Heritage'],
-    desc: 'Ancient Appalachian highlands protecting over 800 square miles of old-growth forest and one of the most biodiverse temperate ecosystems in the world.',
-    lat: 35.6532, lon: -83.5070, tz: 'America/New_York',
-    trails: ['All primary trails open', 'Clingmans Dome Road seasonal closure check advised', 'Backcountry permits required for overnight'],
-    tips: [
-      'Arrive before 9 a.m. to secure parking at popular trailheads — crowds build quickly after mid-morning.',
-      'Bring layers even in summer — temperatures at elevation can drop 20°F below the valley floor.',
-      'The Appalachian Trail runs through the park — long-distance hikers should register at the visitor centre.',
-    ]
-  },
-  {
-    id: 'crater',
-    name: 'Crater Lake Federal Park',
-    location: 'Oregon',
-    region: 'pnw',
-    img: '../../images/parks/crater.jpg',
-    tags: ['Volcanic','Water','Geology','Winter Sports'],
-    desc: 'Formed by the collapse of ancient Mount Mazama, Crater Lake is the deepest lake in the United States — renowned for the extraordinary clarity and blue intensity of its waters.',
-    lat: 42.9446, lon: -122.1090, tz: 'America/Los_Angeles',
-    trails: ['Rim Drive open seasonally — check FPS alerts', 'Cleetwood Cove Trail (lake access) open summer only', 'Wizard Island boat tours — advance booking required'],
-    tips: [
-      'The Rim Village visitor centre has excellent exhibits on the eruption that created the lake — worth 30 minutes before hitting the trails.',
-      'Sunrise on the east rim offers the clearest water colour — afternoon haze can reduce visibility.',
-      'Snow can fall at any month at the rim elevation — always carry a layer.',
-    ]
-  },
-  {
-    id: 'capitol',
-    name: 'First Capital Federal Park',
-    location: 'Maryland',
-    region: 'east',
-    img: '../../images/parks/capitol_ruins.png',
-    tags: ['Heritage','History','Memorial','Walking'],
-    desc: 'Preserved on the Potomac, this park encompasses the ruins and grounds of the original federal city destroyed in August 1814 — a solemn memorial to the founding era.',
-    lat: 38.8951, lon: -77.0364, tz: 'America/New_York',
-    trails: ['Heritage Walk open daily', 'Ruins viewing platforms accessible year-round', 'Ranger-led tours available weekends May–October'],
-    tips: [
-      'The ranger-led Burning Night walk (offered Friday evenings in summer) is the most moving way to experience the site — book ahead.',
-      'The visitor centre film "August 1814" is only 18 minutes and adds enormous context before walking the ruins.',
-      'The park is particularly atmospheric in the early morning before the tour groups arrive.',
-    ]
-  },
-  {
-    id: 'sacred',
-    name: 'Sacred Waters Federal Park',
-    location: 'Washingtonia · Clark',
-    region: 'mw',
-    img: '../../images/parks/sacred.jpg',
-    tags: ['Geothermal','Wildlife','Wilderness','Camping'],
-    desc: 'Home to the world\'s largest concentration of geysers, hot springs, and hydrothermal features, straddles one of the most geologically active regions on the continent.',
-    lat: 44.4280, lon: -110.5885, tz: 'America/Denver',
-    trails: ['Boardwalk trails open year-round', 'Backcountry routes may be snow-covered — check conditions', 'Wildlife viewing corridors open — bison right-of-way always'],
-    tips: [
-      'Old Thunderhead geyser erupts approximately every 91 minutes — check the prediction board at the visitor centre on arrival.',
-      'Stay on boardwalks near thermal features — ground crusts can be dangerously thin.',
-      'Bison have the right of way on all park roads and trails — keep 25 metres minimum distance.',
-    ]
-  },
-  {
-    id: 'mistakis',
-    name: 'Mistakis Federal Park',
-    location: 'Washingtonia · Clark',
-    region: 'mw',
-    img: '../../images/parks/glacier.jpg',
-    tags: ['Alpine','Glaciers','Wildlife','Hiking'],
-    desc: 'Named for the Blackfoot word for "backbone of the world," Mistakis preserves a dramatic landscape of glacially carved peaks, alpine meadows, and pristine wilderness.',
-    lat: 48.6962, lon: -113.7180, tz: 'America/Denver',
-    trails: ['Going-to-the-Sun Road open seasonally — check FPS alerts', 'Many high trails snow-covered before July', 'Bear spray required for backcountry travel'],
-    tips: [
-      'Vehicle reservations required for Going-to-the-Sun Road during peak season — book at least 60 days ahead.',
-      'Grizzly bear activity is common — carry bear spray and know how to use it before entering backcountry.',
-      'The Highline Trail is one of the finest day hikes in the country — attempt it early to beat afternoon thunderstorms.',
-    ]
-  },
-  {
-    id: 'wyeast',
-    name: 'Wy\'east Federal Park',
-    location: 'Oregon',
-    region: 'pnw',
-    img: '../../images/parks/hood.jpg',
-    imgPos: 'center top',
-    tags: ['Volcanic','Alpine','Climbing','Winter Sports'],
-    desc: 'Known by its Multnomah name long before statehood, Wy\'east is a stratovolcano rising above the Oregon forests to over 11,000 feet, offering year-round recreation.',
-    lat: 45.3735, lon: -121.6960, tz: 'America/Los_Angeles',
-    trails: ['Timberline Trail open summer — upper sections require mountaineering gear', 'Mirror Lake Trail open year-round', 'Summit climbs require climbing permits'],
-    tips: [
-      'Timberline Lodge is a marvel of Depression-era craftsmanship — worth a visit even if you\'re not climbing.',
-      'Summit attempts should begin before 3 a.m. to complete the climb before afternoon ice softens dangerously.',
-      'The wildflower meadows around timberline peak in late July — stunning for photography.',
-    ]
-  },
-  {
-    id: 'silver',
-    name: 'Silver Creek Federal Park',
-    location: 'Oregon',
-    region: 'pnw',
-    img: '../../images/parks/silver_falls.jpg',
-    tags: ['Waterfalls','Hiking','Old Growth','Family'],
-    desc: 'A jewel of the Oregon lowlands, Silver Creek protects a remarkable concentration of waterfalls — ten major falls within a few miles of trail, including several walk-behind cascades.',
-    lat: 44.8774, lon: -122.6548, tz: 'America/Los_Angeles',
-    trails: ['Trail of Ten Falls open year-round', 'Some trails slippery when wet — traction devices recommended in winter', 'Canyon Trail accessible year-round'],
-    tips: [
-      'Wear waterproof clothing for the walk-behind falls — you will get wet regardless of the weather.',
-      'The Trail of Ten Falls loop is 13 km — most families complete it in 4–5 hours with stops at each fall.',
-      'Autumn colour peaks in mid-October and the falls run strongest in winter and spring.',
-    ]
-  },
-  {
-    id: 'cascades',
-    name: 'Cascades International Park',
-    location: 'Oregon · California',
-    region: 'pnw',
-    img: '../../images/parks/shasta.jpg',
-    tags: ['Volcanic','International','Alpine','Wilderness'],
-    desc: 'A joint USA–California Federal Park protecting the volcanic spine of the Cascade Range, including Mt. Shasta, Mt. McLaughlin, and the Three Sisters.',
-    lat: 41.4092, lon: -122.1949, tz: 'America/Los_Angeles',
-    trails: ['Lower trails open year-round', 'High routes require mountaineering experience and permits', 'Shasta summit climbs — permit required, check volcanic activity alerts'],
-    tips: [
-      'Mt. Shasta is one of the most volcanically active peaks in the range — check FPS volcano alerts before summit attempts.',
-      'The cross-border nature of the park means USA and California passes are both honoured — check your pass validity at the trailhead station.',
-      'Castle Lake, just outside the park boundary, offers excellent fishing and swimming in a dramatically scenic setting.',
-    ]
-  },
-];
-
-// ── SEEDED RANDOM ──
-function seededRand(seed) { const x = Math.sin(seed + 1) * 10000; return x - Math.floor(x); }
+// ── HIGHLIGHTED CARD PARKS PER REGION ──
+const CARD_PARKS = {
+  pnw:    ['crater','wyeast','silver','cascades'],
+  mw:     ['sacred','mistakis','paha_sapa','rockies'],
+  plains: ['badlands','tallgrass','wichita','ozarks'],
+  east:   ['smokies','capitol','acadia','atlanta'],
+};
 
 // ── WEATHER HELPERS ──
 function weatherCodeToDesc(code) {
   if (code === 0) return 'Clear skies';
-  if (code <= 3) return 'Partly cloudy';
+  if (code <= 2)  return 'Partly cloudy';
+  if (code === 3) return 'Overcast';
   if (code <= 49) return 'Foggy';
   if (code <= 59) return 'Drizzle';
   if (code <= 69) return 'Rain';
@@ -401,32 +280,26 @@ function weatherCodeToDesc(code) {
   if (code <= 99) return 'Thunderstorm';
   return 'Variable';
 }
-function degreesToCardinal(deg) {
-  const dirs = ['N','NE','E','SE','S','SW','W','NW'];
-  return dirs[Math.round(deg / 45) % 8];
-}
+function degreesToCardinal(deg) { return ['N','NE','E','SE','S','SW','W','NW'][Math.round(deg / 45) % 8]; }
 
 async function fetchParkWeather(park) {
+  if (!park.lat) return null;
   const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + park.lat + '&longitude=' + park.lon + '&current=temperature_2m,weathercode,windspeed_10m,winddirection_10m&temperature_unit=celsius&windspeed_unit=kmh&timezone=' + encodeURIComponent(park.tz);
   const res = await fetch(url);
   const data = await res.json();
   const c = data.current;
-  return {
-    temp: Math.round(c.temperature_2m),
-    cond: weatherCodeToDesc(c.weathercode),
-    wind: Math.round(c.windspeed_10m),
-    dir: degreesToCardinal(c.winddirection_10m),
-  };
+  return { temp: Math.round(c.temperature_2m), cond: weatherCodeToDesc(c.weathercode), wind: Math.round(c.windspeed_10m), dir: degreesToCardinal(c.winddirection_10m) };
 }
 
 // ── PARK OF THE DAY ──
-const potdIdx = dayOfYear % PARKS.length;
-const potd = PARKS[potdIdx];
-const tipIdx = dayOfYear % potd.tips.length;
+const PARKS_WITH_IMG = WBT_PARKS.filter(p => p.img);
+const potd = PARKS_WITH_IMG[dayOfYear % PARKS_WITH_IMG.length];
+const tipIdx   = dayOfYear % potd.tips.length;
 const trailIdx = dayOfYear % potd.trails.length;
 
 document.getElementById('fps-potd-img').style.backgroundImage = 'url("' + potd.img + '")';
-document.getElementById('fps-potd-img').style.backgroundPosition = potd.imgPos || 'center';document.getElementById('fps-potd-name').textContent = potd.name;
+document.getElementById('fps-potd-img').style.backgroundPosition = potd.imgPos || 'center top';
+document.getElementById('fps-potd-name').textContent = potd.name;
 document.getElementById('fps-potd-location').textContent = potd.location;
 document.getElementById('fps-potd-trails').textContent = potd.trails[trailIdx];
 document.getElementById('fps-potd-tip').textContent = potd.tips[tipIdx];
@@ -434,42 +307,59 @@ document.getElementById('fps-tip-park').textContent = potd.name;
 document.getElementById('fps-tip-text').textContent = potd.tips[(tipIdx + 1) % potd.tips.length];
 
 fetchParkWeather(potd).then(w => {
+  if (!w) return;
   document.getElementById('fps-potd-temp').textContent = w.temp + '°C';
   document.getElementById('fps-potd-cond').textContent = w.cond;
   document.getElementById('fps-potd-wind').textContent = 'Wind ' + w.wind + ' km/h ' + w.dir;
-}).catch(() => {
-  document.getElementById('fps-potd-cond').textContent = 'Weather unavailable';
-});
+}).catch(() => { document.getElementById('fps-potd-cond').textContent = 'Weather unavailable'; });
 
 // ── RENDER PARK CARDS ──
-const weatherCache = {};
-
-function parkCardHTML(park, weather) {
-  const wStr = weather ? (weather.temp + '°C · ' + weather.cond) : 'Fetching...';
+function parkCardHTML(park) {
+  const imgStyle = park.img
+    ? 'background-image:url("' + park.img + '");background-position:' + (park.imgPos || 'center top')
+    : 'background:linear-gradient(135deg,#1A3A0A,#2D5A1A)';
   return '<div class="fps-park">' +
-    '<div class="fps-park-img" style="background-image:url(\'' + park.img + '\');background-position:' + (park.imgPos || 'center') + '">' +
-    '<div class="fps-park-img-label">' + park.location + '</div></div>' +    '<div class="fps-park-body">' +
+    '<div class="fps-park-img" style="' + imgStyle + '">' +
+    '<div class="fps-park-img-label">' + park.location + '</div></div>' +
+    '<div class="fps-park-body">' +
     '<div class="fps-park-name">' + park.name + '</div>' +
-    '<div class="fps-park-desc">' + park.desc + '</div>' +
-    '<div class="fps-park-tags">' + park.tags.map(t => '<span class="fps-tag">' + t + '</span>').join('') + '</div>' +
+    '<div class="fps-park-desc">' + park.desc.slice(0, 120) + (park.desc.length > 120 ? '…' : '') + '</div>' +
+    '<div class="fps-park-tags">' + park.tags.slice(0,3).map(t => '<span class="fps-tag">' + t + '</span>').join('') + '</div>' +
     '<div class="fps-park-footer">' +
-    '<span class="fps-park-weather" id="pw-' + park.id + '">' + wStr + '</span>' +
+    '<span class="fps-park-weather" id="pw-' + park.id + '">Fetching…</span>' +
     '<a class="fps-park-link" href="#">Plan Visit &#8594;</a>' +
     '</div></div></div>';
 }
 
-const regions = { pnw: 'fps-region-pnw', mw: 'fps-region-mw', east: 'fps-region-east' };
-Object.keys(regions).forEach(r => {
-  const parks = PARKS.filter(p => p.region === r);
-  document.getElementById(regions[r]).innerHTML = parks.map(p => parkCardHTML(p, null)).join('');
-});
+// ── RENDER ALL REGIONS ──
+const regions = ['pnw','mw','plains','east'];
+regions.forEach(r => {
+  const cardIds = CARD_PARKS[r];
+  const cardParks = cardIds.map(id => WBT_PARKS.find(p => p.id === id)).filter(Boolean);
+  const allParks  = WBT_PARKS.filter(p => p.region === r);
+  const nonCard   = allParks.filter(p => !cardIds.includes(p.id));
 
-// Fetch weather for all park cards asynchronously
-PARKS.forEach(park => {
-  fetchParkWeather(park).then(w => {
-    const el = document.getElementById('pw-' + park.id);
-    if (el) el.textContent = w.temp + '°C · ' + w.cond;
-  }).catch(() => {});
+  const gridEl = document.getElementById('fps-region-' + r);
+  if (gridEl) gridEl.innerHTML = cardParks.map(parkCardHTML).join('');
+
+  const linksEl = document.getElementById('fps-links-' + r);
+  if (linksEl) {
+    linksEl.innerHTML = allParks.map(p =>
+      '<a class="fps-park-link-item" href="#">' + p.name + '</a>'
+    ).join('');
+  }
+
+  // Fetch weather for card parks
+  cardParks.forEach(park => {
+    fetchParkWeather(park).then(w => {
+      const el = document.getElementById('pw-' + park.id);
+      if (el && w) el.textContent = w.temp + '°C · ' + w.cond;
+      else if (el) el.textContent = '';
+    }).catch(() => {
+      const el = document.getElementById('pw-' + park.id);
+      if (el) el.textContent = '';
+    });
+  });
 });
 </script>
 </body>
