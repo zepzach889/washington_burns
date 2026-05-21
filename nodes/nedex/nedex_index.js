@@ -36,6 +36,7 @@ const NEDEX_ARTICLES = [
   { title: 'Hugo Brandt',                          file: 'hugo-brandt.html',        categories: ['Biographies', 'Presidents of the United States', 'Democrat Party politicians', 'War Between the States'],       blurb: 'Fourteenth President of the United States (1863–1869); Acting President of the Free States (1858–1863); led the republic through the War Between the States.' },
   { title: 'John P. Quincy',                       file: 'john-p-quincy.html',      categories: ['Biographies', 'Presidents of the United States', 'Democrat Party politicians', 'Reconstruction'],               blurb: 'Fifteenth President of the United States (1869–1873); Popular Democratic president, seen as the finisher of reconstruction. Resigned in 1873 amid scandal.' },
   { title: 'Bradley Kinder',                       file: 'bradley-kinder.html',     categories: ['Biographies', 'Presidents of the United States', 'Democrat Party politicians', 'Reconstruction'],               blurb: 'Sixteenth President of the United States (1873–1875); Caretaker president following the resignation of Presideny Quincy in the wake of the Clark Scandal.' },
+  { title: 'Horace Littlefield',                   file: 'horace-littlefield.html', categories: ['Biographies', 'Presidents of the United States', 'Federalist Party politicians', 'Guilded Age'],                blurb: 'Seventeenth President of the United States (1877-1881); Birth of the modern presidency - the first president to travel extensively, seeing the Pacific Coast, and visiting Canada.' },
 
   
   
