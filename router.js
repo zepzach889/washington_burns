@@ -34,6 +34,7 @@ const ROUTES = {
   'nan.nedex.org.nau/james-hawthorne':        '/nodes/nedex/james-hawthorne.html',
   'nan.nedex.org.nau/hugo-brandt':            '/nodes/nedex/hugo-brandt.html',
   'nan.nedex.org.nau/john-p-quincy':          '/nodes/nedex/john-p-quincy.html',
+  'nan.nedex.org.nau/bradley-kinder':         '/nodes/nedex/bradley-kinder.html',
   'nan.usrc.gov.usa':                         '/nodes/usrc/',
   'nan.assembly.nau':                         '/nodes/assembly/',
   'nan.washingtonhouse.gov.usa':              '/nodes/washington-house/',
