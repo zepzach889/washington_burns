@@ -57,7 +57,8 @@ const FO_NATIONAL = [
   { hed: 'Washington House West Wing Reopens After Two-Year Restoration', dek: 'The public and diplomatic wing, closed since 2024 for its most comprehensive renovation since the full structural restoration of 1957–1961, reopened to visitors this week.', meta: 'Observer Staff · 9 hours ago' },
   { hed: 'Congress Debates Federal Arbitration Bureau Reauthorisation', dek: 'A coalition of SPA and Federalist members is pushing for expanded powers for the Bureau, while JCA members argue the agency has overstepped its mandate.', meta: 'United Press · Franklin · 4 hours ago' },
   { hed: 'FIS Director Confirmed by Senate After Months-Long Vacancy', dek: 'The Federal Investigative Service will have new leadership for the first time in three years following the Senate\'s confirmation of the President\'s nominee.', meta: 'Observer Staff · 7 hours ago' },
-  { hed: 'Department of Education Report: Urban-Rural Literacy Gap Narrows for Third Consecutive Year', dek: 'The annual report shows measurable improvement in rural literacy rates across Prairie and Mountain states, though the gap with urban centres remains significant.', meta: 'United Press · Franklin · 11 hours ago' }
+  { hed: 'Department of Education Report: Urban-Rural Literacy Gap Narrows for Third Consecutive Year', dek: 'The annual report shows measurable improvement in rural literacy rates across Prairie and Mountain states, though the gap with urban centres remains significant.', meta: 'United Press · Franklin · 11 hours ago' },
+  { hed: 'Secretary Anderson Intros Streetcar Program', dek: 'Transportation Secretary Alex Anderson, together with Urban Development Secretary Thomas Bale, introduced a new plan to expand major streetcar systems in 7 major cities.', meta: 'Capitol Desk · 4 hours ago' },
 ];
 
 const FO_WORLD = [
