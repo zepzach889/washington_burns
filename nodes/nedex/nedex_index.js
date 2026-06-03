@@ -37,6 +37,7 @@ const NEDEX_ARTICLES = [
   { title: 'John P. Quincy',                       file: 'john-p-quincy.html',      categories: ['Biographies', 'Presidents of the United States', 'Democrat Party politicians', 'Reconstruction'],               blurb: 'Fifteenth President of the United States (1869–1873); Popular Democratic president, seen as the finisher of reconstruction. Resigned in 1873 amid scandal.' },
   { title: 'Bradley Kinder',                       file: 'bradley-kinder.html',     categories: ['Biographies', 'Presidents of the United States', 'Democrat Party politicians', 'Reconstruction'],               blurb: 'Sixteenth President of the United States (1873–1875); Caretaker president following the resignation of Presideny Quincy in the wake of the Clark Scandal.' },
   { title: 'Horace Littlefield',                   file: 'horace-littlefield.html', categories: ['Biographies', 'Presidents of the United States', 'Federalist Party politicians', 'Guilded Age'],                blurb: 'Seventeenth President of the United States (1877-1881); Birth of the modern presidency - the first president to travel extensively, seeing the Pacific Coast, and visiting Canada.' },
+  { title: 'Theodore Drake',                       file: 'theodore-drake.html',     categories: ['Biographies', 'Presidents of the United States', 'Democratic Party politicians', 'Guilded Age'],                blurb: 'Eighteenth President of the United States (1881-1887); Major austerity cuts, presided - and failed to respond properly to - the Italian Flu epedmic.' },
 
   
   
