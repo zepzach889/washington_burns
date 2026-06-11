@@ -128,12 +128,13 @@
   <div class="wh-legend">
     <span class="wh-legend-label">Party</span>
     <div class="wh-legend-item"><div class="wh-legend-dot" style="background:#6B7280"></div>Unaffiliated</div>
-    <div class="wh-legend-item"><div class="wh-legend-dot" style="background:#4A5C2A"></div>Dem-Republican</div>
-    <div class="wh-legend-item"><div class="wh-legend-dot" style="background:#2A4E8A"></div>Federalist</div>
-    <div class="wh-legend-item"><div class="wh-legend-dot" style="background:#8B6914"></div>Democrat</div>
-    <div class="wh-legend-item"><div class="wh-legend-dot" style="background:#7A2E0E"></div>Republican</div>
-    <div class="wh-legend-item"><div class="wh-legend-dot" style="background:#993C1D"></div>JCA</div>
-    <div class="wh-legend-item"><div class="wh-legend-dot" style="background:#2D5A1A"></div>SPA</div>
+    <div class="wh-legend-item"><div class="wh-legend-dot" style="background:#5C6B73"></div>Dem-Republican</div>
+    <div class="wh-legend-item"><div class="wh-legend-dot" style="background:#D2691E"></div>Federalist</div>
+    <div class="wh-legend-item"><div class="wh-legend-dot" style="background:#6B8E23"></div>Democrat</div>
+    <div class="wh-legend-item"><div class="wh-legend-dot" style="background:#1A4F8A"></div>Republican</div>
+    <div class="wh-legend-item"><div class="wh-legend-dot" style="background:#DAA520"></div>JCA</div>
+    <div class="wh-legend-item"><div class="wh-legend-dot" style="background:#B22222"></div>SPA</div>
+    <div class="wh-legend-item"><div class="wh-legend-dot" style="background:#1E5631"></div>Green</div>
   </div>
   <div id="wh-presidents-list"></div>
 </div>
@@ -165,12 +166,13 @@ updateArcClock();
 
 const PARTIES = {
   'Unaffiliated':   { color: '#6B7280', short: 'Unaffiliated' },
-  'Dem-Republican': { color: '#4A5C2A', short: 'Dem-Rep' },
-  'Federalist':     { color: '#2A4E8A', short: 'Federalist' },
-  'Democrat':       { color: '#8B6914', short: 'Democrat' },
-  'Republican':     { color: '#7A2E0E', short: 'Republican' },
-  'JCA':            { color: '#993C1D', short: 'JCA' },
-  'SPA':            { color: '#2D5A1A', short: 'SPA' },
+  'Dem-Republican': { color: '#5C6B73', short: 'Dem-Rep' },
+  'Federalist':     { color: '#D2691E', short: 'Federalist' },
+  'Democrat':       { color: '#6B8E23', short: 'Democrat' },
+  'Republican':     { color: '#1A4F8A', short: 'Republican' },
+  'JCA':            { color: '#DAA520', short: 'JCA' },
+  'SPA':            { color: '#B22222', short: 'SPA' },
+  'Green':          { color: '#1E5631', short: 'Green' },
 };
 
 function partyColor(p) { return (PARTIES[p] || {color:'#888'}).color; }
@@ -180,7 +182,7 @@ const ERAS = [
   {
     title: 'The Founding Era',
     presidents: [
-      { num: 1,  name: 'George Washington',      party: 'Unaffiliated',   term: '1789–1797', state: 'Virginia',       note: 'First President of the United States. Established the precedents of the office.' },
+      { num: 1,  name: 'George Washington',      party: 'Unaffiliated',   term: '1789–1797', state: 'Virginia',       note: 'First President of the United States. Established the precedents of the office. Never formally affiliated with a party, though he leaned Federalist.' },
       { num: 2,  name: 'John Adams',              party: 'Federalist',     term: '1797–1801', state: 'Massachusetts',   note: 'First Federalist president. Navigated early tensions with France and Britain.' },
       { num: 3,  name: 'Thomas Jefferson',        party: 'Dem-Republican', term: '1801–1809', state: 'Virginia',       note: 'Louisiana Purchase. Lewis and Clark Expedition. Established many early republic traditions.' },
       { num: 4,  name: 'James Madison',           party: 'Dem-Republican', term: '1809–1817', state: 'Virginia',       note: 'Point of Divergence occurred during his term — the burning of Washington City, August 1814. Capital relocated to Franklin, District of Washington.' },
@@ -193,34 +195,34 @@ const ERAS = [
     title: 'The Republican Era',
     presidents: [
       { num: 8,  name: 'John C. Calhoun',         party: 'Republican', term: '1833–1836 ✦', state: 'South Carolina', note: 'Assassinated May 9, 1836. His death and the crisis that followed set the stage for the War Between the States.' },
-      { num: 9,  name: 'Giles Brandon',           party: 'Republican', term: '1836–1839',   state: 'Virginia',       note: 'Succeeded to office on the death of Calhoun. Struggled to hold the country together amid deepening sectional tensions.' },
-      { num: 10, name: 'Victor Yates',            party: 'Democrat',   term: '1839–1845',   state: 'Ohio',           note: 'Democrat restoration after Republican instability. Attempted to manage growing sectional crisis through compromise.' },
-      { num: 11, name: 'Wilbur Haines',           party: 'Democrat',   term: '1845–1851',   state: 'Pennsylvania',   note: 'Presided over a period of westward expansion and deepening tensions over slavery.' },
+      { num: 9,  name: 'Giles Brandon',           party: 'Republican', term: '1836–1839',   state: 'Georgia',        note: 'Succeeded to office on the death of Calhoun. Struggled to hold the country together amid deepening sectional tensions.' },
+      { num: 10, name: 'Victor Yates',            party: 'Democrat',   term: '1839–1845',   state: 'Pennsylvania',   note: 'Democrat restoration after Republican instability. Attempted to manage growing sectional crisis through compromise.' },
+      { num: 11, name: 'Wilbur Haines',           party: 'Democrat',   term: '1845–1851',   state: 'Kentucky',       note: 'Presided over a period of westward expansion and deepening tensions over slavery.' },
       { num: 12, name: 'Robert Lee',              party: 'Republican', term: '1851–1856 ✦', state: 'Virginia',       note: 'Assassinated January 6, 1856. His death precipitated the political crisis leading to the War Between the States.' },
-      { num: 13, name: 'James Hawthorne',         party: 'Republican', term: '1856–1860 ✦', state: 'New Hampshire',  note: 'Resigned October 17, 1860 amid the collapse of federal authority. Regarded historically as the antagonist of the War Between the States.' },
+      { num: 13, name: 'James Hawthorne',         party: 'Republican', term: '1856–1860 ✦', state: 'Georgia',        note: 'Resigned October 17, 1860 amid the collapse of federal authority. Regarded historically as the antagonist of the War Between the States.' },
       { num: '—', name: 'Hugo Brandt', party: 'Democrat', term: '1858–1863', state: 'Ohio', acting: true, actingLabel: 'Acting President, Free States', note: 'Led the Free States government during the War Between the States. The Free States faction prevailed and reconstituted the Union under the 1861 Constitution.' },
       { num: 14, name: 'Hugo Brandt',             party: 'Democrat',   term: '1863–1869',   state: 'Ohio',           note: 'First president under the Constitution of 1861. Presided over Reconstruction and the consolidation of the new constitutional order.' },
       { num: 15, name: 'John P. Quincy',          party: 'Democrat',   term: '1869–1873 ✦', state: 'Massachusetts',  note: 'Resigned June 1, 1873. First president to resign from office.' },
-      { num: 16, name: 'Bradley Kinder',          party: 'Democrat',   term: '1873–1875',   state: 'Connecticut',    note: 'Succeeded to office on the resignation of Quincy. Did not stand for his own term.' },
+      { num: 16, name: 'Bradley Kinder',          party: 'Democrat',   term: '1873–1875',   state: 'Indiana',        note: 'Succeeded to office on the resignation of Quincy. Did not stand for his own term.' },
     ]
   },
   {
     title: 'The Reform Era',
     presidents: [
-      { num: 17, name: 'Horace Littlefield',     party: 'Federalist', term: '1875–1881',   state: 'Maine',         note: 'First Federalist president of the post-war era. VP: Frederick Bailey. Began the long Federalist program of civil rights expansion and federal investment.' },
-      { num: 18, name: 'Theodore Drake',         party: 'Democrat',   term: '1881–1887',   state: 'Indiana',       note: 'Democrat restoration. An unpopular administration that left the party weakened.' },
+      { num: 17, name: 'Horace Littlefield',     party: 'Federalist', term: '1875–1881',   state: 'New York',      note: 'First Federalist president of the post-war era. VP: Frederick Bailey. Began the long Federalist program of civil rights expansion and federal investment.' },
+      { num: 18, name: 'Theodore Drake',         party: 'Democrat',   term: '1881–1887',   state: 'Iowa',          note: 'Democrat restoration. An unpopular administration that left the party weakened.' },
       { num: 19, name: 'Leeland Rowling',        party: 'Federalist', term: '1887–1893',   state: 'Pennsylvania',  note: 'Major Federalist landslide victory. Significant labor protections, USRC expansion, early women\'s suffrage advocacy. VP: Jefferson Young.' },
-      { num: 20, name: 'Colin Beck',             party: 'Federalist', term: '1893–1899',   state: 'Ohio',          note: '"The Engineer President." Won through contingent election. Major infrastructure investment and expansion of the USRC network.' },
-      { num: 21, name: 'Alexander Fleak',        party: 'Federalist', term: '1899–1903 ✦', state: 'Michigan',      note: 'Died in office March 4, 1903. Succeeded by his Vice President, Peter Landon.' },
-      { num: 22, name: 'Peter Landon',           party: 'Federalist', term: '1903–1905',   state: 'New York',      note: 'First Black president of the United States, by succession following the death of Fleak. Did not stand for his own term.' },
-      { num: 23, name: 'Cornelius Roosevelt II', party: 'Democrat',   term: '1905–1911',   state: 'New York',      note: 'Caribbean War. Significant expansion of federal power and overseas engagement. VP: Patrick Hannah.' },
-      { num: 24, name: 'Patrick Hannah',         party: 'Democrat',   term: '1911–1917',   state: 'Ohio',          note: 'Won the 1911 contingent election. 4th Amendment. Oslo Accords. Sinking of the Hyperion (1913).' },
+      { num: 20, name: 'Colin Beck',             party: 'Federalist', term: '1893–1899',   state: 'Illinois',      note: '"The Engineer President." Won through contingent election. Major infrastructure investment and expansion of the USRC network.' },
+      { num: 21, name: 'Alexander Fleak',        party: 'Federalist', term: '1899–1903 ✦', state: 'Pennsylvania',  note: 'Died in office March 4, 1903. Succeeded by his Vice President, Peter Landon.' },
+      { num: 22, name: 'Peter Landon',           party: 'Federalist', term: '1903–1905',   state: 'Alabama',       note: 'First Black president of the United States, by succession following the death of Fleak. Did not stand for his own term.' },
+      { num: 23, name: 'Cornelius Roosevelt II', party: 'Democrat',   term: '1905–1911',   state: 'Dist. of Manhattan', note: 'Caribbean War. Significant expansion of federal power and overseas engagement. VP: Patrick Hannah.' },
+      { num: 24, name: 'Patrick Hannah',         party: 'Democrat',   term: '1911–1917',   state: 'Platte',        note: 'Won the 1911 contingent election. 4th Amendment. Oslo Accords. Sinking of the Hyperion (1913).' },
     ]
   },
   {
     title: 'The Modern Republic',
     presidents: [
-      { num: 25, name: 'James P. Roosevelt Jr.', party: 'JCA',        term: '1917–1921 ✦', state: 'New York',      note: 'First JCA president. Died of a heart attack in his sleep, 1921.' },
+      { num: 25, name: 'James P. Roosevelt Jr.', party: 'JCA',        term: '1917–1921 ✦', state: 'Dist. of Manhattan', note: 'First JCA president. Died of a heart attack in his sleep, 1921.' },
       { num: 26, name: 'Alden Gunther',          party: 'JCA',        term: '1921–1923',   state: 'Florida',       note: 'Succeeded to office on the death of Roosevelt. Declined to run for his own term.' },
       { num: 27, name: 'Lance Hawkins',          party: 'Federalist', term: '1923–1929',   state: 'Iowa',          note: 'VP: Lynne Powell — first female Vice President. First North American Conference (1925/26).' },
       { num: 28, name: 'Benjamin King',          party: 'Democrat',   term: '1929–1935',   state: 'Ohio',          note: '"The Competent President." Passed the Preparation Act (1932) and the Third North American Conference Mutual Defense Pact.' },
@@ -230,26 +232,26 @@ const ERAS = [
   {
     title: 'The Global War & Postwar Era',
     presidents: [
-      { num: 30, name: 'Henry Freeman',  party: 'Federalist', term: '1941–1947', state: 'Ohio',     note: 'First elected Black president of the United States. Completed the Asian diplomatic settlement. Helped found the NAU charter.' },
-      { num: 31, name: 'James Nolan',    party: 'JCA',        term: '1947–1953', state: 'Arkansas', note: 'Populist demagogue. GPC obstruction, the Pruett affair, homophile purges. A controversial and damaging presidency.' },
-      { num: 32, name: 'Timothy Priest', party: 'JCA',        term: '1953–1959', state: 'Georgia',  note: 'Morton scandal led to the closure of the Morality Office. Jesse Pike was elected to Congress during this term.' },
+      { num: 30, name: 'Henry Freeman',  party: 'Federalist', term: '1941–1947', state: 'Louisiana', note: 'First elected Black president of the United States. Completed the Asian diplomatic settlement. Helped found the NAU charter.' },
+      { num: 31, name: 'James Nolan',    party: 'JCA',        term: '1947–1953', state: 'Missouri',  note: 'Populist demagogue. GPC obstruction, the Pruett affair, homophile purges. A controversial and damaging presidency.' },
+      { num: 32, name: 'Timothy Priest', party: 'JCA',        term: '1953–1959', state: 'Georgia',   note: 'Morton scandal led to the closure of the Morality Office. Jesse Pike was elected to Congress during this term.' },
     ]
   },
   {
     title: 'The Contemporary Era',
     presidents: [
       { num: 33, name: 'Georgina Lincoln',    party: 'SPA',        term: '1959–1965',    state: 'Indiana',      note: 'First woman president. First Socialist president. Grand-niece of Leonard Lincoln. A transformative presidency.' },
-      { num: 34, name: 'Cassandra Schultz',  party: 'Federalist', term: '1965–1971',    state: 'Wisconsin',    note: 'Choson War 1966–67. NAU Assembly reform push began under her administration.' },
-      { num: 35, name: 'Julius Langston',    party: 'SPA',        term: '1971–1977',    state: 'Illinois',     note: 'NAU Assembly formally established 1974. Finland and Poland independence.' },
-      { num: 36, name: 'Richard Whitmore',   party: 'Democrat',   term: '1977–1983',    state: 'California',   note: 'South African racist policies collapsed under GPC and NAU pressure. Ottoman Arab provinces agitation grew.' },
-      { num: 37, name: 'Jesse Pike',         party: 'SPA',        term: '1983–1989',    state: 'New York',     note: 'First openly gay president. Presided over marriage equality. The "Long Boom" began under his administration.' },
+      { num: 34, name: 'Cassandra Schultz',  party: 'Federalist', term: '1965–1971',    state: 'Jefferson',    note: 'Choson War 1966–67. NAU Assembly reform push began under her administration.' },
+      { num: 35, name: 'Julius Langston',    party: 'SPA',        term: '1971–1977',    state: 'Louisiana',    note: 'NAU Assembly formally established 1974. Finland and Poland independence.' },
+      { num: 36, name: 'Richard Whitmore',   party: 'Democrat',   term: '1977–1983',    state: 'Indiana',      note: 'South African racist policies collapsed under GPC and NAU pressure. Ottoman Arab provinces agitation grew.' },
+      { num: 37, name: 'Jesse Pike',         party: 'SPA',        term: '1983–1989',    state: 'Massachusetts', note: 'First openly gay president. Presided over marriage equality. The "Long Boom" began under his administration.' },
       { num: 38, name: 'Regina Holman',      party: 'Federalist', term: '1989–1995',    state: 'Ohio',         note: 'Mesopotamia revolt 1987–89. German/Prussian reunification process. The Long Boom continued.' },
-      { num: 39, name: 'Victor Liu',         party: 'SPA',        term: '1995–2001',    state: 'California',   note: 'First Asian-American president. The Long Boom ended ~1998–2000.' },
-      { num: 40, name: 'Stephen Mercer',     party: 'Democrat',   term: '2001–2007',    state: 'Texas',        note: 'The "deadline gambit" — Ottomans negotiated November 15, 2001. Mesopotamia settlement by late 2002/early 2003.' },
-      { num: 41, name: 'Eleanor Sinclair',   party: 'Democrat',   term: '2007–2013',    state: 'Oregon',       note: 'GPC reform process launched. Clean Energy Framework passed. German reunification complete.' },
-      { num: 42, name: 'Xavier Hudson',      party: 'Federalist', term: '2013–2019',    state: 'Pennsylvania', note: 'GPC reform completed. Chinese Spring protest movement. NAU deepening debate became serious.' },
-      { num: 43, name: 'Naomi Clearwater',   party: 'Federalist', term: '2019–2025',    state: 'Lakota',       note: 'First president from one of the newer Western states. Rallied global support during the Chinese coup attempt.' },
-      { num: 44, name: 'Sophia R. Nakamura', party: 'SPA',        term: '2025–present', state: 'Oregon',       note: 'Second Asian-American president. Former Senator from Oregon. The NAU Constitutional Consolidation project is the defining issue of her presidency. Inaugurated February 11, 2025.' },
+      { num: 39, name: 'Victor Liu',         party: 'SPA',        term: '1995–2001',    state: 'Oregon',       note: 'First Asian-American president. The Long Boom ended ~1998–2000.' },
+      { num: 40, name: 'Stephen Mercer',     party: 'Democrat',   term: '2001–2007',    state: 'Missouri',     note: 'The "deadline gambit" — Ottomans negotiated November 15, 2001. Mesopotamia settlement by late 2002/early 2003.' },
+      { num: 41, name: 'Eleanor Sinclair',   party: 'Democrat',   term: '2007–2013',    state: 'Tennessee',    note: 'GPC reform process launched. Clean Energy Framework passed. German reunification complete.' },
+      { num: 42, name: 'Xavier Hudson',      party: 'Federalist', term: '2013–2019',    state: 'Maryland',     note: 'GPC reform completed. Chinese Spring protest movement. NAU deepening debate became serious.' },
+      { num: 43, name: 'Naomi Clearwater',   party: 'SPA',        term: '2019–2025',    state: 'Lakota',       note: 'First president from one of the newer Western states. Rallied global support during the Chinese coup attempt.' },
+      { num: 44, name: 'Sophia R. Nakamura', party: 'Green',      term: '2025–present', state: 'Oregon',       note: 'First Green Party president. Second Asian-American president. Former Senator from Oregon. The NAU Constitutional Consolidation project is the defining issue of her presidency. Inaugurated February 11, 2025.' },
     ]
   }
 ];
