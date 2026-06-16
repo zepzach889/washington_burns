@@ -37,6 +37,7 @@ const ROUTES = {
   'nan.nedex.org.nau/bradley-kinder':         '/nodes/nedex/bradley-kinder.html',
   'nan.nedex.org.nau/horace-littlefield':     '/nodes/nedex/horace-littlefield.html',
   'nan.nedex.org.nau/theodore-drake':         '/nodes/nedex/theodore-drake.html',
+  'nan.nedex.org.nau/leeland-rowling':        '/nodes/nedex/leeland-rowling.html',
   'nan.usrc.gov.usa':                         '/nodes/usrc/',
   'nan.assembly.nau':                         '/nodes/assembly/',
   'nan.washingtonhouse.gov.usa':              '/nodes/washington-house/',
