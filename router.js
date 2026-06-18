@@ -55,6 +55,15 @@ const ROUTES = {
   'nan.div814.gov.usa':                       '/nodes/ref/',
   'nan.div814.gov.usa/stories':               '/nodes/ref/stories',
   'nan.div814.gov.usa/nedex-builder':         '/nodes/ref/nedex-builder',
+  'nan.div814.gov.usa/wbt_cinema_bible':      '/nodes/ref/wbt_cinema_bible_v8',
+  'nan.div814.gov.usa/wbt_music_bible':       '/nodes/ref/wbt_music_bible',
+  'nan.div814.gov.usa/wbt_reference':         '/nodes/ref/wbt_reference',
+  'nan.div814.gov.usa/wbt_space_history':     '/nodes/ref/wbt_space_history_3',
+  'nan.div814.gov.usa/wbt_sports_history':    '/nodes/ref/wbt_sports_history',
+  'nan.div814.gov.usa/wbt_sports_olympics':   '/nodes/ref/wbt_sports_olympics',
+  'nan.div814.gov.usa/wbt_sports_teams':      '/nodes/ref/wbt_sports_teams',
+  'nan.div814.gov.usa/wbt_tech_media_reference':   '/nodes/ref/wbt_tech_media_reference',
+
 };
 
 const PATH_TO_ADDRESS = {};
