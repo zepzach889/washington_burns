@@ -465,8 +465,8 @@ function renderWL(rows, elId, cols) {
   if (!el) return;
   const headers = cols.map(c => `<th>${c.label}</th>`).join('');
   const body = rows.map(r => {
-    const cells = cols.map(c => `<td>${r[c.key]}</td>`).join('');
-    return `<tr>${cells}</tr>`;
+   const statCells = cols.map(c => `<td>${r[c.key]}</td>`).join('');
+    return `<tr><td>${r.team}</td>${statCells}</tr>`;
   }).join('');
   el.innerHTML = `<thead><tr><th>Team</th>${headers}</tr></thead><tbody>${body}</tbody>`;
 }
