@@ -4,41 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LinkVid Films — link://nan.linkvid.biz.usa/films</title>
+<link rel="stylesheet" href="../../shared.css">
 <link rel="stylesheet" href="linkvid_shared.css">
 </head>
 <body>
 
-<!-- WM ARC CHROME -->
-<div class="arc-chrome">
-  <div class="arc-topbar">
-    <div class="arc-dots">
-      <div class="arc-dot r"></div>
-      <div class="arc-dot y"></div>
-      <div class="arc-dot g"></div>
-    </div>
-    <div class="arc-navbtns">
-      <a href="#" onclick="history.back();return false;">&#8592;</a>
-      <a href="#" onclick="history.forward();return false;">&#8594;</a>
-    </div>
-    <a class="arc-wm-logo" href="../../index.html"><span class="wm-w">W</span>M <em>Arc</em></a>
-    <div class="arc-addrbar">
-      <span class="arc-lock">&#128274;</span>
-      <span class="arc-addr"><span class="proto">link://</span><span class="net">nan</span>.<span class="site">linkvid</span><span class="rest">.biz.usa/films</span></span>
-    </div>
-    <div class="arc-clock" id="arc-clock"></div>
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">&#8592;</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">&#8594;</a>
   </div>
-  <div class="arc-bookmarks">
-    <a class="arc-bmark" href="../index.html"><span class="arc-bmark-icon">&#128269;</span>Waymark</a>
-    <a class="arc-bmark" href="../nodes/franklin-observer/"><span class="arc-bmark-icon">&#128240;</span>Franklin Observer</a>
-    <a class="arc-bmark" href="../nodes/abn/"><span class="arc-bmark-icon">&#128250;</span>ABN News</a>
-    <a class="arc-bmark" href="../nodes/nedex/"><span class="arc-bmark-icon">&#128218;</span>Nedex</a>
-    <a class="arc-bmark" href="../nodes/usrc/"><span class="arc-bmark-icon">&#128642;</span>USRC Rail</a>
-    <a class="arc-bmark active" href="index.html"><span class="arc-bmark-icon">&#9654;</span>LinkVid</a>
-    <a class="arc-bmark" href="../nodes/assembly/"><span class="arc-bmark-icon">&#9878;</span>NAU Assembly</a>
-    <a class="arc-bmark" href="../nodes/washington-house/"><span class="arc-bmark-icon">&#127963;</span>Washington House</a>
-    <a class="arc-bmark" href="../nodes/amhistory/"><span class="arc-bmark-icon">&#127994;</span>Museum of the US</a>
-    <a class="arc-bmark" href="../nodes/fps/"><span class="arc-bmark-icon">&#127794;</span>Federal Parks</a>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">&#8594;</button>
   </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">&#128269;</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">&#128240;</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">&#128250;</span>ABN News</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">&#128218;</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">&#128642;</span>USRC Rail</a>
+  <a class="arc-bmark active" href="./"><span class="arc-bmark-icon">&#9654;</span>LinkVid</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">&#9878;</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">&#127963;</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">&#127994;</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">&#127794;</span>Federal Parks</a>
 </div>
 
 <!-- LINKVID NAV -->
@@ -268,17 +261,22 @@
   </div>
 </div>
 
+<script src="../../router.js"></script>
+<script src="../../stories.js"></script>
 <script>
-function updateClock() {
+initAddressBar('nan.linkvid.biz.usa/films');
+
+function updateArcClock() {
   const n = new Date();
   const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   const hh = String(n.getHours()).padStart(2,'0');
   const mm = String(n.getMinutes()).padStart(2,'0');
   const el = document.getElementById('arc-clock');
-  if (el) el.textContent = days[n.getDay()] + ' ' + n.getDate() + ' \u00b7 ' + hh + ':' + mm;
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
 }
-setInterval(updateClock, 10000);
-updateClock();
+setInterval(updateArcClock, 10000);
+updateArcClock();
+
 </script>
 </body>
 </html>
