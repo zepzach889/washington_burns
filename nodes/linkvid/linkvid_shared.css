@@ -32,6 +32,21 @@ body {
   line-height: 1.5;
 }
 
+/* ── MAKE WM ARC CHROME STICKY ON LINKVID PAGES ──
+   shared.css doesn't make these sticky, but on LinkVid
+   we need them to stay pinned with the lv-nav below. */
+.wm-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 300;
+}
+.arc-bookmarks {
+  position: sticky;
+  top: 52px; /* height of wm-topbar */
+  z-index: 299;
+  background: #ede8de;
+}
+
 /* ── LINKVID NAV ── */
 .lv-nav {
   background: var(--lv-bg-deep);
