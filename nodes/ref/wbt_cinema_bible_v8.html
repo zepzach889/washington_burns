@@ -135,8 +135,71 @@
     .rating-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
+
+<!-- WM ARC CHROME CSS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+.arc-chrome, .arc-chrome * { box-sizing: border-box; }
+.arc-chrome {
+  --arc-paper: #f9f8f6; --arc-border: rgba(0,0,0,0.10); --arc-border-mid: rgba(0,0,0,0.16);
+  --arc-text-primary: #1a1410; --arc-text-secondary: #4a4a48; --arc-text-tertiary: #88887f;
+  --arc-bg-secondary: #f2f1ee; --arc-bg-tertiary: #eae9e5;
+  --arc-blue: #185FA5; --arc-blue-light: #E6F1FB;
+  position: sticky; top: 0; z-index: 9999;
+  display: flex; flex-direction: column; font-family: 'DM Sans', sans-serif;
+}
+.arc-topbar { display: flex; align-items: center; padding: 7px 20px; border-bottom: 0.5px solid var(--arc-border); background: var(--arc-paper); gap: 10px; }
+.arc-navbtns { display: flex; gap: 4px; flex-shrink: 0; }
+.arc-navbtn { width: 26px; height: 26px; border-radius: 50%; border: 0.5px solid var(--arc-border-mid); background: var(--arc-bg-secondary); display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--arc-text-tertiary); cursor: pointer; text-decoration: none; line-height: 1; flex-shrink: 0; }
+.arc-navbtn:hover { background: var(--arc-bg-tertiary); color: var(--arc-text-primary); }
+.arc-navbtn:visited { color: var(--arc-text-tertiary); }
+.arc-logo { text-decoration: none; font-family: 'DM Serif Display', serif; font-size: 18px; letter-spacing: 0.04em; flex-shrink: 0; white-space: nowrap; }
+.arc-logo:visited { color: inherit; }
+.arc-logo .arc-w { color: #1a1410; } .arc-logo .arc-m { color: #185FA5; } .arc-logo .arc-tag { color: #5A6A8A; font-style: italic; font-size: 16px; }
+.arc-address-wrap { display: flex; align-items: center; flex: 1; min-width: 0; background: var(--arc-bg-secondary); border: 1px solid var(--arc-border-mid); border-radius: 22px; padding: 0 12px 0 14px; gap: 6px; }
+.arc-address-input { flex: 1; border: none; background: transparent; font-size: 12px; font-family: monospace; color: var(--arc-text-secondary); outline: none; padding: 7px 0; min-width: 0; }
+.arc-go-btn { background: none; border: none; cursor: pointer; color: var(--arc-text-tertiary); font-size: 15px; padding: 2px; flex-shrink: 0; line-height: 1; }
+.arc-clock { font-size: 11px; color: var(--arc-text-tertiary); font-family: monospace; flex-shrink: 0; white-space: nowrap; }
+.arc-bookmarks { display: flex; align-items: center; padding: 3px 16px; gap: 2px; background: var(--arc-bg-secondary); border-bottom: 0.5px solid var(--arc-border); overflow-x: auto; scrollbar-width: none; }
+.arc-bookmarks::-webkit-scrollbar { display: none; }
+.arc-bmark { display: flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 5px; font-size: 11.5px; font-weight: 500; color: var(--arc-text-secondary); text-decoration: none; white-space: nowrap; font-family: 'DM Sans', sans-serif; }
+.arc-bmark:hover { background: var(--arc-bg-tertiary); color: var(--arc-text-primary); }
+.arc-bmark.active { background: var(--arc-blue-light); color: var(--arc-blue); }
+.arc-bmark-icon { font-size: 13px; }
+</style>
+  
 </head>
 <body>
+
+<div class="arc-chrome">
+<div class="arc-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="arc-address-wrap">
+    <input class="arc-address-input" id="arc-address-input" type="text" value="link://nan.div814.gov.usa/wbt_cinema_bible"/>
+    <button class="arc-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../linkvid/"><span class="arc-bmark-icon">🎥</span>LinkVid</a>
+  <a class="arc-bmark" href="../csn/"><span class="arc-bmark-icon">⚾</span>CSN</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+</div>
+  
 <div class="masthead">
   <div class="masthead-eyebrow">Washington Burns Timeline — Canon Reference</div>
   <h1>Cinema Bible</h1>
@@ -939,5 +1002,20 @@
   Washington Burns Timeline — Cinema Bible — Version 2 — June 2026 — Division 814 Internal Reference
 </div>
 
+<script>
+(function() {
+  function updateArcClock() {
+    var n = new Date();
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var hh = String(n.getHours()).padStart(2,'0');
+    var mm = String(n.getMinutes()).padStart(2,'0');
+    var el = document.getElementById('arc-clock');
+    if (el) el.textContent = days[n.getDay()] + ' ' + n.getDate() + ' · ' + hh + ':' + mm;
+  }
+  setInterval(updateArcClock, 10000);
+  updateArcClock();
+})();
+</script>
+  
 </body>
 </html>
