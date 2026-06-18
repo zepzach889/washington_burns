@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="linkvid_shared.css">
 </head>
 <body>
+
+<div class="lv-arc-wrapper">
 <div class="wm-topbar">
   <div class="arc-navbtns">
     <a class="arc-navbtn" onclick="history.back(); return false;" href="#">&#8592;</a>
@@ -25,23 +27,23 @@
   <div class="arc-clock" id="arc-clock"></div>
 </div>
 <div class="arc-bookmarks">
- <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
-  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
-  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
-  <a class="arc-bmark" href="../linkvid/"><span class="arc-bmark-icon">🎥</span>LinkVid</a>
-  <a class="arc-bmark" href="../csn/"><span class="arc-bmark-icon">⚾</span>CSN</a>
-  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
-  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
-  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
-  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
-  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
-  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+  <a class="arc-bmark" href="../../">&#128269; Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/">&#128240; Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/">&#128250; ABN News</a>
+  <a class="arc-bmark" href="../nedex/">&#128218; Nedex</a>
+  <a class="arc-bmark" href="../usrc/">&#128642; USRC Rail</a>
+  <a class="arc-bmark active" href="./">&#9654; LinkVid</a>
+  <a class="arc-bmark" href="../assembly/">&#9878;&#65039; NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/">&#127963; Washington House</a>
+  <a class="arc-bmark" href="../amhistory/">&#127994; Museum of the US</a>
+  <a class="arc-bmark" href="../fps/">&#127794; Federal Parks</a>
 </div>
+</div><!-- /lv-arc-wrapper -->
 <nav class="lv-nav">
   <div style="display:flex;align-items:center;gap:28px;">
     <a class="lv-logo" href="index.html"><span class="ll">Link</span><span class="lv">Vid</span></a>
     <div class="lv-nav-links">
-      <a href="index.html" class="active">Home</a>
+      <a href="index.html"  class="active">Home</a>
       <a href="films.html">Films</a>
       <a href="series.html">Series</a>
       <a href="films.html#originals">Originals</a>
@@ -52,46 +54,27 @@
     <div class="lv-avatar">Z</div>
   </div>
 </nav>
-<div class="lv-hero">
-  <div style="flex:1;">
-    <div class="lv-hero-label">&#9654; LinkVid Original &mdash; Now Streaming</div>
-    <div class="lv-hero-title">Night Train</div>
-    <div class="lv-hero-meta">
-      <span>2019</span><span>Action &middot; Thriller</span><span class="landmark">Landmark</span>
-    </div>
-    <div class="lv-hero-desc">A hostage situation aboard a high-speed USRC line &mdash; the dramatic irony of a beloved national institution weaponized against the public it serves. The film that proved streaming could go big.</div>
-    <div class="lv-hero-btns">
-      <button class="lv-btn-play">&#9654; Watch Now</button>
-      <button class="lv-btn-list">+ My List</button>
-    </div>
+<div class="lv-main">
+  <div class="lv-section" id="popular">
+    <div class="lv-section-head"><span>Popular Today</span></div>
+    <div class="lv-row-outer"><div class="lv-row" id="row-popular">
+    <!-- filled by JS -->
+    </div></div>
   </div>
-  <div class="lv-hero-badge">
-    <div class="lv-hero-badge-icon">&#9654;</div>
-    <div class="lv-hero-badge-text">First streaming<br>original film<br>2019</div>
-  </div>
-</div>
-<div class="lv-main"><div class="lv-section" id="originals">
-    <div class="lv-section-head"><span>LinkVid Originals</span><a href="films.html#originals">See all &#8250;</a></div>
-    <div class="lv-row-outer"><div class="lv-row">
+  <div class="lv-section" id="films">
+    <div class="lv-section-head"><span>Films</span><a href="films.html">See all &#8250;</a></div>
+    <div class="lv-row-outer"><div class="lv-row" id="row-films">
 <div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_night_train_poster.png" alt="Night Train" loading="lazy"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph orig" style="display:none;">
-        <div class="lv-ph-title">Night Train</div>
-      </div><div class="lv-card-overlay">
+      <div class="lv-poster-ph orig" style="display:none;"><div class="lv-ph-title">Night Train</div></div><div class="lv-card-overlay">
       <div class="lv-overlay-title">Night Train</div>
       <div class="lv-overlay-meta">2019 · Action / Thriller</div>
       <div class="lv-overlay-sub">LinkVid</div>
       <div class="lv-overlay-synopsis">A hostage/terrorist situation aboard a high-speed USRC line — the dramatic irony of a beloved national institution weaponized against the public it serves. LinkVid, the platform with no legacy theatri</div>
     </div></div>
-    </div></div>
-  </div><div class="lv-section" id="drama">
-    <div class="lv-section-head"><span>Drama</span><a href="films.html#drama">See all &#8250;</a></div>
-    <div class="lv-row-outer"><div class="lv-row">
 <div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_american_boy_poster.png" alt="American Boy" loading="lazy"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph drama" style="display:none;">
-        <div class="lv-ph-title">American Boy</div>
-      </div><div class="lv-card-overlay">
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">American Boy</div></div><div class="lv-card-overlay">
       <div class="lv-overlay-title">American Boy</div>
       <div class="lv-overlay-meta">October 1962 · Drama</div>
       <div class="lv-overlay-sub">Dir. Joseph Tomb · Helios Pictures</div>
@@ -99,303 +82,100 @@
     </div></div>
 <div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_after_atlanta_poster.png" alt="After Atlanta" loading="lazy"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph drama" style="display:none;">
-        <div class="lv-ph-title">After Atlanta</div>
-      </div><div class="lv-card-overlay">
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">After Atlanta</div></div><div class="lv-card-overlay">
       <div class="lv-overlay-title">After Atlanta</div>
       <div class="lv-overlay-meta">~1959 · Reconstruction Drama</div>
       <div class="lv-overlay-sub">Dir. Leon Dupree · Hollis Studio</div>
       <div class="lv-overlay-synopsis">Leon Dupree's reconstruction ensemble — set in New Orleans, 1861–1863. Five characters: a newly elected Black state legislator, his wife managing a freedmen's school, a white Free State officer discov</div>
     </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_benefit_of_the_doubt_poster.png" alt="The Benefit of the Doubt" loading="lazy"
+<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_long_march_poster.png" alt="The Long March" loading="lazy"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph drama" style="display:none;">
-        <div class="lv-ph-title">The Benefit of the Doubt</div>
-      </div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
-      <div class="lv-overlay-title">The Benefit of the Doubt</div>
-      <div class="lv-overlay-meta">~1963</div>
-      <div class="lv-overlay-sub">Dir. Leon Dupree · New World Pictures</div>
-      <div class="lv-overlay-synopsis">Ward defends a man accused of a violent crime. He wins.</div>
+      <div class="lv-poster-ph hist" style="display:none;"><div class="lv-ph-title">The Long March</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Long March</div>
+      <div class="lv-overlay-meta">~1917–1918 · Historical Epic</div>
+      <div class="lv-overlay-sub">New World Pictures</div>
+      <div class="lv-overlay-synopsis">A War Between the States epic following a Free State regiment from enlistment through the fall of Atlanta. The first film to feel genuinely cinematic in the modern sense — real location photography, c</div>
     </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_commander_black_poster.png" alt="Commander Black" loading="lazy"
+<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_august_poster.png" alt="August" loading="lazy"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph drama" style="display:none;">
-        <div class="lv-ph-title">Commander Black</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">Commander Black</div>
-      <div class="lv-overlay-meta">~1958 · Biopic</div>
-      <div class="lv-overlay-sub">Dir. James Odom · Hollis Studio</div>
-      <div class="lv-overlay-synopsis">James Odom's defining work — a color sound biopic of Joshua Black from his years as a house slave through the founding of the Republic of New Africa and the July 4th emancipation. Odom's direction is </div>
+      <div class="lv-poster-ph war" style="display:none;"><div class="lv-ph-title">August</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">August</div>
+      <div class="lv-overlay-meta">~1970 · War Drama</div>
+      <div class="lv-overlay-sub">Dir. David Sterne · US Studios</div>
+      <div class="lv-overlay-synopsis">David Sterne's Choson War film — the moral reckoning picture. The bombing decision and its aftermath from a civilian and diplomatic angle.</div>
     </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_mare_imbrium_poster.png" alt="Mare Imbrium" loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph drama" style="display:none;">
-        <div class="lv-ph-title">Mare Imbrium</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">Mare Imbrium</div>
-      <div class="lv-overlay-meta">2026 · Historical Drama</div>
-      
-      <div class="lv-overlay-synopsis">Released for the 50th anniversary of the 1976 moon landing — a prestige historical film about the mission itself, the crew (Curtis Waverly, Owen Stirling, Isabel Carrera, Abner Lyons — Carrera the fir</div>
-    </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_at_last_poster.png" alt="At Last" loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph drama" style="display:none;">
-        <div class="lv-ph-title">At Last</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">At Last</div>
-      <div class="lv-overlay-meta">~1986–1987 · Romance</div>
-      <div class="lv-overlay-sub">Helios Pictures</div>
-      <div class="lv-overlay-synopsis">The cinema's response to marriage equality — a year or two after the fact. Two men.</div>
-    </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_abernathy_poster.png" alt="Abernathy" loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph drama" style="display:none;">
-        <div class="lv-ph-title">Abernathy</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">Abernathy</div>
-      <div class="lv-overlay-meta">~1978–1979 · Historical Drama</div>
-      <div class="lv-overlay-sub">Dir. Ruth Calloway · Hollis Studio</div>
-      <div class="lv-overlay-synopsis">Ruth Calloway's major statement — the dramatization of the Abernathy murder (autumn 1944) and the founding marches. Episcopal priest George Abernathy as the emotional anchor; Jesse Pike as a visible c</div>
-    </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_together_poster.png" alt="Together" loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph drama" style="display:none;">
-        <div class="lv-ph-title">Together</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">Together</div>
-      <div class="lv-overlay-meta">~1981–1982 · Romance</div>
-      <div class="lv-overlay-sub">Dir. Peter Vane · Hollis Studio</div>
-      <div class="lv-overlay-synopsis">Peter Vane's debut feature. Two women in a contemporary relationship — the marriage equality question present the way a locked door is present, felt without being announced.</div>
-    </div></div>
-    </div></div>
-  </div><div class="lv-section" id="spec">
-    <div class="lv-section-head"><span>Speculative History</span><a href="films.html#spec">See all &#8250;</a></div>
-    <div class="lv-row-outer"><div class="lv-row">
 <div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_hawthorneland_poster.png" alt="Hawthorneland" loading="lazy"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph spec" style="display:none;">
-        <div class="lv-ph-title">Hawthorneland</div>
-      </div><div class="lv-card-overlay">
+      <div class="lv-poster-ph spec" style="display:none;"><div class="lv-ph-title">Hawthorneland</div></div><div class="lv-card-overlay">
       <div class="lv-overlay-title">Hawthorneland</div>
       <div class="lv-overlay-meta">1963 · Speculative / Alternate History</div>
       <div class="lv-overlay-sub">Dir. David Sterne (open canvas) · US Studios</div>
       <div class="lv-overlay-synopsis">The film that launches the speculative history / alternate history genre in American cinema. Premise TBD.</div>
     </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_house_divided_poster.png" alt="A House Divided" loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph spec" style="display:none;">
-        <div class="lv-ph-title">A House Divided</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">A House Divided</div>
-      <div class="lv-overlay-meta">2009 · Speculative History</div>
-      <div class="lv-overlay-sub">US Studios</div>
-      <div class="lv-overlay-synopsis">The genre's most direct engagement yet with WBT's own point of divergence — and its inverse. Premise: the War of 1812 resolves as it did in our own world, Washington is never burned, and the capital r</div>
-    </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_worlds_at_war_cold_front_poster.png" alt="Worlds at War: Cold Front" loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph spec" style="display:none;">
-        <div class="lv-ph-title">Worlds at War: Cold Front</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">Worlds at War: Cold Front</div>
-      <div class="lv-overlay-meta">~2008–2009 · Speculative History / Science Fiction</div>
-      
-      <div class="lv-overlay-synopsis">The spec history genre's most ambitious entry yet — an alien invasion during the Global War (~1932–40), launching a new franchise. The title plays on WBT's own avoidance of the term "World War" (they </div>
-    </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_worlds_at_war_permafrost_poster.png" alt="Worlds at War: Permafrost" loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph spec" style="display:none;">
-        <div class="lv-ph-title">Worlds at War: Permafrost</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">Worlds at War: Permafrost</div>
-      <div class="lv-overlay-meta">~early 2010s · Speculative History / Science Fiction</div>
-      
-      <div class="lv-overlay-synopsis">The alternate Global War's brutal climax — the cold-adapted invaders at the peak of their dominance, the conflict's darkest hour before any thaw. The franchise's grimmest entry, setting up everything </div>
-    </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_worlds_at_war_warm_front_poster.png" alt="Worlds at War: Warm Front" loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph spec" style="display:none;">
-        <div class="lv-ph-title">Worlds at War: Warm Front</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">Worlds at War: Warm Front</div>
-      <div class="lv-overlay-meta">~2020s · Speculative History / Science Fiction</div>
-      
-      <div class="lv-overlay-synopsis">A time-jump to this alternate timeline's postwar era — "warm front" works on two levels: a literal climate shift eroding the cold-adapted invaders' advantage, and a political thaw as humans and aliens</div>
-    </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_home_front_poster.png" alt="The Home Front" loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph spec" style="display:none;">
-        <div class="lv-ph-title">The Home Front</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">The Home Front</div>
-      <div class="lv-overlay-meta">~1979–1980 · Speculative History</div>
-      
-      <div class="lv-overlay-synopsis">The spec history genre's major late-1970s entry — a deliberate wink at the alternate history tradition. Premise: the War Between the States dragged on for a decade without British entry; the 1867 ceas</div>
-    </div></div>
-    </div></div>
-  </div><div class="lv-section" id="scifi">
-    <div class="lv-section-head"><span>Science Fiction</span><a href="films.html#scifi">See all &#8250;</a></div>
-    <div class="lv-row-outer"><div class="lv-row">
 <div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_furthest_frontier_poster.png" alt="The Furthest Frontier" loading="lazy"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph scifi" style="display:none;">
-        <div class="lv-ph-title">The Furthest Frontier</div>
-      </div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">The Furthest Frontier</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
       <div class="lv-overlay-title">The Furthest Frontier</div>
       <div class="lv-overlay-meta">1978 · Science Fiction</div>
       
       <div class="lv-overlay-synopsis">The major sci-fi film franchise of the post-moon landing era. Opens optimistically — humanity spreading through the solar system, the GPC evolved into a unified Earth governance body.</div>
     </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_furthest_frontier_common_ground_poster.png" alt="FF: Common Ground" loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph scifi" style="display:none;">
-        <div class="lv-ph-title">FF: Common Ground</div>
-      </div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
-      <div class="lv-overlay-title">FF: Common Ground</div>
-      <div class="lv-overlay-meta">~1981–1982 · Science Fiction</div>
-      
-      <div class="lv-overlay-synopsis">The second Furthest Frontier film. The alien arrival forces Earth/Mars tension into suspension as humanity scrambles to present a unified front.</div>
-    </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_furthest_frontier_united_front_poster.png" alt="FF: United Front" loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph scifi" style="display:none;">
-        <div class="lv-ph-title">FF: United Front</div>
-      </div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
-      <div class="lv-overlay-title">FF: United Front</div>
-      <div class="lv-overlay-meta">~1988–1990 · Science Fiction</div>
-      
-      <div class="lv-overlay-synopsis">The original trilogy's closer, arriving after a time jump from Common Ground . The uneasy first contact has matured into something more formal — a genuine human-alien alliance, with a governing compac</div>
-    </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_ash_and_stars_poster.png" alt="Ash and Stars" loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph scifi" style="display:none;">
-        <div class="lv-ph-title">Ash and Stars</div>
-      </div><span class="lv-plat-badge abn">ABN</span><div class="lv-card-overlay">
-      <div class="lv-overlay-title">Ash and Stars</div>
-      <div class="lv-overlay-meta">~1984–1985 · Science Fiction / Fantasy</div>
-      
-      <div class="lv-overlay-synopsis">Ash and Stars launched on TC ~1968–69 — a serialized fantasy-in-space series following protagonists navigating a galactic empire in decline. A full cultural institution over fifteen years of TC life b</div>
-    </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_across_all_time_poster.png" alt="Across All Time" loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph scifi" style="display:none;">
-        <div class="lv-ph-title">Across All Time</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">Across All Time</div>
-      <div class="lv-overlay-meta">~1991–1992 · International Breakthrough</div>
-      <div class="lv-overlay-sub">Japanese Production</div>
-      <div class="lv-overlay-synopsis">Japan's major international breakthrough film. Four connected stories across time — pre-modernization Japan, the early republic (~1904–10), the Global War era (~1935–40), and the near-to-medium future</div>
-    </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_pale_frontier_poster.png" alt="The Pale Frontier" loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph scifi" style="display:none;">
-        <div class="lv-ph-title">The Pale Frontier</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">The Pale Frontier</div>
-      <div class="lv-overlay-meta">~1955 · Science Fiction</div>
-      <div class="lv-overlay-sub">Castillo Pictures</div>
-      <div class="lv-overlay-synopsis">The science fiction genre's arrival as a mainstream commercial proposition. A near-future story about the first human expedition to establish a permanent Moon research station — the fission era's tech</div>
-    </div></div>
-    </div></div>
-  </div><div class="lv-section" id="horror">
-    <div class="lv-section-head"><span>Horror</span><a href="films.html#horror">See all &#8250;</a></div>
-    <div class="lv-row-outer"><div class="lv-row">
 <div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_dead_air_poster.png" alt="Dead Air" loading="lazy"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph horror" style="display:none;">
-        <div class="lv-ph-title">Dead Air</div>
-      </div><div class="lv-card-overlay">
+      <div class="lv-poster-ph horror" style="display:none;"><div class="lv-ph-title">Dead Air</div></div><div class="lv-card-overlay">
       <div class="lv-overlay-title">Dead Air</div>
       <div class="lv-overlay-meta">~late 1960s–early 1970s · Horror</div>
       <div class="lv-overlay-sub">Dir. Margaret Ashby · Helios Pictures</div>
       <div class="lv-overlay-synopsis">A person alone with recording equipment — audiograph or early radio apparatus — begins capturing something on tape that shouldn't be there. The dread is entirely auditory: listening, replaying, never </div>
     </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_he_comes_at_night_poster.png" alt="He Comes at Night" loading="lazy"
+<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_hansel_and_gretel_poster.png" alt="Hansel and Gretel" loading="lazy"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph horror" style="display:none;">
-        <div class="lv-ph-title">He Comes at Night</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">He Comes at Night</div>
-      <div class="lv-overlay-meta">~late 1920s–1930s · Horror</div>
-      <div class="lv-overlay-sub">Castillo Pictures</div>
-      <div class="lv-overlay-synopsis">The cycle's vampire picture — atmospheric, shadow-heavy, a European predator arriving in an American gothic setting. Establishes the visual vocabulary (candlelight, fog, silhouette) that defines the c</div>
+      <div class="lv-poster-ph anim" style="display:none;"><div class="lv-ph-title">Hansel and Gretel</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Hansel and Gretel</div>
+      <div class="lv-overlay-meta">~1932</div>
+      <div class="lv-overlay-sub">Parker Studios</div>
+      <div class="lv-overlay-synopsis">The first animated feature film. Lauretta Parker had been developing it for years before the war began — release coinciding with the war's outbreak was circumstance, not calculation.</div>
     </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_moon_changer_poster.png" alt="Moon Changer" loading="lazy"
+<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_das_volk_spricht_poster.png" alt="Das Volk Spricht" loading="lazy"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph horror" style="display:none;">
-        <div class="lv-ph-title">Moon Changer</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">Moon Changer</div>
-      <div class="lv-overlay-meta">~1930s · Horror</div>
-      <div class="lv-overlay-sub">Castillo Pictures</div>
-      <div class="lv-overlay-synopsis">The cycle's werewolf picture — transformation as tragedy rather than spectacle, the Code-era restraint again working in the film's favor. The "monster" is sympathetic; the horror is in the loss of sel</div>
+      <div class="lv-poster-ph intl" style="display:none;"><div class="lv-ph-title">Das Volk Spricht</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Das Volk Spricht</div>
+      <div class="lv-overlay-meta">~1993–1994 · International Breakthrough</div>
+      <div class="lv-overlay-sub">German Republic</div>
+      <div class="lv-overlay-synopsis">The German Republic's major international breakthrough film. A dramatization of the 1938 democratic revolution — the mass protests, the parliamentary collapse, the King's abdication, the republic proc</div>
     </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_drowned_poster.png" alt="The Drowned" loading="lazy"
+<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_hesperia_poster.png" alt="Hesperia" loading="lazy"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph horror" style="display:none;">
-        <div class="lv-ph-title">The Drowned</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">The Drowned</div>
-      <div class="lv-overlay-meta">~1930s–1940s · Horror</div>
-      <div class="lv-overlay-sub">Castillo Pictures</div>
-      <div class="lv-overlay-synopsis">The cycle's most distinctly WBT entry — a revenant tied to the Mississippi or Ohio River, drowned and returned. Geographically and culturally rooted in the river-valley gothic tradition that also prod</div>
+      <div class="lv-poster-ph romance" style="display:none;"><div class="lv-ph-title">Hesperia</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Hesperia</div>
+      <div class="lv-overlay-meta">2003 · Historical Romance</div>
+      <div class="lv-overlay-sub">New World Pictures</div>
+      <div class="lv-overlay-synopsis">The SS Hesperia (Continental Steamship Company, 49,200 gross tons, quadruple screw) set a new American transatlantic speed record on its maiden voyage in April 1913 — four days, eighteen hours, just e</div>
     </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_what_calls_in_hunger_poster.png" alt="What Calls in Hunger" loading="lazy"
+<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_house_divided_poster.png" alt="A House Divided" loading="lazy"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph horror" style="display:none;">
-        <div class="lv-ph-title">What Calls in Hunger</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">What Calls in Hunger</div>
-      <div class="lv-overlay-meta">~1930s–1940s · Horror</div>
-      <div class="lv-overlay-sub">Castillo Pictures</div>
-      <div class="lv-overlay-synopsis">The cycle's fourth entry, drawing on Wendigo mythology (Algonquian-speaking peoples) — a figure that, given over a century of deeper integration since 1861, had entered the broader American folkloric </div>
-    </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_harvest_poster.png" alt="Harvest" loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph horror" style="display:none;">
-        <div class="lv-ph-title">Harvest</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">Harvest</div>
-      <div class="lv-overlay-meta">~2020s · Horror</div>
-      
-      <div class="lv-overlay-synopsis">Isolated family/farm, seasonal and agricultural dread — "something is being harvested" carries a double meaning beyond the crops. Solitary, claustrophobic register.</div>
-    </div></div>
-<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_gathering_poster.png" alt="The Gathering" loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-      <div class="lv-poster-ph horror" style="display:none;">
-        <div class="lv-ph-title">The Gathering</div>
-      </div><div class="lv-card-overlay">
-      <div class="lv-overlay-title">The Gathering</div>
-      <div class="lv-overlay-meta">~2020s · Horror</div>
-      
-      <div class="lv-overlay-synopsis">A community event — reunion, festival, or religious gathering — where something goes wrong. Communal/social dread, the inverse register from Harvest 's isolation.</div>
+      <div class="lv-poster-ph spec" style="display:none;"><div class="lv-ph-title">A House Divided</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">A House Divided</div>
+      <div class="lv-overlay-meta">2009 · Speculative History</div>
+      <div class="lv-overlay-sub">US Studios</div>
+      <div class="lv-overlay-synopsis">The genre's most direct engagement yet with WBT's own point of divergence — and its inverse. Premise: the War of 1812 resolves as it did in our own world, Washington is never burned, and the capital r</div>
     </div></div>
     </div></div>
-  </div><div class="lv-section" id="series">
-    <div class="lv-section-head"><span>Series &amp; TC</span><a href="series.html">See all &#8250;</a></div>
-    <div class="lv-row-outer"><div class="lv-row">
-<div class="lv-tc-coming">
-  <div class="lv-tc-ph">
-    <div class="lv-tc-ph-icon">&#9654;</div>
-    <div class="lv-tc-ph-label">Ash and Stars<br>Full Series</div>
   </div>
+  <div class="lv-section" id="series">
+    <div class="lv-section-head"><span>Series &amp; TC</span><a href="series.html">See all &#8250;</a></div>
+    <div class="lv-row-outer"><div class="lv-row" id="row-series">
+<div class="lv-tc-coming">
+  <div class="lv-tc-ph"><div class="lv-tc-ph-icon">&#9654;</div><div class="lv-tc-ph-label">Ash and Stars<br>Full Series</div></div>
   <div class="lv-card-body"><div class="lv-card-title">Ash and Stars</div><div class="lv-card-year">1968–present</div></div>
 </div><div class="lv-tc-coming">
-  <div class="lv-tc-ph">
-    <div class="lv-tc-ph-icon">&#9654;</div>
-    <div class="lv-tc-ph-label">Furthest Frontier<br>TC Spinoffs</div>
-  </div>
+  <div class="lv-tc-ph"><div class="lv-tc-ph-icon">&#9654;</div><div class="lv-tc-ph-label">Furthest Frontier<br>TC Spinoffs</div></div>
   <div class="lv-card-body"><div class="lv-card-title">Furthest Frontier: Series</div><div class="lv-card-year">TC Series</div></div>
 </div><div class="lv-tc-coming">
-  <div class="lv-tc-ph">
-    <div class="lv-tc-ph-icon">&#9654;</div>
-    <div class="lv-tc-ph-label">Documentary &amp;<br>Non-Fiction</div>
-  </div>
+  <div class="lv-tc-ph"><div class="lv-tc-ph-icon">&#9654;</div><div class="lv-tc-ph-label">Documentary &amp;<br>Non-Fiction</div></div>
   <div class="lv-card-body"><div class="lv-card-title">Documentary &amp; Non-Fiction</div><div class="lv-card-year">Various</div></div>
 </div><div class="lv-tc-coming">
-  <div class="lv-tc-ph">
-    <div class="lv-tc-ph-icon">&#9654;</div>
-    <div class="lv-tc-ph-label">More Coming<br>to LinkVid</div>
-  </div>
+  <div class="lv-tc-ph"><div class="lv-tc-ph-icon">&#9654;</div><div class="lv-tc-ph-label">More Coming<br>to LinkVid</div></div>
   <div class="lv-card-body"><div class="lv-card-title">More Coming Soon</div><div class="lv-card-year">2026</div></div>
 </div>
     </div></div>
@@ -414,6 +194,7 @@
 <script src="../../stories.js"></script>
 <script>
 initAddressBar('nan.linkvid.biz.usa');
+
 function updateArcClock() {
   const n = new Date();
   const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -424,6 +205,709 @@ function updateArcClock() {
 }
 setInterval(updateArcClock, 10000);
 updateArcClock();
+
+// Pin lv-nav exactly below arc wrapper
+(function() {
+  var wrapper = document.querySelector('.lv-arc-wrapper');
+  var nav = document.querySelector('.lv-nav');
+  if (wrapper && nav) nav.style.top = wrapper.offsetHeight + 'px';
+})();
+
+// ── Popular Today — daily rotation ──
+const LV_POPULAR_POOL = [
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_american_boy_poster.png" alt="American Boy" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">American Boy</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">American Boy</div>
+      <div class="lv-overlay-meta">October 1962 · Drama</div>
+      <div class="lv-overlay-sub">Dir. Joseph Tomb · Helios Pictures</div>
+      <div class="lv-overlay-synopsis">Two soldiers — Thomas Gallant (Benjamin LeCroy) and Peter Strand (Scott Bell) — fall in love in the European theater of the Global War. Gallant had been suppressing his nature his entire life; Strand </div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_after_atlanta_poster.png" alt="After Atlanta" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">After Atlanta</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">After Atlanta</div>
+      <div class="lv-overlay-meta">~1959 · Reconstruction Drama</div>
+      <div class="lv-overlay-sub">Dir. Leon Dupree · Hollis Studio</div>
+      <div class="lv-overlay-synopsis">Leon Dupree's reconstruction ensemble — set in New Orleans, 1861–1863. Five characters: a newly elected Black state legislator, his wife managing a freedmen's school, a white Free State officer discov</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_benefit_of_the_doubt_poster.png" alt="The Benefit of the Doubt" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">The Benefit of the Doubt</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Benefit of the Doubt</div>
+      <div class="lv-overlay-meta">~1963</div>
+      <div class="lv-overlay-sub">Dir. Leon Dupree · New World Pictures</div>
+      <div class="lv-overlay-synopsis">Ward defends a man accused of a violent crime. He wins.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_commander_black_poster.png" alt="Commander Black" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">Commander Black</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Commander Black</div>
+      <div class="lv-overlay-meta">~1958 · Biopic</div>
+      <div class="lv-overlay-sub">Dir. James Odom · Hollis Studio</div>
+      <div class="lv-overlay-synopsis">James Odom's defining work — a color sound biopic of Joshua Black from his years as a house slave through the founding of the Republic of New Africa and the July 4th emancipation. Odom's direction is </div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_mare_imbrium_poster.png" alt="Mare Imbrium" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">Mare Imbrium</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Mare Imbrium</div>
+      <div class="lv-overlay-meta">2026 · Historical Drama</div>
+      
+      <div class="lv-overlay-synopsis">Released for the 50th anniversary of the 1976 moon landing — a prestige historical film about the mission itself, the crew (Curtis Waverly, Owen Stirling, Isabel Carrera, Abner Lyons — Carrera the fir</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_at_last_poster.png" alt="At Last" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">At Last</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">At Last</div>
+      <div class="lv-overlay-meta">~1986–1987 · Romance</div>
+      <div class="lv-overlay-sub">Helios Pictures</div>
+      <div class="lv-overlay-synopsis">The cinema's response to marriage equality — a year or two after the fact. Two men.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_abernathy_poster.png" alt="Abernathy" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">Abernathy</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Abernathy</div>
+      <div class="lv-overlay-meta">~1978–1979 · Historical Drama</div>
+      <div class="lv-overlay-sub">Dir. Ruth Calloway · Hollis Studio</div>
+      <div class="lv-overlay-synopsis">Ruth Calloway's major statement — the dramatization of the Abernathy murder (autumn 1944) and the founding marches. Episcopal priest George Abernathy as the emotional anchor; Jesse Pike as a visible c</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_together_poster.png" alt="Together" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">Together</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Together</div>
+      <div class="lv-overlay-meta">~1981–1982 · Romance</div>
+      <div class="lv-overlay-sub">Dir. Peter Vane · Hollis Studio</div>
+      <div class="lv-overlay-synopsis">Peter Vane's debut feature. Two women in a contemporary relationship — the marriage equality question present the way a locked door is present, felt without being announced.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_fourth_of_july_poster.png" alt="The Fourth of July" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">The Fourth of July</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Fourth of July</div>
+      <div class="lv-overlay-meta">~1958 · Political Drama</div>
+      <div class="lv-overlay-sub">Dir. David Sterne · US Studios</div>
+      <div class="lv-overlay-synopsis">David Sterne's centennial film — the six weeks of congressional horse-trading behind the Negro Emancipation Act's passage. Follows a fictional Democratic congressman from Ohio who privately supports e</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_marcus_petition_poster.png" alt="The Marcus Petition" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">The Marcus Petition</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Marcus Petition</div>
+      <div class="lv-overlay-meta">~1947 · Historical Drama</div>
+      <div class="lv-overlay-sub">Dir. Leon Dupree · Hollis Studio</div>
+      <div class="lv-overlay-synopsis">The most politically significant film of the Freeman era. A drama about a Black attorney in the post-War Between the States South fighting a wrongful conviction case.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_quiet_current_poster.png" alt="The Quiet Current" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">The Quiet Current</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Quiet Current</div>
+      <div class="lv-overlay-meta">~1950 · Thriller</div>
+      <div class="lv-overlay-sub">Dir. David Sterne · US Studios</div>
+      <div class="lv-overlay-synopsis">The resistance's answer — though it would never call itself that. A psychological thriller following a river boat captain who discovers his first mate has been falsely accused and must decide whether </div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_night_side_poster.png" alt="The Night Side" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">The Night Side</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Night Side</div>
+      <div class="lv-overlay-meta">~1952 · Crime Drama</div>
+      <div class="lv-overlay-sub">Dir. Leon Dupree · Hollis Studio</div>
+      <div class="lv-overlay-synopsis">Leon Dupree's Nolan-era statement. A crime drama — genre cover — set in a Southern city, following a Black detective navigating a corrupt police department.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_gulf_summer_poster.png" alt="Gulf Summer" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">Gulf Summer</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Gulf Summer</div>
+      <div class="lv-overlay-meta">~1957 · Melodrama</div>
+      <div class="lv-overlay-sub">Helios Pictures</div>
+      <div class="lv-overlay-synopsis">Ida Welles's breakthrough into serious material. A melodrama set in New Orleans following a woman navigating the dissolution of her marriage and the discovery of her own independence.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_long_summer_poster.png" alt="The Long Summer" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">The Long Summer</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Long Summer</div>
+      <div class="lv-overlay-meta">~1961 · Romantic Drama</div>
+      <div class="lv-overlay-sub">Hollis Studio</div>
+      <div class="lv-overlay-synopsis">Set in Calumet — the NAU's cosmopolitan hub. A woman in her late twenties navigating the end of one relationship and the beginning of another over a single summer.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_season_apart_poster.png" alt="A Season Apart" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">A Season Apart</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">A Season Apart</div>
+      <div class="lv-overlay-meta">~1964 · Romantic Drama</div>
+      <div class="lv-overlay-sub">Helios Pictures</div>
+      <div class="lv-overlay-synopsis">Set in New Boston — the Pacific Northwest's major city, the NAU's Pacific gateway. A woman choosing between two versions of her life: the stable, conventional path and the uncertain, vital one.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_three_days_poster.png" alt="Three Days" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">Three Days</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Three Days</div>
+      <div class="lv-overlay-meta">~1967 · Drama</div>
+      <div class="lv-overlay-sub">Dir. Leon Dupree · Hollis Studio</div>
+      <div class="lv-overlay-synopsis">The second Dupree/Ward collaboration. A death brings a father (Ward) and his adult son together.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_home_again_poster.png" alt="Home Again" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">Home Again</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Home Again</div>
+      <div class="lv-overlay-meta">~1968 · Drama</div>
+      <div class="lv-overlay-sub">Dir. Ruth Calloway · Hollis Studio</div>
+      <div class="lv-overlay-synopsis">Ruth Calloway's debut feature. A woman returns to her Appalachian hometown after decades away for a funeral, and finds herself reckoning with who she left behind and who she became.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_waiting_room_poster.png" alt="The Waiting Room" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">The Waiting Room</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Waiting Room</div>
+      <div class="lv-overlay-meta">~1971 · Drama</div>
+      <div class="lv-overlay-sub">New World Pictures</div>
+      <div class="lv-overlay-synopsis">The Choson War as experienced from a continent away. Families, TC screens, a senator's office, a protest outside a government building.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_distance_between_us_poster.png" alt="The Distance Between Us" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">The Distance Between Us</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Distance Between Us</div>
+      <div class="lv-overlay-meta">~1972 · Drama</div>
+      <div class="lv-overlay-sub">Dir. Ruth Calloway · Hollis Studio</div>
+      <div class="lv-overlay-synopsis">Ruth Calloway's second film. A mother and adult daughter — the generational divide as subject rather than backdrop.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_long_way_poster.png" alt="The Long Way" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">The Long Way</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Long Way</div>
+      <div class="lv-overlay-meta">~1975 · Drama</div>
+      <div class="lv-overlay-sub">Dir. Ruth Calloway · Hollis Studio</div>
+      <div class="lv-overlay-synopsis">Calloway pushing her aesthetic into less familiar territory — a road film, more formally adventurous than her previous work. A woman in motion, landscape as moral presence.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_fat_tuesday_poster.png" alt="Fat Tuesday" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">Fat Tuesday</div></div><span class="lv-plat-badge delta">Delta</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Fat Tuesday</div>
+      <div class="lv-overlay-meta">~1995–1996 · Drama</div>
+      <div class="lv-overlay-sub">Dir. Jules Fontenot · Gulf Coast Pictures</div>
+      <div class="lv-overlay-synopsis">Jules Fontenot's debut feature. Mardi Gras as dramatic pressure rather than backdrop — the city transformed, normal rules suspended, something coming to a head under the surface of the celebration.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_long_way_south_poster.png" alt="The Long Way South" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">The Long Way South</div></div><span class="lv-plat-badge delta">Delta</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Long Way South</div>
+      <div class="lv-overlay-meta">~1996–1997 · Drama</div>
+      <div class="lv-overlay-sub">Dir. Jesse Cormac · Gulf Coast Pictures</div>
+      <div class="lv-overlay-synopsis">Jesse Cormac's debut feature. A man from Kanasaw comes to New Orleans; characters from both worlds in conversation; the bridge between them the dramatic engine.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_november_01_poster.png" alt="November '01" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">November '01</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">November '01</div>
+      <div class="lv-overlay-meta">~2005–2007 · Political Drama</div>
+      <div class="lv-overlay-sub">US Studios</div>
+      <div class="lv-overlay-synopsis">The Mercer withdrawal gambit — the public deadline, the summer of nobody believing it, November 7th itself, and the Ottoman about-face. Told from inside the room: an aide or junior diplomat watching t</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_freedmans_road_poster.png" alt="The Freedman's Road" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">The Freedman's Road</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Freedman's Road</div>
+      <div class="lv-overlay-meta">~1913–1914 · Drama</div>
+      <div class="lv-overlay-sub">Dir. Vera Hollis · Hollis Studio</div>
+      <div class="lv-overlay-synopsis">A thirty-minute narrative film following a Black veteran of the War Between the States returning home to Mississippi. Directed by Vera Hollis.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_gulf_poster.png" alt="The Gulf" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">The Gulf</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Gulf</div>
+      <div class="lv-overlay-meta">~1923 · Melodrama</div>
+      <div class="lv-overlay-sub">Dir. Vera Hollis · Hollis Studio</div>
+      <div class="lv-overlay-synopsis">Vera Hollis's late-career masterpiece and final major directorial work. A melodrama set in St.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_mourning_dove_poster.png" alt="The Mourning Dove" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">The Mourning Dove</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Mourning Dove</div>
+      <div class="lv-overlay-meta">~1928 · Melodrama</div>
+      <div class="lv-overlay-sub">New World Pictures</div>
+      <div class="lv-overlay-synopsis">Marguerite Thibodaux's breakthrough film. A melodrama set in New Orleans during the Caribbean War period.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_coral_and_gold_poster.png" alt="Coral and Gold" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">Coral and Gold</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Coral and Gold</div>
+      <div class="lv-overlay-meta">~1951 · Romantic Epic</div>
+      <div class="lv-overlay-sub">Helios Pictures</div>
+      <div class="lv-overlay-synopsis">Helios caught in the middle — a lush romantic epic set in the Caribbean in the 1820s. Cord and Marsh in their third and most commercially successful pairing; their screen chemistry at its peak.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_gold_coast_poster.png" alt="Gold Coast" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">Gold Coast</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Gold Coast</div>
+      <div class="lv-overlay-meta">~1946 · Romantic Drama</div>
+      <div class="lv-overlay-sub">Helios Pictures</div>
+      <div class="lv-overlay-synopsis">William Cord's postwar romantic peak — a glossy, beautifully photographed romantic drama making full expressive use of color in a non-epic context. Cord opposite Vivienne Marsh in their first major pa</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_home_water_poster.png" alt="Home Water" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph drama" style="display:none;"><div class="lv-ph-title">Home Water</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Home Water</div>
+      <div class="lv-overlay-meta">~1939 · Home Front Drama</div>
+      <div class="lv-overlay-sub">Hollis Studio</div>
+      <div class="lv-overlay-synopsis">A home front drama following a family with sons overseas. Marguerite Thibodaux in her mature career peak.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_long_march_poster.png" alt="The Long March" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph hist" style="display:none;"><div class="lv-ph-title">The Long March</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Long March</div>
+      <div class="lv-overlay-meta">~1917–1918 · Historical Epic</div>
+      <div class="lv-overlay-sub">New World Pictures</div>
+      <div class="lv-overlay-synopsis">A War Between the States epic following a Free State regiment from enlistment through the fall of Atlanta. The first film to feel genuinely cinematic in the modern sense — real location photography, c</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_joshua_poster.png" alt="Joshua" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph hist" style="display:none;"><div class="lv-ph-title">Joshua</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Joshua</div>
+      <div class="lv-overlay-meta">~1921 · Biopic</div>
+      <div class="lv-overlay-sub">Dir. Samuel Archer · Independent</div>
+      <div class="lv-overlay-synopsis">A feature-length account of Joshua Black's 1860 Mississippi slave uprising. Directed and independently produced by Samuel Archer, financed through Black investors and Freedmen's community organization</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_westward_ho_poster.png" alt="Westward Ho!" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph hist" style="display:none;"><div class="lv-ph-title">Westward Ho!</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Westward Ho!</div>
+      <div class="lv-overlay-meta">~1925–1926 · Pioneer Drama</div>
+      <div class="lv-overlay-sub">New World Pictures</div>
+      <div class="lv-overlay-synopsis">NWP's first commercially successful talkie — a pioneer story set in the 1850s Oregon Country. Edmund Farr leads.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_remember_private_marsh_poster.png" alt="Remember Private Marsh" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph hist" style="display:none;"><div class="lv-ph-title">Remember Private Marsh</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Remember Private Marsh</div>
+      <div class="lv-overlay-meta">1936 · War Drama</div>
+      <div class="lv-overlay-sub">Helios Pictures</div>
+      <div class="lv-overlay-synopsis">The Global War era's defining dramatic film, and the breakout for both William Cord and Helios Pictures. Private Marsh — a natural leader who looks out for the underdog — carries his unit through trai</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_moses_poster.png" alt="Moses" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph hist" style="display:none;"><div class="lv-ph-title">Moses</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Moses</div>
+      <div class="lv-overlay-meta">1942 · Biblical Epic</div>
+      <div class="lv-overlay-sub">New World Pictures</div>
+      <div class="lv-overlay-synopsis">The first color feature film. A Biblical epic.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_sons_of_liberty_poster.png" alt="Sons of Liberty" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph hist" style="display:none;"><div class="lv-ph-title">Sons of Liberty</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Sons of Liberty</div>
+      <div class="lv-overlay-meta">~1949 · Historical Epic</div>
+      <div class="lv-overlay-sub">New World Pictures</div>
+      <div class="lv-overlay-synopsis">The archetypal Nolan-era accommodationist film. A sweeping American Revolution epic — safe historical subject, unambiguous heroism, gorgeous color cinematography.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_free_army_poster.png" alt="The Free Army" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph hist" style="display:none;"><div class="lv-ph-title">The Free Army</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Free Army</div>
+      <div class="lv-overlay-meta">~1957 · Historical Epic</div>
+      <div class="lv-overlay-sub">New World Pictures</div>
+      <div class="lv-overlay-synopsis">The big commercial centennial epic. Follows the Free Army of the West's campaign from the liberation of Franklin through the fall of Atlanta.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_galvez_town_poster.png" alt="Galvez Town" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph hist" style="display:none;"><div class="lv-ph-title">Galvez Town</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Galvez Town</div>
+      <div class="lv-overlay-meta">~1971–1972 · Historical Epic</div>
+      <div class="lv-overlay-sub">Dir. Mateo Herrera · Texian-American Co-Production</div>
+      <div class="lv-overlay-synopsis">Mateo Herrera's St. Augustine debut.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_campaign_poster.png" alt="The Campaign" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph hist" style="display:none;"><div class="lv-ph-title">The Campaign</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Campaign</div>
+      <div class="lv-overlay-meta">~1972 · Political Drama</div>
+      <div class="lv-overlay-sub">Dir. Leon Dupree · New World Pictures</div>
+      <div class="lv-overlay-synopsis">The third and final Dupree/Ward collaboration. Ward as a staffer inside a fictional presidential campaign, watching someone he respects make a choice he can't respect.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_west_country_poster.png" alt="The West Country" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph hist" style="display:none;"><div class="lv-ph-title">The West Country</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The West Country</div>
+      <div class="lv-overlay-meta">~early-mid 2000s · Western</div>
+      <div class="lv-overlay-sub">New World Pictures</div>
+      <div class="lv-overlay-synopsis">The genre revival NWP needed — "western" in the WBT sense: Oregon Trail-era westward expansion, survival, land, and family rather than gunfights. A multi-generational saga beginning in the 1840s: the </div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_signal_corps_poster.png" alt="The Signal Corps" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph war" style="display:none;"><div class="lv-ph-title">The Signal Corps</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Signal Corps</div>
+      <div class="lv-overlay-meta">~1929 · War Drama</div>
+      <div class="lv-overlay-sub">US Studios</div>
+      <div class="lv-overlay-synopsis">The first major sound-era war film — a dramatization of the Caribbean War's naval campaign. Less interested in heroism than in the machinery and cost of modern warfare.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_courier_poster.png" alt="The Courier" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph war" style="display:none;"><div class="lv-ph-title">The Courier</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Courier</div>
+      <div class="lv-overlay-meta">~1933 · Espionage Thriller</div>
+      <div class="lv-overlay-sub">US Studios</div>
+      <div class="lv-overlay-synopsis">A pre-entry espionage thriller — an American operative in Prussia uncovering military intelligence. Tense, morally grayer than later wartime productions will allow.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_guns_of_matanzas_poster.png" alt="Guns of Matanzas" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph war" style="display:none;"><div class="lv-ph-title">Guns of Matanzas</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Guns of Matanzas</div>
+      <div class="lv-overlay-meta">~1938 · Naval Epic</div>
+      <div class="lv-overlay-sub">New World Pictures</div>
+      <div class="lv-overlay-synopsis">Edmund Farr's final film, released posthumously — he died early 1938 during post-production. A Caribbean War naval epic.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_long_road_home_poster.png" alt="Long Road Home" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph war" style="display:none;"><div class="lv-ph-title">Long Road Home</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Long Road Home</div>
+      <div class="lv-overlay-meta">~1944 · Veterans' Drama</div>
+      <div class="lv-overlay-sub">US Studios</div>
+      <div class="lv-overlay-synopsis">The veterans' cinema landmark. Not a war film — the war is mostly past tense.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_iron_meridian_poster.png" alt="The Iron Meridian" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph war" style="display:none;"><div class="lv-ph-title">The Iron Meridian</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Iron Meridian</div>
+      <div class="lv-overlay-meta">~1954 · Global War Epic</div>
+      <div class="lv-overlay-sub">New World Pictures</div>
+      <div class="lv-overlay-synopsis">The era's big commercial war epic — set in the Global War's European theater. James Corbin leads as a composite officer: heroic, uncomplicated.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_narrow_sea_poster.png" alt="The Narrow Sea" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph war" style="display:none;"><div class="lv-ph-title">The Narrow Sea</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Narrow Sea</div>
+      <div class="lv-overlay-meta">~1969 · War Drama</div>
+      <div class="lv-overlay-sub">Helios Pictures</div>
+      <div class="lv-overlay-synopsis">The ground-level Choson War film. A small unit of NAU soldiers in the grinding middle of the conflict before the bombing decision changes everything.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_august_poster.png" alt="August" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph war" style="display:none;"><div class="lv-ph-title">August</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">August</div>
+      <div class="lv-overlay-meta">~1970 · War Drama</div>
+      <div class="lv-overlay-sub">Dir. David Sterne · US Studios</div>
+      <div class="lv-overlay-synopsis">David Sterne's Choson War film — the moral reckoning picture. The bombing decision and its aftermath from a civilian and diplomatic angle.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_promise_lost_poster.png" alt="Promise Lost" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph war" style="display:none;"><div class="lv-ph-title">Promise Lost</div></div><span class="lv-plat-badge delta">Delta</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Promise Lost</div>
+      <div class="lv-overlay-meta">~2003–2005 · War Drama</div>
+      <div class="lv-overlay-sub">Gulf Coast Pictures / Hollis co-production</div>
+      <div class="lv-overlay-synopsis">A small GPC unit, present near the 1998 Ottoman atrocity inside a GPC-protected zone, unable to stop it. Ground-level, gritty, Gulf Wave-adjacent register — the film that gave the era's defining polit</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_flight_to_frankfurt_poster.png" alt="Flight to Frankfurt" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph war" style="display:none;"><div class="lv-ph-title">Flight to Frankfurt</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Flight to Frankfurt</div>
+      <div class="lv-overlay-meta">~2004–2006 · Drama</div>
+      <div class="lv-overlay-sub">New World Pictures</div>
+      <div class="lv-overlay-synopsis">The 1999 downing of a Delhi-to-Germany civilian airliner — mistaken by Ottoman forces for a GPC military flight — told through the families of the mixed international passenger manifest. NWP-scale ens</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_hawthorneland_poster.png" alt="Hawthorneland" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph spec" style="display:none;"><div class="lv-ph-title">Hawthorneland</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Hawthorneland</div>
+      <div class="lv-overlay-meta">1963 · Speculative / Alternate History</div>
+      <div class="lv-overlay-sub">Dir. David Sterne (open canvas) · US Studios</div>
+      <div class="lv-overlay-synopsis">The film that launches the speculative history / alternate history genre in American cinema. Premise TBD.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_tenochtitlan_poster.png" alt="Tenochtitlan" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph spec" style="display:none;"><div class="lv-ph-title">Tenochtitlan</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Tenochtitlan</div>
+      <div class="lv-overlay-meta">~1967–1968 · Speculative History</div>
+      <div class="lv-overlay-sub">Californian Co-Production</div>
+      <div class="lv-overlay-synopsis">Part of the post- Hawthorneland spec history wave. Premise: the Aztec Empire successfully resisted Spanish colonization and survives into the modern era.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_home_front_poster.png" alt="The Home Front" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph spec" style="display:none;"><div class="lv-ph-title">The Home Front</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Home Front</div>
+      <div class="lv-overlay-meta">~1979–1980 · Speculative History</div>
+      
+      <div class="lv-overlay-synopsis">The spec history genre's major late-1970s entry — a deliberate wink at the alternate history tradition. Premise: the War Between the States dragged on for a decade without British entry; the 1867 ceas</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_house_divided_poster.png" alt="A House Divided" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph spec" style="display:none;"><div class="lv-ph-title">A House Divided</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">A House Divided</div>
+      <div class="lv-overlay-meta">2009 · Speculative History</div>
+      <div class="lv-overlay-sub">US Studios</div>
+      <div class="lv-overlay-synopsis">The genre's most direct engagement yet with WBT's own point of divergence — and its inverse. Premise: the War of 1812 resolves as it did in our own world, Washington is never burned, and the capital r</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_worlds_at_war_cold_front_poster.png" alt="Worlds at War: Cold Front" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph spec" style="display:none;"><div class="lv-ph-title">Worlds at War: Cold Front</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Worlds at War: Cold Front</div>
+      <div class="lv-overlay-meta">~2008–2009 · Speculative History / Science Fiction</div>
+      
+      <div class="lv-overlay-synopsis">The spec history genre's most ambitious entry yet — an alien invasion during the Global War (~1932–40), launching a new franchise. The title plays on WBT's own avoidance of the term "World War" (they </div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_worlds_at_war_permafrost_poster.png" alt="Worlds at War: Permafrost" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph spec" style="display:none;"><div class="lv-ph-title">Worlds at War: Permafrost</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Worlds at War: Permafrost</div>
+      <div class="lv-overlay-meta">~early 2010s · Speculative History / Science Fiction</div>
+      
+      <div class="lv-overlay-synopsis">The alternate Global War's brutal climax — the cold-adapted invaders at the peak of their dominance, the conflict's darkest hour before any thaw. The franchise's grimmest entry, setting up everything </div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_worlds_at_war_warm_front_poster.png" alt="Worlds at War: Warm Front" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph spec" style="display:none;"><div class="lv-ph-title">Worlds at War: Warm Front</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Worlds at War: Warm Front</div>
+      <div class="lv-overlay-meta">~2020s · Speculative History / Science Fiction</div>
+      
+      <div class="lv-overlay-synopsis">A time-jump to this alternate timeline's postwar era — "warm front" works on two levels: a literal climate shift eroding the cold-adapted invaders' advantage, and a political thaw as humans and aliens</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_pale_frontier_poster.png" alt="The Pale Frontier" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">The Pale Frontier</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Pale Frontier</div>
+      <div class="lv-overlay-meta">~1955 · Science Fiction</div>
+      <div class="lv-overlay-sub">Castillo Pictures</div>
+      <div class="lv-overlay-synopsis">The science fiction genre's arrival as a mainstream commercial proposition. A near-future story about the first human expedition to establish a permanent Moon research station — the fission era's tech</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_quiet_stars_poster.png" alt="The Quiet Stars" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">The Quiet Stars</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Quiet Stars</div>
+      <div class="lv-overlay-meta">~1956 · Science Fiction</div>
+      <div class="lv-overlay-sub">Dir. David Sterne · US Studios</div>
+      <div class="lv-overlay-synopsis">David Sterne's oblique homophilia film. Two scientists at an isolated research installation develop a profound bond while working on a classified project; discovered by institutional authorities, they</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_furthest_frontier_poster.png" alt="The Furthest Frontier" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">The Furthest Frontier</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Furthest Frontier</div>
+      <div class="lv-overlay-meta">1978 · Science Fiction</div>
+      
+      <div class="lv-overlay-synopsis">The major sci-fi film franchise of the post-moon landing era. Opens optimistically — humanity spreading through the solar system, the GPC evolved into a unified Earth governance body.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_furthest_frontier_common_ground_poster.png" alt="FF: Common Ground" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">FF: Common Ground</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">FF: Common Ground</div>
+      <div class="lv-overlay-meta">~1981–1982 · Science Fiction</div>
+      
+      <div class="lv-overlay-synopsis">The second Furthest Frontier film. The alien arrival forces Earth/Mars tension into suspension as humanity scrambles to present a unified front.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_furthest_frontier_united_front_poster.png" alt="FF: United Front" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">FF: United Front</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">FF: United Front</div>
+      <div class="lv-overlay-meta">~1988–1990 · Science Fiction</div>
+      
+      <div class="lv-overlay-synopsis">The original trilogy's closer, arriving after a time jump from Common Ground . The uneasy first contact has matured into something more formal — a genuine human-alien alliance, with a governing compac</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_ash_and_stars_poster.png" alt="Ash and Stars" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">Ash and Stars</div></div><span class="lv-plat-badge abn">ABN+</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Ash and Stars</div>
+      <div class="lv-overlay-meta">~1984–1985 · Science Fiction / Fantasy</div>
+      
+      <div class="lv-overlay-synopsis">Ash and Stars launched on TC ~1968–69 — a serialized fantasy-in-space series following protagonists navigating a galactic empire in decline. A full cultural institution over fifteen years of TC life b</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_across_all_time_poster.png" alt="Across All Time" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">Across All Time</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Across All Time</div>
+      <div class="lv-overlay-meta">~1991–1992 · International Breakthrough</div>
+      <div class="lv-overlay-sub">Japanese Production</div>
+      <div class="lv-overlay-synopsis">Japan's major international breakthrough film. Four connected stories across time — pre-modernization Japan, the early republic (~1904–10), the Global War era (~1935–40), and the near-to-medium future</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_furthest_frontier_mission_to_mars_poster.png" alt="FF: Mission to Mars" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">FF: Mission to Mars</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">FF: Mission to Mars</div>
+      <div class="lv-overlay-meta">~2003–2004 · Science Fiction</div>
+      
+      <div class="lv-overlay-synopsis">The founding mission — humanity's first permanent Mars colony, the GPC-evolved Earth government at its most optimistic. Sets up everything the original trilogy takes for granted: how Mars came to be s</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_furthest_frontier_red_home_poster.png" alt="FF: Red Home" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">FF: Red Home</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">FF: Red Home</div>
+      <div class="lv-overlay-meta">~2005–2006 · Science Fiction</div>
+      
+      <div class="lv-overlay-synopsis">Mars grows — and a generation born on Mars rather than Earth starts asking what "home" means and who gets to decide their future. The sovereignty/integration tension that defines the original trilogy'</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_furthest_frontier_the_voyagers_poster.png" alt="FF: The Voyagers" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">FF: The Voyagers</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">FF: The Voyagers</div>
+      <div class="lv-overlay-meta">~2007–2008 · Science Fiction</div>
+      
+      <div class="lv-overlay-synopsis">The trilogy's structural surprise — an entire film from the alien perspective, following their long journey toward the Sol system. Not villains, not invaders in any simple sense — travelers, with thei</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_furthest_frontier_new_contact_poster.png" alt="FF: New Contact" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">FF: New Contact</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">FF: New Contact</div>
+      <div class="lv-overlay-meta">~2020s · Science Fiction</div>
+      
+      <div class="lv-overlay-synopsis">The alliance's first diplomatic overture to a newly encountered civilization — refused. Not hostility for its own sake: this second species has its own coherent reasons for staying outside the compact</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_furthest_frontier_divided_ground_poster.png" alt="FF: Divided Ground" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">FF: Divided Ground</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">FF: Divided Ground</div>
+      <div class="lv-overlay-meta">~2020s · Science Fiction</div>
+      
+      <div class="lv-overlay-synopsis">Conflict over territory both civilizations claim — the trilogy's escalation, echoing Common Ground 's title with its opposite meaning. The alliance's unity, hard-won in the original trilogy, is tested</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_furthest_frontier_new_front_poster.png" alt="FF: New Front" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">FF: New Front</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">FF: New Front</div>
+      <div class="lv-overlay-meta">~2020s · Science Fiction</div>
+      
+      <div class="lv-overlay-synopsis">Resolution — not full alliance, but an uneasy coexistence the alliance and the new civilization both have to maintain rather than simply achieve. Echoes United Front without claiming the same unity; "</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_ash_and_stars_eclipse_poster.png" alt="Ash and Stars: Eclipse" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">Ash and Stars: Eclipse</div></div><span class="lv-plat-badge abn">ABN+</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Ash and Stars: Eclipse</div>
+      <div class="lv-overlay-meta">~2020s · Science Fiction / Fantasy</div>
+      
+      <div class="lv-overlay-synopsis">One of the three or four new space nations born from A New Dawn 's collapse has grown into something that looks like the answer to everything — stability, unity, prosperity. It's quietly authoritarian</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_he_comes_at_night_poster.png" alt="He Comes at Night" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph horror" style="display:none;"><div class="lv-ph-title">He Comes at Night</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">He Comes at Night</div>
+      <div class="lv-overlay-meta">~late 1920s–1930s · Horror</div>
+      <div class="lv-overlay-sub">Castillo Pictures</div>
+      <div class="lv-overlay-synopsis">The cycle's vampire picture — atmospheric, shadow-heavy, a European predator arriving in an American gothic setting. Establishes the visual vocabulary (candlelight, fog, silhouette) that defines the c</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_moon_changer_poster.png" alt="Moon Changer" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph horror" style="display:none;"><div class="lv-ph-title">Moon Changer</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Moon Changer</div>
+      <div class="lv-overlay-meta">~1930s · Horror</div>
+      <div class="lv-overlay-sub">Castillo Pictures</div>
+      <div class="lv-overlay-synopsis">The cycle's werewolf picture — transformation as tragedy rather than spectacle, the Code-era restraint again working in the film's favor. The "monster" is sympathetic; the horror is in the loss of sel</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_drowned_poster.png" alt="The Drowned" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph horror" style="display:none;"><div class="lv-ph-title">The Drowned</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Drowned</div>
+      <div class="lv-overlay-meta">~1930s–1940s · Horror</div>
+      <div class="lv-overlay-sub">Castillo Pictures</div>
+      <div class="lv-overlay-synopsis">The cycle's most distinctly WBT entry — a revenant tied to the Mississippi or Ohio River, drowned and returned. Geographically and culturally rooted in the river-valley gothic tradition that also prod</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_what_calls_in_hunger_poster.png" alt="What Calls in Hunger" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph horror" style="display:none;"><div class="lv-ph-title">What Calls in Hunger</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">What Calls in Hunger</div>
+      <div class="lv-overlay-meta">~1930s–1940s · Horror</div>
+      <div class="lv-overlay-sub">Castillo Pictures</div>
+      <div class="lv-overlay-synopsis">The cycle's fourth entry, drawing on Wendigo mythology (Algonquian-speaking peoples) — a figure that, given over a century of deeper integration since 1861, had entered the broader American folkloric </div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_dead_air_poster.png" alt="Dead Air" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph horror" style="display:none;"><div class="lv-ph-title">Dead Air</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Dead Air</div>
+      <div class="lv-overlay-meta">~late 1960s–early 1970s · Horror</div>
+      <div class="lv-overlay-sub">Dir. Margaret Ashby · Helios Pictures</div>
+      <div class="lv-overlay-synopsis">A person alone with recording equipment — audiograph or early radio apparatus — begins capturing something on tape that shouldn't be there. The dread is entirely auditory: listening, replaying, never </div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_harvest_poster.png" alt="Harvest" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph horror" style="display:none;"><div class="lv-ph-title">Harvest</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Harvest</div>
+      <div class="lv-overlay-meta">~2020s · Horror</div>
+      
+      <div class="lv-overlay-synopsis">Isolated family/farm, seasonal and agricultural dread — "something is being harvested" carries a double meaning beyond the crops. Solitary, claustrophobic register.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_gathering_poster.png" alt="The Gathering" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph horror" style="display:none;"><div class="lv-ph-title">The Gathering</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Gathering</div>
+      <div class="lv-overlay-meta">~2020s · Horror</div>
+      
+      <div class="lv-overlay-synopsis">A community event — reunion, festival, or religious gathering — where something goes wrong. Communal/social dread, the inverse register from Harvest 's isolation.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_hansel_and_gretel_poster.png" alt="Hansel and Gretel" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph anim" style="display:none;"><div class="lv-ph-title">Hansel and Gretel</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Hansel and Gretel</div>
+      <div class="lv-overlay-meta">~1932</div>
+      <div class="lv-overlay-sub">Parker Studios</div>
+      <div class="lv-overlay-synopsis">The first animated feature film. Lauretta Parker had been developing it for years before the war began — release coinciding with the war's outbreak was circumstance, not calculation.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_private_brent_poster.png" alt="Private Brent" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph anim" style="display:none;"><div class="lv-ph-title">Private Brent</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Private Brent</div>
+      <div class="lv-overlay-meta">~1936 · Animated Short</div>
+      <div class="lv-overlay-sub">Parker Studios</div>
+      <div class="lv-overlay-synopsis">The beloved wartime Brent Bunny short. Brent drafted — comedic basic training — never shipped overseas, never seen in combat.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_twelve_princesses_poster.png" alt="The Twelve Princesses" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph anim" style="display:none;"><div class="lv-ph-title">The Twelve Princesses</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">The Twelve Princesses</div>
+      <div class="lv-overlay-meta">~1943</div>
+      <div class="lv-overlay-sub">Parker Studios</div>
+      <div class="lv-overlay-synopsis">Parker Studios' first color animated feature — arriving a year after Moses , Parker moving quickly to stake her claim in the color era.</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_grandmothers_garden_poster.png" alt="Grandmother's Garden" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph anim" style="display:none;"><div class="lv-ph-title">Grandmother's Garden</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Grandmother's Garden</div>
+      <div class="lv-overlay-meta">~2020s · Animation — Hand-Crafted</div>
+      <div class="lv-overlay-sub">Dir. Kenji Aoyama · Tsukikage</div>
+      <div class="lv-overlay-synopsis">Building on Across All Time 's 1991–92 breakthrough, Japanese animation develops its own distinctive hand-crafted tradition — Tsukikage ("moon shadow"), founded by director Kenji Aoyama , achieves maj</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_das_volk_spricht_poster.png" alt="Das Volk Spricht" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph intl" style="display:none;"><div class="lv-ph-title">Das Volk Spricht</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Das Volk Spricht</div>
+      <div class="lv-overlay-meta">~1993–1994 · International Breakthrough</div>
+      <div class="lv-overlay-sub">German Republic</div>
+      <div class="lv-overlay-synopsis">The German Republic's major international breakthrough film. A dramatization of the 1938 democratic revolution — the mass protests, the parliamentary collapse, the King's abdication, the republic proc</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_hesperia_poster.png" alt="Hesperia" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph romance" style="display:none;"><div class="lv-ph-title">Hesperia</div></div><span class="lv-plat-badge jubilee">Jubilee</span><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Hesperia</div>
+      <div class="lv-overlay-meta">2003 · Historical Romance</div>
+      <div class="lv-overlay-sub">New World Pictures</div>
+      <div class="lv-overlay-synopsis">The SS Hesperia (Continental Steamship Company, 49,200 gross tons, quadruple screw) set a new American transatlantic speed record on its maiden voyage in April 1913 — four days, eighteen hours, just e</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/cinema_night_train_poster.png" alt="Night Train" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph orig" style="display:none;"><div class="lv-ph-title">Night Train</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Night Train</div>
+      <div class="lv-overlay-meta">2019 · Action / Thriller</div>
+      <div class="lv-overlay-sub">LinkVid</div>
+      <div class="lv-overlay-synopsis">A hostage/terrorist situation aboard a high-speed USRC line — the dramatic irony of a beloved national institution weaponized against the public it serves. LinkVid, the platform with no legacy theatri</div>
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/tc_ash_and_stars_poster.png" alt="Ash And Stars" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">Ash And Stars</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Ash And Stars</div>
+      <div class="lv-overlay-meta">1968–present · Sci-Fi Series</div>
+      <div class="lv-overlay-sub">ABN</div>
+      
+    </div></div>`,
+`<div class="lv-card"><img class="lv-card-poster" src="../../images/pop_culture/tc_furthest_frontier_poster.png" alt="Furthest Frontier" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <div class="lv-poster-ph scifi" style="display:none;"><div class="lv-ph-title">Furthest Frontier</div></div><div class="lv-card-overlay">
+      <div class="lv-overlay-title">Furthest Frontier</div>
+      <div class="lv-overlay-meta">1978–present · Sci-Fi Series</div>
+      <div class="lv-overlay-sub">NWP</div>
+      
+    </div></div>`
+];
+
+(function() {
+  var row = document.getElementById('row-popular');
+  if (!row) return;
+  var start = (typeof DAY_OF_YEAR !== 'undefined' ? DAY_OF_YEAR : new Date().getDate()) % LV_POPULAR_POOL.length;
+  var cards = [];
+  for (var i = 0; i < 8; i++) {
+    cards.push(LV_POPULAR_POOL[(start + i) % LV_POPULAR_POOL.length]);
+  }
+  row.innerHTML = cards.join('');
+})();
+
 </script>
 </body>
 </html>
