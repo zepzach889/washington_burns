@@ -108,6 +108,257 @@ const ABN_MOSTREAD = [
   'Washington House West Wing reopens — what\'s changed'
 ];
 
+// ── CSN — CONTINENTAL SPORTS NETWORK ──────────────────────────────────────
+
+// ── SCORES TICKER ──
+const CSN_TICKER_SCORES = [
+  'NBA · Franklin Senators 5, Manhattan Islanders 3 · FINAL',
+  'NBA · Memphis Pharaohs 7, Nashville Volunteers 4 · FINAL',
+  'NBA · Boston Navigators 2, Baltimore Skipjacks 1 · F/11',
+  'NBA · New Orleans Creoles 6, Little Rock Riflemen 3 · FINAL',
+  'NAFA · Franklin Nationals 2, Atlanta Southerners 1 · FINAL',
+  'NAFA · Montreal Voyageurs 3, Toronto Maples 1 · FINAL',
+  'NAFA · Mexico City Imperiales 2, Guadalajara Rayos 2 · FINAL',
+  'NAFA · San Francisco Pacifics 1, Los Angeles Californianos 0 · FINAL',
+  'ANSA · Gigadohi City United 4, Pushmataha Redsticks 2 · FINAL',
+  'ANSA · St. Louis Ferrymen 3, Memphis Riverbenders 1 · FINAL',
+  'MLA · San Antonio Vaqueros 21, Galvesport Breakers 14 · FINAL',
+  'MLA · Los Angeles Dons 18, San Francisco Fogcutters 16 · FINAL',
+  'MLA · Mexico City Tigres 24, Guadalajara Charros 19 · FINAL',
+  'Union Cup · New England RC 22, Pittsburgh Three Rivers RC 17 · FINAL',
+  'Union Cup · Golden Gate RC 31, LA Condors 24 · FINAL',
+  "Women\'s · Franklin Suffragettes 4, Manhattan Roses 2 · FINAL",
+  "Women\'s · Atlanta Magnolias 3, Charlotte Wrens 1 · FINAL",
+];
+
+// ── FEATURED STORIES ──
+const CSN_LEADS = [
+  {
+    tag: 'NBA',
+    hed: 'Franklin Senators Hold Off Islanders in Extra-Innings Thriller',
+    dek: 'Capital city club extends winning streak to seven games with a dramatic late rally at Washington House Park, putting pressure on the Eastern Conference leaders.',
+    meta: 'CSN Baseball Desk · Franklin · 2 hours ago'
+  },
+  {
+    tag: 'NAFA',
+    hed: 'Nationals Claim Derby Day as Franklin Edges Atlanta in Five-Goal Classic',
+    dek: 'A sold-out Founders Field witnessed one of the season\'s finest matches as the Nationals and Southerners traded goals in a match that lived up to its billing.',
+    meta: 'CSN Football Desk · Franklin · 3 hours ago'
+  },
+  {
+    tag: 'MLA',
+    hed: 'Vaqueros Surge to Top of Texas Division After Dominant Win Over Breakers',
+    dek: 'San Antonio\'s 21–14 victory in Galvesport puts them three points clear at the top of the Texas Division with six rounds remaining in the regular season.',
+    meta: 'CSN Aroball Desk · San Antonio · 4 hours ago'
+  },
+  {
+    tag: 'ANSA',
+    hed: 'Gigadohi City United Make History With Record-Breaking Home Win',
+    dek: 'The United became the first team in ANSA history to win fifteen consecutive home matches, extending a streak that stretches back to last season\'s All-Nation Championship run.',
+    meta: 'CSN Stickball Desk · Gigadohi City · 2 hours ago'
+  },
+  {
+    tag: 'Union Cup',
+    hed: 'New England RC Advance to Continental Semi-Finals With Dominant Display',
+    dek: 'A commanding 22–17 victory over Pittsburgh Three Rivers RC sends New England through to the last four, where they will face the Golden Gate RC next month.',
+    meta: 'CSN Rugby Desk · Boston · 5 hours ago'
+  },
+  {
+    tag: "Women\'s Baseball",
+    hed: 'Suffragettes Clinch Eastern Division Title With Win Over Manhattan Roses',
+    dek: 'Franklin\'s Suffragettes secured their third divisional title in four seasons with a composed 4–2 victory, setting up a potential Diamond Series repeat appearance.',
+    meta: "CSN Women\'s Baseball Desk · Franklin · 1 hour ago"
+  }
+];
+
+// ── SCORE CARDS (recent results per league) ──
+const CSN_SCORES_NBA = [
+  { home: 'Franklin Senators', away: 'Manhattan Islanders', score: '5–3', status: 'FINAL' },
+  { home: 'Memphis Pharaohs', away: 'Nashville Volunteers', score: '7–4', status: 'FINAL' },
+  { home: 'Boston Navigators', away: 'Baltimore Skipjacks', score: '2–1', status: 'F/11' },
+  { home: 'New Orleans Creoles', away: 'Little Rock Riflemen', score: '6–3', status: 'FINAL' },
+  { home: 'Atlanta Locomotives', away: 'Birmingham Vulcans', score: '4–2', status: 'FINAL' },
+  { home: 'St. Louis Rivermen', away: 'Calumet Lakers', score: '3–3', status: 'F/10' },
+];
+
+const CSN_SCORES_NAFA = [
+  { home: 'Franklin Nationals', away: 'Atlanta Southerners', score: '2–1', status: 'FINAL' },
+  { home: 'Montreal Voyageurs', away: 'Toronto Maples', score: '3–1', status: 'FINAL' },
+  { home: 'Mexico City Imperiales', away: 'Guadalajara Rayos', score: '2–2', status: 'FINAL' },
+  { home: 'San Francisco Pacifics', away: 'Los Angeles Californianos', score: '1–0', status: 'FINAL' },
+  { home: 'New Orleans Crescents', away: 'Miami Floridians', score: '1–1', status: 'FINAL' },
+  { home: 'Galvesport Buccaneers', away: 'San Antonio Rancheros', score: '0–2', status: 'FINAL' },
+];
+
+const CSN_SCORES_ANSA = [
+  { home: 'Gigadohi City United', away: 'Pushmataha Redsticks', score: '4–2', status: 'FINAL' },
+  { home: 'St. Louis Ferrymen', away: 'Memphis Riverbenders', score: '3–1', status: 'FINAL' },
+  { home: 'Philadelphia Bells', away: 'Baltimore Fishermen', score: '2–2', status: 'FINAL' },
+  { home: 'New Echota Nighthawks', away: 'Oyathira Coyotes', score: '5–3', status: 'FINAL' },
+  { home: 'Nashville Fiddlers', away: 'Louisville Colonels', score: '2–1', status: 'FINAL' },
+  { home: 'New Boston Chinooks', away: 'New Orleans Deltas', score: '3–0', status: 'FINAL' },
+];
+
+const CSN_SCORES_MLA = [
+  { home: 'San Antonio Vaqueros', away: 'Galvesport Breakers', score: '21–14', status: 'FINAL' },
+  { home: 'Los Angeles Dons', away: 'San Francisco Fogcutters', score: '18–16', status: 'FINAL' },
+  { home: 'Mexico City Tigres', away: 'Guadalajara Charros', score: '24–19', status: 'FINAL' },
+  { home: 'Franklin Statesmen', away: 'St. Louis Brewers', score: '17–12', status: 'FINAL' },
+  { home: 'Monterrey Norteños', away: 'Puebla Guerreros', score: '20–15', status: 'FINAL' },
+  { home: 'New Boston Bears', away: 'Astoria Explorers', score: '22–11', status: 'FINAL' },
+];
+
+const CSN_SCORES_RUGBY = [
+  { home: 'New England RC', away: 'Pittsburgh Three Rivers RC', score: '22–17', status: 'FINAL' },
+  { home: 'Golden Gate RC', away: 'LA Condors', score: '31–24', status: 'FINAL' },
+  { home: 'Toronto Royals', away: 'Aurora Dominion RC', score: '19–14', status: 'FINAL' },
+  { home: 'Philadelphia Keystones', away: 'Baltimore Clippers', score: '28–21', status: 'FINAL' },
+  { home: 'Texopolis Rangers', away: 'Galvesport RC', score: '25–18', status: 'FINAL' },
+  { home: 'Vancouver RC', away: 'Pugetsburgh Columbians', score: '16–13', status: 'FINAL' },
+];
+
+const CSN_SCORES_WOMENS = [
+  { home: 'Franklin Suffragettes', away: 'Manhattan Roses', score: '4–2', status: 'FINAL' },
+  { home: 'Atlanta Magnolias', away: 'Charlotte Wrens', score: '3–1', status: 'FINAL' },
+  { home: 'New Orleans Violets', away: 'Memphis Queens', score: '5–3', status: 'FINAL' },
+  { home: 'Boston Sirens', away: 'Baltimore Pearls', score: '2–1', status: 'F/12' },
+  { home: 'Calumet Swans', away: 'St. Louis Tigerlilies', score: '4–4', status: 'F/10' },
+  { home: 'Astoria Selkies', away: 'New Boston Ravens', score: '3–2', status: 'FINAL' },
+];
+
+// ── STANDINGS ──
+const CSN_STANDINGS_NBA = {
+  east: [
+    { team: 'Franklin Senators',      w: 42, l: 18 },
+    { team: 'Philadelphia Colonials', w: 38, l: 22 },
+    { team: 'Boston Navigators',      w: 35, l: 25 },
+    { team: 'Atlanta Locomotives',    w: 33, l: 27 },
+    { team: 'Manhattan Islanders',    w: 31, l: 29 },
+    { team: 'Baltimore Skipjacks',    w: 28, l: 32 },
+    { team: 'Miami Everglades',       w: 26, l: 34 },
+    { team: 'Birmingham Vulcans',     w: 24, l: 36 },
+  ],
+  west: [
+    { team: 'Memphis Pharaohs',       w: 44, l: 16 },
+    { team: 'St. Louis Rivermen',     w: 39, l: 21 },
+    { team: 'Calumet Lakers',         w: 36, l: 24 },
+    { team: 'New Orleans Creoles',    w: 33, l: 27 },
+    { team: 'Mahkato Bluemen',        w: 30, l: 30 },
+    { team: 'Astoria Mariners',       w: 27, l: 33 },
+    { team: 'Gigadohi City Arrowmen', w: 25, l: 35 },
+    { team: 'Missouri City Scouts',   w: 22, l: 38 },
+  ]
+};
+
+const CSN_STANDINGS_NAFA = {
+  usa: [
+    { team: 'Franklin Nationals',       gp: 22, w: 14, d: 5, l: 3, pts: 47 },
+    { team: 'New Orleans Crescents',    gp: 22, w: 12, d: 4, l: 6, pts: 40 },
+    { team: 'Atlanta Southerners',      gp: 22, w: 11, d: 5, l: 6, pts: 38 },
+    { team: 'Manhattan FC',             gp: 22, w: 10, d: 6, l: 6, pts: 36 },
+    { team: 'Philadelphia Liberty',     gp: 22, w:  9, d: 4, l: 9, pts: 31 },
+    { team: 'Pittsburgh Forgers',       gp: 22, w:  8, d: 3, l:11, pts: 27 },
+  ],
+  international: [
+    { team: 'Mexico City Imperiales',   gp: 22, w: 15, d: 4, l: 3, pts: 49 },
+    { team: 'Montreal Voyageurs',       gp: 22, w: 13, d: 3, l: 6, pts: 42 },
+    { team: 'San Francisco Pacifics',   gp: 22, w: 12, d: 5, l: 5, pts: 41 },
+    { team: 'Toronto Maples',           gp: 22, w: 11, d: 4, l: 7, pts: 37 },
+    { team: 'Galvesport Buccaneers',    gp: 22, w: 10, d: 3, l: 9, pts: 33 },
+    { team: 'Los Angeles Californianos',gp: 22, w:  9, d: 5, l: 8, pts: 32 },
+  ]
+};
+
+const CSN_STANDINGS_ANSA = [
+  { team: 'Gigadohi City United',   w: 18, l:  4 },
+  { team: 'New Echota Nighthawks',  w: 16, l:  6 },
+  { team: 'Philadelphia Bells',     w: 14, l:  8 },
+  { team: 'St. Louis Ferrymen',     w: 13, l:  9 },
+  { team: 'Nashville Fiddlers',     w: 12, l: 10 },
+  { team: 'Lakota City Thunderbirds',w:11, l: 11 },
+  { team: 'New Boston Chinooks',    w: 10, l: 12 },
+  { team: 'Oyathira Coyotes',       w:  9, l: 13 },
+];
+
+const CSN_STANDINGS_MLA = {
+  texas: [
+    { team: 'San Antonio Vaqueros',  gp: 20, pts: 52 },
+    { team: 'Texopolis Texians',     gp: 20, pts: 44 },
+    { team: 'Santa Fe Sundancers',   gp: 20, pts: 38 },
+    { team: 'Galvesport Breakers',   gp: 20, pts: 33 },
+  ],
+  california: [
+    { team: 'Los Angeles Dons',         gp: 20, pts: 50 },
+    { team: 'San Francisco Fogcutters', gp: 20, pts: 46 },
+    { team: 'Monterey Presidios',       gp: 20, pts: 39 },
+    { team: 'San Diego Padres',         gp: 20, pts: 31 },
+  ],
+  mexico: [
+    { team: 'Mexico City Tigres',   gp: 20, pts: 55 },
+    { team: 'Monterrey Norteños',   gp: 20, pts: 47 },
+    { team: 'Guadalajara Charros',  gp: 20, pts: 41 },
+    { team: 'Puebla Guerreros',     gp: 20, pts: 34 },
+  ],
+};
+
+const CSN_STANDINGS_RUGBY = [
+  { team: 'New England RC',            p: 12, w: 10, l: 2, pts: 44 },
+  { team: 'Golden Gate RC',            p: 12, w:  9, l: 3, pts: 40 },
+  { team: 'Toronto Royals',            p: 12, w:  8, l: 4, pts: 36 },
+  { team: 'Philadelphia Keystones',    p: 12, w:  7, l: 5, pts: 32 },
+  { team: 'Franklin Capitol RC',       p: 12, w:  6, l: 6, pts: 28 },
+  { team: 'Honolulu Aloha RC',         p: 12, w:  5, l: 7, pts: 24 },
+  { team: 'Vancouver RC',              p: 12, w:  4, l: 8, pts: 20 },
+  { team: 'Pugetsburgh Columbians',    p: 12, w:  3, l: 9, pts: 16 },
+];
+
+const CSN_STANDINGS_WOMENS = {
+  east: [
+    { team: 'Franklin Suffragettes', w: 40, l: 20 },
+    { team: 'Boston Sirens',         w: 37, l: 23 },
+    { team: 'Atlanta Magnolias',     w: 34, l: 26 },
+    { team: 'Philadelphia Belles',   w: 31, l: 29 },
+    { team: 'Manhattan Roses',       w: 28, l: 32 },
+    { team: 'Miami Flamingos',       w: 25, l: 35 },
+  ],
+  west: [
+    { team: 'Memphis Queens',        w: 41, l: 19 },
+    { team: 'New Orleans Violets',   w: 36, l: 24 },
+    { team: 'Calumet Swans',         w: 33, l: 27 },
+    { team: 'Astoria Selkies',       w: 30, l: 30 },
+    { team: 'St. Louis Tigerlilies', w: 27, l: 33 },
+    { team: 'Mahkato Daisies',       w: 24, l: 36 },
+  ]
+};
+
+// ── TOP STORIES / TRENDING ──
+const CSN_TOP_STORIES = [
+  'Franklin Senators extend winning streak to seven',
+  'Vaqueros surge to top of MLA Texas Division',
+  'Suffragettes clinch Eastern Division title',
+  'New England RC through to Union Cup semi-finals',
+  'Gigadohi City United set consecutive home win record',
+  'NBA Western race tightens as Pharaohs hold off Rivermen',
+  'Mexico City Imperiales set new NAFA points record',
+  'Open Play: Is this the greatest ANSA season ever?'
+];
+
+// ── CSN BROADCAST SCHEDULE ──
+const CSN_SCHEDULE = [
+  { h:  6, m:  0, show: 'Early Whistle',      desc: 'Overnight scores, morning headlines, preview of the day\'s matches' },
+  { h:  8, m:  0, show: 'Diamond Hour',        desc: 'NBA highlights and analysis' },
+  { h:  9, m:  0, show: 'The Pitch',           desc: 'NAFA highlights and match report' },
+  { h: 10, m:  0, show: 'Stick & Stone',       desc: 'ANSA round-up and features' },
+  { h: 11, m:  0, show: 'The Ring',            desc: 'MLA Aroball highlights' },
+  { h: 12, m:  0, show: 'The Scoreboard',      desc: 'Midday edition — scores, standings, top stories' },
+  { h: 14, m:  0, show: 'Open Play',           desc: 'Sports analysis and debate' },
+  { h: 16, m:  0, show: 'The Scrum',           desc: 'Union Cup Rugby highlights and preview' },
+  { h: 18, m:  0, show: 'The Scoreboard',      desc: 'Evening edition — the day in sport' },
+  { h: 20, m:  0, show: 'Live Coverage',       desc: 'Tonight\'s featured match — see listings' },
+  { h: 22, m:  0, show: 'The Scoreboard',      desc: 'Late night edition — final scores and reaction' },
+  { h: 23, m: 30, show: 'Early Whistle Preview', desc: 'Tomorrow\'s matches and overnight coverage' },
+];
+
 // ── DAILY PICKS (computed once, used by all pages) ──
 
 // Franklin Observer
@@ -141,6 +392,11 @@ const ABN_TICKER_TODAY   = [
   ...ABN_WORLD_TODAY.map(w => w.hed),
 ].filter((v, i, a) => a.indexOf(v) === i); // deduplicate
 const ABN_MOSTREAD_TODAY = Array.from({length: 4}, (_, i) => ABN_MOSTREAD[(DAY_OF_YEAR + i * 2) % ABN_MOSTREAD.length]);
+
+// CSN Sports
+const CSN_LEAD_TODAY        = CSN_LEADS[DAY_OF_YEAR % CSN_LEADS.length];
+const CSN_TOP_STORIES_TODAY = Array.from({length: 6}, (_, i) => CSN_TOP_STORIES[(DAY_OF_YEAR + i * 2) % CSN_TOP_STORIES.length]);
+const CSN_TICKER_TODAY      = CSN_TICKER_SCORES.slice(0, 8);
 
 // ── WAYMARK HEADLINES (derived from daily picks) ──
 // Order: ABN lead, Observer lead, world story, USRC rail, culture/world
