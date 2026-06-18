@@ -1,0 +1,530 @@
+/* ── LINKVID SHARED CSS ── */
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
+
+:root {
+  --lv-bg:        #111318;
+  --lv-bg-deep:   #0c0e12;
+  --lv-bg-card:   #161920;
+  --lv-border:    #1e2028;
+  --lv-border-mid:#2a2d38;
+  --lv-blue:      #4fa3e0;
+  --lv-blue-dim:  #1e3a5f;
+  --lv-text:      #e2ddd6;
+  --lv-text-mid:  #9098a8;
+  --lv-text-dim:  #5a6070;
+  --lv-text-faint:#3a4050;
+
+  /* Platform badge colors */
+  --badge-jubilee: #c8a84a;
+  --badge-abn:     #4fa3e0;
+  --badge-delta:   #6dab7a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  background: var(--lv-bg);
+  color: var(--lv-text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ── WM ARC CHROME ── */
+.arc-chrome {
+  background: #f5f0e8;
+  border-bottom: 0.5px solid #d8d0c0;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+.arc-topbar {
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 0.5px solid #e0d8c8;
+}
+
+.arc-dots { display: flex; gap: 5px; align-items: center; }
+.arc-dot { width: 9px; height: 9px; border-radius: 50%; }
+.arc-dot.r { background: #e0b0a8; }
+.arc-dot.y { background: #e0d8a8; }
+.arc-dot.g { background: #b0d8b0; }
+
+.arc-navbtns { display: flex; gap: 6px; color: #a09880; font-size: 15px; line-height: 1; }
+.arc-navbtns a { color: #a09880; text-decoration: none; padding: 0 2px; }
+.arc-navbtns a:hover { color: #2c3e50; }
+
+.arc-wm-logo {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 14px;
+  color: #2c3e50;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.arc-wm-logo .wm-w { color: #185FA5; }
+.arc-wm-logo em { font-style: italic; color: #888; font-size: 11px; font-family: 'DM Sans', sans-serif; font-weight: 400; }
+
+.arc-addrbar {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #c8c0b0;
+  border-radius: 20px;
+  padding: 4px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.arc-lock { color: #4a8c3a; font-size: 11px; }
+.arc-addr {
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  color: #4a5060;
+}
+.arc-addr .proto { color: #a09880; }
+.arc-addr .net   { color: #8b6914; font-weight: 600; }
+.arc-addr .site  { color: #185FA5; font-weight: 600; }
+.arc-addr .rest  { color: #a09880; }
+
+.arc-clock {
+  font-size: 10px;
+  color: #a09880;
+  white-space: nowrap;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.arc-bookmarks {
+  padding: 4px 14px;
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.arc-bookmarks::-webkit-scrollbar { display: none; }
+
+.arc-bmark {
+  font-size: 10px;
+  color: #4a5060;
+  padding: 3px 9px;
+  border-radius: 3px;
+  white-space: nowrap;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: background 0.1s;
+}
+.arc-bmark:hover { background: #d8d0c0; color: #1a2030; }
+.arc-bmark.active { background: #d0c8b4; color: #1a2030; font-weight: 600; }
+.arc-bmark-icon { font-size: 11px; }
+
+/* ── LINKVID NAV ── */
+.lv-nav {
+  background: var(--lv-bg-deep);
+  padding: 0 28px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--lv-border);
+  position: sticky;
+  top: 72px; /* height of arc chrome */
+  z-index: 100;
+}
+
+.lv-logo {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+.lv-logo .ll { color: var(--lv-text); }
+.lv-logo .lv { color: var(--lv-blue); }
+
+.lv-nav-links {
+  display: flex;
+  gap: 24px;
+  font-size: 13px;
+}
+.lv-nav-links a {
+  color: var(--lv-text-dim);
+  text-decoration: none;
+  transition: color 0.1s;
+  padding-bottom: 2px;
+}
+.lv-nav-links a:hover { color: var(--lv-text); }
+.lv-nav-links a.active {
+  color: var(--lv-text);
+  border-bottom: 2px solid var(--lv-blue);
+}
+
+.lv-nav-right { display: flex; align-items: center; gap: 14px; }
+.lv-search {
+  background: #1a1d24;
+  border: 1px solid var(--lv-border-mid);
+  border-radius: 4px;
+  padding: 6px 12px;
+  color: var(--lv-text);
+  font-size: 12px;
+  width: 150px;
+  font-family: 'DM Sans', sans-serif;
+}
+.lv-search::placeholder { color: var(--lv-text-faint); }
+.lv-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--lv-blue-dim);
+  border: 1.5px solid var(--lv-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--lv-blue);
+}
+
+/* ── FILM ROWS ── */
+.lv-section { margin-bottom: 32px; }
+
+.lv-section-head {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lv-blue);
+  margin-bottom: 12px;
+  padding-left: 10px;
+  border-left: 2px solid var(--lv-blue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.lv-section-head a {
+  font-size: 10px;
+  color: var(--lv-text-dim);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  border-left: none;
+  padding-left: 0;
+}
+.lv-section-head a:hover { color: var(--lv-blue); }
+
+/* Scroll row */
+.lv-row-wrap { position: relative; }
+.lv-row {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+  /* Show 4 cards + peek of 5th */
+  padding-right: 60px;
+}
+.lv-row::-webkit-scrollbar { display: none; }
+
+/* ── FILM CARD — PORTRAIT ── */
+.lv-card {
+  flex: 0 0 calc((100% - 30px) / 4);
+  min-width: 140px;
+  scroll-snap-align: start;
+  border-radius: 4px;
+  background: var(--lv-bg-card);
+  border: 1px solid var(--lv-border);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+  position: relative;
+}
+.lv-card:hover {
+  border-color: var(--lv-blue);
+  transform: translateY(-2px);
+}
+
+.lv-card-poster {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
+  background: var(--lv-bg-deep);
+}
+
+/* Placeholder poster — genre-tinted */
+.lv-poster-ph {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px 8px;
+  position: relative;
+}
+.lv-poster-ph.drama   { background: #180e0e; }
+.lv-poster-ph.hist    { background: #131008; }
+.lv-poster-ph.war     { background: #0e1008; }
+.lv-poster-ph.spec    { background: #0d0d18; }
+.lv-poster-ph.scifi   { background: #080d18; }
+.lv-poster-ph.horror  { background: #12080f; }
+.lv-poster-ph.anim    { background: #0a0f0a; }
+.lv-poster-ph.intl    { background: #080e10; }
+.lv-poster-ph.romance { background: #140a0e; }
+.lv-poster-ph.orig    { background: #081018; }
+.lv-poster-ph.tc      { background: #080f12; }
+
+.lv-ph-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(226,221,214,0.5);
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Platform badge — corner of poster */
+.lv-plat-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 2px 5px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+.lv-plat-badge.jubilee { background: #c8a84a; color: #0c0e12; }
+.lv-plat-badge.abn     { background: #4fa3e0; color: #0c0e12; }
+.lv-plat-badge.delta   { background: #6dab7a; color: #0c0e12; }
+
+.lv-card-body { padding: 8px 9px 10px; }
+.lv-card-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #c8c4bc;
+  line-height: 1.3;
+  margin-bottom: 3px;
+}
+.lv-card-year {
+  font-size: 10px;
+  color: var(--lv-text-faint);
+}
+
+/* Scroll arrow buttons */
+.lv-scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(12,14,18,0.85);
+  border: 1px solid var(--lv-border-mid);
+  color: var(--lv-text);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.1s;
+}
+.lv-scroll-btn:hover { background: var(--lv-blue); border-color: var(--lv-blue); }
+.lv-scroll-btn.left  { left: -16px; }
+.lv-scroll-btn.right { right: -16px; }
+
+/* ── HERO ── */
+.lv-hero {
+  background: var(--lv-bg-deep);
+  padding: 36px 28px 28px;
+  border-bottom: 1px solid var(--lv-border);
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+.lv-hero-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lv-blue);
+  margin-bottom: 10px;
+}
+.lv-hero-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #f0ece4;
+  line-height: 1.0;
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+}
+.lv-hero-meta {
+  font-size: 12px;
+  color: var(--lv-text-dim);
+  margin-bottom: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.lv-hero-meta .landmark { color: var(--lv-blue); font-weight: 600; }
+.lv-hero-desc {
+  font-size: 13px;
+  color: var(--lv-text-mid);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 20px;
+}
+.lv-hero-btns { display: flex; gap: 10px; }
+.lv-btn-play {
+  background: var(--lv-blue);
+  color: #0c0e12;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 22px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+.lv-btn-play:hover { background: #68b4e8; }
+.lv-btn-list {
+  background: transparent;
+  color: var(--lv-text-mid);
+  border: 1px solid var(--lv-border-mid);
+  border-radius: 4px;
+  padding: 10px 22px;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+.lv-btn-list:hover { border-color: var(--lv-blue); color: var(--lv-blue); }
+
+.lv-hero-badge {
+  flex-shrink: 0;
+  background: var(--lv-bg-card);
+  border: 1px solid var(--lv-border-mid);
+  border-radius: 4px;
+  width: 120px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+.lv-hero-badge-icon { font-size: 26px; color: var(--lv-blue); }
+.lv-hero-badge-text { font-size: 9px; color: var(--lv-text-dim); text-align: center; line-height: 1.4; }
+
+/* ── MAIN CONTENT AREA ── */
+.lv-main { padding: 28px 28px 40px; }
+
+/* ── TC PLACEHOLDER CARD ── */
+.lv-tc-coming {
+  flex: 0 0 calc((100% - 30px) / 4);
+  min-width: 140px;
+  scroll-snap-align: start;
+  border-radius: 4px;
+  background: var(--lv-bg-card);
+  border: 1px solid var(--lv-border);
+  overflow: hidden;
+}
+.lv-tc-ph {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  background: #090c10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.lv-tc-ph-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lv-text-faint);
+  text-align: center;
+  padding: 0 12px;
+}
+.lv-tc-ph-icon { font-size: 20px; color: var(--lv-text-faint); opacity: 0.4; }
+
+/* ── PAGE HEADER (films/series pages) ── */
+.lv-page-header {
+  background: var(--lv-bg-deep);
+  padding: 28px 28px 22px;
+  border-bottom: 1px solid var(--lv-border);
+}
+.lv-page-eyebrow {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lv-blue);
+  margin-bottom: 6px;
+}
+.lv-page-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #f0ece4;
+  letter-spacing: -0.3px;
+}
+.lv-page-desc {
+  font-size: 13px;
+  color: var(--lv-text-mid);
+  margin-top: 6px;
+}
+
+/* ── PLATFORM LEGEND ── */
+.lv-legend {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 10px 28px;
+  background: var(--lv-bg-deep);
+  border-bottom: 1px solid var(--lv-border);
+  font-size: 10px;
+  color: var(--lv-text-dim);
+}
+.lv-legend-item { display: flex; align-items: center; gap: 5px; }
+.lv-legend-badge {
+  font-size: 7px;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 2px;
+}
+.lv-legend-badge.jubilee { background: #c8a84a; color: #0c0e12; }
+.lv-legend-badge.abn     { background: #4fa3e0; color: #0c0e12; }
+.lv-legend-badge.delta   { background: #6dab7a; color: #0c0e12; }
+
+/* ── FOOTER ── */
+.lv-footer {
+  padding: 16px 28px;
+  border-top: 1px solid var(--lv-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+.lv-foot { font-size: 10px; color: var(--lv-text-faint); font-family: monospace; }
+.lv-foot-links { display: flex; gap: 16px; }
+.lv-foot-links a { font-size: 10px; color: var(--lv-text-faint); text-decoration: none; }
+.lv-foot-links a:hover { color: var(--lv-text-mid); }
+
+/* ── SCROLL JS HELPER ── */
+.lv-row-outer { position: relative; margin-bottom: 4px; }
+
+@media (max-width: 700px) {
+  .lv-nav { padding: 0 14px; }
+  .lv-nav-links { display: none; }
+  .lv-main { padding: 18px 14px 32px; }
+  .lv-hero { padding: 24px 14px 20px; flex-direction: column; }
+  .lv-hero-badge { display: none; }
+  .lv-card { flex: 0 0 42%; min-width: 120px; }
+}

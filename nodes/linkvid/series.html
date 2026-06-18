@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkVid Series — link://nan.linkvid.biz.usa/series</title>
+<link rel="stylesheet" href="linkvid_shared.css">
+<style>
+  .lv-tc-notice {
+    background: #0c1018;
+    border: 1px solid #1e2028;
+    border-left: 3px solid var(--lv-blue);
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    font-size: 12px;
+    color: var(--lv-text-mid);
+    line-height: 1.7;
+  }
+  .lv-tc-notice strong { color: var(--lv-text); }
+
+  .lv-tc-banner {
+    background: var(--lv-bg-card);
+    border: 1px solid var(--lv-border);
+    border-radius: 4px;
+    padding: 20px 22px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+  }
+  .lv-tc-banner-icon {
+    width: 56px;
+    height: 80px;
+    background: #090c10;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--lv-text-faint);
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .lv-tc-banner-text { flex: 1; }
+  .lv-tc-banner-title { font-size: 16px; font-weight: 700; color: #f0ece4; margin-bottom: 4px; }
+  .lv-tc-banner-meta { font-size: 11px; color: var(--lv-text-dim); margin-bottom: 6px; }
+  .lv-tc-banner-desc { font-size: 12px; color: var(--lv-text-mid); line-height: 1.6; }
+  .lv-tc-banner-badge {
+    font-size: 8px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 3px 7px; border-radius: 2px; display: inline-block; margin-bottom: 6px;
+  }
+  .lv-tc-banner-badge.abn { background: #4fa3e0; color: #0c0e12; }
+  .lv-tc-banner-badge.lv  { background: var(--lv-blue); color: #0c0e12; }
+  .lv-coming-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .lv-coming-card {
+    background: var(--lv-bg-card);
+    border: 1px solid var(--lv-border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .lv-coming-ph {
+    width: 100%;
+    aspect-ratio: 2/3;
+    background: #090c10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+  }
+  .lv-coming-ph-icon { font-size: 22px; color: var(--lv-text-faint); opacity: 0.3; }
+  .lv-coming-ph-label { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lv-text-faint); text-align: center; line-height: 1.4; }
+  .lv-coming-body { padding: 8px 9px 10px; }
+  .lv-coming-title { font-size: 11px; font-weight: 600; color: #c8c4bc; margin-bottom: 3px; line-height: 1.3; }
+  .lv-coming-year { font-size: 10px; color: var(--lv-text-faint); }
+</style>
+</head>
+<body>
+
+<!-- WM ARC CHROME -->
+<div class="arc-chrome">
+  <div class="arc-topbar">
+    <div class="arc-dots">
+      <div class="arc-dot r"></div>
+      <div class="arc-dot y"></div>
+      <div class="arc-dot g"></div>
+    </div>
+    <div class="arc-navbtns">
+      <a href="#" onclick="history.back();return false;">&#8592;</a>
+      <a href="#" onclick="history.forward();return false;">&#8594;</a>
+    </div>
+    <a class="arc-wm-logo" href="../index.html"><span class="wm-w">W</span>M <em>Arc</em></a>
+    <div class="arc-addrbar">
+      <span class="arc-lock">&#128274;</span>
+      <span class="arc-addr"><span class="proto">link://</span><span class="net">nan</span>.<span class="site">linkvid</span><span class="rest">.biz.usa/series</span></span>
+    </div>
+    <div class="arc-clock" id="arc-clock"></div>
+  </div>
+  <div class="arc-bookmarks">
+    <a class="arc-bmark" href="../index.html"><span class="arc-bmark-icon">&#128269;</span>Waymark</a>
+    <a class="arc-bmark" href="../nodes/franklin-observer/"><span class="arc-bmark-icon">&#128240;</span>Franklin Observer</a>
+    <a class="arc-bmark" href="../nodes/abn/"><span class="arc-bmark-icon">&#128250;</span>ABN News</a>
+    <a class="arc-bmark" href="../nodes/nedex/"><span class="arc-bmark-icon">&#128218;</span>Nedex</a>
+    <a class="arc-bmark" href="../nodes/usrc/"><span class="arc-bmark-icon">&#128642;</span>USRC Rail</a>
+    <a class="arc-bmark active" href="index.html"><span class="arc-bmark-icon">&#9654;</span>LinkVid</a>
+    <a class="arc-bmark" href="../nodes/assembly/"><span class="arc-bmark-icon">&#9878;</span>NAU Assembly</a>
+    <a class="arc-bmark" href="../nodes/washington-house/"><span class="arc-bmark-icon">&#127963;</span>Washington House</a>
+    <a class="arc-bmark" href="../nodes/amhistory/"><span class="arc-bmark-icon">&#127994;</span>Museum of the US</a>
+    <a class="arc-bmark" href="../nodes/fps/"><span class="arc-bmark-icon">&#127794;</span>Federal Parks</a>
+  </div>
+</div>
+
+<!-- LINKVID NAV -->
+<nav class="lv-nav">
+  <div style="display:flex;align-items:center;gap:28px;">
+    <a class="lv-logo" href="index.html"><span class="ll">Link</span><span class="lv">Vid</span></a>
+    <div class="lv-nav-links">
+      <a href="index.html">Home</a>
+      <a href="films.html">Films</a>
+      <a href="series.html" class="active">Series</a>
+      <a href="films.html#originals">Originals</a>
+    </div>
+  </div>
+  <div class="lv-nav-right">
+    <input class="lv-search" type="text" placeholder="Search titles&#8230;" />
+    <div class="lv-avatar">Z</div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="lv-page-header">
+  <div class="lv-page-eyebrow">Browse</div>
+  <div class="lv-page-title">Series &amp; TC</div>
+  <div class="lv-page-desc">Telecinema series, TC franchises, documentary, and non-fiction &mdash; all on LinkVid.</div>
+</div>
+
+<div class="lv-main">
+
+  <div class="lv-tc-notice">
+    <strong>TC content is being added to LinkVid.</strong> Full series catalogs for the titles below are being licensed and prepared for streaming. Check back as new content arrives throughout 2026.
+  </div>
+
+  <!-- ASH AND STARS -->
+  <div class="lv-section" id="ash-and-stars">
+    <div class="lv-section-head"><span>Ash and Stars</span></div>
+
+    <div class="lv-tc-banner">
+      <div class="lv-tc-banner-icon">&#9654;</div>
+      <div class="lv-tc-banner-text">
+        <div><span class="lv-tc-banner-badge abn">ABN+</span></div>
+        <div class="lv-tc-banner-title">Ash and Stars</div>
+        <div class="lv-tc-banner-meta">TC Series &nbsp;&middot;&nbsp; 1968&ndash;present &nbsp;&middot;&nbsp; Sci-Fi / Fantasy</div>
+        <div class="lv-tc-banner-desc">The defining TC franchise of the post-Choson era. A serialized fantasy-in-space series following protagonists navigating a galactic empire in decline. A full cultural institution over five decades of TC life. Feature film (1984) and Eclipse (~2020s) available on ABN+. Full TC series catalog coming to LinkVid.</div>
+      </div>
+    </div>
+
+    <div class="lv-row-outer">
+      <div class="lv-row">
+        <div class="lv-coming-card"><div class="lv-coming-ph"><div class="lv-coming-ph-icon">&#9654;</div><div class="lv-coming-ph-label">Season 1<br>1968&ndash;69</div></div><div class="lv-coming-body"><div class="lv-coming-title">Season 1</div><div class="lv-coming-year">1968&ndash;69</div></div></div>
+        <div class="lv-coming-card"><div class="lv-coming-ph"><div class="lv-coming-ph-icon">&#9654;</div><div class="lv-coming-ph-label">Season 2<br>1970&ndash;71</div></div><div class="lv-coming-body"><div class="lv-coming-title">Season 2</div><div class="lv-coming-year">1970&ndash;71</div></div></div>
+        <div class="lv-coming-card"><div class="lv-coming-ph"><div class="lv-coming-ph-icon">&#9654;</div><div class="lv-coming-ph-label">Season 3<br>1972&ndash;73</div></div><div class="lv-coming-body"><div class="lv-coming-title">Season 3</div><div class="lv-coming-year">1972&ndash;73</div></div></div>
+        <div class="lv-coming-card"><div class="lv-coming-ph"><div class="lv-coming-ph-icon">&#9654;</div><div class="lv-coming-ph-label">More seasons<br>coming soon</div></div><div class="lv-coming-body"><div class="lv-coming-title">Full catalog coming</div><div class="lv-coming-year">2026</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FURTHEST FRONTIER TC -->
+  <div class="lv-section" id="furthest-frontier-tc">
+    <div class="lv-section-head"><span>The Furthest Frontier &mdash; TC Series</span></div>
+
+    <div class="lv-tc-banner">
+      <div class="lv-tc-banner-icon">&#9654;</div>
+      <div class="lv-tc-banner-text">
+        <div><span class="lv-tc-banner-badge lv">LinkVid</span></div>
+        <div class="lv-tc-banner-title">The Furthest Frontier &mdash; TC Universe</div>
+        <div class="lv-tc-banner-meta">TC Spinoff Series &nbsp;&middot;&nbsp; Various &nbsp;&middot;&nbsp; Science Fiction</div>
+        <div class="lv-tc-banner-desc">The franchise born from the 1978 film expands into TC. Spinoff series exploring corners of the Furthest Frontier universe &mdash; Mars colony life, the alien alliance, and the stories the films couldn&#8217;t tell. Feature films available on Jubilee.</div>
+      </div>
+    </div>
+
+    <div class="lv-row-outer">
+      <div class="lv-row">
+        <div class="lv-coming-card"><div class="lv-coming-ph"><div class="lv-coming-ph-icon">&#9654;</div><div class="lv-coming-ph-label">TC Spinoff<br>Series TBD</div></div><div class="lv-coming-body"><div class="lv-coming-title">TC Spinoff &mdash; TBD</div><div class="lv-coming-year">Coming Soon</div></div></div>
+        <div class="lv-coming-card"><div class="lv-coming-ph"><div class="lv-coming-ph-icon">&#9654;</div><div class="lv-coming-ph-label">TC Spinoff<br>Series TBD</div></div><div class="lv-coming-body"><div class="lv-coming-title">TC Spinoff &mdash; TBD</div><div class="lv-coming-year">Coming Soon</div></div></div>
+        <div class="lv-coming-card"><div class="lv-coming-ph"><div class="lv-coming-ph-icon">&#9654;</div><div class="lv-coming-ph-label">More coming<br>to LinkVid</div></div><div class="lv-coming-body"><div class="lv-coming-title">More Coming Soon</div><div class="lv-coming-year">2026</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOCUMENTARY & NON-FICTION -->
+  <div class="lv-section" id="documentary">
+    <div class="lv-section-head"><span>Documentary &amp; Non-Fiction</span></div>
+
+    <div class="lv-tc-banner">
+      <div class="lv-tc-banner-icon">&#9654;</div>
+      <div class="lv-tc-banner-text">
+        <div><span class="lv-tc-banner-badge lv">LinkVid</span></div>
+        <div class="lv-tc-banner-title">Documentary &amp; Non-Fiction</div>
+        <div class="lv-tc-banner-meta">Various &nbsp;&middot;&nbsp; History, Science, Culture</div>
+        <div class="lv-tc-banner-desc">Historical documentary, science programming, cultural non-fiction, and archival TC material from across the NAU and beyond. Catalog being assembled through 2026.</div>
+      </div>
+    </div>
+
+    <div class="lv-coming-grid">
+      <div class="lv-coming-card"><div class="lv-coming-ph"><div class="lv-coming-ph-icon">&#9654;</div><div class="lv-coming-ph-label">History &amp;<br>Archive</div></div><div class="lv-coming-body"><div class="lv-coming-title">History &amp; Archive</div><div class="lv-coming-year">Coming 2026</div></div></div>
+      <div class="lv-coming-card"><div class="lv-coming-ph"><div class="lv-coming-ph-icon">&#9654;</div><div class="lv-coming-ph-label">Science &amp;<br>Space</div></div><div class="lv-coming-body"><div class="lv-coming-title">Science &amp; Space</div><div class="lv-coming-year">Coming 2026</div></div></div>
+      <div class="lv-coming-card"><div class="lv-coming-ph"><div class="lv-coming-ph-icon">&#9654;</div><div class="lv-coming-ph-label">Culture &amp;<br>Arts</div></div><div class="lv-coming-body"><div class="lv-coming-title">Culture &amp; Arts</div><div class="lv-coming-year">Coming 2026</div></div></div>
+      <div class="lv-coming-card"><div class="lv-coming-ph"><div class="lv-coming-ph-icon">&#9654;</div><div class="lv-coming-ph-label">NAU &amp;<br>World Affairs</div></div><div class="lv-coming-body"><div class="lv-coming-title">NAU &amp; World Affairs</div><div class="lv-coming-year">Coming 2026</div></div></div>
+    </div>
+  </div>
+
+  <!-- COMING SOON BANNER -->
+  <div class="lv-section" id="coming-soon">
+    <div class="lv-section-head"><span>More Coming to LinkVid</span></div>
+    <div class="lv-tc-notice">
+      LinkVid&#8217;s TC catalog is expanding through 2026 and beyond. Series, miniseries, TC movies, and non-fiction programming are being licensed and prepared for streaming. The full catalog will be announced as titles become available.
+    </div>
+  </div>
+
+</div><!-- /lv-main -->
+
+<div class="lv-footer">
+  <div class="lv-foot">link://nan.linkvid.biz.usa/series &nbsp;&middot;&nbsp; LinkVid Entertainment, Inc.</div>
+  <div class="lv-foot-links">
+    <a href="#">About</a><a href="#">Privacy</a><a href="#">Terms</a><a href="#">NANet Status</a>
+  </div>
+</div>
+
+<script>
+function updateClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = days[n.getDay()] + ' ' + n.getDate() + ' \u00b7 ' + hh + ':' + mm;
+}
+setInterval(updateClock, 10000);
+updateClock();
+</script>
+</body>
+</html>
