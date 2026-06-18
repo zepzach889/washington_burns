@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>CSN — Continental Sports Network</title>
+<link rel="stylesheet" href="../../shared.css">
+<style>
+  :root {
+    --csn-slate:  #2C3440;
+    --csn-navy:   #0D1F3C;
+    --csn-gold:   #D4A827;
+    --csn-gold2:  #B8920F;
+    --csn-light:  #F5F0E0;
+    --csn-dim:    #8A9BB0;
+    --csn-dark:   #1A2230;
+  }
+
+  /* ── TICKER ── */
+  .csn-ticker-strip {
+    background: var(--csn-gold);
+    color: var(--csn-navy);
+    padding: 4px 0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .csn-ticker-label {
+    background: var(--csn-navy);
+    color: var(--csn-gold);
+    padding: 2px 10px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-right: 12px;
+  }
+  .csn-ticker-track { display: flex; overflow: hidden; flex: 1; }
+  .csn-ticker-inner {
+    display: inline-block;
+    white-space: nowrap;
+    animation: csnTicker 60s linear infinite;
+    padding-right: 60px;
+  }
+  @keyframes csnTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .csn-ticker-sep { margin: 0 16px; opacity: 0.4; }
+
+  /* ── HEADER ── */
+  .csn-header {
+    background: var(--csn-slate);
+    color: var(--csn-light);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--csn-gold);
+  }
+  .csn-brand { display: flex; align-items: center; gap: 12px; }
+  .csn-logo-boxes { display: flex; gap: 3px; }
+  .csn-lb {
+    width: 36px; height: 36px;
+    background: var(--csn-navy);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 500;
+    border-radius: 3px;
+  }
+  .csn-brand-text { display: flex; flex-direction: column; }
+  .csn-brand-name { font-size: 13px; font-weight: 500; color: var(--csn-light); letter-spacing: 0.04em; }
+  .csn-tagline { font-size: 10px; color: var(--csn-gold); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+  .csn-header-right { display: flex; align-items: center; gap: 16px; }
+  .csn-live-badge { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #ff4444; font-weight: 700; letter-spacing: 0.06em; }
+  .csn-live-dot { width: 8px; height: 8px; background: #ff4444; border-radius: 50%; animation: csnPulse 1.2s ease-in-out infinite; flex-shrink: 0; }
+  @keyframes csnPulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+  .csn-clock { font-family: monospace; font-size: 13px; color: var(--csn-dim); }
+
+  /* ── NAV ── */
+  .csn-nav { background: var(--csn-dark); display: flex; overflow-x: auto; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
+  .csn-nav a {
+    font-size: 12px; color: var(--csn-dim);
+    text-decoration: none; padding: 10px 16px;
+    font-weight: 500; white-space: nowrap;
+    border-right: 0.5px solid rgba(255,255,255,0.06);
+    transition: color 0.1s, background 0.1s;
+  }
+  .csn-nav a:hover { background: rgba(255,255,255,0.05); color: var(--csn-light); }
+  .csn-nav a.active { color: var(--csn-gold); border-bottom: 2px solid var(--csn-gold); }
+
+  /* ── BODY LAYOUT ── */
+  .csn-body {
+    display: grid;
+    grid-template-columns: 1fr 290px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .csn-main { padding: 20px 24px; border-right: 0.5px solid var(--border); }
+  .csn-sidebar { padding: 20px 16px; background: var(--bg-secondary); }
+
+  /* ── FEATURED STORY ── */
+  .csn-featured {
+    background: var(--csn-navy);
+    border-left: 3px solid var(--csn-gold);
+    border-radius: 6px;
+    padding: 20px 20px;
+    margin-bottom: 20px;
+    color: var(--csn-light);
+  }
+  .csn-featured-tag {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--csn-gold); margin-bottom: 8px;
+  }
+  .csn-featured-hed { font-size: 22px; font-weight: 500; line-height: 1.25; margin-bottom: 8px; }
+  .csn-featured-dek { font-size: 13px; color: rgba(245,240,224,0.7); line-height: 1.5; margin-bottom: 8px; }
+  .csn-featured-meta { font-size: 10px; color: var(--csn-dim); }
+
+  /* ── SCORES GRID ── */
+  .csn-scores-section { margin-bottom: 24px; }
+  .csn-section-head {
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--csn-gold);
+    padding-bottom: 5px; margin-bottom: 12px;
+  }
+  .csn-section-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--csn-navy);
+  }
+  .csn-section-more { font-size: 11px; color: var(--csn-gold2); text-decoration: none; font-weight: 500; }
+  .csn-scores-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .csn-score-card {
+    background: var(--bg-primary);
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+  }
+  .csn-score-teams { font-size: 12px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; line-height: 1.4; }
+  .csn-score-result { display: flex; align-items: center; justify-content: space-between; }
+  .csn-score-num { font-size: 18px; font-weight: 500; color: var(--csn-navy); font-family: monospace; }
+  .csn-score-status {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    background: var(--csn-navy); color: var(--csn-gold);
+    padding: 2px 6px; border-radius: 3px;
+  }
+  .csn-score-status.live { background: #B22222; color: #fff; }
+
+  /* ── STANDINGS ── */
+  .csn-standings-table { width: 100%; font-size: 12px; border-collapse: collapse; margin-bottom: 8px; }
+  .csn-standings-table th {
+    text-align: left; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-tertiary); padding: 4px 6px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .csn-standings-table th:not(:first-child) { text-align: center; }
+  .csn-standings-table td { padding: 5px 6px; border-bottom: 0.5px solid var(--border); color: var(--text-primary); }
+  .csn-standings-table td:not(:first-child) { text-align: center; color: var(--text-secondary); }
+  .csn-standings-table tr:last-child td { border-bottom: none; }
+  .csn-standings-table tr:first-child td { font-weight: 500; }
+  .csn-conf-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--csn-gold2);
+    margin: 10px 0 4px;
+  }
+
+  /* ── SIDEBAR WIDGETS ── */
+  .csn-widget { background: var(--bg-primary); border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 14px; }
+  .csn-widget:last-child { margin-bottom: 0; }
+  .csn-widget-head {
+    background: var(--csn-slate); padding: 7px 12px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--csn-gold);
+    border-bottom: 1px solid var(--csn-gold2);
+  }
+  .csn-widget-body { padding: 10px 12px; font-size: 12px; }
+
+  /* schedule */
+  .csn-sched-row { padding: 6px 0; border-bottom: 0.5px solid var(--border); }
+  .csn-sched-row:last-child { border-bottom: none; }
+  .csn-sched-row.past { opacity: 0.4; }
+  .csn-sched-row.now { background: #FFF8E0; margin: 0 -12px; padding: 6px 12px; border-left: 3px solid var(--csn-gold); }
+  .csn-sched-time { font-size: 10px; font-weight: 700; color: var(--csn-gold2); font-family: monospace; }
+  .csn-sched-row.past .csn-sched-time { color: var(--text-tertiary); }
+  .csn-sched-show { font-size: 12px; font-weight: 500; color: var(--text-primary); }
+  .csn-sched-desc { font-size: 11px; color: var(--text-secondary); }
+  .csn-now-badge {
+    display: inline-block; font-size: 9px; font-weight: 800;
+    background: var(--csn-gold); color: var(--csn-navy);
+    padding: 1px 5px; border-radius: 2px;
+    letter-spacing: 0.08em; margin-left: 6px; vertical-align: middle;
+  }
+
+  /* trending */
+  .csn-trend-item { padding: 6px 0; border-bottom: 0.5px solid var(--border); display: flex; gap: 8px; align-items: flex-start; }
+  .csn-trend-item:last-child { border-bottom: none; }
+  .csn-trend-num { font-weight: 700; color: var(--csn-gold2); flex-shrink: 0; font-size: 12px; }
+  .csn-trend-text { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+
+  @media (max-width: 700px) {
+    .csn-body { grid-template-columns: 1fr; }
+    .csn-scores-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- WM ARC CHROME -->
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+  <a class="arc-bmark" href="../csn/"><span class="arc-bmark-icon">⚾</span>CSN</a>
+</div>
+
+<!-- SCORES TICKER -->
+<div class="csn-ticker-strip">
+  <span class="csn-ticker-label">SCORES</span>
+  <div class="csn-ticker-track">
+    <span class="csn-ticker-inner" id="csn-ticker"></span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<div class="csn-header">
+  <div class="csn-brand">
+    <div class="csn-logo-boxes">
+      <div class="csn-lb">C</div>
+      <div class="csn-lb">S</div>
+      <div class="csn-lb">N</div>
+    </div>
+    <div class="csn-brand-text">
+      <div class="csn-brand-name">Continental Sports Network</div>
+      <div class="csn-tagline">Every Game, Every Day</div>
+    </div>
+  </div>
+  <div class="csn-header-right">
+    <div class="csn-clock" id="csn-clock"></div>
+    <div class="csn-live-badge"><div class="csn-live-dot"></div>LIVE</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="csn-nav">
+  <a href="#" class="active">Home</a>
+  <a href="#">Scores</a>
+  <a href="#">Standings</a>
+  <a href="#">NBA</a>
+  <a href="#">NAFA</a>
+  <a href="#">ANSA</a>
+  <a href="#">MLA</a>
+  <a href="#">Union Cup</a>
+  <a href="#">Women's Baseball</a>
+  <a href="#">Watch Live</a>
+</nav>
+
+<!-- BODY -->
+<div class="csn-body">
+  <div class="csn-main">
+
+    <!-- FEATURED -->
+    <div class="wm-section-label">Featured</div>
+    <div class="csn-featured" id="csn-featured"></div>
+
+    <!-- NBA SCORES -->
+    <div class="csn-scores-section">
+      <div class="csn-section-head">
+        <span class="csn-section-label">⚾ NBA — Recent Results</span>
+        <a href="#" class="csn-section-more">Full scores →</a>
+      </div>
+      <div class="csn-scores-grid" id="csn-scores-nba"></div>
+    </div>
+
+    <!-- NAFA SCORES -->
+    <div class="csn-scores-section">
+      <div class="csn-section-head">
+        <span class="csn-section-label">⚽ NAFA — Recent Results</span>
+        <a href="#" class="csn-section-more">Full scores →</a>
+      </div>
+      <div class="csn-scores-grid" id="csn-scores-nafa"></div>
+    </div>
+
+    <!-- ANSA SCORES -->
+    <div class="csn-scores-section">
+      <div class="csn-section-head">
+        <span class="csn-section-label">🏑 ANSA — Recent Results</span>
+        <a href="#" class="csn-section-more">Full scores →</a>
+      </div>
+      <div class="csn-scores-grid" id="csn-scores-ansa"></div>
+    </div>
+
+    <!-- MLA SCORES -->
+    <div class="csn-scores-section">
+      <div class="csn-section-head">
+        <span class="csn-section-label">⭕ MLA Aroball — Recent Results</span>
+        <a href="#" class="csn-section-more">Full scores →</a>
+      </div>
+      <div class="csn-scores-grid" id="csn-scores-mla"></div>
+    </div>
+
+    <!-- UNION CUP SCORES -->
+    <div class="csn-scores-section">
+      <div class="csn-section-head">
+        <span class="csn-section-label">🏉 Union Cup Rugby — Recent Results</span>
+        <a href="#" class="csn-section-more">Full scores →</a>
+      </div>
+      <div class="csn-scores-grid" id="csn-scores-rugby"></div>
+    </div>
+
+    <!-- WOMENS SCORES -->
+    <div class="csn-scores-section">
+      <div class="csn-section-head">
+        <span class="csn-section-label">⚾ Women's Baseball — Recent Results</span>
+        <a href="#" class="csn-section-more">Full scores →</a>
+      </div>
+      <div class="csn-scores-grid" id="csn-scores-womens"></div>
+    </div>
+
+    <!-- STANDINGS -->
+    <div class="csn-scores-section">
+      <div class="csn-section-head">
+        <span class="csn-section-label">📊 NBA Standings</span>
+        <a href="#" class="csn-section-more">Full standings →</a>
+      </div>
+      <div class="csn-conf-label">Eastern Conference</div>
+      <table class="csn-standings-table" id="csn-stand-nba-east"></table>
+      <div class="csn-conf-label">Western Conference</div>
+      <table class="csn-standings-table" id="csn-stand-nba-west"></table>
+    </div>
+
+    <div class="csn-scores-section">
+      <div class="csn-section-head">
+        <span class="csn-section-label">📊 ANSA Standings</span>
+        <a href="#" class="csn-section-more">Full standings →</a>
+      </div>
+      <table class="csn-standings-table" id="csn-stand-ansa"></table>
+    </div>
+
+    <div class="csn-scores-section">
+      <div class="csn-section-head">
+        <span class="csn-section-label">📊 Union Cup Standings</span>
+        <a href="#" class="csn-section-more">Full standings →</a>
+      </div>
+      <table class="csn-standings-table" id="csn-stand-rugby"></table>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="csn-sidebar">
+
+    <div class="csn-widget">
+      <div class="csn-widget-head">CSN Schedule</div>
+      <div class="csn-widget-body" id="csn-schedule"></div>
+    </div>
+
+    <div class="csn-widget">
+      <div class="csn-widget-head">Trending</div>
+      <div class="csn-widget-body" id="csn-trending"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="wm-footer">
+  <span>link://nan.csn.pr.usa &nbsp;·&nbsp; Continental Sports Network &nbsp;·&nbsp; Manhattan, District of Manhattan</span>
+  <div class="wm-footer-links">
+    <a href="#">About CSN</a>
+    <a href="#">Schedules</a>
+    <a href="#">Accessibility</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script src="../../stories.js"></script>
+<script>
+initAddressBar('nan.csn.pr.usa');
+
+// ── ARC CLOCK ──
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+
+// ── HEADER CLOCK ──
+function updateClock() {
+  const now = new Date();
+  const hh = String(now.getHours()).padStart(2,'0');
+  const mm = String(now.getMinutes()).padStart(2,'0');
+  document.getElementById('csn-clock').textContent = `${hh}:${mm}`;
+}
+setInterval(updateClock, 10000);
+updateClock();
+
+// ── TICKER ──
+const tickerText = CSN_TICKER_TODAY.join(' <span class="csn-ticker-sep">·</span> ');
+const tickerEl = document.getElementById('csn-ticker');
+tickerEl.innerHTML = tickerText + ' <span class="csn-ticker-sep">·</span> ' + tickerText;
+
+// ── FEATURED ──
+const lead = CSN_LEAD_TODAY;
+document.getElementById('csn-featured').innerHTML = `
+  <div class="csn-featured-tag">${lead.tag}</div>
+  <div class="csn-featured-hed">${lead.hed}</div>
+  <div class="csn-featured-dek">${lead.dek}</div>
+  <div class="csn-featured-meta">${lead.meta}</div>
+`;
+
+// ── SCORE CARDS ──
+function renderScores(scores, elId) {
+  document.getElementById(elId).innerHTML = scores.map(s => `
+    <div class="csn-score-card">
+      <div class="csn-score-teams">${s.home}<br><span style="color:var(--text-secondary); font-weight:400;">vs ${s.away}</span></div>
+      <div class="csn-score-result">
+        <span class="csn-score-num">${s.score}</span>
+        <span class="csn-score-status${s.status === 'LIVE' ? ' live' : ''}">${s.status}</span>
+      </div>
+    </div>
+  `).join('');
+}
+renderScores(CSN_SCORES_NBA,    'csn-scores-nba');
+renderScores(CSN_SCORES_NAFA,   'csn-scores-nafa');
+renderScores(CSN_SCORES_ANSA,   'csn-scores-ansa');
+renderScores(CSN_SCORES_MLA,    'csn-scores-mla');
+renderScores(CSN_SCORES_RUGBY,  'csn-scores-rugby');
+renderScores(CSN_SCORES_WOMENS, 'csn-scores-womens');
+
+// ── STANDINGS ──
+function renderWL(rows, elId, cols) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  const headers = cols.map(c => `<th>${c.label}</th>`).join('');
+  const body = rows.map(r => {
+    const cells = cols.map(c => `<td>${r[c.key]}</td>`).join('');
+    return `<tr>${cells}</tr>`;
+  }).join('');
+  el.innerHTML = `<thead><tr><th>Team</th>${headers}</tr></thead><tbody>${body}</tbody>`;
+}
+
+// NBA
+renderWL(CSN_STANDINGS_NBA.east, 'csn-stand-nba-east', [{label:'W',key:'w'},{label:'L',key:'l'}]);
+renderWL(CSN_STANDINGS_NBA.west, 'csn-stand-nba-west', [{label:'W',key:'w'},{label:'L',key:'l'}]);
+
+// ANSA
+renderWL(CSN_STANDINGS_ANSA, 'csn-stand-ansa', [{label:'W',key:'w'},{label:'L',key:'l'}]);
+
+// Rugby
+renderWL(CSN_STANDINGS_RUGBY, 'csn-stand-rugby', [{label:'P',key:'p'},{label:'W',key:'w'},{label:'L',key:'l'},{label:'Pts',key:'pts'}]);
+
+// ── SCHEDULE ──
+const nowMinutes = CURRENT_HOUR * 60 + _now.getMinutes();
+function schedMins(s) { return s.h * 60 + s.m; }
+function fmtTime(s) {
+  const ampm = s.h < 12 ? 'a.m.' : 'p.m.';
+  const h = s.h === 0 ? 12 : s.h > 12 ? s.h - 12 : s.h;
+  return `${h}:${String(s.m).padStart(2,'0')} ${ampm}`;
+}
+let currentIdx = -1;
+for (let i = 0; i < CSN_SCHEDULE.length; i++) {
+  const start = schedMins(CSN_SCHEDULE[i]);
+  const end = i + 1 < CSN_SCHEDULE.length ? schedMins(CSN_SCHEDULE[i+1]) : 1440;
+  if (nowMinutes >= start && nowMinutes < end) { currentIdx = i; break; }
+}
+document.getElementById('csn-schedule').innerHTML = CSN_SCHEDULE.map((s, i) => {
+  const isPast = schedMins(s) < nowMinutes && i !== currentIdx;
+  const isCurrent = i === currentIdx;
+  const cls = isPast ? 'csn-sched-row past' : isCurrent ? 'csn-sched-row now' : 'csn-sched-row';
+  const nowBadge = isCurrent ? '<span class="csn-now-badge">NOW</span>' : '';
+  return `<div class="${cls}">
+    <div class="csn-sched-time">${fmtTime(s)}${nowBadge}</div>
+    <div class="csn-sched-show">${s.show}</div>
+    <div class="csn-sched-desc">${s.desc}</div>
+  </div>`;
+}).join('');
+
+// ── TRENDING ──
+document.getElementById('csn-trending').innerHTML = CSN_TOP_STORIES_TODAY.map((item, i) => `
+  <div class="csn-trend-item">
+    <span class="csn-trend-num">${i + 1}.</span>
+    <span class="csn-trend-text">${item}</span>
+  </div>
+`).join('');
+</script>
+</body>
+</html>
