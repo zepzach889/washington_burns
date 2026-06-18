@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Washington Burns TL — Teams &amp; Franchises</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410; --paper: #f5f0e8; --aged: #e8e0cc; --rust: #8b3a2a;
+    --rust-light: #c4593d; --slate: #3d4a5c; --slate-light: #5a6d84;
+    --gold: #b8860b; --gold-light: #d4a017; --cream: #faf6ee;
+    --border: #c8b99a; --shadow: rgba(26,20,16,0.15); --film: #2a1f0e;
+    --green: #4a7c59;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--paper); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.7; background-image: radial-gradient(ellipse at 20% 0%, rgba(184,134,11,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 100%, rgba(61,74,92,0.06) 0%, transparent 60%); min-height: 100vh; }
+  .masthead { background-color: var(--film); color: var(--paper); padding: 3rem 2rem 2.5rem; text-align: center; position: relative; overflow: hidden; }
+  .masthead::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(245,240,232,0.03) 40px, rgba(245,240,232,0.03) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(245,240,232,0.03) 40px, rgba(245,240,232,0.03) 41px); }
+  .masthead::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 12px; background-image: repeating-linear-gradient(90deg, var(--film) 0px, var(--film) 16px, var(--gold) 16px, var(--gold) 24px, var(--film) 24px, var(--film) 40px); opacity: 0.4; }
+  .masthead-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.75rem; position: relative; }
+  .masthead h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.1; position: relative; margin-bottom: 0.5rem; }
+  .masthead-sub { font-family: 'Source Serif 4', serif; font-style: italic; font-size: 1.05rem; color: rgba(245,240,232,0.7); position: relative; margin-bottom: 1.5rem; }
+  .masthead-rule { width: 60px; height: 2px; background: var(--gold); margin: 0 auto 1.5rem; position: relative; }
+  .masthead-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; color: rgba(245,240,232,0.4); position: relative; }
+  .sibling-nav { background-color: var(--rust); padding: 0; }
+  .sibling-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; overflow-x: auto; scrollbar-width: none; }
+  .sibling-inner::-webkit-scrollbar { display: none; }
+  .sibling-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.5); padding: 0.75rem 1.2rem; white-space: nowrap; border-right: 1px solid rgba(245,240,232,0.15); flex-shrink: 0; }
+  .sibling-inner a { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.75); text-decoration: none; padding: 0.75rem 1.1rem; white-space: nowrap; border-right: 1px solid rgba(245,240,232,0.1); transition: all 0.2s; }
+  .sibling-inner a:hover { color: var(--paper); background: rgba(245,240,232,0.1); }
+  .sibling-inner a.current { color: var(--paper); font-weight: 600; background: rgba(245,240,232,0.12); }
+  .toc-bar { background-color: var(--slate); padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px var(--shadow); }
+  .toc-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; overflow-x: auto; scrollbar-width: none; gap: 0; }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.4); padding: 0.9rem 1.2rem; white-space: nowrap; border-right: 1px solid rgba(245,240,232,0.1); }
+  .toc-inner a { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.7); text-decoration: none; padding: 0.9rem 1rem; white-space: nowrap; border-right: 1px solid rgba(245,240,232,0.08); transition: all 0.2s; }
+  .toc-inner a:hover { color: var(--gold-light); background: rgba(245,240,232,0.05); }
+  .container { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
+  .section { margin-bottom: 5rem; }
+  .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--ink); }
+  .section-number { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: var(--border); line-height: 1; flex-shrink: 0; }
+  .section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate-light); margin-bottom: 0.25rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; line-height: 1.2; }
+  .subsection { margin-bottom: 2.5rem; }
+  .subsection-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--rust); margin-bottom: 1rem; padding-left: 1rem; border-left: 3px solid var(--rust); }
+  .subsection-title.slate { color: var(--slate); border-left-color: var(--slate); }
+  .subsection-title.gold { color: var(--gold); border-left-color: var(--gold); }
+  .subsection-title.ink { color: var(--ink); border-left-color: var(--ink); }
+  .subsection-title.green { color: var(--green); border-left-color: var(--green); }
+  .prose { margin-bottom: 1.25rem; }
+  .prose p { margin-bottom: 0.9rem; font-size: 0.95rem; color: #2a2018; }
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 4rem 0; }
+  .notice { background: rgba(61,74,92,0.07); border: 1px solid rgba(61,74,92,0.2); border-radius: 2px; padding: 0.75rem 1rem; margin-top: 1rem; display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.85rem; }
+  .notice-icon { color: var(--gold); flex-shrink: 0; font-size: 0.8rem; margin-top: 0.1rem; }
+  .league-header { background: var(--film); color: var(--paper); border-radius: 2px; padding: 1.5rem 2rem; margin-bottom: 2rem; display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; }
+  .league-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; margin-bottom: 0.25rem; }
+  .league-full-name { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.75rem; }
+  .league-desc { font-size: 0.88rem; color: rgba(245,240,232,0.75); line-height: 1.55; max-width: 65ch; }
+  .league-stats { display: flex; flex-direction: column; gap: 0.4rem; text-align: right; flex-shrink: 0; }
+  .league-stat { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.5); }
+  .league-stat strong { color: var(--gold-light); font-size: 0.85rem; display: block; font-family: 'Playfair Display', serif; letter-spacing: 0; text-transform: none; }
+  .division-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--paper); padding: 0.35rem 0.9rem; display: inline-block; margin-bottom: 1rem; border-radius: 2px; }
+  .division-label.rust { background: var(--rust); }
+  .division-label.slate { background: var(--slate); }
+  .division-label.ink { background: var(--film); }
+  .division-label.green { background: var(--green); }
+  .division-label.gold { background: var(--gold); color: var(--ink); }
+  .nation-label { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--slate); margin: 1.75rem 0 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+  .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+  .team-card { background: var(--cream); border: 1px solid var(--border); border-radius: 2px; padding: 1rem 1.1rem 1rem 1.4rem; position: relative; }
+  .team-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; border-radius: 2px 0 0 2px; background: var(--rust); }
+  .team-card.east::before { background: var(--rust); }
+  .team-card.west::before { background: var(--slate); }
+  .team-card.green::before { background: var(--green); }
+  .team-card.gold::before { background: var(--gold); }
+  .team-city { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--slate-light); margin-bottom: 0.15rem; }
+  .team-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; line-height: 1.2; }
+  .team-meta { font-size: 0.78rem; color: #5a4e42; line-height: 1.45; }
+  .team-meta span { display: block; }
+  .team-meta .meta-label { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--slate-light); margin-top: 0.3rem; }
+  @media (max-width: 640px) {
+    .league-header { grid-template-columns: 1fr; }
+    .league-stats { text-align: left; flex-direction: row; flex-wrap: wrap; gap: 1rem; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 420px) { .team-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-eyebrow">Washington Burns Timeline — Canon Reference</div>
+  <h1>Teams &amp; Franchises</h1>
+  <div class="masthead-sub">Current rosters, divisions, and home venues for all six professional leagues, as of the 2026 season</div>
+  <div class="masthead-rule"></div>
+  <div class="masthead-meta">Version 1 — June 2026 &nbsp;·&nbsp; Hard Canon Unless Marked Otherwise &nbsp;·&nbsp; Division 814 Internal Reference</div>
+</div>
+
+<nav class="sibling-nav">
+  <div class="sibling-inner">
+    <span class="sibling-label">Also In This Series</span>
+    <a href="wbt_sports_history.html">Sports History</a>
+    <a href="wbt_sports_teams.html" class="current">Teams &amp; Franchises</a>
+    <a href="wbt_sports_olympics.html">Olympics</a>
+  </div>
+</nav>
+
+<nav class="toc-bar">
+  <div class="toc-inner">
+    <span class="toc-label">Jump To</span>
+    <a href="#nba">Baseball (NBA)</a>
+    <a href="#nafa">Football (NAFA)</a>
+    <a href="#ansa">Stickball (ANSA)</a>
+    <a href="#mla">Aroball (MLA)</a>
+    <a href="#rugby">Rugby (Union Cup)</a>
+    <a href="#wpbl">Women's Baseball</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<div class="subsection" style="margin-bottom:3rem;">
+  <div class="prose">
+    <p>The professional franchise landscape of the Washington Burns Timeline, as of the 2026 season. Six leagues across five sports and multiple sovereign nations. Home venues are listed as TBD pending a future venue-naming pass; all team names and city assignments are locked canon from the franchise planning spreadsheet.</p>
+    <p>For the history and development of each league, see the <a href="wbt_sports_history.html" style="color:var(--slate);">Sports History</a> page.</p>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- NBA -->
+<section class="section" id="nba">
+  <div class="section-header">
+    <div class="section-number">01</div>
+    <div><div class="section-eyebrow">Section One</div><div class="section-title">Baseball</div></div>
+  </div>
+
+  <div class="league-header">
+    <div>
+      <div class="league-full-name">National Baseball Association</div>
+      <div class="league-name">NBA</div>
+      <div class="league-desc">The oldest professional league in WBT, consolidating from regional circuits in the 1910s. US-only. Championship: the <strong>Diamond Classic</strong>. Two conferences divided by the Mississippi River — Eastern (15 teams) and Western (15 teams). Detroit and Milwaukee are Canadian cities ITTL and do not appear in the NBA roster.</div>
+    </div>
+    <div class="league-stats">
+      <div class="league-stat">Teams<strong>30</strong></div>
+      <div class="league-stat">Founded<strong>1910s</strong></div>
+      <div class="league-stat">Championship<strong>Diamond Classic</strong></div>
+      <div class="league-stat">Scope<strong>USA Only</strong></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title rust">Eastern Conference</div>
+    <div class="prose"><p>15 teams east of the Mississippi River. Anchored by the industrial Northeast, the mid-Atlantic coast, and the Appalachian and Deep South interior. Franklin D.W. sits on the Ohio River and falls in the Eastern Conference.</p></div>
+    <span class="division-label rust">Eastern Conference &mdash; 15 Teams</span>
+    <div class="team-grid">
+      <div class="team-card east">
+        <div class="team-city">Manhattan</div>
+        <div class="team-name">Manhattan Islanders</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Brooklyn</div>
+        <div class="team-name">Brooklyn Dockmen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Philadelphia</div>
+        <div class="team-name">Philadelphia Colonials</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Boston</div>
+        <div class="team-name">Boston Navigators</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Baltimore</div>
+        <div class="team-name">Baltimore Skipjacks</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Pittsburgh</div>
+        <div class="team-name">Pittsburgh Ironmen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Richmond</div>
+        <div class="team-name">Richmond Herons</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Charlotte</div>
+        <div class="team-name">Charlotte Tarhawks</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Charleston</div>
+        <div class="team-name">Charleston Palmettoes</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Atlanta</div>
+        <div class="team-name">Atlanta Locomotives</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Nashville</div>
+        <div class="team-name">Nashville Volunteers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Birmingham</div>
+        <div class="team-name">Birmingham Vulcans</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Franklin D.W.</div>
+        <div class="team-name">Franklin D.W. Senators</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">St. Augustine</div>
+        <div class="team-name">St. Augustine Directors</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Miami</div>
+        <div class="team-name">Miami Everglades</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title slate">Western Conference</div>
+    <div class="prose"><p>15 teams west of the Mississippi River, spanning the Gulf South, Great Plains, Mountain states, and the Pacific Northwest.</p></div>
+    <span class="division-label slate">Western Conference &mdash; 15 Teams</span>
+    <div class="team-grid">
+      <div class="team-card west">
+        <div class="team-city">New Orleans</div>
+        <div class="team-name">New Orleans Creoles</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Little Rock</div>
+        <div class="team-name">Little Rock Riflemen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Memphis</div>
+        <div class="team-name">Memphis Pharaohs</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Indianapolis</div>
+        <div class="team-name">Indianapolis Hoosiers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Calumet</div>
+        <div class="team-name">Calumet Lakers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">St. Louis</div>
+        <div class="team-name">St. Louis Rivermen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Missouri City</div>
+        <div class="team-name">Missouri City Scouts</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Fort Calhoun</div>
+        <div class="team-name">Fort Calhoun Cannoneers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Mahkato</div>
+        <div class="team-name">Mahkato Bluemen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Metropolis</div>
+        <div class="team-name">Metropolis Metropolitans</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Prosperity</div>
+        <div class="team-name">Prosperity Drillers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Hugosville</div>
+        <div class="team-name">Hugosville Miners</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Gigadohi City</div>
+        <div class="team-name">Gigadohi City Arrowmen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">New Boston</div>
+        <div class="team-name">New Boston Lumberjacks</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Astoria</div>
+        <div class="team-name">Astoria Mariners</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- NAFA -->
+<section class="section" id="nafa">
+  <div class="section-header">
+    <div class="section-number">02</div>
+    <div><div class="section-eyebrow">Section Two</div><div class="section-title">Football (Association Football)</div></div>
+  </div>
+
+  <div class="league-header">
+    <div>
+      <div class="league-full-name">North American Football Association</div>
+      <div class="league-name">NAFA</div>
+      <div class="league-desc">The continent's premier football league, spanning five sovereign nations plus associate members. Championship: the <strong>American Cup</strong>. The American Cup champion earns automatic qualification to the WFA Global Cup. The WFA's Olympic tournament functions as the national-team world championship; the Global Cup is the club/franchise equivalent.</div>
+    </div>
+    <div class="league-stats">
+      <div class="league-stat">Teams<strong>43</strong></div>
+      <div class="league-stat">Founded<strong>1920s</strong></div>
+      <div class="league-stat">Championship<strong>American Cup</strong></div>
+      <div class="league-stat">Scope<strong>Continental</strong></div>
+    </div>
+  </div>
+
+  <div class="nation-label">United States of America</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">Manhattan</div>
+        <div class="team-name">Manhattan FC</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Philadelphia</div>
+        <div class="team-name">Philadelphia Liberty</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Boston</div>
+        <div class="team-name">Boston Continentals</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Baltimore</div>
+        <div class="team-name">Baltimore Tidesmen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Pittsburgh</div>
+        <div class="team-name">Pittsburgh Forgers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Atlanta</div>
+        <div class="team-name">Atlanta Southerners</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Nashville</div>
+        <div class="team-name">Nashville Cumberlanders</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">New Orleans</div>
+        <div class="team-name">New Orleans Crescents</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Franklin D.W.</div>
+        <div class="team-name">Franklin Nationals</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Calumet</div>
+        <div class="team-name">Calumet Athletic FC</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">St. Louis</div>
+        <div class="team-name">St. Louis Mounders</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Missouri City</div>
+        <div class="team-name">Missouri City Frontiersmen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Prosperity</div>
+        <div class="team-name">Prosperity Roughnecks</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Gigadohi City</div>
+        <div class="team-name">Gigadohi FC</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">New Boston</div>
+        <div class="team-name">New Boston Evergreens</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Miami</div>
+        <div class="team-name">Miami Floridians</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+
+  <div class="nation-label">Canada</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">Aurora</div>
+        <div class="team-name">Aurora MPs</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Toronto</div>
+        <div class="team-name">Toronto Maples</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Montreal</div>
+        <div class="team-name">Montreal Voyageurs</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Quebec City</div>
+        <div class="team-name">Quebec City Citadels</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Vancouver</div>
+        <div class="team-name">Vancouver Rainmakers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Pugetsburgh</div>
+        <div class="team-name">Pugetsburgh Sounders</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Calgary</div>
+        <div class="team-name">Calgary Ranchmen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+
+  <div class="nation-label">Federation of Texas</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">Galvesport</div>
+        <div class="team-name">Galvesport Buccaneers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Texopolis</div>
+        <div class="team-name">Texopolis FC</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">San Antonio</div>
+        <div class="team-name">San Antonio Rancheros</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Santa Fe</div>
+        <div class="team-name">Santa Fe Athletic FC</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+
+  <div class="nation-label">Union of the Californias</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">San Francisco</div>
+        <div class="team-name">San Francisco Pacifics</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Los Angeles</div>
+        <div class="team-name">Los Angeles Californianos</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">San Diego</div>
+        <div class="team-name">San Diego Missions</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Monterey</div>
+        <div class="team-name">Monterey Bears</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Beacon</div>
+        <div class="team-name">Beacon Pioneers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+
+  <div class="nation-label">Empire of Mexico</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">Mexico City</div>
+        <div class="team-name">Mexico City Imperiales</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Guadalajara</div>
+        <div class="team-name">Guadalajara Rayos</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Monterrey</div>
+        <div class="team-name">Monterrey Acereros</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Puebla</div>
+        <div class="team-name">Puebla FC</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">León</div>
+        <div class="team-name">León Esmeraldas</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+
+  <div class="nation-label">Associate Members</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">Honolulu</div>
+        <div class="team-name">Honolulu Nalu</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">San Juan</div>
+        <div class="team-name">San Juan Boricuas</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Havana</div>
+        <div class="team-name">Havana Tropicales</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Santiago de Cuba</div>
+        <div class="team-name">Santiago de Cuba Orientes</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">San José</div>
+        <div class="team-name">San José República FC</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Panama City</div>
+        <div class="team-name">Panama City Istmeños</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+
+
+  <div class="notice">
+    <div class="notice-icon">&#9656;</div>
+    <div>Associate Members (Hawaii, Cuba, Puerto Rico, FRCA) participate in NAFA but field their own separate national teams in WFA Olympic competition. Within-league conference or divisional structure is not yet locked.</div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ANSA -->
+<section class="section" id="ansa">
+  <div class="section-header">
+    <div class="section-number">03</div>
+    <div><div class="section-eyebrow">Section Three</div><div class="section-title">Stickball</div></div>
+  </div>
+
+  <div class="league-header">
+    <div>
+      <div class="league-full-name">All-Nation Stickball Association</div>
+      <div class="league-name">ANSA</div>
+      <div class="league-desc">Rooted in the Native Nations of the Mississippi Valley — Gigadohi, Kanasaw, and Lakota — stickball is a US-only league with its cultural center in the interior South and Great Plains. "All-Nation" carries a double meaning: the nations of the US broadly, and specifically the Native Nations that anchor the sport's origins. Championship: the <strong>All-Nation Championship</strong>. Four divisions.</div>
+    </div>
+    <div class="league-stats">
+      <div class="league-stat">Teams<strong>22</strong></div>
+      <div class="league-stat">Founded<strong>1920s</strong></div>
+      <div class="league-stat">Championship<strong>All-Nation Championship</strong></div>
+      <div class="league-stat">Scope<strong>USA Only</strong></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+  <div class="subsection-title green">Native Heartland Division</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">Gigadohi City</div>
+        <div class="team-name">Gigadohi City United</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">New Echota</div>
+        <div class="team-name">New Echota Nighthawks</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Pushmataha</div>
+        <div class="team-name">Pushmataha Redsticks</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Oyathira</div>
+        <div class="team-name">Oyathira Coyotes</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Lakota City</div>
+        <div class="team-name">Lakota City Thunderbirds</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Kanza</div>
+        <div class="team-name">Kanza Winds</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+  </div>
+
+  <div class="subsection">
+  <div class="subsection-title rust">Mississippi/Gulf Division</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">Natchez</div>
+        <div class="team-name">Natchez Bluffmen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Biloxi</div>
+        <div class="team-name">Biloxi Gulfers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Mobile</div>
+        <div class="team-name">Mobile Bayoumen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">New Orleans</div>
+        <div class="team-name">New Orleans Deltas</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Little Rock</div>
+        <div class="team-name">Little Rock Stonemen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Memphis</div>
+        <div class="team-name">Memphis Riverbenders</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">St. Louis</div>
+        <div class="team-name">St. Louis Ferrymen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+  </div>
+
+  <div class="subsection">
+  <div class="subsection-title slate">Midwest/Upper Division</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">Missouri City</div>
+        <div class="team-name">Missouri City Plainsmen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Calumet</div>
+        <div class="team-name">Calumet Shoremen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Franklin D.W.</div>
+        <div class="team-name">Franklin Federals</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Nashville</div>
+        <div class="team-name">Nashville Fiddlers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Louisville</div>
+        <div class="team-name">Louisville Colonels</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Prosperity</div>
+        <div class="team-name">Prosperity Oilers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+  </div>
+
+  <div class="subsection">
+  <div class="subsection-title ink">East/West Division</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">Philadelphia</div>
+        <div class="team-name">Philadelphia Bells</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Baltimore</div>
+        <div class="team-name">Baltimore Fishermen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">New Boston</div>
+        <div class="team-name">New Boston Chinooks</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+  </div>
+
+
+</section>
+
+<hr class="section-divider">
+
+<!-- MLA -->
+<section class="section" id="mla">
+  <div class="section-header">
+    <div class="section-number">04</div>
+    <div><div class="section-eyebrow">Section Four</div><div class="section-title">Aroball</div></div>
+  </div>
+
+  <div class="league-header">
+    <div>
+      <div class="league-full-name">Major League Aroball</div>
+      <div class="league-name">MLA</div>
+      <div class="league-desc">Invented in a Texas schoolyard in 1900, Aroball (commonly called "Wallball") spread across the borderlands and became a continental sport by mid-century. Texas, California, and Mexico form the cultural heart of the MLA; US teams are a real but minority presence. Championship: the <strong>MLA Cup</strong>.</div>
+    </div>
+    <div class="league-stats">
+      <div class="league-stat">Teams<strong>32</strong></div>
+      <div class="league-stat">Founded<strong>1941</strong></div>
+      <div class="league-stat">Championship<strong>MLA Cup</strong></div>
+      <div class="league-stat">Scope<strong>Continental</strong></div>
+    </div>
+  </div>
+
+  <div class="nation-label">Federation of Texas</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">Galvesport</div>
+        <div class="team-name">Galvesport Breakers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Texopolis</div>
+        <div class="team-name">Texopolis Texians</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">San Antonio</div>
+        <div class="team-name">San Antonio Vaqueros</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Stephensville</div>
+        <div class="team-name">Stephensville Rangers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Santa Fe</div>
+        <div class="team-name">Santa Fe Sundancers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Yuma</div>
+        <div class="team-name">Yuma Scorpions</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+
+  <div class="nation-label">Union of the Californias</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">San Francisco</div>
+        <div class="team-name">San Francisco Fogcutters</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Los Angeles</div>
+        <div class="team-name">Los Angeles Dons</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">San Diego</div>
+        <div class="team-name">San Diego Padres</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Monterey</div>
+        <div class="team-name">Monterey Presidios</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">New Helvetica</div>
+        <div class="team-name">New Helvetica Prospectors</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Beacon</div>
+        <div class="team-name">Beacon Saints</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+
+  <div class="nation-label">Empire of Mexico</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">Mexico City</div>
+        <div class="team-name">Mexico City Tigres</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Guadalajara</div>
+        <div class="team-name">Guadalajara Charros</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Monterrey</div>
+        <div class="team-name">Monterrey Norteños</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Puebla</div>
+        <div class="team-name">Puebla Guerreros</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">León</div>
+        <div class="team-name">León Bajíos</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+
+  <div class="nation-label">United States of America</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">New Orleans</div>
+        <div class="team-name">New Orleans Pelicans</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Little Rock</div>
+        <div class="team-name">Little Rock Razorbacks</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">St. Louis</div>
+        <div class="team-name">St. Louis Brewers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Astoria</div>
+        <div class="team-name">Astoria Explorers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">New Boston</div>
+        <div class="team-name">New Boston Bears</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Hugosville</div>
+        <div class="team-name">Hugosville Rockies</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Prosperity</div>
+        <div class="team-name">Prosperity Gunslingers</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Franklin D.W.</div>
+        <div class="team-name">Franklin Statesmen</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Calumet</div>
+        <div class="team-name">Calumet Stormbirds</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Miami</div>
+        <div class="team-name">Miami Barracudas</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">St. Augustine</div>
+        <div class="team-name">St. Augustine Galleons</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+
+  <div class="nation-label">Other NAU Members</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">Vancouver</div>
+        <div class="team-name">Vancouver Ravens</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Pugetsburgh</div>
+        <div class="team-name">Pugetsburgh Orcas</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Havana</div>
+        <div class="team-name">Havana Corsairs</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">San Juan</div>
+        <div class="team-name">San Juan Huracanes</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+
+
+</section>
+
+<hr class="section-divider">
+
+<!-- UNION CUP -->
+<section class="section" id="rugby">
+  <div class="section-header">
+    <div class="section-number">05</div>
+    <div><div class="section-eyebrow">Section Five</div><div class="section-title">Rugby</div></div>
+  </div>
+
+  <div class="league-header">
+    <div>
+      <div class="league-full-name">Union Cup — Continental Rugby Championship</div>
+      <div class="league-name">Union Cup</div>
+      <div class="league-desc">Unified during the Langston era (1971–1977) from three distinct traditions: the institutional/collegiate tradition, the Appalachian working-class tradition, and the Californian Commonwealth-immigrant tradition. Spans the USA, Union of the Californias, Canada, Hawaii, and the Federation of Texas. Governed globally by the newly founded World Rugby Council (WRC, est. 2026). Championship: the <strong>Union Cup</strong>.</div>
+    </div>
+    <div class="league-stats">
+      <div class="league-stat">Teams<strong>18</strong></div>
+      <div class="league-stat">Unified<strong>1970s</strong></div>
+      <div class="league-stat">Championship<strong>Union Cup</strong></div>
+      <div class="league-stat">Global Body<strong>WRC (est. 2026)</strong></div>
+    </div>
+  </div>
+
+  <div class="nation-label">United States</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">Boston</div>
+        <div class="team-name">New England RC</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>United States</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Philadelphia</div>
+        <div class="team-name">Philadelphia Keystones</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>United States</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Pittsburgh</div>
+        <div class="team-name">Pittsburgh Three Rivers RC</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>United States</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Franklin D.W.</div>
+        <div class="team-name">Franklin Capitol RC</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>United States</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Baltimore</div>
+        <div class="team-name">Baltimore Clippers</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>United States</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">St. Louis</div>
+        <div class="team-name">St. Louis Rugby Association</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>United States</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+
+  <div class="nation-label">Union of the Californias</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">San Francisco</div>
+        <div class="team-name">Golden Gate RC</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>Union of the Californias</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Los Angeles</div>
+        <div class="team-name">LA Condors</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>Union of the Californias</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">San Diego</div>
+        <div class="team-name">San Diego Redtails</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>Union of the Californias</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+
+  <div class="nation-label">Canada</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">Toronto</div>
+        <div class="team-name">Toronto Royals</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>Canada</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Aurora</div>
+        <div class="team-name">Aurora Dominion RC</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>Canada</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Montreal</div>
+        <div class="team-name">Montreal Habitants</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>Canada</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Vancouver</div>
+        <div class="team-name">Vancouver RC</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>Canada</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Pugetsburgh</div>
+        <div class="team-name">Pugetsburgh Columbians</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>Canada</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Calgary</div>
+        <div class="team-name">Calgary Prairie RC</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>Canada</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+
+  <div class="nation-label">Hawaii</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">Honolulu</div>
+        <div class="team-name">Honolulu Aloha RC</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>Hawaii</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+
+  <div class="nation-label">Federation of Texas</div>
+  <div class="team-grid">
+      <div class="team-card">
+        <div class="team-city">Texopolis</div>
+        <div class="team-name">Texopolis Rangers</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>Federation of Texas</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-city">Galvesport</div>
+        <div class="team-name">Galvesport RC</div>
+        <div class="team-meta">
+          <span class="meta-label">Nation</span>
+          <span>Federation of Texas</span>
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+  </div>
+
+
+</section>
+
+<hr class="section-divider">
+
+<!-- WPBL -->
+<section class="section" id="wpbl">
+  <div class="section-header">
+    <div class="section-number">06</div>
+    <div><div class="section-eyebrow">Section Six</div><div class="section-title">Women's Professional Baseball</div></div>
+  </div>
+
+  <div class="league-header">
+    <div>
+      <div class="league-full-name">Women's Professional Baseball League</div>
+      <div class="league-name">WPBL</div>
+      <div class="league-desc">Founded during the Global War era as men were drafted; integrated from day one. Nearly eliminated during the Nolan/Priest era; survived by the narrowest margin. By the Nakamura era (2025–2031) the WPBL has reached near-parity with the men's NBA — simply part of what American baseball means, without qualifier. US-only. Two conferences mirroring the NBA's East/West structure. Championship name TBD.</div>
+    </div>
+    <div class="league-stats">
+      <div class="league-stat">Teams<strong>16</strong></div>
+      <div class="league-stat">Founded<strong>1930s</strong></div>
+      <div class="league-stat">Championship<strong>TBD</strong></div>
+      <div class="league-stat">Scope<strong>USA Only</strong></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title rust">Eastern Conference</div>
+    <span class="division-label rust">Eastern Conference &mdash; 8 Teams</span>
+    <div class="team-grid">
+      <div class="team-card east">
+        <div class="team-city">Manhattan</div>
+        <div class="team-name">Manhattan Roses</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Philadelphia</div>
+        <div class="team-name">Philadelphia Belles</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Boston</div>
+        <div class="team-name">Boston Sirens</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Baltimore</div>
+        <div class="team-name">Baltimore Pearls</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Atlanta</div>
+        <div class="team-name">Atlanta Magnolias</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Franklin D.W.</div>
+        <div class="team-name">Franklin Suffragettes</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Miami</div>
+        <div class="team-name">Miami Flamingos</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card east">
+        <div class="team-city">Charlotte</div>
+        <div class="team-name">Charlotte Wrens</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title slate">Western Conference</div>
+    <span class="division-label slate">Western Conference &mdash; 8 Teams</span>
+    <div class="team-grid">
+      <div class="team-card west">
+        <div class="team-city">New Orleans</div>
+        <div class="team-name">New Orleans Violets</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Memphis</div>
+        <div class="team-name">Memphis Queens</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Calumet</div>
+        <div class="team-name">Calumet Swans</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">St. Louis</div>
+        <div class="team-name">St. Louis Tigerlilies</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Gigadohi City</div>
+        <div class="team-name">Gigadohi City Willows</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">New Boston</div>
+        <div class="team-name">New Boston Ravens</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Astoria</div>
+        <div class="team-name">Astoria Selkies</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+      <div class="team-card west">
+        <div class="team-city">Mahkato</div>
+        <div class="team-name">Mahkato Daisies</div>
+        <div class="team-meta">
+          <span class="meta-label">Venue</span>
+          <span>TBD</span>
+          <span class="meta-label">Founded</span>
+          <span>TBD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+</div>
+</body>
+</html>

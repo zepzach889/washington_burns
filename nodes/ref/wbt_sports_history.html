@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Washington Burns TL — Sports History</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #1a1410; --paper: #f5f0e8; --aged: #e8e0cc; --rust: #8b3a2a;
+    --rust-light: #c4593d; --slate: #3d4a5c; --slate-light: #5a6d84;
+    --gold: #b8860b; --gold-light: #d4a017; --cream: #faf6ee;
+    --border: #c8b99a; --shadow: rgba(26,20,16,0.15); --film: #2a1f0e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--paper); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.7; background-image: radial-gradient(ellipse at 20% 0%, rgba(184,134,11,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 100%, rgba(61,74,92,0.06) 0%, transparent 60%); min-height: 100vh; }
+  .masthead { background-color: var(--film); color: var(--paper); padding: 3rem 2rem 2.5rem; text-align: center; position: relative; overflow: hidden; }
+  .masthead::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(245,240,232,0.03) 40px, rgba(245,240,232,0.03) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(245,240,232,0.03) 40px, rgba(245,240,232,0.03) 41px); }
+  .masthead::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 12px; background-image: repeating-linear-gradient(90deg, var(--film) 0px, var(--film) 16px, var(--gold) 16px, var(--gold) 24px, var(--film) 24px, var(--film) 40px); opacity: 0.4; }
+  .masthead-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.75rem; position: relative; }
+  .masthead h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.1; position: relative; margin-bottom: 0.5rem; }
+  .masthead-sub { font-family: 'Source Serif 4', serif; font-style: italic; font-size: 1.05rem; color: rgba(245,240,232,0.7); position: relative; margin-bottom: 1.5rem; }
+  .masthead-rule { width: 60px; height: 2px; background: var(--gold); margin: 0 auto 1.5rem; position: relative; }
+  .masthead-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; color: rgba(245,240,232,0.4); position: relative; }
+  .toc-bar { background-color: var(--slate); padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px var(--shadow); }
+  .toc-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; overflow-x: auto; scrollbar-width: none; gap: 0; }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.4); padding: 0.9rem 1.2rem; white-space: nowrap; border-right: 1px solid rgba(245,240,232,0.1); }
+  .toc-inner a { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.7); text-decoration: none; padding: 0.9rem 1rem; white-space: nowrap; border-right: 1px solid rgba(245,240,232,0.08); transition: all 0.2s; }
+  .toc-inner a:hover { color: var(--gold-light); background: rgba(245,240,232,0.05); }
+  .container { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
+  .section { margin-bottom: 5rem; }
+  .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--ink); }
+  .section-number { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: var(--border); line-height: 1; flex-shrink: 0; }
+  .section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate-light); margin-bottom: 0.25rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; line-height: 1.2; }
+  .subsection { margin-bottom: 2.5rem; }
+  .subsection-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--rust); margin-bottom: 1rem; padding-left: 1rem; border-left: 3px solid var(--rust); }
+  .subsection-title.slate { color: var(--slate); border-left-color: var(--slate); }
+  .subsection-title.gold { color: var(--gold); border-left-color: var(--gold); }
+  .subsection-title.ink { color: var(--ink); border-left-color: var(--ink); }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
+  .card-grid.two-col { grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); }
+  .card { background: var(--cream); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem 1.5rem; position: relative; }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--rust); border-radius: 2px 0 0 2px; }
+  .card.slate::before { background: var(--slate); }
+  .card.gold::before { background: var(--gold); }
+  .card.ink::before { background: var(--ink); }
+  .card.green::before { background: #4a7c59; }
+  .card-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate-light); margin-bottom: 0.4rem; }
+  .card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--ink); }
+  .card p, .card li { font-size: 0.88rem; line-height: 1.6; color: #3a3028; }
+  .card ul { padding-left: 1.1rem; margin-top: 0.25rem; }
+  .card ul li { margin-bottom: 0.25rem; }
+  .prose { margin-bottom: 1.25rem; }
+  .prose p { margin-bottom: 0.9rem; font-size: 0.95rem; color: #2a2018; }
+  .notice { background: rgba(61,74,92,0.07); border: 1px solid rgba(61,74,92,0.2); border-radius: 2px; padding: 0.75rem 1rem; margin-top: 1rem; display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.85rem; }
+  .notice-icon { color: var(--gold); flex-shrink: 0; font-size: 0.8rem; margin-top: 0.1rem; }
+  .period-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--paper); background: var(--slate); padding: 0.4rem 1rem; display: inline-block; margin-bottom: 1rem; border-radius: 2px; }
+  .period-label.rust-bg { background: var(--rust); }
+  .period-label.ink-bg { background: var(--film); }
+  .timeline { position: relative; padding-left: 2rem; margin: 1rem 0; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 0.5rem; bottom: 0.5rem; width: 2px; background: linear-gradient(to bottom, var(--rust), var(--slate)); }
+  .timeline-item { position: relative; padding: 0.6rem 0 0.6rem 1.5rem; margin-bottom: 0.25rem; }
+  .timeline-item::before { content: ''; position: absolute; left: -0.3rem; top: 1rem; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--rust); border: 2px solid var(--paper); }
+  .timeline-year { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 0.2rem; }
+  .timeline-content { font-size: 0.88rem; color: #2a2018; line-height: 1.55; }
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 4rem 0; }
+  .canon-flag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.15rem 0.4rem; border-radius: 2px; margin-left: 0.4rem; vertical-align: middle; }
+  .canon-flag.hard { background: var(--rust); color: white; }
+  .canon-flag.soft { background: var(--slate); color: white; }
+  .canon-flag.open { background: var(--gold); color: var(--ink); }
+  @media (max-width: 640px) {
+    .card-grid.two-col { grid-template-columns: 1fr; }
+  }
+
+  .sibling-nav { background-color: var(--rust); padding: 0; }
+  .sibling-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; overflow-x: auto; scrollbar-width: none; }
+  .sibling-inner::-webkit-scrollbar { display: none; }
+  .sibling-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.5); padding: 0.75rem 1.2rem; white-space: nowrap; border-right: 1px solid rgba(245,240,232,0.15); flex-shrink: 0; }
+  .sibling-inner a { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.75); text-decoration: none; padding: 0.75rem 1.1rem; white-space: nowrap; border-right: 1px solid rgba(245,240,232,0.1); transition: all 0.2s; }
+  .sibling-inner a:hover { color: var(--paper); background: rgba(245,240,232,0.1); }
+  .sibling-inner a.current { color: var(--paper); font-weight: 600; background: rgba(245,240,232,0.12); }</style>
+</head>
+<body>
+<div class="masthead">
+<div class="masthead-eyebrow">Washington Burns Timeline — Canon Reference</div>
+<h1>Sports History</h1>
+<div class="masthead-sub">The history of American and continental athletics, from 19th-century origins to the 2026 present day</div>
+<div class="masthead-rule"></div>
+<div class="masthead-meta">Version 1 — June 2026  ·  Hard Canon Unless Marked Otherwise  ·  Division 814 Internal Reference</div>
+</div>
+<nav class="sibling-nav">
+<div class="sibling-inner">
+<span class="sibling-label">Also In This Series</span>
+<a class="current" href="wbt_sports_history.html">Sports History</a>
+<a href="wbt_sports_teams.html">Teams &amp; Franchises</a>
+<a href="wbt_sports_olympics.html">Olympics</a>
+</div>
+</nav><nav class="toc-bar">
+<div class="toc-inner">
+<span class="toc-label">Jump To</span>
+<a href="#landscape">The Landscape</a>
+<a href="#origins">Origins</a>
+<a href="#olympic-era">Olympic Era</a>
+<a href="#boom">The Boom</a>
+<a href="#globalwar">Global War</a>
+<a href="#postwar">Postwar Expansion</a>
+<a href="#nolanpriest">Nolan/Priest</a>
+<a href="#lincoln">Lincoln Era</a>
+<a href="#schultz">Schultz Era</a>
+<a href="#langston">Langston Era</a>
+<a href="#whitmorepike">Whitmore &amp; Pike</a>
+<a href="#holmanliu">Holman &amp; Liu</a>
+<a href="#mercersinclair">Mercer &amp; Sinclair</a>
+<a href="#hudsonclearwater">Hudson &amp; Clearwater</a>
+<a href="#nakamura">Nakamura Era</a>
+
+</div>
+</nav>
+<div class="container">
+<section class="section" id="landscape">
+<div class="section-header">
+<div class="section-number">01</div>
+<div><div class="section-eyebrow">Section One</div><div class="section-title">The Sports Landscape</div></div>
+</div>
+<div class="subsection">
+<div class="subsection-title gold">The Major Sports</div>
+<div class="prose">
+<p>By the mid-20th century, WBT's "major sports" landscape consists of five sports with genuinely distinct regional and cultural roots — no single sport occupies the cultural space that gridiron football occupies in OTL America. Two are US-only; three are continent-wide, spanning the USA, Texas, California, Mexico, and Canada.</p>
+</div>
+<div class="card-grid two-col">
+<div class="card rust">
+<div class="card-label">National Pastime · US Only</div>
+<h4>Baseball — National Baseball Association (NBA) <span class="canon-flag hard">Hard Canon</span></h4>
+<p>The first sport to nationalize, spreading rapidly in the years following the War Between the States (1857–60) and becoming an early cross-class pastime. Cornelius Roosevelt II (b. 1861) grew up playing it alongside rugby and football/soccer. Early professional structure (specific clubs, leagues) TBD for a future pass. <em>Note the deliberate echo: "NBA" here refers to baseball, not basketball — a different sport altogether claims a different OTL acronym below.</em></p>
+</div>
+<div class="card slate">
+<div class="card-label">Continent-Wide · USA · Texas · California · Mexico · Canada</div>
+<h4>Football (Association Football) — North American Football Association (NAFA) <span class="canon-flag hard">Hard Canon</span></h4>
+<p>Arrives via British trade and immigration to industrial port cities and mill towns from the 1860s onward. Cross-racial and cross-class from its earliest American days — with no Jim Crow, the working communities where it took root were already diverse. Picked up by elite/college youth by the 1870s–80s (the "still new" sport of Cornelius Roosevelt's youth), without ever losing its broad popular base. That breadth gives football its unifying, "everyone's game" character, cemented by international legitimacy via the WOC and the 1910 Olympics.</p>
+</div>
+<div class="card gold">
+<div class="card-label">Three Regional Traditions · Not Yet Unified</div>
+<h4>Rugby <span class="canon-flag hard">Hard Canon</span></h4>
+<p>Unlike football, rugby never coalesced into one national sport. Following Britain's 1871 RFU formalization, it takes root in America through three separate traditions — institutional, Appalachian, and Californian (detailed below) — each strong within its own context, with no shared governing body and no pressure to unify. Whether and when these traditions eventually converge into a continent-wide sport is a question for a much later era.</p>
+</div>
+<div class="card ink">
+<div class="card-label">Native-State Rooted · US Only · Integrated from Origins</div>
+<h4>Stickball — All-Nation Stickball Association (ANSA) <span class="canon-flag hard">Hard Canon</span></h4>
+<p>Originates in Gigadohi (Choctaw/Chickasaw-rooted, statehood 1862), where it is already a living community tradition predating WBT's divergence. Spreads to Kanasaw and Lakota in the 1870s–80s, then to neighboring Mississippi Valley states through the 1880s–1900s. By 1910, "nationally known, regionally played." Integrated from its origins, given the close historical ties between Native and Black communities in and around Gigadohi. Professionalizes later, in the radio-boom 1920s. <em>"All-Nation" doubles as a reference to the Native Nations (Gigadohi, Kanasaw, Lakota, and others) that anchor the sport — not literally "all nations of the continent."</em></p>
+</div>
+<div class="card green" style="grid-column: 1 / -1;">
+<div class="card-label">Continent-Wide · USA · Texas · California · Mexico · Canada · Invented 1900, Texas</div>
+<h4>Aroball ("Wallball") — Major League Aroball (MLA) <span class="canon-flag hard">Hard Canon</span></h4>
+<p>Invented in 1900 by a Texas gym teacher — likely a husband-and-wife team, names TBD <span class="canon-flag open">Open</span> — inspired by an article describing both the ancient Mesoamerican ballgame (<em>ōllamaliztli</em>) and its surviving folk form (<em>ulama</em>, still played by a small number of practitioners in a few Sinaloa communities, unchanged by this invention). The new sport adds hand-play and ring/hoop scoring on the court's distinctive sloped side walls — innovations of the inventor(s), not a "revival" of the ancient game; the traditional ulama tradition continues to exist separately. Spreads to California and northern Mexico alongside Texas through the 1900s–10s (the close Texas–California relationship), broader Southwest/border consolidation in the 1920s–30s, continental spread in the 1940s–50s.</p>
+<p style="margin-top:0.5rem;"><strong>Naming:</strong> "Arobol" (Spanish, from <em>aro</em> = hoop/ring) anglicizes to "Aroball" as the sport's proper name; "Wallball" persists as a common English-language nickname referencing the court's sloped walls. <em>Note the deliberate echo: "Major League ___" here refers to Aroball, not baseball — paired with the NBA/baseball swap above, both OTL-acronym winks point at different sports than expected.</em></p>
+</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title slate">Rugby's Three Traditions</div>
+<div class="card-grid">
+<div class="card rust">
+<div class="card-label">Institutional</div>
+<h4>Elite-Institutional Rugby <span class="canon-flag soft">Soft Canon</span></h4>
+<p>Arrives via direct exchange/touring relationships between specific American and British schools and universities — a transplanted tradition, not a broadly-absorbed one. Specific institutions TBD.</p>
+</div>
+<div class="card slate">
+<div class="card-label">Appalachia</div>
+<h4>Appalachian Rugby <span class="canon-flag soft">Soft Canon</span></h4>
+<p>Brought by Welsh coal-mining immigrant communities. A working-class, industrial-interior identity for the sport — genuinely unexpected relative to OTL's rugby geography.</p>
+</div>
+<div class="card gold">
+<div class="card-label">California</div>
+<h4>Californian Rugby <span class="canon-flag soft">Soft Canon</span></h4>
+<p>Brought by Commonwealth immigrants (Australia, New Zealand, South Africa, Fiji) as part of California's broader Pacific-facing, cosmopolitan post–Gold Rush population. Since California competes as its own Olympic delegation, this gives California international rugby rivalries distinct from the rest of North America.</p>
+</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title ink">International &amp; Governing Bodies</div>
+<div class="card-grid">
+<div class="card">
+<div class="card-label">Founded 1907</div>
+<h4>World Olympic Committee (WOC)</h4>
+<p>Founded by Ashcroft (Great Britain), von Altenburg (Prussia), and Bellamonte (Italy). American delegate Peter Sinclair sent by President Cornelius Roosevelt II. First Games: Athens, 1910.</p>
+</div>
+<div class="card slate">
+<div class="card-label">Founded 1911</div>
+<h4>America Games / USOC</h4>
+<p>Cornelius Roosevelt II becomes USOC head and creates the "America Games" — a domestic mini-Olympics whose winners feed the World Games team. The model spreads internationally by mid-century. Marks the transition into the Olympic Era &amp; Professionalization (1910–1918).</p>
+</div>
+</div>
+</div>
+</section>
+<hr class="section-divider"/>
+<section class="section" id="origins">
+<div class="section-header">
+<div class="section-number">02</div>
+<div><div class="section-eyebrow">Section Two</div><div class="section-title">Origins (1860s–1910)</div></div>
+</div>
+<div class="subsection">
+<div class="period-label rust-bg">Post-War Foundations — 1860s–1870s</div>
+<div class="prose">
+<p>Baseball spreads rapidly in the years following the War Between the States (1857–60), quickly establishing itself as an early cross-class pastime. In Gigadohi — which achieves statehood in 1862, its population rooted in Choctaw and Chickasaw communities — stickball is already a living tradition predating WBT's divergence entirely, now with a state platform of its own.</p>
+<p>Football (association football) begins arriving via British trade and immigration to American industrial centers — port cities, mill towns — where it takes root among working communities. Because these neighborhoods are already racially mixed under WBT's no-Jim-Crow framework, football is cross-racial and cross-class from essentially its first days in America, not something that integrates later.</p>
+<p>Rugby's three traditions begin taking root in roughly this same window, following Britain's 1871 RFU formalization: direct exchange ties bring rugby to certain American schools and universities; Welsh mining immigrants carry it to Appalachia; Commonwealth immigrants carry it to California. The three traditions develop independently, with no shared governing body and no expectation that there should be one.</p>
+<p>Cornelius Roosevelt II's own youth (b. 1861) offers a window into elite multi-sport culture of the period — he grows up playing baseball, rugby, and football, with football still a relatively new pursuit for someone of his background even as it's already well-established elsewhere.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="period-label">Expansion and Diversification — 1870s–1890s</div>
+<div class="prose">
+<p>Stickball spreads from Gigadohi to Kanasaw (statehood also 1862) and to Lakota (statehood 1882) over the course of the 1870s and 1880s, becoming established across all three Native states.</p>
+<p>Football shifts from a working-class import to a genuinely cross-class sport during this period — elite and college youth adopt it (Cornelius Roosevelt's "still new" experience of it) without it ever shedding its broad popular base. This dual foundation — popular and elite simultaneously — is what gives football its "everyone's game" character going forward.</p>
+<p>Rugby's three regional and institutional traditions solidify as distinct identities during these decades. There is no unification pressure and no shared body connecting them — each tradition is simply itself, fully formed within its own context.</p>
+<p>By the 1880s, stickball begins spreading beyond the three Native states into neighboring Mississippi Valley states, the start of a process that continues into the new century.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="period-label ink-bg">Turn of the Century — 1890s–1910</div>
+<div class="prose">
+<p>By 1910, stickball has become "nationally known, regionally played" — its reputation extends across the country even though organized play remains concentrated in the Mississippi Valley. Full professionalization is still a generation away.</p>
+</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year">1900</div>
+<div class="timeline-content">Aroball ("Wallball") is invented in Texas — a gym teacher (or husband-and-wife pair) reads an article on the ancient Mesoamerican ballgame and its surviving Sinaloa folk form, and adapts it into a new indoor sport with hand-play and wall-mounted ring scoring.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1900s</div>
+<div class="timeline-content">Aroball spreads to California and northern Mexico alongside Texas, riding the close Texas–California relationship.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1907</div>
+<div class="timeline-content">The World Olympic Committee is founded (Ashcroft, von Altenburg, Bellamonte); President Cornelius Roosevelt II sends Peter Sinclair as the American delegate.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1910</div>
+<div class="timeline-content">First World Olympic Games, Athens. Exhibition sports include baseball, cricket, football, and field hockey. Texas and California field their own delegations, separate from the USA. The United States wins 8 gold, 6 silver, and 4 bronze across 76 athletes.</div>
+</div>
+</div>
+<div class="notice">
+<div class="notice-icon">▸</div>
+<div>
+<strong>Bridge to Section Three (Olympic Era &amp; Professionalization, 1910–1918):</strong> In 1911, Cornelius Roosevelt II becomes USOC head and creates the "America Games" — the moment Origins hands off to the next era.
+      </div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title slate">Open Items for Future Passes</div>
+<div class="card-grid">
+<div class="card">
+<div class="card-label">Not Developed — Low Priority</div>
+<h4>Boxing &amp; Cricket</h4>
+<p>Boxing is an established Olympic sport by 1910 but has no WBT-specific origin story, and likely doesn't need one. Cricket is treated as the British/Commonwealth "national pastime" analog (popular in India, South Africa, Australia) — background/international texture only, no US development.</p>
+</div>
+<div class="card slate">
+<div class="card-label">Open</div>
+<h4>Aroball's Inventors</h4>
+<p>Likely a husband-and-wife team. Names, hometown, and school not yet established.</p>
+</div>
+<div class="card gold">
+<div class="card-label">Calibration Note</div>
+<h4>Texas's Racial History</h4>
+<p>Texas runs roughly 5–10 years behind broader US benchmarks on racial integration — better than OTL throughout, but its own distinct trajectory. Relevant to Aroball's 1900 origin and early 1900s–10s spread, though it doesn't need to be foregrounded unless developed further.</p>
+</div>
+<div class="card ink">
+<div class="card-label">TBD</div>
+<h4>Baseball's Early Professional Structure</h4>
+<p>Specific clubs, leagues, and professionalization timeline not yet developed — left for a dedicated pass.</p>
+</div>
+</div>
+</div>
+</section>
+<hr class="section-divider"/>
+<section class="section" id="olympic-era">
+<div class="section-header">
+<div class="section-number">03</div>
+<div><div class="section-eyebrow">Section Three</div><div class="section-title">Olympic Era &amp; Professionalization (1910–1918)</div></div>
+</div>
+<div class="subsection">
+<div class="subsection-title gold">The America Games &amp; the World Stage</div>
+<div class="prose">
+<p>With WBT's Great European War (1899–1904) already over and the Global War (1932–40) decades away, 1910–1918 is a period of uninterrupted institutional growth for American sport — no major conflict disrupts the decade's Olympic cycles.</p>
+</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year">1911</div>
+<div class="timeline-content">Cornelius Roosevelt II, as USOC head, establishes the <strong>America Games</strong> — a centralized, more organized version of Olympic trials, scoped entirely to Olympic core disciplines (track and field, swimming, gymnastics, rowing, tennis, boxing, weightlifting, fencing, shooting, cycling). The Big Sports — baseball, football, stickball, Aroball, rugby — sit outside this system entirely, at least for now.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1913</div>
+<div class="timeline-content">First America Games held, selecting the US team for the 1914 London Games — the year-prior model giving the team a full season to prepare.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1914</div>
+<div class="timeline-content"><strong>1914 London Olympics.</strong> Modest, organic growth from 1910 Athens: roughly 55–60 events (up from 45), an American team of roughly 110–120 athletes (up from 76), and roughly 24–28 medals (up from 18).</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1917</div>
+<div class="timeline-content">Second Summer America Games, selecting the US team for 1918 Rome. The WOC announces plans for a separate Winter Olympics cycle, with the inaugural Winter Games to be held in 1922.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1918</div>
+<div class="timeline-content"><strong>1918 Rome Olympics.</strong> Continued incremental growth: roughly 65–70 events, an American team of roughly 140–155 athletes, and roughly 28–32 medals.</div>
+</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title rust">The Regional League Era</div>
+<div class="prose">
+<p>Separately from the Olympic/America Games track, the Big Sports spend this decade somewhere on a path from regional/inter-city leagues toward national or continental coordination — but each sport sits at a different point on that path. Specific franchises and cities are deliberately left open for a later pass; this section establishes the structural shape only.</p>
+</div>
+<div class="card-grid two-col">
+<div class="card rust">
+<div class="card-label">Consolidation · Most Mature</div>
+<h4>Baseball — The National Baseball Association Forms</h4>
+<p>Baseball's regional/inter-city leagues, dating back to the 1870s–80s, coordinate and consolidate into the <strong>NBA</strong> during this decade — the most advanced sport completing the regional-to-national transition first.</p>
+</div>
+<div class="card slate">
+<div class="card-label">Parallel Regional Leagues · No Coordination Yet</div>
+<h4>Football — Multiple Regional Leagues Continue</h4>
+<p>Football's head start (broad popular base since the 1860s–70s, elite/college adoption by the 1870s–80s) means it already has <strong>several parallel regional leagues</strong> by 1910 — likely an industrial Northeast circuit, a Great Lakes/Midwest circuit, a Pacific Coast circuit, and a Gulf South circuit. These continue operating independently through this decade. Their eventual coordination into NAFA is the opening beat of the next era.</p>
+</div>
+<div class="card ink">
+<div class="card-label">New Regional League · Precursor to ANSA</div>
+<h4>Stickball — Mississippi Valley League Forms</h4>
+<p>A new regional league forms in this decade, pulling together teams from Gigadohi, Kanasaw, and Lakota alongside the neighboring states that picked up stickball in the 1880s–1900s. This league is the seed ANSA will eventually grow from in the 1920s.</p>
+</div>
+<div class="card green">
+<div class="card-label">New Regional League · Precursor to MLA</div>
+<h4>Aroball — Southwest/Borderlands League Forms</h4>
+<p>A new regional league forms spanning Texas, California, and northern Mexico — the seed MLA will eventually grow from as Aroball's continental spread continues through the 1920s–50s.</p>
+</div>
+<div class="card gold" style="grid-column: 1 / -1;">
+<div class="card-label">Three Separate Structures · First Contact, Not Unification</div>
+<h4>Rugby</h4>
+<p>Each of rugby's three traditions develops its own regional structure during this decade: an intercollegiate conference for the elite-institutional tradition (folding into the broader collegiate track below), a regional league for the Appalachian mining-town tradition, and a regional competition for the Californian tradition.</p>
+<p style="margin-top:0.5rem;">The decade's notable rugby event: a touring Commonwealth side (Australia/New Zealand/South Africa/Fiji) visits North America and plays matches against <em>both</em> a Californian club <em>and</em> an institutional or Appalachian side. The three traditions still don't engage each other directly — but for the first time, they're measured against the same outside standard. Nothing is resolved yet, but the seed is planted for the unification pressure that will eventually arrive.</p>
+</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title slate">The Collegiate Track</div>
+<div class="prose">
+<p>Alongside these professional/regional developments, a general intercollegiate athletic body — name TBD, working placeholder "Intercollegiate Athletic Association" — forms during this decade, organizing college-level competition across baseball, football, and other sports. Unlike OTL's NCAA precursor, this body doesn't emerge from any violence-and-reform crisis — it's simply the natural organizational counterpart to the professional leagues developing in parallel. Rugby's elite-institutional tradition is already inherently collegiate, so its conference effectively becomes part of this broader body from the start.</p>
+</div>
+</div>
+<div class="notice">
+<div class="notice-icon">▸</div>
+<div>
+<strong>Bridge to Section Four (The Boom, 1918–1932):</strong> Football's several parallel regional leagues begin coordinating into NAFA — the opening beat of the next era, alongside the radio boom that will carry stickball's and Aroball's regional leagues toward ANSA and MLA.
+    </div>
+</div>
+</section>
+<hr class="section-divider"/>
+<section class="section" id="boom">
+<div class="section-header">
+<div class="section-number">04</div>
+<div><div class="section-eyebrow">Section Four</div><div class="section-title">The Boom (1918–1932)</div></div>
+</div>
+<div class="subsection">
+<div class="subsection-title gold">The America Games &amp; the World Stage</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year">1921</div>
+<div class="timeline-content">Third Summer America Games (feeding 1922 Boston). First <strong>Winter America Games</strong> also held, selecting the US team for the inaugural 1922 Hugosville Winter Games.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1922</div>
+<div class="timeline-content"><strong>1922 Boston Olympics</strong> — the 4th modern Games, and the first hosted on American soil. Host-nation effect on top of the existing growth curve: roughly 75–80 events, an American team of roughly 190–215 athletes, and roughly 36–42 medals. • <strong>1922 Hugosville Winter Olympics</strong> (Brandt, approx. OTL Denver) — the first Winter Games, held the same year as Boston. A modest American delegation befitting a first-time event.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1925</div>
+<div class="timeline-content">Fourth Summer America Games (feeding 1926 Hamburg). Winter America Games also held, selecting the US team for 1926 Turin.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1926</div>
+<div class="timeline-content"><strong>1926 Hamburg Olympics</strong> — the first Games without UER participation (UER withdraws from the Olympics and Peace Councils under Holtz); Prussia hosting is itself a statement of international rehabilitation and generates some controversy. Roughly 80–85 Summer events, an American team of roughly 220–245 athletes, and roughly 40–46 medals. • <strong>1926 Turin Winter Olympics</strong> — Italy hosts.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1929</div>
+<div class="timeline-content">Fifth Summer America Games (feeding 1930 Copenhagen). Winter America Games also held, selecting the US team for 1930 Oslo.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1930</div>
+<div class="timeline-content"><strong>1930 Copenhagen Olympics</strong> — the last fully peaceful Games before the Global War's interruptions. Roughly 85–90 events, an American team of roughly 250–280 athletes, and roughly 44–50 medals: a high-water mark before the gap. • <strong>1930 Oslo Winter Olympics</strong> — Norway hosts.</div>
+</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title rust">The Big Sports in the Boom</div>
+<div class="prose">
+<p>Where the previous era left each Big Sport at a different point on the regional-to-national pipeline, the Boom is when several of them complete (or substantially advance along) that journey — driven by the radio boom of the mid-1920s, by a decade of uninterrupted growth, and in NAFA's case, by sheer time.</p>
+</div>
+<div class="card-grid two-col">
+<div class="card rust">
+<div class="card-label">Founded ~1918–20 · Growing Through the Decade</div>
+<h4>NAFA — From Two Members to Four</h4>
+<p>Football's parallel US regional leagues coordinate with Canada's into <strong>NAFA</strong> around 1918–1920. Roughly a decade later, in the late 1920s, Texas and California join — the "initial big members" complete. Mexico's membership remains an open thread for a future era.</p>
+</div>
+<div class="card slate">
+<div class="card-label">Mid-1920s · Radio Boom</div>
+<h4>Stickball Goes National: ANSA</h4>
+<p>The radio boom of the mid-1920s carries the Mississippi Valley stickball league beyond its founding footprint and into the <strong>All-Nation Stickball Association</strong> — the first time stickball is genuinely national (still US-only), not merely "nationally known."</p>
+</div>
+<div class="card green">
+<div class="card-label">Growing Footprint · Still Regional</div>
+<h4>Aroball — Beyond the Borderlands</h4>
+<p>The Southwest/Borderlands league matures within its Texas–California–northern Mexico core, while Aroball begins appearing as an early foothold in US states bordering its two host nations: <strong>Louisiana and Jefferson</strong> (adjoining Texas) and <strong>Oregon and Brandt</strong> (adjoining California). These remain early footholds rather than league members for now — the seeds of MLA's eventual continental form in the 1940s–50s.</p>
+</div>
+<div class="card gold">
+<div class="card-label">Riding the Wave</div>
+<h4>Baseball/NBA — Radio-Driven Growth</h4>
+<p>Baseball rides the same radio boom as everyone else — increased popularity, increased revenue, and likely some expansion of the NBA during the decade. Nothing especially divergent here; baseball simply benefits from the era's general prosperity and new media the way every sport does.</p>
+</div>
+<div class="card ink" style="grid-column: 1 / -1;">
+<div class="card-label">Three Traditions Become Two</div>
+<h4>Rugby</h4>
+<p>The Boom is when rugby's three traditions narrow to two distinct scenes. The <strong>Appalachian</strong> tradition grows from a regional mining-town circuit into a genuine US professional rugby scene. Simultaneously, the <strong>elite-institutional</strong> tradition spreads beyond its original handful of schools into a broader US collegiate rugby scene — possibly aided by Coastal South schools entering the wider collegiate athletic world as <em>Morrison v. South Carolina</em> (1920s) ends segregation as previously implemented.</p>
+<p style="margin-top:0.5rem;">As both US-based tracks grow in parallel, pressure builds to reconcile their rules — and by the early 1930s, <strong>US professional and collegiate rugby rules consolidate</strong>. Meanwhile, the <strong>Californian</strong> tradition grows into its own separate professional scene, on its own track. By 1932, there are two rugby scenes — American (consolidated, pro and college) and Californian — rather than three. Full continental unification remains a question for later eras.</p>
+</div>
+</div>
+</div>
+<div class="notice">
+<div class="notice-icon">▸</div>
+<div>
+<strong>Bridge to Section Five (The Global War, 1932–1940):</strong> 1930 Copenhagen stands as a high-water mark — the broadest, best-attended Games yet, and the last before the Olympic calendar itself becomes a casualty of the coming war.
+    </div>
+</div>
+</section>
+<hr class="section-divider"/>
+<section class="section" id="globalwar">
+<div class="section-header">
+<div class="section-number">05</div>
+<div><div class="section-eyebrow">Section Five</div><div class="section-title">The Global War (1932–1940)</div></div>
+</div>
+<div class="subsection">
+<div class="subsection-title gold">The America Games &amp; Olympics — An Eight-Year Gap</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year">1932</div>
+<div class="timeline-content">The Global War begins in Europe and Asia. Canada, through its British imperial ties, is effectively at war from this point.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1933</div>
+<div class="timeline-content">The Summer America Games <strong>is held</strong> — the last edition before the war reaches American shores, since the United States itself is not yet at war. The athletes who earn places on the team have, in effect, nowhere to go: word that <strong>Toronto 1934 is cancelled</strong> arrives during or shortly after the Games. The Winter America Games is also held, but 1934 Toronto Winter is similarly cancelled.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1934</div>
+<div class="timeline-content"><strong>1934 Toronto Olympics — CANCELLED</strong> (Canada at war). <strong>1934 Toronto Winter Olympics — CANCELLED.</strong> The United States declares war on Spain; Texas and California mobilize alongside the USA and Canada — all four NAFA members now at war.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1937</div>
+<div class="timeline-content">Both the Summer and Winter America Games <strong>lapse entirely</strong>. The US is deep in the Pacific theater with neither the capacity nor the appetite for a celebratory trials season.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1938</div>
+<div class="timeline-content"><strong>1938 Madrid Olympics — CANCELLED</strong> (Spain at war, world at war). <strong>1938 Madrid Winter Olympics — CANCELLED.</strong></div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1940</div>
+<div class="timeline-content">Shooting stops late in the year.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1941</div>
+<div class="timeline-content">The America Games <strong>returns — and it's a celebration.</strong> Eight years of pent-up demand produce record turnout and interest: the first real taste of normalcy.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1942</div>
+<div class="timeline-content"><strong>1942 San Francisco Olympics</strong> — the first Games in 12 years, postwar celebration energy throughout. Hawaii potentially participates as a North American associate member for the first time.</div>
+</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title rust">The Big Sports on the Home Front</div>
+<div class="prose">
+<p>Across all five Big Sports, the pattern is <strong>reduced, not suspended</strong>. Rosters thin as players are drafted, seasons may shorten, but every league continues to operate throughout 1932–1940 — sport as a home-front morale institution, continuing the tradition of presidential engagement with American athletics that Roosevelt established decades earlier.</p>
+<p><strong>NAFA</strong> faces the most complex situation of any league: with the USA, Canada, Texas, and California — all four members — mobilized by 1934, continent-wide competition continues in reduced form across nations actively at war. Mexico, providing economic support and logistics rather than direct mobilization, likely operates closer to a normal football season throughout, becoming something of an anchor for NAFA's continuity during these years. That anchor role becomes formal: Mexico joins NAFA before the war's end, completing a five-nation league just as the postwar era begins.</p>
+<p>NBA, ANSA, Aroball's regional league, and rugby's American and Californian scenes all follow the same broad pattern — diminished but unbroken, with specific wartime rosters and standings left open for a later pass.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title slate">Women's Professional Sports — A Wartime Institution That Lasts</div>
+<div class="prose">
+<p>As men are drafted in unprecedented numbers, women's professional leagues emerge to fill rosters and maintain play — baseball, riding the NBA's prominence, becomes the flagship. From its first season, the league is <strong>integrated</strong>, consistent with the broader no-Jim-Crow framework — there is no OTL equivalent of the AAGPBL's whites-only restriction to begin with.</p>
+<p>Unlike OTL's AAGPBL, which folded in 1954 once the war's social conditions receded, WBT's women's professional league <strong>does not fold after the war</strong>. Given the trajectory already underway — suffrage since 1900, women's increasing presence across public and professional life — the league persists as a genuinely lasting institution rather than a wartime curiosity. Specific structure, name, and postwar evolution: open for a future pass.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title ink">Aroball's Wartime Diffusion</div>
+<div class="prose">
+<p>The war becomes the mechanism behind Aroball's already-charted postwar continental spread. As American, Canadian, Texian, and Californian forces serve and fight alongside one another throughout the Global War, soldiers for whom Aroball is already a hometown sport introduce it to soldiers from across the rest of the continent. This cross-regional wartime exposure — rather than spreading for no particular reason — is the seed from which Aroball's 1940s–50s continental boom grows.</p>
+</div>
+</div>
+<div class="notice">
+<div class="notice-icon">▸</div>
+<div>
+<strong>Bridge to Section Six (Postwar Expansion, 1941–1947):</strong> The 1941 America Games and 1942 San Francisco Olympics open the next era as one continuous celebration — the moment eight years of reduced, wartime sport gives way to genuine postwar growth, with Aroball's wartime-seeded continental spread as one of the era's defining stories.
+    </div>
+</div>
+</section>
+<hr class="section-divider"/>
+<section class="section" id="postwar">
+<div class="section-header">
+<div class="section-number">06</div>
+<div><div class="section-eyebrow">Section Six</div><div class="section-title">Postwar Expansion (1941–1947)</div></div>
+</div>
+<div class="subsection">
+<div class="subsection-title gold">A Celebration Already Underway</div>
+<div class="prose">
+<p>This era opens mid-celebration: the 1941 America Games and the 1942 San Francisco Olympics are one continuous moment of postwar relief, the first real return to normalcy after eight Olympic-less years. The host nation is the <strong>Union of the Californias</strong>, not the USA — a reminder of how this hemisphere's sporting institutions span genuinely separate countries. California's own delegation surges as host, but that's California's story to tell. For the USA specifically, 1942 is a postwar-celebration jump rather than a host-boosted one: roughly 95–105 events (a global figure, not US-specific), an American team of roughly 290–320 athletes, and roughly 50–58 medals — reflecting both the natural growth curve and the sheer pent-up demand of the gap. Hawaii's participation as a North American associate member for the first time adds to the sense of a wider, more connected hemisphere finally at peace. • The <strong>1942 Lake Tahoe Winter Olympics</strong> — also hosted by California — runs alongside, the first Winter Games in eight years.</p>
+<p>Into this exact moment, NAFA launches its championship.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title rust">The American Cup</div>
+<div class="prose">
+<p>NAFA's five members — the USA, Canada, Texas, California, and now Mexico, whose wartime anchor role (Section Five) became formal membership before the war's end — have by now coalesced into the continent-spanning league that postwar institution-building (the Pan-American Passport, the Global Peace Council, all dated to 1940) reflects in miniature. <strong>The American Cup</strong> launches in 1941–42 as the championship of this five-nation league: a genuinely international event in the sense that its competitors are separate sovereign nations, not just regions of one country. The "American" in the name reads hemispherically — the Americas — fitting a trophy contested between nations rather than states.</p>
+<p>Continuing the tradition of presidential engagement with American sport that Roosevelt established decades earlier, President Freeman's attendance at early American Cup matches becomes part of the new championship's origin story — a postwar president at a postwar event.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title slate">Established Traditions, Named at Last</div>
+<div class="prose">
+<p>This era is a natural point to give the two oldest Big Sport championships their names and acknowledge the history they already carry. The <strong>Diamond Classic</strong> — baseball's championship, dating to the NBA's consolidation in the Olympic Era — has roughly two decades of tradition behind it by 1941, the oldest and most established championship of any Big Sport. The <strong>All-Nation Championship</strong> — stickball's, dating to ANSA's formation during the radio boom — has roughly fifteen years of history. Both are now genuinely traditional institutions rather than recent inventions, even though this is the first point at which this bible has named them.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title green">Aroball's Continental Boom — MLA Forms</div>
+<div class="prose">
+<p>This is Aroball's defining era. The wartime diffusion seeded in Section Five — American and Canadian soldiers serving alongside Texians and Californians, for whom Aroball was already a hometown sport — comes home with the veterans. Postwar interest in Aroball spreads well beyond the Southwest/Borderlands core and the scattered prewar footholds in Louisiana, Jefferson, Oregon, and Brandt.</p>
+<p>In the mid-1940s, the Southwest/Borderlands league and this new continental demand coalesce into <strong>MLA (Major League Aroball)</strong> — the continental major league envisioned since the sport's invention in 1900. Following the pattern set by the Diamond Classic and All-Nation Championship (both of which took roughly 15–20 years after their leagues formed to develop marquee championship traditions), MLA's own championship is a story for a later era — the league itself forming now is the headline.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title ink">Rugby's Two Scenes, Quietly Established</div>
+<div class="prose">
+<p>Both of rugby's two scenes have their own championships by this point: the <strong>American Rugby Championship</strong>, within the consolidated US pro/college scene, and the <strong>Golden Cup</strong>, within California's homegrown professional scene. Neither carries the cultural weight of the Big Sports' championships, but both are established, ongoing institutions — rugby continuing on its own track, continental unification still a question for later.</p>
+</div>
+</div>
+<div class="notice">
+<div class="notice-icon">▸</div>
+<div>
+<strong>Bridge to Section Seven (The Nolan/Priest Era, 1947–1959):</strong> The expansive, celebratory energy of 1941–47 — new championships, a new continental major league, a hemisphere at peace — meets a sharply different domestic political climate in the next era. What survives of this era's momentum, and what doesn't, is a question for Section Seven.
+    </div>
+</div>
+</section>
+<hr class="section-divider"/>
+<section class="section" id="nolanpriest">
+<div class="section-header">
+<div class="section-number">07</div>
+<div><div class="section-eyebrow">Section Seven</div><div class="section-title">The Nolan/Priest Era (1947–1959)</div></div>
+</div>
+<div class="subsection">
+<div class="subsection-title gold">The Olympics Continue</div>
+<div class="prose">
+<p>The growth curve continues through this era, none of it US-hosted — though 1958 Houston (Texas) brings the same "hosted by one of our sporting partners, not us" texture that 1942 San Francisco did.</p>
+</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year">1946</div>
+<div class="timeline-content">Host city not yet determined. Continuing the growth curve: roughly 320–360 American athletes, roughly 52–60 medals. • <strong>1946 Stockholm Winter Olympics</strong> (host city tentative ITTL) — Sweden hosts.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1949</div>
+<div class="timeline-content">Summer America Games (feeding 1950 Toronto). Winter America Games also held, feeding 1950 Vancouver.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1950</div>
+<div class="timeline-content"><strong>1950 Toronto Olympics</strong> — Canada hosts. There's a quiet symbolism here: Toronto was the cancelled host of 1934, the Games that never happened. Sixteen years later, it gets its Games after all. Roughly 350–390 American athletes, roughly 56–64 medals. • <strong>1950 Vancouver Winter Olympics</strong> — Canada hosts both Games.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1953</div>
+<div class="timeline-content">Summer America Games (feeding 1954 Paris). Winter America Games also held, feeding 1954 Munich.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1954</div>
+<div class="timeline-content"><strong>1954 Paris Olympics</strong> — the UER hosts. UER's Olympic absence, dating to its 1926 withdrawal under Holtz, proves much shorter-lived than it might have seemed at the time — by 1954 the UER isn't just back in the Games, it's hosting them. Roughly 380–420 American athletes, roughly 58–68 medals. • <strong>1954 Munich Winter Olympics</strong> — UER hosts both Games.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1957</div>
+<div class="timeline-content">Summer America Games (feeding 1958 Houston). Winter America Games also held, feeding 1958 St. Moritz.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1958</div>
+<div class="timeline-content"><strong>1958 Houston Olympics</strong> — the Texas Federation hosts (city name possibly different ITTL). Roughly 410–450 American athletes, roughly 62–72 medals. This is the era's final Games — closing out 1947–1959 on Texan soil, just months before Georgina Lincoln's election. • <strong>1958 St. Moritz Winter Olympics</strong> — Switzerland hosts.</div>
+</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title green">The Global Cup — 1952</div>
+<div class="prose">
+<p>The <strong>World Football Association (WFA)</strong>, founded in 1940 in the immediate postwar moment, spends its first decade establishing governance infrastructure and negotiating with the WOC over the Olympic football tournament's status. That negotiation resolves cleanly: the WOC agrees to open Olympic football to professional athletes; the WFA agrees that the Olympic tournament IS the de facto world national-team championship. No separate "World Cup" is needed or established.</p>
+<p>What the WFA establishes independently is the <strong>Global Cup</strong> — a quadrennial tournament for club teams, not national teams, drawing the best franchise sides from NAFA, European leagues, South American leagues, Asian leagues, and beyond. The first Global Cup is held in <strong>London, 1952</strong>, with 32 club teams from regional leagues worldwide. NAFA sends 6–8 teams, including the reigning American Cup champion as automatic qualifier. Europe sends the largest allocation (~10–12), with South America, Asia, Africa, and Oceania filling the remainder proportionately.</p>
+<p>The Global Cup cycle — every four years from 1952 — eventually syncs with Winter Olympics years, giving the sporting calendar a major football event (Global Cup or Olympic tournament) every two years in alternation. NAFA's American Cup takes on an extra layer of stakes: winning it is the surest path to Global Cup qualification.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title rust">NAFA at Five, Quietly</div>
+<div class="prose">
+<p>With Mexico's membership formalized at the close of the Global War (Sections Five and Six), NAFA enters this era already complete as a five-nation league. The American Cup, barely a few editions old as this era begins, continues as a five-nation championship throughout — one of the few continental institutions that simply isn't a live political question during Nolan/Priest. It's already settled, and settled things don't make headlines.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title green">Aroball's Quiet, Steady Growth</div>
+<div class="prose">
+<p>As this era begins, Aroball is still mostly not an American sport in practice — MLA's core remains Texas, California, and Mexico, with perhaps only one or two USA-chartered teams (likely drawn from the border-state footholds of the Boom era: Louisiana, Jefferson, Oregon, Brandt) having joined MLA prior to 1947. Over the following twelve years, that USA presence grows — gradually, not explosively — as more of those border-state footholds mature into full MLA franchises.</p>
+<p>This growth happens largely under the radar of the era's politics. Aroball isn't a question of race, gender, or sexuality — the three axes Nolan/Priest-era conservatism actually cares about — so its slow continental spread simply continues, neither helped nor hindered by the broader political climate. By the end of this era, the USA represents a growing but still minority share of MLA's membership, with further growth still ahead.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title slate">The Women's League — Barely</div>
+<div class="prose">
+<p>This is the era's real domestic sports story. The women's professional baseball league, established during the Global War and never intended as a wartime curiosity, faces its sharpest test yet under Nolan/Priest's social conservatism — real pressure on funding, attendance, and the league's basic legitimacy in a political climate that, per the era's character, is concerned above all with gender and sexuality. The league <strong>survives</strong> — but barely, and not comfortably. Specific details of how it survives (key franchises, figures, turning points) are left for a future pass, but the headline is real: this is the closest the institution comes to not making it.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title ink">Race — A Non-Story</div>
+<div class="prose">
+<p>In sharp contrast to the cinema industry's experience of this same era (where Black creative participation narrows under Nolan/Priest), sports' integration — 70 to 90 years old by this point, depending on the sport — proves resilient. The era's conservatism is fundamentally about gender and sexuality, not race, and sports' much longer integration history gives it little purchase here. Nothing to report.</p>
+</div>
+</div>
+<div class="notice">
+<div class="notice-icon">▸</div>
+<div>
+<strong>Bridge to Section Eight (The Lincoln Era, 1959–1965):</strong> 1958 Houston closes out this era on Texan soil; months later, Georgina Lincoln's election as the first woman and first SPA president arrives as a direct reaction to Nolan/Priest's politics — and for the women's league that just barely survived this era, a new administration whose entire premise is a rebuke of the gender politics that nearly ended it is the most consequential development imaginable.
+    </div>
+</div>
+</section>
+<hr class="section-divider"/>
+<section class="section" id="lincoln">
+<div class="section-header">
+<div class="section-number">08</div>
+<div><div class="section-eyebrow">Section Eight</div><div class="section-title">The Lincoln Era (1959–1965)</div></div>
+</div>
+<div class="subsection">
+<div class="subsection-title gold">1962 Tokyo</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year">1961</div>
+<div class="timeline-content">Summer America Games (feeding 1962 Tokyo). Winter America Games also held, feeding 1962 Sapporo.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1962</div>
+<div class="timeline-content"><strong>1962 Tokyo Olympics</strong> — Japan hosts. Continuing the curve: roughly 440–480 American athletes, roughly 65–75 medals. • <strong>1962 Sapporo Winter Olympics</strong> — Japan hosts both Games.</div>
+</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title rust">The Women's League — Recovery</div>
+<div class="prose">
+<p>Where Nolan/Priest was the era the women's professional baseball league barely survived, Lincoln's administration is the era it recovers. The first woman and first SPA president represents a direct political rebuke of the gender politics that nearly ended the league a decade earlier — and under that changed climate, the league moves from survival to genuine growth. Specific expansion details (franchises, attendance, media coverage) remain open for a future pass, but the trajectory clearly reverses here: this is the turning point, not just a continuation.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title slate">The First Athletes' Unions</div>
+<div class="prose">
+<p>WBT's first Socialist president creates the political space for the first players' associations to form across the Big Sports — small, with limited bargaining power, but genuinely new. The NBA, as the oldest and most mature of the Big Sports leagues (and the simplest case, being purely domestic), is the most likely place for the first real players' association to take root. Other leagues see early, even smaller organizing efforts follow. None of this reshapes anything yet — these are seeds, not victories — but it's the beginning of a thread that will grow significantly in later eras.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title ink">Rugby — Standardized, and Talk of Unification</div>
+<div class="prose">
+<p>The pro/college rules consolidation that began in the early 1930s (Section Four) is now complete: American rugby — spanning both the professional scene (Appalachian-rooted) and the collegiate scene (institutional-rooted) — operates under one standardized rulebook. Separately, California's Golden Cup scene continues on its own track, as it has since the 1930s.</p>
+<p>For the first time, there's serious talk of the American and Californian scenes eventually coming together — not yet accomplished, just genuine discussion. After three traditions narrowed to two scenes by 1932, and those two scenes each achieved internal standardization by now, a single continental rugby body is, for the first time, a live conversation rather than a hypothetical.</p>
+</div>
+</div>
+<div class="notice">
+<div class="notice-icon">▸</div>
+<div>
+<strong>Bridge to Section Nine (The Schultz Era, 1965–1971):</strong> A Federalist successor to Lincoln — a party with its own long history of racial and gender equality advocacy, so not the sharp reversal Nolan/Priest represented after Postwar Expansion. This era's defining event, the Choson War (1966–67), and its effects on the sports landscape (the Olympic calendar, NAFA's five nations, the newly-recovering women's league, the nascent players' unions) are this section's open territory.
+    </div>
+</div>
+</section>
+<hr class="section-divider"/>
+<section class="section" id="schultz">
+<div class="section-header">
+<div class="section-number">09</div>
+<div><div class="section-eyebrow">Section Nine</div><div class="section-title">The Schultz Era (1965–1971)</div></div>
+</div>
+<div class="subsection">
+<div class="subsection-title gold">1966 Stockholm — Games Under a Shadow</div>
+<div class="prose">
+<p>The 1966 Stockholm Olympics proceed on schedule — the Choson War (1966–67) is nothing like the Global War in scope or duration, and no Olympic cancellation is warranted. But the war's shadow is present: athletes serving, political tension between NAFA member nations whose CDC commitments have generated domestic accountability debates, and a Games that feels less purely celebratory than its predecessors. The competition happens, the medals are awarded, the records are broken — but the backdrop is unmistakable to anyone paying attention.</p>
+</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year">1965</div>
+<div class="timeline-content">Summer America Games (feeding 1966 Stockholm). Winter America Games also held, feeding 1966 Helsinki (host city tentative ITTL).</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1966</div>
+<div class="timeline-content"><strong>1966 Stockholm Olympics</strong> — Sweden hosts. Roughly 470–510 American athletes, roughly 68–78 medals. The Choson War begins during this same year; the Games continue normally but under its shadow. • <strong>1966 Helsinki Winter Olympics</strong> (host nation Finland, city tentative ITTL) — held the same year.</div>
+</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title rust">The Choson War — A Light Touch on Sport</div>
+<div class="prose">
+<p>Unlike the Global War, the Choson War (1966–67) does not significantly disrupt sports. It is short, geographically distant, and does not trigger the kind of continent-wide mobilization that halved rosters and shuttered leagues in 1934–40. Some athletes serve; some seasons feel slightly thinner; the diplomatic accountability debates that follow the CDC's bombing decision ripple quietly through the sporting press, particularly in NAFA countries where collective military commitment has become a contested political question. But the leagues run, the championships are contested, and by 1968 the war's direct shadow on sport has largely lifted.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title slate">Athletes' Unions — First Real Test</div>
+<div class="prose">
+<p>The nascent players' associations seeded under Lincoln's administration face their first real test during this era — a small dispute or negotiation, likely within the NBA (still the most mature and organizationally advanced of the Big Sports). No strike, no dramatic confrontation: just the first moment where a players' association demonstrates it has enough organization to actually push back on something, and management decides whether to fight or accommodate. The outcome is modest — a minor concession, a quiet precedent — but the precedent is real. In later eras, these unions will be much harder to ignore.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title ink">Women's League — Continued Growth</div>
+<div class="prose">
+<p>The women's professional baseball league continues the recovery trajectory established under Lincoln. A Federalist administration in the SPA's tradition of gender and racial equality advocacy doesn't reverse what Lincoln started — the league grows, builds its audience, and moves further from the survival question that defined the Nolan/Priest years. No major new beat here; the story is simply that the worst is unambiguously behind it.</p>
+</div>
+</div>
+<div class="notice">
+<div class="notice-icon">▸</div>
+<div>
+<strong>Bridge to Section Ten (The Langston Era, 1971–1977):</strong> Julius Langston is WBT's second SPA president — and his term includes the 1974 Florence Olympics and the 1976 bicentennial year, which in the broader timeline is also the year of the first moon landing. How the bicentennial and the moon landing interact with American sport as cultural backdrop is this section's open territory.
+    </div>
+</div>
+</section>
+<hr class="section-divider"/>
+<section class="section" id="langston">
+<div class="section-header">
+<div class="section-number">10</div>
+<div><div class="section-eyebrow">Section Ten</div><div class="section-title">The Langston Era (1971–1977)</div></div>
+</div>
+<div class="subsection">
+<div class="subsection-title gold">Olympics &amp; The Bicentennial Year</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year">1973</div>
+<div class="timeline-content">Summer America Games (feeding 1974 Florence). Winter America Games also held, feeding 1974 Cortina d'Ampezzo.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1974</div>
+<div class="timeline-content"><strong>1974 Florence Olympics</strong> — Italy hosts. Continuing the growth curve: roughly 510–550 American athletes, roughly 72–82 medals. • <strong>1974 Cortina d'Ampezzo Winter Olympics</strong> — Italy hosts both Games.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1976</div>
+<div class="timeline-content">The US bicentennial year — no Olympic Games, no America Games. The cultural weight of the bicentennial and the first moon landing (Mare Imbrium, July 1976) shapes the backdrop for American sport without producing a dedicated trials event.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1977</div>
+<div class="timeline-content">Summer America Games (feeding 1978 Vienna). Winter America Games also held, feeding 1978 Innsbruck — feeding directly into the next era (Whitmore, Democrat).</div>
+</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title rust">Rugby Unifies — The Union Cup</div>
+<div class="prose">
+<p>The conversation that began under Lincoln becomes action under Langston. After decades of parallel development — American rugby (professional and collegiate, consolidated since the early 1930s) and California's Golden Cup scene each fully themselves, each internally coherent — the two scenes finally merge into a single continental rugby body during this era.</p>
+<p>The new unified championship is the <strong>Union Cup</strong>: the name carrying a double meaning, rugby union (the code both scenes share) and the act of unification that created the competition. Three traditions narrowed to two in the 1930s; two scenes narrowed to one now, roughly forty years later. The timing is right — NAU integration is deepening throughout the 1970s, Langston's SPA administration is politically congenial to cooperative continental institutions, and both scenes have been stable long enough that merger feels like growth rather than absorption.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title slate">Athletes' Unions — First Real Power</div>
+<div class="prose">
+<p>Building on the Schultz-era precedent of a first small test, the players' associations arrive at genuine institutional weight during the Langston years. The most likely milestone: the first real collective bargaining agreement in one of the Big Sports — again probably the NBA, still the most organizationally mature league. Revenue-sharing, minimum salaries, or roster protections become negotiated realities rather than management's discretionary decisions. Other leagues' unions watch and take notes. The seed planted under Lincoln has become something that can't be easily ignored.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title ink">MLA — Permanent Minority, Growing Presence</div>
+<div class="prose">
+<p>By the mid-1970s, US-based teams are a real and established presence in MLA — but Texas, California, and Mexico remain the league's center of gravity, and that doesn't change. US teams never become a majority of MLA franchises: Aroball's cultural home is the borderlands and the nations that first grew it, and MLA's composition reflects that permanently. What the 1970s add is simply more US teams, more US cities with genuine Aroball fanbases, and a sport that feels continental in practice rather than just in theory.</p>
+</div>
+</div>
+<div class="notice">
+<div class="notice-icon">▸</div>
+<div>
+<strong>Bridge to Section Eleven (Whitmore &amp; Pike, 1977–1989):</strong> Two presidencies, one Democrat and one SPA, spanning twelve years and ending with marriage equality. The Pike presidency (1983–89) in particular — a gay man presiding over marriage equality legislation — will intersect with sports in ways that deserve their own treatment: the "first openly gay professional athlete" question almost certainly lands somewhere in this window.
+    </div>
+</div>
+</section>
+<hr class="section-divider"/>
+<section class="section" id="whitmorepike">
+<div class="section-header">
+<div class="section-number">11</div>
+<div><div class="section-eyebrow">Section Eleven</div><div class="section-title">Whitmore &amp; Pike (1977–1989)</div></div>
+</div>
+<div class="subsection">
+<div class="subsection-title gold">Olympics</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year">1977</div>
+<div class="timeline-content">Summer America Games (feeding 1978 Vienna). Winter America Games also held, feeding 1978 Innsbruck.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1978</div>
+<div class="timeline-content"><strong>1978 Vienna Olympics</strong> — Austria hosts. Roughly 560–600 American athletes, roughly 75–86 medals. • <strong>1978 Innsbruck Winter Olympics</strong> — Austria hosts both Games.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1981</div>
+<div class="timeline-content">Summer America Games (feeding 1982 Frankfurt). Winter America Games also held, feeding 1982 Lillehammer — last Winter Games on the shared-year cycle.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1982</div>
+<div class="timeline-content"><strong>1982 Frankfurt Olympics</strong> — Germany hosts. Roughly 590–640 American athletes, roughly 78–90 medals. • <strong>1982 Lillehammer Winter Olympics</strong> — Norway hosts.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1983</div>
+<div class="timeline-content"><strong>First Winter America Games on the new offset cycle</strong> — feeding the 1984 Crossings (Washingtonia) Winter Games. Beginning with 1984, Winter and Summer Games run on separate two-year-offset cycles; the America Games follow suit, with dedicated Summer and Winter editions now permanently staggered two years apart.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1984</div>
+<div class="timeline-content"><strong>1984 Crossings Winter Olympics</strong> (Washingtonia, approx. OTL Riverton, WY) — the USA hosts the first Winter Games on the new separate cycle. • The first separate-year Winter Games is itself a mild cultural moment: the calendar change has been anticipated for years, and the US hosting the inaugural edition gives it extra visibility.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1985</div>
+<div class="timeline-content">Summer America Games (feeding 1986 Manhattan). Winter America Games also held, feeding 1988 Moscow Winter Games.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1986</div>
+<div class="timeline-content"><strong>1986 Manhattan Olympics</strong> — the USA hosts for the first time in 64 years. Host-nation surge: roughly 700–750 American athletes, roughly 90–105 medals. Held during Pike's presidency and against the backdrop of the marriage equality legislative battle, the Games carry a particular cultural charge — a nation simultaneously celebrating its athletic achievements and debating the full scope of its civil rights.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1987</div>
+<div class="timeline-content">Winter America Games, feeding 1988 Moscow Winter Games.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1988</div>
+<div class="timeline-content"><strong>1988 Moscow Winter Olympics</strong> — Russia hosts.</div>
+</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title rust">Dale Mercer &amp; James Colby — 1979</div>
+<div class="prose">
+<p>The most significant sports story of this era — and arguably of the entire post-war period — begins not with a press conference or a political gesture, but with a pitcher who wants to acknowledge the man he loves.</p>
+<p><strong>Dale Mercer</strong>, a starting pitcher for the Calumet NBA franchise, comes out publicly in 1979. Mercer is midwestern in every sense — raised on a farm, unpretentious, the kind of player whose career had been defined by quiet consistency rather than headline-making. His partner, <strong>James Colby</strong>, works in the franchise's own corporate and public relations office — already quietly out in professional circles, "straight-passing" at first glance to the broader public, known in certain team contexts without it ever having become a story. The relationship isn't a surprise to everyone. It becomes a story because Mercer decides he wants to stop pretending it doesn't exist.</p>
+<p>The reception is exactly as complicated as the moment deserves. Within the Calumet franchise, some teammates are vocally and immediately supportive; others are not, and the internal friction is real before it gets smoothed over by public solidarity. The players' association — now a mature institution with real power, its labor identity forged under Lincoln and Langston — backs Mercer publicly and without equivocation, whatever its internal debates. Road games in more conservative markets bring crowd reactions that range from cold to hostile; certain franchises in the league's southern and border circuits become particularly fraught venues. In Calumet itself, the reception is largely warm — a union city, a northern industrial city, a city whose sports culture has been shaped by exactly the kind of working-class solidarity the players' association represents.</p>
+<p>Mercer never becomes a spokesperson by choice. He is simply a pitcher who came out because he wanted to marry the man he loved — and who, by doing so, became the first openly gay active professional athlete in any of the Big Sports. What follows his career, what happens to James Colby, and what their lives look like after marriage equality passes under Pike six years later: all open for future development.</p>
+</div>
+<div class="notice">
+<div class="notice-icon">▸</div>
+<div><strong>Note:</strong> Dale Mercer is WBT's most significant sports figure for the gay rights arc. He predates marriage equality by six years (1979 vs. 1983–89 Pike presidency) — coming out before the political victory, not after it. Specific career statistics, award history, and post-career biography left open for a future pass.</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title slate">Athletes' Unions — Mature Institutions</div>
+<div class="prose">
+<p>By the Pike era, players' associations across all the Big Sports are established facts of life rather than nascent experiments. The NBA's union, the oldest and most powerful, likely sees the first major work stoppage or strike threat during this window — not necessarily a full strike, but the credible threat of one, which is itself a measure of how far these institutions have come since their first small test in the Schultz years. Revenue sharing, free agency questions, and minimum salary disputes are live issues across multiple leagues.</p>
+<p>The players' association's public stance on Dale Mercer becomes, retrospectively, one of its defining institutional moments — the moment it was tested not on wages or working conditions but on who its members are allowed to be.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title ink">Rugby — The Union Cup Finds Its Footing</div>
+<div class="prose">
+<p>The Union Cup, barely a few years old as this era begins, establishes itself as a genuine continental championship during the Whitmore and Pike years — the newly unified American and Californian scenes settling into shared competition, finding rivalries, building traditions. Nothing dramatic; just a young institution becoming a real one.</p>
+</div>
+</div>
+<div class="notice">
+<div class="notice-icon">▸</div>
+<div>
+<strong>Bridge to Section Twelve (Holman &amp; Liu, 1989–2001):</strong> Marriage equality passes under Pike. The next era opens with that settled — and with Dale Mercer's story now part of the historical record rather than the present moment. The Holman (Federalist) and Liu (SPA) presidencies span the NAU's deepening integration and the early Interlink era, both of which will reshape how sport is broadcast, consumed, and organized continentally.
+    </div>
+</div>
+</section>
+<hr class="section-divider"/>
+<section class="section" id="holmanliu">
+<div class="section-header">
+<div class="section-number">12</div>
+<div><div class="section-eyebrow">Section Twelve</div><div class="section-title">Holman &amp; Liu (1989–2001)</div></div>
+</div>
+<div class="subsection">
+<div class="subsection-title gold">Olympics &amp; Global Cup</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year">1989</div>
+<div class="timeline-content">Summer America Games (feeding 1990 Moscow). Winter America Games also held, feeding 1992 Wonsan.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1990</div>
+<div class="timeline-content"><strong>1990 Moscow Olympics</strong> — Russia hosts the Summer Games, just two years after hosting the 1988 Moscow Winter Games. An unusual double within a short window; the WOC's scheduling is noted but not controversial. Roughly 620–670 American athletes, roughly 82–94 medals. • <strong>1992 Global Cup</strong> — 10th edition (cycle: 1952, 1956, 1960, 1964, 1968, 1972, 1976, 1980, 1984, 1988, 1992). NAFA's American Cup champion qualifies automatically alongside 5–7 other NAFA clubs.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1991</div>
+<div class="timeline-content">Winter America Games, feeding 1992 Wonsan.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1992</div>
+<div class="timeline-content"><strong>1992 Wonsan Winter Olympics</strong> — Choson hosts. A unified, internationally engaged Choson hosting an Olympics 25 years after the Choson War is itself a quiet statement — postwar success made visible on the world stage.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1993</div>
+<div class="timeline-content">Summer America Games (feeding 1994 Mexico City). Winter America Games also held, feeding 1996 Nagano.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1994</div>
+<div class="timeline-content"><strong>1994 Mexico City Olympics</strong> — Mexico hosts the Summer Games. A NAFA member nation hosting the Olympics carries quiet resonance for the American Cup and NAFA's continental identity. Roughly 650–700 American athletes, roughly 86–98 medals.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1995</div>
+<div class="timeline-content">Winter America Games, feeding 1996 Nagano.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1996</div>
+<div class="timeline-content"><strong>1996 Nagano Winter Olympics</strong> — Japan hosts. • <strong>1996 Global Cup</strong> — host city TBD.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1997</div>
+<div class="timeline-content">Summer America Games (feeding 1998 Barcelona). Winter America Games also held, feeding 2000 Calgary (name TBD ITTL).</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1998</div>
+<div class="timeline-content"><strong>1998 Barcelona Olympics</strong> — Spain hosts. Roughly 680–730 American athletes, roughly 90–102 medals.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1999</div>
+<div class="timeline-content">Winter America Games, feeding 2000 Calgary (name TBD).</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2000</div>
+<div class="timeline-content"><strong>2000 Calgary Winter Olympics</strong> (city name possibly different ITTL) — Canada hosts. • <strong>2000 Global Cup</strong> — host city TBD.</div>
+</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title slate">The Early Interlink — Sports Goes Online, Slowly</div>
+<div class="prose">
+<p>The Interlink's global integration completing in the early 2000s doesn't mean streaming or instant global fandom — capability-wise, this is roughly equivalent to OTL's mid-to-late 1990s web. What it does mean is that the sports section of the morning paper starts getting competition. Fans begin checking Diamond Classic standings, NAFA tables, and ANSA results on Interlink nodes rather than waiting for the next day's print edition. Sports results pages are among the earliest and most popular Interlink destinations — scores and standings translate naturally to text-based digital formats in a way that match footage does not.</p>
+<p>Nobody is streaming the 1998 Barcelona opening ceremony. But a growing number of people are reading about it the same evening rather than the next morning. The shift is generational and gradual — sports media as an industry is beginning to feel the ground move, without yet knowing quite where it's going.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title rust">Women's League — Mature and Established</div>
+<div class="prose">
+<p>The women's professional baseball league that barely survived Nolan/Priest and recovered under Lincoln is, by 1989, simply a fact of American sporting life. Real stars, real attendance, real media coverage — still secondary to the NBA in profile, but meaningfully less secondary than OTL's equivalent. No major new beat here; the story of this era is simply continued, uncontested institutional maturity. The survival question is three decades in the past.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title ink">Global Cup — Growing Prestige</div>
+<div class="prose">
+<p>The Global Cup, now four decades old and into its tenth and eleventh editions during this era, is firmly established as the premier club football competition in the world. NAFA's American Cup winner going to London or São Paulo or Tokyo to represent North America gives the domestic club season genuine global stakes — a dimension OTL's NFL or MLB never achieved. The Global Cup's prestige reinforces NAFA's own standing: winning the American Cup matters not just continentally but worldwide.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title gold">Union Cup — Established Continental Prestige</div>
+<div class="prose">
+<p>The Union Cup, now roughly two decades old and fully settled as a continental rugby championship, builds genuine prestige and tradition through this era. No major structural changes — just an institution becoming more itself, with established rivalries, celebrated matches, and a growing place in the continental sporting calendar alongside the American Cup and Diamond Classic.</p>
+</div>
+</div>
+<div class="notice">
+<div class="notice-icon">▸</div>
+<div>
+<strong>Bridge to Section Thirteen (Mercer &amp; Sinclair, 2001–2013):</strong> Two Democrat presidencies spanning the Interlink's maturation into something closer to what we'd recognize today — faster, more visual, more global. The sports broadcasting revolution that was just beginning to stir in the late 1990s arrives in full during this era, reshaping how every Big Sport reaches its audience.
+    </div>
+</div>
+</section>
+<hr class="section-divider"/>
+<section class="section" id="mercersinclair">
+<div class="section-header">
+<div class="section-number">13</div>
+<div><div class="section-eyebrow">Section Thirteen</div><div class="section-title">Mercer &amp; Sinclair (2001–2013)</div></div>
+</div>
+<div class="subsection">
+<div class="subsection-title gold">Olympics, Winter Games &amp; Global Cup</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year">2001</div>
+<div class="timeline-content">Summer America Games (feeding 2002 Rio). Winter America Games (feeding 2004 Chamonix).</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2002</div>
+<div class="timeline-content"><strong>2002 Rio de Janeiro Olympics</strong> — Brazil hosts. Roughly 710–760 American athletes, roughly 94–108 medals.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2003</div>
+<div class="timeline-content">Winter America Games (feeding 2004 Chamonix). Summer America Games (feeding 2006 Munich).</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2004</div>
+<div class="timeline-content"><strong>2004 Chamonix Winter Olympics</strong> — UER hosts. • <strong>2004 Global Cup</strong> — 14th edition. Host city TBD.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2005</div>
+<div class="timeline-content">Winter America Games (feeding 2008 Santiago). Summer America Games (feeding 2006 Munich).</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2006</div>
+<div class="timeline-content"><strong>2006 Munich Olympics</strong> — Germany hosts. Roughly 740–790 American athletes, roughly 98–112 medals.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2007</div>
+<div class="timeline-content">Summer America Games (feeding 2010 Athens). Winter America Games (feeding 2008 Santiago).</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2008</div>
+<div class="timeline-content"><strong>2008 Santiago Winter Olympics</strong> — Chile hosts. • <strong>2008 Global Cup</strong> — 15th edition. Host city TBD.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2009</div>
+<div class="timeline-content">Winter America Games (feeding 2012 St. Moritz). • <strong>NAFA work stoppage</strong> — see below.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2010</div>
+<div class="timeline-content"><strong>2010 Athens Olympics — The Centennial Games.</strong> One hundred years after the 1910 inaugural modern Games, the Olympics return to Athens. The WOC marks the occasion deliberately: ceremony, retrospective, and genuine celebration of a century of international athletic cooperation. The USA's own hundred-year Olympic history is acknowledged — from Peter Sinclair's 1907 delegation through two cancelled Games, two world wars, and a moon landing. Roughly 760–810 American athletes, roughly 100–115 medals. The largest and most celebrated Games since 1986 Manhattan, and for entirely different reasons.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2011</div>
+<div class="timeline-content">Summer America Games (feeding 2014 Mumbai). Winter America Games (feeding 2012 St. Moritz).</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2012</div>
+<div class="timeline-content"><strong>2012 St. Moritz Winter Olympics</strong> — Switzerland hosts for the second time (first: 1958). • <strong>2012 Global Cup</strong> — 16th edition. Host city TBD.</div>
+</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title rust">The Interlink Broadcasting Revolution</div>
+<div class="prose">
+<p>This is the era's defining structural story for sport. By the mid-2000s the Interlink has matured enough that live sports streaming becomes realistic — not perfect, not universal, but genuinely real. The shift that began in the late 1990s (sports results replacing the morning paper) accelerates into something much larger: dedicated sports broadcasting nodes, live match coverage, highlight packages available within minutes of a final whistle.</p>
+<p>Telecinema sports coverage — which has dominated sports broadcasting since the postwar era — faces serious competition from Interlink streaming for the first time. TC networks respond by doubling down on production values and live event coverage, but the audience is fragmenting in ways that can't be reversed. A fan in Tokyo can follow a NAFA match in real time. A viewer in Gigadohi can watch an ANSA championship without waiting for the TC broadcast. The Global Cup, which had always been a genuinely global competition, becomes a genuinely global <em>viewing event</em> for the first time during this era — 2008 and 2012 are the first editions where international audiences outside the host nation follow along in real time at scale.</p>
+<p>Sports media as an industry transforms accordingly: dedicated Interlink sports nodes, fantasy league platforms, real-time statistics, fan communities forming across national and continental boundaries. The business model of sports — broadcast rights, advertising, ticket revenues — begins its long renegotiation.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title slate">The 2009 NAFA Work Stoppage</div>
+<div class="prose">
+<p>The first major work stoppage in any of the Big Sports arrives in 2009, in NAFA — and its five-nation structure makes it unlike any labor dispute in purely domestic leagues. The NAFA players' association, representing players from the USA, Canada, Texas, California, and Mexico, must coordinate solidarity across five separate labor law frameworks, five governments with different union traditions, and five fan bases with different expectations of what a work stoppage means. Texan labor law is not American labor law; Mexican union tradition is not Canadian union tradition.</p>
+<p>The stoppage — length and specific trigger (revenue sharing, free agency rules, salary caps) left open for a future pass — costs at least part of a season. The cross-national solidarity holds, imperfectly but substantially: players from all five nations honor the stoppage, though the legal mechanisms by which they do so vary by country. The NAU's open-borders framework, deepening through this era, provides some of the connective tissue that makes continental labor action possible in ways it couldn't have been even twenty years earlier. Resolution eventually comes; the CBA that follows reshapes NAFA's economics for the next decade.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title ink">MLA — Genuinely Continental</div>
+<div class="prose">
+<p>By 2013, Aroball has completed its long journey from a Texas schoolyard invention in 1900 to a genuinely continental sport. MLA's US presence has grown enough that American cities feel like real Aroball cities rather than outposts of a foreign sport — though Texas, California, and Mexico remain the cultural heart, and US teams remain a minority of MLA franchises. The Interlink era helps: Aroball's visually distinctive court (sloped walls, side-mounted rings) translates exceptionally well to streaming video, giving the sport a natural hook for new audiences discovering it online.</p>
+</div>
+</div>
+<div class="notice">
+<div class="notice-icon">▸</div>
+<div>
+<strong>Bridge to Section Fourteen (Hudson &amp; Clearwater, 2013–2025):</strong> Two SPA presidencies — Hudson and then Clearwater (the first president from Lakota) — spanning the NAU Constitutional Convention and the lead-up to the 2027 Mars landing. The Interlink is now fully mature; sports broadcasting, fandom, and labor all operate in a recognizably modern landscape.
+    </div>
+</div>
+</section>
+<hr class="section-divider"/>
+<section class="section" id="hudsonclearwater">
+<div class="section-header">
+<div class="section-number">14</div>
+<div><div class="section-eyebrow">Section Fourteen</div><div class="section-title">Hudson &amp; Clearwater (2013–2025)</div></div>
+</div>
+<div class="subsection">
+<div class="subsection-title gold">Olympics, Winter Games &amp; Global Cup</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year">2013</div>
+<div class="timeline-content">Summer America Games (feeding 2014 Mumbai). Winter America Games (feeding 2016 Turin).</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2014</div>
+<div class="timeline-content"><strong>2014 Mumbai Olympics</strong> — India hosts. Roughly 780–830 American athletes, roughly 103–118 medals.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2015</div>
+<div class="timeline-content">Summer America Games (feeding 2018 Berlin). Winter America Games (feeding 2016 Turin).</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2016</div>
+<div class="timeline-content"><strong>2016 Turin Winter Olympics</strong> — Italy hosts for the third time (first: 1926, second: 1974). • <strong>2016 Global Cup</strong> — 17th edition. Host city TBD.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2017</div>
+<div class="timeline-content">Summer America Games (feeding 2018 Berlin). Winter America Games (feeding 2020 Beijing).</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2018</div>
+<div class="timeline-content"><strong>2018 Berlin Olympics</strong> — Germany hosts for the third time (Summer: first 1982 Frankfurt; Winter: first 1918 Rome). Roughly 800–850 American athletes, roughly 106–122 medals.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2019</div>
+<div class="timeline-content">Winter America Games (feeding 2020 Beijing). • <strong>Spring 2019 — Chinese Spring.</strong> Military coup attempt against the reform Emperor; Clearwater rallies global support and a GPC boycott threat; mass popular mobilization; Emperor restored within a week; coup leaders face civilian trial. Sweeping constitutional reforms follow. The WOC watches closely — 2022 Shanghai is three years away.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2020</div>
+<div class="timeline-content"><strong>2020 Beijing Winter Olympics</strong> — China hosts. • <strong>2020 Global Cup</strong> — 18th edition. Host city TBD.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2021</div>
+<div class="timeline-content">Summer America Games (feeding 2022 Shanghai). Winter America Games (feeding 2024 Lewis).</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2022</div>
+<div class="timeline-content"><strong>2022 Shanghai Olympics</strong> — see below. Roughly 820–870 American athletes, roughly 108–125 medals.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2023</div>
+<div class="timeline-content">Summer America Games (feeding 2026 Philadelphia). Winter America Games (feeding 2024 Lewis).</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2024</div>
+<div class="timeline-content"><strong>2024 Lewis Winter Olympics</strong> (Clark, approx. OTL Twin Falls, ID) — the USA hosts the Winter Games for the third time (first: 1922 Hugosville; second: 1984 Crossings). • <strong>2024 Global Cup</strong> — 19th edition. Host city TBD.</div>
+</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title rust">2022 Shanghai — China's Olympic Moment</div>
+<div class="prose">
+<p>Three years after the Chinese Spring's resolution, Shanghai hosts the Summer Olympics. The timing is not accidental — China hosting was awarded before the coup attempt, but the coup's failure and the constitutional reforms that followed give the Games an entirely different meaning than they might otherwise have had. This is a newly democratizing China — free press, competitive elections, genuine civil society emerging — with the Zhongxing Emperor as a beloved constitutional figurehead who survived an attempt to depose him, putting its best foot forward before the world.</p>
+<p>The atmosphere is celebratory in a way that carries genuine political weight: China-NAU relations are warmer than at any point since before the Global War, and the Olympic opening ceremony in Shanghai is watched globally with an attention that goes beyond sports. For the WOC, which has spent a century building exactly the kind of cooperative international institution that the Chinese Spring's resolution represents, the 2022 Games feel like a vindication.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title slate">Clearwater &amp; Stickball — Ambient Cultural Weight</div>
+<div class="prose">
+<p>Naomi Clearwater of Lakota — the first president from a Native state — brings no direct sports policy to the ANSA or any other league. But the ambient cultural weight is real: a Lakota president attending an All-Nation Championship final is not a routine presidential appearance. It's a closing of a circle that began when stickball spread from Gigadohi to Kanasaw to Lakota in the 1870s and 1880s, through a league that named itself for exactly the nations the president comes from. Clearwater makes at least one such appearance during her term; the moment is noted without being made into a policy statement.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title ink">Rugby — Talk of a Global Body</div>
+<div class="prose">
+<p>The Union Cup, now over forty years old, is a fully mature and prestigious continental championship. During the Hudson and Clearwater years, serious conversation begins about a WFA-parallel global rugby body — an international governing organization that could organize something equivalent to the Global Cup for rugby club teams, and coordinate the existing continental rugby bodies (the Union Cup's governing structure, European equivalents, Southern Hemisphere bodies). Nothing is founded yet; this is the "talk" stage, paralleling where football governance was in the late 1930s before the WFA formed in 1940. The founding, when it comes, belongs to a future era.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title green">Women's League — Approaching Parity</div>
+<div class="prose">
+<p>The women's professional baseball league that barely survived Nolan/Priest is, by 2025, closer to par with the men's NBA than at any prior point — real stars with genuine national profiles, real broadcast deals, real attendance, real salary history. Not quite equal billing; the gap that existed in 1989 has narrowed significantly but not closed. The trajectory is clear enough that "closing" feels like a matter of time rather than a question.</p>
+</div>
+</div>
+<div class="notice">
+<div class="notice-icon">▸</div>
+<div>
+<strong>Bridge to Section Fifteen (The Nakamura Era, 2025–2031):</strong> Sophia Nakamura — the first Green president, from Oregon — inherits a sports landscape that is fully mature, globally connected, and about to host the Philadelphia Olympics in the US Sesquicentennial year of 2026. The biggest American Games since 1986 Manhattan, and probably bigger.
+    </div>
+</div>
+</section>
+<hr class="section-divider"/>
+<section class="section" id="nakamura">
+<div class="section-header">
+<div class="section-number">15</div>
+<div><div class="section-eyebrow">Section Fifteen</div><div class="section-title">The Nakamura Era (2025–2031)</div></div>
+</div>
+<div class="subsection">
+<div class="subsection-title gold">Olympics, Winter Games &amp; Global Cup</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year">2025</div>
+<div class="timeline-content">Summer America Games — feeding the 2026 Philadelphia Olympics. The largest and most anticipated America Games in the event's history, reflecting the buildup to the Sesquicentennial Games.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2026</div>
+<div class="timeline-content"><strong>2026 Philadelphia Olympics — The Sesquicentennial Games.</strong> The United States hosts the Summer Olympics for the third time (first: 1922 Boston; second: 1986 Manhattan) in the year of its 250th anniversary as a nation. The convergence of host-nation boost, sesquicentennial energy, and the NAU Constitutional Convention's ratification process unfolding simultaneously produces the largest and most celebrated American Games in Olympic history. Roughly 900–950 American athletes — a genuine surge — and roughly 120–140 medals. Philadelphia as host city carries its own historical resonance: the city of the original Constitutional Convention of 1787, now hosting the Games as a new NAU Constitution takes shape in Calumet. The WOC marks the occasion as the 116th year of the modern Games; the USA's own Olympic history, from Peter Sinclair's 1907 delegation to the present, is acknowledged throughout.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2027</div>
+<div class="timeline-content">Winter America Games (feeding 2028 Winter Games, host TBD). • <strong>Mid-2027 — Mars landing.</strong> Commander Laura Mackenzie (Canada) and the ten-person international crew touch down. Sports broadcasting carries the moment the way it carries any major world event — matches pause, feeds cut away, announcers go quiet. It is background to sport rather than a sports story, but it is background that everyone experiences simultaneously.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">2028</div>
+<div class="timeline-content"><strong>2028 Winter Olympics</strong> — host city TBD. • <strong>2028 Global Cup — 20th edition.</strong> A milestone — two decades of the Global Cup as the world's premier club football competition. Multi-city hosting format, as has become standard. NAFA sends 6–8 clubs, with the reigning American Cup champion holding the automatic qualification slot.</div>
+</div>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title rust">The World Rugby Council — Founded</div>
+<div class="prose">
+<p>The serious conversation that began during the Hudson and Clearwater years resolves under Nakamura: the <strong>World Rugby Council (WRC)</strong> is founded, establishing a global governance body for rugby that parallels the WFA's role in football. Like the WFA, the WRC partners with the WOC rather than competing with it — Olympic rugby continues, and WRC handles global club competition governance and rules standardization across the continental bodies (the Union Cup's governing structure, European equivalents, Southern Hemisphere bodies).</p>
+<p>The WRC's founding raises the obvious next question: a Global Cup equivalent for rugby club teams. Whether that competition launches during Nakamura's presidency or belongs to the next era is left open — founding the body is this era's headline; the competition it organizes comes after.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title slate">Women's League — Parity Arrives</div>
+<div class="prose">
+<p>The women's professional baseball league that nearly died under Nolan/Priest reaches something genuinely close to equal billing with the men's NBA during the Nakamura years. Not announced, not legislated — just arrived at, through decades of accumulated audience, accumulated stars, accumulated history. The gap that existed in 1989 has closed. The league that survived by the thinnest of margins in the 1950s is now simply part of what American baseball means, without qualifier.</p>
+</div>
+</div>
+<div class="subsection">
+<div class="subsection-title ink">The Present-Day Landscape (2026)</div>
+<div class="prose">
+<p>As of 2026 — the Sesquicentennial year, the Philadelphia Olympics, the NAU Constitution ratification process — WBT's sports landscape is fully mature. Five Big Sports, each with its own championship tradition, its own broadcasting infrastructure, its own labor history. A global football ecosystem (WFA, Global Cup, NAFA, American Cup) that is genuinely novel relative to OTL. A continental rugby body (Union Cup, WRC) approaching its own global competition. A women's professional baseball league that survived everything and is now simply part of the furniture. And Aroball — invented in a Texas schoolyard in 1900, continental by the 1950s, globally known by the 2020s — still with its cultural heart in the borderlands where it was born.</p>
+<p>The franchise pass that follows establishes the current teams, cities, and competitive structure of each league as of the 2026 present day.</p>
+</div>
+</div>
+</section>
+
+
+</div>
+</body>
+</html>

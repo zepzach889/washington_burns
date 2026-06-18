@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Washington Burns TL — Olympics Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410; --paper: #f5f0e8; --aged: #e8e0cc; --rust: #8b3a2a;
+    --rust-light: #c4593d; --slate: #3d4a5c; --slate-light: #5a6d84;
+    --gold: #b8860b; --gold-light: #d4a017; --cream: #faf6ee;
+    --border: #c8b99a; --shadow: rgba(26,20,16,0.15); --film: #2a1f0e;
+    --green: #4a7c59;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--paper); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.7; background-image: radial-gradient(ellipse at 20% 0%, rgba(184,134,11,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 100%, rgba(61,74,92,0.06) 0%, transparent 60%); min-height: 100vh; }
+
+  /* MASTHEAD */
+  .masthead { background-color: var(--film); color: var(--paper); padding: 3rem 2rem 2.5rem; text-align: center; position: relative; overflow: hidden; }
+  .masthead::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(245,240,232,0.03) 40px, rgba(245,240,232,0.03) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(245,240,232,0.03) 40px, rgba(245,240,232,0.03) 41px); }
+  .masthead::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 12px; background-image: repeating-linear-gradient(90deg, var(--film) 0px, var(--film) 16px, var(--gold) 16px, var(--gold) 24px, var(--film) 24px, var(--film) 40px); opacity: 0.4; }
+  .masthead-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.75rem; position: relative; }
+  .masthead h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.1; position: relative; margin-bottom: 0.5rem; }
+  .masthead-sub { font-family: 'Source Serif 4', serif; font-style: italic; font-size: 1.05rem; color: rgba(245,240,232,0.7); position: relative; margin-bottom: 1.5rem; }
+  .masthead-rule { width: 60px; height: 2px; background: var(--gold); margin: 0 auto 1.5rem; position: relative; }
+  .masthead-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; color: rgba(245,240,232,0.4); position: relative; }
+
+  /* SIBLING NAV */
+  .sibling-nav { background-color: var(--rust); padding: 0; }
+  .sibling-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; overflow-x: auto; scrollbar-width: none; }
+  .sibling-inner::-webkit-scrollbar { display: none; }
+  .sibling-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.5); padding: 0.75rem 1.2rem; white-space: nowrap; border-right: 1px solid rgba(245,240,232,0.15); flex-shrink: 0; }
+  .sibling-inner a { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.75); text-decoration: none; padding: 0.75rem 1.1rem; white-space: nowrap; border-right: 1px solid rgba(245,240,232,0.1); transition: all 0.2s; }
+  .sibling-inner a:hover { color: var(--paper); background: rgba(245,240,232,0.1); }
+  .sibling-inner a.current { color: var(--paper); font-weight: 600; background: rgba(245,240,232,0.12); }
+
+  /* TOC BAR */
+  .toc-bar { background-color: var(--slate); padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px var(--shadow); }
+  .toc-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; overflow-x: auto; scrollbar-width: none; gap: 0; }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.4); padding: 0.9rem 1.2rem; white-space: nowrap; border-right: 1px solid rgba(245,240,232,0.1); }
+  .toc-inner a { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.7); text-decoration: none; padding: 0.9rem 1rem; white-space: nowrap; border-right: 1px solid rgba(245,240,232,0.08); transition: all 0.2s; }
+  .toc-inner a:hover { color: var(--gold-light); background: rgba(245,240,232,0.05); }
+
+  /* LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
+  .section { margin-bottom: 5rem; }
+  .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--ink); }
+  .section-number { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: var(--border); line-height: 1; flex-shrink: 0; }
+  .section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate-light); margin-bottom: 0.25rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; line-height: 1.2; }
+  .subsection { margin-bottom: 2.5rem; }
+  .subsection-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--rust); margin-bottom: 1rem; padding-left: 1rem; border-left: 3px solid var(--rust); }
+  .subsection-title.slate { color: var(--slate); border-left-color: var(--slate); }
+  .subsection-title.gold { color: var(--gold); border-left-color: var(--gold); }
+  .subsection-title.ink { color: var(--ink); border-left-color: var(--ink); }
+  .subsection-title.green { color: var(--green); border-left-color: var(--green); }
+  .prose { margin-bottom: 1.25rem; }
+  .prose p { margin-bottom: 0.9rem; font-size: 0.95rem; color: #2a2018; }
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 4rem 0; }
+  .notice { background: rgba(61,74,92,0.07); border: 1px solid rgba(61,74,92,0.2); border-radius: 2px; padding: 0.75rem 1rem; margin-top: 1rem; display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.85rem; }
+  .notice-icon { color: var(--gold); flex-shrink: 0; font-size: 0.8rem; margin-top: 0.1rem; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
+  .card-grid.two-col { grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); }
+  .card { background: var(--cream); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem 1.5rem; position: relative; }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--rust); border-radius: 2px 0 0 2px; }
+  .card.slate::before { background: var(--slate); }
+  .card.gold::before { background: var(--gold); }
+  .card.ink::before { background: var(--ink); }
+  .card.green::before { background: var(--green); }
+  .card-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate-light); margin-bottom: 0.4rem; }
+  .card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--ink); }
+  .card p, .card li { font-size: 0.88rem; line-height: 1.6; color: #3a3028; }
+  .card ul { padding-left: 1.1rem; margin-top: 0.25rem; }
+  .card ul li { margin-bottom: 0.25rem; }
+  .canon-flag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.15rem 0.4rem; border-radius: 2px; margin-left: 0.4rem; vertical-align: middle; }
+  .canon-flag.hard { background: var(--rust); color: white; }
+  .canon-flag.soft { background: var(--slate); color: white; }
+  .canon-flag.open { background: var(--gold); color: var(--ink); }
+
+  /* GAMES TABLE */
+  .games-table-wrap { overflow-x: auto; margin-bottom: 2rem; border: 1px solid var(--border); border-radius: 2px; }
+  table.games-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+  table.games-table thead { background: var(--slate); color: var(--paper); }
+  table.games-table thead th { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.75rem 0.9rem; text-align: left; white-space: nowrap; border-right: 1px solid rgba(245,240,232,0.1); font-weight: 600; }
+  table.games-table thead th:last-child { border-right: none; }
+  table.games-table tbody tr { border-bottom: 1px solid var(--border); }
+  table.games-table tbody tr:last-child { border-bottom: none; }
+  table.games-table tbody tr:nth-child(even) { background: rgba(200,185,154,0.12); }
+  table.games-table tbody tr.cancelled { background: rgba(139,58,42,0.07); }
+  table.games-table tbody tr.host-us { background: rgba(184,134,11,0.08); }
+  table.games-table tbody tr.tbd { opacity: 0.6; }
+  table.games-table td { padding: 0.65rem 0.9rem; vertical-align: top; border-right: 1px solid rgba(200,185,154,0.4); color: #2a2018; line-height: 1.45; }
+  table.games-table td:last-child { border-right: none; }
+  .col-year { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600; color: var(--rust); white-space: nowrap; }
+  .col-host { font-weight: 600; color: var(--ink); }
+  .col-num { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--slate); text-align: center; }
+  .cancelled-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rust); font-weight: 600; }
+  .tbd-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--slate-light); }
+  .host-flag { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--gold); color: var(--ink); padding: 0.1rem 0.35rem; border-radius: 2px; margin-left: 0.35rem; vertical-align: middle; }
+  .table-legend { display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate-light); margin-bottom: 1.5rem; }
+  .legend-item { display: flex; align-items: center; gap: 0.4rem; }
+  .legend-swatch { width: 12px; height: 12px; border-radius: 2px; flex-shrink: 0; }
+  .swatch-us { background: rgba(184,134,11,0.25); border: 1px solid rgba(184,134,11,0.4); }
+  .swatch-cancelled { background: rgba(139,58,42,0.15); border: 1px solid rgba(139,58,42,0.3); }
+  .swatch-tbd { background: var(--paper); border: 1px solid var(--border); opacity: 0.6; }
+
+  /* AMERICA GAMES CALENDAR */
+  .ag-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+  .ag-item { background: var(--cream); border: 1px solid var(--border); border-radius: 2px; padding: 0.75rem 1rem; position: relative; }
+  .ag-item::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gold); border-radius: 2px 0 0 2px; }
+  .ag-year { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--gold); font-weight: 600; margin-bottom: 0.2rem; }
+  .ag-desc { font-size: 0.8rem; color: #3a3028; line-height: 1.4; }
+  .ag-item.winter::before { background: var(--slate); }
+  .ag-item.winter .ag-year { color: var(--slate); }
+  .ag-item.special::before { background: var(--rust); }
+  .ag-item.special .ag-year { color: var(--rust); }
+
+  @media (max-width: 640px) {
+    .card-grid.two-col { grid-template-columns: 1fr; }
+    table.games-table { font-size: 0.78rem; }
+    table.games-table td, table.games-table th { padding: 0.5rem 0.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-eyebrow">Washington Burns Timeline — Canon Reference</div>
+  <h1>The Olympic Games</h1>
+  <div class="masthead-sub">World Olympic Committee history, Summer &amp; Winter Games records, and the America Games calendar</div>
+  <div class="masthead-rule"></div>
+  <div class="masthead-meta">Version 1 — June 2026 &nbsp;·&nbsp; Hard Canon Unless Marked Otherwise &nbsp;·&nbsp; Division 814 Internal Reference</div>
+</div>
+
+<nav class="sibling-nav">
+  <div class="sibling-inner">
+    <span class="sibling-label">Also In This Series</span>
+    <a href="wbt_sports_history.html">Sports History</a>
+    <a href="wbt_sports_teams.html">Teams &amp; Franchises</a>
+    <a href="wbt_sports_olympics.html" class="current">Olympics</a>
+  </div>
+</nav>
+
+<nav class="toc-bar">
+  <div class="toc-inner">
+    <span class="toc-label">Jump To</span>
+    <a href="#institutions">Institutions</a>
+    <a href="#summer">Summer Games</a>
+    <a href="#winter">Winter Games</a>
+    <a href="#america-games">America Games</a>
+    <a href="#nations">Nations &amp; Delegations</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- SECTION 01: INSTITUTIONS -->
+<section class="section" id="institutions">
+  <div class="section-header">
+    <div class="section-number">01</div>
+    <div><div class="section-eyebrow">Section One</div><div class="section-title">Institutions &amp; Governance</div></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The World Olympic Committee</div>
+    <div class="card-grid two-col">
+      <div class="card gold">
+        <div class="card-label">Founded 1907</div>
+        <h4>World Olympic Committee (WOC)</h4>
+        <p>Founded by three delegates: Ashcroft (Great Britain), von Altenburg (Prussia), and Bellamonte (Italy). The founding conference convenes in 1907 following informal discussions among European athletic organizations in the preceding years. President Cornelius Roosevelt II sends Peter Sinclair as the American delegate.</p>
+        <p>First Games: Athens, 1910. Texas and California participate as separate delegations from the outset, distinct from the USA, reflecting their status as sovereign nations.</p>
+      </div>
+      <div class="card slate">
+        <div class="card-label">Structural Note</div>
+        <h4>WOC vs. OTL IOC</h4>
+        <p>The WOC functions analogously to OTL's International Olympic Committee but reflects WBT's different international landscape: Texas and California hold permanent separate delegation status; the North American Union (once formed) does not supersede national Olympic delegations; and the WOC has historically maintained a closer working relationship with the continental America Games model that spread internationally by mid-century.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title rust">The United States Olympic Committee (USOC)</div>
+    <div class="card-grid two-col">
+      <div class="card">
+        <div class="card-label">Founded 1911</div>
+        <h4>USOC &amp; the America Games</h4>
+        <p>Cornelius Roosevelt II becomes the first USOC head in 1911 and immediately establishes the <strong>America Games</strong> — a centralized domestic trials competition whose winners feed the US Olympic team. Scoped initially to Olympic core disciplines: track and field, swimming, gymnastics, rowing, tennis, boxing, weightlifting, fencing, shooting, cycling. Baseball, stickball, Aroball, and rugby sit entirely outside this system. Football is added to the Olympic program at a later date (TBD), with the WFA coordinating the Olympic tournament — national teams competing against national teams, functioning as this timeline's equivalent of OTL's World Cup.</p>
+        <p>The America Games model proves influential. By mid-century, analogous domestic trials programs exist across the major Olympic nations — some named for the American model, others independently developed.</p>
+      </div>
+      <div class="card slate">
+        <div class="card-label">Calendar Structure</div>
+        <h4>Summer &amp; Winter Cycles</h4>
+        <p>From 1913, Summer America Games are held the year before each Summer Olympics, giving the selected team a full season to prepare. The WOC announces a Winter Olympics cycle at some point before 1922; the first Winter America Games are held in 1921, selecting the US team for the inaugural 1922 Hugosville Winter Games.</p>
+        <p>From 1984 onward, Winter and Summer Games operate on a <strong>two-year offset cycle</strong>, with dedicated Summer and Winter America Games permanently staggered. The first separate-year Winter Games (1984 Crossings, Washingtonia) was hosted by the USA.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title ink">Key Structural Rules</div>
+    <div class="card-grid">
+      <div class="card ink">
+        <div class="card-label">Delegation Structure</div>
+        <h4>Separate North American Nations</h4>
+        <p>The USA, Canada, Texas (Federation of Texas), and California (Union of the Californias) each field their own Olympic delegations. Hawaii, Cuba, Puerto Rico, and other NAU members similarly maintain independent delegations. The NAU does not produce a combined team.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Big Sports</div>
+        <h4>Olympic &amp; Non-Olympic</h4>
+        <p>Baseball, stickball, Aroball, and rugby are not Olympic sports in WBT. <strong>Football (soccer)</strong> is added to the Olympic program at a date TBD — the WFA coordinates with the WOC, and the Olympic football tournament functions as the premier national-team competition (equivalent to OTL's World Cup). The WFA's own Global Cup is a franchise/club competition, not a national-team event.</p>
+      </div>
+      <div class="card slate">
+        <div class="card-label">Cancelled Games</div>
+        <h4>Global War Interruption</h4>
+        <p>The 1934 Toronto Summer and Winter Games were cancelled when Canada entered the Global War. The 1938 Madrid Summer and Winter Games were similarly cancelled. An eight-year gap (1930–1942) separates the last prewar Games from the first postwar celebration in San Francisco (hosted by the Union of the Californias).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- SECTION 02: SUMMER GAMES -->
+<section class="section" id="summer">
+  <div class="section-header">
+    <div class="section-number">02</div>
+    <div><div class="section-eyebrow">Section Two</div><div class="section-title">Summer Games — Chronological Record</div></div>
+  </div>
+
+  <div class="subsection">
+    <div class="prose">
+      <p>Every Summer Olympics from the inaugural 1910 Athens Games through the 2026 Philadelphia Sesquicentennial. Athlete and event counts reflect total worldwide participation. Top Gold = nation with most gold medals; Top Overall = nation with most combined medals. US-hosted Games are highlighted. Cancelled editions are marked.</p>
+    </div>
+    <div class="table-legend">
+      <div class="legend-item"><div class="legend-swatch swatch-us"></div> US-hosted</div>
+      <div class="legend-item"><div class="legend-swatch swatch-cancelled"></div> Cancelled</div>
+      <div class="legend-item"><div class="legend-swatch swatch-tbd"></div> Data TBD</div>
+    </div>
+    <div class="games-table-wrap">
+      <table class="games-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Host City</th>
+            <th># Events</th>
+            <th># Athletes</th>
+            <th>Top Gold</th>
+            <th>Top Overall</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-year">1910</td>
+            <td class="col-host">Athens, Greece</td>
+            <td class="col-num">45</td>
+            <td class="col-num">~900</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Inaugural modern Games. Exhibition sports include baseball, cricket, football, and field hockey. Texas and California field separate delegations from the start. US wins 8 gold, 6 silver, 4 bronze across 76 athletes.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1914</td>
+            <td class="col-host">London, Great Britain</td>
+            <td class="col-num">58</td>
+            <td class="col-num">~1,400</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Modest organic growth from Athens. US fields ~115 athletes, wins ~26 medals. First Games to use America Games–selected team.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1918</td>
+            <td class="col-host">Rome, Italy</td>
+            <td class="col-num">68</td>
+            <td class="col-num">~1,900</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Continued incremental growth. US fields ~148 athletes, wins ~30 medals. Coincides with first Winter America Games and WOC announcement of a Winter cycle.</td>
+          </tr>
+          <tr class="host-us">
+            <td class="col-year">1922</td>
+            <td class="col-host">Boston, USA <span class="host-flag">US Host</span></td>
+            <td class="col-num">78</td>
+            <td class="col-num">~2,500</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>4th modern Games, first on American soil. Host-nation effect produces a surge: US fields ~202 athletes, wins ~39 medals. Held same year as inaugural 1922 Hugosville Winter Games.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1926</td>
+            <td class="col-host">Hamburg, Prussia</td>
+            <td class="col-num">83</td>
+            <td class="col-num">~2,900</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>First Games without UER participation (UER withdraws under Holtz). Prussia hosting is a statement of international rehabilitation; generates some controversy. US fields ~232 athletes, wins ~43 medals.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1930</td>
+            <td class="col-host">Copenhagen, Denmark</td>
+            <td class="col-num">88</td>
+            <td class="col-num">~3,400</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Last fully peaceful prewar Games. US fields ~265 athletes, wins ~47 medals — a prewar high-water mark. Held same year as 1930 Oslo Winter Games.</td>
+          </tr>
+          <tr class="cancelled">
+            <td class="col-year">1934</td>
+            <td class="col-host">Toronto, Canada</td>
+            <td class="col-num">—</td>
+            <td class="col-num">—</td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="cancelled-label">Cancelled</span> — Canada at war. US declares war on Spain the same year; all four NAFA members mobilize. America Games athletes had already been selected; they have nowhere to go.</td>
+          </tr>
+          <tr class="cancelled">
+            <td class="col-year">1938</td>
+            <td class="col-host">Madrid, Spain</td>
+            <td class="col-num">—</td>
+            <td class="col-num">—</td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="cancelled-label">Cancelled</span> — Spain at war, world at war. The US is deep in the Pacific theater. Both Summer and Winter America Games lapse entirely in 1937.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1942</td>
+            <td class="col-host">San Francisco, Union of the Californias</td>
+            <td class="col-num">~95</td>
+            <td class="col-num">~3,800</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>First Games in 12 years — postwar celebration energy throughout. Eight years of pent-up demand; the America Games that year set attendance records. Hosted by California, not the USA. Hawaii potentially participates as a North American associate member for the first time.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1946</td>
+            <td class="col-host">Dublin, Ireland</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~4,300</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Ireland hosts. US fields ~340 athletes, wins ~56 medals.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1950</td>
+            <td class="col-host">Toronto, Canada</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~4,800</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Toronto finally gets its Games — 16 years after the 1934 cancellation. Quiet symbolism throughout. US fields ~370 athletes, wins ~60 medals. Canada also hosts 1950 Vancouver Winter Games.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1954</td>
+            <td class="col-host">Paris, UER</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~5,400</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>UER returns to the Games after withdrawing in 1926 under Holtz — not just back, but hosting. US fields ~400 athletes, wins ~63 medals. UER also hosts 1954 Munich Winter Games.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1958</td>
+            <td class="col-host">Houston, Federation of Texas</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~5,900</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Texas Federation hosts — city name possibly different ITTL. US fields ~430 athletes, wins ~67 medals. Final Games of the Nolan/Priest era; closes just months before Georgina Lincoln's election.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1962</td>
+            <td class="col-host">Tokyo, Japan</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~6,400</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Japan hosts Summer and Winter both. US fields ~460 athletes, wins ~70 medals. Japan also hosts 1962 Sapporo Winter Games.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1966</td>
+            <td class="col-host">Stockholm, Sweden</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~6,900</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Games continue normally but under the shadow of the Choson War, which begins this same year. US fields ~490 athletes, wins ~73 medals. Sweden also hosts 1966 Helsinki Winter Games (host nation: Finland).</td>
+          </tr>
+          <tr>
+            <td class="col-year">1970</td>
+            <td class="col-host">Melbourne, Australia <span class="canon-flag soft">City Name TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Australia hosts. City name may differ ITTL; host nation confirmed. Era not yet fully developed in narrative.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1974</td>
+            <td class="col-host">Florence, Italy</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~8,000</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>US fields ~530 athletes, wins ~77 medals. Italy also hosts 1974 Cortina d'Ampezzo Winter Games.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1978</td>
+            <td class="col-host">Vienna, Austria</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~8,800</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>US fields ~580 athletes, wins ~80 medals. Austria also hosts 1978 Innsbruck Winter Games.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1982</td>
+            <td class="col-host">Frankfurt, Germany</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~9,400</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>US fields ~615 athletes, wins ~84 medals. Last Games with Winter Games on the shared-year cycle; 1982 Lillehammer is the final co-year Winter Games. Germany also hosts 1982 Lillehammer Winter Games.</td>
+          </tr>
+          <tr class="host-us">
+            <td class="col-year">1986</td>
+            <td class="col-host">Manhattan, USA <span class="host-flag">US Host</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~10,200</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>US hosts for first time in 64 years. Host-nation surge: US fields ~725 athletes, wins ~97 medals. Held during Pike's presidency and the marriage equality legislative battle — a nation celebrating athletic achievement while debating the full scope of its civil rights commitments.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1990</td>
+            <td class="col-host">Moscow, Russia</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~10,600</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Russia hosts Summer just two years after the 1988 Moscow Winter Games — unusual double within a short window, noted but not controversial. US fields ~645 athletes, wins ~88 medals.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1994</td>
+            <td class="col-host">Mexico City, Mexico</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~11,100</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>NAFA member nation hosting the Olympics carries quiet resonance for continental identity. US fields ~675 athletes, wins ~92 medals.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1998</td>
+            <td class="col-host">Barcelona, Spain</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~11,600</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>US fields ~705 athletes, wins ~96 medals.</td>
+          </tr>
+          <tr>
+            <td class="col-year">2002</td>
+            <td class="col-host">Rio de Janeiro, Brazil</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~12,200</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>US fields ~735 athletes, wins ~101 medals.</td>
+          </tr>
+          <tr>
+            <td class="col-year">2006</td>
+            <td class="col-host">Munich, Germany</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~12,700</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>US fields ~765 athletes, wins ~105 medals.</td>
+          </tr>
+          <tr>
+            <td class="col-year">2010</td>
+            <td class="col-host">Athens, Greece</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~13,200</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>The Centennial Games — 100 years after the 1910 inaugural. Games return to Athens deliberately; WOC marks the occasion with ceremony and retrospective celebration. The US's own hundred-year Olympic history acknowledged throughout.</td>
+          </tr>
+          <tr>
+            <td class="col-year">2014</td>
+            <td class="col-host">Mumbai, India</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~13,800</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>US fields ~805 athletes, wins ~110 medals.</td>
+          </tr>
+          <tr>
+            <td class="col-year">2018</td>
+            <td class="col-host">Berlin, Germany</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~14,300</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Germany hosts Summer for the second time (first: 1982 Frankfurt). US fields ~825 athletes, wins ~114 medals.</td>
+          </tr>
+          <tr>
+            <td class="col-year">2022</td>
+            <td class="col-host">Shanghai, China</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num">~14,800</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>China's post-Spring 2019 constitutional reform era on display. The Chinese Spring and WOC scrutiny (given the 2022 host commitment) form the backdrop. US fields ~845 athletes, wins ~116 medals.</td>
+          </tr>
+          <tr class="host-us">
+            <td class="col-year">2026</td>
+            <td class="col-host">Philadelphia, USA <span class="host-flag">US Host</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>The Sesquicentennial Games — USA's 250th anniversary as a nation. Third US hosting (first: 1922 Boston; second: 1986 Manhattan). Host-nation surge expected. NAU Constitutional Convention ratification process unfolding simultaneously. Largest American Games in history held in 2025 as lead-up.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notice">
+      <div class="notice-icon">&#9656;</div>
+      <div>Top Gold and Top Overall nation columns, plus total athlete/event counts, are open for development. US medal figures and athlete counts drawn from Sports History narrative. Figures given as single chosen values within established soft-canon ranges.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- SECTION 03: WINTER GAMES -->
+<section class="section" id="winter">
+  <div class="section-header">
+    <div class="section-number">03</div>
+    <div><div class="section-eyebrow">Section Three</div><div class="section-title">Winter Games — Chronological Record</div></div>
+  </div>
+
+  <div class="subsection">
+    <div class="prose">
+      <p>Winter Games begin with the 1922 Hugosville Games (Brandt, approx. OTL Denver area), held the same year as the 1922 Boston Summer Games. From 1922–1982, Winter and Summer Games share the same calendar year. From 1984 onward, Winter Games operate on a separate two-year offset cycle.</p>
+    </div>
+    <div class="table-legend">
+      <div class="legend-item"><div class="legend-swatch swatch-us"></div> US-hosted</div>
+      <div class="legend-item"><div class="legend-swatch swatch-cancelled"></div> Cancelled</div>
+      <div class="legend-item"><div class="legend-swatch swatch-tbd"></div> Data TBD</div>
+    </div>
+    <div class="games-table-wrap">
+      <table class="games-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Host City</th>
+            <th># Events</th>
+            <th># Athletes</th>
+            <th>Top Gold</th>
+            <th>Top Overall</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="host-us">
+            <td class="col-year">1922</td>
+            <td class="col-host">Hugosville (Brandt), USA <span class="host-flag">US Host</span></td>
+            <td class="col-num">~16</td>
+            <td class="col-num">~400</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Inaugural Winter Games, held same year as 1922 Boston Summer Games. Modest inaugural delegation befitting a new format. Hugosville = WBT name for city in approx. OTL Denver area.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1926</td>
+            <td class="col-host">Turin, Italy</td>
+            <td class="col-num">~20</td>
+            <td class="col-num">~550</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Italy hosts both Summer (Hamburg, Prussia — note: separate host) and Winter. Second Winter Games.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1930</td>
+            <td class="col-host">Oslo, Norway</td>
+            <td class="col-num">~24</td>
+            <td class="col-num">~700</td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Held same year as 1930 Copenhagen Summer Games. Last prewar Winter Games.</td>
+          </tr>
+          <tr class="cancelled">
+            <td class="col-year">1934</td>
+            <td class="col-host">Toronto, Canada</td>
+            <td class="col-num">—</td>
+            <td class="col-num">—</td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="cancelled-label">Cancelled</span> — Canada at war.</td>
+          </tr>
+          <tr class="cancelled">
+            <td class="col-year">1938</td>
+            <td class="col-host">Madrid, Spain</td>
+            <td class="col-num">—</td>
+            <td class="col-num">—</td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="cancelled-label">Cancelled</span> — Spain at war, world at war.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1942</td>
+            <td class="col-host">Lake Tahoe, Union of the Californias</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>First postwar Winter Games, coinciding with 1942 San Francisco Summer Games. Both hosted by the Union of the Californias.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1946</td>
+            <td class="col-host">Stockholm, Sweden</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Host city tentative ITTL.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1950</td>
+            <td class="col-host">Vancouver, Canada</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Canada hosts both 1950 Games (Toronto Summer, Vancouver Winter).</td>
+          </tr>
+          <tr>
+            <td class="col-year">1954</td>
+            <td class="col-host">Munich, UER</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>UER hosts both 1954 Games (Paris Summer, Munich Winter).</td>
+          </tr>
+          <tr>
+            <td class="col-year">1958</td>
+            <td class="col-host">St. Moritz, Switzerland</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Switzerland's first Winter Games hosting.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1962</td>
+            <td class="col-host">Sapporo, Japan</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Japan hosts both 1962 Games (Tokyo Summer, Sapporo Winter).</td>
+          </tr>
+          <tr>
+            <td class="col-year">1966</td>
+            <td class="col-host">Helsinki, Finland</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Host city tentative ITTL. Held under shadow of the Choson War.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1970</td>
+            <td class="col-host">Sarajevo, Yugoslavia <span class="canon-flag soft">Country Name TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Sarajevo confirmed as host city. Country name/status TBD — Yugoslavia exists in WBT but its political form by 1970 is not yet established.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1974</td>
+            <td class="col-host">Cortina d'Ampezzo, Italy</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Italy hosts both 1974 Games (Florence Summer, Cortina Winter).</td>
+          </tr>
+          <tr>
+            <td class="col-year">1978</td>
+            <td class="col-host">Innsbruck, Austria</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Austria hosts both 1978 Games (Vienna Summer, Innsbruck Winter).</td>
+          </tr>
+          <tr>
+            <td class="col-year">1982</td>
+            <td class="col-host">Lillehammer, Norway</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Final Winter Games on the shared-year cycle. From 1984, Summer and Winter Games permanently offset by two years.</td>
+          </tr>
+          <tr class="host-us">
+            <td class="col-year">1984</td>
+            <td class="col-host">Crossings (Washingtonia), USA <span class="host-flag">US Host</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>First Winter Games on the new offset cycle — the US hosting the inaugural separate-year edition gives it extra visibility. Crossings = WBT name for city in approx. OTL Riverton, WY area.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1988</td>
+            <td class="col-host">Moscow, Russia</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Russia hosts Winter 1988, then Summer 1990 — two Games in close succession.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1992</td>
+            <td class="col-host">Wonsan, Choson</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>A unified, internationally engaged Choson hosting the Olympics 25 years after the Choson War — postwar success made visible on the world stage.</td>
+          </tr>
+          <tr>
+            <td class="col-year">1996</td>
+            <td class="col-host">Nagano, Japan</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Japan's second Winter Games hosting.</td>
+          </tr>
+          <tr>
+            <td class="col-year">2000</td>
+            <td class="col-host"><span class="tbd-label">Calgary area, Canada (name TBD)</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>City name possibly different ITTL.</td>
+          </tr>
+          <tr>
+            <td class="col-year">2004</td>
+            <td class="col-host">Chamonix, UER</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>UER hosts Winter for second time.</td>
+          </tr>
+          <tr>
+            <td class="col-year">2008</td>
+            <td class="col-host">Santiago, Chile</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>South America's first Winter Games hosting.</td>
+          </tr>
+          <tr>
+            <td class="col-year">2012</td>
+            <td class="col-host">St. Moritz, Switzerland</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Switzerland's second Winter Games hosting (first: 1958).</td>
+          </tr>
+          <tr>
+            <td class="col-year">2016</td>
+            <td class="col-host">Turin, Italy</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Italy hosts Winter for third time (first: 1926, second: 1974 Cortina).</td>
+          </tr>
+          <tr>
+            <td class="col-year">2020</td>
+            <td class="col-host">Beijing, China</td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>Awarded before the Chinese Spring (2019); the WOC watches closely as the coup attempt unfolds with Shanghai 2022 Summer also on the horizon.</td>
+          </tr>
+          <tr class="host-us">
+            <td class="col-year">2024</td>
+            <td class="col-host">Lewis (Clark), USA <span class="host-flag">US Host</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td>USA's third Winter hosting (first: 1922 Hugosville; second: 1984 Crossings). Lewis = WBT name for city in approx. OTL Twin Falls, ID area.</td>
+          </tr>
+          <tr class="tbd">
+            <td class="col-year">2028</td>
+            <td class="col-host"><span class="tbd-label">Host TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td class="col-num"><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">TBD</span></td>
+            <td><span class="tbd-label">Not yet assigned</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- SECTION 04: AMERICA GAMES -->
+<section class="section" id="america-games">
+  <div class="section-header">
+    <div class="section-number">04</div>
+    <div><div class="section-eyebrow">Section Four</div><div class="section-title">The America Games Calendar</div></div>
+  </div>
+
+  <div class="subsection">
+    <div class="prose">
+      <p>The America Games are the United States' domestic Olympic trials competition, held the year before each Summer and Winter Games. Established in 1911 by Cornelius Roosevelt II as USOC head; first edition held 1913 (feeding 1914 London). Scoped to Olympic core disciplines only — the Big Sports operate outside this system entirely.</p>
+      <p>From 1984, the Summer and Winter editions of the America Games operate on permanently staggered two-year cycles, mirroring the new Olympic calendar offset. Prior to 1984, Summer and Winter America Games were held in the same year.</p>
+    </div>
+
+    <div class="subsection-title gold">Summer America Games</div>
+    <div class="ag-grid">
+      <div class="ag-item"><div class="ag-year">1913</div><div class="ag-desc">First Summer America Games → 1914 London</div></div>
+      <div class="ag-item"><div class="ag-year">1917</div><div class="ag-desc">→ 1918 Rome</div></div>
+      <div class="ag-item"><div class="ag-year">1921</div><div class="ag-desc">→ 1922 Boston</div></div>
+      <div class="ag-item"><div class="ag-year">1925</div><div class="ag-desc">→ 1926 Hamburg</div></div>
+      <div class="ag-item"><div class="ag-year">1929</div><div class="ag-desc">→ 1930 Copenhagen</div></div>
+      <div class="ag-item special"><div class="ag-year">1933</div><div class="ag-desc">→ 1934 Toronto (cancelled). Athletes selected; Games never happen.</div></div>
+      <div class="ag-item special"><div class="ag-year">1937</div><div class="ag-desc">Lapses entirely — US deep in Global War Pacific theater.</div></div>
+      <div class="ag-item"><div class="ag-year">1941</div><div class="ag-desc">Returns in celebration — 8 years of pent-up demand. Record turnout. → 1942 San Francisco (Union of the Californias)</div></div>
+      <div class="ag-item"><div class="ag-year">1945</div><div class="ag-desc">→ 1946 Dublin, Ireland</div></div>
+      <div class="ag-item"><div class="ag-year">1949</div><div class="ag-desc">→ 1950 Toronto</div></div>
+      <div class="ag-item"><div class="ag-year">1953</div><div class="ag-desc">→ 1954 Paris</div></div>
+      <div class="ag-item"><div class="ag-year">1957</div><div class="ag-desc">→ 1958 Houston</div></div>
+      <div class="ag-item"><div class="ag-year">1961</div><div class="ag-desc">→ 1962 Tokyo</div></div>
+      <div class="ag-item"><div class="ag-year">1965</div><div class="ag-desc">→ 1966 Stockholm</div></div>
+      <div class="ag-item"><div class="ag-year">1969</div><div class="ag-desc">→ 1970 Melbourne, Australia (city name TBD ITTL)</div></div>
+      <div class="ag-item"><div class="ag-year">1973</div><div class="ag-desc">→ 1974 Florence</div></div>
+      <div class="ag-item"><div class="ag-year">1977</div><div class="ag-desc">→ 1978 Vienna</div></div>
+      <div class="ag-item"><div class="ag-year">1981</div><div class="ag-desc">→ 1982 Frankfurt</div></div>
+      <div class="ag-item"><div class="ag-desc" style="font-style:italic;font-size:0.75rem;color:var(--slate-light);padding-top:0.5rem;">— Offset cycle begins 1984 —</div></div>
+      <div class="ag-item"><div class="ag-year">1985</div><div class="ag-desc">→ 1986 Manhattan</div></div>
+      <div class="ag-item"><div class="ag-year">1989</div><div class="ag-desc">→ 1990 Moscow</div></div>
+      <div class="ag-item"><div class="ag-year">1993</div><div class="ag-desc">→ 1994 Mexico City</div></div>
+      <div class="ag-item"><div class="ag-year">1997</div><div class="ag-desc">→ 1998 Barcelona</div></div>
+      <div class="ag-item"><div class="ag-year">2001</div><div class="ag-desc">→ 2002 Rio de Janeiro</div></div>
+      <div class="ag-item"><div class="ag-year">2005</div><div class="ag-desc">→ 2006 Munich</div></div>
+      <div class="ag-item"><div class="ag-year">2007</div><div class="ag-desc">→ 2010 Athens (Centennial)</div></div>
+      <div class="ag-item"><div class="ag-year">2011</div><div class="ag-desc">→ 2014 Mumbai</div></div>
+      <div class="ag-item"><div class="ag-year">2015</div><div class="ag-desc">→ 2018 Berlin</div></div>
+      <div class="ag-item"><div class="ag-year">2021</div><div class="ag-desc">→ 2022 Shanghai</div></div>
+      <div class="ag-item special"><div class="ag-year">2025</div><div class="ag-desc">→ 2026 Philadelphia. Largest in history; Sesquicentennial buildup.</div></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title slate">Winter America Games</div>
+    <div class="ag-grid">
+      <div class="ag-item winter"><div class="ag-year">1921</div><div class="ag-desc">First Winter America Games → 1922 Hugosville (inaugural Winter Games)</div></div>
+      <div class="ag-item winter"><div class="ag-year">1925</div><div class="ag-desc">→ 1926 Turin</div></div>
+      <div class="ag-item winter"><div class="ag-year">1929</div><div class="ag-desc">→ 1930 Oslo</div></div>
+      <div class="ag-item special"><div class="ag-year">1933</div><div class="ag-desc">→ 1934 Toronto Winter (cancelled).</div></div>
+      <div class="ag-item special"><div class="ag-year">1937</div><div class="ag-desc">Lapses alongside Summer AG.</div></div>
+      <div class="ag-item winter"><div class="ag-year">1941</div><div class="ag-desc">→ 1942 Lake Tahoe, Union of the Californias</div></div>
+      <div class="ag-item winter"><div class="ag-year">1945</div><div class="ag-desc">→ 1946 Stockholm</div></div>
+      <div class="ag-item winter"><div class="ag-year">1949</div><div class="ag-desc">→ 1950 Vancouver</div></div>
+      <div class="ag-item winter"><div class="ag-year">1953</div><div class="ag-desc">→ 1954 Munich</div></div>
+      <div class="ag-item winter"><div class="ag-year">1957</div><div class="ag-desc">→ 1958 St. Moritz</div></div>
+      <div class="ag-item winter"><div class="ag-year">1961</div><div class="ag-desc">→ 1962 Sapporo</div></div>
+      <div class="ag-item winter"><div class="ag-year">1965</div><div class="ag-desc">→ 1966 Helsinki</div></div>
+      <div class="ag-item winter"><div class="ag-year">1969</div><div class="ag-desc">→ 1970 Sarajevo, Yugoslavia (country name TBD ITTL)</div></div>
+      <div class="ag-item winter"><div class="ag-year">1973</div><div class="ag-desc">→ 1974 Cortina d'Ampezzo</div></div>
+      <div class="ag-item winter"><div class="ag-year">1977</div><div class="ag-desc">→ 1978 Innsbruck. Last co-year cycle before offset.</div></div>
+      <div class="ag-item winter"><div class="ag-year">1981</div><div class="ag-desc">→ 1982 Lillehammer. Final Winter AG on shared-year cycle.</div></div>
+      <div class="ag-item special"><div class="ag-year">1983</div><div class="ag-desc">First Winter AG on offset cycle → 1984 Crossings (inaugural offset Winter Games, US-hosted)</div></div>
+      <div class="ag-item winter"><div class="ag-year">1987</div><div class="ag-desc">→ 1988 Moscow Winter</div></div>
+      <div class="ag-item winter"><div class="ag-year">1991</div><div class="ag-desc">→ 1992 Wonsan</div></div>
+      <div class="ag-item winter"><div class="ag-year">1995</div><div class="ag-desc">→ 1996 Nagano</div></div>
+      <div class="ag-item winter"><div class="ag-year">1999</div><div class="ag-desc">→ 2000 Calgary area</div></div>
+      <div class="ag-item winter"><div class="ag-year">2003</div><div class="ag-desc">→ 2004 Chamonix</div></div>
+      <div class="ag-item winter"><div class="ag-year">2007</div><div class="ag-desc">→ 2008 Santiago</div></div>
+      <div class="ag-item winter"><div class="ag-year">2009</div><div class="ag-desc">→ 2012 St. Moritz</div></div>
+      <div class="ag-item winter"><div class="ag-year">2013</div><div class="ag-desc">→ 2016 Turin</div></div>
+      <div class="ag-item winter"><div class="ag-year">2017</div><div class="ag-desc">→ 2020 Beijing Winter</div></div>
+      <div class="ag-item winter"><div class="ag-year">2021</div><div class="ag-desc">→ 2024 Lewis</div></div>
+      <div class="ag-item winter"><div class="ag-year">2027</div><div class="ag-desc">→ 2028 Winter (host TBD)</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- SECTION 05: NATIONS & DELEGATIONS -->
+<section class="section" id="nations">
+  <div class="section-header">
+    <div class="section-number">05</div>
+    <div><div class="section-eyebrow">Section Five</div><div class="section-title">Nations &amp; Delegations</div></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">North American Delegations</div>
+    <div class="card-grid">
+      <div class="card gold">
+        <div class="card-label">Full Member — Since 1910</div>
+        <h4>United States of America</h4>
+        <p>Full WOC member since founding. Governed by the USOC (est. 1911). Has hosted Summer Games three times: 1922 Boston, 1986 Manhattan, 2026 Philadelphia. Has hosted Winter Games three times: 1922 Hugosville, 1984 Crossings, 2024 Lewis.</p>
+      </div>
+      <div class="card slate">
+        <div class="card-label">Full Member — Since 1910</div>
+        <h4>Canada</h4>
+        <p>Full WOC member since founding. Hosted Summer and Winter both in 1950 (Toronto/Vancouver). Was scheduled to host 1934 (cancelled, Global War). Consistently strong Olympic program across Summer and Winter disciplines.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Separate Delegation — Since 1910</div>
+        <h4>Federation of Texas</h4>
+        <p>Texas fields its own delegation, fully separate from the USA, reflecting its status as a sovereign nation. Has hosted Summer Games once: 1958 Houston (city name possibly different ITTL). Strong in football (soccer), Aroball, and track and field.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Separate Delegation — Since 1910</div>
+        <h4>Union of the Californias</h4>
+        <p>California fields its own delegation, fully separate from the USA. Commonwealth immigration (Australia, New Zealand, South Africa, Fiji) gives California distinct Pacific-facing athletic strengths. Competes as its own delegation in rugby, giving it international rugby rivalries distinct from the rest of North America.</p>
+      </div>
+      <div class="card ink">
+        <div class="card-label">Associate / Emerging — TBD</div>
+        <h4>Hawaii, Mexico, Cuba, Puerto Rico</h4>
+        <p>NAU members that maintain independent Olympic delegations. Hawaii potentially participates as a North American associate member from the 1942 San Francisco Games (hosted by California). Specific delegation histories to be developed.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title slate">Notable International Situations</div>
+    <div class="card-grid two-col">
+      <div class="card slate">
+        <div class="card-label">1926–1954</div>
+        <h4>UER Absence &amp; Return</h4>
+        <p>The UER withdraws from the Olympics under Holtz following the 1926 Hamburg Games — notable partly because Hamburg itself is in Prussia, which the UER controls, making the context pointed. The UER returns by 1954 Paris, hosting both that year's Summer and Winter Games. The absence is shorter than it might have seemed at the time.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">1992</div>
+        <h4>Choson at Wonsan</h4>
+        <p>A unified, internationally engaged Choson hosting the 1992 Winter Olympics 25 years after the Choson War (1966–68) is itself a quiet statement of postwar success. The contrast with the wartime shadow over the 1966 Stockholm Summer Games is deliberate.</p>
+      </div>
+    </div>
+    <div class="notice">
+      <div class="notice-icon">&#9656;</div>
+      <div>The NAU does not produce a combined Olympic delegation. Individual member nations — USA, Canada, Texas, California, Mexico, Hawaii, Cuba, Puerto Rico, FRCA, Haiti, Dominican Republic, Jamaica — each compete under their own flags and national committees.</div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /container -->
+</body>
+</html>
