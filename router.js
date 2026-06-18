@@ -5,6 +5,7 @@ const ROUTES = {
   'nan.waymark.biz.usa':                      '/',
   'nan.franklin-ob.pr.usa':                   '/nodes/franklin-observer/',
   'nan.abnnews.pr.usa':                       '/nodes/abn/',
+  'nan.csn.pr.usa':                           '/nodes/csn/',
   'nan.nedex.org.nau':                        '/nodes/nedex/',
   'nan.nedex.org.nau/browse':                 '/nodes/nedex/nedex_browse.html',
   'nan.nedex.org.nau/categories':             '/nodes/nedex/nedex_categories.html',
