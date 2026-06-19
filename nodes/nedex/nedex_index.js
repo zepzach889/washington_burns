@@ -40,7 +40,7 @@ const NEDEX_ARTICLES = [
   { title: 'Theodore Drake',                       file: 'theodore-drake.html',     categories: ['Biographies', 'Presidents of the United States', 'Democratic Party politicians', 'Guilded Age'],                blurb: 'Eighteenth President of the United States (1881-1887); Major austerity cuts, presided - and failed to respond properly to - the Italian Flu epedmic.' },
   { title: 'Leeland Rowling',                      file: 'leeland-rowling.html',    categories: ['Biographies', 'Presidents of the United States', 'Federalist Party politicians', 'Guilded Age'],                blurb: 'Nineteenth President of the United States (1887-1893); End of austerity, major expansions to the National Road network, the dedication of the Freedom Triumphant statue, and the first state visit to Great Britain.' },
   { title: 'Colin Beck',                           file: 'colin-beck.html',         categories: ['Biographies', 'Presidents of the United States', 'Federalist Party politicians', 'Guilded Age'],                blurb: 'Twentieth President of the United States (1893-1899); Cabinet expansion (adding three new executive departments), Women\'s suffrage amendment passed by Congress, and Calumet given federal district status' },
-
+  { title: 'Alexander Fleak',                      file: 'alexander-fleak.html',    categories: ['Biographies', 'Presidents of the United States', 'Federalist Party politicians', 'Guilded Age'],                blurb: 'Twenty-first President of the United States (1899-1903); Continued support for infrastructure projects, major education reform, adoption of the suffrage amendment, but storm clouds building in Cuba' },
   
   
 ];
