@@ -152,7 +152,7 @@
 </div>
 
 <script src="../../router.js"></script>
-<script src="../../stories.js"></script>
+<script src="../../content.js"></script>
 <script>
 initAddressBar('nan.franklin-ob.pr.usa');
 
@@ -175,7 +175,10 @@ const dateStr  = `${DAYS_OF_WEEK[_now.getDay()]}, ${_now.getDate()} ${MONTHS[_no
 document.getElementById('fo-dateline').innerHTML =
   `${dateStr} &nbsp;·&nbsp; ${edition} &nbsp;·&nbsp; link://nan.franklin-ob.pr.usa &nbsp;·&nbsp; Ȼ0.80`;
 
-// Use shared daily picks from stories.js
+// Use shared daily picks from content.js
+// FO_LEAD_TODAY is the .fo rendering of the day's WIRE_STORIES lead --
+// this is what keeps the Observer's top story aligned with ABN's top story
+// (same underlying event, each site's own voice/format).
 const lead = FO_LEAD_TODAY;
 const [nat1, nat2, nat3] = FO_NATIONAL_TODAY;
 const worldStories = FO_WORLD_TODAY;
