@@ -39,7 +39,7 @@ const NEDEX_ARTICLES = [
   { title: 'Horace Littlefield',                   file: 'horace-littlefield.html', categories: ['Biographies', 'Presidents of the United States', 'Federalist Party politicians', 'Guilded Age'],                blurb: 'Seventeenth President of the United States (1877-1881); Birth of the modern presidency - the first president to travel extensively, seeing the Pacific Coast, and visiting Canada.' },
   { title: 'Theodore Drake',                       file: 'theodore-drake.html',     categories: ['Biographies', 'Presidents of the United States', 'Democratic Party politicians', 'Guilded Age'],                blurb: 'Eighteenth President of the United States (1881-1887); Major austerity cuts, presided - and failed to respond properly to - the Italian Flu epedmic.' },
   { title: 'Leeland Rowling',                      file: 'leeland-rowling.html',    categories: ['Biographies', 'Presidents of the United States', 'Federalist Party politicians', 'Guilded Age'],                blurb: 'Nineteenth President of the United States (1887-1893); End of austerity, major expansions to the National Road network, the dedication of the Freedom Triumphant statue, and the first state visit to Great Britain.' },
-
+  { title: 'Colin Beck',                           file: 'colin-beck.html',         categories: ['Biographies', 'Presidents of the United States', 'Federalist Party politicians', 'Guilded Age'],                blurb: 'Twentieth President of the United States (1893-1899); Cabinet expansion (adding three new executive departments), Women\'s suffrage amendment passed by Congress, and Calumet given federal district status' },
 
   
   
