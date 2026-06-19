@@ -255,10 +255,10 @@ function updateArcClock() {
 setInterval(updateArcClock, 10000);
 updateArcClock();
 
-const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const now = new Date();
-const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
-document.getElementById('fps-date').textContent = now.getDate() + ' ' + MONTHS[now.getMonth()] + ', ' + now.getFullYear();
+// MONTHS, _now, and DAY_OF_YEAR are already provided by content.js -- do not
+// redeclare them here, since duplicate `const` declarations in the same
+// global scope throw a SyntaxError that silently kills this entire script.
+document.getElementById('fps-date').textContent = _now.getDate() + ' ' + MONTHS[_now.getMonth()] + ', ' + _now.getFullYear();
 
 // ── HIGHLIGHTED CARD PARKS PER REGION ──
 const CARD_PARKS = {
@@ -295,9 +295,9 @@ async function fetchParkWeather(park) {
 
 // ── PARK OF THE DAY ──
 const PARKS_WITH_IMG = WBT_PARKS.filter(p => p.img);
-const potd = PARKS_WITH_IMG[dayOfYear % PARKS_WITH_IMG.length];
-const tipIdx   = dayOfYear % potd.tips.length;
-const trailIdx = dayOfYear % potd.trails.length;
+const potd = PARKS_WITH_IMG[DAY_OF_YEAR % PARKS_WITH_IMG.length];
+const tipIdx   = DAY_OF_YEAR % potd.tips.length;
+const trailIdx = DAY_OF_YEAR % potd.trails.length;
 
 document.getElementById('fps-potd-img').style.backgroundImage = 'url("' + potd.img + '")';
 document.getElementById('fps-potd-img').style.backgroundPosition = potd.imgPos || 'center top';
