@@ -45,6 +45,7 @@ const ROUTES = {
   'nan.nedex.org.nau/colin-beck':             '/nodes/nedex/colin-beck.html',
   'nan.nedex.org.nau/alexander-fleak':        '/nodes/nedex/alexander-fleak.html',
   'nan.nedex.org.nau/peter-landon':           '/nodes/nedex/peter-landon.html',
+  'nan.nedex.org.nau/cornelius-roosevelt-ii': '/nodes/nedex/cornelius-roosevelt-ii.html',
   'nan.usrc.gov.usa':                         '/nodes/usrc/',
   'nan.assembly.nau':                         '/nodes/assembly/',
   'nan.washingtonhouse.gov.usa':              '/nodes/washington-house/',
