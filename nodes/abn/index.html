@@ -297,9 +297,10 @@ const WH_IMG   = '../../images/washington-house/Washington%20House%20Standard.pn
 function getImage(hed) {
   const h = (hed || '').toLowerCase();
 
-  // -- Domestic / NAU institutional --
+  // -- Domestic / USA institutional --
   if (h.includes('usrc') || h.includes('rail') || h.includes('corridor') || h.includes('northeast')) return IMG_BASE + 'train.jpg';
-  if (h.includes('washington house') || h.includes('west wing')) return WH_IMG;
+  if (h.includes('washington house') || h.includes('west wing') || h.includes('nakamura') || h.includes('east wing')) return WH_IMG;
+  if (h.includes('congress') || h.includes('senate') || h.includes('house of representatives') || h.includes('congressional')) IMG_BASE + 'congress1.jpg';
   if (h.includes('education') || h.includes('literacy') || h.includes('school') || h.includes('university') || h.includes('uus')) return IMG_BASE + 'school1.jpg';
   if (h.includes('interlink') || h.includes('broadband') || h.includes('rural access')) return IMG_BASE + 'interlink1.jpg';
   if (h.includes('mars') || h.includes('ares') || h.includes('nasa') || h.includes('astronaut') || h.includes('space')) return IMG_BASE + 'space1.jpg';
@@ -332,7 +333,7 @@ function getImage(hed) {
 
   // -- Continental institutions (catch-all, kept last among specific matches) --
   if (h.includes('gpc')) return IMG_BASE + 'gpc1.jpg';
-  if (h.includes('nau') || h.includes('assembly') || h.includes('nakamura') || h.includes('consolidation') || h.includes('congress') || h.includes('modernisation') || h.includes('trade')) return IMG_BASE + 'nau_assembly2.png';
+  if (h.includes('nau') || h.includes('assembly')) return IMG_BASE + 'nau_assembly2.png';
 
   return IMG_BASE + 'nau_assembly.jpg'; // default fallback
 }
