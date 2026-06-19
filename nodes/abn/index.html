@@ -145,6 +145,13 @@
   .abn-mostread-item:last-child { border-bottom: none; }
   .abn-mostread-num { font-weight: 700; color: var(--abn-red); flex-shrink: 0; }
 
+  /* BREAKING / EXCLUSIVE */
+  .abn-breaking { background: #FFF5F5; border-left: 3px solid var(--abn-red); border-radius: 0 8px 8px 0; padding: 14px 16px; margin-bottom: 24px; }
+  .abn-breaking-tag { font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--abn-red); margin-bottom: 5px; }
+  .abn-breaking-hed { font-family: 'DM Serif Display', serif; font-size: 17px; line-height: 1.3; color: var(--text-primary); margin-bottom: 4px; }
+  .abn-breaking-dek { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 4px; }
+  .abn-breaking-meta { font-size: 10px; color: var(--text-tertiary); font-weight: 500; }
+
   @media (max-width: 700px) {
     .abn-body { grid-template-columns: 1fr; }
     .abn-lead { grid-template-columns: 1fr; }
@@ -219,6 +226,8 @@
   <div class="abn-main">
     <div class="wm-section-label">Top Story</div>
     <div class="abn-lead" id="abn-lead"></div>
+
+    <div class="abn-breaking" id="abn-breaking"></div>
 
     <div class="wm-section-label">Today's Stories</div>
     <div class="abn-grid" id="abn-cards"></div>
@@ -310,6 +319,17 @@ document.getElementById('abn-lead').innerHTML = `
     <div class="abn-lead-dek">${lead.dek}</div>
     <div class="abn-lead-meta">${lead.meta}</div>
   </div>
+`;
+
+// ── BREAKING — ABN_EXCLUSIVE_TODAY from content.js ──
+// ABN-only breaking/business item with no FO or WH counterpart -- gives
+// ABN's CNN-style urgency a distinct visual slot below the shared wire lead.
+const exclusive = ABN_EXCLUSIVE_TODAY;
+document.getElementById('abn-breaking').innerHTML = `
+  <div class="abn-breaking-tag">${exclusive.tag || 'ABN Exclusive'}</div>
+  <div class="abn-breaking-hed">${exclusive.hed}</div>
+  <div class="abn-breaking-dek">${exclusive.dek}</div>
+  <div class="abn-breaking-meta">${exclusive.meta}</div>
 `;
 
 // ── CARDS — from content.js ──
