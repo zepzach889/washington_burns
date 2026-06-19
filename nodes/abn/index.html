@@ -250,7 +250,7 @@
 </div>
 
 <script src="../../router.js"></script>
-<script src="../../stories.js"></script>
+<script src="../../content.js"></script>
 <script>
 initAddressBar('nan.abnnews.pr.usa');
 
@@ -276,7 +276,7 @@ function updateClock() {
 setInterval(updateClock, 10000);
 updateClock();
 
-// ── TICKER — from stories.js ──
+// ── TICKER — from content.js ──
 const tickerText = ABN_TICKER_TODAY.join(' <span class="abn-ticker-sep">◆</span> ');
 const el = document.getElementById('abn-ticker-text');
 el.innerHTML = tickerText + ' <span class="abn-ticker-sep">◆</span> ' + tickerText;
@@ -299,7 +299,7 @@ function getImage(hed) {
   return IMG_BASE + 'nau_assembly.jpg'; // default fallback
 }
 
-// ── LEAD — from stories.js ──
+// ── LEAD — from content.js (WIRE_STORIES, .abn rendering) ──
 const lead = ABN_LEAD_TODAY;
 const leadImg = getImage(lead.hed);
 document.getElementById('abn-lead').innerHTML = `
@@ -312,7 +312,7 @@ document.getElementById('abn-lead').innerHTML = `
   </div>
 `;
 
-// ── CARDS — from stories.js ──
+// ── CARDS — from content.js ──
 document.getElementById('abn-cards').innerHTML = ABN_CARDS_TODAY.map(c => `
   <div class="abn-card">
     <div class="abn-card-img" style="background-image:url('${getImage(c.hed)}')"></div>
@@ -324,7 +324,7 @@ document.getElementById('abn-cards').innerHTML = ABN_CARDS_TODAY.map(c => `
   </div>
 `).join('');
 
-// ── WORLD — from stories.js ──
+// ── WORLD — from content.js ──
 document.getElementById('abn-world').innerHTML = ABN_WORLD_TODAY.map(w => `
   <div class="abn-world-item">
     <div class="abn-world-tag">${w.tag}</div>
@@ -373,7 +373,7 @@ document.getElementById('abn-schedule').innerHTML = SCHEDULE.map((s, i) => {
   </div>`;
 }).join('');
 
-// ── MOST READ — from stories.js ──
+// ── MOST READ — from content.js ──
 document.getElementById('abn-mostread').innerHTML = ABN_MOSTREAD_TODAY.map((item, i) => `
   <div class="abn-mostread-item">
     <span class="abn-mostread-num">${i+1}.</span>
