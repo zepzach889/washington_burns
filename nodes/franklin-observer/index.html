@@ -86,6 +86,8 @@
 
   .fo-section-divider { border: none; border-top: 0.5px solid var(--border); margin: 16px 0; }
 
+  .fo-feature-story .fo-story-hed { font-style: italic; }
+
   @media (max-width: 700px) {
     .fo-body { grid-template-columns: 1fr; }
     .fo-col-divider { display: none; }
@@ -182,9 +184,13 @@ document.getElementById('fo-dateline').innerHTML =
 const lead = FO_LEAD_TODAY;
 const [nat1, nat2, nat3] = FO_NATIONAL_TODAY;
 const worldStories = FO_WORLD_TODAY;
+// FO_EXCLUSIVE_TODAY is an Observer-only feature/analysis story with no
+// ABN or Washington House counterpart -- appended below the brief National
+// items so the paper's distinctive long-form voice has a home on the page.
+const feature = FO_EXCLUSIVE_TODAY;
 
-function storyHtml(s) {
-  return `<div class="fo-story">
+function storyHtml(s, extraClass) {
+  return `<div class="fo-story${extraClass ? ' ' + extraClass : ''}">
     <div class="fo-story-hed">${s.hed}</div>
     <div class="fo-story-dek">${s.dek}</div>
     <div class="fo-story-meta">${s.meta}</div>
@@ -220,6 +226,9 @@ document.getElementById('fo-body').innerHTML = `
     ${storyHtml(nat1)}
     ${storyHtml(nat2)}
     ${storyHtml(nat3)}
+    <hr class="fo-section-divider">
+    <div class="fo-col-label national">Observer Feature</div>
+    ${storyHtml(feature, 'fo-feature-story')}
   </div>
   <div class="fo-col-divider"></div>
   <div class="fo-col">
