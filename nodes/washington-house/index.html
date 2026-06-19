@@ -279,14 +279,14 @@
       </div>
     </div>
 
-    <!-- STATEMENT — rotates daily via stories.js -->
+    <!-- STATEMENT — rotates daily via content.js -->
     <div class="wh-statement" id="wh-statement-block">
       <div class="wh-statement-label" id="wh-statement-label"></div>
       <div class="wh-statement-text" id="wh-statement-text"></div>
       <div class="wh-statement-attr" id="wh-statement-attr"></div>
     </div>
 
-    <!-- BRIEFING ROOM — rotates daily via stories.js -->
+    <!-- BRIEFING ROOM — rotates daily via content.js -->
     <div class="wh-section">
       <div class="wh-section-hed">From the Briefing Room</div>
       <div id="wh-briefing"></div>
@@ -390,7 +390,7 @@
 </div>
 
 <script src="../../router.js"></script>
-<script src="../../stories.js"></script>
+<script src="../../content.js"></script>
 <script>
 initAddressBar('nan.washingtonhouse.gov.usa');
 
@@ -406,18 +406,22 @@ function updateArcClock() {
 setInterval(updateArcClock, 10000);
 updateArcClock();
 
-// ── DATE / TIME (re-uses _now and MONTHS/DAYS_OF_WEEK from stories.js) ──
+// ── DATE / TIME (re-uses _now and MONTHS/DAYS_OF_WEEK from content.js) ──
 const dateStr   = `${DAYS_OF_WEEK[_now.getDay()]}, ${_now.getDate()} ${MONTHS[_now.getMonth()]}`;
 const hour      = _now.getHours();
 const dayOfWeek = _now.getDay();
 
-// ── STATEMENT — from stories.js ──
+// ── STATEMENT — from content.js ──
+// WH_STATEMENT_TODAY automatically pulls the Mars/NAU/etc. tie-in quote on
+// days when the wire lead story has one (see content.js), and falls back to
+// the independent WH_STATEMENTS pool on days when it doesn't. Either way the
+// shape here is always { label, text, attr } (and date, when present).
 const stmt = WH_STATEMENT_TODAY;
-document.getElementById('wh-statement-label').textContent = stmt.label + ' · ' + stmt.date;
+document.getElementById('wh-statement-label').textContent = stmt.label + (stmt.date ? ' · ' + stmt.date : '');
 document.getElementById('wh-statement-text').textContent  = stmt.text;
 document.getElementById('wh-statement-attr').textContent  = stmt.attr;
 
-// ── BRIEFING ROOM — from stories.js ──
+// ── BRIEFING ROOM — from content.js ──
 document.getElementById('wh-briefing').innerHTML = WH_BRIEFING_TODAY.map(b => `
   <div class="wh-news-item">
     <div class="wh-news-title">${b.title}</div>
