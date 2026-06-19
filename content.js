@@ -211,6 +211,24 @@ function seededShuffle(arr, seed) {
   return a;
 }
 
+// -- DYNAMIC "DAYS AGO" DATE FORMATTING (Washington House) --
+// WH_STATEMENTS / WH_BRIEFING carry no fixed dates -- a fixed date looks
+// stale the moment real time passes it by. Instead each picked item gets a
+// small pseudo-random "days ago" offset (0-10), derived from the day's
+// SEED, so the offset itself changes daily but always resolves to a date
+// within the last ten days relative to whenever the page is actually loaded.
+function pseudoRandomDaysAgo(seed, index, min = 0, max = 10) {
+  let s = (seed + index * 7919) & 0xffffffff; // 7919: arbitrary prime for spread
+  s = (s * 1664525 + 1013904223) & 0xffffffff;
+  const range = max - min + 1;
+  return min + (Math.abs(s) % range);
+}
+function formatDaysAgoDate(daysAgo) {
+  const d = new Date(_now);
+  d.setDate(d.getDate() - daysAgo);
+  return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+}
+
 
 // ═════════════════════════════════════════════════════════════════════════════
 // -- WIRE STORIES --
@@ -1075,22 +1093,87 @@ const WIRE_STORIES = [
 // ═════════════════════════════════════════════════════════════════════════════
 
 const FO_NATIONAL = [
-  { hed: 'NAU Assembly Advances Continental Currency Stabilisation Framework', dek: 'The NAU/18-042 bill, backed by a Labour-Unionist majority, moves to a full Assembly floor vote after clearing the Economic Affairs Committee.', meta: 'United Press · Calumet · 5 hours ago' },
-  { hed: 'USRC Northeast Corridor Sets New Q1 Ridership Record', dek: '4.1 million passengers on the Franklin–Pittsburgh–Philadelphia mainline, the highest quarterly figure in the corridor\'s history.', meta: 'Observer Staff · 6 hours ago' },
   { hed: 'Washington House West Wing Reopens After Two-Year Restoration', dek: 'The public and diplomatic wing, closed since 2024 for its most comprehensive renovation since the full structural restoration of 1957–1961, reopened to visitors this week.', meta: 'Observer Staff · 9 hours ago' },
   { hed: 'Congress Debates Federal Arbitration Bureau Reauthorisation', dek: 'A coalition of SPA and Federalist members is pushing for expanded powers for the Bureau, while JCA members argue the agency has overstepped its mandate.', meta: 'United Press · Franklin · 4 hours ago' },
   { hed: 'FIS Director Confirmed by Senate After Months-Long Vacancy', dek: 'The Federal Investigative Service will have new leadership for the first time in three years following the Senate\'s confirmation of the President\'s nominee.', meta: 'Observer Staff · 7 hours ago' },
   { hed: 'Department of Education Report: Urban-Rural Literacy Gap Narrows for Third Consecutive Year', dek: 'The annual report shows measurable improvement in rural literacy rates across Prairie and Mountain states, though the gap with urban centres remains significant.', meta: 'United Press · Franklin · 11 hours ago' },
   { hed: 'Secretary Anderson Intros Streetcar Program', dek: 'Transportation Secretary Alex Anderson, together with Urban Development Secretary Thomas Bale, introduced a new plan to expand major streetcar systems in 7 major cities.', meta: 'Capitol Desk · 4 hours ago' },
+  { hed: 'Senate Confirms Three Nominees to Federal Court of Appeals, Western Circuit', dek: 'The confirmations, approved by voice vote, fill vacancies that had persisted for over a year amid scheduling disputes between committee leadership.', meta: 'United Press · Franklin · 8 hours ago' },
+  { hed: 'Texas Federation Governor of Austin Visits Franklin for Trade Talks', dek: 'Discussions focused on cross-border manufacturing supply chains and a proposed rail spur connecting Austin\'s industrial corridor to the USRC network.', meta: 'Observer Staff · Franklin · 5 hours ago' },
+  { hed: 'Bank of the United States Governor Warns of Uneven Regional Recovery in Prairie States', dek: 'Testimony before the Senate Banking Committee highlighted persistent gaps between coastal and interior economic indicators despite strong national growth figures.', meta: 'United Press · Franklin · 3 hours ago' },
+  { hed: 'Department of the Interior Announces New Wildfire Prevention Funding for Pacific Northwest and Mountain West', dek: 'The Ȼ180 million package targets forest thinning and early-detection infrastructure across Oregon, Clark, Washingtonia, and Brandt following last season\'s elevated fire activity.', meta: 'Observer Staff · 6 hours ago' },
+  { hed: 'House Passes Veterans Health Modernisation Act', dek: 'The bill expands telemedicine access for veterans in rural districts and authorises construction of two new federal veterans hospitals in the Great Plains region.', meta: 'United Press · Franklin · 9 hours ago' },
+  { hed: 'Census Bureau Releases Mid-Decade Population Estimates', dek: 'Continued growth in Pacific and Mountain West states contrasts with modest declines in parts of the rural Great Plains, continuing a pattern observed since the last full census.', meta: 'Observer Staff · 10 hours ago' },
+  { hed: 'Congress Advances Bill to Expand Federal Broadband Subsidy to Tribal Nations', dek: 'The bipartisan measure would direct additional Interlink infrastructure funding to Native nations not fully covered under the existing rural access programme.', meta: 'United Press · Franklin · 7 hours ago' },
+  { hed: 'USRC Reports Strong First Year for Franklin–Calumet High-Speed Corridor', dek: 'The elevated-speed line, completed two years ago, has cut travel time between the two cities by nearly forty minutes and exceeded initial ridership projections.', meta: 'United Press · Calumet · 8 hours ago' },
+  { hed: 'Supreme Court Declines to Hear Challenge to NAU Tariff Coordination Authority', dek: 'The decision leaves in place a lower court ruling affirming Congress\'s authority to delegate certain tariff-setting functions to coordinated continental bodies.', meta: 'Observer Staff · 6 hours ago' },
+  { hed: 'Federal Parks Service Reports Record Visitation Across Mountain West Parks', dek: 'Sacred Waters and Mistakis Federal Parks both posted their highest annual visitor counts on record, prompting renewed debate over backcountry permit caps.', meta: 'United Press · Franklin · 11 hours ago' },
+  { hed: 'Senate Banking Committee Opens Hearings on AI-Driven Lending Practices', dek: 'Consumer advocacy groups testified that automated credit decisions may be producing disparate outcomes for rural applicants, prompting calls for new disclosure rules.', meta: 'Observer Staff · 5 hours ago' },
+  { hed: 'Congress Approves Funding for University of the United States Space Medicine Research Wing', dek: 'The Ȼ60 million appropriation will expand UUS\'s long-duration physiology research programme ahead of future deep-space missions beyond the current Mars effort.', meta: 'United Press · Franklin · 7 hours ago' },
+  { hed: 'Federal Trade Commission Opens Inquiry Into Continental Streaming Market Consolidation', dek: 'The inquiry follows complaints from independent producers that a small number of platforms now control the majority of original TC programming distribution.', meta: 'Observer Staff · 9 hours ago' },
+  { hed: 'House Agriculture Committee Advances Drought Resilience Funding for Great Plains', dek: 'The bill would expand federal cost-sharing for water-efficient irrigation infrastructure across Platte, Metropotamia, and Kanasaw.', meta: 'United Press · Franklin · 6 hours ago' },
+  { hed: 'National Weather Service Unveils Upgraded Severe Storm Warning System', dek: 'The new system, developed jointly with USRC for rail-line safety integration, promises warning times up to twelve minutes longer than the current network.', meta: 'Observer Staff · 4 hours ago' },
+  { hed: 'Congress Honours Choson War Veterans in Capitol Ceremony Ahead of Sixtieth Anniversary', dek: 'Veterans of the 1966–67 conflict, most now in their late seventies and eighties, were recognised in a ceremony organisers said carries particular weight as their numbers steadily decline.', meta: 'United Press · Franklin · 12 hours ago' },
+  { hed: 'Department of Labour Reports Continued Wage Growth Outpacing Inflation', dek: 'The latest figures mark the eleventh consecutive quarter of real wage growth, though gains remain concentrated in urban and coastal labour markets.', meta: 'Observer Staff · 8 hours ago' },
+  { hed: 'House Committee Advances Bill Expanding Federal Mediation Authority for Cross-Border Labour Disputes', dek: 'The measure responds to growing friction over labour arrangements tied to deepening NAU economic integration, particularly in border manufacturing corridors.', meta: 'United Press · Franklin · 5 hours ago' },
+  { hed: 'Department of the Armed Forces Announces Joint Training Exercise With Canadian Home Guard Counterpart', dek: 'The exercise, focused on emergency response coordination along the shared northern border, is the largest joint drill of its kind in over a decade.', meta: 'Observer Staff · 10 hours ago' },
+  { hed: 'National Intelligence Director Briefs Congress on Continental Cybersecurity Cooperation', dek: 'The closed-door briefing addressed coordinated threat-monitoring efforts among NAU member states\' intelligence services, details of which remain classified.', meta: 'United Press · Franklin · 7 hours ago' },
 ];
 
 const FO_WORLD = [
-  { label: 'world', hed: 'China Opens HuaWang to Broader Interlink Access', dek: 'Post-2019 reform commitments continue as access restrictions are lifted for 61% of Chinese households. The GPC\'s digital rights commission warns progress remains uneven.', meta: 'United Press · 4 hours ago' },
+  { label: 'world', hed: 'China Opens HuaWang to Broader Interlink Access', dek: 'Post-2019 reform commitments continue as access restrictions are lifted for more Chinese households. The GPC\'s digital rights commission warns progress remains uneven.', meta: 'United Press · 4 hours ago' },
   { label: 'world', hed: 'UER Premier Faces Parliamentary Challenge Over State Media Reforms', dek: 'The governing coalition in Paris is under pressure from opposition factions as a contentious bill to restructure state broadcasting enters its second reading in the National Assembly.', meta: 'Observer World Desk · 7 hours ago' },
   { label: 'world', hed: 'Britain and NAU Sign Five-Year Trade Renewal Agreement', dek: 'The agreement, signed in London, locks in preferential tariff arrangements across key manufacturing and agricultural sectors for both parties.', meta: 'United Press · London · 6 hours ago' },
   { label: 'world', hed: 'Russian Imperial Duma Deadlocked Over Modernisation Package as Tsar Urges Compromise', dek: 'Tsar Nicholas IV has appealed directly to Duma factions to break a weeks-long impasse over an industrial modernisation bill, warning that delay risks Russian competitiveness with Western rivals.', meta: 'Observer World Desk · 10 hours ago' },
   { label: 'culture', hed: 'NAU–UER Co-Production TC Drama Set During Global War Confirmed for Autumn', dek: 'The six-part series will broadcast simultaneously across NANet and UER member channels — a first for open-network international co-production.', meta: 'Observer Arts · 8 hours ago' },
   { label: 'culture', hed: 'Franklin National Orchestra Announces European Tour — Paris, Lyon, Munich, and Hamburg Among Stops', dek: 'The tour spans four countries: the UER (Paris, Lyon, Munich), the German Republic (Hamburg), the Kingdom of Austria (Vienna), and Britain (London). Performances begin in June.', meta: 'Observer Arts · 12 hours ago' },
+  { label: 'world', hed: 'Japan and NAU Renew Pacific Maritime Security Cooperation Agreement', dek: 'The renewal extends a framework first established after the Global War, covering joint naval exercises and shared monitoring of Pacific shipping lanes.', meta: 'Observer World Desk · Tokyo · 9 hours ago' },
+  { label: 'world', hed: 'GPC Announces Expanded Investment in Suez International Zone Infrastructure', dek: 'The Global Peace Council, which has administered the Suez Canal Zone since Egyptian independence, confirmed funding for capacity expansion to accommodate growing container traffic.', meta: 'United Press · 11 hours ago' },
+  { label: 'world', hed: 'Kingdom of Hawaii and Japan Sign Cultural Exchange Agreement', dek: 'The agreement expands student exchange programmes and joint oceanographic research between the two Pacific nations.', meta: 'Observer World Desk · Honolulu · 8 hours ago' },
+  { label: 'world', hed: 'Sokoto Caliphate Hosts Regional Trade Summit in Kano', dek: 'Delegations from across West Africa attended talks on regional currency coordination and infrastructure investment, with NAU and UER observers present.', meta: 'United Press · Kano · 10 hours ago' },
+  { label: 'world', hed: 'India Announces Major Expansion of Non-Aligned Trade Bloc Membership Talks', dek: 'Delhi confirmed exploratory talks with three additional nations interested in joining the non-aligned economic framework established under the Treaty of Delhi.', meta: 'Observer World Desk · New Delhi · 7 hours ago' },
+  { label: 'world', hed: 'Egypt Marks Anniversary of Independence With National Address', dek: 'The President\'s address reflected on Egypt\'s relationship with the GPC-administered Suez International Zone in the decades since the 1960/61 settlement that secured Egyptian sovereignty.', meta: 'United Press · Cairo · 9 hours ago' },
+  { label: 'world', hed: 'Ethiopia and Zanzibar Sign Joint Infrastructure Development Pact', dek: 'The agreement focuses on rail connectivity between the two East African states, part of a broader regional push toward economic integration.', meta: 'Observer World Desk · Addis Ababa · 8 hours ago' },
+  { label: 'world', hed: 'Mesopotamian Reconstruction Authority Reports Continued Progress on Infrastructure Rebuilding', dek: 'The joint Kurdish-Arab oversight body cited steady gains in water and power infrastructure, though officials cautioned full reconstruction remains years away.', meta: 'United Press · 12 hours ago' },
+  { label: 'world', hed: 'Brazil and NAU Discuss Expanded Agricultural Trade Framework', dek: 'Talks in Calumet focused on coordinated commodity standards and reduced tariff barriers for South American agricultural exports.', meta: 'Observer World Desk · Calumet · 6 hours ago' },
+  { label: 'world', hed: 'German National Assembly and Federal Council Reach Coalition Agreement After Months of Negotiation', dek: 'The deal between the lower Nationalversammlung and upper Bundesrat ends a prolonged period of political uncertainty in Frankfurt following a closely divided election.', meta: 'United Press · Frankfurt · 10 hours ago' },
+  { label: 'world', hed: 'Australia and NAU Sign Joint Scientific Research Agreement on Pacific Marine Ecosystems', dek: 'The agreement establishes a shared research station and coordinated funding for long-term ocean health monitoring across the Pacific basin.', meta: 'Observer World Desk · Sydney · 9 hours ago' },
+  { label: 'world', hed: 'Kingdom of Austria Hosts Diplomatic Conference Marking Decades of Postwar Stability', dek: 'Established in the wake of the Global War, Austria has charted a distinct course separate from both the UER and German Republic, a status this week\'s gathering was convened to reaffirm.', meta: 'United Press · Vienna · 11 hours ago' },
+  { label: 'culture', hed: 'British Royal Family Announces Prince Michael\'s First Solo Continental Tour', dek: 'The eighteen-day tour will begin in Canada before continuing to Franklin and Mexico City, focusing on youth education and cultural exchange.', meta: 'Observer World Desk · London · 1 day ago' },
+  { label: 'culture', hed: 'Chinese Historical Dramas Draw International Attention at Franklin Film Festival', dek: 'Two Chinese productions examining twentieth-century history with new candour are screening in competition, part of a wave of post-Spring filmmaking.', meta: 'Observer Arts · 6 hours ago' },
+  { label: 'world', hed: 'Canada and NAU Discuss Joint Arctic Research Initiative', dek: 'The proposed initiative would expand climate and resource monitoring across Canada\'s northern territories, with funding shared among interested NAU member states.', meta: 'Observer World Desk · Aurora · 8 hours ago' },
+  { label: 'world', hed: 'Dominican Republic and Haiti Mark Anniversary of Joint Border Customs Modernisation', dek: 'Officials from both NAU member states celebrated continued smooth implementation of shared customs infrastructure, part of the open-trade integration the two countries have built since joining the union.', meta: 'United Press · Santo Domingo · 9 hours ago' },
+  { label: 'world', hed: 'Jamaica\'s Music Industry Sees Continued Growth in Continental Market Share', dek: 'Industry figures show Jamaican-originated genres now represent a growing share of NAU streaming and touring revenue, building on decades of cross-border cultural exchange.', meta: 'Observer Arts · Kingston · 7 hours ago' },
+  { label: 'world', hed: 'Puerto Rico President Visits Franklin Ahead of Trade Delegation Talks', dek: 'The independent republic\'s head of state met with NAU trade officials to discuss expanded agricultural export access ahead of next month\'s continental trade summit.', meta: 'United Press · Franklin · 10 hours ago' },
+  { label: 'world', hed: 'Federal Republic of Central America Reports Record Coffee Export Year', dek: 'Favourable growing conditions and expanded NAU market access combined to produce the strongest export figures in the country\'s history.', meta: 'Observer World Desk · 11 hours ago' },
+];
+
+
+// -- FO_EXCLUSIVES -- Observer-only national features, no ABN/WH counterpart --
+// Brief format (hed/dek/meta) -- analysis, profiles, institutional deep-dives.
+// Only the WIRE_STORIES lead gets full-article (body array) treatment.
+const FO_EXCLUSIVES = [
+  { hed: 'Philadelphia Olympic Preparations Enter Final Stretch as Test Events Begin', dek: 'With the Games opening this summer, organisers report venue construction substantially complete as the city hosts its first full slate of pre-Games test competitions.', meta: 'Observer Sports Desk · Philadelphia · 5 hours ago' },
+  { hed: 'Analysis: What the Texian Judiciary Standoff Reveals About the Limits of Consensus Politics', dek: 'The NAU consolidation project has survived a decade of incremental friction. Whether it can survive a member state\'s constitutional objection may be a different test entirely.', meta: 'By Eleanor Voss, Political Correspondent · 8 hours ago' },
+  { hed: 'Inside the Bank of the United States\' Quiet Campaign Against Regional Lending Gaps', dek: 'A multiyear initiative to expand rural credit access has drawn little public attention — and, supporters argue, that may be exactly why it has worked.', meta: 'By Marcus Hendry, Capitol Correspondent · 11 hours ago' },
+  { hed: 'The Slow Education of a Continental Judiciary: Inside the NAU Constitutional Committee\'s Closed Sessions', dek: 'Months of testimony, much of it never made public, have shaped the consolidation bill\'s most contested provisions. The Observer reviewed transcripts.', meta: 'By Eleanor Voss, Political Correspondent · Calumet · 1 day ago' },
+  { hed: 'Choctaw Nation Historians Reflect on the Long Road to Federal Recognition of Joshua Black\'s Uprising', dek: 'As Congress weighs the Commander Black Federal Park bill, tribal historians describe decades of advocacy for a story they say has long been told incompletely.', meta: 'By James Calloway, National Correspondent · 9 hours ago' },
+  { hed: 'University of the United States Researchers Trace a Century of American Migration Patterns', dek: 'A new demographic study draws on census records back to 1920 to map the long westward and southward population shifts that reshaped the country\'s political map.', meta: 'By Dr. Priya Iyer, Science Correspondent · 7 hours ago' },
+  { hed: 'The Church of the Third Testament at 180: A Faith Tradition Born of the Western Trek', dek: 'Founded by trekkers who reached the shores of the Salt Sea in the 1840s, the tradition remains a quiet but durable presence across the Mountain West.', meta: 'By Observer Religion Desk · Beacon, Colorado y Rocosas · 1 day ago' },
+  { hed: 'Inside Congress\'s Quiet Fight Over Who Controls AI Lending Standards', dek: 'A turf battle between the Bank of the United States and the Federal Trade Commission has slowed action on consumer protections even as both sides agree action is needed.', meta: 'By Marcus Hendry, Capitol Correspondent · 6 hours ago' },
+  { hed: 'Federal Parks Service at a Crossroads: Record Visitation Tests a Century-Old Model', dek: 'Backcountry permit systems designed for a smaller, slower era of travel are straining under demand the agency\'s founders never anticipated.', meta: 'By Ruth Calloway, Environment Correspondent · 10 hours ago' },
+  { hed: 'The Choson War at Sixty: How a Bombing Decision Reshaped the NAU Assembly', dek: 'The accountability debates that followed the 1967 strikes on Beijing and Shanghai produced reforms still shaping continental governance today. Veterans and historians look back.', meta: 'By James Calloway, National Correspondent · 1 day ago' },
+  { hed: 'Why Franklin\'s Streetcar Revival Is Being Watched Closely by a Dozen Other Cities', dek: 'Secretary Anderson\'s pilot program has drawn interest from urban planners across the country, who see it as a test case for car-light downtown redevelopment.', meta: 'By Observer Urban Affairs Desk · 8 hours ago' },
+  { hed: 'A Century of the Federal Arbitration Bureau: From Railroad Disputes to the AI Economy', dek: 'As Congress debates expanding the Bureau\'s mandate, a look back at an agency that has quietly adapted to a century of economic transformation.', meta: 'By Marcus Hendry, Capitol Correspondent · 1 day ago' },
+  { hed: 'The Quiet Resurgence of the Federal Republic of Central America\'s Coffee Belt', dek: 'A combination of favourable weather and NAU market access has produced the country\'s strongest export year on record — and a debate over whether the boom can last.', meta: 'By Observer World Desk · 9 hours ago' },
+  { hed: 'Inside the University of the United States\' Bid to Lead the Next Generation of Space Medicine', dek: 'A modest research wing has become one of the most closely watched programmes in the field, with direct implications for the Mars mission now underway.', meta: 'By Dr. Priya Iyer, Science Correspondent · Franklin · 7 hours ago' },
+  { hed: 'How the Tallgrass Prairie Became Kanasaw\'s Most Unlikely Tourism Success Story', dek: 'A federal park once considered a hard sell now draws hundreds of thousands of annual visitors, reshaping the economy of the surrounding Flint Hills communities.', meta: 'By Observer Travel Desk · 1 day ago' },
+  { hed: 'The Long Afterlife of the Civil Equality Amendment\'s Deliberate Silences', dek: 'Sixty-seven years after its passage, legal scholars continue to debate what the Amendment\'s drafters meant to leave unsaid — and what that has cost.', meta: 'By Observer Legal Affairs Desk · 11 hours ago' },
+  { hed: 'Profile: The Career Diplomat Quietly Shaping NAU Trade Policy From the Second Chair', dek: 'Rarely quoted and rarely photographed, a senior career official has spent three administrations building the technical scaffolding behind the continent\'s trade architecture.', meta: 'By Eleanor Voss, Political Correspondent · Calumet · 1 day ago' },
+  { hed: 'Lakota State\'s Communal Land Model Draws Renewed Academic Interest', dek: 'Decades after its establishment, researchers say the state\'s approach to land ownership offers lessons increasingly relevant to debates over rural economic development elsewhere.', meta: 'By Observer National Desk · 9 hours ago' },
+  { hed: 'The Forgotten Fight Over the Bank of the United States\' Independence', dek: 'A little-remembered 1970s congressional standoff established the precedent now being tested in current debates over the Bank\'s relationship to NAU monetary coordination.', meta: 'By Marcus Hendry, Capitol Correspondent · 1 day ago' },
+  { hed: 'Inside the Federal Investigative Service\'s New Approach to Rural Case Backlogs', dek: 'A quiet pilot programme redistributing casework across regional field offices has cut average resolution times nearly in half in early results.', meta: 'By Observer National Desk · 8 hours ago' },
+  { hed: 'What Sixty Years of USRC Expansion Data Reveals About How Americans Actually Travel', dek: 'A Observer analysis of ridership patterns since the 1960s shows commuting habits shifting in ways that don\'t always match the conventional wisdom.', meta: 'By Observer Data Desk · 1 day ago' },
 ];
 
 
@@ -1101,10 +1184,24 @@ const FO_WORLD = [
 const ABN_CARDS = [
   { emoji: '🚂', bg: 'linear-gradient(135deg,#1a3a1a,#2d602d)', tag: 'Rail', tagColor: '#533AB7', hed: 'USRC Northeast Corridor Sets Third Straight Q1 Record', meta: '6 hours ago' },
   { emoji: '💱', bg: 'linear-gradient(135deg,#1a1a3a,#2d2d60)', tag: 'NAU', tagColor: '#993C1D', hed: 'NAU/18-042 Currency Framework Moves to Assembly Floor', meta: '5 hours ago' },
-  { emoji: '📡', bg: 'linear-gradient(135deg,#2a1a1a,#5d2d2d)', tag: 'World', tagColor: '#0F6E56', hed: 'China: Interlink Now Reaches 61% of Households as Access Reforms Continue', meta: '4 hours ago' },
+  { emoji: '📡', bg: 'linear-gradient(135deg,#2a1a1a,#5d2d2d)', tag: 'World', tagColor: '#0F6E56', hed: 'China: Interlink Access Expands as Reforms Continue', meta: '4 hours ago' },
   { emoji: '🏛', bg: 'linear-gradient(135deg,#1a1a1a,#3a3a3a)', tag: 'USA', tagColor: '#185FA5', hed: 'Washington House West Wing Reopens After Two-Year Restoration', meta: '9 hours ago' },
   { emoji: '📚', bg: 'linear-gradient(135deg,#1a2a3a,#2d4060)', tag: 'USA', tagColor: '#185FA5', hed: 'Education Dept: Urban-Rural Literacy Gap Narrows for Third Year Running', meta: '11 hours ago' },
   { emoji: '🔍', bg: 'linear-gradient(135deg,#2a2a1a,#505020)', tag: 'USA', tagColor: '#2D5A1A', hed: 'FIS Confirms New Director After Senate Approval Ends Months-Long Vacancy', meta: '7 hours ago' },
+  { emoji: '🚀', bg: 'linear-gradient(135deg,#0a1a2a,#1a3a5a)', tag: 'Science', tagColor: '#2D5A1A', hed: 'Ten-Person Mars Crew Completes Final Training Milestone', meta: '3 hours ago' },
+  { emoji: '🏞', bg: 'linear-gradient(135deg,#1a3a1a,#2d5020)', tag: 'USA', tagColor: '#2D5A1A', hed: 'Federal Parks Service Reports Record Visitation in Mountain West', meta: '10 hours ago' },
+  { emoji: '⚖️', bg: 'linear-gradient(135deg,#3a1a1a,#601a1a)', tag: 'USA', tagColor: '#185FA5', hed: 'Supreme Court Declines NAU Tariff Authority Challenge', meta: '6 hours ago' },
+  { emoji: '🤖', bg: 'linear-gradient(135deg,#1a1a3a,#3a2a5a)', tag: 'USA', tagColor: '#185FA5', hed: 'Senate Opens Hearings on AI Lending Disparities', meta: '5 hours ago' },
+  { emoji: '🌾', bg: 'linear-gradient(135deg,#2a3a1a,#4a5a20)', tag: 'USA', tagColor: '#2D5A1A', hed: 'House Advances Great Plains Drought Resilience Funding', meta: '8 hours ago' },
+  { emoji: '🎓', bg: 'linear-gradient(135deg,#1a1a2a,#2a2a4a)', tag: 'Science', tagColor: '#2D5A1A', hed: 'UUS Bone Density Study Prompts NASA Protocol Review', meta: '4 hours ago' },
+  { emoji: '📺', bg: 'linear-gradient(135deg,#2a1a2a,#4a1a4a)', tag: 'USA', tagColor: '#185FA5', hed: 'FTC Opens Inquiry Into Streaming Market Consolidation', meta: '9 hours ago' },
+  { emoji: '🚆', bg: 'linear-gradient(135deg,#1a2a1a,#2d4020)', tag: 'Rail', tagColor: '#533AB7', hed: 'USRC Pilots High-Speed Service on Calumet-Franklin Line', meta: '7 hours ago' },
+  { emoji: '🏅', bg: 'linear-gradient(135deg,#3a2a1a,#5a4020)', tag: 'USA', tagColor: '#185FA5', hed: 'Congress Honours Choson War Veterans Ahead of Sixtieth Anniversary', meta: '12 hours ago' },
+  { emoji: '💼', bg: 'linear-gradient(135deg,#1a1a1a,#3a3a3a)', tag: 'USA', tagColor: '#2D5A1A', hed: 'Wage Growth Outpaces Inflation for Eleventh Straight Quarter', meta: '8 hours ago' },
+  { emoji: '🛰', bg: 'linear-gradient(135deg,#0a1a3a,#1a2a5a)', tag: 'Science', tagColor: '#2D5A1A', hed: 'National Weather Service Unveils Upgraded Storm Warning System', meta: '6 hours ago' },
+  { emoji: '🏛', bg: 'linear-gradient(135deg,#2a1a1a,#4a2a2a)', tag: 'USA', tagColor: '#185FA5', hed: 'House Passes Veterans Health Modernisation Act', meta: '10 hours ago' },
+  { emoji: '🌐', bg: 'linear-gradient(135deg,#1a3a3a,#2a5a5a)', tag: 'USA', tagColor: '#185FA5', hed: 'Congress Advances Tribal Broadband Expansion Bill', meta: '7 hours ago' },
+  { emoji: '🏗', bg: 'linear-gradient(135deg,#3a1a1a,#5a2a1a)', tag: 'NAU', tagColor: '#993C1D', hed: 'NAU Professional Recognition Bill Stalls in Committee', meta: '4 hours ago' },
 ];
 
 const ABN_WORLD = [
@@ -1113,18 +1210,84 @@ const ABN_WORLD = [
   { tag: 'China', hed: 'GPC Digital Rights Commission Sets Phase 4 Interlink Access Timeline', dek: 'The Commission has issued binding guidance requiring full rural household access by 2028, ahead of the expected Phase 4 transition later this year.', meta: 'ABN Asia Desk · 9 hours ago' },
   { tag: 'Russia', hed: 'Tsar Nicholas IV Urges Duma to Break Modernisation Package Impasse', dek: 'The Tsar made a rare direct appeal to parliamentary factions, warning that continued deadlock risks Russian industrial competitiveness against Western rivals.', meta: 'ABN World Desk · 10 hours ago' },
   { tag: 'Britain', hed: 'Britain and NAU Sign Five-Year Trade Renewal Agreement in London', dek: 'The agreement locks in preferential tariff arrangements across manufacturing and agricultural sectors, with a joint review scheduled for 2029.', meta: 'ABN World Desk · 6 hours ago' },
-  { tag: 'Canada', hed: 'Canadian PM Tremblay Visits Washington House for Bilateral Talks', dek: 'Trade, the Continental currency framework, and NAU constitutional consolidation were among the topics discussed during the two-day visit.', meta: 'ABN Political Desk · Franklin · 8 hours ago' },
+  { tag: 'Canada', hed: 'Canadian PM Tremblay Visits Washington House for Bilateral Talks', dek: 'Agricultural trade and NAU constitutional consolidation were among the topics discussed during the two-day visit, the first since Tremblay\'s re-election.', meta: 'ABN Political Desk · Franklin · 8 hours ago' },
+  { tag: 'Japan', hed: 'Japan and NAU Renew Pacific Maritime Security Pact', dek: 'The agreement extends joint naval exercises and shipping-lane monitoring first established in the years following the Global War.', meta: 'ABN Asia Desk · Tokyo · 9 hours ago' },
+  { tag: 'GPC', hed: 'GPC Confirms New Investment in Suez International Zone Capacity', dek: 'The Council, which has administered the Zone since Egyptian independence in 1960/61, says the expansion will accommodate rising container traffic.', meta: 'ABN World Desk · 11 hours ago' },
+  { tag: 'Hawaii', hed: 'Hawaii and Japan Sign Pacific Cultural Exchange Agreement', dek: 'The pact expands student exchange and joint oceanographic research between the two Pacific nations.', meta: 'ABN Asia Desk · Honolulu · 8 hours ago' },
+  { tag: 'Africa', hed: 'Sokoto Caliphate Hosts West African Trade Summit in Kano', dek: 'Regional currency coordination and infrastructure investment topped the agenda, with NAU and UER officials observing.', meta: 'ABN Africa Desk · Kano · 10 hours ago' },
+  { tag: 'India', hed: 'India Opens Talks With Three Nations on Non-Aligned Bloc Membership', dek: 'Delhi confirmed exploratory discussions building on the framework established under the Treaty of Delhi.', meta: 'ABN Asia Desk · New Delhi · 7 hours ago' },
+  { tag: 'Egypt', hed: 'Egypt Marks Independence Anniversary, Reflects on Suez Settlement', dek: 'The President\'s address looked back on the decades since the 1960/61 agreement that secured Egyptian sovereignty and established GPC administration of the Canal Zone.', meta: 'ABN Africa Desk · Cairo · 9 hours ago' },
+  { tag: 'Africa', hed: 'Ethiopia and Zanzibar Sign Joint Rail Infrastructure Pact', dek: 'The agreement is part of a broader East African push toward regional economic integration.', meta: 'ABN Africa Desk · Addis Ababa · 8 hours ago' },
+  { tag: 'Mesopotamia', hed: 'Reconstruction Authority Reports Steady Infrastructure Progress', dek: 'The joint Kurdish-Arab oversight body says water and power rebuilding continues, though full recovery remains years off.', meta: 'ABN World Desk · 12 hours ago' },
+  { tag: 'Brazil', hed: 'Brazil and NAU Discuss Expanded Agricultural Trade Framework', dek: 'Talks in Calumet focused on coordinated commodity standards and reduced tariffs for South American exports.', meta: 'ABN World Desk · Calumet · 6 hours ago' },
+  { tag: 'Germany', hed: 'German Coalition Talks Conclude After Months of Deadlock', dek: 'Agreement between the Nationalversammlung and Bundesrat ends a prolonged period of political uncertainty in Frankfurt.', meta: 'ABN Europe Desk · Frankfurt · 10 hours ago' },
+  { tag: 'Australia', hed: 'Australia and NAU Sign Pacific Marine Research Pact', dek: 'The agreement establishes a shared research station for long-term ocean health monitoring across the Pacific basin.', meta: 'ABN Asia Desk · Sydney · 9 hours ago' },
+  { tag: 'Austria', hed: 'Austria Hosts Conference Marking Decades of Postwar Stability', dek: 'Vienna convened the gathering to reaffirm its distinct path apart from both the UER and German Republic.', meta: 'ABN Europe Desk · Vienna · 11 hours ago' },
+  { tag: 'Britain', hed: 'Prince Michael to Begin First Solo Tour in Canada', dek: 'The King\'s second son will visit Toronto and Aurora before continuing to Franklin and Mexico City on an eighteen-day continental tour.', meta: 'ABN Europe Desk · London · 1 day ago' },
+  { tag: 'China', hed: 'Chinese Cinema Draws International Buzz at Franklin Festival', dek: 'Two historical dramas examining the twentieth century with new candour are screening in competition, part of a broader post-Spring filmmaking wave.', meta: 'ABN Arts Desk · Franklin · 6 hours ago' },
+  { tag: 'Canada', hed: 'Canada and NAU Weigh Joint Arctic Research Initiative', dek: 'The proposal would expand climate and resource monitoring across Canada\'s northern territories with shared NAU funding.', meta: 'ABN World Desk · Aurora · 8 hours ago' },
+  { tag: 'Caribbean', hed: 'Dominican Republic and Haiti Mark Customs Modernisation Anniversary', dek: 'Officials from both NAU members celebrated smooth implementation of shared border infrastructure since the original integration agreement.', meta: 'ABN World Desk · Santo Domingo · 9 hours ago' },
+  { tag: 'Jamaica', hed: 'Jamaican Music Continues Gaining Continental Market Share', dek: 'Industry data shows Jamaican-originated genres growing as a share of NAU streaming and touring revenue.', meta: 'ABN Arts Desk · Kingston · 7 hours ago' },
+  { tag: 'Puerto Rico', hed: 'Puerto Rico President Visits Franklin for Trade Talks', dek: 'The independent republic\'s head of state discussed expanded agricultural export access ahead of next month\'s continental trade summit.', meta: 'ABN Political Desk · Franklin · 10 hours ago' },
+  { tag: 'FRCA', hed: 'Federal Republic of Central America Posts Record Coffee Exports', dek: 'Favourable growing conditions and expanded NAU market access produced the strongest export figures in the country\'s history.', meta: 'ABN World Desk · 11 hours ago' },
 ];
 
 const ABN_MOSTREAD = [
-  'Nakamura signals she won\'t oppose NAU consolidation vote',
-  'NAU currency framework: what it means for your savings',
   'USRC Northeast Corridor breaks ridership record',
   'China\'s Interlink opening — explained',
   'Congress passes Ȼ2.1bn USRC modernisation bill',
   'UER media reforms: why Paris is divided',
   'Tsar Nicholas IV and the Duma deadlock — explained',
   'Washington House West Wing reopens — what\'s changed',
+  'Meet the ten-person crew headed to Mars',
+  'What the Texas judiciary standoff means for NAU consolidation',
+  'Mare Imbrium review: the moon landing film everyone\'s talking about',
+  'Commander Black Federal Park, explained',
+  'Bone density and Mars: the UUS study NASA is taking seriously',
+  'Five things to know about the Choson War at sixty',
+  'Prince Michael\'s first solo tour: full itinerary',
+  'Why Bolt music is having its biggest year in a decade',
+  'NAU professional licensing bill: what doctors and lawyers need to know',
+  'Inside the Suez Zone: how the GPC actually runs it',
+  'German coalition deal ends months of deadlock — what changes now',
+  'Sixty years on: the bombing decision that ended the Choson War',
+  'Everything to know about the Philadelphia Olympics this summer',
+  'The Federal Arbitration Bureau, a century later',
+  'Cuban sugar and the consolidation vote: the fight nobody\'s watching',
+  'Jamaica\'s music boom, explained in five charts',
+  'AI lending bias: what the Senate hearings revealed',
+  'Inside the Bank of the United States\' quiet war on regional lending gaps',
+  'Egypt at the Suez anniversary: a history primer',
+  'Sokoto Caliphate trade summit: why it matters more than you think',
+  'The Sesquicentennial Tour, mapped',
+  'Inside the NAU Assembly\'s closed-door consolidation hearings',
+  'Why Hawaii is pushing back on Pacific trade representation',
+  'The Choctaw alliance behind the Commander Black uprising, explained',
+];
+
+
+// -- ABN_EXCLUSIVES -- ABN-only breaking/business stories, no FO/WH counterpart --
+// Punchier CNN-style format (hed/dek/meta/tag).
+const ABN_EXCLUSIVES = [
+  { tag: 'Business', hed: 'Continental Markets Open Higher on Mexican Manufacturing Data', dek: 'Equity markets across NAU member exchanges rose in early trading following stronger-than-expected industrial output figures from Mexico.', meta: 'ABN Markets Desk · 2 hours ago' },
+  { tag: 'NAU', hed: 'Assembly President Fontaine Calls for "Patience, Not Pressure" on Consolidation Timeline', dek: 'In a rare extended interview, Fontaine pushed back on critics who say the Assembly is moving too slowly on the constitutional consolidation question.', meta: 'ABN Political Desk · Calumet · 3 hours ago' },
+  { tag: 'Business', hed: 'USRC Bonds Oversubscribed Following Modernisation Act Passage', dek: 'Investor demand for the Railway Company\'s new infrastructure bonds exceeded offering size within hours of opening, according to underwriters.', meta: 'ABN Markets Desk · 5 hours ago' },
+  { tag: 'USA', hed: 'BREAKING: Senate Confirms FIS Director in Bipartisan Vote', dek: 'The confirmation ends a vacancy that had stretched past three years amid repeated scheduling disputes between committee leadership.', meta: 'ABN Political Desk · Franklin · BREAKING' },
+  { tag: 'World', hed: 'Markets Watch Frankfurt as German Coalition Talks Reach Final Stage', dek: 'Analysts say a resolution to months of political uncertainty could unlock delayed industrial investment decisions across the German Republic.', meta: 'ABN Markets Desk · Frankfurt · 4 hours ago' },
+  { tag: 'NAU', hed: 'Texian Delegation Signals Openness to Compromise on Judiciary Provisions', dek: 'A shift in tone from CC bloc leader Whitfield suggests the standoff over NAU consolidation may be entering a more negotiable phase.', meta: 'ABN NAU Desk · Calumet · 6 hours ago' },
+  { tag: 'Science', hed: 'NASA Confirms Ares I Crew Has Completed Final Pre-Departure Medical Reviews', dek: 'The confirmation follows weeks of heightened scrutiny after a UUS study raised questions about long-duration bone density loss.', meta: 'ABN Science Desk · Calumet · 3 hours ago' },
+  { tag: 'Business', hed: 'Continental Bank Chief Economist Defends Rate Hold in Rare Public Remarks', dek: 'Speaking to reporters after the policy decision, the Bank\'s chief economist said "patience" remained the appropriate posture given diverging regional data.', meta: 'ABN Markets Desk · Franklin · 5 hours ago' },
+  { tag: 'World', hed: 'Sources: Hawaii Pressing for Formal Pacific Trade Seat Ahead of Consolidation Vote', dek: 'ABN has learned Hawaiian officials have privately signalled they may withhold support for the final consolidation package without firmer trade guarantees.', meta: 'ABN Political Desk · Honolulu · 7 hours ago' },
+  { tag: 'USA', hed: 'Streaming Platforms Brace for FTC Inquiry Findings', dek: 'Industry sources say platforms are preparing voluntary content-distribution commitments ahead of the Commission\'s expected preliminary report.', meta: 'ABN Business Desk · 8 hours ago' },
+  { tag: 'World', hed: 'GPC Officials Confirm Suez Zone Expansion Timeline', dek: 'Engineering work on the capacity expansion is expected to begin within the year, according to officials familiar with the planning.', meta: 'ABN World Desk · 9 hours ago' },
+  { tag: 'Business', hed: 'Caribbean Integration Fund Grants Draw Praise From Small-Business Groups', dek: 'Port modernisation funding for Haiti, Jamaica, and the Dominican Republic has been welcomed by regional trade associations as overdue but meaningful.', meta: 'ABN Business Desk · Kingston · 6 hours ago' },
+  { tag: 'USA', hed: 'Federal Arbitration Bureau Reauthorisation Clears Procedural Hurdle', dek: 'A scheduling vote moves the bill closer to floor consideration despite continued JCA objections to its expanded labour jurisdiction.', meta: 'ABN Political Desk · Franklin · 5 hours ago' },
+  { tag: 'World', hed: 'Analysts Say India-China Trade Protocol Signals Broader Diplomatic Thaw', dek: 'Regional experts caution against overreading the agreement, but say the symbolism of expanded border crossings should not be dismissed.', meta: 'ABN Asia Desk · New Delhi · 7 hours ago' },
+  { tag: 'Science', hed: 'NASA Confirms Ares I Communications Relay Schedule Through Mars Transit', dek: 'The relay satellite network built during the previous decade\'s robotic programme will provide continuous coverage of the crew throughout the journey.', meta: 'ABN Science Desk · 8 hours ago' },
+  { tag: 'NAU', hed: 'Labour Bloc Leader Okafor Warns Against "Watering Down" Professional Recognition Bill', dek: 'Okafor said proposed amendments to ease Unionist concerns over medical licensing risk undermining the bill\'s core purpose.', meta: 'ABN NAU Desk · Calumet · 6 hours ago' },
+  { tag: 'Business', hed: 'Texas Federation Manufacturing Sector Watches Currency Framework Debate Closely', dek: 'Industry groups in Texopolis say continued uncertainty over continental monetary coordination is complicating long-term investment planning.', meta: 'ABN Business Desk · Texopolis · 9 hours ago' },
+  { tag: 'World', hed: 'Royal Watchers Say Prince Michael\'s Tour Marks a Deliberate Step Into Public Life', dek: 'Commentators note the itinerary\'s focus on youth education and cultural exchange mirrors the causes the Prince has championed privately for several years.', meta: 'ABN Europe Desk · London · 1 day ago' },
+  { tag: 'USA', hed: 'Rural Broadband Milestone Prompts Calls for Next-Phase Funding Debate', dek: 'Advocacy groups say reaching 94% access should be treated as a floor, not a finish line, as Congress weighs the programme\'s future.', meta: 'ABN Political Desk · Franklin · 7 hours ago' },
 ];
 
 
@@ -1133,34 +1296,66 @@ const ABN_MOSTREAD = [
 // ═════════════════════════════════════════════════════════════════════════════
 
 const WH_STATEMENTS = [
-  { label: 'Statement from the President', date: '13 March 2026', text: '"The Assembly exists to debate these questions — that is precisely what it was designed to do. If the people\'s representatives, meeting the standard our Constitution demands, choose to open that conversation, I will not stand in their way."', attr: '— President Nakamura, on the NAU Constitutional Consolidation question · Office of Communications' },
-  { label: 'Statement from the President', date: '8 March 2026', text: '"This is what public investment looks like. Generation after generation, the Railway Company has delivered — and these numbers prove that when we invest in our people, they show up."', attr: '— President Nakamura, on USRC Q1 ridership record · Office of Communications' },
-  { label: 'Statement from the President', date: '24 February 2026', text: '"We enter these talks not to dominate, but to build — a North America where every nation, large or small, has an equal stake in our shared prosperity."', attr: '— President Nakamura, ahead of NAU Economic Summit · Office of Communications' },
-  { label: 'Statement from the President', date: '18 February 2026', text: '"Clean water is not a regional issue. It is a continental one. The Great Lakes belong to all of us, and we will protect them together."', attr: '— President Nakamura, on the Pan-Continental Clean Waters Compact · Office of Communications' },
-  { label: 'Statement from the President', date: '11 February 2026', text: '"One year ago, I stood on the steps of this House and asked the American people for their trust. I intend to spend the next five years earning it."', attr: '— President Nakamura, first anniversary address · Office of Communications' },
-  { label: 'Statement from the President', date: '3 February 2026', text: '"The question before us is not whether we can afford to act on this — the question is whether we can afford not to."', attr: '— President Nakamura, on the federal clean energy investment package · Office of Communications' },
-  { label: 'Statement from the Press Secretary', date: '10 March 2026', text: '"The President is monitoring the situation closely and has directed the relevant departments to provide a full assessment by end of week. We will have more to say when that review is complete."', attr: '— Press Secretary Delacroix · Morning Briefing' },
-  { label: 'Statement from the President', date: '27 January 2026', text: '"Pacific trade is not a privilege — it is the backbone of our Pacific states\' economies, and it must be protected with clear-eyed, principled negotiation."', attr: '— President Nakamura, on Pacific Trade Framework renewal · Office of Communications' },
-  { label: 'Statement from the President', date: '15 January 2026', text: '"Every park, every trail, every stretch of protected wilderness is a promise we keep to our children. Today we keep another."', attr: '— President Nakamura, at the Federal Parks designation ceremony · Office of Communications' },
-  { label: 'Statement from the Press Secretary', date: '5 March 2026', text: '"The President congratulates the USRC on another record quarter and reaffirms the Administration\'s commitment to continued federal investment in the national rail network."', attr: '— Press Secretary Delacroix · Office of Communications' },
+  { label: 'Statement from the President', text: '"The Assembly exists to debate these questions — that is precisely what it was designed to do. If the people\'s representatives, meeting the standard our Constitution demands, choose to open that conversation, I will not stand in their way."', attr: '— President Nakamura, on the NAU Constitutional Consolidation question · Office of Communications' },
+  { label: 'Statement from the President', text: '"This is what public investment looks like. Generation after generation, the Railway Company has delivered — and these numbers prove that when we invest in our people, they show up."', attr: '— President Nakamura, on USRC Q1 ridership record · Office of Communications' },
+  { label: 'Statement from the President', text: '"We enter these talks not to dominate, but to build — a North America where every nation, large or small, has an equal stake in our shared prosperity."', attr: '— President Nakamura, ahead of NAU Economic Summit · Office of Communications' },
+  { label: 'Statement from the President', text: '"Clean water is not a regional issue. It is a continental one. The Great Lakes belong to all of us, and we will protect them together."', attr: '— President Nakamura, on the Pan-Continental Clean Waters Compact · Office of Communications' },
+  { label: 'Statement from the President', text: '"One year ago, I stood on the steps of this House and asked the American people for their trust. I intend to spend the next five years earning it."', attr: '— President Nakamura, first anniversary address · Office of Communications' },
+  { label: 'Statement from the President', text: '"The question before us is not whether we can afford to act on this — the question is whether we can afford not to."', attr: '— President Nakamura, on the federal clean energy investment package · Office of Communications' },
+  { label: 'Statement from the Press Secretary', text: '"The President is monitoring the situation closely and has directed the relevant departments to provide a full assessment by end of week. We will have more to say when that review is complete."', attr: '— Press Secretary Delacroix · Morning Briefing' },
+  { label: 'Statement from the President', text: '"Pacific trade is not a privilege — it is the backbone of our Pacific states\' economies, and it must be protected with clear-eyed, principled negotiation."', attr: '— President Nakamura, on Pacific Trade Framework renewal · Office of Communications' },
+  { label: 'Statement from the President', text: '"Every park, every trail, every stretch of protected wilderness is a promise we keep to our children. Today we keep another."', attr: '— President Nakamura, on Federal Parks Service expansion · Office of Communications' },
+  { label: 'Statement from the Press Secretary', text: '"The President congratulates the USRC on another record quarter and reaffirms the Administration\'s commitment to continued federal investment in the national rail network."', attr: '— Press Secretary Delacroix · Office of Communications' },
+  { label: 'Statement from the President', text: '"Ten people, nine nations, one mission. Whatever else divides us, we have just proven — again — what we can do when we choose to reach together."', attr: '— President Nakamura, on the Mars crew announcement · Office of Communications' },
+  { label: 'Statement from the President', text: '"Joshua Black and the Choctaw Nation acted together at a moment when the whole future of this country hung in the balance. It is past time the Federal Parks system told that story plainly."', attr: '— President Nakamura, on the Commander Black Federal Park designation bill · Office of Communications' },
+  { label: 'Statement from the Press Secretary', text: '"The Administration takes the UUS findings seriously. NASA has briefed the President directly, and the Ares I medical team has our full confidence going into departure."', attr: '— Press Secretary Delacroix · Morning Briefing' },
+  { label: 'Statement from the President', text: '"Texas has always had a seat at this table, and it always will. What we owe each other now is patience, and the honesty to say what we actually need from one another."', attr: '— President Nakamura, on the NAU judiciary standoff · Office of Communications' },
+  { label: 'Statement from the President', text: '"Sixty years ago this summer, young Americans went to war in a conflict that asked hard questions about who authorizes force and on whose behalf. We owe it to them to keep answering those questions honestly."', attr: '— President Nakamura, ahead of the Choson War sixtieth anniversary · Office of Communications' },
+  { label: 'Statement from the Press Secretary', text: '"The President welcomes the Continental Bank\'s decision and shares its assessment that patience, not haste, is the right posture given the data in front of us."', attr: '— Press Secretary Delacroix · Office of Communications' },
+  { label: 'Statement from the President', text: '"Rural America has waited long enough for the connections the rest of the country takes for granted. Ninety-four percent is not the finish line. It is the floor."', attr: '— President Nakamura, on the rural Interlink access milestone · Office of Communications' },
+  { label: 'Statement from the President', text: '"Every generation of Americans has had to decide, again, what kind of country this is. We are no different. I believe we will choose well."', attr: '— President Nakamura, Sesquicentennial reflections · Office of Communications' },
+  { label: 'Statement from the Press Secretary', text: '"The President has reviewed the Senate hearing testimony on automated lending practices and has asked the Treasury Department to report back with recommendations within sixty days."', attr: '— Press Secretary Delacroix · Office of Communications' },
+  { label: 'Statement from the President', text: '"A century from now, I hope someone stands where I am standing and says the same thing about us that we say about the builders of this railway — that we built for people we would never meet."', attr: '— President Nakamura, at the USRC modernisation signing ceremony, Franklin Central Station · Office of Communications' },
+  { label: 'Statement from the President', text: '"The Choctaw Nation, the State of Gigadohi, and the federal government do not always agree on how this land should be governed. On this, we agree completely."', attr: '— President Nakamura, on bipartisan Choctaw consultation provisions · Office of Communications' },
+  { label: 'Statement from the Press Secretary', text: '"The President spoke this morning with NAU Assembly President Fontaine and reaffirmed the Administration\'s full support for a fair and orderly path to a floor vote."', attr: '— Press Secretary Delacroix · Morning Briefing' },
+  { label: 'Statement from the President', text: '"Science does not wait for politics to catch up, and neither should we. The bone density findings are sobering, and NASA is responding the way good institutions respond — quickly, and honestly."', attr: '— President Nakamura, on the UUS space medicine study · Office of Communications' },
+  { label: 'Statement from the President', text: '"Hawaii waited decades to be treated as an equal partner in this union, not a junior one. That patience helped shape what union actually means. We will not forget it."', attr: '— President Nakamura, at the state dinner for Princess Kahananui · Office of Communications' },
+  { label: 'Statement from the Press Secretary', text: '"The President wishes all Americans, and all our partners across the continent, a peaceful close to the year and a hopeful beginning to the one ahead."', attr: '— Press Secretary Delacroix · Year-End Statement' },
 ];
 
 const WH_BRIEFING = [
-  { title: 'President Nakamura to Address NAU Economic Summit in Montréal, April 3–4', meta: 'Office of the Press Secretary · 12 March 2026' },
-  { title: 'Statement on USRC Q1 Ridership Record: "A testament to what public investment delivers."', meta: 'Office of Communications · 8 March 2026' },
-  { title: 'President Nakamura Receives Canadian Prime Minister Tremblay at Washington House', meta: 'Office of the Press Secretary · 7 March 2026' },
-  { title: 'Administration Announces Appointments to the Federal Arbitration Bureau', meta: 'Office of the President · 5 March 2026' },
-  { title: 'Nakamura Signs Reauthorisation of the Caribbean Integration & Development Fund', meta: 'Office of Communications · 3 March 2026' },
-  { title: 'President Issues Statement Supporting NAU Assembly Currency Stabilisation Framework', meta: 'Office of Communications · 28 February 2026' },
-  { title: 'Washington House West Wing Tours Resume Following Renovation of State Dining Room', meta: 'Office of the Press Secretary · 20 February 2026' },
-  { title: 'President Nakamura Signs Pacific Trade Framework Renewal into Law', meta: 'Office of the Press Secretary · 25 February 2026' },
-  { title: 'Administration Releases First Anniversary Progress Report — 47 Legislative Priorities', meta: 'Office of Communications · 11 February 2026' },
-  { title: 'President Nakamura Hosts State Dinner for Kingdom of Hawaii Queen\'s Representative', meta: 'Office of the Press Secretary · 18 February 2026' },
-  { title: 'Nakamura Nominates Three Justices to the Federal Court of Appeals, Western Circuit', meta: 'Office of the President · 22 February 2026' },
-  { title: 'Press Secretary Delacroix Addresses Questions on NAU Consolidation Timeline', meta: 'Office of Communications · 2 March 2026' },
-  { title: 'President Nakamura Marks Anniversary of Great Lakes Environmental Compact', meta: 'Office of Communications · 15 March 2026' },
-  { title: 'Administration Announces Federal Parks Expansion — Six New Protected Areas Designated', meta: 'Office of the Press Secretary · 15 January 2026' },
-  { title: 'President Nakamura Delivers Remarks at National Science & Industry Exposition, Calumet', meta: 'Office of Communications · 10 January 2026' },
+  { title: 'President Nakamura to Address NAU Economic Summit in Montréal' },
+  { title: 'Statement on USRC Q1 Ridership Record: "A testament to what public investment delivers."' },
+  { title: 'President Nakamura Receives Canadian Prime Minister Tremblay at Washington House' },
+  { title: 'Administration Announces Appointments to the Federal Arbitration Bureau' },
+  { title: 'Nakamura Signs Reauthorisation of the Caribbean Integration & Development Fund' },
+  { title: 'President Issues Statement Supporting NAU Assembly Currency Stabilisation Framework' },
+  { title: 'Washington House West Wing Tours Resume Following Renovation of State Dining Room' },
+  { title: 'President Nakamura Signs Pacific Trade Framework Renewal into Law' },
+  { title: 'Administration Releases First Anniversary Progress Report — 47 Legislative Priorities' },
+  { title: 'President Nakamura Hosts State Dinner for Kingdom of Hawaii Queen\'s Representative' },
+  { title: 'Nakamura Nominates Three Justices to the Federal Court of Appeals, Western Circuit' },
+  { title: 'Press Secretary Delacroix Addresses Questions on NAU Consolidation Timeline' },
+  { title: 'President Nakamura Marks Anniversary of Great Lakes Environmental Compact' },
+  { title: 'Administration Announces Federal Parks Service Expansion' },
+  { title: 'President Nakamura Delivers Remarks at National Science & Industry Exposition, Calumet' },
+  { title: 'President Nakamura Attends Mars Crew Announcement at NASA Calumet Campus' },
+  { title: 'Administration Expresses Support for Commander Black Federal Park Designation Bill' },
+  { title: 'Press Secretary Delacroix Briefs Reporters on UUS Space Medicine Findings' },
+  { title: 'President Nakamura Calls Texas Federation Delegation Amid Judiciary Standoff' },
+  { title: 'Administration Announces Choson War Sixtieth Anniversary Commemoration Plans' },
+  { title: 'President Nakamura Welcomes Continental Bank Rate Decision' },
+  { title: 'Administration Marks Rural Interlink Access Reaching 94% of Households' },
+  { title: 'President Nakamura Reflects on Sesquicentennial Ahead of Summer Commemorations' },
+  { title: 'Treasury Department Tasked With Sixty-Day Review of Automated Lending Practices' },
+  { title: 'President Nakamura Signs USRC Modernisation Act at Franklin Central Station' },
+  { title: 'Administration Confirms Choctaw Nation Consultation Provisions in Park Designation Bill' },
+  { title: 'President Nakamura Speaks With NAU Assembly President Fontaine on Consolidation Timeline' },
+  { title: 'President Nakamura Addresses UUS Space Medicine Study Findings' },
+  { title: 'President Nakamura Hosts State Dinner for Princess Kahananui of Hawaii' },
+  { title: 'Office of Communications Releases Statement From the President on Continental Cooperation' },
+  { title: 'Administration Announces Joint Home Guard Training Exercise With Canada' },
+  { title: 'President Nakamura Signs Tribal Broadband Expansion Bill' },
 ];
 
 
@@ -1186,6 +1381,30 @@ const CSN_TICKER_SCORES = [
   'Union Cup · Golden Gate RC 31, LA Condors 24 · FINAL',
   'Women\'s · Franklin Suffragettes 4, Manhattan Roses 2 · FINAL',
   'Women\'s · Atlanta Magnolias 3, Charlotte Wrens 1 · FINAL',
+  'NBA · Atlanta Locomotives 4, Birmingham Vulcans 2 · FINAL',
+  'NBA · St. Louis Rivermen 3, Calumet Lakers 3 · F/10',
+  'NAFA · New Orleans Crescents 1, Miami Floridians 1 · FINAL',
+  'NAFA · Galvesport Buccaneers 0, San Antonio Rancheros 2 · FINAL',
+  'ANSA · Philadelphia Bells 2, Baltimore Fishermen 2 · FINAL',
+  'ANSA · New Echota Nighthawks 5, Oyathira Coyotes 3 · FINAL',
+  'ANSA · Nashville Fiddlers 2, Louisville Colonels 1 · FINAL',
+  'MLA · Franklin Statesmen 17, St. Louis Brewers 12 · FINAL',
+  'MLA · Monterrey Norteños 20, Puebla Guerreros 15 · FINAL',
+  'Union Cup · Toronto Royals 19, Aurora Dominion RC 14 · FINAL',
+  'Union Cup · Philadelphia Keystones 28, Baltimore Clippers 21 · FINAL',
+  'Women\'s · New Orleans Violets 5, Memphis Queens 3 · FINAL',
+  'Women\'s · Boston Sirens 2, Baltimore Pearls 1 · F/12',
+  'NBA · Mahkato Bluemen 6, Astoria Mariners 4 · FINAL',
+  'NBA · Gigadohi City Arrowmen 3, Missouri City Scouts 2 · FINAL',
+  'NAFA · Manhattan FC 2, Philadelphia Liberty 2 · FINAL',
+  'NAFA · Pittsburgh Forgers 1, Franklin Nationals 3 · FINAL',
+  'ANSA · Lakota City Thunderbirds 4, New Boston Chinooks 1 · FINAL',
+  'MLA · New Boston Bears 22, Astoria Explorers 11 · FINAL',
+  'Union Cup · Vancouver RC 16, Pugetsburgh Columbians 13 · FINAL',
+  'Women\'s · Calumet Swans 4, St. Louis Tigerlilies 4 · F/10',
+  'Women\'s · Astoria Selkies 3, New Boston Ravens 2 · FINAL',
+  'NBA · Philadelphia Colonials 5, Miami Everglades 2 · FINAL',
+  'MLA · Texopolis Texians 19, Santa Fe Sundancers 13 · FINAL',
 ];
 
 const CSN_LEADS = [
@@ -1195,6 +1414,16 @@ const CSN_LEADS = [
   { tag: 'ANSA', hed: 'Gigadohi City United Make History With Record-Breaking Home Win', dek: 'The United became the first team in ANSA history to win fifteen consecutive home matches, extending a streak that stretches back to last season\'s All-Nation Championship run.', meta: 'CSN Stickball Desk · Gigadohi City · 2 hours ago' },
   { tag: 'Union Cup', hed: 'New England RC Advance to Continental Semi-Finals With Dominant Display', dek: 'A commanding 22–17 victory over Pittsburgh Three Rivers RC sends New England through to the last four, where they will face the Golden Gate RC next month.', meta: 'CSN Rugby Desk · Boston · 5 hours ago' },
   { tag: 'Women\'s Baseball', hed: 'Suffragettes Clinch Eastern Division Title With Win Over Manhattan Roses', dek: 'Franklin\'s Suffragettes secured their third divisional title in four seasons with a composed 4–2 victory, setting up a potential Diamond Series repeat appearance.', meta: 'CSN Women\'s Baseball Desk · Franklin · 1 hour ago' },
+  { tag: 'NBA', hed: 'Pharaohs Hold Off Late Rivermen Rally to Stay Atop the West', dek: 'Memphis survived a furious ninth-inning comeback attempt to preserve its three-game cushion in the Western Conference standings.', meta: 'CSN Baseball Desk · Memphis · 3 hours ago' },
+  { tag: 'NAFA', hed: 'Imperiales Set New NAFA Points Record With Win Over Voyageurs', dek: 'Mexico City\'s victory over Montreal extends their points total to a mark that surpasses the previous record set during the 2019 championship campaign.', meta: 'CSN Football Desk · Mexico City · 4 hours ago' },
+  { tag: 'MLA', hed: 'Dons Edge Fogcutters in Bay Area Derby Thriller', dek: 'A last-minute score from Los Angeles capped a back-and-forth contest that drew the largest MLA crowd of the season at San Francisco\'s Embarcadero Field.', meta: 'CSN Aroball Desk · San Francisco · 2 hours ago' },
+  { tag: 'ANSA', hed: 'New Echota Nighthawks Close Gap on League Leaders With Statement Win', dek: 'A dominant performance over St. Louis narrows the Nighthawks\' deficit to just two games heading into the season\'s final stretch.', meta: 'CSN Stickball Desk · New Echota · 5 hours ago' },
+  { tag: 'Union Cup', hed: 'Golden Gate RC Survive Scare Against LA Condors to Reach Semi-Finals', dek: 'A late penalty try secured a narrow 31–24 victory, sending Golden Gate through to face New England RC in next month\'s semi-final.', meta: 'CSN Rugby Desk · San Francisco · 3 hours ago' },
+  { tag: 'Women\'s Baseball', hed: 'Memphis Queens Roll Into Playoff Position With Sixth Straight Win', dek: 'The Queens\' winning streak has them firmly in control of the Western Division as the regular season enters its final weeks.', meta: 'CSN Women\'s Baseball Desk · Memphis · 2 hours ago' },
+  { tag: 'NBA', hed: 'Open Play Debate: Is This the Greatest ANSA Season Ever?', dek: 'Panelists weigh in on whether Gigadohi City United\'s historic run belongs in the same conversation as the legendary squads of the 1990s.', meta: 'CSN Studio Desk · Manhattan · 6 hours ago' },
+  { tag: 'MLA', hed: 'Mexico City Tigres Clinch Division With Dominant Win Over Charros', dek: 'A 24–19 victory secures the Mexico Division title with two rounds still to play, the Tigres\' first divisional crown in six seasons.', meta: 'CSN Aroball Desk · Mexico City · 4 hours ago' },
+  { tag: 'NAFA', hed: 'Pacifics Keep Western Conference Hopes Alive With Statement Win', dek: 'San Francisco\'s narrow victory over Los Angeles keeps their playoff push alive with three matches remaining in the regular season.', meta: 'CSN Football Desk · San Francisco · 3 hours ago' },
+  { tag: 'ANSA', hed: 'Philadelphia Bells Snap Three-Game Skid With Win Over Baltimore', dek: 'A balanced offensive performance helped the Bells steady themselves after a difficult stretch that had threatened their playoff positioning.', meta: 'CSN Stickball Desk · Philadelphia · 5 hours ago' },
 ];
 
 const CSN_SCORES_NBA = [
@@ -1365,6 +1594,26 @@ const CSN_TOP_STORIES = [
   'NBA Western race tightens as Pharaohs hold off Rivermen',
   'Mexico City Imperiales set new NAFA points record',
   'Open Play: Is this the greatest ANSA season ever?',
+  'Dons edge Fogcutters in Bay Area derby thriller',
+  'New Echota Nighthawks close gap on ANSA leaders',
+  'Golden Gate RC survive scare to reach semi-finals',
+  'Memphis Queens win sixth straight, lock up playoff spot',
+  'Tigres clinch MLA Mexico Division with two rounds to spare',
+  'Pacifics keep NAFA Western playoff hopes alive',
+  'Philadelphia Bells snap three-game skid',
+  'Mahkato Bluemen quietly climbing the NBA West standings',
+  'Toronto Royals\' rugby resurgence, explained',
+  'Five storylines to watch in the MLA stretch run',
+  'Calumet Lakers riding hot streak into playoff push',
+  'Atlanta Locomotives find their groove after slow start',
+  'San Antonio\'s pitching staff quietly historic this season',
+  'Boston Sirens chase first women\'s baseball title in a decade',
+  'Inside the Wichita Mountains training camp boom',
+  'Why Aroball attendance is up across the continent this year',
+  'Franklin Nationals\' youth movement paying early dividends',
+  'CSN Power Rankings: Week\'s biggest movers',
+  'Diamond Series picture coming into focus as season winds down',
+  'Union Cup quarterfinal upsets reshape playoff bracket',
 ];
 
 // -- BROADCAST SCHEDULE (static, time-of-day logic in CSN page) --
@@ -1397,6 +1646,9 @@ const _FO_WORLD_S       = seededShuffle(FO_WORLD,       SEED + 2);
 const _ABN_CARDS_S      = seededShuffle(ABN_CARDS,      SEED + 4);
 const _ABN_WORLD_S      = seededShuffle(ABN_WORLD,      SEED + 5);
 const _ABN_MOSTREAD_S   = seededShuffle(ABN_MOSTREAD,   SEED + 6);
+
+const _FO_EXCLUSIVES_S  = seededShuffle(FO_EXCLUSIVES,  SEED + 18);
+const _ABN_EXCLUSIVES_S = seededShuffle(ABN_EXCLUSIVES, SEED + 19);
 
 const _CSN_LEADS_S          = seededShuffle(CSN_LEADS,        SEED + 7);
 const _CSN_TOP_STORIES_S    = seededShuffle(CSN_TOP_STORIES,  SEED + 8);
@@ -1445,17 +1697,31 @@ const ABN_TICKER_TODAY = [
   ..._ABN_WORLD_S.slice(0, 3).map(w => w.hed),
 ].filter((v, i, a) => a.indexOf(v) === i); // deduplicate
 
+// Site-exclusive picks -- FO_EXCLUSIVE_TODAY and ABN_EXCLUSIVE_TODAY pull from
+// each site's own independent pool (no wire-story counterpart). Useful for
+// filling secondary story slots beyond the shared wire lead.
+const FO_EXCLUSIVE_TODAY  = _FO_EXCLUSIVES_S[0];
+const ABN_EXCLUSIVE_TODAY = _ABN_EXCLUSIVES_S[0];
+
 // Washington House
 // If the day's wire lead has a .wh tie-in (statement + briefing item), it
 // takes priority by being woven into the regular WH_STATEMENT/BRIEFING picks
 // below. Otherwise WH draws from its own independent pools as usual.
+// Dates are generated dynamically (see pseudoRandomDaysAgo/formatDaysAgoDate
+// above) rather than stored as fixed strings, so the page never looks stale
+// no matter when it's actually viewed.
 const WH_STATEMENT_TODAY = WIRE_LEAD_TODAY.wh
-  ? { label: 'Statement from the President', date: '', text: WIRE_LEAD_TODAY.wh.statement, attr: '— President Nakamura · Office of Communications' }
-  : _WH_STATEMENTS_S[0];
+  ? { label: 'Statement from the President', text: WIRE_LEAD_TODAY.wh.statement, attr: '— President Nakamura · Office of Communications' }
+  : { ..._WH_STATEMENTS_S[0] };
+WH_STATEMENT_TODAY.date = formatDaysAgoDate(pseudoRandomDaysAgo(SEED, 0));
 
-const WH_BRIEFING_TODAY = WIRE_LEAD_TODAY.wh
-  ? [{ title: WIRE_LEAD_TODAY.wh.briefing, meta: 'Office of the Press Secretary' }, ..._WH_BRIEFING_S.slice(0, 2)]
-  : _WH_BRIEFING_S.slice(0, 3);
+const WH_BRIEFING_TODAY = (WIRE_LEAD_TODAY.wh
+  ? [{ title: WIRE_LEAD_TODAY.wh.briefing }, ..._WH_BRIEFING_S.slice(0, 2)]
+  : _WH_BRIEFING_S.slice(0, 3)
+).map((b, i) => ({
+  title: b.title,
+  meta: 'Office of the Press Secretary · ' + formatDaysAgoDate(pseudoRandomDaysAgo(SEED, i + 1))
+}));
 
 // CSN Sports
 const CSN_LEAD_TODAY        = _CSN_LEADS_S[0];
