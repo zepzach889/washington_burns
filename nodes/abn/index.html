@@ -300,42 +300,42 @@ function getImage(hed) {
   // -- Domestic / USA institutional --
   if (h.includes('usrc') || h.includes('rail') || h.includes('corridor') || h.includes('northeast')) return IMG_BASE + 'train.jpg';
   if (h.includes('washington house') || h.includes('west wing') || h.includes('nakamura') || h.includes('east wing')) return WH_IMG;
-  if (h.includes('congress') || h.includes('senate') || h.includes('house of representatives') || h.includes('congressional')) IMG_BASE + 'congress1.jpg';
+  if (h.includes('congress') || h.includes('senate') || h.includes('house of representatives') || h.includes('congressional')) IMG_BASE + 'congress1.png';
   if (h.includes('education') || h.includes('literacy') || h.includes('school') || h.includes('university') || h.includes('uus')) return IMG_BASE + 'school1.jpg';
-  if (h.includes('interlink') || h.includes('broadband') || h.includes('rural access')) return IMG_BASE + 'interlink1.jpg';
-  if (h.includes('mars') || h.includes('ares') || h.includes('nasa') || h.includes('astronaut') || h.includes('space')) return IMG_BASE + 'space1.jpg';
+  if (h.includes('interlink') || h.includes('broadband') || h.includes('rural access')) return IMG_BASE + 'interlink1.png';
+  if (h.includes('mars') || h.includes('ares') || h.includes('nasa') || h.includes('astronaut') || h.includes('space')) return IMG_BASE + 'space1.png';
 
   // -- NAU member nations (each sovereign, each gets its own image) --
   if (h.includes('canada') || h.includes('tremblay') || h.includes('aurora') || h.includes('toronto')) return IMG_BASE + 'canada1.jpg';
-  if (h.includes('mexico') || h.includes('mexico city') || h.includes('guadalajara') || h.includes('monterrey')) return IMG_BASE + 'mexico1.jpg';
-  if (h.includes('texas') || h.includes('texian') || h.includes('texopolis') || h.includes('san antonio') || h.includes('austin')) return IMG_BASE + 'texas1.jpg';
-  if (h.includes('california') || h.includes('san francisco') || h.includes('monterey') || h.includes('premier')) return IMG_BASE + 'california1.jpg';
-  if (h.includes('hawaii') || h.includes('honolulu') || h.includes('kahananui')) return IMG_BASE + 'hawaii1.jpg';
-  if (h.includes('jamaica') || h.includes('kingston')) return IMG_BASE + 'jamaica1.jpg';
-  if (h.includes('puerto rico')) return IMG_BASE + 'puerto-rico1.jpg';
-  if (h.includes('haiti') || h.includes('dominican republic') || h.includes('santo domingo') || h.includes('caribbean')) return IMG_BASE + 'caribbean1.jpg';
-  if (h.includes('central america') || h.includes('frca')) return IMG_BASE + 'frca1.jpg';
+  if (h.includes('mexico') || h.includes('mexico city') || h.includes('guadalajara') || h.includes('monterrey')) return IMG_BASE + 'mexico1.png';
+  if (h.includes('texas') || h.includes('texian') || h.includes('texopolis') || h.includes('san antonio') || h.includes('austin')) return IMG_BASE + 'texas1.png';
+  if (h.includes('california') || h.includes('san francisco') || h.includes('monterey') || h.includes('premier')) return IMG_BASE + 'california1.png';
+  if (h.includes('hawaii') || h.includes('honolulu') || h.includes('kahananui')) return IMG_BASE + 'hawaii1.png';
+  if (h.includes('jamaica') || h.includes('kingston')) return IMG_BASE + 'jamaica1.png';
+  if (h.includes('puerto rico')) return IMG_BASE + 'puerto-rico1.png';
+  if (h.includes('haiti') || h.includes('dominican republic') || h.includes('santo domingo') || h.includes('caribbean')) return IMG_BASE + 'caribbean1.png';
+  if (h.includes('central america') || h.includes('frca')) return IMG_BASE + 'frca1.png';
 
   // -- World powers --
   if (h.includes('china') || h.includes('huawang')) return IMG_BASE + 'china1.jpg';
   if (h.includes('uer') || h.includes('paris') || h.includes('national assembly') || h.includes('media reform')) return IMG_BASE + 'paris1.jpg';
   if (h.includes('russia') || h.includes('tsar') || h.includes('duma')) return IMG_BASE + 'russia1.jpg';
   if (h.includes('britain') || h.includes('london') || h.includes('royal') || h.includes('prince') || h.includes('ukp')) return IMG_BASE + 'london1.jpg';
-  if (h.includes('japan') || h.includes('tokyo')) return IMG_BASE + 'japan1.jpg';
-  if (h.includes('india') || h.includes('delhi')) return IMG_BASE + 'india1.jpg';
-  if (h.includes('germany') || h.includes('frankfurt') || h.includes('german republic')) return IMG_BASE + 'germany1.jpg';
-  if (h.includes('austria') || h.includes('vienna')) return IMG_BASE + 'austria1.jpg';
-  if (h.includes('brazil')) return IMG_BASE + 'brazil1.jpg';
-  if (h.includes('australia') || h.includes('sydney')) return IMG_BASE + 'australia1.jpg';
-  if (h.includes('egypt') || h.includes('cairo') || h.includes('suez')) return IMG_BASE + 'egypt1.jpg';
-  if (h.includes('sokoto') || h.includes('ethiopia') || h.includes('zanzibar') || h.includes('kano') || h.includes('addis ababa')) return IMG_BASE + 'africa1.jpg';
-  if (h.includes('mesopotamia')) return IMG_BASE + 'mesopotamia1.jpg';
+  if (h.includes('japan') || h.includes('tokyo')) return IMG_BASE + 'japan1.png';
+  if (h.includes('india') || h.includes('delhi')) return IMG_BASE + 'india1.png';
+  if (h.includes('germany') || h.includes('frankfurt') || h.includes('german republic')) return IMG_BASE + 'germany1.png';
+  if (h.includes('austria') || h.includes('vienna')) return IMG_BASE + 'austria1.png';
+  if (h.includes('brazil')) return IMG_BASE + 'brazil1.png';
+  if (h.includes('australia') || h.includes('sydney')) return IMG_BASE + 'australia1.png';
+  if (h.includes('egypt') || h.includes('cairo') || h.includes('suez')) return IMG_BASE + 'egypt1.png';
+  if (h.includes('sokoto') || h.includes('ethiopia') || h.includes('zanzibar') || h.includes('kano') || h.includes('addis ababa')) return IMG_BASE + 'africa1.png';
+  if (h.includes('mesopotamia')) return IMG_BASE + 'mesopotamia1.png';
 
   // -- Continental institutions (catch-all, kept last among specific matches) --
-  if (h.includes('gpc')) return IMG_BASE + 'gpc1.jpg';
+  if (h.includes('gpc')) return IMG_BASE + 'gpc1.png';
   if (h.includes('nau') || h.includes('assembly')) return IMG_BASE + 'nau_assembly2.png';
 
-  return IMG_BASE + 'nau_assembly.jpg'; // default fallback
+  return IMG_BASE + 'default1.png'; // default fallback
 }
 
 // ── LEAD — from content.js (WIRE_STORIES, .abn rendering) ──
