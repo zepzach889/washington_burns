@@ -29,12 +29,12 @@
 
   /* ── PARK OF THE DAY ── */
   .fps-potd { border-radius: 12px; overflow: hidden; margin-bottom: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
-  .fps-potd-img { height: 240px; background-size: cover; background-position: center top; position: relative; }
-  .fps-potd-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.75) 100%); }
-  .fps-potd-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 24px; z-index: 1; color: #fff; }
-  .fps-potd-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fps-tan); margin-bottom: 5px; }
-  .fps-potd-name { font-family: "DM Serif Display", serif; font-size: 28px; line-height: 1.1; margin-bottom: 4px; text-shadow: 0 2px 6px rgba(0,0,0,0.5); }
-  .fps-potd-location { font-size: 12px; color: rgba(255,255,255,0.75); }
+  .fps-potd-top { display: grid; grid-template-columns: 280px 1fr; }
+  .fps-potd-img { height: 100%; min-height: 220px; background-size: cover; background-position: center; }
+  .fps-potd-intro { background: var(--fps-green); color: #fff; padding: 20px 24px; display: flex; flex-direction: column; justify-content: center; }
+  .fps-potd-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fps-tan); margin-bottom: 8px; }
+  .fps-potd-name { font-family: "DM Serif Display", serif; font-size: 26px; line-height: 1.15; margin-bottom: 6px; }
+  .fps-potd-location { font-size: 12px; color: rgba(255,255,255,0.8); }
   .fps-potd-body { background: #fff; display: grid; grid-template-columns: 1fr 1fr 1fr; border-top: 3px solid var(--fps-green); }
   .fps-potd-panel { padding: 16px 18px; border-right: 0.5px solid var(--border); }
   .fps-potd-panel:last-child { border-right: none; }
@@ -42,6 +42,11 @@
   .fps-potd-panel-content { font-size: 13px; color: var(--text-primary); line-height: 1.5; }
   .fps-potd-panel-sub { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
   .fps-weather-temp { font-size: 28px; font-weight: 300; line-height: 1; }
+
+  @media (max-width: 700px) {
+    .fps-potd-top { grid-template-columns: 1fr; }
+    .fps-potd-img { height: 180px; min-height: 0; }
+  }
 
   /* ── REGION SECTIONS ── */
   .fps-region { margin-bottom: 36px; }
@@ -147,8 +152,9 @@
   <div class="wm-section-label">Park of the Day &mdash; <span id="fps-date"></span></div>
 
   <div class="fps-potd" id="fps-potd">
-    <div class="fps-potd-img" id="fps-potd-img">
-      <div class="fps-potd-overlay">
+    <div class="fps-potd-top">
+      <div class="fps-potd-img" id="fps-potd-img"></div>
+      <div class="fps-potd-intro">
         <div class="fps-potd-tag">Park of the Day</div>
         <div class="fps-potd-name" id="fps-potd-name">Loading&hellip;</div>
         <div class="fps-potd-location" id="fps-potd-location"></div>
