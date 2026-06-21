@@ -1786,8 +1786,10 @@ const WAYMARK_HEADLINES = [
     // Only search within FO_NATIONAL_TODAY (the 3 items actually rendered
     // on the Observer page today) -- searching the full shuffled pool would
     // risk linking to a USRC story that exists but isn't on today's page.
+    // Tag is derived from whichever story actually gets picked, rather than
+    // hardcoded to 'rail', since the fallback may pick a non-rail story.
     type: 'story',
-    tag:  'rail',
+    tag:  (FO_NATIONAL_TODAY.find(s => s.hed.includes('USRC')) || FO_NATIONAL_TODAY[1]).hed.includes('USRC') ? 'rail' : 'national',
     hed:  (FO_NATIONAL_TODAY.find(s => s.hed.includes('USRC')) || FO_NATIONAL_TODAY[1]).hed,
     dek:  (FO_NATIONAL_TODAY.find(s => s.hed.includes('USRC')) || FO_NATIONAL_TODAY[1]).dek,
     meta: (FO_NATIONAL_TODAY.find(s => s.hed.includes('USRC')) || FO_NATIONAL_TODAY[1]).meta,
