@@ -1752,6 +1752,11 @@ const CSN_SCORES_WOMENS_TODAY = _CSN_SCORES_WOMENS_S.slice(0, 6);
 // ── WAYMARK HEADLINES (derived from daily picks) ──
 // ═════════════════════════════════════════════════════════════════════════════
 
+// Each Waymark headline must link to a page where that exact story actually
+// renders. The lead always comes from WIRE_LEAD_TODAY (which both FO and ABN
+// display). Everything else pulls from FO_NATIONAL_TODAY / FO_WORLD_TODAY,
+// which are the pools the Observer page itself renders -- so clicking
+// through always lands on a page that actually contains the story shown.
 const WAYMARK_HEADLINES = [
   {
     type: 'lead',
@@ -1771,26 +1776,29 @@ const WAYMARK_HEADLINES = [
   },
   {
     type: 'story',
-    tag:  WIRE_SECONDARY_TODAY[0].waymark.tag,
-    hed:  WIRE_SECONDARY_TODAY[0].waymark.hed,
-    dek:  WIRE_SECONDARY_TODAY[0].fo.dek,
-    meta: 'Franklin Observer · ' + bylineCity(WIRE_SECONDARY_TODAY[0].fo.byline),
+    tag:  FO_NATIONAL_TODAY[0].label || 'national',
+    hed:  FO_NATIONAL_TODAY[0].hed,
+    dek:  FO_NATIONAL_TODAY[0].dek,
+    meta: FO_NATIONAL_TODAY[0].meta,
+    link: './nodes/franklin-observer/'
+  },
+  {
+    // Only search within FO_NATIONAL_TODAY (the 3 items actually rendered
+    // on the Observer page today) -- searching the full shuffled pool would
+    // risk linking to a USRC story that exists but isn't on today's page.
+    type: 'story',
+    tag:  'rail',
+    hed:  (FO_NATIONAL_TODAY.find(s => s.hed.includes('USRC')) || FO_NATIONAL_TODAY[1]).hed,
+    dek:  (FO_NATIONAL_TODAY.find(s => s.hed.includes('USRC')) || FO_NATIONAL_TODAY[1]).dek,
+    meta: (FO_NATIONAL_TODAY.find(s => s.hed.includes('USRC')) || FO_NATIONAL_TODAY[1]).meta,
     link: './nodes/franklin-observer/'
   },
   {
     type: 'story',
-    tag:  'rail',
-    hed:  _FO_NATIONAL_S.find(s => s.hed.includes('USRC'))?.hed || 'USRC Northeast Corridor Sets New Ridership Record',
-    dek:  _FO_NATIONAL_S.find(s => s.hed.includes('USRC'))?.dek || '4.1 million passengers on the Franklin–Pittsburgh–Philadelphia mainline.',
-    meta: 'USRC Public Affairs · 6 hours ago',
-    link: './nodes/usrc/'
-  },
-  {
-    type: 'story',
-    tag:  WIRE_SECONDARY_TODAY[1].waymark.tag,
-    hed:  WIRE_SECONDARY_TODAY[1].waymark.hed,
-    dek:  WIRE_SECONDARY_TODAY[1].fo.dek,
-    meta: 'Franklin Observer · ' + bylineCity(WIRE_SECONDARY_TODAY[1].fo.byline),
+    tag:  FO_WORLD_TODAY[0].label,
+    hed:  FO_WORLD_TODAY[0].hed,
+    dek:  FO_WORLD_TODAY[0].dek,
+    meta: FO_WORLD_TODAY[0].meta,
     link: './nodes/franklin-observer/'
   }
 ];
