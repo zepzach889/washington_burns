@@ -229,6 +229,17 @@ function formatDaysAgoDate(daysAgo) {
   return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
 }
 
+// -- SAFE BYLINE CITY EXTRACTOR --
+// Bylines aren't all formatted the same way (some include "· City", others
+// don't), so naively splitting on the separator and trimming crashes the
+// whole file the moment a byline without one gets picked. This degrades
+// gracefully to a default instead.
+function bylineCity(byline, fallback = 'Franklin') {
+  if (!byline) return fallback;
+  const parts = byline.split('·');
+  return parts.length > 1 ? parts[1].trim() : fallback;
+}
+
 
 // ═════════════════════════════════════════════════════════════════════════════
 // -- WIRE STORIES --
@@ -1755,7 +1766,7 @@ const WAYMARK_HEADLINES = [
     tag:  FO_LEAD_TODAY.label,
     hed:  FO_LEAD_TODAY.hed,
     dek:  FO_LEAD_TODAY.dek,
-    meta: 'Franklin Observer · ' + (FO_LEAD_TODAY.byline ? FO_LEAD_TODAY.byline.split('·')[1].trim() : 'Franklin'),
+    meta: 'Franklin Observer · ' + bylineCity(FO_LEAD_TODAY.byline),
     link: './nodes/franklin-observer/'
   },
   {
@@ -1763,7 +1774,7 @@ const WAYMARK_HEADLINES = [
     tag:  WIRE_SECONDARY_TODAY[0].waymark.tag,
     hed:  WIRE_SECONDARY_TODAY[0].waymark.hed,
     dek:  WIRE_SECONDARY_TODAY[0].fo.dek,
-    meta: 'Franklin Observer · ' + (WIRE_SECONDARY_TODAY[0].fo.byline ? WIRE_SECONDARY_TODAY[0].fo.byline.split('·')[1].trim() : 'Franklin'),
+    meta: 'Franklin Observer · ' + bylineCity(WIRE_SECONDARY_TODAY[0].fo.byline),
     link: './nodes/franklin-observer/'
   },
   {
@@ -1779,7 +1790,7 @@ const WAYMARK_HEADLINES = [
     tag:  WIRE_SECONDARY_TODAY[1].waymark.tag,
     hed:  WIRE_SECONDARY_TODAY[1].waymark.hed,
     dek:  WIRE_SECONDARY_TODAY[1].fo.dek,
-    meta: 'Franklin Observer · ' + (WIRE_SECONDARY_TODAY[1].fo.byline ? WIRE_SECONDARY_TODAY[1].fo.byline.split('·')[1].trim() : 'Franklin'),
+    meta: 'Franklin Observer · ' + bylineCity(WIRE_SECONDARY_TODAY[1].fo.byline),
     link: './nodes/franklin-observer/'
   }
 ];
