@@ -200,7 +200,6 @@
 </div>
 
 <script src="router.js"></script>
-<script src="stories.js"></script>
 <script src="content.js"></script>
 <script src="./nodes/nedex/nedex_index.js"></script>
 <script>
@@ -257,7 +256,7 @@ document.getElementById('wm-year').textContent = new Date().getFullYear();
 initAddressBar('nan.waymark.biz.usa');
 
 // ── TAG COLORS ──
-const tagColors = { nau: '#993C1D', usa: '#185FA5', world: '#0F6E56', politics: '#993C1D', national: '#1a1410', rail: '#533AB7', culture: '#993556' };
+const tagColors = { nau: '#993C1D', usa: '#185FA5', world: '#0F6E56', politics: '#993C1D', national: '#1a1410', rail: '#533AB7', culture: '#993556', science: '#2D5A1A', business: '#185FA5' };
 function tagColor(tag) { return tagColors[(tag||'').toLowerCase()] || '#185FA5'; }
 
 // ── RENDER HEADLINES ──
@@ -288,11 +287,10 @@ function renderHeadlines() {
 }
 
 // ── SEARCH ──
-// Build a flat searchable index from stories.js pools
+// Build a flat searchable index from content.js pools
 function buildIndex() {
   const index = [];
 
-  // Site pages — always included
   const PAGES = [
     { hed: 'Franklin Observer', dek: 'The Franklin Observer — established 1843. News, politics, world affairs and culture from the capital.', source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/' },
     { hed: 'USRC Rail Status', dek: 'United States Railway Company — live network status, departures, journey planner and fares.', source: 'nan.usrc.gov.usa', link: './nodes/usrc/' },
@@ -306,15 +304,24 @@ function buildIndex() {
 
   PAGES.forEach(p => index.push({ ...p, type: 'page' }));
 
-  // Observer stories
-  FO_LEADS.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
-  FO_NATIONAL.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
-  FO_WORLD.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
+  // WIRE_STORIES -- shared wire stories, .fo and .abn versions indexed
+  // separately so search hits feel native to whichever site they link to
+  if (typeof WIRE_STORIES !== 'undefined') {
+    WIRE_STORIES.forEach(s => {
+      if (s.fo) index.push({ hed: s.fo.hed, dek: s.fo.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' });
+      if (s.abn) index.push({ hed: s.abn.hed, dek: s.abn.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' });
+    });
+  }
 
-  // ABN stories
-  ABN_LEADS.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
-  ABN_CARDS.forEach(s => index.push({ hed: s.hed, dek: s.hed, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
-  ABN_WORLD.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
+  // Observer-only pools
+  if (typeof FO_NATIONAL !== 'undefined') FO_NATIONAL.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
+  if (typeof FO_WORLD !== 'undefined') FO_WORLD.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
+  if (typeof FO_EXCLUSIVES !== 'undefined') FO_EXCLUSIVES.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
+
+  // ABN-only pools
+  if (typeof ABN_CARDS !== 'undefined') ABN_CARDS.forEach(s => index.push({ hed: s.hed, dek: s.hed, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
+  if (typeof ABN_WORLD !== 'undefined') ABN_WORLD.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
+  if (typeof ABN_EXCLUSIVES !== 'undefined') ABN_EXCLUSIVES.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
 
   // Nedex articles
   if (typeof NEDEX_ARTICLES !== 'undefined') {
@@ -372,9 +379,9 @@ function buildIndex() {
   }
 
   // Washington House statements
-  if (typeof WBT_WH_STATEMENTS !== 'undefined') {
-    WBT_WH_STATEMENTS.forEach(s => index.push({
-      hed: s.label + ' · ' + s.date,
+  if (typeof WH_STATEMENTS !== 'undefined') {
+    WH_STATEMENTS.forEach(s => index.push({
+      hed: s.label,
       dek: s.text + ' ' + s.attr,
       source: 'nan.washingtonhouse.gov.usa',
       link: './nodes/washington-house/',
@@ -383,10 +390,10 @@ function buildIndex() {
   }
 
   // Washington House briefings
-  if (typeof WBT_WH_BRIEFING !== 'undefined') {
-    WBT_WH_BRIEFING.forEach(b => index.push({
+  if (typeof WH_BRIEFING !== 'undefined') {
+    WH_BRIEFING.forEach(b => index.push({
       hed: b.title,
-      dek: b.meta,
+      dek: '',
       source: 'nan.washingtonhouse.gov.usa',
       link: './nodes/washington-house/',
       type: 'briefing'
@@ -512,7 +519,6 @@ buildMarkets();
 
 // ── TWO-PANEL WEATHER ──
 
-// NAU cities for rotating panel
 const NAU_CITIES = [
   { name: 'Franklin, D.W.',      country: 'USA',    lat: 39.1031,  lon: -84.5120,  tz: 'America/New_York' },
   { name: 'Honolulu',            country: 'Hawaii', lat: 21.3069,  lon: -157.8583, tz: 'Pacific/Honolulu' },
@@ -524,7 +530,6 @@ const NAU_CITIES = [
   { name: 'Mexico City',         country: 'Mexico', lat: 19.4326,  lon: -99.1332,  tz: 'America/Mexico_City' },
 ];
 
-// Location → nearest WBT city mapping
 const LOCAL_CITY_MAP = [
   { minLat: 25,  maxLat: 32,  minLon: -98,  maxLon: -80,  city: 'Mexico City' },
   { minLat: 30,  maxLat: 37,  minLon: -125, maxLon: -115, city: 'Monterey' },
@@ -541,7 +546,7 @@ function nearestWBTCity(lat, lon) {
       return NAU_CITIES.find(c => c.name === r.city) || NAU_CITIES[0];
     }
   }
-  return NAU_CITIES[0]; // default Franklin
+  return NAU_CITIES[0];
 }
 
 function weatherPanelHTML(temp, cond, wind, dir) {
@@ -563,11 +568,9 @@ async function fetchCityWeather(city) {
   };
 }
 
-// Local panel
 async function fetchLocalWeather() {
   const panel = document.getElementById('wm-weather-local');
   if (!navigator.geolocation) {
-    // Fallback to Franklin
     try {
       const w = await fetchCityWeather(NAU_CITIES[0]);
       panel.innerHTML = `<div class="wm-weather-panel-label">Franklin, D.W.</div>${weatherPanelHTML(w.temp, w.cond, w.wind, w.dir)}`;
@@ -587,7 +590,6 @@ async function fetchLocalWeather() {
       }
     },
     async () => {
-      // Permission denied — fall back to Franklin
       try {
         const w = await fetchCityWeather(NAU_CITIES[0]);
         panel.innerHTML = `<div class="wm-weather-panel-label">Franklin, D.W.</div>${weatherPanelHTML(w.temp, w.cond, w.wind, w.dir)}`;
@@ -598,7 +600,6 @@ async function fetchLocalWeather() {
   );
 }
 
-// Rotating panel
 let _rotatingIdx = DAY_OF_YEAR % NAU_CITIES.length;
 const _rotatingCache = {};
 
@@ -617,7 +618,6 @@ async function showRotatingCity() {
   try {
     const w = await fetchCityWeather(city);
     _rotatingCache[city.name] = w;
-    // Remove loading text and add real data
     const loading = panel.querySelector('div:last-child');
     if (loading) loading.remove();
     panel.insertAdjacentHTML('beforeend', `<div>${weatherPanelHTML(w.temp, w.cond, w.wind, w.dir)}</div>`);
@@ -632,7 +632,6 @@ function advanceRotating() {
   showRotatingCity();
 }
 
-// Init weather
 fetchLocalWeather();
 showRotatingCity();
 setInterval(advanceRotating, 40000);
