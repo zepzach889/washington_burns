@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Washington Burns TL — TC Bible v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410; --paper: #f5f0e8; --aged: #e8e0cc; --rust: #8b3a2a;
+    --rust-light: #c4593d; --slate: #3d4a5c; --slate-light: #5a6d84;
+    --gold: #b8860b; --gold-light: #d4a017; --cream: #faf6ee;
+    --border: #c8b99a; --shadow: rgba(26,20,16,0.15); --film: #2a1f0e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--paper); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.7; background-image: radial-gradient(ellipse at 20% 0%, rgba(184,134,11,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 100%, rgba(61,74,92,0.06) 0%, transparent 60%); min-height: 100vh; }
+  .masthead { background-color: var(--film); color: var(--paper); padding: 3rem 2rem 2.5rem; text-align: center; position: relative; overflow: hidden; }
+  .masthead::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(245,240,232,0.03) 40px, rgba(245,240,232,0.03) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(245,240,232,0.03) 40px, rgba(245,240,232,0.03) 41px); }
+  .masthead::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 12px; background-image: repeating-linear-gradient(90deg, var(--film) 0px, var(--film) 16px, var(--gold) 16px, var(--gold) 24px, var(--film) 24px, var(--film) 40px); opacity: 0.4; }
+  .masthead-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.75rem; position: relative; }
+  .masthead h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.1; position: relative; margin-bottom: 0.5rem; }
+  .masthead-sub { font-family: 'Source Serif 4', serif; font-style: italic; font-size: 1.05rem; color: rgba(245,240,232,0.7); position: relative; margin-bottom: 1.5rem; }
+  .masthead-rule { width: 60px; height: 2px; background: var(--gold); margin: 0 auto 1.5rem; position: relative; }
+  .masthead-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; color: rgba(245,240,232,0.4); position: relative; }
+  .toc-bar { background-color: var(--slate); padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px var(--shadow); }
+  .toc-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; overflow-x: auto; scrollbar-width: none; gap: 0; }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.4); padding: 0.9rem 1.2rem; white-space: nowrap; border-right: 1px solid rgba(245,240,232,0.1); }
+  .toc-inner a { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.7); text-decoration: none; padding: 0.9rem 1rem; white-space: nowrap; border-right: 1px solid rgba(245,240,232,0.08); transition: all 0.2s; }
+  .toc-inner a:hover { color: var(--gold-light); background: rgba(245,240,232,0.05); }
+  .container { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
+  .section { margin-bottom: 5rem; }
+  .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--ink); }
+  .section-number { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: var(--border); line-height: 1; flex-shrink: 0; }
+  .section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate-light); margin-bottom: 0.25rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; line-height: 1.2; }
+  .subsection { margin-bottom: 2.5rem; }
+  .subsection-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--rust); margin-bottom: 1rem; padding-left: 1rem; border-left: 3px solid var(--rust); }
+  .subsection-title.slate { color: var(--slate); border-left-color: var(--slate); }
+  .subsection-title.gold { color: var(--gold); border-left-color: var(--gold); }
+  .subsection-title.ink { color: var(--ink); border-left-color: var(--ink); }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
+  .card-grid.two-col { grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); }
+  .card { background: var(--cream); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem 1.5rem; position: relative; }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--rust); border-radius: 2px 0 0 2px; }
+  .card.slate::before { background: var(--slate); }
+  .card.gold::before { background: var(--gold); }
+  .card.ink::before { background: var(--ink); }
+  .card.green::before { background: #4a7c59; }
+  .card-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate-light); margin-bottom: 0.4rem; }
+  .card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--ink); }
+  .card p, .card li { font-size: 0.88rem; line-height: 1.6; color: #3a3028; }
+  .card ul { padding-left: 1.1rem; margin-top: 0.25rem; }
+  .card ul li { margin-bottom: 0.25rem; }
+  .program-card { background: var(--cream); border: 1px solid var(--border); border-radius: 2px; padding: 1.5rem; position: relative; margin-bottom: 1.5rem; }
+  .program-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--rust); border-radius: 2px 0 0 2px; }
+  .program-card.slate::before { background: var(--slate); }
+  .program-card.gold::before { background: var(--gold); }
+  .program-card.ink::before { background: var(--film); }
+  .program-card.green::before { background: #4a7c59; }
+  .program-meta-row { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-bottom: 0.75rem; align-items: baseline; }
+  .program-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; font-style: italic; color: var(--ink); }
+  .program-year { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--gold); letter-spacing: 0.1em; font-weight: 600; }
+  .program-network { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--slate-light); }
+  .program-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.75rem; }
+  .program-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.5rem; border: 1px solid var(--border); border-radius: 2px; color: var(--slate-light); background: var(--paper); }
+  .program-tag.landmark { border-color: var(--gold); color: var(--gold); }
+  .program-tag.wren { border-color: var(--rust); color: var(--rust); }
+  .program-body { font-size: 0.9rem; line-height: 1.65; color: #2a2018; }
+  .program-body p { margin-bottom: 0.5rem; }
+  .program-cast { margin-top: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--slate-light); text-transform: uppercase; }
+  .program-cast span { color: var(--ink); font-style: normal; text-transform: none; font-family: 'Source Serif 4', serif; font-size: 0.82rem; letter-spacing: 0; }
+  .person-card { background: var(--cream); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem 1.5rem; position: relative; margin-bottom: 1.5rem; }
+  .person-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--slate); border-radius: 2px 0 0 2px; }
+  .person-card.rust::before { background: var(--rust); }
+  .person-card.gold::before { background: var(--gold); }
+  .person-card.ink::before { background: var(--ink); }
+  .person-inner { display: flex; gap: 1.25rem; align-items: flex-start; }
+  .person-photo-placeholder { width: 90px; height: 110px; background: var(--aged); border: 1px solid var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; color: var(--slate-light); text-align: center; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1.4; }
+  .person-content { flex: 1; min-width: 0; }
+  .person-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; margin-bottom: 0.15rem; color: var(--ink); }
+  .person-role { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--slate-light); margin-bottom: 0.6rem; }
+  .person-bio { font-size: 0.88rem; line-height: 1.6; color: #2a2018; margin-bottom: 0.6rem; }
+  .person-films-label { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate-light); margin-bottom: 0.3rem; }
+  .person-films { font-size: 0.85rem; font-style: italic; color: #3a3028; line-height: 1.6; }
+  .person-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(460px, 1fr)); gap: 1.5rem; }
+  .studio-card { background: var(--cream); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem 1.5rem; position: relative; }
+  .studio-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gold); border-radius: 2px 0 0 2px; }
+  .studio-card.slate::before { background: var(--slate); }
+  .studio-card.rust::before { background: var(--rust); }
+  .studio-card.ink::before { background: var(--ink); }
+  .studio-card.green::before { background: #4a7c59; }
+  .studio-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.15rem; color: var(--ink); }
+  .studio-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--slate-light); margin-bottom: 0.6rem; }
+  .studio-desc { font-size: 0.87rem; line-height: 1.6; color: #3a3028; margin-bottom: 0.5rem; }
+  .studio-notes { font-size: 0.82rem; font-style: italic; color: var(--slate-light); }
+  .prose { margin-bottom: 1.25rem; }
+  .prose p { margin-bottom: 0.9rem; font-size: 0.95rem; color: #2a2018; }
+  .notice { background: rgba(61,74,92,0.07); border: 1px solid rgba(61,74,92,0.2); border-radius: 2px; padding: 0.75rem 1rem; margin-top: 1rem; display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.85rem; }
+  .notice-icon { color: var(--gold); flex-shrink: 0; font-size: 0.8rem; margin-top: 0.1rem; }
+  .period-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--paper); background: var(--slate); padding: 0.4rem 1rem; display: inline-block; margin-bottom: 1rem; border-radius: 2px; }
+  .period-label.rust-bg { background: var(--rust); }
+  .period-label.ink-bg { background: var(--film); }
+  .timeline { position: relative; padding-left: 2rem; margin: 1rem 0; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 0.5rem; bottom: 0.5rem; width: 2px; background: linear-gradient(to bottom, var(--rust), var(--slate)); }
+  .timeline-item { position: relative; padding: 0.6rem 0 0.6rem 1.5rem; margin-bottom: 0.25rem; }
+  .timeline-item::before { content: ''; position: absolute; left: -0.3rem; top: 1rem; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--rust); border: 2px solid var(--paper); }
+  .timeline-year { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 0.2rem; }
+  .timeline-content { font-size: 0.88rem; color: #2a2018; line-height: 1.55; }
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 4rem 0; }
+  .canon-flag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.15rem 0.4rem; border-radius: 2px; margin-left: 0.4rem; vertical-align: middle; }
+  .canon-flag.hard { background: var(--rust); color: white; }
+  .canon-flag.soft { background: var(--slate); color: white; }
+  .canon-flag.open { background: var(--gold); color: var(--ink); }
+  @media (max-width: 640px) {
+    .person-grid { grid-template-columns: 1fr; }
+    .person-photo-placeholder { width: 70px; height: 86px; }
+    .card-grid.two-col { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- WM ARC CHROME CSS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+.arc-chrome, .arc-chrome * { box-sizing: border-box; }
+.arc-chrome {
+  --arc-paper: #f9f8f6; --arc-border: rgba(0,0,0,0.10); --arc-border-mid: rgba(0,0,0,0.16);
+  --arc-text-primary: #1a1410; --arc-text-secondary: #4a4a48; --arc-text-tertiary: #88887f;
+  --arc-bg-secondary: #f2f1ee; --arc-bg-tertiary: #eae9e5;
+  --arc-blue: #185FA5; --arc-blue-light: #E6F1FB;
+  position: sticky; top: 0; z-index: 9999;
+  display: flex; flex-direction: column; font-family: 'DM Sans', sans-serif;
+}
+.arc-topbar { display: flex; align-items: center; padding: 7px 20px; border-bottom: 0.5px solid var(--arc-border); background: var(--arc-paper); gap: 10px; }
+.arc-navbtns { display: flex; gap: 4px; flex-shrink: 0; }
+.arc-navbtn { width: 26px; height: 26px; border-radius: 50%; border: 0.5px solid var(--arc-border-mid); background: var(--arc-bg-secondary); display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--arc-text-tertiary); cursor: pointer; text-decoration: none; line-height: 1; flex-shrink: 0; }
+.arc-navbtn:hover { background: var(--arc-bg-tertiary); color: var(--arc-text-primary); }
+.arc-navbtn:visited { color: var(--arc-text-tertiary); }
+.arc-logo { text-decoration: none; font-family: 'DM Serif Display', serif; font-size: 18px; letter-spacing: 0.04em; flex-shrink: 0; white-space: nowrap; }
+.arc-logo:visited { color: inherit; }
+.arc-logo .arc-w { color: #1a1410; } .arc-logo .arc-m { color: #185FA5; } .arc-logo .arc-tag { color: #5A6A8A; font-style: italic; font-size: 16px; }
+.arc-address-wrap { display: flex; align-items: center; flex: 1; min-width: 0; background: var(--arc-bg-secondary); border: 1px solid var(--arc-border-mid); border-radius: 22px; padding: 0 12px 0 14px; gap: 6px; }
+.arc-address-input { flex: 1; border: none; background: transparent; font-size: 12px; font-family: monospace; color: var(--arc-text-secondary); outline: none; padding: 7px 0; min-width: 0; }
+.arc-go-btn { background: none; border: none; cursor: pointer; color: var(--arc-text-tertiary); font-size: 15px; padding: 2px; flex-shrink: 0; line-height: 1; }
+.arc-clock { font-size: 11px; color: var(--arc-text-tertiary); font-family: monospace; flex-shrink: 0; white-space: nowrap; }
+.arc-bookmarks { display: flex; align-items: center; padding: 3px 16px; gap: 2px; background: var(--arc-bg-secondary); border-bottom: 0.5px solid var(--arc-border); overflow-x: auto; scrollbar-width: none; }
+.arc-bookmarks::-webkit-scrollbar { display: none; }
+.arc-bmark { display: flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 5px; font-size: 11.5px; font-weight: 500; color: var(--arc-text-secondary); text-decoration: none; white-space: nowrap; font-family: 'DM Sans', sans-serif; }
+.arc-bmark:hover { background: var(--arc-bg-tertiary); color: var(--arc-text-primary); }
+.arc-bmark.active { background: var(--arc-blue-light); color: var(--arc-blue); }
+.arc-bmark-icon { font-size: 13px; }
+</style>
+
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="arc-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="arc-address-wrap">
+    <input class="arc-address-input" id="arc-address-input" type="text" value="link://nan.div814.gov.usa/wbt_tc_bible"/>
+    <button class="arc-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../linkvid/"><span class="arc-bmark-icon">🎥</span>LinkVid</a>
+  <a class="arc-bmark" href="../csn/"><span class="arc-bmark-icon">⚾</span>CSN</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+</div>
+
+<a href="../ref/" style="position:fixed;bottom:20px;right:20px;z-index:9998;background:#1a1410;color:#f9f8f6;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;padding:7px 13px;border-radius:20px;opacity:0.5;transition:opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">⬡ Div814</a>
+
+<div class="masthead">
+  <div class="masthead-eyebrow">Washington Burns Timeline — Canon Reference</div>
+  <h1>TC Bible</h1>
+  <div class="masthead-sub">The history of American telecinema broadcasting, from the Cade-Wren demonstration to the 2026 present day</div>
+  <div class="masthead-rule"></div>
+  <div class="masthead-meta">Version 1 — June 2026 &nbsp;·&nbsp; Hard Canon Unless Marked Otherwise &nbsp;·&nbsp; Division 814 Internal Reference</div>
+</div>
+
+<nav class="toc-bar">
+  <div class="toc-inner">
+    <span class="toc-label">Jump To</span>
+    <a href="#infrastructure">Infrastructure</a>
+    <a href="#networks">Networks</a>
+    <a href="#founders">Founders</a>
+    <a href="#regulatory">Regulatory History</a>
+    <a href="#awards">Awards — The Wren</a>
+    <a href="#terminology-early">Terminology</a>
+    <a href="#experimental">Experimental Era</a>
+    <a href="#boom">The Boom</a>
+    <a href="#golden">Golden Age</a>
+    <a href="#transition">The Transition</a>
+    <a href="#turbulent">Turbulent Era</a>
+    <a href="#independence">Independence Era</a>
+    <a href="#expansion">Expansion Era</a>
+    <a href="#peaktc">Peak TC</a>
+    <a href="#disruption">Disruption Era</a>
+    <a href="#present">The Fragmented Present</a>
+    <a href="#people">People Index</a>
+    <a href="#terminology">Terminology &amp; Canon Rules</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<section class="section" id="infrastructure">
+  <div class="section-header">
+    <div class="section-number">01</div>
+    <div><div class="section-eyebrow">Section One</div><div class="section-title">Industry Infrastructure</div></div>
+  </div>
+  <div class="subsection">
+    <div class="subsection-title gold">Geography</div>
+    <div class="prose">
+      <p>TC production begins where radio infrastructure already existed — <strong>Manhattan</strong> (ABN), <strong>Franklin</strong> (NBS), and <strong>New Orleans</strong> (MBC) are the medium's earliest production centers, joined by Calumet/Hugosville (CBC) and New Boston (PBN). For roughly the first decade of mass TC, programming of every kind is produced in these radio-legacy cities.</p>
+      <p>As TC entertainment programming expands through the late 1940s and 1950s, production begins migrating toward <strong>St. Augustine, Florida</strong> — the existing cinema industry's infrastructure, talent pool, and climate make it the natural home for serialized entertainment production. By the 1960s a clear geographic split is established: <strong>entertainment production centers in St. Augustine</strong>, while <strong>news and current affairs remain anchored in Manhattan, Franklin, and New Orleans</strong>. This split generates its own institutional tensions — addressed in the Regulatory History and Awards sections below — that play out differently than OTL's comparable East Coast/West Coast television rivalries.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card gold"><div class="card-label">News &amp; Current Affairs Hub</div><h4>Manhattan, Franklin &amp; New Orleans</h4><p>ABN News (Manhattan), NBS News (Franklin), MBC News (New Orleans) anchor the journalism side of TC throughout its history. Reinforced by the FBA's structural separation requirements keeping news and entertainment institutionally distinct.</p></div>
+      <div class="card slate"><div class="card-label">Entertainment Production Hub (from late 1940s)</div><h4>St. Augustine, Florida</h4><p>Cinema infrastructure, talent, and climate draw entertainment TC production south. By the 1960s, the dominant home of TC serials, programs, and prestige drama.</p></div>
+      <div class="card"><div class="card-label">Secondary Production</div><h4>New Orleans (Gulf Wave-adjacent, from 1990s)</h4><p>MBC's home city retains a distinct production identity, particularly for music-adjacent and regionally flavored programming.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="networks">
+  <div class="section-header">
+    <div class="section-number">02</div>
+    <div><div class="section-eyebrow">Section Two</div><div class="section-title">The Networks</div></div>
+  </div>
+  <div class="subsection">
+    <div class="subsection-title gold">The Five (Originally Six) National Networks</div>
+    <div class="card-grid two-col">
+      <div class="studio-card gold"><div class="studio-name">NBS <span class="canon-flag hard">Hard Canon</span></div><div class="studio-meta">Franklin · Public Broadcaster of Record</div><div class="studio-desc">Established under Hannah, 1911/12, alongside the FBA. Public interest mandate from inception. Leads the experimental TC era deliberately — TC development fits NBS's institutional mission. Funded through commercial broadcaster license fees rather than a household TC license. Home of Arthur Cross, the institutional voice of TC news.</div></div>
+      <div class="studio-card slate"><div class="studio-name">ABN <span class="canon-flag hard">Hard Canon</span></div><div class="studio-meta">Manhattan · Dominant Commercial Network</div><div class="studio-desc">The commercial giant. Follows NBS into TC quickly, unwilling to cede the medium. Absorbs SBC in the late 1940s/early 1950s. Home of Reed Sterling, the charismatic commercial counterpart to Cross. ABN+ becomes the network's streaming arm in the 2000s.</div></div>
+      <div class="studio-card rust"><div class="studio-name">MBC <span class="canon-flag hard">Hard Canon</span></div><div class="studio-meta">New Orleans · Culturally Distinct National Giant</div><div class="studio-desc">Blaze music ties give MBC the most musically and culturally distinctive programming identity of the early networks. Picks up SBC's western fringe affiliates after the SBC absorption. Launches <em>River Hour</em>, the boom era's signature blaze music variety program.</div></div>
+      <div class="studio-card ink"><div class="studio-name">CBC <span class="canon-flag hard">Hard Canon</span></div><div class="studio-meta">Calumet / Hugosville · Heartland Network</div><div class="studio-desc">Co-anchored between Calumet and Hugosville. Serves the industrial Midwest through the interior West. Slower to adopt early TC given audience concentration outside the earliest reception areas.</div></div>
+      <div class="studio-card green"><div class="studio-name">PBN <span class="canon-flag hard">Hard Canon</span></div><div class="studio-meta">New Boston · Pacific Regional Network</div><div class="studio-desc">Serves Oregon, Clark, and Washingtonia territory. The Pacific Northwest's broadcast identity, distinct from the continental networks.</div></div>
+      <div class="studio-card"><div class="studio-name">SBC (Absorbed) <span class="canon-flag hard">Hard Canon</span></div><div class="studio-meta">Atlanta · Absorbed by ABN, Late 1940s/Early 1950s</div><div class="studio-desc">SBC's TC operation was underfunded from the start — building a TC network atop an already-struggling radio operation proved commercially unsustainable. ABN's absorption is clean economically but mourned culturally. Some SBC personalities transition to ABN; most don't. SBC's western fringe affiliates go to MBC. The name retires.</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="founders">
+  <div class="section-header">
+    <div class="section-number">03</div>
+    <div><div class="section-eyebrow">Section Three</div><div class="section-title">Founders &amp; Inventors</div></div>
+  </div>
+  <div class="prose"><p>Cross-referenced from the Cinema Bible — telecinema's inventors are canon shared between both bibles, reflecting the medium's dual cinema/radio heritage.</p></div>
+  <div class="person-grid">
+    <div class="person-card ink"><div class="person-inner"><div class="person-photo-placeholder">Photo TBD</div><div class="person-content"><div class="person-name">Arthur Cade <span class="canon-flag hard">Hard Canon</span></div><div class="person-role">Brooklyn · Radio Engineering · Telecinema Co-Inventor (Transmission)</div><div class="person-bio">Met Joseph Wren in Brooklyn in the early-to-mid 1920s. His contribution: the transmission side — getting a moving image through a radio wave reliably. First public demonstration ~1929–30.</div></div></div></div>
+    <div class="person-card ink"><div class="person-inner"><div class="person-photo-placeholder">Photo TBD</div><div class="person-content"><div class="person-name">Joseph Wren <span class="canon-flag hard">Hard Canon</span></div><div class="person-role">Brooklyn · Cinema Side · Telecinema Co-Inventor (Imaging)</div><div class="person-bio">Met Arthur Cade in Brooklyn in the early-to-mid 1920s. His contribution: the capture and reproduction of moving images for transmission. Together with Cade, first public telecinema demonstration ~1929–30. Namesake of the Wren Award (est. late 1970s) — see Section Five.</div></div></div></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="regulatory">
+  <div class="section-header">
+    <div class="section-number">04</div>
+    <div><div class="section-eyebrow">Section Four</div><div class="section-title">Regulatory History</div></div>
+  </div>
+  <div class="prose"><p>TC's regulatory history is governed throughout by the <strong>FBA</strong> — a far more institutionally continuous and consistent regulator than OTL's FCC. Unlike cinema, where the ACS could unilaterally replace the Brennerman Code with a voluntary rating system in 1964, TC's Code is federal regulation. Its reform requires an act of Congress and years of contentious politics.</p></div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The Brennerman Code for Broadcasting</div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-year">1926</div><div class="timeline-content">FBA General Order 39 — the Brennerman Code — established as federal broadcasting law, originating from a 1924 radio profanity incident. Governs radio first, then extends to TC as the medium develops.</div></div>
+      <div class="timeline-item"><div class="timeline-year">1930s</div><div class="timeline-content">Structural separation requirements added during the Global War era: news editorial independence from advertisers becomes a formal regulatory requirement, reinforcing the institutional split between TC news and TC entertainment.</div></div>
+      <div class="timeline-item"><div class="timeline-year">1950s–60s</div><div class="timeline-content">Single-channel era: news and entertainment operate on one network channel per broadcaster. Opinion content is contained to clearly labeled fifteen-minute segments under the structural separation rules.</div></div>
+      <div class="timeline-item"><div class="timeline-year">1964</div><div class="timeline-content">The ACS replaces the Brennerman Code with the ACS Rating System <strong>for cinema only</strong>. The Code remains in full federal effect for FBA-regulated broadcasters. TC industry watches cinema gain creative freedom it does not share — the disparity becomes a central grievance of the era.</div></div>
+      <div class="timeline-item"><div class="timeline-year">Mid-1960s</div><div class="timeline-content">TC industry begins lobbying the FBA for parallel reform, modeled on the ACS Rating System but adapted for a medium broadcast into the home rather than ticketed at a venue.</div></div>
+      <div class="timeline-item"><div class="timeline-year">Late 1960s</div><div class="timeline-content">Congressional fights intensify. JCA frames any loosening as federal abdication of decency standards. SPA and Federalists split between civil libertarian and traditionalist factions. The Choson War period (1966–67) complicates the politics further — wartime patriotism makes opposing "decency" standards politically costly.</div></div>
+      <div class="timeline-item"><div class="timeline-year">Mid-1970s</div><div class="timeline-content">The <strong>CTCA</strong> (Council of the Tele-Cinematic Arts) forms — founded primarily as an industry advocacy and lobbying organization, with the Wren Awards launching as a secondary function. The CTCA becomes the TC industry's unified, coherent lobbying voice for the first time.</div></div>
+      <div class="timeline-item"><div class="timeline-year">Late 1970s</div><div class="timeline-content">FBA reform finally passes — a time-based "family hour" framework replacing strict content enumeration, adapted for broadcast's in-home context rather than directly copying the ticketed-venue rating model. The CTCA claims the victory as a founding achievement.</div></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The Opinion Ruling (1970)</div>
+    <div class="prose"><p>A separate regulatory track from the Code reform fight. By the late 1960s, single-channel broadcasters — particularly ABN's news operation during the Choson War period — face mounting opinion content blending into news programming. <em>Public Broadcasting Alliance v. American Broadcasting Network</em> (1969) challenges this directly.</p></div>
+    <div class="card-grid">
+      <div class="card gold"><div class="card-label">1969</div><h4>The Lawsuit</h4><p><em>Public Broadcasting Alliance v. American Broadcasting Network</em> filed during the Choson War period, challenging ABN's news channel opinion glut.</p></div>
+      <div class="card slate"><div class="card-label">1970</div><h4>The Opinion Ruling</h4><p>Opinion programming cannot classify as news; must air on entertainment channels under clear labeling. Two-channel model required. JCA frames this as censorship; the Langston administration implements it.</p></div>
+      <div class="card"><div class="card-label">Early 1970s</div><h4>The Two-Channel Model</h4><p>Becomes standard across all major networks — a dedicated news channel and a separate entertainment/opinion channel, structurally enforcing the separation the FBA had required in principle since the 1930s.</p></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Cable, Satellite &amp; the Premium Content Question</div>
+    <div class="card-grid">
+      <div class="card ink"><div class="card-label">Cable</div><h4>Infrastructure Only — Never Premium Content</h4><p>Develops from the late 1940s/early 1950s as rural signal infrastructure. The FBA asserts jurisdiction immediately, treating cable as an extension of broadcast. Unlike OTL, cable never becomes a vehicle for unregulated premium content — that creative space opens elsewhere, later.</p></div>
+      <div class="card slate"><div class="card-label">The Failed Premium Tier (Late 1970s–80s)</div><h4>Option B Attempted, Falls in Litigation</h4><p>The FBA attempts a formal "premium broadcast" regulatory category — opt-in, subscription-based, looser content standards. Traditional broadcasters sue immediately over the disparity. The system dies in litigation through the 1980s; by the time it's resolved, the Interlink has emerged as the alternative space.</p></div>
+      <div class="card gold"><div class="card-label">Satellite (Mid-1980s)</div><h4>NASA Multinational Framework</h4><p>Launched under NASA (North American Space Agency), a multinational NAU body — not solely FBA-regulated. NBS shares continental satellite infrastructure with Canadian, Texian, and Californian public broadcasters. Private commercial satellite use is permitted but regulated at the NAU level rather than nationally.</p></div>
+      <div class="card"><div class="card-label">The Interlink</div><h4>Regulated at NAU Level, Not National Level</h4><p>Structurally outside any single nation's unilateral jurisdiction from early on — a continental infrastructure governed by a common NAU content framework, with individual nations applying additional rules to domestically-operated nodes. Becomes the de facto home for content pushing beyond FBA broadcast standards, filling the role OTL premium cable occupied, but later and through a different mechanism.</p></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">NBS Funding</div>
+    <div class="prose"><p>NBS has been funded through <strong>commercial broadcaster license fees</strong> paid to the FBA since the radio era — never a household TC license fee. This insulates NBS from the worst congressional budget attacks (JCA can fight the funding formula but not easily eliminate it without dismantling the commercial licensing system broadcasters rely on) but does not eliminate political pressure entirely. NBS faces a structural funding crisis in the 2010s–2020s as commercial broadcaster revenue declines with audience fragmentation toward the Interlink, compounded by Interlink infrastructure costs the traditional funding model wasn't designed to cover — a significant policy question during the Clearwater and Nakamura presidencies.</p></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="awards">
+  <div class="section-header">
+    <div class="section-number">05</div>
+    <div><div class="section-eyebrow">Section Five</div><div class="section-title">Awards — The Wren &amp; the CTCA</div></div>
+  </div>
+  <div class="subsection">
+    <div class="subsection-title gold">From ACS Subordination to Independence</div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-year">~1950s</div><div class="timeline-content">As TC entertainment grows into a serious commercial and creative force, the <strong>ACS</strong> claims jurisdiction over it — consistent with "telecinema" as cinema transmitted at a distance. A TC division is established within the ACS, administering a single TC award alongside the Benji.</div></div>
+      <div class="timeline-item"><div class="timeline-year">1960s–70s</div><div class="timeline-content">TC people increasingly chafe at the subordination. A single award for an entire industry's annual output — across news, drama, comedy, and every other TC genre — reads as institutional condescension. TC entertainment professionals petition the ACS for a slate of TC-specific award categories matching the Benji's range.</div></div>
+      <div class="timeline-item"><div class="timeline-year">Mid-1970s</div><div class="timeline-content">The ACS agrees to expand to only one or two additional TC categories — far short of what's requested. TC entertainment industry walks. The <strong>CTCA (Council of the Tele-Cinematic Arts)</strong> is founded — more company/industry-driven in structure than the guild-adjacent ACS, reflecting where TC's institutional power actually lives.</div></div>
+      <div class="timeline-item"><div class="timeline-year">Mid-to-Late 1970s</div><div class="timeline-content">The CTCA's founding purpose is primarily <strong>advocacy</strong> — it forms simultaneously as the institution fighting the ACS snub and the institution leading the FBA regulatory reform lobbying effort (see Section Four). Both grievances stem from the same root: TC is not taken seriously as a mature creative medium.</div></div>
+      <div class="timeline-item"><div class="timeline-year">Late 1970s</div><div class="timeline-content">The CTCA launches <strong>the Wren</strong> — named for Joseph Wren, deliberately avoiding any naming convention that would read as subordinate to the Benji. The FBA regulatory reform passes around the same time, with the CTCA claiming credit as the industry's unified lobbying voice. With the regulatory fight won, the CTCA's center of gravity shifts toward the Wren as its primary ongoing institutional identity.</div></div>
+      <div class="timeline-item"><div class="timeline-year">1980s Onward</div><div class="timeline-content">The Wren and the Benji exist as peer institutions — separate awards for separate mature media. The CTCA retains its advocacy function but is primarily known, by the modern era, as the TC industry's awards body.</div></div>
+    </div>
+  </div>
+  <div class="subsection">
+    <div class="subsection-title gold">Journalism &amp; Documentary TC Awards</div>
+    <div class="prose"><p>TC journalism and documentary awards remain entirely separate from the CTCA/Wren structure — administered by a press/broadcasting journalism body that predates the TC entertainment/CTCA split, reflecting the FBA's structural separation requirements keeping news and entertainment institutionally distinct from the 1930s onward.</p></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="terminology-early">
+  <div class="section-header">
+    <div class="section-number">06</div>
+    <div><div class="section-eyebrow">Section Six</div><div class="section-title">Programming Terminology</div></div>
+  </div>
+  <div class="prose"><p>WBT TC terminology takes an Americanized version of British usage patterns — a deliberate divergence from OTL American television vocabulary, which conflates "series" and "season" in a way WBT's system avoids entirely.</p></div>
+  <div class="card-grid">
+    <div class="card gold"><div class="card-label">The Show Itself</div><h4>Program</h4><p>"A new program on ABN." The overall show, format, or concept.</p></div>
+    <div class="card slate"><div class="card-label">One Run / Season</div><h4>Series</h4><p>"The third series of..." One full run of episodes — what OTL American usage would call a "season."</p></div>
+    <div class="card"><div class="card-label">Individual Installment</div><h4>Episode</h4><p>Universal usage, unchanged from OTL — no divergence needed.</p></div>
+    <div class="card ink"><div class="card-label">Limited/Prestige Format</div><h4>Serial</h4><p>Inherited directly from radio and cinema serial traditions. WBT's equivalent of OTL's "miniseries" — but native to the medium from the start rather than a later coinage.</p></div>
+  </div>
+  <div class="notice"><span class="notice-icon">◆</span><div>Wren Award categories use this vocabulary formally — "Outstanding Drama Program," "Outstanding Comedy Program" — rather than "Series," giving CTCA award language a slightly more institutional register than OTL Emmy-equivalent phrasing.</div></div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="experimental">
+  <div class="section-header">
+    <div class="section-number">07</div>
+    <div><div class="section-eyebrow">Section Seven</div><div class="section-title">The Experimental Era (Late 1930s–Mid 1940s)</div></div>
+  </div>
+  <div class="prose">
+    <p>TC in this era is a demonstration medium, not a programming medium — every broadcast implicitly answers "can this work?" rather than "is this good?" Sets cost roughly what a decent used automobile costs; the audience is small, concentrated in Franklin, Manhattan, and New Orleans, and skews wealthy and educated. Watching the TC is a social event — neighbors gathering at the one house on the block with a set.</p>
+    <p>NBS leads deliberately, fitting its public interest mandate — experimental TC is too expensive and uncertain for commercial networks to invest in heavily, but NBS has a mission to develop broadcasting as a public resource. ABN follows quickly, unwilling to cede the medium's definition to NBS alone. MBC and CBC are slower, given audience bases less concentrated in early-reception cities.</p>
+    <p>The Global War (1932–1940) produces essentially no public TC broadcasting — manufacturing redirected, sets too scarce. NBS likely maintains limited experimental broadcasts for technical/institutional continuity, but TC is not a wartime medium. A commemorative end-of-war broadcast shortly after the European armistice (~1938) may be among the medium's first genuinely national moments, though the radio broadcast of the armistice address itself remains the dominant medium for that event.</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Landmark Moments</div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-year">~1938–39</div><div class="timeline-content">NBS makes its first experimental TC broadcast from Franklin — a government address or cultural event. Small audience, enormous symbolic weight. NBS frames it as the fulfillment of its public broadcasting mission.</div></div>
+      <div class="timeline-item"><div class="timeline-year">~1940–41</div><div class="timeline-content">First sports broadcast on TC — an NBA baseball game. The sport's existing radio audience becomes the natural early TC audience.</div></div>
+      <div class="timeline-item"><div class="timeline-year">~1943–44</div><div class="timeline-content">First TC advertisement — ABN sells the first TC advertising slot, marking the medium's transition from purely experimental to commercial.</div></div>
+      <div class="timeline-item"><div class="timeline-year">1946</div><div class="timeline-content"><strong>First simultaneous radio/TC election broadcast.</strong> <span class="canon-flag hard">Hard Canon.</span> Henry Freeman's campaign is the first where TC presence matters, even marginally — TC is on the cusp of mattering politically, not yet decisive. Freeman is noted for natural command of the new medium.</div></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Landmark Programs — Experimental Era</div>
+    <div class="program-card ink"><div class="program-meta-row"><div class="program-title">The Precinct</div><div class="program-year">Late 1930s/Early 1940s</div><div class="program-network">ABN · Manhattan</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — First TC Serial</span><span class="program-tag">Crime Drama</span><span class="program-tag">Radio Adaptation</span></div><div class="program-body"><p>TC's first genuine "tune in next week" program — adapted from a radio predecessor, produced cheaply in ABN's Manhattan studios. Set in a Manhattan precinct house, with an ensemble of detectives rather than a single lead — the institution as protagonist rather than any one character. The limitations of early TC production become an aesthetic: shadowy interiors, a detective's office, city streets suggested rather than shown.</p><p>The Precinct's longevity bridges the experimental and boom eras — still running when TC sets enter middle-class homes in the late 1940s, meaning a whole new mass audience discovers it mid-run. Survives multiple cast changes across several series, becoming a foundational institution of early TC culture rather than a historical footnote.</p></div></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="boom">
+  <div class="section-header">
+    <div class="section-number">08</div>
+    <div><div class="section-eyebrow">Section Eight</div><div class="section-title">The Boom (Late 1940s–Mid 1950s)</div></div>
+  </div>
+  <div class="prose">
+    <p>TC stops being a novelty and becomes furniture. The set moves from the wealthy neighbor's parlor into the middle-class living room. Programming expands dramatically to fill the hours — networks build an entire medium's content infrastructure from scratch, simultaneously, under commercial pressure.</p>
+    <p>Almost everything is <strong>live</strong> — not by aesthetic choice but technical and economic necessity. Recording technology exists but is expensive and low quality. This creates a specific texture: slightly rough, energetic, occasionally chaotic, alive in a way later recorded TC isn't. Formats are also <strong>borrowed</strong> — radio, theater, and cinema formats imported wholesale and gradually adapted as the medium figures out what it is.</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">News &amp; Public Affairs</div>
+    <div class="prose"><p>NBS News establishes the template: correspondent at a desk, measured delivery, occasional live footage. Commercial networks follow but add personality — ABN News develops the anchor as a character the audience trusts and returns to.</p></div>
+    <div class="person-grid">
+      <div class="person-card slate"><div class="person-inner"><div class="person-photo-placeholder">Photo TBD</div><div class="person-content"><div class="person-name">Arthur Cross <span class="canon-flag soft">Soft Canon</span></div><div class="person-role">NBS · Institutional Anchor · Steady &amp; Sure</div><div class="person-bio">The institutional voice of TC news record — trusted rather than charismatic, plain and dependable, with a gravitas that feels decades older than his actual age. The NBS counterpart to ABN's Reed Sterling. Becomes one of WBT TC's foundational Cronkite-equivalent figures, anchoring the medium's credibility through the 1950s and beyond.</div></div></div></div>
+      <div class="person-card ink"><div class="person-inner"><div class="person-photo-placeholder">Photo TBD</div><div class="person-content"><div class="person-name">Reed Sterling <span class="canon-flag soft">Soft Canon</span></div><div class="person-role">ABN · Commercial Anchor · Charismatic</div><div class="person-bio">The charismatic commercial counterpart to Arthur Cross — sharper, more dynamic on-air presence, ABN's answer to NBS's institutional steadiness. Establishes the template for the commercial network anchor as a personality the audience actively likes rather than merely trusts.</div></div></div></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Variety — The Dominant Entertainment Format</div>
+    <div class="prose"><p>Cheap to produce, flexible, draws on existing talent from radio, theater, and the blaze music world. MBC's New Orleans cultural identity makes its variety programming the most distinctive of the boom era — <em>River Hour</em>, a weekly blaze music showcase, introduces TC audiences to performers previously radio-only, making both the music and the medium feel exciting simultaneously.</p></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Serial Drama &amp; Live Dramatic Anthology</div>
+    <div class="prose"><p>Serial drama increases through the era — The Precinct still running, joined by other crime and adventure serials and domestic daytime serials, the workhorse format filling hours cheaply. Live dramatic anthology becomes the era's most prestigious format, NBS leading given its public culture mandate — <em>The Open Stage</em>, a rotating cast of plays performed live, attracts serious theatrical talent who previously wouldn't have touched TC. Becomes a fond staple, looked back on later as TC's first genuinely "serious" era.</p></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Sports</div>
+    <div class="prose"><p>Sports broadcasts drive TC set purchases more than any other format — NBA baseball's championship game is the premier annual TC event of the era, with NAFA football growing rapidly alongside it.</p></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Landmark Programs — The Boom</div>
+    <div class="program-card gold"><div class="program-meta-row"><div class="program-title">Harbor Street</div><div class="program-year">~1951</div><div class="program-network">MBC · New Orleans</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — First Daytime Serial</span><span class="program-tag">Domestic Drama</span><span class="program-tag">Long-Running</span></div><div class="program-body"><p>A long-running daytime domestic drama following a multi-generational family in a New Orleans neighborhood — MBC's geographic and cultural identity baked directly into the format. Runs for decades, with actors aging into the same roles for twenty-plus years, becoming a genuine cultural institution in the way long-running serials do. The workhorse format the Boom era's "increasing serial drama" texture was always meant to evoke.</p></div></div>
+
+    <div class="program-card slate"><div class="program-meta-row"><div class="program-title">The Big Wheel</div><div class="program-year">~Late 1940s</div><div class="program-network">NBS</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — First Game Show</span><span class="program-tag">Prize Format</span></div><div class="program-body"><p>TC's first major game show — a visually distinctive prize-wheel format suited to the era's live production constraints. Simple, confident, and immediately popular; the kind of program that fills early evening hours cheaply while becoming a genuine institution in its own right.</p></div></div>
+
+    <div class="program-card green"><div class="program-meta-row"><div class="program-title">Captain Comet's Clubhouse</div><div class="program-year">~1952</div><div class="program-network">NBS</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — First Children's Program</span><span class="program-tag">Puppet/Live Host</span><span class="program-tag">Space Adventure</span></div><div class="program-body"><p>TC's first major children's program — a puppet and live-host format built around space-adventure framing, fitting postwar optimism and anticipating the cultural energy the 1976 moon landing will later bring to its peak. An extension of NBS's public-interest mandate into children's educational content.</p></div></div>
+
+    <div class="program-card"><div class="program-meta-row"><div class="program-title">The Vance Family Hour</div><div class="program-year">~1950</div><div class="program-network">NBS</div></div><div class="program-tags"><span class="program-tag">Sketch Comedy</span><span class="program-tag">Variety Hybrid</span></div><div class="program-body"><p>A live comedy-variety hybrid built around a fictional sketch family — looser and more sketch-based than <em>Lydia's Junction</em>'s later situational format, reflecting the live production constraints of the early Boom era. TC's first real comedy programming, predating the medium's confidence to sustain a fully plotted sitcom.</p></div></div>
+
+    <div class="program-card slate"><div class="program-meta-row"><div class="program-title">Diamond Time</div><div class="program-year">~1951</div><div class="program-network">CBC</div></div><div class="program-tags"><span class="program-tag">Sports</span><span class="program-tag">Weekly Recap</span></div><div class="program-body"><p>A weekly baseball recap and personality program — not a broadcast of games themselves but highlights, interviews, and analysis tied to NBA baseball's existing TC prominence. Establishes the sports-anthology format alongside live game broadcasts.</p></div></div>
+
+    <div class="program-card gold"><div class="program-meta-row"><div class="program-title">The Open Road</div><div class="program-year">~1953</div><div class="program-network">NBS</div></div><div class="program-tags"><span class="program-tag">Travelogue</span><span class="program-tag">Documentary</span></div><div class="program-body"><p>A travelogue and documentary series showcasing different USRC routes and American regions — public-interest programming that draws directly on the USRC's existing cultural weight as one of America's most beloved institutions.</p></div></div>
+
+    <div class="program-card rust"><div class="program-meta-row"><div class="program-title">River Hour</div><div class="program-year">~Early 1950s</div><div class="program-network">MBC · New Orleans</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — MBC's First Entertainment Flagship</span><span class="program-tag">Blaze Music Variety</span></div><div class="program-body"><p>MBC's signature blaze music variety showcase — the network's first major entertainment draw beyond its radio-legacy news and music programming. A weekly performance program drawing on New Orleans' live music culture, introducing TC audiences to blaze performers previously known only from radio. The program that establishes MBC's musical identity as TC's defining regional voice and demonstrates that variety television could carry cultural weight beyond mere scheduling filler.</p></div></div>
+
+    <div class="program-card slate"><div class="program-meta-row"><div class="program-title">The Open Stage</div><div class="program-year">~Late 1940s–Early 1950s</div><div class="program-network">NBS</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — First Prestige Dramatic Anthology</span><span class="program-tag">Live Drama</span><span class="program-tag">Theatrical</span></div><div class="program-body"><p>NBS's live dramatic anthology — a rotating cast of plays performed live from the network's Franklin studios, attracting serious theatrical talent who previously wouldn't have considered TC a legitimate venue. The format's constraints become an aesthetic: live performance energy, theatrical staging, the occasional visible mistake that paradoxically increases audience investment. Runs through the Golden Age as TC's prestige format benchmark, fondly remembered by later generations as evidence that TC was always capable of serious artistic ambition.</p></div></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Landmark Moments</div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-year">1947–48</div><div class="timeline-content">The boom begins in earnest. Set prices drop to middle-class affordability; programming expands from a few hours to full evening schedules. Networks hire aggressively from radio, theater, and cinema.</div></div>
+      <div class="timeline-item"><div class="timeline-year">~1950–52</div><div class="timeline-content"><strong>SBC absorbed by ABN.</strong> SBC's TC operation was always underfunded — building a TC network atop an already-struggling radio operation proved economically unsustainable. The absorption is clean commercially but felt as genuine cultural loss in the South. Some SBC personalities transition to ABN; most don't. SBC's western fringe affiliates go to MBC.</div></div>
+      <div class="timeline-item"><div class="timeline-year">1952</div><div class="timeline-content"><strong>First election where TC genuinely matters.</strong> Nolan does not run for reelection (single six-year term, no reelection); his VP <strong>Timothy Priest</strong> is the JCA candidate. Priest performs adequately on TC — competent in interviews, manages an early debate reasonably well. Not a disaster, not a triumph: solidly fine, the first real data point on how JCA-style candidates handle the new medium.</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="golden">
+  <div class="section-header">
+    <div class="section-number">09</div>
+    <div><div class="section-eyebrow">Section Nine</div><div class="section-title">The Golden Age (Mid 1950s–Early 1960s)</div></div>
+  </div>
+  <div class="prose">
+    <p>The Priest presidency (1953–59) is the era TC's institutional character truly forms — not through any single transformation, but through a series of tests that reveal what the medium will and won't do under pressure. Live dramatic anthology reaches its creative and cultural peak even as the Brennerman Code's federal teeth — absent from cinema after 1964 but very much present for broadcasters — keep TC constrained in ways the cinema industry is starting to escape. The era produces both TC's proudest institutional moment to date and one of its quieter failures of nerve, alongside the medium's first major engagement with the War Between the States centennial.</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Priest and the Medium</div>
+    <div class="prose"><p>Priest leans into TC deliberately, with professional coaching — a contrast to Nolan, who never ran for reelection and never had to sustain a TC presence beyond the 1952 campaign trail. Priest's on-screen command is decent but unremarkable: competent, prepared, never a natural the way Freeman was in 1946, but never the liability Nolan might have been. His administration treats TC as a tool to be managed carefully rather than an instinctive strength — which makes the era's central confrontation, described below, land as something his allies generate rather than something Priest himself orchestrates.</p></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The Cross/Hutchins License Fight (1954)</div>
+    <div class="prose">
+      <p>During the 1954 mid-term election cycle, NBS News under <strong>Arthur Cross</strong> airs a paired investigative broadcast: one segment documenting Morality League overreach against local affiliates, school boards, and small business owners; a second segment featuring a straightforward, non-advocacy interview with a homophilia rights advocate. The broadcast draws immediate backlash. <strong>Congressman Earl Hutchins (Jefferson, JCA)</strong> — facing his own competitive mid-term race — publicly questions NBS's fitness to hold its FBA license, working informal pressure through committee channels rather than Priest's administration directly.</p>
+      <p>The FBA, under that political pressure rather than its own institutional judgment, signals a coming license review, citing vague "public interest standard" language. Cross and NBS leadership hold firm. Cross addresses the matter on air directly — not grandstanding, simply restating what NBS reported, why, and that the network will not preemptively alter its journalism under threat. Public and industry reaction favors NBS; even commercially cautious ABN declines to pile on. The FBA backs down; NBS's license is renewed without incident.</p>
+      <p>The episode becomes a foundational moment for TC journalism's institutional credibility — the precedent press freedom advocates and TC historians point back to in later fights, including the regulatory reform battles of the 1970s and the Opinion Ruling era.</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The Evening Stage &amp; the 1956–58 Flashpoint</div>
+    <div class="prose">
+      <p><strong>The Evening Stage</strong> — ABN's live dramatic anthology, the network's answer to NBS's prestige anthology tradition — provides the era's quieter, less flattering institutional moment. Around 1956–58, a planned episode featuring an oblique, <em>Quiet Stars</em>-style coded relationship between two men is watered down before air, not through FBA action or any external pressure, but through ABN's own sponsor anxiety and network nerves. The broadcast goes forward in compromised form: the relationship blurred into ambiguous "close friendship," key beats softened or cut in rehearsal.</p>
+      <p>Industry insiders and attentive viewers can tell something was excised — the episode becomes known as the one that almost said something and didn't. It stands in deliberate contrast to the Cross/Hutchins fight: one institution holding firm under genuine external pressure, another folding under no external pressure at all beyond its own anxiety. Together, the two episodes capture the genuinely mixed character of Priest-era TC — neither uniformly courageous nor uniformly cowed.</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The War Between the States Centennial on TC</div>
+    <div class="prose"><p>The centennial (~1956–1960) generates TC's first major prestige programming event, split along each network's established institutional character — mirroring, but distinct from, the four-film cinema cluster of the same period.</p></div>
+    <div class="card-grid">
+      <div class="card gold"><div class="card-label">NBS — Documentary Tradition</div><h4>Centennial Documentary Programming</h4><p>NBS produces a documentary series befitting its public culture mandate — archival material, historian interviews, and on-location segments tracing the war's major campaigns. Institutional, comprehensive, the TC equivalent of the network's public-interest seriousness.</p></div>
+      <div class="card slate"><div class="card-label">ABN — Dramatized Limited Series</div><h4>Brother Against Brother <span class="canon-flag soft">Soft Canon</span></h4><p>ABN's centennial tentpole — a four-to-six episode dramatized limited series following a divided Kentucky border-state family. One son serves in the Slaveholding Union army; another in the Free State Army; a New England cousin fights for the Confederation of American States. The Free State brother dies near the war's end, his death landing close to news of the Hawthorne surrender — victory and grief arriving together. The Slaveholding Union brother survives and returns home, forcing the family to reckon with the brother who fought for the losing, wrong side living while the one who fought for what was right does not. ABN's biggest prestige swing of the decade.</p></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Landmark Programs — The Golden Age</div>
+    <div class="program-card slate"><div class="program-meta-row"><div class="program-title">Lucky Number</div><div class="program-year">~1956</div><div class="program-network">ABN</div></div><div class="program-tags"><span class="program-tag">Game Show</span><span class="program-tag">Big-Money Prize Format</span></div><div class="program-body"><p>ABN's commercial answer to NBS's <em>The Big Wheel</em> — a straightforward big-money prize quiz show, leaning into escalating stakes rather than NBS's more public-interest-flavored approach to the game show format.</p></div></div>
+
+    <div class="program-card green"><div class="program-meta-row"><div class="program-title">The Forest Friends</div><div class="program-year">~1957</div><div class="program-network">PBN</div></div><div class="program-tags"><span class="program-tag">Children's Programming</span><span class="program-tag">Nature &amp; Conservation</span></div><div class="program-body"><p>A Pacific Northwest-set children's program with a nature and conservation bent, tied closely to PBN's regional identity and presaging the cultural prominence the Federal Parks Service will hold in later decades.</p></div></div>
+
+    <div class="program-card ink"><div class="program-meta-row"><div class="program-title">After Hours with Pierce Allard</div><div class="program-year">~1958</div><div class="program-network">ABN</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — First Late-Night Talk Format</span><span class="program-tag">Talk/Variety</span></div><div class="program-body"><p>TC's first major late-night talk format — ABN leaning fully into personality-driven programming, consistent with the network's commercial-charisma identity already established through Reed Sterling. Host Pierce Allard becomes a notable name in his own right, distinct from the network's news figures.</p></div></div>
+
+    <div class="program-card rust"><div class="program-meta-row"><div class="program-title">Harlan's Badge</div><div class="program-year">~1957</div><div class="program-network">ABN</div></div><div class="program-tags"><span class="program-tag">Western</span><span class="program-tag">Adventure Serial</span></div><div class="program-body"><p>A Western frontier-justice adventure serial — ABN's answer to needing a second ongoing serial alongside the aging <em>Precinct</em>, riding the same cultural wave that gave cinema <em>The Pale Frontier</em>'s genre breakthrough, but staying in straightforward frontier territory rather than venturing into science fiction.</p></div></div>
+
+    <div class="program-card gold"><div class="program-meta-row"><div class="program-title">The Sounding Board</div><div class="program-year">~1955</div><div class="program-network">MBC</div></div><div class="program-tags"><span class="program-tag">Music Performance</span><span class="program-tag">Pop/Jazz/Orchestral</span></div><div class="program-body"><p>A mainstream music performance program distinct from MBC's established blaze showcase — broader pop, jazz, and orchestral booking, diversifying the network's musical identity beyond its single signature genre.</p></div></div>
+
+    <div class="program-card slate"><div class="program-meta-row"><div class="program-title">Beyond the Sky</div><div class="program-year">~1959</div><div class="program-network">CBC</div></div><div class="program-tags"><span class="program-tag">Science Education</span><span class="program-tag">Documentary</span></div><div class="program-body"><p>A general-audience science education program presenting space and atomic science accessibly, riding fission-era curiosity and anxiety — a documentary cousin to cinema's <em>The Pale Frontier</em>, educational rather than fictional.</p></div></div>
+  </div>
+
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="transition">
+  <div class="section-header">
+    <div class="section-number">10</div>
+    <div><div class="section-eyebrow">Section Ten</div><div class="section-title">The Transition (Early–Mid 1960s)</div></div>
+  </div>
+  <div class="prose">
+    <p>The defining fact of this era is a regulatory gap that opens and stays open: in 1964 the ACS replaces the Brennerman Code with the ACS Rating System for cinema, while the Code remains full federal law for TC broadcasters under the FBA. For the first time, the two media that share a name and a common origin story visibly diverge in what they're permitted to show — and TC industry professionals feel the disparity acutely, even as the medium continues building some of its most enduring institutions.</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The Disparity, in Public</div>
+    <div class="prose"><p>TC actors and network executives air their frustration in diffuse, ongoing fashion across the print and trade press — editorial pieces and quoted grievances appearing periodically rather than crystallizing around any single definitive article. The complaint is consistent: cinema, transmitting essentially the same content tradition under the same "telecinema" lineage, now operates under a voluntary industry rating system, while TC remains bound by federal content enumeration with real regulatory teeth behind it. This grumbling does not yet have an organized institutional voice — that doesn't arrive until the CTCA's founding in the mid-1970s — but it establishes the grievance that organization will eventually be built around.</p></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold"><em>American Boys</em> on TC News</div>
+    <div class="prose"><p>The October 1962 premiere of <em>American Boys</em> — Benjamin LeCroy's public confirmation, Jesse Pike's attendance, the cultural landmark itself — is covered as genuine news across all five national networks (NBS, ABN, MBC, CBC, PBN), not relegated to industry trade coverage. <strong>NBS</strong>, consistent with the institutional character it built during the Cross/Hutchins fight, covers the premiere relatively straight and respectfully, treating it as the significant cultural event it is rather than reaching for scandal framing. <strong>ABN's</strong> coverage is more cautious and hand-wringing in tone, consistent with the network's posture during the Evening Stage flashpoint — covering the story because it must, without NBS's evident comfort in doing so. CBC and PBN's coverage exists without requiring further characterization at this stage.</p></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Landmark Programs — The Transition</div>
+    <div class="prose"><p>Amid the regulatory tension, this era also produces TC's first genuine mass-audience comedy landmark — a sign of the medium's growing production confidence and creative maturity even within its continued constraints.</p></div>
+    <div class="program-card green"><div class="program-meta-row"><div class="program-title">Lydia's Junction</div><div class="program-year">~Early-to-Mid 1960s</div><div class="program-network">MBC</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — First TC Comedy Star</span><span class="program-tag">Workplace Comedy</span><span class="program-tag">Ensemble</span></div><div class="program-body"><p>A workplace comedy set at a USRC junction station in the fictional town of <strong>Cedar Junction, Ohio</strong> — roughly halfway between Franklin and Columbus, close enough to the capital for occasional political dignitaries to pass through, far enough to remain solidly small-town and working-class. Stationmaster <strong>Lydia Tatum</strong>, played by <strong>Helen Bratton</strong>, leads an ensemble of porters, a ticket clerk, and a recurring conductor/engineer. New passengers each episode provide a natural rotating cast of guest problems and one-off stories around the fixed core ensemble.</p><p>MBC's first major entertainment flagship outside its established blaze music identity. Bratton becomes TC's first true homegrown comedy star — famous because of TC itself rather than having arrived from cinema, radio, or theater with existing name recognition. Establishes a star-making pathway distinct from cinema's studio system.</p></div><div class="program-cast">Stationmaster Lydia Tatum: <span>Helen Bratton</span></div></div>
+
+    <div class="program-card ink"><div class="program-meta-row"><div class="program-title">The Long Table</div><div class="program-year">~1962</div><div class="program-network">NBS</div></div><div class="program-tags"><span class="program-tag">Panel Discussion</span><span class="program-tag">Public Affairs</span></div><div class="program-body"><p>A panel discussion and debate program — journalists and public figures discussing the news of the day in conversational, unscripted format. Reflects TC's growing confidence as a forum for serious public conversation distinct from straight news reporting, building on the institutional credibility NBS established through the Cross/Hutchins fight.</p></div></div>
+
+    <div class="program-card slate"><div class="program-meta-row"><div class="program-title">Five Card</div><div class="program-year">~1963</div><div class="program-network">CBC</div></div><div class="program-tags"><span class="program-tag">Game Show</span><span class="program-tag">Daytime</span></div><div class="program-body"><p>A game show built around card-game mechanics — lighter and simpler than <em>The Big Wheel</em> or <em>Lucky Number</em>, designed for daytime audiences rather than primetime spectacle.</p></div></div>
+
+    <div class="program-card gold"><div class="program-meta-row"><div class="program-title">The Wayfarers</div><div class="program-year">~1964</div><div class="program-network">MBC</div></div><div class="program-tags"><span class="program-tag">Adventure Serial</span><span class="program-tag">Episodic</span></div><div class="program-body"><p>An adventure serial following a pair of drifters and USRC line workers moving from town to town — episodic structure, picking up some of <em>The Precinct</em>'s "ordinary working people" texture but in a traveling rather than fixed setting.</p></div></div>
+  </div>
+
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="turbulent">
+  <div class="section-header">
+    <div class="section-number">11</div>
+    <div><div class="section-eyebrow">Section Eleven</div><div class="section-title">The Turbulent Era (Late 1960s–Early 1970s)</div></div>
+  </div>
+  <div class="prose">
+    <p>The Choson War (1966–67) is TC's first true wartime news event — the medium's first experience of carrying an active conflict into American living rooms in close to real time. Where the Cinema Bible's <em>August</em> and <em>The Narrow Sea</em> render the war's moral weight through fiction made years later, TC coverage carries that weight raw and unfiltered as it happens. The era's defining TC story isn't a credibility gap between official optimism and battlefield reality — the war does, after all, end in genuine vindication — but the much harder problem of an institution's slow erosion of the line between news and opinion, a problem that predates the war and the war's moral gravity simply exposes at full scale.</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The Choson War as TC's First Living-Room War</div>
+    <div class="prose"><p>TC coverage of the Choson War — and above all of the CDC bombing of Beijing and Shanghai — lands on civilian audiences with an immediacy no prior American conflict had carried into the home. The moral weight isn't filtered through the delay and composition of newsreel or post-war retrospection; it arrives close to live, processed by anchors and commentators in real time alongside the audience watching them. This immediacy is precisely what makes the institutional failure described below so consequential — a pattern that might have stayed a minor professional lapse in an earlier era becomes, under wartime scrutiny, impossible to ignore.</p></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Garrett Holm &amp; the Slow Drift</div>
+    <div class="prose">
+      <p><strong>Garrett Holm</strong> holds a labeled commentator spot within ABN's news broadcast — nominally distinct from straight reporting, but functioning for years as a fig leaf rather than a real separation. Holm builds a reputation over the pre-war years for incisive, quotable analysis; audiences increasingly tune in specifically for him, giving ABN a clear commercial incentive not to rein him in. The drift is gradual and genuinely hard to pin to any single moment: less a war hawk or a dove than a man whose instinct is always to deliver the most quotable opinion in the room, the specific position mattering far less than the performance of having one.</p>
+      <p>In the immediate aftermath of the CDC bombing of Beijing and Shanghai, Holm delivers commentary on the atrocity in his usual incisive-personality register — not wrong on substance so much as inappropriate in kind, treating an act of mass civilian death as material for his standard routine. The moment crystallizes the institutional problem with total clarity: not which opinions Holm holds, but opinion-as-entertainment having colonized space that needed, at that moment more than any other, to simply be news.</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The Lawsuit &amp; the Opinion Ruling</div>
+    <div class="prose"><p>The <strong>Public Broadcasting Alliance</strong> — a newly formed watchdog and advocacy group, with this case as its defining (and possibly singular) institutional moment — files <em>Public Broadcasting Alliance v. American Broadcasting Network</em> in 1969, citing the Holm pattern as Exhibit A of opinion content functionally operating as news. The case lands during the Choson War period, when the stakes of getting this distinction right feel especially acute. The 1970 Opinion Ruling follows: opinion programming cannot classify as news regardless of internal labeling and must air on entertainment channels under clear separation; the two-channel model becomes mandatory. JCA frames the ruling as censorship; the Langston administration implements it. <span class="canon-flag hard">Mechanics locked in Section Four.</span></p></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Landmark Programs — The Turbulent Era</div>
+    <div class="program-card ink"><div class="program-meta-row"><div class="program-title">Night Watch</div><div class="program-year">~1971</div><div class="program-network">CBC · Calumet</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — The Precinct's Successor</span><span class="program-tag">Crime Drama</span><span class="program-tag">Morally Ambiguous</span></div><div class="program-body"><p>A grittier, more morally ambiguous crime drama set in Calumet — explicitly positioned as what a crime show can do once the post-Opinion-Ruling, post-Choson-War cultural climate allows more complexity than <em>The Precinct</em>'s earlier institutional optimism ever permitted. Corruption, moral compromise, and unresolved endings replace the older serial's faith in institutional order.</p></div></div>
+
+    <div class="program-card green"><div class="program-meta-row"><div class="program-title">Acorn Avenue</div><div class="program-year">~1969–1970</div><div class="program-network">NBS · Calumet</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — Defining Children's Institution</span><span class="program-tag hard">Hard Canon</span><span class="program-tag">Puppet/Educational</span></div><div class="program-body"><p>TC's defining children's educational institution — puppet-and-human-cast programming teaching literacy, numeracy, and basic social skills to young children, explicitly framed as NBS addressing an early-childhood-education gap as part of its public-interest mandate. Set on a working-class street block in Calumet. Becomes a genuine cross-generational cultural institution — the show that defines childhood TC-watching for decades, watched by parents who grew up on it themselves bringing their own children to it.</p><p>Signature puppet ensemble: <strong>Gus</strong> (a bear, gentle giant, the show's emotional anchor), <strong>Pickle</strong> (mischievous, fixated on pickles, chaotic comic energy), and <strong>Wendell</strong> (small, fussy, anxious — the audience's stand-in, reassured by episode's end).</p></div><div class="program-cast">Puppets: <span>Gus, Pickle, Wendell</span></div></div>
+
+    <div class="program-card slate"><div class="program-meta-row"><div class="program-title">Campus</div><div class="program-year">~1972</div><div class="program-network">ABN</div></div><div class="program-tags"><span class="program-tag">Drama</span><span class="program-tag">Youth/Generational</span></div><div class="program-body"><p>A youth-focused drama set at a fictional university, capturing post-Choson-War social upheaval and generational tension directly — ABN's attempt to capture on TC the same cultural energy cinema's Second Wave is riding through the same period.</p></div></div>
+
+    <div class="program-card gold"><div class="program-meta-row"><div class="program-title">The Carver Hour</div><div class="program-year">~1970</div><div class="program-network">NBS</div></div><div class="program-tags"><span class="program-tag">Variety/Comedy</span><span class="program-tag">Cast Diversification</span></div><div class="program-body"><p>A variety and comedy program with a notably more diverse cast than prior NBS variety efforts, riding the same cultural opening reshaping cinema casting decisions in this period.</p></div></div>
+
+    <div class="program-card rust"><div class="program-meta-row"><div class="program-title">Ash and Stars <span class="canon-flag hard">Hard Canon</span></div><div class="program-year">~1968–1969</div><div class="program-network">TBD</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — Decades-Spanning Franchise</span><span class="program-tag">Science Fiction / Fantasy</span></div><div class="program-body"><p>A serialized fantasy-in-space program following protagonists navigating a galactic empire in decline. Runs continuously from its 1968–69 launch through 1983 — fourteen years, one of TC's longest unbroken runs. The original series concludes as the franchise transitions to the big screen: <em>The Dying Light</em> (1985), <em>Darkness Falls</em> (1988), <em>A New Dawn</em> (1991). The TC spinoff <em>Eclipse</em>, set in the shattered post-<em>A New Dawn</em> universe, launches in 1995. Full franchise treatment lives in the Cinema Bible's Whitmore &amp; Pike Era and 2020s sections.</p></div></div>
+  </div>
+
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="independence">
+  <div class="section-header">
+    <div class="section-number">12</div>
+    <div><div class="section-eyebrow">Section Twelve</div><div class="section-title">The Independence Era (Mid–Late 1970s)</div></div>
+  </div>
+  <div class="prose"><p>Regulatory and institutional mechanics already locked in Sections Four and Five — the CTCA founding, the Wren launch, FBA reform finally passing after years of lobbying. This is the era TC programming actually begins exploiting the new creative freedom, mirroring cinema's post-<em>American Boys</em> opening with TC's own decade-delayed equivalent.</p></div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The First Gay TC Characters</div>
+    <div class="prose"><p>In the early-to-mid 1970s, following the FBA reform, TC begins introducing gay characters as peripheral but real presences — not plot engines, not Very Special Episodes, just facts about recurring characters. <strong>The Whitfields</strong> leads this quietly: <strong>Dennis Brewer</strong>, a gay neighbor and family friend, is introduced matter-of-factly — his sexuality established as a quiet fact rather than a storyline, a partner occasionally seen, the relationship never dwelt on. Other programs across networks introduce similar peripheral figures in this period without requiring individual documentation. The press notices. There is no firestorm — just a quiet, cumulative cultural shift that the Independence Era's new regulatory freedom made possible.</p></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Landmark Programs — The Independence Era</div>
+    <div class="program-card slate"><div class="program-meta-row"><div class="program-title">The Whitfields</div><div class="program-year">~1978</div><div class="program-network">ABN · Calumet</div></div><div class="program-tags"><span class="program-tag">Family Sitcom</span><span class="program-tag">Post-Reform</span></div><div class="program-body"><p>A family sitcom following a middle-class household in Calumet, leaning into the more socially open post-CTCA-founding climate — the show willing to address frankly what Code-era TC couldn't: divorce, a teenager's politics, generational conflict played for genuine drama as well as comedy. The domestic counterpart to <em>Lydia's Junction</em>'s workplace setting, updated for a less constrained creative era.</p></div></div>
+
+    <div class="program-card gold"><div class="program-meta-row"><div class="program-title">Harvest Moon</div><div class="program-year">~1979</div><div class="program-network">CBC</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — Tests FBA Reform Limits</span><span class="program-tag">Prestige Drama</span><span class="program-tag">Multi-Generational</span></div><div class="program-body"><p>A multi-generational family prestige drama explicitly testing the new FBA reform's looser standards — addiction, infidelity, and a frank divorce storyline given the kind of sustained dramatic weight that wouldn't have aired pre-reform. TC's equivalent of cinema's post-<em>American Boys</em> opening, arriving roughly a decade and a half after cinema's own version given TC's much slower regulatory timeline. The show critics point to as proof the CTCA's regulatory fight was worth winning.</p></div></div>
+  </div>
+
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="expansion">
+  <div class="section-header">
+    <div class="section-number">13</div>
+    <div><div class="section-eyebrow">Section Thirteen</div><div class="section-title">The Expansion Era (1980s)</div></div>
+  </div>
+  <div class="prose">
+    <p>Satellite TC infrastructure arrives mid-decade under the NASA/NAU multinational framework, giving NBS genuine continental reach for the first time — but this is infrastructure rather than event, absorbed quietly rather than marked with ceremony. The era's defining TC story is cultural rather than technological: the medium's first sustained engagement with gay characters as main characters rather than peripheral presences, building on the groundwork laid in the Independence Era and tracking toward the marriage equality moment that arrives under Pike (~1984–87).</p>
+    <p><em>Ash and Stars</em> concludes its original TC run in 1983 — fourteen years on air, an unbroken institution from its 1968–69 launch. The series ends at the height of its cultural prestige, its audience primed for the theatrical debut that follows: <em>The Dying Light</em> arrives in 1985, launching a film trilogy that runs through 1991. The franchise's TC life resumes a decade later with <em>Eclipse</em>.</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The Gay Character Arc on TC — Full Timeline</div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-year">Early-to-Mid 1970s (Independence Era)</div><div class="timeline-content"><strong>Peripheral presence.</strong> <em>The Whitfields</em> (ABN, 1972–81) introduces a recurring gay neighbor/family-friend character — established matter-of-factly, not as a Very Special Episode storyline. The character's sexuality is present and acknowledged; a partner is occasionally seen; it is not a plot engine. Draws some press notice as an early, quiet marker of TC's changing comfort level post-FBA reform. Other programs across networks introduce similar peripheral gay characters in this period without requiring individual documentation.</div></div>
+      <div class="timeline-item"><div class="timeline-year">1980s — Sitcom Track</div><div class="timeline-content"><strong>Whitfields: Next Generation</strong> (ABN, 1989) brings the character — now older, relationship now fully established and ongoing — into a more central role as the four Whitfield kids (Kevin, Susan, June, Robbie) return as adult main characters. The relationship becomes a real, sustained storyline rather than peripheral texture. See program card below.</div></div>
+      <div class="timeline-item"><div class="timeline-year">1980s — Drama Track</div><div class="timeline-content"><strong>Columbia Circle</strong> (PBN) runs a gay main character within a five-person ensemble, personal and character-driven rather than legislatively framed — though the marriage equality fight surfaces as background texture, building toward the show's emotional culmination when the character marries under Pike-era equality.</div></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Landmark Programs — The Expansion Era</div>
+
+    <div class="program-card slate"><div class="program-meta-row"><div class="program-title">Whitfields: Next Generation</div><div class="program-year">1989</div><div class="program-network">ABN · Calumet</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — Spinoff / Gay Main Character</span><span class="program-tag">Family Sitcom</span><span class="program-tag">Legacy Continuation</span></div><div class="program-body"><p>Returns eight years after <em>The Whitfields</em> ended in 1981 — following the four Whitfield children as adults. <strong>Kevin</strong> and <strong>June</strong> are the show's regular leads: Kevin has moved back into the family's Calumet home (Walt and Carol have retired to Mobile, Alabama), while June has just returned after years away at university. Susan and Robbie appear as recurring guests; Walt and Carol visit from Mobile as occasion demands. <strong>Dennis Brewer</strong> — the gay neighbor/family-friend introduced peripherally in the original series — is now a near-main character, his long-term relationship given full, sustained storyline weight rather than the quiet peripheral presence of the original run. Runs 1989–1997.</p></div></div>
+
+    <div class="program-card gold"><div class="program-meta-row"><div class="program-title">Columbia Circle</div><div class="program-year">~Mid-1980s</div><div class="program-network">PBN · New Boston</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — Gay Main Character, Drama Track</span><span class="program-tag">Ensemble Drama</span><span class="program-tag">Warm/Humanist</span></div><div class="program-body"><p>A warm humanist ensemble drama set in New Boston, named for a neighborhood on the Columbia River. Five childhood friends in their late 20s, loosely reunited after university — one of them returning after time away is the inciting event of the first series. One of the five is gay, in an established relationship with a known, recurring partner; their eventual marriage under Pike-era equality (~1986–87) is the show's emotional culmination. Stays personal and character-driven throughout; the marriage equality fight surfaces as background texture rather than main plot engine, with the marriage itself as the payoff rather than the political fight to get there. PBN's most significant prestige drama production.</p></div></div>
+
+    <div class="program-card ink"><div class="program-meta-row"><div class="program-title">Night Desk</div><div class="program-year">~1983</div><div class="program-network">ABN</div></div><div class="program-tags"><span class="program-tag">Crime / Procedural</span><span class="program-tag">Manhattan-set</span></div><div class="program-body"><p>A Manhattan-set crime procedural — grittier successor to <em>Night Watch</em>'s Calumet register, now in the commercial ABN stable. The overnight shift at a Manhattan precinct, distinct from <em>The Precinct</em>'s institutional optimism and <em>Night Watch</em>'s Midwest moral ambiguity: faster, more urban, more cynical in register.</p></div></div>
+
+    <div class="program-card rust"><div class="program-meta-row"><div class="program-title">The Franklin Hour</div><div class="program-year">~1985</div><div class="program-network">NBS · Franklin</div></div><div class="program-tags"><span class="program-tag">Political Drama</span><span class="program-tag">Prestige</span></div><div class="program-body"><p>NBS's prestige political drama — set in and around the Franklin government, following staffers and mid-level officials rather than the president themselves. Distinct from the news division's actual coverage of the same institutions; the show that makes the gap between how government looks from outside and how it functions from inside into sustained dramatic material.</p></div></div>
+
+    <div class="program-card green"><div class="program-meta-row"><div class="program-title">Animal Kingdom</div><div class="program-year">~1984</div><div class="program-network">NBS</div></div><div class="program-tags"><span class="program-tag">Children's</span><span class="program-tag">Nature / Science</span></div><div class="program-body"><p>A children's nature and science program — a successor in spirit to <em>The Forest Friends</em> and <em>Beyond the Sky</em> but more ambitious in scope, riding the post-moon-landing generation's appetite for science content. NBS's public-interest mandate extended into the next generation of children's educational programming beyond <em>Acorn Avenue</em>'s literacy/numeracy focus.</p></div></div>
+  </div>
+
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="peaktc">
+  <div class="section-header">
+    <div class="section-number">14</div>
+    <div><div class="section-eyebrow">Section Fourteen</div><div class="section-title">Peak TC (1990s–Early 2000s)</div></div>
+  </div>
+  <div class="prose">
+    <p>Three presidencies define the political backdrop of Peak TC: Holman (Federalist, 1989–95), Liu (SPA, 1995–2001), and the opening years of whoever follows. The Long Boom runs through most of the era before busting ~1998–2000; Mesopotamia simmers as a slow-burn international story without becoming the all-consuming domestic wound the Choson War was. The atmosphere is prosperous, outward-looking, and culturally confident — and TC programming reflects it fully.</p>
+    <p>The Interlink exists during this era but is not yet a content delivery platform — it is information, commerce, communication, not entertainment. Cable remains FBA-regulated infrastructure only. The audience is effectively captive across all five networks, and the networks know it. This is TC at maximum cultural dominance: biggest budgets in the medium's history, longest episode orders, most ambitious multi-series story arcs. The prestige drama form TC has been building toward since <em>Harvest Moon</em> (1979) arrives fully realized — novelistic, unhurried, adult in subject matter in ways the pre-reform era never permitted.</p>
+    <p>It is also, in retrospect, the last era before everything changes. The seeds of disruption are being planted even as the networks reach peak power. A handful of forward-looking executives see it coming. Most don't.</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The Ash and Stars Franchise in the 1990s</div>
+    <div class="prose"><p>The theatrical trilogy concludes with <em>A New Dawn</em> in 1991, leaving the franchise's universe deliberately shattered — an empire collapsed, new powers emerging from the wreckage, no clean resolution. The TC spinoff <em>Ash and Stars: Eclipse</em> launches in 1995, set in this post-<em>New Dawn</em> landscape. Where the original series ran on TC's earlier budgets and production norms, <em>Eclipse</em> arrives into Peak TC's maximum-resource environment — serialized, darker in register, able to sustain the long-form story arcs the original could only gesture toward. It becomes ABN's defining prestige property of the era alongside <em>1 President's Square</em>, the two anchoring the network's primetime identity through the decade.</p></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Late Night — A Competitive Ecosystem</div>
+    <div class="prose"><p><em>After Hours</em> has been an ABN institution since Pierce Allard launched it in 1958. Allard retires ~1980; <strong>Martin Foley</strong> inherits the chair and the brand, mainstream and comfortable as a legacy institution's heir should be. By the 1990s, two competing programs have established genuine identities of their own: MBC's <em>The Late Show</em> with <strong>Curtis Hale</strong> in New Orleans — jazz-inflected, music-forward, warmer in register than ABN's Manhattan professionalism — and PBN's <em>The Last Show</em> with <strong>Nora Mercer</strong> in New Boston, dry and countercultural, the voice from the far edge of the continent that doesn't particularly care what Manhattan thinks. None of the three is overtly political; the Long Boom's cultural confidence bleeds into the tone without requiring it.</p></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Landmark Programs — Peak TC</div>
+
+    <div class="program-card ink"><div class="program-meta-row"><div class="program-title">The Divided House</div><div class="program-year">Early-to-Mid 1990s</div><div class="program-network">NBS</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — Definitive War Between the States Documentary</span><span class="program-tag">Documentary Series</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>NBS's multi-part documentary series on the War Between the States — the medium's definitive historical reckoning with the conflict that defined American identity. Directed by <strong>Ruth Adler</strong>, whose long-form documentary style becomes the benchmark for the form in WBT the way Ken Burns defines it in OTL. Unflinching about the war's causes and moral stakes while giving full weight to the human experience on all sides. The series critics point to as proof of what public broadcasting can do that no commercial network would attempt.</p></div><div class="program-cast">Director: <span>Ruth Adler</span></div></div>
+
+    <div class="program-card gold"><div class="program-meta-row"><div class="program-title">Over There</div><div class="program-year">~Early 1990s</div><div class="program-network">MBC</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — MBC's Prestige Drama Arrival</span><span class="program-tag">Global War Drama</span><span class="program-tag">Prestige Serial</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>MBC's landmark prestige drama — a serialized epic following American characters across the arc of the Global War (1932–40), from mobilization through combat through the long process of return. MBC has been a variety and music network for decades; <em>Over There</em> is the arrival of the network as a serious drama player, and Peak TC's budget environment gives it the scale to deliver. The distance and displacement of the war — characters far from home, in Europe and the Pacific, in occupation zones and field hospitals — gives the title its full weight. The show MBC points to for the rest of the era as proof of what it can do.</p></div></div>
+
+    <div class="program-card rust"><div class="program-meta-row"><div class="program-title">Ash and Stars: Eclipse</div><div class="program-year">1995</div><div class="program-network">ABN</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — Franchise TC Return</span><span class="program-tag">Science Fiction / Fantasy</span><span class="program-tag">Prestige Serial</span></div><div class="program-body"><p>The TC continuation of the <em>Ash and Stars</em> franchise, set in the shattered post-<em>A New Dawn</em> universe. Darker and more serialized than the original series, benefiting from Peak TC's production resources and the creative freedom a post-reform, post-Pike cultural climate affords. One of the three or four new powers born from the empire's collapse has grown into something that looks like stability — and isn't. Runs from 1995 through the disruption era. Cross-referenced from the Cinema Bible's 2020s section.</p></div></div>
+
+    <div class="program-card green"><div class="program-meta-row"><div class="program-title">Cleo's Library</div><div class="program-year">~Mid-1990s</div><div class="program-network">NBS</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — Children's Literary Program</span><span class="program-tag">Children's</span><span class="program-tag">Literature / History</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>NBS's landmark children's literary program — built around <strong>Cleo</strong>, a cat with a real-world home base (her owner works in a library; the library is her territory), who enters the stories in the books around her. Reading-driven, literature and history-based, pitched at an older child audience than <em>Acorn Avenue</em>'s foundational skills focus. Each episode frames a classic work or historical story through Cleo's perspective, then returns to the real world with the reading experience as the through-line. NBS's answer to the gap between early childhood programming and adult content — the show that makes reading feel like adventure.</p></div></div>
+
+    <div class="program-card slate"><div class="program-meta-row"><div class="program-title">1 President's Square</div><div class="program-year">~Late 1990s</div><div class="program-network">ABN</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — Peak TC Monument</span><span class="program-tag">Political Drama</span><span class="program-tag">Prestige Serial</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>ABN's prestige political drama — set inside Washington House, following senior staff and close advisers during the Liu presidency and its aftermath. Where <em>The Franklin Hour</em> (NBS, ~1985) followed mid-level staffers at a respectful distance from power, <em>1 President's Square</em> goes higher and closer: the rooms where decisions actually get made, the people who make them, the gap between democratic idealism and the daily work of governing. Launched in the Long Boom's confident twilight, the show romanticizes democratic governance at precisely the moment that confidence begins to fray — which gives it an elegiac quality its creators didn't fully intend. The show critics point to as Peak TC's defining monument. Runs through the mid-to-late 2000s. Known colloquially as <em>The Square</em>.</p></div></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Late Night — Peak TC</div>
+
+    <div class="program-card ink"><div class="program-meta-row"><div class="program-title">After Hours</div><div class="program-year">Est. 1958 · Martin Foley era from ~1980</div><div class="program-network">ABN</div></div><div class="program-tags"><span class="program-tag">Late Night</span><span class="program-tag">Institution</span></div><div class="program-body"><p>TC's original late-night institution, running continuously since Pierce Allard launched it in 1958. Foley inherits a brand rather than creating one — mainstream, comfortable, the dominant late-night voice by virtue of ABN's reach and the format's forty-year head start. Interview-driven, slightly warmer than Allard's more formal register, calibrated for the broadest possible audience.</p></div><div class="program-cast">Host: <span>Martin Foley</span></div></div>
+
+    <div class="program-card gold"><div class="program-meta-row"><div class="program-title">The Late Show</div><div class="program-year">~1980s–1990s</div><div class="program-network">MBC · New Orleans</div></div><div class="program-tags"><span class="program-tag">Late Night</span><span class="program-tag">Music-Forward</span></div><div class="program-body"><p>MBC's late-night entry — distinctly New Orleans in flavor, with music performance more central to the format than interview. Hale's jazz background shapes the show's rhythm: looser, more improvisational in feel than ABN's polished institution, warmer and more Southern in register. The show that out-music-programs everyone else in late night while still being a genuine talk format.</p></div><div class="program-cast">Host: <span>Curtis Hale</span></div></div>
+
+    <div class="program-card green"><div class="program-meta-row"><div class="program-title">The Last Show</div><div class="program-year">~1980s–1990s</div><div class="program-network">PBN · New Boston</div></div><div class="program-tags"><span class="program-tag">Late Night</span><span class="program-tag">Countercultural</span></div><div class="program-body"><p>PBN's late-night entry — the most distinct voice of the three, shaped by New Boston's Pacific edge and Mercer's dry, slightly subversive sensibility. The title's double meaning is intentional: end of the broadcast night, end of the continent, the sense of watching from somewhere that doesn't much care about Manhattan's idea of what late night should be. The show critics cite when they want to argue that the 1990s late-night ecosystem was richer than its reputation.</p></div><div class="program-cast">Host: <span>Nora Mercer</span></div></div>
+  </div>
+
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="disruption">
+  <div class="section-header">
+    <div class="section-number">15</div>
+    <div><div class="section-eyebrow">Section Fifteen</div><div class="section-title">The Disruption Era (Mid 2000s–2010s)</div></div>
+  </div>
+  <div class="prose">
+    <p>Three presidencies define the political backdrop: Mercer (Democrat, 2001–07), who settles Mesopotamia and shepherds the Interlink Treaty to completion; Sinclair (Democrat, 2007–13), the steady institutionalist who launches GPC reform and the Clean Energy Framework; and Hudson (Federalist, 2013–19), who completes GPC reform and watches the Chinese Spring build through his term. Twelve years of Democrat governance ending in a party shift — the longest single-party run since the Priest era — with the cultural confidence of the Sinclair years giving way to something more unsettled under Hudson.</p>
+    <p>The disruption itself is gradual. It does not arrive overnight. TC networks are stressed across this era but not broken — the full consequences land in the Fragmented Present. What the Disruption Era produces is the infrastructure of what's coming: the platforms, the partnerships, the first originals, the regulatory decisions that will define the next generation of the medium.</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The Streaming Timeline</div>
+    <div class="prose">
+      <p><strong>2005–07: The disc rental wars.</strong> Interlink-based disc rental emerges as a genuine market. Atlas Video — a brick-and-mortar rental chain with decades of history, founded in the late 1970s on post-moon-landing space-age branding — faces its first serious Interlink-native competitor in LinkVid, a pure disruptor with no physical storefront to protect. The two compete directly for the disc-rental market while the networks watch uneasily from the sidelines.</p>
+      <p><strong>2010–13: Streaming picks up.</strong> Back catalog and theatrical content moves to streaming first — past TC series, older films, archive material. The audience for this is real but still niche. Networks begin making defensive decisions: ABN launches <strong>ABN+</strong> as its direct streaming arm, home to decades of TC programming and the full <em>Ash and Stars</em> franchise catalog. The other networks, unable to build their own platforms, negotiate partnerships with existing streamers.</p>
+      <p><strong>2013–18: The first originals.</strong> Streaming platforms begin commissioning original content. The first prestige streaming original — LinkVid's <em>Transit Authority</em> (2015) — is the era's signal moment: proof that Interlink-native content can compete with broadcast TC on quality and ambition. The industry takes note.</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The Streaming Landscape — Platform Partnerships</div>
+    <div class="card-grid two-col">
+      <div class="card rust"><div class="card-label">Broadcaster Direct</div><h4>ABN+ <span class="canon-flag soft">Soft</span></h4><p>ABN's streaming arm — home of <em>Ash and Stars</em> and decades of TC programming, news, and non-fiction content. No outside network partnerships — ABN controls its own streaming destiny. The dominant TC network's defensive move, launched ~2010–13 as the disc rental market begins shifting toward streaming.</p></div>
+      <div class="card ink"><div class="card-label">Pure Disruptor</div><h4>LinkVid <span class="canon-flag soft">Soft</span></h4><p>Interlink-native, no brick-and-mortar history, no broadcast network partnerships. Competes on originals rather than catalog depth. <em>Transit Authority</em> (2015) is its landmark commission — the first prestige streaming original in WBT, the show that proves the platform can produce work of genuine cultural weight.</p></div>
+      <div class="card gold"><div class="card-label">Legacy Survivor</div><h4>Atlas + CBC <span class="canon-flag soft">Soft</span></h4><p>Atlas Video — founded late 1970s as a strip-mall rental chain, survives every format shift — partners with CBC as its broadcast TC affiliate. The pairing of legacy institutions: Atlas's long history mirrors CBC's heartland steadiness. CBC's back catalog gives Atlas depth; Atlas gives CBC a streaming presence it couldn't build alone.</p></div>
+      <div class="card slate"><div class="card-label">Boutique/Prestige</div><h4>Delta + MBC <span class="canon-flag soft">Soft</span></h4><p>Gulf Coast Pictures' prestige platform partners with MBC — a natural pairing of Southern identity and cultural distinctiveness. Delta's arthouse/prestige orientation complements MBC's music-forward brand; MBC's New Orleans catalog gives Delta a TC foothold alongside the Gulf Wave film library.</p></div>
+      <div class="card green"><div class="card-label">Studio Direct</div><h4>Jubilee + PBN <span class="canon-flag soft">Soft</span></h4><p>New World Pictures' direct-to-consumer platform — home of <em>Furthest Frontier</em>, <em>A Knight's Prize</em>, <em>Hesperia</em>, and the NWP catalog — partners with PBN. New Boston's Pacific edge and PBN's countercultural identity align with NWP's genre-forward, franchise-driven sensibility. PBN gets streaming presence; Jubilee gets TC credibility.</p></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The Wren Expands</div>
+    <div class="prose"><p>The CTCA announces streaming eligibility for the Wren Award in 2015 — the same year <em>Transit Authority</em> Series 1 airs on LinkVid. The decision is not particularly contested: a bit of lobbying from LinkVid, a recognition within the CTCA that the writing is on the wall, and a vote that goes through with less friction than the industry expected. The announcement is made proactively rather than reactively — the CTCA choosing to lead rather than be dragged. Broadcast TC veterans grumble quietly; streaming advocates claim victory loudly. Within two years the conversation has moved on entirely, the expansion already feeling inevitable in retrospect.</p></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Landmark Programs — Disruption Era</div>
+
+    <div class="program-card slate"><div class="program-meta-row"><div class="program-title">Mandated</div><div class="program-year">~Mid-2000s</div><div class="program-network">CBC</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — CBC Prestige Drama; Mesopotamia Reckoning</span><span class="program-tag">Political / Military Drama</span><span class="program-tag">Prestige Serial</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>CBC's landmark prestige drama — a dual-track serial following the GPC Mesopotamia peacekeeping mission from two perspectives simultaneously: a military unit on the ground navigating the gap between their orders and the reality in front of them, and a political negotiating team in the room where the settlement is being hammered out. The two tracks illuminate each other without ever quite converging — what the diplomats agree to lands on the soldiers; what the soldiers encounter never quite reaches the diplomats. CBC's most ambitious production to date, arriving as broadcast TC's prestige drama era begins its slow decline. The network's definitive landmark property, following <em>Night Watch</em> (1971) as CBC's signature serious drama.</p></div></div>
+
+    <div class="program-card ink"><div class="program-meta-row"><div class="program-title">1 President's Square — Series Finale</div><div class="program-year">2008</div><div class="program-network">ABN</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — End of an Era</span><span class="program-tag">Political Drama</span></div><div class="program-body"><p>Eleven years, spanning Liu, Mercer, and the opening of Sinclair's term. The finale of <em>1 President's Square</em> in 2008 is one of the last times a broadcast TC drama commands a genuinely unified national audience — the kind of cultural event that will become structurally impossible as the audience fragments across platforms through the following decade. The show goes out at the top, on its own terms, its elegiac quality about democratic governance fully earned by the time the credits roll on the final episode. Known colloquially as <em>The Square</em>.</p></div></div>
+
+    <div class="program-card gold"><div class="program-meta-row"><div class="program-title">Transit Authority</div><div class="program-year">2015</div><div class="program-network">LinkVid</div></div><div class="program-tags"><span class="program-tag landmark">Landmark — First Prestige Streaming Original</span><span class="program-tag">Speculative History</span><span class="program-tag">Science Fiction</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>LinkVid's landmark commission and WBT's first prestige streaming original — an epic, propulsive, continuous-story speculative series following the Federal Transit Authority, a classified NAU-level program that has discovered cross-timeline travel through an accidental laboratory event. The show's outsider protagonist — a historian who stumbles onto a smuggled artifact from another timeline — is the audience's entry point into a program that has been running without them, its history parceled out across multiple series as the conspiracy deepens. The FTA's cover name is deliberately mundane: nobody looks twice at the Federal Transit Authority. The show that proves streaming can produce work of genuine cultural ambition — and the catalyst for the CTCA's same-year decision to extend Wren eligibility to streaming-originated content.</p></div></div>
+  </div>
+
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="present">
+  <div class="section-header">
+    <div class="section-number">16</div>
+    <div><div class="section-eyebrow">Section Sixteen</div><div class="section-title">The Fragmented Present (2010s–2026)</div></div>
+  </div>
+  <div class="prose">
+    <p>The Nakamura presidency (SPA, 2025–31) opens in a moment of genuine optimism — the first openly lesbian president, the second Asian-American, the sixth or seventh woman, the first Green-coalition candidate to reach the Washington House. The NAU Constitutional Convention process is underway, the Chinese Spring has consolidated into democratic governance, and the Mars mission is on the launchpad. TC and streaming reflect the atmosphere: ambitious, outward-looking, culturally confident without being complacent.</p>
+    <p>The five broadcast networks are all still standing in 2026 — a fact that would have surprised industry observers a decade ago. None of them is what it was during Peak TC's dominance, but none has collapsed. The audience has fragmented across platforms, live events anchor broadcast's continuing relevance, and the streaming landscape has settled into five distinct identities with their own programming slates. The era of one show commanding a unified national audience is over; the era of many excellent shows commanding devoted fragmented audiences is fully underway.</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The Five Networks in 2026</div>
+    <div class="prose">
+      <p><strong>ABN</strong> remains the dominant commercial broadcaster — <em>The National Report</em> as the evening news institution, <em>After Hours</em> with Peter Strand as the flagship late-night brand (Strand roughly 20 years in the chair, retirement talk beginning), and <em>The Avenue</em> as the network's current prestige drama flagship. ABN+ carries the network's streaming arm alongside the full <em>Ash and Stars</em> franchise catalog.</p>
+      <p><strong>MBC</strong> continues its New Orleans identity — <em>Morning Edition</em> as the flagship morning news program, <em>The Late Show</em> with Deja Fontenot fifteen years into her tenure, and <em>Crescent</em> as the network's current prestige drama. Delta carries MBC's streaming partnership.</p>
+      <p><strong>CBC</strong> is the heartland network — <em>Cedar Falls</em> as its current drama flagship, grounded and character-driven. Atlas carries CBC's streaming partnership. Consolidation rumors with PBN circulate in the trade press but as of 2026 are talk only.</p>
+      <p><strong>PBN</strong> anchors the Pacific edge — <em>Drift</em> as its current drama, <em>Pacific Forum</em> as its panel discussion program, and <em>The Last Show</em> with Yuki Tanaka, who took the chair from Nora Mercer in 2022 and is still finding her footing. Jubilee carries PBN's streaming partnership. The CBC consolidation rumors make PBN's independence a live question without being an immediate crisis.</p>
+      <p><strong>NBS</strong> is the era's most complicated story. The structural funding crisis has forced restructuring without breaking the institution. <em>NBS Commons</em>, launched recently as a modest streaming platform, is the network's attempt to find a digital future without abandoning its public mandate. The unlikely savior: <em>Ravenswood</em>, a British prestige period drama import set in the 1890s, has become a genuine national phenomenon — its ratings providing a funding cushion the network desperately needed.</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">The NBS Funding Crisis</div>
+    <div class="prose"><p>NBS is funded through commercial broadcaster license fees rather than a household TC license — a funding model that made sense when commercial broadcasters were enormously profitable and is slowly becoming untenable as those revenues fragment across platforms. The crisis is structural rather than acute: NBS is not going anywhere in a country that cherishes its public institutions, but the funding gap requires creative solutions. <em>NBS Commons</em> is one answer. <em>Ravenswood</em>'s unexpected popularity is another. The longer-term solution remains politically unresolved as of 2026.</p></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Current Drama Slate — 2026</div>
+
+    <div class="program-card rust"><div class="program-meta-row"><div class="program-title">The Avenue</div><div class="program-year">Current</div><div class="program-network">ABN · Franklin</div></div><div class="program-tags"><span class="program-tag">Contemporary Drama</span><span class="program-tag">Urban Ensemble</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>ABN's current prestige drama flagship — a sprawling multi-protagonist urban ensemble set in Franklin, tracking interconnected lives across class, race, and neighborhood. ABN's attempt to recapture the cultural monument status of <em>1 President's Square</em> in a fragmented landscape where no single show commands a unified national audience.</p></div></div>
+
+    <div class="program-card gold"><div class="program-meta-row"><div class="program-title">Crescent</div><div class="program-year">Current</div><div class="program-network">MBC · New Orleans</div></div><div class="program-tags"><span class="program-tag">Southern Gothic</span><span class="program-tag">Crime Drama</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>MBC's current prestige drama — dark, atmospheric, crime and music intertwined in New Orleans. Southern gothic in register, building on MBC's long identity as the network most rooted in a specific American place and culture. Follows <em>Over There</em> as MBC's signature drama of its era.</p></div></div>
+
+    <div class="program-card slate"><div class="program-meta-row"><div class="program-title">Cedar Falls</div><div class="program-year">Current</div><div class="program-network">CBC</div></div><div class="program-tags"><span class="program-tag">Community Drama</span><span class="program-tag">Heartland Ensemble</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>CBC's current drama flagship — a small Midwestern city ensemble, character-driven and grounded. CBC doing what CBC has always done: the heartland perspective, unhurried, without pretension. Follows <em>Mandated</em> as the network's signature drama of its era.</p></div></div>
+
+    <div class="program-card green"><div class="program-meta-row"><div class="program-title">Drift</div><div class="program-year">Current</div><div class="program-network">PBN · New Boston</div></div><div class="program-tags"><span class="program-tag">Drama</span><span class="program-tag">Pacific Northwest</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>PBN's current drama — spare, slightly unsettling, dark in register without being genre. Characters unmoored, a Pacific Northwest setting that feels specific without being picturesque. PBN's most distinctive original drama in years.</p></div></div>
+
+    <div class="program-card ink"><div class="program-meta-row"><div class="program-title">The Founders</div><div class="program-year">Current</div><div class="program-network">NBS · Franklin</div></div><div class="program-tags"><span class="program-tag landmark">NBS Prestige Drama Flagship</span><span class="program-tag">Historical Drama</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>NBS's current prestige drama — set in the early American republic, Franklin as the new capital following the burning of Washington. The WBT divergence as dramatic setting: new money, old families, political power being built from scratch in a city that wasn't supposed to exist. Public broadcasting doing what <em>The Open Stage</em> always promised.</p></div></div>
+
+    <div class="program-card rust"><div class="program-meta-row"><div class="program-title">Ravenswood</div><div class="program-year">Current</div><div class="program-network">NBS · British Import</div></div><div class="program-tags"><span class="program-tag landmark">NBS Funding Lifeline</span><span class="program-tag">British Period Drama</span><span class="program-tag">Import</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>A British prestige period drama import — set at Ravenswood Manor beginning in the 1890s, as Queen Charlotte I's reign enters its final years, the British People's Party rises as Britain's first center-left government, and the Great European War (1899–1904) approaches. The aristocratic household watches its world transform: a new monarch, a new government, a war that will change everything. NBS's unexpected national phenomenon and unlikely funding lifeline.</p></div></div>
+
+    <div class="program-card ink"><div class="program-meta-row"><div class="program-title">Dark Money</div><div class="program-year">Current</div><div class="program-network">LinkVid</div></div><div class="program-tags"><span class="program-tag">Political Thriller</span><span class="program-tag">Financial Conspiracy</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>LinkVid's current prestige original — a political and financial conspiracy thriller following the money across NAU institutions. Intimate, cynical, propulsive. Proves LinkVid can do tightly wound political drama as well as it did epic speculative fiction with <em>Transit Authority</em>.</p></div></div>
+
+    <div class="program-card gold"><div class="program-meta-row"><div class="program-title">The Broken Crown</div><div class="program-year">2023–</div><div class="program-network">Atlas</div></div><div class="program-tags"><span class="program-tag landmark">Atlas Prestige Flagship</span><span class="program-tag">Fantasy Epic</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>Atlas's landmark fantasy epic — pure secondary world, multiple factions across a continent whose ruling empire has collapsed. GOT's moral complexity and brutality crossed with LOTR's mythic weight and genuine heroism. Launched 2023, currently mid-run, the cultural conversation piece of the streaming landscape in 2026.</p></div></div>
+
+    <div class="program-card slate"><div class="program-meta-row"><div class="program-title">Remains</div><div class="program-year">Current</div><div class="program-network">Delta / MBC</div></div><div class="program-tags"><span class="program-tag">Cold Case Drama</span><span class="program-tag">Literary / Psychological</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>Delta's current prestige serial — a cold case drama following a retired investigator pulled back into a case connected to their past. Slow, literary, psychological. Each series a different excavation of something buried. Delta's arthouse identity fully expressed: the crime as lens for something larger, the investigator as the real subject.</p></div></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Late Night — 2026</div>
+    <div class="prose">
+      <p><strong>Nora Mercer</strong> retired from <em>The Last Show</em> in 2022 after roughly 35 years — the first female late-night host, an institution, gone on her own terms. <strong>Yuki Tanaka</strong>, New Boston native and former <em>Last Show</em> writer, took the chair and is still finding her footing as the industry watches. <strong>Martin Foley</strong> retired from <em>After Hours</em> in 2002; <strong>Peter Strand</strong> has held the ABN chair for two decades, retirement talk beginning. <strong>Curtis Hale</strong> retired from <em>The Late Show</em> in 2009; <strong>Deja Fontenot</strong> has been the MBC host for fifteen years, warmest and most music-forward of the three.</p>
+    </div>
+
+    <div class="program-card ink"><div class="program-meta-row"><div class="program-title">After Hours</div><div class="program-year">Est. 1958 · Current</div><div class="program-network">ABN</div></div><div class="program-tags"><span class="program-tag">Late Night</span><span class="program-tag">Institution</span></div><div class="program-body"><p>TC's original late-night institution. Pierce Allard (1958–~1980) → Martin Foley (~1980–2002) → Peter Strand (2002–present). Nearly 70 years as ABN's late-night brand, the most-watched of the three competing programs.</p></div><div class="program-cast">Current Host: <span>Peter Strand</span></div></div>
+
+    <div class="program-card gold"><div class="program-meta-row"><div class="program-title">The Late Show</div><div class="program-year">Current</div><div class="program-network">MBC · New Orleans</div></div><div class="program-tags"><span class="program-tag">Late Night</span><span class="program-tag">Music-Forward</span></div><div class="program-body"><p>MBC's late-night flagship. Curtis Hale (est.–2009) → Deja Fontenot (2009–present). New Orleans warmth, music performance central to the format, the most distinctive late-night identity of the three.</p></div><div class="program-cast">Current Host: <span>Deja Fontenot</span></div></div>
+
+    <div class="program-card green"><div class="program-meta-row"><div class="program-title">The Last Show</div><div class="program-year">Current</div><div class="program-network">PBN · New Boston</div></div><div class="program-tags"><span class="program-tag">Late Night</span><span class="program-tag">Recent Transition</span></div><div class="program-body"><p>PBN's late-night program. Nora Mercer (~1980s–2022, TC's first female late-night host, 35-year institution) → Yuki Tanaka (2022–present). The chair the industry is watching in 2026 — a New Boston native and former show writer following a legend.</p></div><div class="program-cast">Current Host: <span>Yuki Tanaka</span></div></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">News &amp; Current Affairs — 2026</div>
+
+    <div class="program-card ink"><div class="program-meta-row"><div class="program-title">Morning Edition</div><div class="program-year">Current</div><div class="program-network">MBC</div></div><div class="program-tags"><span class="program-tag">Morning News</span></div><div class="program-body"><p>MBC's flagship morning news program — the national morning news leader, warm in register and music-forward in MBC tradition.</p></div></div>
+
+    <div class="program-card rust"><div class="program-meta-row"><div class="program-title">The National Report</div><div class="program-year">Current</div><div class="program-network">ABN</div></div><div class="program-tags"><span class="program-tag">Evening News</span><span class="program-tag">Institution</span></div><div class="program-body"><p>ABN's evening news flagship — institutional successor to the Reed Sterling era, most-watched evening news program in the country. Serious, authoritative, the commercial broadcast voice of record.</p></div></div>
+
+    <div class="program-card slate"><div class="program-meta-row"><div class="program-title">The Correspondent</div><div class="program-year">Est. 1967 · Current</div><div class="program-network">NBS</div></div><div class="program-tags"><span class="program-tag landmark">Nearly 60 Years on Air</span><span class="program-tag">Investigative Newsmagazine</span></div><div class="program-body"><p>NBS's long-form investigative newsmagazine, launched 1967 — nearly sixty years on air by 2026. Multiple correspondents, weekly, serious and unhurried. The institutional bedrock of NBS's news identity.</p></div></div>
+
+    <div class="program-card green"><div class="program-meta-row"><div class="program-title">Pacific Forum</div><div class="program-year">Current</div><div class="program-network">PBN</div></div><div class="program-tags"><span class="program-tag">Panel Discussion</span><span class="program-tag">Current Affairs</span></div><div class="program-body"><p>PBN's roundtable panel discussion — multiple viewpoints, good faith engagement, civic and serious in register. The Pacific edge perspective on national and international affairs.</p></div></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Game Shows — Established Institutions</div>
+
+    <div class="program-card gold"><div class="program-meta-row"><div class="program-title">Common Knowledge</div><div class="program-year">Est. ~Mid-1960s · Current</div><div class="program-network">TBD</div></div><div class="program-tags"><span class="program-tag landmark">WBT's Jeopardy Equivalent</span><span class="program-tag">Quiz / Knowledge</span></div><div class="program-body"><p>TC's definitive knowledge quiz format — categories, escalating difficulty, three contestants, a question/answer inversion mechanic that has made it a national institution for sixty years. The show people have watched with their parents and grandparents.</p></div></div>
+
+    <div class="program-card slate"><div class="program-meta-row"><div class="program-title">Turn of Phrase</div><div class="program-year">Est. ~1970s · Current</div><div class="program-network">TBD</div></div><div class="program-tags"><span class="program-tag">Word / Puzzle</span><span class="program-tag">Game Show</span></div><div class="program-body"><p>TC's definitive word and phrase puzzle format — contestants guessing hidden words and phrases letter by letter, warmly hosted, long-running companion institution to <em>Common Knowledge</em>.</p></div></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Children's Programming — 2026</div>
+
+    <div class="program-card green"><div class="program-meta-row"><div class="program-title">Acorn Avenue</div><div class="program-year">Est. ~1969–70 · Still Running</div><div class="program-network">NBS · Calumet</div></div><div class="program-tags"><span class="program-tag landmark">TC's Sesame Street — 55+ Years</span><span class="program-tag">Children's Educational</span><span class="program-tag hard">Hard Canon</span></div><div class="program-body"><p>Still running after 55+ years — Gus the bear, Pickle, Wendell, and generations of children's first TC friends. The longest-running program in WBT TC history and one of the most beloved public institutions in the country. NBS's unassailable flagship.</p></div></div>
+
+    <div class="program-card gold"><div class="program-meta-row"><div class="program-title">Cleo's Library</div><div class="program-year">~1995–2013 · Concluded</div><div class="program-network">NBS</div></div><div class="program-tags"><span class="program-tag">Children's Literary</span><span class="program-tag">Concluded</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>NBS's beloved children's literary program — Cleo the cat, a library home base, literary and historical adventures entered through books. Ran 18 years, concluded gracefully, warmly remembered. Occupied the older-child programming space for nearly two decades.</p></div></div>
+
+    <div class="program-card rust"><div class="program-meta-row"><div class="program-title">The Museum of Everything</div><div class="program-year">~2015–16 · Current</div><div class="program-network">NBS</div></div><div class="program-tags"><span class="program-tag landmark">NBS Children's Flagship — Current</span><span class="program-tag">Children's Educational</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>NBS's current children's educational flagship — Dr. Adelaide Beck, eccentric and warm curator of the Museum of Everything, whose artifacts transport visitors to relevant times, places, and concepts. Science, art, and history all under one roof. <em>Cleo's Library</em>'s successor, launched ~2015–16 and still running in 2026.</p></div><div class="program-cast">Curator: <span>Dr. Adelaide Beck</span></div></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Documentary — 2026</div>
+
+    <div class="program-card ink"><div class="program-meta-row"><div class="program-title">American Revolution Documentary Series</div><div class="program-year">Current · NBS / NBS Commons</div><div class="program-network">NBS</div></div><div class="program-tags"><span class="program-tag landmark">250th Anniversary Series</span><span class="program-tag">Documentary</span><span class="program-tag soft">Soft Canon</span></div><div class="program-body"><p>Ruth Adler's current landmark project — a multi-part documentary series on the American Revolution, timed to the 250th anniversary in 2026. The most-anticipated non-fiction TC event of the year. Adler in her mid-to-late 60s, still the defining voice of WBT long-form historical documentary, expected to sit alongside <em>The Divided House</em> as the benchmark work of her career.</p></div><div class="program-cast">Director: <span>Ruth Adler</span></div></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">NBS Commons</div>
+    <div class="prose"><p>NBS's recently launched streaming platform — modest in scope, free to access, the public broadcasting mandate expressed in streaming form. Carries <em>Acorn Avenue</em>, <em>The Museum of Everything</em>, <em>The Founders</em>, <em>The Correspondent</em>, <em>Ravenswood</em>, and Ruth Adler's Revolution documentary as its core content. Ambitions to grow; current reality more limited. The platform's existence is itself a statement: NBS is not going anywhere.</p></div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title gold">Concluded — Significant Properties</div>
+    <div class="prose">
+      <p><strong><em>Transit Authority</em></strong> (LinkVid, 2015–2023) — 8 series, complete. The Federal Transit Authority's cross-timeline program. The first prestige streaming original in WBT, concluded on its own terms. Still the show LinkVid points to as its defining achievement.</p>
+      <p><strong><em>1 President's Square</em></strong> (ABN, 1997–2008) — 11 years, complete. Washington House staffers, Liu through early Sinclair era. Peak TC's defining political drama monument, its 2008 finale one of the last unified national TC audiences. Known colloquially as <em>The Square</em>.</p>
+      <p><strong><em>Cleo's Library</em></strong> (NBS, ~1995–2013) — 18 years, complete. Beloved and warmly remembered.</p>
+    </div>
+  </div>
+
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="people">
+  <div class="section-header">
+    <div class="section-number">17</div>
+    <div><div class="section-eyebrow">Section Seventeen</div><div class="section-title">Key People — Quick Reference</div></div>
+  </div>
+  <div class="card-grid two-col">
+    <div class="card ink"><div class="card-label">Telecinema Inventors</div><h4>Arthur Cade &amp; Joseph Wren <span class="canon-flag hard">Hard</span></h4><p>Brooklyn co-inventors. Cade: transmission. Wren: imaging. First public demonstration ~1929–30. Wren is namesake of the Wren Award (est. late 1970s).</p></div>
+    <div class="card slate"><div class="card-label">News Anchor — NBS</div><h4>Arthur Cross <span class="canon-flag soft">Soft</span></h4><p>Institutional, steady, trusted. NBS's voice of record from the boom era onward. Central figure in the 1954 license fight against Congressman Hutchins — holds firm on air, NBS's license renewed without incident.</p></div>
+    <div class="card ink"><div class="card-label">News Anchor — ABN</div><h4>Reed Sterling <span class="canon-flag soft">Soft</span></h4><p>Charismatic commercial counterpart to Cross. ABN's personality-driven answer to NBS's institutional steadiness.</p></div>
+    <div class="card"><div class="card-label">Antagonist — Golden Age</div><h4>Congressman Earl Hutchins (Jefferson, JCA) <span class="canon-flag soft">Soft</span></h4><p>Pressures the FBA over NBS's 1954 Morality League/homophilia-advocate broadcast, publicly questioning the network's license fitness during his own mid-term reelection fight. The pressure campaign fails; reusable as a recurring Priest-era minor antagonist figure.</p></div>
+    <div class="card green"><div class="card-label">Actress — TC's First Comedy Star</div><h4>Helen Bratton <span class="canon-flag soft">Soft</span></h4><p>Stars as Lydia Tatum in <em>Lydia's Junction</em> (MBC, ~early-to-mid 1960s). TC's first major homegrown comedy star — famous because of TC rather than arriving from cinema, radio, or theater.</p></div>
+    <div class="card rust"><div class="card-label">Commentator — Turbulent Era</div><h4>Garrett Holm <span class="canon-flag soft">Soft</span></h4><p>ABN News commentator whose years-long drift from analysis into opinion-as-entertainment crystallizes during Choson War coverage of the CDC bombing of Beijing and Shanghai. Central figure in the 1969 <em>Public Broadcasting Alliance v. ABN</em> case and the 1970 Opinion Ruling.</p></div>
+    <div class="card ink"><div class="card-label">Host — Golden Age</div><h4>Pierce Allard <span class="canon-flag soft">Soft</span></h4><p>Host of <em>After Hours with Pierce Allard</em> (ABN, ~1958) — TC's first major late-night talk format.</p></div>
+    <div class="card slate"><div class="card-label">The Whitfield Family — <em>The Whitfields</em> &amp; <em>Whitfields: Next Generation</em></div><h4>Walt &amp; Carol Whitfield; Kevin, Susan, June &amp; Robbie <span class="canon-flag soft">Soft</span></h4><p><em>The Whitfields</em> (ABN, 1972–81, 9 series) follows a middle-class Calumet family. <em>Whitfields: Next Generation</em> (ABN, 1989–97) follows the four kids as adults — Kevin and June as leads, Susan and Robbie recurring, Walt and Carol returning from retirement in Mobile. A recurring gay neighbor/family-friend character — <strong>Dennis Brewer</strong> — appears peripherally in the original series and takes a fuller near-main role in the spinoff.</p></div>
+    <div class="card gold"><div class="card-label">Recurring Character — <em>The Whitfields</em> &amp; <em>Whitfields: Next Generation</em></div><h4>Dennis Brewer <span class="canon-flag soft">Soft</span></h4><p>Gay neighbor and family friend to the Whitfields in Calumet. Introduced peripherally in the original series (~early-to-mid 1970s) — matter-of-factly, not as a Very Special Episode. Near-main character in <em>Whitfields: Next Generation</em> (1989–97), his long-term relationship given full sustained storyline weight. TC's quiet sitcom-track gay representation breakthrough.</p></div>
+    <div class="card rust"><div class="card-label">Documentary Director — Peak TC</div><h4>Ruth Adler <span class="canon-flag soft">Soft</span></h4><p>Director of <em>The Divided House</em> (NBS, early-to-mid 1990s) — the definitive multi-part documentary on the War Between the States. WBT's Ken Burns equivalent: the benchmark long-form historical documentary voice of her generation.</p></div>
+    <div class="card ink"><div class="card-label">Late Night Host — ABN</div><h4>Martin Foley <span class="canon-flag soft">Soft</span></h4><p>Host of <em>After Hours</em> (ABN) from ~1980 onward — successor to Pierce Allard. Mainstream, comfortable, the institutional voice of TC's dominant late-night brand.</p></div>
+    <div class="card gold"><div class="card-label">Late Night Host — MBC</div><h4>Curtis Hale <span class="canon-flag soft">Soft</span></h4><p>Host of <em>The Late Show</em> (MBC, New Orleans). Jazz background; music-forward format; the warmest and most Southern-inflected of the three competing late-night hosts.</p></div>
+    <div class="card green"><div class="card-label">Late Night Host — PBN</div><h4>Nora Mercer <span class="canon-flag soft">Soft</span></h4><p>Host of <em>The Last Show</em> (PBN, New Boston). Dry, countercultural, Pacific Northwest sensibility. The most distinct late-night voice of her era — the show that doesn't care what Manhattan thinks.</p></div>
+    <div class="card slate"><div class="card-label">Streaming Platform — Broadcaster Direct</div><h4>ABN+ <span class="canon-flag soft">Soft</span></h4><p>ABN's streaming arm, launched ~2010–13. Home of <em>Ash and Stars</em> franchise catalog and decades of ABN TC programming. No outside partnerships.</p></div>
+    <div class="card ink"><div class="card-label">Streaming Platform — Pure Disruptor</div><h4>LinkVid <span class="canon-flag soft">Soft</span></h4><p>Interlink-native streaming platform. No broadcast partnerships. Commissions <em>Transit Authority</em> (2015) as WBT's first prestige streaming original; announces CTCA Wren streaming eligibility the same year.</p></div>
+    <div class="card gold"><div class="card-label">Streaming Platform — Legacy Survivor</div><h4>Atlas <span class="canon-flag soft">Soft</span></h4><p>Founded late 1970s as a strip-mall rental chain. Survives cassette, optical disc, and Interlink disc rental before pivoting to streaming. Partners with CBC as broadcast TC affiliate.</p></div>
+  </div>
+    <div class="card rust"><div class="card-label">Late Night Host — ABN (Current)</div><h4>Peter Strand <span class="canon-flag soft">Soft</span></h4><p>Current host of <em>After Hours</em> (ABN), in the chair since 2002 — successor to Martin Foley. ~20 years as TC's dominant late-night voice; retirement talk beginning in 2026.</p></div>
+    <div class="card gold"><div class="card-label">Late Night Host — MBC (Current)</div><h4>Deja Fontenot <span class="canon-flag soft">Soft</span></h4><p>Current host of <em>The Late Show</em> (MBC, New Orleans), in the chair since 2009. Fifteen years in; warmest and most music-forward of the three late-night hosts.</p></div>
+    <div class="card green"><div class="card-label">Late Night Host — PBN (Current)</div><h4>Yuki Tanaka <span class="canon-flag soft">Soft</span></h4><p>Current host of <em>The Last Show</em> (PBN, New Boston), took the chair from Nora Mercer in 2022. New Boston native, former <em>Last Show</em> writer. Still finding her footing in 2026 — the late-night transition the industry is watching.</p></div>
+    <div class="card ink"><div class="card-label">Children's Program Curator</div><h4>Dr. Adelaide Beck <span class="canon-flag soft">Soft</span></h4><p>Curator of <em>The Museum of Everything</em> (NBS, ~2015–16–present). Warm, eccentric, knowledgeable across science, art, and history. The Ms. Frizzle equivalent of WBT children's TC.</p></div>
+  <div class="notice"><span class="notice-icon">◆</span><div>This index will expand significantly as further eras are built — landmark program creators, on-screen talent, CTCA founders, and key FBA/regulatory figures all remain to be developed.</div></div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="terminology">
+  <div class="section-header">
+    <div class="section-number">18</div>
+    <div><div class="section-eyebrow">Section Eighteen</div><div class="section-title">Terminology &amp; Canon Rules</div></div>
+  </div>
+  <div class="subsection">
+    <div class="subsection-title gold">Essential Terminology</div>
+    <div class="card-grid">
+      <div class="card gold"><div class="card-label">The Medium</div><h4>Telecinema / TC</h4><p>Never "TV" or "television." "TC set" = home receiver. "Watching the TC" / "What's on the TC tonight?"</p></div>
+      <div class="card slate"><div class="card-label">The Show</div><h4>Program</h4><p>"A new program on ABN." The overall show or format.</p></div>
+      <div class="card"><div class="card-label">One Run / Season</div><h4>Series</h4><p>"The third series of..." — what OTL American usage calls a "season."</p></div>
+      <div class="card ink"><div class="card-label">Limited Format</div><h4>Serial</h4><p>Inherited from radio/cinema tradition. WBT's native equivalent of OTL's "miniseries."</p></div>
+      <div class="card gold"><div class="card-label">The Regulator</div><h4>FBA (Federal Broadcasting Authority)</h4><p>Established 1911/12 under Hannah, alongside NBS. Governs TC throughout its history; jurisdiction is more institutionally continuous than OTL's FCC.</p></div>
+      <div class="card"><div class="card-label">Decency Standard — Broadcasting</div><h4>The Brennerman Code (1926–Late 1970s)</h4><p>Remains federal law for TC long after the ACS replaces it for cinema (1964). Reformed via FBA action and Congressional fight in the late 1970s, contemporaneous with the CTCA's founding lobbying campaign.</p></div>
+      <div class="card slate"><div class="card-label">Awards — TC</div><h4>The Wren</h4><p>CTCA-administered, est. late 1970s. Named for Joseph Wren. Peer institution to the Benji, not subordinate.</p></div>
+    </div>
+  </div>
+  <div class="subsection">
+    <div class="subsection-title rust">Never Use</div>
+    <div class="card-grid">
+      <div class="card"><div class="card-label">Forbidden Term</div><h4>TV / Television</h4><p>Always "TC" or "telecinema." No exceptions, including in dialogue or informal registers.</p></div>
+      <div class="card"><div class="card-label">Forbidden Term</div><h4>Season (for one programming run)</h4><p>Use "series" instead — WBT deliberately diverges from OTL American usage here.</p></div>
+      <div class="card"><div class="card-label">Forbidden Term</div><h4>Cable as Premium Content</h4><p>WBT cable never becomes a vehicle for unregulated premium programming — it remains FBA-regulated infrastructure throughout. Do not import OTL HBO-style cable content history.</p></div>
+      <div class="card"><div class="card-label">Forbidden Assumption</div><h4>FCC-style Light-Touch Internet Regulation</h4><p>The Interlink is regulated at the NAU level via a common content framework — not a pure regulatory vacuum the way OTL's early internet was.</p></div>
+    </div>
+  </div>
+  <div class="subsection">
+    <div class="subsection-title gold">Canon Flag Key</div>
+    <div class="prose"><p><span class="canon-flag hard">Hard Canon</span> Explicitly confirmed by the author. Never contradict without flagging.<br><br><span class="canon-flag soft">Soft Canon</span> Established in planning sessions. Subject to revision by author decision.<br><br><span class="canon-flag open">Open Canvas</span> Not yet decided. Available for development.</p></div>
+  </div>
+</section>
+
+</div>
+
+<div style="background:var(--film); color:rgba(245,240,232,0.3); text-align:center; padding:2rem; font-family:'JetBrains Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase;">
+  Washington Burns Timeline — TC Bible — Version 1 — June 2026 — Division 814 Internal Reference
+</div>
+
+<script>
+(function() {
+  function updateArcClock() {
+    var n = new Date();
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var hh = String(n.getHours()).padStart(2,'0');
+    var mm = String(n.getMinutes()).padStart(2,'0');
+    var el = document.getElementById('arc-clock');
+    if (el) el.textContent = days[n.getDay()] + ' ' + n.getDate() + ' · ' + hh + ':' + mm;
+  }
+  setInterval(updateArcClock, 10000);
+  updateArcClock();
+})();
+</script>
+
+</body>
+</html>
