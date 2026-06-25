@@ -287,117 +287,104 @@ function renderHeadlines() {
 }
 
 // ── SEARCH ──
-// Build a flat searchable index from content.js pools
+
+
 function buildIndex() {
   const index = [];
 
+  // ── STATIC PAGE LISTINGS ──────────────────────────────────────────────────
   const PAGES = [
-    { hed: 'Franklin Observer', dek: 'The Franklin Observer — established 1843. News, politics, world affairs and culture from the capital.', source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/' },
-    { hed: 'USRC Rail Status', dek: 'United States Railway Company — live network status, departures, journey planner and fares.', source: 'nan.usrc.gov.usa', link: './nodes/usrc/' },
-    { hed: 'NAU Assembly', dek: 'North American Union Assembly — 18th Session. Floor activity, legislation, and bloc composition. Calumet.', source: 'nan.assembly.nau', link: './nodes/assembly/' },
-    { hed: 'Washington House', dek: 'Official residence and office of the President of the United States. Franklin, District of Washington.', source: 'nan.washingtonhouse.gov.usa', link: './nodes/washington-house/' },
-    { hed: 'Museum of the United States', dek: 'The national museum and home of the founding documents — Declaration of Independence, Constitution of 1787, Constitution of 1861.', source: 'nan.mususa.edu.usa', link: './nodes/amhistory/' },
-    { hed: 'ABN News', dek: 'American Broadcast Network news — live coverage, world desk, and the ABN Evening News with Patricia Sorensen.', source: 'nan.abnnews.pr.usa', link: './nodes/abn/' },
-    { hed: 'Federal Parks Service', dek: 'Protecting America\'s lands since 1908. 57 Federal Parks across the United States.', source: 'nan.fps.gov.usa', link: './nodes/fps/' },
-    { hed: 'Waymark Search', dek: 'Find your node on the Link. NANet\'s leading search service.', source: 'nan.waymark.biz.usa', link: '#' },
+    { hed: 'Franklin Observer',        dek: 'The Franklin Observer — established 1843. News, politics, world affairs and culture from the capital.',                                                    source: 'nan.franklin-ob.pr.usa',        link: './nodes/franklin-observer/' },
+    { hed: 'USRC Rail Status',         dek: 'United States Railway Company — live network status, departures, journey planner and fares.',                                                             source: 'nan.usrc.gov.usa',              link: './nodes/usrc/' },
+    { hed: 'NAU Assembly',             dek: 'North American Union Assembly — 18th Session. Floor activity, legislation, and bloc composition. Calumet.',                                               source: 'nan.assembly.nau',              link: './nodes/assembly/' },
+    { hed: 'Washington House',         dek: 'Official residence and office of the President of the United States. Franklin, District of Washington.',                                                  source: 'nan.washingtonhouse.gov.usa',   link: './nodes/washington-house/' },
+    { hed: 'Museum of the United States', dek: 'The national museum and home of the founding documents — Declaration of Independence, Constitution of 1787, Constitution of 1861.',                  source: 'nan.mususa.edu.usa',            link: './nodes/amhistory/' },
+    { hed: 'ABN News',                 dek: 'American Broadcast Network news — live coverage, world desk, and the ABN Evening News with Patricia Sorensen.',                                           source: 'nan.abnnews.pr.usa',            link: './nodes/abn/' },
+    { hed: 'Federal Parks Service',    dek: "Protecting America's lands since 1908. 57 Federal Parks across the United States.",                                                                      source: 'nan.fps.gov.usa',               link: './nodes/fps/' },
+    { hed: 'CSN — Continental Sports Network', dek: 'Live scores, standings, and coverage across NBA, NAFA, ANSA, MLA Aroball, Union Cup Rugby, and Women\'s Baseball.',                            source: 'nan.csn.pr.usa',                link: './nodes/csn/' },
+    { hed: 'LinkVid',                  dek: 'Stream films and series from the silent era through today — including LinkVid Originals. NANet\'s leading entertainment platform.',                      source: 'nan.linkvid.biz.usa',           link: './nodes/linkvid/' },
+    { hed: 'Waymark Search',           dek: "Find your node on the Link. NANet's leading search service.",                                                                                            source: 'nan.waymark.biz.usa',           link: '#' },
   ];
-
   PAGES.forEach(p => index.push({ ...p, type: 'page' }));
 
-  // WIRE_STORIES -- shared wire stories, .fo and .abn versions indexed
-  // separately so search hits feel native to whichever site they link to
-  if (typeof WIRE_STORIES !== 'undefined') {
-    WIRE_STORIES.forEach(s => {
-      if (s.fo) index.push({ hed: s.fo.hed, dek: s.fo.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' });
-      if (s.abn) index.push({ hed: s.abn.hed, dek: s.abn.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' });
+  // ── WIRE STORIES (today's picks only) ────────────────────────────────────
+  // WIRE_LEAD_TODAY appears on both FO and ABN — index both versions so either
+  // source attribution can surface in search results.
+  if (typeof WIRE_LEAD_TODAY !== 'undefined') {
+    if (WIRE_LEAD_TODAY.fo)
+      index.push({ hed: WIRE_LEAD_TODAY.fo.hed,  dek: WIRE_LEAD_TODAY.fo.dek,  source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' });
+    if (WIRE_LEAD_TODAY.abn)
+      index.push({ hed: WIRE_LEAD_TODAY.abn.hed, dek: WIRE_LEAD_TODAY.abn.dek, source: 'nan.abnnews.pr.usa',     link: './nodes/abn/',               type: 'story' });
+  }
+  // Secondary wire picks (also rendered on both sites)
+  if (typeof WIRE_SECONDARY_TODAY !== 'undefined') {
+    WIRE_SECONDARY_TODAY.forEach(s => {
+      if (s.fo)  index.push({ hed: s.fo.hed,  dek: s.fo.dek,  source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' });
+      if (s.abn) index.push({ hed: s.abn.hed, dek: s.abn.dek, source: 'nan.abnnews.pr.usa',     link: './nodes/abn/',               type: 'story' });
     });
   }
 
-  // Observer-only pools
-  if (typeof FO_NATIONAL !== 'undefined') FO_NATIONAL.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
-  if (typeof FO_WORLD !== 'undefined') FO_WORLD.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
-  if (typeof FO_EXCLUSIVES !== 'undefined') FO_EXCLUSIVES.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
+  // ── FRANKLIN OBSERVER (today's picks only) ────────────────────────────────
+  if (typeof FO_NATIONAL_TODAY !== 'undefined')
+    FO_NATIONAL_TODAY.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
+  if (typeof FO_WORLD_TODAY !== 'undefined')
+    FO_WORLD_TODAY.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' }));
+  if (typeof FO_EXCLUSIVE_TODAY !== 'undefined')
+    index.push({ hed: FO_EXCLUSIVE_TODAY.hed, dek: FO_EXCLUSIVE_TODAY.dek, source: 'nan.franklin-ob.pr.usa', link: './nodes/franklin-observer/', type: 'story' });
 
-  // ABN-only pools
-  if (typeof ABN_CARDS !== 'undefined') ABN_CARDS.forEach(s => index.push({ hed: s.hed, dek: s.hed, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
-  if (typeof ABN_WORLD !== 'undefined') ABN_WORLD.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
-  if (typeof ABN_EXCLUSIVES !== 'undefined') ABN_EXCLUSIVES.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
+  // ── ABN NEWS (today's picks only) ─────────────────────────────────────────
+  if (typeof ABN_CARDS_TODAY !== 'undefined')
+    ABN_CARDS_TODAY.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
+  if (typeof ABN_WORLD_TODAY !== 'undefined')
+    ABN_WORLD_TODAY.forEach(s => index.push({ hed: s.hed, dek: s.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' }));
+  if (typeof ABN_EXCLUSIVE_TODAY !== 'undefined')
+    index.push({ hed: ABN_EXCLUSIVE_TODAY.hed, dek: ABN_EXCLUSIVE_TODAY.dek, source: 'nan.abnnews.pr.usa', link: './nodes/abn/', type: 'story' });
 
-  // Nedex articles
-  if (typeof NEDEX_ARTICLES !== 'undefined') {
-    NEDEX_ARTICLES.forEach(a => index.push({
-      hed: a.title,
-      dek: a.blurb,
-      source: 'nan.nedex.org.nau',
-      link: './nodes/nedex/' + a.file,
-      type: 'nedex'
-    }));
-  }
+  // ── NEDEX (full catalog — all articles always visible) ────────────────────
+  if (typeof NEDEX_ARTICLES !== 'undefined')
+    NEDEX_ARTICLES.forEach(a => index.push({ hed: a.title, dek: a.blurb, source: 'nan.nedex.org.nau', link: './nodes/nedex/' + a.file, type: 'nedex' }));
 
-  // Federal Parks
-  if (typeof WBT_PARKS !== 'undefined') {
-    WBT_PARKS.forEach(p => index.push({
-      hed: p.name,
-      dek: p.desc + ' · ' + p.tags.join(', ') + ' · ' + p.location,
-      source: 'nan.fps.gov.usa',
-      link: './nodes/fps/',
-      type: 'park'
-    }));
-  }
+  // ── FEDERAL PARKS (full catalog — all parks always visible) ───────────────
+  if (typeof WBT_PARKS !== 'undefined')
+    WBT_PARKS.forEach(p => index.push({ hed: p.name, dek: p.desc + ' · ' + p.tags.join(', ') + ' · ' + p.location, source: 'nan.fps.gov.usa', link: './nodes/fps/', type: 'park' }));
 
-  // NAU Bills
-  if (typeof WBT_BILLS !== 'undefined') {
-    WBT_BILLS.forEach(b => index.push({
-      hed: b.num + ' — ' + b.title,
-      dek: b.desc,
-      source: 'nan.assembly.nau',
-      link: './nodes/assembly/',
-      type: 'bill'
-    }));
-  }
+  // ── NAU BILLS (full list — all bills always visible) ─────────────────────
+  if (typeof WBT_BILLS !== 'undefined')
+    WBT_BILLS.forEach(b => index.push({ hed: b.num + ' — ' + b.title, dek: b.desc, source: 'nan.assembly.nau', link: './nodes/assembly/', type: 'bill' }));
 
-  // Museum galleries
-  if (typeof WBT_MUSEUM_GALLERIES !== 'undefined') {
-    WBT_MUSEUM_GALLERIES.forEach(g => index.push({
-      hed: g.title,
-      dek: g.desc + ' · ' + g.floor,
-      source: 'nan.mususa.edu.usa',
-      link: './nodes/amhistory/',
-      type: 'gallery'
-    }));
-  }
+  // ── MUSEUM (full catalog — all galleries/events always visible) ───────────
+  if (typeof WBT_MUSEUM_GALLERIES !== 'undefined')
+    WBT_MUSEUM_GALLERIES.forEach(g => index.push({ hed: g.title, dek: g.desc + ' · ' + g.floor, source: 'nan.mususa.edu.usa', link: './nodes/amhistory/', type: 'gallery' }));
+  if (typeof WBT_MUSEUM_EVENTS !== 'undefined')
+    WBT_MUSEUM_EVENTS.forEach(e => index.push({ hed: e.title, dek: 'Museum of the United States · ' + e.time, source: 'nan.mususa.edu.usa', link: './nodes/amhistory/', type: 'event' }));
 
-  // Museum events
-  if (typeof WBT_MUSEUM_EVENTS !== 'undefined') {
-    WBT_MUSEUM_EVENTS.forEach(e => index.push({
-      hed: e.title,
-      dek: 'Museum of the United States · ' + e.time,
-      source: 'nan.mususa.edu.usa',
-      link: './nodes/amhistory/',
-      type: 'event'
-    }));
-  }
+  // ── WASHINGTON HOUSE (today's picks only) ────────────────────────────────
+  if (typeof WH_STATEMENT_TODAY !== 'undefined')
+    index.push({ hed: WH_STATEMENT_TODAY.label, dek: WH_STATEMENT_TODAY.text + ' ' + WH_STATEMENT_TODAY.attr, source: 'nan.washingtonhouse.gov.usa', link: './nodes/washington-house/', type: 'statement' });
+  if (typeof WH_BRIEFING_TODAY !== 'undefined')
+    WH_BRIEFING_TODAY.forEach(b => index.push({ hed: b.title, dek: b.meta || '', source: 'nan.washingtonhouse.gov.usa', link: './nodes/washington-house/', type: 'briefing' }));
 
-  // Washington House statements
-  if (typeof WH_STATEMENTS !== 'undefined') {
-    WH_STATEMENTS.forEach(s => index.push({
-      hed: s.label,
-      dek: s.text + ' ' + s.attr,
-      source: 'nan.washingtonhouse.gov.usa',
-      link: './nodes/washington-house/',
-      type: 'statement'
-    }));
-  }
+  // ── CSN (today's featured lead + top stories) ────────────────────────────
+  if (typeof CSN_LEAD_TODAY !== 'undefined')
+    index.push({ hed: CSN_LEAD_TODAY.hed, dek: CSN_LEAD_TODAY.dek + ' · ' + (CSN_LEAD_TODAY.meta || ''), source: 'nan.csn.pr.usa', link: './nodes/csn/', type: 'csn' });
+  if (typeof CSN_TOP_STORIES_TODAY !== 'undefined')
+    CSN_TOP_STORIES_TODAY.forEach(s => index.push({ hed: s, dek: 'Continental Sports Network', source: 'nan.csn.pr.usa', link: './nodes/csn/', type: 'csn' }));
 
-  // Washington House briefings
-  if (typeof WH_BRIEFING !== 'undefined') {
-    WH_BRIEFING.forEach(b => index.push({
-      hed: b.title,
-      dek: '',
-      source: 'nan.washingtonhouse.gov.usa',
-      link: './nodes/washington-house/',
-      type: 'briefing'
-    }));
+  // ── LINKVID FILMS (full catalog — always visible) ────────────────────────
+  if (typeof LV_FILMS !== 'undefined') {
+    LV_FILMS.forEach(film => {
+      // Build a rich dek from all searchable fields
+      const dek = [
+        film.genre,
+        film.year,
+        film.director ? 'Dir. ' + film.director : null,
+        film.studio,
+        film.platform === 'jubilee' ? 'Jubilee' : film.platform === 'abn' ? 'ABN+' : film.platform === 'delta' ? 'Delta' : null,
+        film.synopsis,
+      ].filter(Boolean).join(' · ');
+
+      index.push({ hed: film.title, dek, source: 'nan.linkvid.biz.usa', link: './nodes/linkvid/films.html', type: 'film' });
+    });
   }
 
   return index;
