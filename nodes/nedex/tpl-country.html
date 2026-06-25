@@ -7,12 +7,29 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
 <link rel="manifest" href="/washington_burns/site.webmanifest">
-<!-- TEMPLATE: COUNTRY / NATION
-     1. Replace all [PLACEHOLDERS] with real content
-     2. Delete any infobox rows or sections you don't need
-     3. Add this article to nedex_index.js
-     4. Save as: nodes/nedex/[article-name].html
-     5. Update initAddressBar() and the footer link below
+<!-- NEDEX COUNTRY PAGE TEMPLATE
+     Instructions:
+       1. Replace every [PLACEHOLDER] with real content
+       2. Delete rows/sections you don't need
+       3. Add entry to nedex_index.js
+       4. Save as: nodes/nedex/[article-slug].html
+       5. Update initAddressBar() call and footer URL at bottom of file
+
+     Infobox rows — include what applies, delete what doesn't:
+       Founded / Unified / Established
+       System
+       Capital
+       Largest city       (if different from capital)
+       Head of state      (monarch, president — ceremonial)
+       Head of govt       (prime minister, chancellor, premier — executive)
+       Legislature
+       Demonym
+       Language(s)
+       Currency
+       Member of
+
+     Section order (standard): History · Government · Geography · Economy · Foreign Relations
+     Add or reorder as needed for the specific country.
 -->
 <title>[COUNTRY NAME] — Nedex</title>
 <link rel="stylesheet" href="../../shared.css">
@@ -20,6 +37,7 @@
 </head>
 <body>
 
+<!-- NEDEX CHROME — keep in sync across all Nedex pages -->
 <div class="arc-chrome">
 <div class="wm-topbar">
   <div class="arc-navbtns">
@@ -37,6 +55,8 @@
   <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
   <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
   <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../linkvid/"><span class="arc-bmark-icon">🎥</span>LinkVid</a>
+  <a class="arc-bmark" href="../csn/"><span class="arc-bmark-icon">⚾</span>CSN</a>
   <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
   <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
   <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
@@ -44,14 +64,13 @@
   <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
   <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
 </div>
-</div>
 
 <div class="ndx-header">
   <a class="ndx-logo" href="./">Nedex</a>
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
-    <input class="ndx-search" type="text" placeholder="Search Nedex…" />
-    <button class="ndx-search-btn">Search</button>
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
+    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
   </div>
 </div>
 
@@ -62,12 +81,14 @@
   <a href="#">Edit</a>
   <a href="#">History</a>
 </div>
+</div>
+<!-- END NEDEX CHROME -->
 
 <div class="ndx-article-wrap">
   <div class="ndx-article-body">
 
     <div class="ndx-article-title">[COUNTRY NAME]</div>
-    <div class="ndx-article-subtitle">[NATIVE NAME IF DIFFERENT] · [GOVERNMENT TYPE] · Founded [YEAR]</div>
+    <div class="ndx-article-subtitle">[NATIVE NAME IF DIFFERENT] · [GOVERNMENT TYPE] · [Founded/Unified/Est.] [YEAR]</div>
 
     <div class="ndx-toc">
       <div class="ndx-toc-title">Contents</div>
@@ -82,27 +103,19 @@
 
     <div class="ndx-prose">
 
-      <!-- OPTIONAL: flag image -->
-      <div class="ndx-prose-img">
-        <img src="../../images/nedex/[FLAG-FILENAME]" alt="Flag of [COUNTRY]" />
-        <div class="ndx-prose-caption">Flag of [COUNTRY NAME]</div>
-      </div>
+      <p>The <strong>[COUNTRY NAME]</strong> ([NATIVE NAME IN ITALICS IF DIFFERENT]) is [ONE SENTENCE: type of state, location, key characteristics]. Its capital is <strong>[CAPITAL]</strong>.</p>
 
-      <p>The <strong>[COUNTRY NAME]</strong> is [ONE SENTENCE DESCRIPTION — type of state, location, key characteristics].</p>
-
-      <p>[SECOND PARAGRAPH — founding circumstances, current status, significance in the WBT world.]</p>
-
-      <div class="ndx-clearfix"></div>
+      <p>[SECOND PARAGRAPH: founding circumstances, current status, significance in the WBT world.]</p>
 
       <h2 class="ndx-section-head" id="history">History</h2>
 
-      <p>[FOUNDING AND EARLY HISTORY]</p>
+      <p>[FOUNDING AND EARLY HISTORY.]</p>
 
-      <div class="ndx-stub-notice">This section will be expanded to cover [TOPIC].</div>
+      <p>[CONTINUE AS NEEDED. Use ndx-sub-head h3 elements for sub-periods in longer histories.]</p>
 
       <h2 class="ndx-section-head" id="government">Government</h2>
 
-      <p>[GOVERNMENTAL STRUCTURE — head of state, legislature, parties, electoral system.]</p>
+      <p>[GOVERNMENTAL STRUCTURE: head of state, legislature, parties, electoral system.]</p>
 
       <h2 class="ndx-section-head" id="geography">Geography</h2>
 
@@ -110,16 +123,19 @@
 
       <h2 class="ndx-section-head" id="economy">Economy</h2>
 
-      <p>[ECONOMIC CHARACTER — industries, trade, currency, notable resources.]</p>
+      <p>[ECONOMIC CHARACTER: industries, trade, currency, notable resources.]</p>
 
       <h2 class="ndx-section-head" id="foreign">Foreign Relations</h2>
 
       <p>[INTERNATIONAL RELATIONSHIPS, TREATY MEMBERSHIPS, DIPLOMATIC POSTURE.]</p>
 
+      <!-- OPTIONAL: use for WBT divergence notes -->
+      <!--
       <div class="ndx-annotation">
         <div class="ndx-annotation-head">Historical Note</div>
-        [Any divergence from OTL worth flagging — e.g. why this country exists differently in this timeline.]
+        [Explanation of how/why this country differs from OTL.]
       </div>
+      -->
 
       <div class="ndx-categories">
         <strong>Categories:</strong>
@@ -136,20 +152,37 @@
 
     <div class="ndx-infobox">
       <div class="ndx-infobox-img">
-        <img src="../../images/nedex/[FLAG-FILENAME]" alt="Flag of [COUNTRY]" />
+        <img src="../../images/nedex/[FLAG-FILENAME]" alt="Flag of [COUNTRY NAME]" />
       </div>
       <div class="ndx-infobox-title">[COUNTRY NAME]</div>
       <div class="ndx-infobox-sub">[NATIVE NAME IF DIFFERENT]</div>
+      <div class="ndx-infobox-sub">Common name: [SHORT NAME]</div>
       <div class="ndx-infobox-row"><span class="ndx-infobox-label">Founded</span><span class="ndx-infobox-val">[YEAR]</span></div>
       <div class="ndx-infobox-row"><span class="ndx-infobox-label">System</span><span class="ndx-infobox-val">[GOVERNMENT TYPE]</span></div>
       <div class="ndx-infobox-row"><span class="ndx-infobox-label">Capital</span><span class="ndx-infobox-val">[CAPITAL CITY]</span></div>
+      <!-- DELETE if capital = largest city -->
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Largest city</span><span class="ndx-infobox-val">[LARGEST CITY]</span></div>
+      <!-- Use Head of state + Head of govt if roles are split; use just one Executive row if combined -->
       <div class="ndx-infobox-row"><span class="ndx-infobox-label">Head of state</span><span class="ndx-infobox-val">[NAME AND TITLE]</span></div>
       <div class="ndx-infobox-row"><span class="ndx-infobox-label">Head of govt</span><span class="ndx-infobox-val">[NAME AND TITLE]</span></div>
       <div class="ndx-infobox-row"><span class="ndx-infobox-label">Legislature</span><span class="ndx-infobox-val">[NAME OF LEGISLATURE]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Demonym</span><span class="ndx-infobox-val">[DEMONYM]</span></div>
       <div class="ndx-infobox-row"><span class="ndx-infobox-label">Language</span><span class="ndx-infobox-val">[OFFICIAL LANGUAGE(S)]</span></div>
       <div class="ndx-infobox-row"><span class="ndx-infobox-label">Currency</span><span class="ndx-infobox-val">[CURRENCY NAME]</span></div>
-      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Member of</span><span class="ndx-infobox-val">[TREATY ORGS — NAU, GPC, etc.]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Member of</span><span class="ndx-infobox-val">[TREATY ORGS]</span></div>
     </div>
+
+    <!-- OPTIONAL: rulers/dynasty widget — use for monarchies or states with notable succession lists -->
+    <!--
+    <div class="ndx-widget">
+      <div class="ndx-widget-head">[DYNASTY / LEADERS]</div>
+      <div class="ndx-widget-body">
+        <div class="ndx-rulers-row">[NAME] · [YEARS]</div>
+        <div class="ndx-rulers-row">[NAME] · [YEARS]</div>
+        <div class="ndx-rulers-row ndx-rulers-current">[NAME] · [YEAR]–</div>
+      </div>
+    </div>
+    -->
 
     <div class="ndx-widget">
       <div class="ndx-widget-head">See Also</div>
@@ -174,7 +207,6 @@
 </div>
 
 <script src="../../router.js"></script>
-<script src="nedex_index.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/[ARTICLE-SLUG]');
 function updateArcClock() {
