@@ -99,6 +99,10 @@
     background: var(--wh-blue);
     flex-wrap: wrap;
     border-bottom: 2px solid var(--wh-gold);
+    position: sticky;
+    top: 64px;
+    z-index: 90;
+}
   }
 
   .wh-nav a {
@@ -212,6 +216,7 @@
 </head>
 <body>
 
+<div class="arc-chrome">
 <div class="wm-topbar">
   <div class="arc-navbtns">
     <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
@@ -236,6 +241,7 @@
   <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
   <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
   <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
 </div>
 
 <div class="wh-hero">
