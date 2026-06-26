@@ -8,7 +8,7 @@ const ROUTES = {
   'nan.csn.pr.usa':                           '/nodes/csn/',
   'nan.linkvid.pr.usa':                       '/nodes/linkvid/',
   'nan.linkvid.pr.usa/films':                 '/nodes/linkvid/films.html',
-  'nan.linkvid.pr.usa/series':                '/nodes/linkvid/sereis.html',
+  'nan.linkvid.pr.usa/series':                '/nodes/linkvid/series.html',
   'nan.nedex.org.nau':                        '/nodes/nedex/',
   'nan.nedex.org.nau/browse':                 '/nodes/nedex/nedex_browse.html',
   'nan.nedex.org.nau/categories':             '/nodes/nedex/nedex_categories.html',
