@@ -12,6 +12,7 @@ const ROUTES = {
   'nan.nedex.org.nau':                        '/nodes/nedex/',
   'nan.nedex.org.nau/browse':                 '/nodes/nedex/nedex_browse.html',
   'nan.nedex.org.nau/categories':             '/nodes/nedex/nedex_categories.html',
+  'nan.nedex.org.nau/austria-hungary':        '/nodes/nedex/austria-hungary.html',
   'nan.nedex.org.nau/california':             '/nodes/nedex/california.html',
   'nan.nedex.org.nau/canada':                 '/nodes/nedex/canada.html',
   'nan.nedex.org.nau/central-america':        '/nodes/nedex/central-america.html',
