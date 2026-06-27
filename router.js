@@ -100,11 +100,11 @@ function navigate(rawInput) {
 function showNotFound(address) {
   const wrap = document.getElementById('wm-address-wrap');
   if (wrap) {
-    wrap.style.borderColor = '#A32D2D';
+    wrap.style.borderColor = 'var(--red)';
     wrap.style.boxShadow = '0 0 0 3px rgba(163,45,45,0.10)';
     const input = document.getElementById('wm-address-input');
     if (input) {
-      input.style.color = '#A32D2D';
+      input.style.color = 'var(--red)';
       setTimeout(() => {
         input.value = 'link://' + address;
         input.style.color = '';
