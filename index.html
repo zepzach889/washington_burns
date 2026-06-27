@@ -276,7 +276,7 @@ function renderHeadlines() {
 
   rest.forEach(s => {
     html += `<a class="wm-headline" href="${s.link}">
-      <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;color:${tagColor(s.tag)}">${s.tag}</div>
+      <div class="wm-tag" style="color:${tagColor(s.tag)}">
       <div class="wm-hl-hed">${s.hed}</div>
       <div class="wm-hl-dek">${s.dek}</div>
       <div class="wm-hl-meta">${s.meta}</div>
