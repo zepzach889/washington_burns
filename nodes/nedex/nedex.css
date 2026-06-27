@@ -556,3 +556,39 @@
   .ndx-article-sidebar { border-top: 0.5px solid var(--ndx-border); }
   .ndx-tpl-grid { grid-template-columns: 1fr; }
 }
+
+/* ── NEDEX SEARCH DROPDOWN ── */
+.ndx-search-drop {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 6px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  z-index: 99999;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: none;
+  border: 1px solid #d0c0a0;
+  width: 100%;
+  box-sizing: border-box;
+}
+.ndx-search-drop.open { display: block; }
+.ndx-search-drop a {
+  display: block;
+  padding: 10px 14px;
+  border-bottom: 1px solid #f0ece4;
+  text-decoration: none;
+  color: #202020;
+  background: #fff;
+}
+.ndx-search-drop a:hover { background: #fbf6ef; }
+.ndx-search-drop a:last-child { border-bottom: none; }
+.ndx-drop-title { font-family: 'DM Serif Display', serif; font-size: 14px; font-weight: normal; color: #202020; margin-bottom: 2px; display: block; }
+.ndx-drop-blurb { font-size: 11px; color: #666; display: block; line-height: 1.4; }
+.ndx-drop-cats  { font-size: 10px; color: #c87820; display: block; margin-top: 2px; }
+.ndx-drop-none  { padding: 16px 14px; color: #aaa; font-style: italic; font-size: 13px; text-align: center; display: block; }
+.ndx-drop-hi    { font-weight: bold; color: #c87820; }
