@@ -1,4 +1,3 @@
-// nedex-search.js — injects its own styles to avoid CSS conflicts
 
 function initNdxSearch() {
   if (typeof NEDEX_ARTICLES === 'undefined') return;
@@ -6,46 +5,6 @@ function initNdxSearch() {
   var inputEl = document.querySelector('.ndx-search');
   var btnEl   = document.querySelector('.ndx-search-btn');
   if (!inputEl) return;
-
-  // Inject dropdown styles directly — bypasses shared.css conflicts
-  var style = document.createElement('style');
-  style.textContent = [
-    '.ndx-search-drop {',
-    '  position: absolute !important;',
-    '  top: 100% !important;',
-    '  left: 0 !important;',
-    '  right: 0 !important;',
-    '  margin-top: 6px !important;',
-    '  background: #ffffff !important;',
-    '  border-radius: 8px !important;',
-    '  box-shadow: 0 8px 32px rgba(0,0,0,0.25) !important;',
-    '  z-index: 99999 !important;',
-    '  max-height: 400px !important;',
-    '  overflow-y: auto !important;',
-    '  overflow-x: hidden !important;',
-    '  display: none !important;',
-    '  border: 1px solid #d0c0a0 !important;',
-    '  width: 100% !important;',
-    '  box-sizing: border-box !important;',
-    '}',
-    '.ndx-search-drop.open { display: block !important; }',
-    '.ndx-search-drop a {',
-    '  display: block !important;',
-    '  padding: 10px 14px !important;',
-    '  border-bottom: 1px solid #f0ece4 !important;',
-    '  text-decoration: none !important;',
-    '  color: #202020 !important;',
-    '  background: #fff !important;',
-    '}',
-    '.ndx-search-drop a:hover { background: #fbf6ef !important; }',
-    '.ndx-search-drop a:last-child { border-bottom: none !important; }',
-    '.ndx-drop-title { font-family: "DM Serif Display", serif !important; font-size: 14px !important; font-weight: normal !important; color: #202020 !important; margin-bottom: 2px !important; display: block !important; }',
-    '.ndx-drop-blurb { font-size: 11px !important; color: #666 !important; display: block !important; line-height: 1.4 !important; }',
-    '.ndx-drop-cats  { font-size: 10px !important; color: #c87820 !important; display: block !important; margin-top: 2px !important; }',
-    '.ndx-drop-none  { padding: 16px 14px !important; color: #aaa !important; font-style: italic !important; font-size: 13px !important; text-align: center !important; display: block !important; }',
-    '.ndx-drop-hi    { font-weight: bold !important; color: #c87820 !important; }',
-  ].join('\n');
-  document.head.appendChild(style);
 
   // Make sure the search wrap is positioned
   var wrap = inputEl.closest('.ndx-search-wrap') || inputEl.parentNode;
