@@ -394,7 +394,7 @@ function doSearch(query) {
   const q = query.trim().toLowerCase();
   if (!q) { renderHeadlines(); return; }
 
-  const index = buildIndex();
+  const index = SEARCH_INDEX;
   const results = index.filter(item =>
     item.hed.toLowerCase().includes(q) ||
     (item.dek && item.dek.toLowerCase().includes(q)) ||
@@ -449,6 +449,7 @@ document.getElementById('wm-search').addEventListener('keydown', e => {
 
 // ── INIT ──
 renderHeadlines();
+const SEARCH_INDEX = buildIndex();
 
 // ── DYNAMIC NAX MARKETS ──
 function seededRand(seed) { const x = Math.sin(seed) * 10000; return x - Math.floor(x); }
