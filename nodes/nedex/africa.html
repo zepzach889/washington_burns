@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>Africa — Nedex</title>
+<link rel="stylesheet" href="../../shared.css">
+<link rel="stylesheet" href="nedex.css">
+</head>
+<body>
+
+<!-- NEDEX CHROME — keep in sync across all Nedex pages -->
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../linkvid/"><span class="arc-bmark-icon">🎥</span>LinkVid</a>
+  <a class="arc-bmark" href="../csn/"><span class="arc-bmark-icon">⚾</span>CSN</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+
+<div class="ndx-header">
+  <a class="ndx-logo" href="./">Nedex</a>
+  <span class="ndx-tagline">The Free Encyclopaedia</span>
+  <div class="ndx-search-wrap">
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
+    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+  </div>
+</div>
+
+<div class="ndx-subnav">
+  <a href="./">Main Page</a>
+  <a href="#" class="active">Article</a>
+  <a href="#">Talk</a>
+  <a href="#">Edit</a>
+  <a href="#">History</a>
+</div>
+</div>
+<!-- END NEDEX CHROME -->
+
+<div class="ndx-article-wrap">
+  <div class="ndx-article-body">
+
+    <div class="ndx-article-title">Africa</div>
+    <div class="ndx-article-subtitle">Continental overview · Colonial era, sovereign states, and postwar developments</div>
+
+    <div class="ndx-toc">
+      <div class="ndx-toc-title">Contents</div>
+      <ol>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#london-conference">The London Conference of 1872</a></li>
+        <li><a href="#north">North Africa</a>
+          <ol>
+            <li><a href="#algeria">Algeria · Kingdom of Algeria</a></li>
+            <li><a href="#egypt">Egypt</a></li>
+            <li><a href="#libya">Libya</a></li>
+            <li><a href="#morocco">Morocco</a></li>
+            <li><a href="#tunisia">Tunisia</a></li>
+          </ol>
+        </li>
+        <li><a href="#west">West Africa</a>
+          <ol>
+            <li><a href="#french-west">French West Africa</a></li>
+            <li><a href="#sokoto">Sokoto Caliphate</a></li>
+            <li><a href="#british-west">British West Africa</a></li>
+            <li><a href="#portuguese-guinea">Portuguese Guinea</a></li>
+          </ol>
+        </li>
+        <li><a href="#central">Central Africa</a>
+          <ol>
+            <li><a href="#prussian-kongo">Prussian Kongo</a></li>
+            <li><a href="#kamerun">Prussian Kamerun</a></li>
+            <li><a href="#angola">Portuguese Angola</a></li>
+          </ol>
+        </li>
+        <li><a href="#east">East Africa</a>
+          <ol>
+            <li><a href="#ethiopia">Ethiopia</a></li>
+            <li><a href="#zanzibar">Zanzibar</a></li>
+            <li><a href="#british-east">British East Africa</a></li>
+            <li><a href="#somali">The Somali Coast</a></li>
+            <li><a href="#mozambique">Portuguese Mozambique</a></li>
+          </ol>
+        </li>
+        <li><a href="#south">Southern Africa</a></li>
+        <li><a href="#postwar">The Postwar Era and Decolonization</a></li>
+      </ol>
+    </div>
+
+    <div class="ndx-prose">
+
+      <p>Africa is the world's second-largest continent, home to more than fifty distinct political entities in the modern era. Its nineteenth and early twentieth century history was shaped by the competing colonial ambitions of Europe's major powers — particularly France, Prussia, Britain, Italy, and Portugal — as well as by the resilience of several indigenous states that successfully maintained their sovereignty through the colonial era. The continent's political map was fundamentally redrawn by the <strong>London Conference of 1872</strong>, the <strong>Great European War</strong> (1899–1904), and the <strong>Global War</strong> (1932–1939), with the postwar period inaugurating a new era of decolonization and emerging national identities.</p>
+
+      <h2 class="ndx-section-head" id="london-conference">The London Conference of 1872</h2>
+
+      <p>The defining moment in nineteenth-century African history was the <strong>London Conference of 1872</strong>, jointly convened by Britain and Prussia in the year following the completion of the Suez Canal. Tensions over canal access and competing colonial ambitions had brought the two powers to the edge of confrontation; cooler heads prevailed, and delegations from Britain, Prussia, France, Portugal, Spain, Italy, and the Ottoman Empire gathered in London to formalise spheres of influence across the continent.</p>
+
+      <p>The Conference produced a broad partition framework that recognised existing colonial footholds and assigned interior spheres to the major powers. Crucially, it also produced several explicit recognitions of indigenous sovereignty — most notably for <strong>Ethiopia</strong> and the <strong>Sokoto Caliphate</strong>, the latter secured through Ottoman diplomatic advocacy. <strong>Zanzibar</strong> was likewise recognised as an independent sultanate with authority over the Swahili coast. These recognitions would prove consequential: Ethiopia, Zanzibar, and Sokoto endured as sovereign states throughout the colonial era, forming a distinct club of recognised African polities with voices at subsequent international conferences.</p>
+
+      <h2 class="ndx-section-head" id="north">North Africa</h2>
+
+      <h3 class="ndx-sub-head" id="algeria">Algeria · Kingdom of Algeria</h3>
+
+      <p>Conquered by France beginning in 1830, Algeria became the most developed and heavily settled French colonial territory in Africa. Its large European settler population made it distinct from France's other holdings, and it served increasingly as the real administrative heart of French overseas power as the nineteenth century progressed. Following the French Revolution of 1904 and the establishment of the Union of European Republics, the Bourbon court in exile on Corsica relied on Algeria more than any other territory to sustain its claim to legitimacy. By the 1930s, real governance of the Corsican monarchy was conducted from Algiers rather than Corsica itself.</p>
+
+      <p>Following the Global War, Allied forces occupied Corsica under the armistice terms, the Bourbon court fled to Algiers, and the Bourbon dynastic claim to metropolitan France was formally extinguished at the Treaty of Geneva (1939) as a condition of international recognition. The territory was reconstituted as the <strong>Kingdom of Algeria</strong>, with the Bourbon heir recognised as its king — a French settler state in all but name. The <strong>Kingdom of Algeria</strong> joined the Global Peace Council as a regular member. The indigenous Algerian population's relationship to the new kingdom — and the unresolved questions of sovereignty and self-determination that relationship entailed — became the defining political challenge of Algeria's postwar decades, and the source of a growing independence movement whose pressure would become increasingly difficult to ignore through the 1960s and 1970s.</p>
+
+      <h3 class="ndx-sub-head" id="egypt">Egypt</h3>
+
+      <p>Egypt under the Muhammad Ali dynasty maintained effective independence throughout the nineteenth and early twentieth centuries, governed as a Khedivate under nominal Ottoman suzerainty. Egypt never came under British occupation or protectorate status. The Istanbul Accord of 1919 formalised Egypt's autonomous position within the Ottoman framework, giving the Khedivate broad latitude over its internal and external affairs while acknowledging the Sultan's ceremonial suzerainty. Egypt's control of the Nile valley and its proximity to the Suez Canal made it a significant diplomatic actor throughout the colonial era. See also: <em>Ottoman Empire</em>.</p>
+
+      <h3 class="ndx-sub-head" id="libya">Libya</h3>
+
+      <p>Libya was absorbed into the Imperial Federation of Italy's sphere of influence in the late nineteenth century, representing Italy's primary African colonial interest. Unlike the more aggressive colonial projects of Britain, France, and Prussia, Italian Libya was administered with a relatively light hand, reflecting the Federation's character as a commercially minded rather than territorially acquisitive power. It served primarily as a Mediterranean strategic asset and a waystation for Italian Red Sea commerce.</p>
+
+      <h3 class="ndx-sub-head" id="morocco">Morocco</h3>
+
+      <p>Morocco was partitioned at the London Conference of 1872, with Spain receiving recognition of its existing northern coastal presence and France assigned the interior and southern zones. Following the French Revolution of 1904 and the collapse of effective Corsican administration over the French zone, Spain moved to absorb the French portion, consolidating control over the whole of Morocco by the early twentieth century.</p>
+
+      <h3 class="ndx-sub-head" id="tunisia">Tunisia</h3>
+
+      <p>Tunisia was absorbed by France in the 1880s as a natural eastward extension of Algeria, providing a contiguous North African coastal empire stretching from the Moroccan border to the Libyan frontier.</p>
+
+      <h2 class="ndx-section-head" id="west">West Africa</h2>
+
+      <h3 class="ndx-sub-head" id="french-west">French West Africa</h3>
+
+      <p>France's West African empire was the largest single colonial bloc on the continent, anchored at Senegal and extending eastward across the Sahel toward the borders of the Sokoto Caliphate, as well as southward through a series of coastal enclaves — including French Guinea, Ivory Coast, and Dahomey — punched between British holdings along the Gulf of Guinea. Thinly administered and heavily dependent on local accommodation, French West Africa remained nominally loyal to the Corsican Bourbon monarchy following 1904, though individual territories pursued their own practical arrangements with increasing independence as the decades passed.</p>
+
+      <h3 class="ndx-sub-head" id="sokoto">Sokoto Caliphate</h3>
+
+      <p>One of the most significant surviving indigenous states in Africa, the <strong>Sokoto Caliphate</strong> maintained its independence throughout the colonial era through a combination of diplomatic skill, Ottoman protection, and the geographical limits recognised at the London Conference of 1872. The Conference formally acknowledged Sokoto's sovereignty and drew boundary lines that constrained French eastward expansion in the Sahel. The Ottoman Empire, acting as informal patron to a fellow Islamic polity, was instrumental in securing this recognition. The Caliphate controls a substantial interior territory with a narrow corridor of coastal access, making it economically viable as well as politically sovereign. Its relationship with the Ottoman Empire — part diplomatic protection, part trans-Saharan commercial network — gave Sokoto an international reach unusual for an African state of this period.</p>
+
+      <h3 class="ndx-sub-head" id="british-west">British West Africa</h3>
+
+      <p>Britain's West African presence consisted of a series of coastal holdings — Sierra Leone, the Gold Coast, and the Lagos coastal strip — established over decades of commercial and anti-slavery activity. Without a grand Cape-to-Cairo continental vision driving British expansion, British West Africa remained relatively coastal in character, with less aggressive interior penetration than in other regional contexts. The interior boundary of British Nigeria was effectively set by the recognised limits of Sokoto Caliphate territory rather than by conquest.</p>
+
+      <h3 class="ndx-sub-head" id="portuguese-guinea">Portuguese Guinea</h3>
+
+      <p>Portugal retained its small coastal enclave on the West African coast, recognised at the London Conference of 1872 as part of the broader settlement formalising European holdings.</p>
+
+      <h2 class="ndx-section-head" id="central">Central Africa</h2>
+
+      <h3 class="ndx-sub-head" id="prussian-kongo">Prussian Kongo</h3>
+
+      <p>Prussia's flagship sub-Saharan colonial possession, <strong>Prussian Kongo</strong> encompassed the vast basin of the Kongo River and its tributaries — one of the largest territorial claims on the continent. Established following early Prussian expeditions to the Central African coast and formalised at the London Conference of 1872, the colony was administered with characteristic Prussian attention to infrastructure and order. Rail lines, fortified trading posts, and missionary networks extended into the interior. Its southern boundary with Portuguese Angola was deliberately left vague at the London Conference, producing a persistent low-level friction between Berlin and Lisbon throughout the late nineteenth and early twentieth centuries.</p>
+
+      <h3 class="ndx-sub-head" id="kamerun">Prussian Kamerun</h3>
+
+      <p>Prussia's second major African colony, <strong>Kamerun</strong> occupied the Gulf of Guinea coast and expanded inland toward the Lake Chad basin, bordering French West Africa to the north and west and Prussian Kongo to the south. Together with Prussian Kongo, it gave Prussia a substantial and contiguous Central African empire.</p>
+
+      <h3 class="ndx-sub-head" id="angola">Portuguese Angola</h3>
+
+      <p>Portugal's Angolan holdings on the southwestern African coast were recognised at the London Conference of 1872. Portugal sought at the Conference to secure a recognised land corridor connecting Angola to Portuguese Mozambique on the eastern coast — an ambition that was acknowledged on paper but left geographically unresolved given the presence of Prussian Kongo across the interior route.</p>
+
+      <h2 class="ndx-section-head" id="east">East Africa</h2>
+
+      <h3 class="ndx-sub-head" id="ethiopia">Ethiopia</h3>
+
+      <p><strong>Ethiopia</strong> stands as the most prominent example of successful African resistance to the colonial order. Fully independent throughout the colonial era, Ethiopia maintained and in some respects extended its territorial control, facing less direct military pressure from European powers than in other regional contexts. Its sovereignty was explicitly recognised at the London Conference of 1872, secured through Ottoman diplomatic advocacy in an informal arrangement concluded before the Conference convened. Ethiopia maintained pragmatic treaty relationships with Britain, the Ottoman Empire, and the Imperial Federation of Italy, and by the early twentieth century had established itself as one of the most diplomatically active independent African states — maintaining embassies in several European capitals and participating in international forums as a recognised sovereign.</p>
+
+      <h3 class="ndx-sub-head" id="zanzibar">Zanzibar</h3>
+
+      <p>The <strong>Sultanate of Zanzibar</strong> survived the colonial era as a genuinely independent state, its position secured by its commercial indispensability to multiple competing powers. Recognised at the London Conference of 1872, Zanzibar retained authority over the Swahili coast and exercised nominal suzerainty over portions of the southern Somali coast. Its strategic position between British Indian Ocean interests and Prussian Central African ambitions gave it leverage that the Sultan's court exploited with considerable skill. Zanzibar maintained formal treaty relationships with Britain, Prussia, and the Ottoman Empire simultaneously, making it a rare African voice in international diplomacy throughout this period.</p>
+
+      <h3 class="ndx-sub-head" id="british-east">British East Africa</h3>
+
+      <p>Britain's East African presence was shaped by Indian Ocean commercial logic rather than any grand continental vision. Approached from the Cape in the south and from Indian Ocean port networks in the east, British East Africa encompassed the Kenyan interior and extended into the Uganda corridor and the Great Lakes region — pushed into competitively to forestall Prussian expansion eastward from Kongo. Without Egypt as a strategic anchor, British East Africa was a more archipelago-like empire than in other contexts: a network of railway-connected interior stations rather than a coherent territorial bloc.</p>
+
+      <h3 class="ndx-sub-head" id="somali">The Somali Coast</h3>
+
+      <p>The Somali coast remained the most contested and least cleanly administered stretch of East Africa throughout the colonial era. The Imperial Federation of Italy maintained modest naval footholds at Assab and Massawa on the northern Red Sea coast — coaling stations and strategic waypoints rather than full colonial territories. Zanzibar exercised nominal suzerainty over the southern Somali coast. The interior was home to a series of local sultanates that played competing powers against one another with varying success. The result was persistent low-level instability and a patchwork of overlapping and contested claims that no single power ever fully resolved.</p>
+
+      <h3 class="ndx-sub-head" id="mozambique">Portuguese Mozambique</h3>
+
+      <p>Portugal's eastern African coastal holdings were recognised at the London Conference of 1872, providing the eastern bookend of Portugal's African empire alongside Portuguese Angola on the west coast.</p>
+
+      <h2 class="ndx-section-head" id="south">Southern Africa</h2>
+
+      <p>The political history of southern Africa — including the Dominion of South Africa, the Boer republics, the Zululand protectorate, and the postwar transition to majority rule — is covered in detail in the <em>South Africa</em> article.</p>
+
+      <h2 class="ndx-section-head" id="postwar">The Postwar Era and Decolonization</h2>
+
+      <p>The Global War (1932–1939) and its aftermath substantially altered the colonial map of Africa. The dissolution of the Corsican Bourbon monarchy and its reconstitution as the Kingdom of Algeria was the most dramatic immediate consequence. The defeat of Prussia eliminated it as a colonial power in Central Africa, and the fate of Prussian Kongo and Kamerun — administered under Allied oversight following the Treaty of Geneva — became a significant question in the postwar GPC framework. The weakening of Britain through eight years of global warfare accelerated the timeline of African self-governance across its East and West African holdings.</p>
+
+      <p>The postwar decades inaugurated a sustained era of decolonization across the continent. The existing sovereign African states — Ethiopia, Zanzibar, Sokoto, and the Kingdom of Algeria — participated in GPC institutions from the outset. New independence movements, drawing on the political language of self-determination that the GPC framework enshrined, pressed their claims against the remaining colonial powers through the 1950s, 1960s, and beyond. Africa's integration into the postwar global network was reflected in the establishment of <strong>AfricaNet</strong> as a founding regional node of the Interlink, connecting the continent's growing community of independent states to the global communications framework.</p>
+
+      <p>The longer arc of African decolonization — the specific trajectories of individual territories, the political movements that drove independence across French West Africa, British East Africa, and the Prussian holdings — remains a developing area of the continent's modern history.</p>
+
+      <div class="ndx-categories">
+        <strong>Categories:</strong>
+        <a href="#">Africa</a>
+        <a href="#">Continental overview articles</a>
+        <a href="#">Colonial history</a>
+        <a href="#">London Conference of 1872</a>
+        <a href="#">Global War</a>
+        <a href="#">Great European War</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ndx-article-sidebar">
+
+    <div class="ndx-infobox">
+      <div class="ndx-infobox-title">Africa</div>
+      <div class="ndx-infobox-sub">Continental overview</div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Defining event</span><span class="ndx-infobox-val">London Conference of 1872<br>(colonial partition)</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Sovereign African states<br>(colonial era)</span><span class="ndx-infobox-val">Ethiopia · Zanzibar<br>Sokoto Caliphate</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Major colonial powers</span><span class="ndx-infobox-val">Britain · Prussia · France<br>Italy · Portugal · Spain</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Post-Global War state</span><span class="ndx-infobox-val">Kingdom of Algeria<br>(GPC regular member)</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Postwar network</span><span class="ndx-infobox-val">AfricaNet<br>(founding Interlink node)</span></div>
+    </div>
+
+    <div class="ndx-widget">
+      <div class="ndx-widget-head">See Also</div>
+      <div class="ndx-widget-body">
+        <a class="ndx-widget-link" href="#">London Conference of 1872</a>
+        <a class="ndx-widget-link" href="#">Kingdom of Algeria</a>
+        <a class="ndx-widget-link" href="#">Ethiopia</a>
+        <a class="ndx-widget-link" href="#">Zanzibar</a>
+        <a class="ndx-widget-link" href="#">Sokoto Caliphate</a>
+        <a class="ndx-widget-link" href="#">Prussian Kongo</a>
+        <a class="ndx-widget-link" href="#">South Africa</a>
+        <a class="ndx-widget-link" href="#">Ottoman Empire</a>
+        <a class="ndx-widget-link" href="#">Great European War (1899–1904)</a>
+        <a class="ndx-widget-link" href="#">Global War</a>
+        <a class="ndx-widget-link" href="#">Global Peace Council</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="ndx-footer">
+  <span>link://nan.nedex.org.nau/africa &nbsp;·&nbsp; Nedex — The Free Encyclopaedia</span>
+  <div class="ndx-footer-links">
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script>
+initAddressBar('nan.nedex.org.nau/africa');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+</body>
+</html>
