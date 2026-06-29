@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>Chosŏn — Nedex</title>
+<link rel="stylesheet" href="../../shared.css">
+<link rel="stylesheet" href="nedex.css">
+</head>
+<body>
+
+<!-- NEDEX CHROME — keep in sync across all Nedex pages -->
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../linkvid/"><span class="arc-bmark-icon">🎥</span>LinkVid</a>
+  <a class="arc-bmark" href="../csn/"><span class="arc-bmark-icon">⚾</span>CSN</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+
+<div class="ndx-header">
+  <a class="ndx-logo" href="./">Nedex</a>
+  <span class="ndx-tagline">The Free Encyclopaedia</span>
+  <div class="ndx-search-wrap">
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
+    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+  </div>
+</div>
+
+<div class="ndx-subnav">
+  <a href="./">Main Page</a>
+  <a href="#" class="active">Article</a>
+  <a href="#">Talk</a>
+  <a href="#">Edit</a>
+  <a href="#">History</a>
+</div>
+</div>
+<!-- END NEDEX CHROME -->
+
+<div class="ndx-article-wrap">
+  <div class="ndx-article-body">
+
+    <div class="ndx-article-title">Chosŏn</div>
+    <div class="ndx-article-subtitle">조선 왕국 (Joseon Wangguk) · Constitutional monarchy · Yi Dynasty est. 1392 · Korean Peninsula</div>
+
+    <div class="ndx-toc">
+      <div class="ndx-toc-title">Contents</div>
+      <ol>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#yi-dynasty">The Yi Dynasty and the Hermit Kingdom</a></li>
+        <li><a href="#haeju">The Treaty of Haeju and the British Client Period</a></li>
+        <li><a href="#gyeongyin">The Gyeongyin Rising and the Convention of Seoul</a></li>
+        <li><a href="#loosening">The Loosening of the British Grip</a></li>
+        <li><a href="#shadow">Consolidation and the Shadow of China</a></li>
+        <li><a href="#global-war">The Global War — Asian Theater (1932–1941)</a></li>
+        <li><a href="#independence">Independence and the Postwar Order</a></li>
+        <li><a href="#choson-war">The Chosŏn War (1966–1967)</a>
+          <ol>
+            <li><a href="#coup">The Coup and Opening Crisis</a></li>
+            <li><a href="#busan-again">Busan Again: The Legitimist Government</a></li>
+            <li><a href="#liberation">Liberation and the Death of Yi Un</a></li>
+            <li><a href="#delhi">The Treaty of Delhi (1968)</a></li>
+          </ol>
+        </li>
+        <li><a href="#government">Government and Politics</a></li>
+        <li><a href="#monarchs">Monarchs of the Yi Dynasty</a></li>
+        <li><a href="#premiers">Premiers of Chosŏn</a></li>
+      </ol>
+    </div>
+
+    <div class="ndx-prose">
+
+      <p>The <strong>Kingdom of Chosŏn</strong> (조선 왕국, <em>Joseon Wangguk</em>), also rendered in English as <strong>Korea</strong>, is a constitutional monarchy occupying the Korean Peninsula in East Asia. Ruled continuously by the Yi Dynasty since 1392, Chosŏn entered the modern era as a formally sovereign state under heavy British influence, becoming a protectorate of the British Empire in 1890 following the Gyeongyin Rising. For five decades, the kingdom navigated the competing ambitions of the great powers while a domestic reform movement gradually expanded the scope of Korean self-governance.</p>
+
+      <p>When the Global War brought Chinese forces to the gates of Busan in the winter of 1935–1936, Chosŏn's survival depended on Allied intervention. The Asian ceasefire of 1940 and the formal settlement of 1941 restored Chosŏn as a fully independent state — no longer a British client — with a constitutional order shaped by the reformist tradition of <strong>Han Byeong-uk</strong>, who became the kingdom's first elected Premier. Independent but geographically vulnerable, Chosŏn maintained a policy of deliberate neutrality through the postwar decades, its security situation defined by proximity to an undefeated China and a complex relationship with Japan.</p>
+
+      <p>That neutrality was tested and ultimately shattered by the <strong>Chosŏn War of 1966–1967</strong>, when a Chinese-backed coup seized Seoul, captured King Yi Un, and installed a pro-engagement government. The legitimist government reconstituted itself in Busan — the city that had already symbolized Korean survival once — and, with Japanese and NAU forces, fought to restore the legitimate constitutional order. The war's resolution, codified in the <strong>Treaty of Delhi</strong> (1968), is regarded by Korean historians as the second founding of Korean independence, more durable than the first. <strong>King Gwangjo</strong> (Yi Gu-won), who ascended the throne following the death of Yi Un during Seoul's liberation, reigns today.</p>
+
+      <h2 class="ndx-section-head" id="yi-dynasty">The Yi Dynasty and the Hermit Kingdom</h2>
+
+      <p>The Yi Dynasty — formally the House of Jeonju Yi — has governed the Korean Peninsula since the founding of the Joseon state in 1392. For nearly five centuries, the kingdom maintained a Confucian social order administered by the aristocratic yangban scholarly class, with formal tributary ties to successive Chinese dynasties acknowledging Chinese suzerainty without surrendering meaningful domestic sovereignty. Contact with the Western world was actively resisted through much of the eighteenth and early nineteenth centuries; European and American vessels attempting to open trade relations were repelled, earning Chosŏn the designation among Western observers as the "Hermit Kingdom."</p>
+
+      <p>By the mid-nineteenth century this policy of strict isolation had become increasingly untenable. The expansion of British commercial and naval power across East Asia — accelerating with the opening of Chinese treaty ports — placed Chosŏn in a precarious position. Britain's interest in the peninsula was primarily strategic: control of the sea lanes between the Yellow Sea and the Sea of Japan, and the denial of Korean ports to rival powers. The accession of King Gojong in 1864, under the regency of his father Heungseon Daewongun, initially produced a reinvigoration of the isolationist tradition. Daewongun's reforms strengthened royal authority and expelled foreign missionaries, but could not indefinitely forestall the pressure building from the sea.</p>
+
+      <h2 class="ndx-section-head" id="haeju">The Treaty of Haeju and the British Client Period</h2>
+
+      <p>In 1867, following sustained diplomatic pressure and the implied threat of a naval demonstration, the court of King Gojong signed the <strong>Treaty of Haeju</strong> with representatives of the British Empire. The treaty opened the ports of Incheon and Wonsan to British and, under most-favored-nation provisions, general foreign commerce. British advisors entered Korean customs houses, naval installations, and educational academies within the following years. The formal sovereignty of the Yi Dynasty was not disturbed — Gojong remained king, his court continued to function, and the Confucian administrative apparatus persisted — but practical authority over Chosŏn's external relations had shifted irrevocably toward London.</p>
+
+      <p>Daewongun opposed the treaty bitterly and his influence at court diminished in its aftermath. Gojong, assuming personal rule through the late 1860s and 1870s, pursued a cautious course: accommodating British demands sufficiently to forestall further encroachment while seeking where possible to preserve the substance of Korean sovereignty. The Qing court in Beijing protested the treaty, regarding Chosŏn's formal tributary relationship with China as precluding such arrangements with Western powers. Britain's naval predominance made Chinese protests effectively symbolic.</p>
+
+      <p>In the early 1870s, an informal diplomatic understanding between Britain and Russia — never published and always denied by both parties — established a quiet partition of influence over the peninsula. Under this <strong>Wonsan Agreement</strong>, Russia received preferred commercial access to the port of Wonsan, where Russian merchant vessels and ships of the Imperial Navy were guaranteed welcome treatment. In exchange, Russia acknowledged the southern peninsula and its sea lanes as a British sphere, and committed not to press further claims in Chosŏn. The arrangement suited both powers: Britain secured its strategic position without the costs of formal annexation; Russia obtained a Pacific commercial foothold without the risks of confrontation with the Royal Navy. The Korean court was not consulted.</p>
+
+      <p>Through the 1870s and 1880s, the depth of British entanglement in Korean affairs steadily increased. British advisors shaped the reorganization of the customs service and the curriculum of modernizing schools in Seoul and Incheon. A small number of Korean students began traveling to Britain for education — the first generation of Koreans who would return fluent in English and conversant with European constitutional theory. The yangban class grew increasingly divided between a conservative faction that resented foreign influence and a nascent reformist faction that saw in British constitutional models a path toward a modern, self-governing Korea.</p>
+
+      <h2 class="ndx-section-head" id="gyeongyin">The Gyeongyin Rising and the Convention of Seoul</h2>
+
+      <p>In 1890 — the Year of the Metal Tiger, Gyeongyin in the traditional Korean calendar — a major domestic uprising erupted across the southern and central provinces. Rooted in the grievances of the peasantry against the yangban landlord class and drawing on the Donghak religious reform movement, which preached a synthesis of Confucian, Buddhist, and shamanist thought in opposition to both foreign influence and domestic corruption, the <strong>Gyeongyin Rising</strong> threatened to overwhelm the dynasty's military capacity. Rebel forces advanced toward Seoul, and the court of King Gojong, judging its own forces insufficient to suppress the rising before the capital was endangered, requested British military assistance.</p>
+
+      <p>British naval and ground forces intervened through the latter months of 1890, suppressing the rising across several seasons of difficult campaigning in the peninsula's interior. The price of that intervention was made explicit in the negotiations that followed. The <strong>Convention of Seoul</strong>, signed in late 1890, formalized the British protectorate over Chosŏn. The Yi Dynasty retained the throne, the court, and internal administrative functions; the British Resident-General, headquartered in Seoul, assumed control over the kingdom's foreign relations and defense. The Donghak movement was suppressed but not extinguished; its energies went underground, feeding a current of nationalist sentiment that would surface again in later decades.</p>
+
+      <p>Gojong remained on the throne as a protectorate monarch — formally sovereign, practically constrained. His court papers suggest a man engaged in continuous subtle maneuvering to preserve whatever Korean prerogatives the Resident-General could be persuaded to leave untouched.</p>
+
+      <h2 class="ndx-section-head" id="loosening">The Loosening of the British Grip</h2>
+
+      <p>The upheavals of the early twentieth century significantly altered Chosŏn's position. The establishment of the Zhongxing Dynasty in China in 1903 — a nationalist, constitutionally modernizing, and expansionist regime — and the Japanese republican revolution of 1904 remade the strategic landscape of East Asia. Britain, its imperial resources increasingly stretched across multiple commitments, found the intensive management of its East Asian client relationships harder to sustain. The Wonsan Agreement dissolved quietly; Russia, satisfied with its commercial position, did not press its claims as British authority loosened.</p>
+
+      <p>In practice, the Resident-General's role grew more advisory than directive through the 1910s. Korean reformists, sensing the shift, moved to capitalize on it. The Council of Advisors Reform Act of 1907 had established a consultative body with limited legislative powers. The reform faction within the yangban and the growing educated urban class pushed through the following decade for an elected council with genuine authority.</p>
+
+      <p>The figure who emerged as the movement's defining voice was <strong>Han Byeong-uk</strong> (한병욱, 1874–), born to a yangban family in Gyeonggi Province, educated partly in Seoul's British-influenced academies and partly in London, where he spent several formative years in the early 1900s. Han returned to Chosŏn as a committed constitutionalist — persuaded that Korean self-governance was achievable within the British framework if pursued with patience and political skill, and that confrontation with British power before Korea had built the institutions and educated class to sustain independence would be self-defeating. His approach earned him the hostility of more radical nationalists and the cautious respect of successive British Residents-General, who found him a reliable interlocutor even when they distrusted his goals.</p>
+
+      <h2 class="ndx-section-head" id="shadow">Consolidation and the Shadow of China</h2>
+
+      <p>King Gojong died in 1919, having reigned for fifty-five years. His passing was mourned across the peninsula; whatever the constraints of his protectorate kingdom, he had preserved the Yi Dynasty and the Korean throne through an era that had eliminated the sovereignty of far stronger states. He was succeeded by his son Sunjong (Yi Cheok), whose health had always been fragile. Sunjong's reign was brief — he died in 1925 without issue — and was succeeded in turn by his younger brother <strong>Yi Un</strong>, who ascended the throne at twenty-eight years of age.</p>
+
+      <p>In the early 1920s, Han Byeong-uk negotiated the expansion of the Council of Advisors into a body with elected membership and genuine legislative authority over domestic affairs. The reform fell short of full self-government — foreign policy and defense remained under Resident-General oversight — but represented the most substantial expansion of Korean self-governance since the Convention of Seoul.</p>
+
+      <p>The consolidation of Chosŏn's reform institutions took place against a backdrop of rising anxiety about Chinese intentions. The Zhongxing Dynasty, having spent two decades building a modern military and centralizing state power, grew more assertive through the late 1920s. Its nationalist ideology regarded the British treaty port system as a humiliation to be reversed and British dominance in East Asia as an obstacle to China's rightful regional primacy. For Chosŏn's political establishment, the Chinese threat paradoxically reinforced the British connection even as British authority over the kingdom continued to loosen: whatever its frustrations, the protectorate remained a security guarantee against a neighbor that made no secret of its ambitions.</p>
+
+      <h2 class="ndx-section-head" id="global-war">The Global War — Asian Theater (1932–1941)</h2>
+
+      <p>In 1932, the Global War reached East Asia. China, judging that British attention was fully consumed by the Prussian invasion of UER territories in Europe, launched simultaneous attacks on the British treaty ports of Hong Kong and Shanghai and on the Kingdom of Chosŏn. The assault on Chosŏn was rapid and overwhelming. Chinese forces crossed the northern border in force, driving the combined Korean and British garrison armies southward in a fighting retreat that sacrificed province after province. Seoul fell within months. By late 1935, after three years of grinding defeat, Allied forces held only a narrow defensive perimeter around the southern port city of <strong>Busan</strong>.</p>
+
+      <p>The <strong>Defense of Busan</strong>, through the winter of 1935–1936, became the defining episode of the Asian theater — a brutal, static struggle fought in frozen terrain along a perimeter that at its narrowest measured only a few dozen miles. King Yi Un remained in Busan throughout the siege, a decision of considerable symbolic importance; Han Byeong-uk coordinated the kingdom's wartime civil administration from the same city, representing Chosŏn's interests in Allied diplomatic councils. American forces, whose congressional declaration of war came in the spring of 1935, arrived in significant numbers through the winter and spring of 1936, stabilizing the perimeter and enabling the counteroffensive that followed.</p>
+
+      <p>The Allied counteroffensive beginning in spring 1936 was a slow, costly northward advance — two years of grinding combat pushing Chinese forces back across terrain they had taken in a matter of months. The front stabilized near the original border by 1938, where it remained until the ceasefire negotiations of 1940.</p>
+
+      <p>The Asian ceasefire, brokered through Russian intermediaries, ended the shooting in late 1940. The formal settlement terms were finalized under American President Freeman in late 1941. China retained the British treaty ports. Chosŏn was restored as an explicitly neutral independent state — no longer a British client, its protectorate status permanently extinguished. Britain, its imperial resources depleted by eight years of global warfare, lacked the capacity to insist on restoring the prewar arrangement even had it wished to do so.</p>
+
+      <h2 class="ndx-section-head" id="independence">Independence and the Postwar Order</h2>
+
+      <p>The postwar constitutional settlement formalized the constitutional monarchy that Han Byeong-uk's reform movement had been building toward for three decades. King Yi Un remained as head of state; an elected <strong>Royal Council</strong> assumed full legislative authority; and the office of <strong>Premier</strong> — elected by the Council — became the seat of executive government. Han Byeong-uk, seventy-six years old and the most consequential Korean political figure of his generation, was elected the kingdom's first Premier by the Royal Council in the autumn of 1940. His government's guiding principle was deliberate neutrality: neither the Allied powers nor China would find in Chosŏn a reliable client.</p>
+
+      <p>Chosŏn became a founding member of the Global Peace Council — membership in the international body offered a measure of diplomatic protection for a small state in a dangerous neighborhood. The kingdom's security situation remained precarious: China retained the British treaty ports, its appetite for regional influence unsatisfied; Japan, exhausted but undefeated, nursed its own postwar anxieties across the sea. Han Byeong-uk served as Premier through the early 1940s, retiring in his later years to the role of elder statesman. He is regarded in Korean historiography as the father of Korean independence.</p>
+
+      <h2 class="ndx-section-head" id="choson-war">The Chosŏn War (1966–1967)</h2>
+
+      <h3 class="ndx-sub-head" id="coup">The Coup and Opening Crisis</h3>
+
+      <p>The postwar neutrality that Han Byeong-uk had built as Chosŏn's guiding principle did not go unchallenged. Through the 1950s and early 1960s, Chinese economic penetration of Chosŏn's northern provinces produced a domestic political faction — the pro-engagement bloc — that argued for closer alignment with Beijing. In the Royal Council elections of late 1965, the neutralist bloc under Premier <strong>Park Sung-jin</strong> won a narrow majority. The pro-engagement faction contested the result, alleging irregularities in three northern provinces, but the electoral commission upheld it.</p>
+
+      <p>In early 1966, a coordinated coup struck Seoul. Clearly prepared well in advance of the election, the action combined an internal uprising by pro-engagement military officers with Chinese-backed forces moving on the capital simultaneously. Park Sung-jin escaped the capital in the opening hours, forewarned by a loyalist officer. Crown Prince <strong>Yi Gu-won</strong> escaped separately the same night. King Yi Un, however, was taken in the palace before dawn and placed in coup government custody. Presented at a staged ceremony within days, Yi Un was visibly diminished but refused to sign documents of substance — his compliance minimal and visibly coerced throughout his captivity.</p>
+
+      <h3 class="ndx-sub-head" id="busan-again">Busan Again: The Legitimist Government</h3>
+
+      <p>The legitimist government reconstituted itself in <strong>Busan</strong> — a deliberate choice whose symbolism was lost on no one in the room. Park Sung-jin served as Premier; Yi Gu-won assumed the role of Regent and genuine governing partner. No NAU member state recognized the coup government.</p>
+
+      <p>Japan moved militarily within weeks of the coup, before NAU forces were in position — Chosŏn on Japan's doorstep, and a Chinese-aligned Korean peninsula represented an existential change to Japanese security regardless of what the North American nations decided. NAU forces, whose logistics of projecting power across the Pacific took months to assemble, reached full operational strength by autumn 1966. Through the spring and summer, Japan bore the heaviest early casualties. The front lines eventually stabilized, but Chinese material support to the coup government continued at levels that prevented decisive breakthrough, and the war settled into a grinding rhythm with no clear resolution visible.</p>
+
+      <p>The decisive shift came in the summer of 1967, when the Continental Defense Council authorized conventional bombing strikes on Beijing and Shanghai — targeting governmental and industrial infrastructure, not civilian populations, with a message deliberately layered: the NAU could reach China at home, and had chosen not to use nuclear weapons. The sun bomb deterrent held; moderates within the Chinese government made the anticipated argument that NAU retaliation for nuclear use would end the dynasty. Chinese material support to the coup government dropped sharply within weeks.</p>
+
+      <h3 class="ndx-sub-head" id="liberation">Liberation and the Death of Yi Un</h3>
+
+      <p>Legitimist and NAU forces liberated Seoul in late September and early October of 1967 as coup government forces collapsed. King Yi Un died during the liberation. The circumstances remain disputed — whether he died in crossfire, at the hands of retreating coup forces, or through some deliberate act in the chaos of the city's fall has never been definitively established. A GPC accountability mechanism established by the subsequent Treaty of Delhi produced findings a decade later that satisfied nobody completely. The coup government's surviving civilian leadership spent years denying culpability.</p>
+
+      <p>Yi Gu-won received word of his father's death during the final military operations to secure the capital, and continued. Premier Park Sung-jin later called it the most remarkable thing he witnessed in public life.</p>
+
+      <h3 class="ndx-sub-head" id="delhi">The Treaty of Delhi (1968)</h3>
+
+      <p>Settlement negotiations ran through the autumn and winter of 1967–1968, conducted in <strong>New Delhi</strong> — the only plausible neutral venue that all parties would accept, hosted by an India that had deliberately cultivated a non-aligned diplomatic identity since its independence. Yi Gu-won and Park Sung-jin negotiated carrying fresh grief, pressing the question of accountability for Yi Un's death hard enough to establish the record, but not so hard as to derail the settlement. The GPC accountability mechanism was a direct result of their insistence.</p>
+
+      <p>The <strong>Treaty of Delhi</strong>, signed in February or March 1968, secured Chosŏn's independence under GPC-mandated monitoring and explicit security guarantees — more durable than the 1940 ceasefire and the 1941 settlement it had rested on. China retained the British treaty ports; no clean mechanism for their return existed, and pressing the point would have broken the settlement. Russia, which had provided diplomatic cover for the coup government at the GPC in the war's early months, paid a price: the GPC's subsequent doubling-down on Finnish and Polish independence was a direct consequence.</p>
+
+      <p>Yi Gu-won returned to Seoul and was enthroned as <strong>King Gwangjo</strong> — thirty-nine years old at his accession. Korean historians call the Treaty of Delhi the second founding of Korean independence. Japan and Chosŏn emerged from the war in a relationship of tested mutual commitment, functionally close to NAU membership without the formality. The GPC emerged with genuine enforcement credibility for the first time in its history. India, as broker, established non-alignment as a credible doctrine with real diplomatic weight.</p>
+
+      <h2 class="ndx-section-head" id="government">Government and Politics</h2>
+
+      <p>Chosŏn is governed as a constitutional monarchy. The <strong>King</strong> serves as head of state with ceremonial and symbolic authority. The elected <strong>Royal Council</strong> holds full legislative authority. The <strong>Premier</strong>, elected by the Royal Council, serves as head of government. The constitutional settlement of 1940–1941 established this framework; the Treaty of Delhi (1968) reaffirmed and strengthened it following the crisis of the Chosŏn War.</p>
+
+      <h2 class="ndx-section-head" id="monarchs">Monarchs of the Yi Dynasty (Modern Era)</h2>
+
+      <table class="ndx-table">
+        <thead>
+          <tr><th>Reign</th><th>Name</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1864–1919</td><td>Gojong</td><td>Long reign; navigated the British client relationship; preserved the Yi Dynasty through the protectorate era</td></tr>
+          <tr><td>1919–1925</td><td>Sunjong (Yi Cheok)</td><td>Fragile health; died without issue</td></tr>
+          <tr><td>1925–1967</td><td>Yi Un</td><td>Wartime king; presided over independence 1940–41; captured in the 1966 coup; died during liberation of Seoul 1967</td></tr>
+          <tr><td>1967–present</td><td>Gwangjo (Yi Gu-won)</td><td>Served as Regent of the legitimist government during the Chosŏn War; enthroned after Seoul's liberation; Treaty of Delhi signed during his reign</td></tr>
+        </tbody>
+      </table>
+
+      <h2 class="ndx-section-head" id="premiers">Premiers of Chosŏn</h2>
+
+      <table class="ndx-table">
+        <thead>
+          <tr><th>#</th><th>Name</th><th>Term</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Han Byeong-uk</td><td>1940–c. early 1940s</td><td>First Premier; architect of the constitutional settlement; regarded as the father of Korean independence</td></tr>
+          <tr><td>—</td><td>Park Sung-jin</td><td>1965–</td><td>Neutralist bloc leader; led legitimist government from Busan during the Chosŏn War; negotiated the Treaty of Delhi</td></tr>
+        </tbody>
+      </table>
+
+      <div class="ndx-categories">
+        <strong>Categories:</strong>
+        <a href="#">Countries</a>
+        <a href="#">Asian nations</a>
+        <a href="#">Constitutional monarchies</a>
+        <a href="#">Global Peace Council members</a>
+        <a href="#">Global War</a>
+        <a href="#">Chosŏn War</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ndx-article-sidebar">
+
+    <div class="ndx-infobox">
+      <div class="ndx-infobox-img">
+        <img src="../../images/nedex/choson.png" alt="Flag of the Kingdom of Chosŏn" />
+      </div>
+      <div class="ndx-infobox-title">Chosŏn</div>
+      <div class="ndx-infobox-sub">조선 왕국 (Joseon Wangguk)</div>
+      <div class="ndx-infobox-sub">Common name: Chosŏn; Korea</div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Yi Dynasty</span><span class="ndx-infobox-val">Founded 1392</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Independence</span><span class="ndx-infobox-val">1941 (Asian settlement)<br>1968 (Treaty of Delhi)</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">System</span><span class="ndx-infobox-val">Constitutional monarchy</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Capital</span><span class="ndx-infobox-val">Seoul (Hanyang)</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Head of state</span><span class="ndx-infobox-val">King Gwangjo (Yi Gu-won)<br>enthroned 1967</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Head of govt</span><span class="ndx-infobox-val">Premier Park Sung-jin</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Legislature</span><span class="ndx-infobox-val">Royal Council</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Language</span><span class="ndx-infobox-val">Korean (official)</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Member of</span><span class="ndx-infobox-val">Global Peace Council</span></div>
+    </div>
+
+    <div class="ndx-widget">
+      <div class="ndx-widget-head">See Also</div>
+      <div class="ndx-widget-body">
+        <a class="ndx-widget-link" href="#">Han Byeong-uk</a>
+        <a class="ndx-widget-link" href="#">Park Sung-jin</a>
+        <a class="ndx-widget-link" href="#">King Gwangjo (Yi Gu-won)</a>
+        <a class="ndx-widget-link" href="#">Chosŏn War (1966–1967)</a>
+        <a class="ndx-widget-link" href="#">Treaty of Delhi (1968)</a>
+        <a class="ndx-widget-link" href="#">Defense of Busan</a>
+        <a class="ndx-widget-link" href="#">Global War</a>
+        <a class="ndx-widget-link" href="#">Global Peace Council</a>
+        <a class="ndx-widget-link" href="#">Japan</a>
+        <a class="ndx-widget-link" href="#">Zhongxing Dynasty</a>
+        <a class="ndx-widget-link" href="#">British Empire</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="ndx-footer">
+  <span>link://nan.nedex.org.nau/choson &nbsp;·&nbsp; Nedex — The Free Encyclopaedia</span>
+  <div class="ndx-footer-links">
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script>
+initAddressBar('nan.nedex.org.nau/choson');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+</body>
+</html>
