@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>Kingdom of Prussia — Nedex</title>
+<link rel="stylesheet" href="../../shared.css">
+<link rel="stylesheet" href="nedex.css">
+</head>
+<body>
+
+<!-- NEDEX CHROME — keep in sync across all Nedex pages -->
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../linkvid/"><span class="arc-bmark-icon">🎥</span>LinkVid</a>
+  <a class="arc-bmark" href="../csn/"><span class="arc-bmark-icon">⚾</span>CSN</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+
+<div class="ndx-header">
+  <a class="ndx-logo" href="./">Nedex</a>
+  <span class="ndx-tagline">The Free Encyclopaedia</span>
+  <div class="ndx-search-wrap">
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
+    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+  </div>
+</div>
+
+<div class="ndx-subnav">
+  <a href="./">Main Page</a>
+  <a href="#" class="active">Article</a>
+  <a href="#">Talk</a>
+  <a href="#">Edit</a>
+  <a href="#">History</a>
+</div>
+</div>
+<!-- END NEDEX CHROME -->
+
+<div class="ndx-article-wrap">
+  <div class="ndx-article-body">
+
+    <div class="ndx-article-title">Kingdom of Prussia</div>
+    <div class="ndx-article-subtitle">Königreich Preußen · Constitutional monarchy · 1701–1996 · Northern-central Europe</div>
+
+    <div class="ndx-toc">
+      <div class="ndx-toc-title">Contents</div>
+      <ol>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#background">Background: Prussia before 1847</a></li>
+        <li><a href="#constitutional">The Constitutional Monarchy (1847–1899)</a>
+          <ol>
+            <li><a href="#revolution">The Revolution of 1847 and the Constitution</a></li>
+            <li><a href="#fwv">The Reign of Frederick William V (1847–1907)</a></li>
+            <li><a href="#politics">Early Political Development</a></li>
+            <li><a href="#union">Prussia and the Union of German States</a></li>
+          </ol>
+        </li>
+        <li><a href="#gew">The Great European War (1899–1904)</a></li>
+        <li><a href="#postwar-gew">Postwar Consolidation</a></li>
+        <li><a href="#ka1">Karl-Albrecht I and the Interwar Decades (1907–1929)</a></li>
+        <li><a href="#ka2">Karl-Albrecht II and the Road to the Global War (1929–1938)</a></li>
+        <li><a href="#global-war">The Global War and the Democratic Revolution (1932–1939)</a></li>
+        <li><a href="#hermit">The Hermit Kingdom (1938–1994)</a></li>
+        <li><a href="#franz">The Franz Crisis and Collapse (1994–1995)</a></li>
+        <li><a href="#reunification">Reunification and Dissolution (1995–1996)</a></li>
+        <li><a href="#legacy">Legacy</a></li>
+        <li><a href="#monarchs">Monarchs of Prussia</a></li>
+      </ol>
+    </div>
+
+    <div class="ndx-prose">
+
+      <p>The <strong>Kingdom of Prussia</strong> (<em>Königreich Preußen</em>) was a constitutional monarchy in northern-central Europe that served as the dominant member state of the Union of German States from the Union's founding in 1857 until the outbreak of the Global War. Ruled by the <strong>House of Hohenzollern</strong>, Prussia was the largest and most populous state in the Union, and its capital, <strong>Berlin</strong>, functioned in practice as the capital of the Union itself.</p>
+
+      <p>Prussia's modern constitutional order dated from the Revolution of 1847, when popular pressure forced the abdication of Frederick William IV and the promulgation of the Constitution of 1847 under his son, <strong>Frederick William V</strong>. The long reign of Frederick William V (1847–1907) established Prussia as a stable constitutional monarchy with a genuinely functioning parliament, though later decades saw the executive increasingly concentrate power in Berlin at the expense of both domestic parliamentary independence and the broader Union's member states.</p>
+
+      <p>The Kingdom played a central role in both major European conflicts of the late nineteenth and early twentieth centuries. Prussia's victory in the <strong>Great European War</strong> (1899–1904) came at enormous human cost and ultimately produced a strategic catastrophe: the communalist revolutions it helped trigger in France and the South German states gave rise to the Union of European Republics on Prussia's western border. The subsequent decades of tension, economic strain, and political radicalization culminated in the <strong>Global War</strong> (1932–1939), initiated by the government of <strong>Karl-Albrecht II</strong> and the Revanchist Nationalist Party.</p>
+
+      <p>Prussia's military defeat and the internal democratic revolution of 1937–1938 did not end the Kingdom — they transformed it. While the western and northern member states of the old Union of German States broke away to form the <strong>United German Republic</strong>, Prussia itself survived as an isolated authoritarian rump state under a decade-long regency and then under <strong>Karl-Albrecht III</strong>, who ruled in deep international isolation from 1948 until his death in 1994. The Kingdom's final end came not in 1938 but in 1996, when the brief and tragic reign of the reformist <strong>Franz Hohenzollern</strong> — and his death at the hands of the hardliners who had feared him — shattered the regime's remaining legitimacy and opened the path to reunification with the German Republic. The Hohenzollern dynasty ended with Franz. Its territories became six new member states of the United German Republic.</p>
+
+      <h2 class="ndx-section-head" id="background">Background: Prussia before 1847</h2>
+
+      <p>The Kingdom of Prussia emerged as a major European power under the Hohenzollern dynasty during the eighteenth century, achieving recognition as a great power through the wars of Frederick the Great and subsequent territorial consolidation. By the time of the Congress of Vienna (1814–1815), Prussia was one of the five great powers of Europe and a leading member of the newly established German Confederation.</p>
+
+      <p>In the decades following Vienna, Prussia under Frederick William III pursued cautious economic modernization while broadly supporting the conservative order established by Prince Metternich of Austria. The Zollverein, formally established in 1833, brought more than twenty members of the German Confederation into a single Prussian-led customs union — quiet economic dominance over northern Germany that preceded and ultimately enabled Prussia's later political predominance.</p>
+
+      <p>Prussia's relationship with the suppression of liberal movements was more ambiguous than Austria's. In 1829, faced with popular unrest, Frederick William III announced that Prussia would withdraw from the Frankfurt Commission and ease press censorship — effectively breaking the Salzburg Edicts that Metternich had imposed. This pragmatic concession laid the groundwork for the relatively managed transition of 1847.</p>
+
+      <h2 class="ndx-section-head" id="constitutional">The Constitutional Monarchy (1847–1899)</h2>
+
+      <h3 class="ndx-sub-head" id="revolution">The Revolution of 1847 and the Constitution</h3>
+
+      <p>The revolutionary wave of 1847, triggered across Europe by years of poor harvests, rapid industrialization, and accumulated political frustration, reached Prussia in the spring of that year. Urban workers, students, and middle-class liberals demanded genuine constitutional government. Frederick William IV, who had resisted such demands throughout his reign, initially refused. His brother, Prince William, ultimately persuaded him that abdication in favor of his son offered the only path to preserving the dynasty. On 29 July 1847, Frederick William IV abdicated, and his son — the twenty-one-year-old Prince Frederick William August — ascended the throne as <strong>Frederick William V</strong>.</p>
+
+      <p>The <strong>Constitution of 1847</strong>, presented to the new King on 20 August, had been drafted by the National Assembly over the preceding weeks, with significant behind-the-scenes negotiation between Prince William and moderate reform leaders to produce a document the royal family could accept. Its key provisions required parliamentary approval for all laws and edicts, prohibited the King from dissolving parliament (though he retained the right to refuse a new Minister-President), and enshrined freedom of speech and the press. Universal male suffrage was not established immediately, but the constitution laid the framework for gradual franchise expansion.</p>
+
+      <h3 class="ndx-sub-head" id="fwv">The Reign of Frederick William V (1847–1907)</h3>
+
+      <p>Frederick William V's reign of sixty years was the longest in Prussian history. Coming to the throne as a young man during a period of revolutionary upheaval, he proved a more capable and politically astute ruler than his father. He worked within the constitutional framework rather than against it, developing a genuine working relationship with successive parliamentary majorities.</p>
+
+      <p>The early decades of his reign saw Prussia consolidate its economic dominance over northern Germany through the Zollverein framework, which transitioned from a purely customs arrangement into the political foundation of the Union of German States following the <strong>Treaty of Potsdam</strong> in 1857. Frederick William V was the principal advocate within the Hohenzollern family for the Potsdam negotiations, seeing the Union as a means of extending Prussian influence without the costs of direct annexation.</p>
+
+      <p>The King navigated a significant domestic crisis in 1853, when an attempt to roll back elements of the 1847 constitution triggered renewed popular unrest. Frederick William V responded by dismissing the arch-conservative faction at court, instituting further reforms, and announcing the Potsdam conference initiative. By the final decades of his reign he was largely a ceremonial figure, beloved as an institution. His son and intended heir, Crown Prince Wilhelm Friedrich, died in 1915 of wounds sustained during the Great European War — more than a decade after the war's end, but a casualty of it nonetheless. Frederick William V himself died in 1907 at approximately eighty-one years of age, succeeded by his younger son, Karl-Albrecht I.</p>
+
+      <h3 class="ndx-sub-head" id="politics">Early Political Development</h3>
+
+      <p>The political life of constitutional Prussia was organized around the <strong>Landtag</strong>, the lower house of parliament, which became the primary arena for Hohenzollern-era politics. The major political currents included the conservative Junker landowning interest, the liberal commercial and professional classes, the Catholic Centre tendency (representing Prussia's substantial Catholic minority, particularly in the Rhineland and Westphalia), and from the 1870s onward, a growing organized labor movement that would eventually coalesce into the Social Democratic tendency.</p>
+
+      <p>The Zollverein's economic success produced rapid industrialization across the northern German states through the 1860s and 1870s, generating both prosperity and the social tensions that accompanied the rapid growth of an urban working class. Prussia's industrial centers — Berlin, the Ruhr, Königsberg, Danzig — expanded dramatically through this period.</p>
+
+      <h3 class="ndx-sub-head" id="union">Prussia and the Union of German States</h3>
+
+      <p>Under the Treaty of Potsdam, Prussia was formally one member state among many within the Union of German States. In practice, its size, population, and economic weight ensured it dominated the All-Union Assembly and, through that body, Union policy. Through the 1870s and 1880s the Union functioned with genuine political diversity — Hanover, Saxony, and Thuringia in particular maintained active political traditions and occasionally combined to modify or block Prussian initiatives. From the 1880s onward, a gradual shift occurred: Prussian economic infrastructure investment was increasingly directed toward politically compliant states, and the Union's civil service drew its senior ranks heavily from Prussian-educated administrators. By the 1890s the political independence of most Union members had been substantially hollowed out, without any formal decree ever being issued to that effect.</p>
+
+      <h2 class="ndx-section-head" id="gew">The Great European War (1899–1904)</h2>
+
+      <p>The immediate cause of the Great European War was the assassination of Louis-Charles, King of Bavaria, in April 1899. Louis-Charles was the son of King Henri VI of France, making his reign a potential union of the French and Bavarian crowns deeply alarming to Berlin. The bomb-thrower, Johann Reiber, claimed under interrogation to have been directed by contacts in Prussian-controlled Frankfurt — a claim that Bavaria and France made public, producing demands that flew rapidly between Paris and Berlin.</p>
+
+      <p>The underlying tensions had been building for years. The South German Confederation — Bavaria, Baden, and Württemberg — had maintained a loose but real independence from the Prussian-led Union, and French diplomatic and dynastic investment in South German affairs had grown steadily through the 1880s and 1890s. War broke out in May 1899, with France, the South German Confederation, and Austria aligned against the Union of German States.</p>
+
+      <p>The Great European War lasted five years at enormous cost in lives and material. The conflict was fought primarily on two fronts — a western front against France along the Rhine, and a southern front against the South German states and Austria. Initial Prussian advances stalled against determined French resistance, and the war settled into an attritional struggle. The war concluded in 1904, but not through Prussian military victory: exhaustion on both sides combined with the outbreak of communalist revolutionary movements in France and the South German states to end the fighting. The revolutions produced the <strong>Union of European Republics</strong> — on Prussia's western border, exactly the kind of revolutionary threat it most feared, a strategic catastrophe produced by five years of war.</p>
+
+      <h2 class="ndx-section-head" id="postwar-gew">Postwar Consolidation</h2>
+
+      <p>The years immediately following the Great European War saw the Union become more thoroughly Prussian in practice than ever. Emergency wartime centralization of military command and economic administration had never been fully unwound. The narrative of Prussia as guardian of German order against communalist chaos became ideological justification for the permanent subordination of the smaller member states. The founding of the <strong>International Peace Council</strong> in London in 1907 provided a framework for managing the postwar European order, but Prussian participation in this process was always somewhat ambivalent — the Peace Council implied a degree of great-power equality that sat uneasily with Prussia's self-conception as the dominant force in Central Europe.</p>
+
+      <h2 class="ndx-section-head" id="ka1">Karl-Albrecht I and the Interwar Decades (1907–1929)</h2>
+
+      <p>Frederick William V was succeeded by his younger son, <strong>Karl-Albrecht I</strong>. Not his father's intended heir — that role had belonged to an older brother who died young — Karl-Albrecht I had been educated broadly and traveled extensively, and those who knew him in his younger years described a man of considerable intelligence and genuine cosmopolitan curiosity.</p>
+
+      <p>His reign of twenty-two years coincided with the most turbulent period in European history since 1847. The rise of <strong>Maximilian Holtz</strong> to power within the UER around 1916, and his subsequent radical program — the imposition of a constructed common language, the dissolution of the UER's internal national boundaries, religious suppression, and systematic purges — transformed anxiety into something close to obsession in Prussian political culture. Karl-Albrecht I's response was cautious and diplomatic. He worked through the Peace Council framework and resisted the more aggressive voices in Prussian politics who argued for territorial revision. His caution was genuine: he had lived through the Great European War's costs and had no appetite for repeating them.</p>
+
+      <p>The <strong>Revanchist Nationalist Party</strong> emerged in the early 1920s as the organized political voice of that criticism, drawing on veterans' movements, nationalist student organizations, and the economic anxieties of a middle class that had endured the war and the postwar dislocations. Holtz was overthrown by a military coup within the UER in the late 1920s, triggering a constitutional crisis that might have offered an opening for diplomatic engagement — but Karl-Albrecht I died in 1929 before he could act on it. He was succeeded by his grandson, <strong>Karl-Albrecht II</strong>, son of the long-dead Crown Prince Wilhelm Friedrich.</p>
+
+      <h2 class="ndx-section-head" id="ka2">Karl-Albrecht II and the Road to the Global War (1929–1938)</h2>
+
+      <p>Karl-Albrecht II was born in 1902 and came to the throne in his mid-twenties — the youngest Prussian monarch since Frederick William V himself. He had grown up without a father: Crown Prince Wilhelm Friedrich had died in 1915, when Karl-Albrecht II was approximately thirteen, old enough to understand what he was losing and why. His father's body had been broken by the Great European War; his family's loss was also Prussia's loss, part of a larger wound the Revanchist Nationalists had given a name and a program. Karl-Albrecht II had been listening to them since adolescence.</p>
+
+      <p>The Nationalist Party won parliamentary elections in the early 1930s and formed a governing coalition, with the new King's evident approval. Where Karl-Albrecht I had maintained constitutional distance from partisan politics, Karl-Albrecht II made no such effort at neutrality. The nominal pretext for the Global War was the demand for referenda in formerly German territories now within the UER — Bavaria, Baden, Württemberg, and adjacent regions. When the UER refused and Peace Council negotiations produced no resolution, Prussian forces crossed into UER territory in 1932. A Prussian U-boat's sinking of a British passenger vessel brought Britain into the war, transforming a Central European conflict into a world war.</p>
+
+      <h2 class="ndx-section-head" id="global-war">The Global War and the Democratic Revolution (1932–1939)</h2>
+
+      <p>By late 1937, five years of war had produced mass protests across the cities of the Union of German States. The protests were particularly intense in Hanover and Thuringia, whose populations had never fully shared the Nationalist enthusiasm that drove the war decision and whose democratic and labor movements provided the organizational backbone of the internal revolt. The Nationalist parliamentary coalition collapsed under the combined pressure of military reversal and domestic unrest.</p>
+
+      <p>Karl-Albrecht II refused initially to accept the situation. Allied forces were by late 1937 strong enough that the military outcome was no longer genuinely in doubt, and the internal revolt had deprived his government of domestic legitimacy. His eventual abdication was extracted under combined external and internal pressure. Karl-Albrecht II never publicly accepted its legitimacy and died in exile some years later without renouncing his claim.</p>
+
+      <p>The <strong>United German Republic</strong> was proclaimed in early 1938 by a coalition of democratic parties from the non-Prussian member states of the old Union — Hanover, Thuringia, Saxony, and others — which declared themselves the successor government of those territories and opened armistice communications with the Allied powers. The <strong>Treaty of Geneva</strong>, signed in spring 1939, formally recognized the new republic, established reparations and military limitations, and set the terms for the postwar European order. Crucially, Prussia was not dissolved at Geneva: it was recognized as a <em>separate state</em>, diplomatically isolated and subject to its own reparations schedule, but still standing.</p>
+
+      <h2 class="ndx-section-head" id="hermit">The Hermit Kingdom (1938–1994)</h2>
+
+      <p>Following Karl-Albrecht II's abdication, Prussia entered a decade-long regency before <strong>Karl-Albrecht III</strong> — born in 1927, grandson of Karl-Albrecht II — assumed full power in 1948. Under his rule, Prussia adopted a posture of deep international isolation. It refused GPC membership, maintained minimal diplomatic contact with the German Republic or the broader international community, and sustained itself through a command economy and the residual prestige of the Hohenzollern name.</p>
+
+      <p>The regime's rigidity preserved a kind of stability, but at the cost of complete stagnation. By the 1970s Prussia was visibly falling behind the German Republic economically, technologically, and institutionally. The succession question became acute when Karl-Albrecht III's son, Prince Wilhelm, died of cancer in 1987, leaving the king's grandson, <strong>Franz Hohenzollern</strong>, as next in line — a young man born in 1973, widely travelled, intellectually curious, and openly sympathetic to reform. He became, through the late 1980s and early 1990s, a symbol of hope for the Prussian public and a source of profound anxiety for the regime's hardline faction, who recognized that his accession would likely mean the end of the order they had sustained for half a century.</p>
+
+      <h2 class="ndx-section-head" id="franz">The Franz Crisis and Collapse (1994–1995)</h2>
+
+      <p>Karl-Albrecht III died in 1994. The twenty-one-year-old Franz ascended the throne, and within months the hardline faction moved against him. The coup attempt of late 1994 and early 1995 was intended as a controlled capture — the plotters planned to hold the young king under effective house arrest while ruling in his name. The operation spiralled immediately out of control. Franz, warned of the coup's approach, attempted to flee the palace; in the chaos that followed, he was killed.</p>
+
+      <p>The death of Franz proved catastrophic for the Prussian state. He had been too popular, and his end too obviously the result of the regime's own violence, for any recovery of legitimacy to be possible. Mass uprisings broke out across Prussian cities within days. Army units, many of whose officers had privately sympathised with Franz, refused suppression orders and in several cases joined the protests. The coup collapsed within weeks, its leaders either dead, fled, or in custody. A <strong>Council of Regents</strong> drawn from reform-minded officials and military officers took control of what remained of the Prussian state.</p>
+
+      <p>The international response was swift. The martyrdom of Franz — young, reformist, killed by the regime he had been born to inherit — broke the political calculus that had kept Prussian isolation sustainable for decades. The GPC convened an emergency session. The UER signalled through diplomatic back-channels that it would not obstruct a negotiated settlement.</p>
+
+      <h2 class="ndx-section-head" id="reunification">Reunification and Dissolution (1995–1996)</h2>
+
+      <p>Formal reunification negotiations between the United German Republic and the Council of Regents began in 1995. The terms were demanding. The Hohenzollern monarchy was permanently abolished as a strict condition — there would be no restoration, no regency, no ceremonial role. The Prussian territories would join the Republic as new member states under the existing constitution, with no special status. The former Prussian military was dissolved and its personnel subject to individual vetting before integration into the Republic's defence forces.</p>
+
+      <p>Reunification was formally completed in 1996. The Prussian territories became six new member states of the United German Republic:</p>
+
+      <ul>
+        <li><strong>Rhineland</strong> — western territories, capital Cologne</li>
+        <li><strong>Westphalia</strong> — central-western territories, capital Münster</li>
+        <li><strong>Brandenburg</strong> — the Hohenzollern heartland, capital Potsdam</li>
+        <li><strong>Pomerania</strong> — Baltic coastal territories, capital Stettin</li>
+        <li><strong>Posen</strong> — eastern territories with significant Polish-speaking population, capital Poznań</li>
+        <li><strong>Silesia</strong> — southeastern territories, capital Breslau</li>
+      </ul>
+
+      <p>Berlin, the former capital of the Kingdom and the informal capital of the old Union of German States, was constituted as a federal district of the reunified Republic — a deliberate symbolic gesture toward national reconciliation. Franz Hohenzollern, who had never lived to see the unified Germany his name had made possible, was memorialised across the new member states; statues, squares, and a federal scholarship program bear his name. The Hohenzollern dynasty, which had shaped German and European history for centuries, ended with him.</p>
+
+      <h2 class="ndx-section-head" id="legacy">Legacy</h2>
+
+      <p>The Kingdom of Prussia cast a long shadow over the German political imagination long after its dissolution. The United German Republic's constitutional structure — distributing power carefully among its member states and deliberately preventing the emergence of a dominant single state — was designed explicitly as a response to the Prussian experience. The question of Prussian memory — how to reckon with the Kingdom's genuine achievements in constitutionalism, economic development, and cultural life alongside its catastrophic culmination under the Nationalists — became one of the defining debates of German public life through the mid-twentieth century. The Hohenzollern dynasty's role in that catastrophe was never seriously disputed; the extent to which "Prussianism" as a cultural and political tradition bore responsibility for what the Nationalists had made of it remained contested for generations.</p>
+
+      <h2 class="ndx-section-head" id="monarchs">Monarchs of Prussia</h2>
+
+      <table class="ndx-table">
+        <thead>
+          <tr><th>Reign</th><th>Name</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1847–1907</td><td>Frederick William V</td><td>First constitutional monarch; longest reign in Prussian history; architect of the Union of German States</td></tr>
+          <tr><td>1907–1929</td><td>Karl-Albrecht I</td><td>Cautious and diplomatic; resisted Nationalist pressure; died before the war he had dreaded</td></tr>
+          <tr><td>1929–1938</td><td>Karl-Albrecht II</td><td>Allied with the Revanchist Nationalists; led Prussia into the Global War; abdicated under duress; died in exile</td></tr>
+          <tr><td>1938–1948</td><td><em>(Regency)</em></td><td>Decade-long regency following abdication of Karl-Albrecht II</td></tr>
+          <tr><td>1948–1994</td><td>Karl-Albrecht III</td><td>Born 1927; ruled in deep international isolation for 46 years; refused GPC membership; died in office</td></tr>
+          <tr><td>1994–1995</td><td>Franz Hohenzollern</td><td>Born 1973; reformist; killed during coup attempt early 1995; his death triggered the popular uprising that ended the regime; martyr figure in unified German memory</td></tr>
+        </tbody>
+      </table>
+
+      <div class="ndx-categories">
+        <strong>Categories:</strong>
+        <a href="#">Countries</a>
+        <a href="#">European nations</a>
+        <a href="#">Constitutional monarchies</a>
+        <a href="#">Historical states</a>
+        <a href="#">Global War</a>
+        <a href="#">Great European War</a>
+        <a href="#">Dissolved 1996</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ndx-article-sidebar">
+
+    <div class="ndx-infobox">
+      <div class="ndx-infobox-img">
+        <img src="../../images/nedex/prussia.png" alt="Flag of the Kingdom of Prussia" />
+      </div>
+      <div class="ndx-infobox-title">Kingdom of Prussia</div>
+      <div class="ndx-infobox-sub">Königreich Preußen</div>
+      <div class="ndx-infobox-sub">Common name: Prussia</div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Kingdom founded</span><span class="ndx-infobox-val">1701</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Constitution</span><span class="ndx-infobox-val">20 August 1847</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Dissolved</span><span class="ndx-infobox-val">1996 (reunification with<br>United German Republic)</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">System</span><span class="ndx-infobox-val">Constitutional monarchy (parliamentary)</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Capital</span><span class="ndx-infobox-val">Berlin</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">First const. monarch</span><span class="ndx-infobox-val">Frederick William V</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Last monarch</span><span class="ndx-infobox-val">Franz Hohenzollern<br>(1994–1995)</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Legislature</span><span class="ndx-infobox-val">Landtag (lower house)<br>Herrenhaus (upper house)</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Language</span><span class="ndx-infobox-val">German (official)</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Currency</span><span class="ndx-infobox-val">Union Thaler (from 1858)<br>Prussian Thaler (prior)</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Member of</span><span class="ndx-infobox-val">Union of German States<br>(1857–1938)</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Successor states</span><span class="ndx-infobox-val">Rhineland · Westphalia<br>Brandenburg · Pomerania<br>Posen · Silesia<br>(all joined United German Republic 1996)</span></div>
+    </div>
+
+    <div class="ndx-widget">
+      <div class="ndx-widget-head">See Also</div>
+      <div class="ndx-widget-body">
+        <a class="ndx-widget-link" href="#">United German Republic</a>
+        <a class="ndx-widget-link" href="#">Union of German States</a>
+        <a class="ndx-widget-link" href="#">Franz Hohenzollern</a>
+        <a class="ndx-widget-link" href="#">Great European War (1899–1904)</a>
+        <a class="ndx-widget-link" href="#">Global War</a>
+        <a class="ndx-widget-link" href="#">Treaty of Geneva (1939)</a>
+        <a class="ndx-widget-link" href="#">Revanchist Nationalist Party</a>
+        <a class="ndx-widget-link" href="#">Reunification of Germany (1996)</a>
+        <a class="ndx-widget-link" href="#">Frederick William V of Prussia</a>
+        <a class="ndx-widget-link" href="#">Karl-Albrecht II of Prussia</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="ndx-footer">
+  <span>link://nan.nedex.org.nau/prussia &nbsp;·&nbsp; Nedex — The Free Encyclopaedia</span>
+  <div class="ndx-footer-links">
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script>
+initAddressBar('nan.nedex.org.nau/prussia');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+</body>
+</html>
