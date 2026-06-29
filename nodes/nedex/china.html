@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>Empire of China — Nedex</title>
+<link rel="stylesheet" href="../../shared.css">
+<link rel="stylesheet" href="nedex.css">
+</head>
+<body>
+
+<!-- NEDEX CHROME — keep in sync across all Nedex pages -->
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../linkvid/"><span class="arc-bmark-icon">🎥</span>LinkVid</a>
+  <a class="arc-bmark" href="../csn/"><span class="arc-bmark-icon">⚾</span>CSN</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+
+<div class="ndx-header">
+  <a class="ndx-logo" href="./">Nedex</a>
+  <span class="ndx-tagline">The Free Encyclopaedia</span>
+  <div class="ndx-search-wrap">
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
+    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+  </div>
+</div>
+
+<div class="ndx-subnav">
+  <a href="./">Main Page</a>
+  <a href="#" class="active">Article</a>
+  <a href="#">Talk</a>
+  <a href="#">Edit</a>
+  <a href="#">History</a>
+</div>
+</div>
+<!-- END NEDEX CHROME -->
+
+<div class="ndx-article-wrap">
+  <div class="ndx-article-body">
+
+    <div class="ndx-article-title">Empire of China</div>
+    <div class="ndx-article-subtitle">中華帝國 (Zhōnghuá Dìguó) · Constitutional monarchy · Zhongxing Dynasty est. 1903 · East Asia</div>
+
+    <div class="ndx-toc">
+      <div class="ndx-toc-title">Contents</div>
+      <ol>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#qing">The Qing Dynasty and the Opening of China (1814–1860)</a></li>
+        <li><a href="#red-lotus">The Red Lotus Rebellion (1853–1862)</a></li>
+        <li><a href="#second-war">The Second Anglo-Chinese War and Its Settlement</a></li>
+        <li><a href="#cixi">The Age of Cixi (1860s–1898)</a></li>
+        <li><a href="#coup">The Reformist Coup (~1896–1898)</a></li>
+        <li><a href="#revolution">The Nationalist Revolution (1900–1903)</a></li>
+        <li><a href="#founding">The Founding of the Zhongxing Dynasty</a></li>
+        <li><a href="#consolidation">Consolidation and Reform (1903–1910s)</a></li>
+        <li><a href="#treaty-ports">The Long Shadow of the Treaty Ports</a></li>
+        <li><a href="#global-war">The Global War (1932–1941)</a></li>
+        <li><a href="#postwar">The Postwar Period</a>
+          <ol>
+            <li><a href="#gpc">GPC Membership and Postwar Standing</a></li>
+            <li><a href="#fission">The Fission Weapon Test (1952)</a></li>
+            <li><a href="#choson-war">The Chosŏn War and Its Consequences (1966–1967)</a></li>
+            <li><a href="#détente">The Post-Chosŏn Era and Gradual Opening</a></li>
+          </ol>
+        </li>
+        <li><a href="#government">Government and Politics</a></li>
+        <li><a href="#emperors">Emperors of the Zhongxing Dynasty</a></li>
+        <li><a href="#chancellors">Grand Chancellors of the Zhongxing Dynasty</a></li>
+      </ol>
+    </div>
+
+    <div class="ndx-prose">
+
+      <p>The <strong>Empire of China</strong> (中華帝國, <em>Zhōnghuá Dìguó</em>) is a constitutional monarchy in East Asia, governed since 1903 by the <strong>Zhongxing Dynasty</strong> (中興王朝, <em>Zhōngxīng Wángcháo</em> — "Dynasty of Renewed Prosperity"). The dynasty was established following a nationalist revolution that expelled a British-aligned reformist government and proclaimed the restoration of sovereign Chinese rule. Under the founding Grand Chancellor <strong>Lu Guowei</strong>, China pursued rapid modernization on its own terms, expelling most foreign advisers, establishing a consultative Imperial Assembly, and asserting an increasingly prominent role in Asian and global affairs.</p>
+
+      <p>China's modern history has been defined by its long and deeply contested relationship with the British Empire. Beginning with the Anglo-Chinese War of 1839–1842, Britain established a network of treaty ports and commercial privileges that gave it dominant influence over China's coastal economy for six decades. The Zhongxing Dynasty's founding mythology is inseparable from the rejection of that dominance — and the grievances of that era continued to shape Chinese foreign policy through the twentieth century.</p>
+
+      <p>China entered the Global War in 1932 with a simultaneous assault on Chosŏn and the British treaty ports, seizing the moment of British distraction in Europe. Undefeated at the Asian ceasefire of 1940 and the formal settlement of 1941, China retained the British treaty ports and emerged as a source of sustained postwar anxiety for the Allied powers. Its detonation of a fission weapon in 1952 and its backing of the coup against Chosŏn's constitutional government in 1966 — which led to the NAU's conventional bombing of Beijing and Shanghai — were the defining crises of the Zhongxing Dynasty's mid-century decades, after which a gradual political moderation under the moderate faction reshaped Chinese foreign policy toward cautious engagement.</p>
+
+      <h2 class="ndx-section-head" id="qing">The Qing Dynasty and the Opening of China (1814–1860)</h2>
+
+      <p>At the opening of the nineteenth century, China was governed by the Qing Dynasty — a Manchu ruling house that had held power since 1644. By 1814, the Qing presided over one of the world's largest empires, but internal stresses were already visible: bureaucratic corruption, a growing population straining agricultural capacity, and the early signs of the fiscal weakness that would deepen across the coming decades. The dynasty maintained a traditional posture of controlled engagement with foreign traders, permitting commerce only through designated southern ports under strict regulatory supervision.</p>
+
+      <p>British commercial interest in China intensified through the 1820s and 1830s, driven primarily by the profitability of the trade in opium — grown in British India and sold illegally into Chinese markets in exchange for silver, tea, and silk. Repeated Qing attempts to suppress the trade brought relations to a breaking point. In 1839, Britain dispatched a naval expeditionary force, beginning the <strong>Anglo-Chinese War</strong>.</p>
+
+      <p>The war was brief and decisive. Qing forces, equipped for internal policing rather than modern naval warfare, were unable to resist British gunships and amphibious landings along the southern and eastern coasts. By 1842, the Qing court had no choice but to negotiate. The resulting <strong>Treaty of Amoy</strong> established the framework that would govern China's relationship with foreign powers for the next six decades: Hong Kong was ceded outright to Britain; five treaty ports — Shanghai, Canton, Ningbo, Fuzhou, and Amoy — were opened to British residence and commerce; extraterritoriality was extended to British subjects; a substantial indemnity was imposed; and customs supervision in the treaty ports passed to British administration.</p>
+
+      <p>Within a few years, Prussia and Russia had negotiated their own follow-on agreements, securing limited trading rights in several of the existing ports — a fraction of Britain's scale, but a foothold in Chinese commerce nonetheless.</p>
+
+      <h2 class="ndx-section-head" id="red-lotus">The Red Lotus Rebellion (1853–1862)</h2>
+
+      <p>The disruptions of the treaty port era fell unevenly across Chinese society. Inland merchants found themselves undercut by foreign goods arriving through coastal ports. The indemnity imposed at Amoy drained silver from the domestic economy. Into this environment of economic dislocation came the <strong>Red Lotus Rebellion</strong>, drawing on the deep roots of Chinese secret society networks — particularly the traditions of the White Lotus and Heaven and Earth societies — and a charismatic leader claiming a divine mandate to restore harmony to a realm Heaven had clearly abandoned.</p>
+
+      <p>By the mid-1850s, Red Lotus forces controlled significant territory across the interior south, and the Qing military effort to suppress them had stalled. It was at this juncture that Britain intervened militarily, deploying forces from the Hong Kong garrison to support the Qing suppression campaign. By the early 1860s, the rebellion had been crushed.</p>
+
+      <p>The price of British assistance was steep. A further indemnity was imposed, additional commercial concessions extracted, and — most consequentially — British military advisers were embedded within Qing forces as part of the settlement. The modernization of China's army would henceforth proceed under foreign supervision.</p>
+
+      <h2 class="ndx-section-head" id="second-war">The Second Anglo-Chinese War and Its Settlement</h2>
+
+      <p>A second military confrontation between Britain and the Qing erupted in the 1850s, triggered by disputes over treaty port jurisdiction and the enforcement of extraterritorial privileges. The resulting settlement deepened the unequal treaty framework considerably: additional ports were opened to foreign commerce, British vessels gained rights to navigate China's inland waterways, and a permanent British legation was established in Beijing itself — placing foreign diplomatic representatives at the very seat of imperial power.</p>
+
+      <h2 class="ndx-section-head" id="cixi">The Age of Cixi (1860s–1898)</h2>
+
+      <p>The dominant figure of late Qing politics was <strong>Empress Dowager Cixi</strong>, who rose to effective control of the imperial government through the regency following the death of the Xianfeng Emperor in 1861. Her decades of rule were marked by extraordinary political skill — a relentless management of court factions, a capacity to outmaneuver rivals, and an instinct for survival that outlasted emperors, crises, and foreign pressures alike.</p>
+
+      <p>Cixi's relationship to modernization was genuinely complex. She was not simply a reactionary: she permitted and at times encouraged the self-strengthening movement that sought to adopt Western military technology while preserving Chinese political and cultural institutions. What she resisted was not change itself but foreign-directed change, and particularly the growing reformist faction at court who saw British-style institutional reform as China's only path forward. She understood, correctly, that the reformists' agenda would transfer real power from the court to a new class of Westernized officials with deep ties to foreign commercial and diplomatic networks.</p>
+
+      <p>The leading figure of the reformist faction by the 1880s and 1890s was <strong>Chen Baozhong</strong>, a senior court scholar and diplomat who had served on a Qing diplomatic mission to Britain in the 1870s. His time in London transformed his political convictions: he returned convinced that British parliamentary institutions represented not merely a foreign curiosity but a genuine model for stable, modern governance. His advocacy for deep constitutional restructuring made him the intellectual heart of the reformist faction and, in Cixi's eyes, its most dangerous member.</p>
+
+      <p>By the 1890s, structural tensions were compressing into something more acute. Cixi, aging but still politically acute, moved to install a deeply conservative imperial successor — a young, pliable relative through whom she could continue to exercise influence and foreclose the reformist faction permanently. Britain read the signal. So did Chen Baozhong. Both concluded that if Cixi's succession plan proceeded, six decades of carefully cultivated influence would be dismantled.</p>
+
+      <h2 class="ndx-section-head" id="coup">The Reformist Coup (~1896–1898)</h2>
+
+      <p>The coup was swift and, in its initial phase, effective. Backed by the British diplomatic establishment in Beijing and the commercial networks of the treaty ports, Chen Baozhong's faction seized control of the imperial court, forced Empress Dowager Cixi into internal exile, and installed a compliant young imperial relative as a figurehead emperor under reformist guidance.</p>
+
+      <p>The new government moved rapidly. Foreign loans funded railway construction and arsenals. British officers assumed expanded advisory roles in the reorganized military. Customs revenues were restructured through Anglo-Chinese banking arrangements that gave foreign creditors direct access to state income. Chen Baozhong genuinely believed he was building the modern Chinese state that the dynasty's survival required. Whether his vision might eventually have produced a genuinely independent Chinese modernity is a question that history would not allow to be answered. The reformist government had British backing, but it did not have China.</p>
+
+      <h2 class="ndx-section-head" id="revolution">The Nationalist Revolution (1900–1903)</h2>
+
+      <p>The Great European War broke out in 1899, and with it began the unraveling of British imperial capacity across multiple theaters simultaneously. Ireland erupted in revolt. India's nationalist movement issued its demands with new urgency. Japan's civil war demanded British attention and resources. The empire that had backed Chen Baozhong's government was suddenly, visibly, stretched beyond its limits.</p>
+
+      <p>It was in this window that <strong>Lu Guowei</strong> moved. A northern military officer born around 1850 into a family with generations of service in the Qing military establishment, he had come of age professionally during the Red Lotus suppression and watched with growing fury as British advisers embedded themselves ever deeper in the institutions he had spent his career building. He understood modernization and did not oppose it in principle — what he opposed, with a conviction hardened across decades of professional experience, was modernization on foreign terms, under foreign supervision, in service of foreign interests.</p>
+
+      <p>A coalition assembled around him: northern generals who shared his assessment, provincial gentry alarmed by the reformist government's concessions to foreign creditors, Confucian scholars who saw in the new regime a threat to Chinese cultural identity, and the networks of peasant militias that had never fully demobilized from earlier upheavals. The counter-revolution launched in 1900, with Britain consumed elsewhere. The campaign lasted three years — a grinding military advance from the north and interior, city by city, province by province. In 1903, Lu Guowei's forces entered Beijing. The reformist government collapsed. Chen Baozhong fled into exile.</p>
+
+      <h2 class="ndx-section-head" id="founding">The Founding of the Zhongxing Dynasty</h2>
+
+      <p>With the Qing line discredited by decades of foreign encroachment and the reformist interlude, Lu Guowei and the nationalist coalition chose not to restore the old dynasty but to proclaim a new one. A distant Qing princeling of impeccable but previously obscure lineage was identified and installed as emperor. His reign name — <strong>Xingzhao</strong> — signaled the new dynasty's claim to stand in the tradition of authentic Chinese imperial legitimacy. The <strong>Zhongxing Dynasty</strong> was proclaimed in 1903. Emperor Xingzhao was its figurehead and symbolic embodiment; Lu Guowei, appointed Grand Chancellor, was its governing intelligence.</p>
+
+      <p>Empress Dowager Cixi, who had spent the years of the reformist government in internal exile, died in 1904. The founding mythology that consolidated around the Zhongxing in its early years remembered her selectively — the patriot who had stood against foreign domination, her failures and obstinacies quietly set aside.</p>
+
+      <h2 class="ndx-section-head" id="consolidation">Consolidation and Reform (1903–1910s)</h2>
+
+      <p>The first years of the Zhongxing Dynasty were consumed by the twin tasks of diplomatic recognition and internal consolidation. Britain, exhausted by its simultaneous imperial crises, accepted the new reality. Negotiations produced the <strong>Treaty of Suzhou</strong> in 1905, under which Britain formally recognized the Zhongxing Dynasty as the legitimate government of China. In return, China accepted the continuation of British control over Hong Kong, Shanghai, and the other treaty ports for a period of approximately thirty years — a concession accepted as a temporary and deeply resented necessity, and which Beijing had no intention of allowing to become permanent. Prussian and Russian treaty arrangements were renegotiated on terms more favorable to China, reflecting those powers' weaker position and their interest in cultivating the new government's goodwill.</p>
+
+      <p>Under Lu Guowei's direction, the Zhongxing government moved to build the institutional architecture of a modern state — on Chinese terms. Most foreign advisers were expelled; the British military advisory presence that had been embedded in Qing forces since the Red Lotus settlement was ended entirely. In its place, the dynasty established its own institutions: the <strong>Imperial Assembly</strong>, a consultative legislative body composed of provincial delegates; a <strong>National Railway Authority</strong> bringing railway construction and operation under state control; and new military academies rooted in Chinese institutional traditions while incorporating modern tactical and technical education.</p>
+
+      <p>China attended the first International Peace Council in London in 1907 as a newly recognized sovereign state — a moment of considerable symbolic importance. Its relationship with the newly republican Japan was warm in rhetoric but competitive in practice: both nations had expelled British dominance within years of each other, but their visions of Asian order were not identical, and the question of regional primacy remained unresolved.</p>
+
+      <h2 class="ndx-section-head" id="treaty-ports">The Long Shadow of the Treaty Ports</h2>
+
+      <p>As the Zhongxing Dynasty consolidated through the 1900s and 1910s, the treaty ports remained the defining unresolved question of Chinese sovereignty. Hong Kong, Shanghai, and the other port cities under British control were not merely commercial grievances — they were living symbols of the humiliation era, present on Chinese soil, immune to Chinese law, generating revenues that flowed to foreign accounts. Every Zhongxing government after 1903 regarded their eventual return as a non-negotiable national objective.</p>
+
+      <p>By the late 1920s and early 1930s, as the Treaty of Suzhou approached its expiration, Britain sought to renegotiate — to extend the arrangement on modified terms that would preserve its commercial position while offering China face-saving concessions. The Zhongxing government was not interested in a modified arrangement. It wanted the ports back. Negotiations stalled through the early 1930s.</p>
+
+      <h2 class="ndx-section-head" id="global-war">The Global War (1932–1941)</h2>
+
+      <p>In 1932, as Prussia invaded the formerly German territories of the Union of European Republics and Britain found itself committed to a major European war, China moved. The simultaneous attack on Chosŏn and the British treaty ports of Hong Kong and Shanghai was not an impulsive act — it was the culmination of nearly three decades of preparation, patience, and accumulated grievance, launched at precisely the moment when the power that had imposed the unequal treaty system was least able to defend it. China was not formally allied with Prussia; its aggression was a separate opportunistic campaign against shared enemies.</p>
+
+      <p>The assault on Chosŏn was rapid and overwhelming, driving Allied defensive forces to a narrow perimeter around the southern port of Busan by late 1935. The defense of that perimeter through the winter of 1935–1936 was the Asian theater's darkest hour. An Allied counteroffensive beginning in spring 1936 pushed Chinese forces gradually northward over two grinding years, stabilizing near the original border by 1938 — where it remained, neither side possessing the strength for decisive breakthrough, until the ceasefire negotiations of 1940.</p>
+
+      <p>The Asian ceasefire, brokered through Russian intermediaries, ended the shooting in late 1940. The formal settlement terms were finalized under American President Freeman in late 1941. China formally retained the British treaty ports it had seized. Chosŏn was restored as an explicitly neutral independent state. China emerged from the war <strong>undefeated</strong> — keeping its territorial gains and establishing itself as the preeminent independent power in East Asia. This outcome was a source of sustained postwar anxiety for the Allied nations and became a persistent point of domestic political controversy in the North American Union.</p>
+
+      <h2 class="ndx-section-head" id="postwar">The Postwar Period</h2>
+
+      <h3 class="ndx-sub-head" id="gpc">GPC Membership and Postwar Standing</h3>
+
+      <p>China became a founding member of the Global Peace Council at Geneva — a decision that generated significant Allied discomfort, but one that the GPC's architects judged unavoidable: excluding an undefeated China from the postwar international order would have rendered the GPC irrelevant in Asia. China accordingly occupied one of the ten seats on the GPC's Executive Board from its founding, alongside the United States, Britain, the Union of European Republics, Russia, Canada, Italy, Japan, the Ottoman Empire, and Mexico.</p>
+
+      <p>China's GPC membership was a study in the gap between formal participation and genuine integration. It attended sessions, submitted its representatives, and claimed the institutional standing the seat conferred — while maintaining the frigid formality in its bilateral relationships that had characterized the postwar settlement. The treaty ports remained under Chinese authority; the grievances that had produced the Global War were not resolved, merely frozen.</p>
+
+      <h3 class="ndx-sub-head" id="fission">The Fission Weapon Test (1952)</h3>
+
+      <p>In the early months of 1952, China detonated a fission weapon — the second nation after the United States to do so. The test transformed the strategic landscape of the postwar Pacific. The JCA in the North American Union had been arguing since 1941 that the Asian settlement had been a strategic catastrophe; an undefeated China in possession of fission weapons made that argument feel proven, regardless of its actual validity. The test did not make war more likely in any immediate sense — the logic of mutual deterrence was understood by both sides — but it made the postwar anxiety about Chinese intentions structural and permanent, the background radiation of daily life in the GPC era.</p>
+
+      <h3 class="ndx-sub-head" id="choson-war">The Chosŏn War and Its Consequences (1966–1967)</h3>
+
+      <p>The most consequential act of Chinese foreign policy in the postwar decades was its backing of the military coup against Chosŏn's constitutional government in early 1966. Chinese-backed forces moved on Seoul simultaneously with an internal uprising by pro-engagement Korean military officers, capturing King Yi Un and installing a client government. The gambit was a miscalculation of the first order.</p>
+
+      <p>Japan moved militarily within weeks of the coup; NAU forces followed. Chinese material support to the coup government kept the war grinding through 1966 and into 1967. The turning point came in the summer of 1967, when the Continental Defense Council authorized conventional bombing strikes on Beijing and Shanghai — targeting governmental and industrial infrastructure with a message deliberately layered: the NAU could reach China at home, and had chosen not to use nuclear weapons. The strikes were militarily precise and psychologically total. The hardliner faction within the Chinese government could not counter the moderate faction's argument that NAU retaliation for nuclear use would end the dynasty; the decision not to escalate was made within days. Chinese material support to the coup government collapsed through September.</p>
+
+      <p>Seoul was liberated in late 1967. The Treaty of Delhi (1968) settled the war on terms that reflected China's first genuine negotiating weakness since 1932. The hardliner faction was finished internally. The moderate faction used the shock of the bombing to restore control. The dynasty survived, but the political balance shifted permanently — the post-Chosŏn era marked the beginning of China's gradual turn toward cautious engagement rather than continued confrontation.</p>
+
+      <h3 class="ndx-sub-head" id="détente">The Post-Chosŏn Era and Gradual Opening</h3>
+
+      <p>The decades following the Chosŏn War saw a slow but genuine evolution in Chinese foreign policy under a succession of emperors and Grand Chancellors. Emperor <strong>Tianshun</strong>, who reigned from the early 1970s to 1991, was a moderate restoration figure who presided over the post-Chosŏn liberalization and the beginnings of NAU diplomatic engagement. Back-channel diplomatic contacts with the North American Union developed through the late 1970s and early 1980s, culminating in a formal presidential visit to Beijing in 1986 — the first substantive bilateral engagement between the NAU and China at that level since before the Global War.</p>
+
+      <p>Grand Chancellor <strong>Huang Minzhi</strong>, a pragmatic moderate and second-generation post-Chosŏn restoration figure, was the governing intelligence behind this opening — a man who believed in engagement from strategic conviction, not war-weariness, and who was willing to take political risks with the remaining hardliner faction to pursue it. China's gradual integration into the postwar international economic order through the late twentieth century — including its eventual joining of the Interlink communications network — represented the culmination of the trajectory the moderate faction had charted in the aftermath of the Chosŏn War.</p>
+
+      <h2 class="ndx-section-head" id="government">Government and Politics</h2>
+
+      <p>The Empire of China is governed as a constitutional monarchy under the Zhongxing Dynasty. The <strong>Emperor</strong> serves as head of state with ceremonial and symbolic authority, embodying the dynasty's claim to legitimate Chinese imperial succession. The <strong>Grand Chancellor</strong> serves as head of government, wielding effective executive authority. The <strong>Imperial Assembly</strong>, composed of provincial delegates, serves as the consultative legislative body — more than a rubber stamp in practice, as provincial delegates bring real regional interests to Beijing, but not a parliament in the Western sense.</p>
+
+      <p>The constitutional character of the dynasty — genuine in formal terms, carefully bounded in practice — gave the Zhongxing government a degree of domestic legitimacy that the late Qing had never achieved. The political history of the dynasty through the twentieth century has been defined by the contest between hardliner and moderate factions, particularly in the post-Global War era, with the Chosŏn War functioning as the definitive turning point that permanently shifted the balance toward moderation.</p>
+
+      <h2 class="ndx-section-head" id="emperors">Emperors of the Zhongxing Dynasty</h2>
+
+      <table class="ndx-table">
+        <thead>
+          <tr><th>Reign Name</th><th>Reign</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Xingzhao (興照)</td><td>1903–</td><td>Founding emperor; distant Qing princeling installed by Lu Guowei after the nationalist revolution</td></tr>
+          <tr class="ndx-annotation"><td colspan="3"><em>Intervening emperors — details to be established</em></td></tr>
+          <tr><td>Tianshun (天順)</td><td>Early 1970s–1991</td><td>Moderate restoration figure; presides over post-Chosŏn liberalization; NAU diplomatic opening under his reign</td></tr>
+          <tr><td>Jiānchí (堅持)</td><td>1991–2013</td><td>Cautious consolidator; managed two-steps-forward approach to reform</td></tr>
+          <tr><td>Kāiming (開明)</td><td>2013–present</td><td>The reform emperor; central figure of the Chinese Spring</td></tr>
+        </tbody>
+      </table>
+
+      <h2 class="ndx-section-head" id="chancellors">Grand Chancellors of the Zhongxing Dynasty</h2>
+
+      <table class="ndx-table">
+        <thead>
+          <tr><th>Name</th><th>Term</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Lu Guowei</td><td>1903–</td><td>Military leader of the nationalist revolution; founding Grand Chancellor; dominant governing figure of the early dynasty</td></tr>
+          <tr class="ndx-annotation"><td colspan="3"><em>Intervening Grand Chancellors — details to be established</em></td></tr>
+          <tr><td>Huang Minzhi</td><td>1980s–</td><td>Pragmatic moderate; second-generation post-Chosŏn restoration figure; architect of NAU diplomatic engagement</td></tr>
+        </tbody>
+      </table>
+
+      <div class="ndx-categories">
+        <strong>Categories:</strong>
+        <a href="#">Countries</a>
+        <a href="#">Asian nations</a>
+        <a href="#">Constitutional monarchies</a>
+        <a href="#">Global Peace Council members</a>
+        <a href="#">Global War</a>
+        <a href="#">Chosŏn War</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ndx-article-sidebar">
+
+    <div class="ndx-infobox">
+      <div class="ndx-infobox-img">
+        <img src="../../images/nedex/china.png" alt="Flag of the Zhongxing Dynasty" />
+      </div>
+      <div class="ndx-infobox-title">Empire of China</div>
+      <div class="ndx-infobox-sub">中華帝國 (Zhōnghuá Dìguó)</div>
+      <div class="ndx-infobox-sub">Common name: China</div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Dynasty founded</span><span class="ndx-infobox-val">1903 (Zhongxing Dynasty)</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">System</span><span class="ndx-infobox-val">Constitutional monarchy</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Capital</span><span class="ndx-infobox-val">Beijing</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Largest city</span><span class="ndx-infobox-val">Shanghai</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Head of state</span><span class="ndx-infobox-val">Emperor Kāiming<br>(Aisin Gioro Míngkāi;<br>enthroned 2013)</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Head of govt</span><span class="ndx-infobox-val">Grand Chancellor<br>Huang Minzhi</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Legislature</span><span class="ndx-infobox-val">Imperial Assembly</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Language</span><span class="ndx-infobox-val">Chinese — Mandarin (official)</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Currency</span><span class="ndx-infobox-val">Chinese yuan</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Member of</span><span class="ndx-infobox-val">Global Peace Council<br>(Executive Board member)</span></div>
+    </div>
+
+    <div class="ndx-widget">
+      <div class="ndx-widget-head">See Also</div>
+      <div class="ndx-widget-body">
+        <a class="ndx-widget-link" href="#">Lu Guowei</a>
+        <a class="ndx-widget-link" href="#">Huang Minzhi</a>
+        <a class="ndx-widget-link" href="#">Emperor Kāiming</a>
+        <a class="ndx-widget-link" href="#">Treaty of Suzhou (1905)</a>
+        <a class="ndx-widget-link" href="#">Treaty of Amoy (1842)</a>
+        <a class="ndx-widget-link" href="#">Empress Dowager Cixi</a>
+        <a class="ndx-widget-link" href="#">Global War</a>
+        <a class="ndx-widget-link" href="#">Chosŏn War (1966–1967)</a>
+        <a class="ndx-widget-link" href="#">Global Peace Council</a>
+        <a class="ndx-widget-link" href="#">Japan</a>
+        <a class="ndx-widget-link" href="#">Chosŏn</a>
+        <a class="ndx-widget-link" href="#">British Empire</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="ndx-footer">
+  <span>link://nan.nedex.org.nau/china &nbsp;·&nbsp; Nedex — The Free Encyclopaedia</span>
+  <div class="ndx-footer-links">
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script>
+initAddressBar('nan.nedex.org.nau/china');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+</body>
+</html>
