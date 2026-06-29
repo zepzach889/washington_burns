@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>Southeast Asia — Nedex</title>
+<link rel="stylesheet" href="../../shared.css">
+<link rel="stylesheet" href="nedex.css">
+</head>
+<body>
+
+<!-- NEDEX CHROME — keep in sync across all Nedex pages -->
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../linkvid/"><span class="arc-bmark-icon">🎥</span>LinkVid</a>
+  <a class="arc-bmark" href="../csn/"><span class="arc-bmark-icon">⚾</span>CSN</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+
+<div class="ndx-header">
+  <a class="ndx-logo" href="./">Nedex</a>
+  <span class="ndx-tagline">The Free Encyclopaedia</span>
+  <div class="ndx-search-wrap">
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
+    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+  </div>
+</div>
+
+<div class="ndx-subnav">
+  <a href="./">Main Page</a>
+  <a href="#" class="active">Article</a>
+  <a href="#">Talk</a>
+  <a href="#">Edit</a>
+  <a href="#">History</a>
+</div>
+</div>
+<!-- END NEDEX CHROME -->
+
+<div class="ndx-article-wrap">
+  <div class="ndx-article-body">
+
+    <div class="ndx-article-title">Southeast Asia</div>
+    <div class="ndx-article-subtitle">Regional overview · Mainland and maritime territories · Colonial era and independence</div>
+
+    <div class="ndx-toc">
+      <div class="ndx-toc-title">Contents</div>
+      <ol>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#quick-reference">Quick Reference</a></li>
+        <li><a href="#mainland">Mainland Southeast Asia</a>
+          <ol>
+            <li><a href="#burma">Burma</a></li>
+            <li><a href="#siam">Siam</a></li>
+            <li><a href="#vietnam">Vietnam and the French Enclave</a></li>
+            <li><a href="#cambodia">Cambodia and Laos</a></li>
+          </ol>
+        </li>
+        <li><a href="#maritime">Maritime Southeast Asia</a>
+          <ol>
+            <li><a href="#philippines">The Philippines</a></li>
+            <li><a href="#dutch">Dutch East Indies</a></li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+
+    <div class="ndx-prose">
+
+      <p>Southeast Asia encompasses the territories of the mainland peninsula and the maritime archipelagos lying between the Indian subcontinent to the west, China to the north, and the Pacific Ocean to the east. Through the nineteenth century, the region was subject to sustained European colonial pressure, though several indigenous states maintained meaningful independence through diplomacy and resistance. The twentieth century brought the collapse or transformation of several colonial arrangements, driven by the aftermath of the Matanzas War (1905–06), the decay of European imperial institutions following the Great European War, and the disruption of the Global War (1932–1939).</p>
+
+      <h2 class="ndx-section-head" id="quick-reference">Quick Reference</h2>
+
+      <table class="ndx-table">
+        <thead>
+          <tr><th>Territory / State</th><th>Status</th><th>Colonial power(s)</th><th>Key development</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Burma</strong></td><td>British India province</td><td>Britain</td><td>Three Anglo-Burmese Wars (1824–1885); incorporated into Dominion of India</td></tr>
+          <tr><td><strong>Siam</strong></td><td>Independent kingdom</td><td>—</td><td>Only mainland SE Asian state never formally colonized; British buffer-state treaties</td></tr>
+          <tr><td><strong>Vietnam</strong></td><td>Independent kingdom<br>(Nguyen dynasty)</td><td>France (Cochinchina only, 1850s–c.1920)</td><td>Reclaimed Cochinchina c.1920 via British-mediated settlement</td></tr>
+          <tr><td><strong>Cambodia · Laos</strong></td><td>Nominally independent</td><td>Britain (informal)</td><td>Avoided formal colonization; British external guarantor of stability</td></tr>
+          <tr><td><strong>Philippines</strong></td><td>Independent republic</td><td>Spain (to c.1912–15)</td><td>Independence war following Matanzas War (1905–06); Spain's third colonial humiliation</td></tr>
+          <tr><td><strong>Dutch East Indies</strong></td><td>Dutch colonial territory</td><td>Netherlands</td><td>No decisive external shock; growing independence movement; detailed history TBD</td></tr>
+        </tbody>
+      </table>
+
+      <h2 class="ndx-section-head" id="mainland">Mainland Southeast Asia</h2>
+
+      <h3 class="ndx-sub-head" id="burma">Burma</h3>
+
+      <p>The Kingdom of Burma was progressively absorbed into the British Empire through three armed conflicts over the course of the nineteenth century. The First Anglo-Burmese War (1824–1826) resulted in the cession of Arakan and Tenasserim to British India. Subsequent wars in 1852 and 1885 completed the conquest, incorporating Burma fully into British India as a province. Burma's administrative and political future thereafter followed the trajectory of the broader Dominion of India framework established in the early twentieth century — moving toward self-governance alongside the rest of British India, and eventually toward independence as India's own relationship with Britain evolved.</p>
+
+      <h3 class="ndx-sub-head" id="siam">Siam</h3>
+
+      <p>The <strong>Kingdom of Siam</strong> preserved its independence throughout the nineteenth century, navigating the competing interests of Britain to the west and south and France to the east with consistent diplomatic skill. A series of treaties with Britain established Siam as a recognised buffer state and guaranteed its territorial integrity in exchange for trade concessions and navigational rights on the major river systems. Siam emerged from the nineteenth century as the only mainland Southeast Asian state to have never been formally colonised, a fact of considerable pride in its national identity — and a model studied by other Asian states navigating European pressure.</p>
+
+      <h3 class="ndx-sub-head" id="vietnam">Vietnam and the French Enclave</h3>
+
+      <p>The <strong>Nguyen dynasty</strong> reunified Vietnam in the early nineteenth century and maintained a cautious posture toward European powers through mid-century. French interest in the region was driven primarily by the protection of Catholic missionary communities and commercial ambitions in the Mekong delta. Following a series of incidents involving French missionaries in the late 1850s, France intervened militarily and seized the southern Vietnamese territory of <strong>Cochinchina</strong>, establishing a colonial enclave centred on Saigon. French expansion halted there, however — the cautious foreign policy of Henri V precluded the broader campaign of conquest that would have been necessary to subdue Annam and Tonkin. Vietnam proper remained under Nguyen sovereignty throughout the colonial period.</p>
+
+      <p>The collapse of the French monarchy and the formation of the Union of European Republics in 1904 created an immediate crisis of legitimacy for the Cochinchinese colonial administration. The governor and senior officials declared loyalty to the Bourbon court-in-exile on Corsica, formally severing their connection to the new revolutionary government. Several vessels of the French Royal Navy, finding themselves in Saigon's harbour at the moment of the revolution, effectively defected to the colonial administration — providing it a nominal naval force but no meaningful connection to a functioning metropole. For more than a decade, Cochinchina existed in a strange liminal status: neither a functioning colony nor an independent state, administered by aging officials operating on institutional inertia and a Bourbon legitimacy that carried less weight with each passing year.</p>
+
+      <p>By approximately 1920, the Nguyen court in Hué moved to reassert sovereignty over the lost southern territory. Vietnamese forces advanced on Cochinchina, and the colonial administration — its appeals to the Bourbon court producing only token gestures of support — found itself unable to mount an effective defence. British and Australian diplomatic intervention brokered a ceasefire and negotiated the orderly withdrawal of remaining French civilian and military personnel. Vietnam's sovereignty over the full extent of its territory was restored; in exchange, Britain secured a modest commercial agreement granting preferential trading terms for British merchants in Vietnamese ports.</p>
+
+      <p>The Nguyen dynasty's successful reclamation of Cochinchina became a defining episode in Vietnamese national memory, cementing the dynasty's legitimacy as the force that had finally expelled the last European foothold from the country's soil.</p>
+
+      <h3 class="ndx-sub-head" id="cambodia">Cambodia and Laos</h3>
+
+      <p>The <strong>Kingdom of Cambodia</strong> and the principalities of <strong>Laos</strong> remained nominally independent through the nineteenth century, though both were subject to significant external pressure — from Siam to the west, Vietnam to the east, and European powers from the coast. With France's colonial ambitions truncated at Cochinchina and never extended northward or westward, Cambodia and Laos avoided the formal colonial subjugation they experienced in other historical scenarios. British treaty relationships developed gradually over the course of the late nineteenth and early twentieth centuries, establishing Britain as the effective external guarantor of regional stability on the mainland without requiring formal annexation.</p>
+
+      <h2 class="ndx-section-head" id="maritime">Maritime Southeast Asia</h2>
+
+      <h3 class="ndx-sub-head" id="philippines">The Philippines</h3>
+
+      <p>The Philippine Islands remained under Spanish colonial rule throughout the nineteenth century. Spanish administration in this period was more stable and effective than in several of Spain's other overseas possessions, owing in part to the relative internal coherence of Isabella II's long constitutional reign at home. A Filipino nationalist intelligentsia — the <strong>ilustrado</strong> class — nevertheless developed through the latter half of the century, producing reformist writers, lawyers, and organisers who pressed for expanded civil rights and representation within the colonial system.</p>
+
+      <p>The <strong>Matanzas War</strong> (1905–1906), in which Spain suffered a swift and decisive defeat at the hands of the United States, stripping it of Cuba and Puerto Rico and saddling it with substantial war indemnities, transformed the political calculus in Manila overnight. Filipino nationalists read the outcome as evidence of Spanish imperial weakness and accelerated their organising accordingly. Within a year of the Treaty of Copenhagen, a major nationalist uprising had broken out across the archipelago.</p>
+
+      <p>The government of Alejandro I and Prime Minister Rodrigo Montilla y Vega, politically unable to countenance the appearance of another colonial surrender, committed to suppressing the rebellion by force. The resulting colonial war proved brutal and expensive. Spanish forces won repeated tactical engagements but could not extinguish the insurgency; guerrilla resistance persisted across multiple island groups simultaneously, straining a treasury already weakened by Matanzas War indemnities. By approximately 1912–1915, the political and financial cost had become untenable. Montilla's government, or a successor, negotiated a settlement: Spain formally recognised Philippine independence, retaining only nominal commercial arrangements that carried little practical weight.</p>
+
+      <p>The <strong>Philippine Republic</strong> thus emerged from an independence war rather than a negotiated transfer of authority — a harder birth than some of its regional neighbours, but one that produced a strong nationalist founding mythology. The domestic political consequences in Spain were severe: the Nationalist movement pointed to Cuba, Puerto Rico, and the Philippines as three successive humiliations on the watch of Montilla-era liberalism, accelerating the political dynamic that would eventually bring Ramón Calvo y Serrano to power in the 1930s.</p>
+
+      <h3 class="ndx-sub-head" id="dutch">Dutch East Indies</h3>
+
+      <p>The territories of the <strong>Dutch East Indies</strong> — encompassing the islands of Java, Sumatra, Borneo, Sulawesi, and the surrounding archipelago — remained under Dutch colonial administration throughout the nineteenth century and into the twentieth. The brutal suppression of the Java War (1825–1830) consolidated Dutch control over the archipelago's most populous island, and the exploitative Culture System imposed thereafter extracted substantial agricultural wealth for the Dutch economy. Ethical Policy reforms introduced around the turn of the twentieth century represented a paternalistic attempt at colonial modernisation, expanding education and infrastructure investment while preserving the fundamental colonial relationship.</p>
+
+      <p>Unlike the Philippines and Cochinchina, the Dutch East Indies did not experience a decisive external shock in the early twentieth century that destabilised colonial authority. The Netherlands remained outside the major European conflicts of the period, and Dutch administration continued without fundamental interruption. A nationalist intelligentsia nevertheless developed, shaped in part by the Ethical Policy's own educational programmes, and independence movements grew in organisation and ambition through the middle decades of the century. The full history of Indonesian independence remains to be documented.</p>
+
+      <div class="ndx-categories">
+        <strong>Categories:</strong>
+        <a href="#">Asia</a>
+        <a href="#">Regional overview articles</a>
+        <a href="#">Colonial history</a>
+        <a href="#">Great European War</a>
+        <a href="#">Global War</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ndx-article-sidebar">
+
+    <div class="ndx-infobox">
+      <div class="ndx-infobox-title">Southeast Asia</div>
+      <div class="ndx-infobox-sub">Regional overview</div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Sovereign states</span><span class="ndx-infobox-val">Siam (never colonized)<br>Vietnam (Nguyen dynasty)<br>Philippine Republic</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">British territories</span><span class="ndx-infobox-val">Burma (part of India)<br>Cambodia &amp; Laos (informal)</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Dutch territory</span><span class="ndx-infobox-val">Dutch East Indies</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Key turning point</span><span class="ndx-infobox-val">Matanzas War (1905–06)<br>→ Philippines independence<br>French Revolution (1904)<br>→ Cochinchina returned to Vietnam</span></div>
+    </div>
+
+    <div class="ndx-widget">
+      <div class="ndx-widget-head">See Also</div>
+      <div class="ndx-widget-body">
+        <a class="ndx-widget-link" href="#">Dominion of India</a>
+        <a class="ndx-widget-link" href="#">British Empire</a>
+        <a class="ndx-widget-link" href="#">Kingdom of France</a>
+        <a class="ndx-widget-link" href="#">Union of European Republics</a>
+        <a class="ndx-widget-link" href="#">Matanzas War (1905–1906)</a>
+        <a class="ndx-widget-link" href="#">Kingdom of Spain</a>
+        <a class="ndx-widget-link" href="#">Great European War (1899–1904)</a>
+        <a class="ndx-widget-link" href="#">Global War</a>
+        <a class="ndx-widget-link" href="#">Philippine Republic</a>
+        <a class="ndx-widget-link" href="#">Kingdom of Vietnam</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="ndx-footer">
+  <span>link://nan.nedex.org.nau/southeast-asia &nbsp;·&nbsp; Nedex — The Free Encyclopaedia</span>
+  <div class="ndx-footer-links">
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script>
+initAddressBar('nan.nedex.org.nau/southeast-asia');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+</body>
+</html>
