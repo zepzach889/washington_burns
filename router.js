@@ -58,6 +58,10 @@ const ROUTES = {
   'nan.nedex.org.nau/history-of-mexico':      '/nodes/nedex/history-of-mexico.html',
   'nan.nedex.org.nau/history-of-spain':       '/nodes/nedex/history-of-spai .html',
   'nan.nedex.org.nau/history-of-austria-hungary':       '/nodes/nedex/history-of-austria-hungary.html',
+  'nan.nedex.org.nau/history-of-the-united-kingdom':    '/nodes/nedex/history-of-the-united-kingdom.html',
+  'nan.nedex.org.nau/istanbul-accord-1919':   '/nodes/nedex/istanbul-accord-1919.html',
+  'nan.nedex.org.nau/jeffersonian-constitutional-alliance':          '/nodes/nedex/jefferson-constitutional-alliance.html',
+
   'nan.nedex.org.nau/congress-hall':          '/nodes/nedex/congress-hall.html',
   'nan.nedex.org.nau/constitution-1861':      '/nodes/nedex/constitution-1861.html',
   'nan.nedex.org.nau/democratic-party':       '/nodes/nedex/democratic-party.html',
