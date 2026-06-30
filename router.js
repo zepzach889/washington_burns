@@ -65,7 +65,7 @@ const ROUTES = {
   'nan.nedex.org.nau/fourteenth-amdentment-1787':       '/nodes/nedex/fourteenth-amendment-1787.html',
   'nan.nedex.org.nau/fifteenth-amdentment-1787':        '/nodes/nedex/fifteenth-amendment-1787.html',
   'nan.nedex.org.nau/first-capital-park':     '/nodes/nedex/first-capital-park.html',
-  'nan.nedex.org.nau/franklin':               '/nodes/nedex/franklin.html',
+  'nan.nedex.org.nau/franklin-dw':               '/nodes/nedex/franklin-dw.html',
   'nan.nedex.org.nau/global-war':             '/nodes/nedex/global-war.html',
   'nan.nedex.org.nau/governor-general-canada':          '/nodes/nedex/governor-general-canada.html',
   'nan.nedex.org.nau/grand-compromise-1817':  '/nodes/nedex/grand-compromise-1817.html',
