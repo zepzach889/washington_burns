@@ -61,6 +61,13 @@ const ROUTES = {
   'nan.nedex.org.nau/history-of-the-united-kingdom':    '/nodes/nedex/history-of-the-united-kingdom.html',
   'nan.nedex.org.nau/istanbul-accord-1919':   '/nodes/nedex/istanbul-accord-1919.html',
   'nan.nedex.org.nau/jeffersonian-constitutional-alliance':          '/nodes/nedex/jefferson-constitutional-alliance.html',
+  'nan.nedex.org.nau/karahan-interlude':      '/nodes/nedex/karahan-interlude.html',
+  'nan.nedex.org.nau/macedonian-crisis':      '/nodes/nedex/macedonian-crisis.html',
+  'nan.nedex.org.nau/monarchs-mexico':        '/nodes/nedex/monarchs-mexico.html',
+  'nan.nedex.org.nau/ottoman-constitution-1883':        '/nodes/nedex/ottoman-constitution-1883.html',
+  'nan.nedex.org.nau/prime-ministers-mexico': '/nodes/nedex/prime-ministers-mexico.html',
+  'nan.nedex.org.nau/prime-ministers-russia': '/nodes/nedex/prime-ministers-russia.html',
+  'nan.nedex.org.nau/tsars-russia':           '/nodes/nedex/tsars-russia.html',
 
   'nan.nedex.org.nau/congress-hall':          '/nodes/nedex/congress-hall.html',
   'nan.nedex.org.nau/constitution-1861':      '/nodes/nedex/constitution-1861.html',
