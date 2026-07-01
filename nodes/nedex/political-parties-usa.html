@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>Political Parties of the United States — Nedex</title>
+<link rel="stylesheet" href="../../shared.css">
+<link rel="stylesheet" href="nedex.css">
+<style>
+.party-banner {
+  border-left: 6px solid;
+  padding: 14px 16px;
+  margin: 24px 0 10px 0;
+  background: var(--ndx-bg-secondary);
+  border-radius: 2px;
+}
+.party-banner h2 {
+  margin: 0 0 2px 0;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.15em;
+}
+.party-banner .party-meta {
+  font-size: 0.82em;
+  color: var(--ndx-text-tertiary);
+  margin-bottom: 6px;
+}
+.party-banner p {
+  margin: 6px 0 0 0;
+  font-size: 0.93em;
+  line-height: 1.5;
+}
+.party-banner .party-presidents {
+  margin-top: 8px;
+  font-size: 0.82em;
+  color: var(--ndx-text-secondary);
+}
+.spectrum-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 13px;
+}
+.spectrum-table th {
+  background: var(--ndx-header);
+  color: #fff;
+  text-align: left;
+  padding: 8px 10px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.spectrum-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--ndx-border);
+}
+.spectrum-table tr:nth-child(even) { background: var(--ndx-bg-secondary); }
+.party-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.extinct-banner {
+  border-left: 6px solid #888;
+  padding: 10px 16px;
+  margin: 16px 0;
+  background: var(--ndx-bg-secondary);
+  opacity: 0.8;
+  border-radius: 2px;
+  font-size: 0.91em;
+}
+</style>
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../linkvid/"><span class="arc-bmark-icon">🎥</span>LinkVid</a>
+  <a class="arc-bmark" href="../csn/"><span class="arc-bmark-icon">⚾</span>CSN</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+
+<div class="ndx-header">
+  <a class="ndx-logo" href="./">Nedex</a>
+  <span class="ndx-tagline">The Free Encyclopaedia</span>
+  <div class="ndx-search-wrap">
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
+    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+  </div>
+</div>
+
+<div class="ndx-subnav">
+  <a href="./">Main Page</a>
+  <a href="#" class="active">Article</a>
+  <a href="#">Talk</a>
+  <a href="#">Edit</a>
+  <a href="#">History</a>
+</div>
+</div>
+
+<div class="ndx-article-wrap">
+  <div class="ndx-article-body">
+
+    <div class="ndx-article-title">Political Parties of the United States</div>
+    <div class="ndx-article-subtitle">Overview of the five-party system · Active and historical parties</div>
+
+    <div class="ndx-toc">
+      <div class="ndx-toc-title">Contents</div>
+      <ol>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#spectrum">The Political Spectrum</a></li>
+        <li><a href="#active">Active Parties</a>
+          <ol>
+            <li><a href="#spa">Social Progressive Alliance</a></li>
+            <li><a href="#federalist">Federalist Party</a></li>
+            <li><a href="#democratic">Democratic Party</a></li>
+            <li><a href="#green">Green Party</a></li>
+            <li><a href="#jca">Jeffersonian Constitutional Alliance</a></li>
+          </ol>
+        </li>
+        <li><a href="#extinct">Extinct Parties</a></li>
+        <li><a href="#mechanics">Electoral Mechanics</a></li>
+      </ol>
+    </div>
+
+    <div class="ndx-prose">
+
+      <p>The United States operates under a <strong>five-party system</strong> that has evolved across two centuries of constitutional democracy. Four parties — the <a href="federalist-party.html">Federalist Party</a>, the <a href="democratic-party.html">Democratic Party</a>, the <a href="social-progressive-alliance.html">Social Progressive Alliance</a>, and the <a href="jeffersonian-constitutional-alliance.html">Jeffersonian Constitutional Alliance</a> — have competed continuously since the early twentieth century. The <a href="green-party.html">Green Party</a> emerged as a significant force in the 1980s and achieved the presidency in 2025 under Sophia Nakamura, making the system genuinely five-party for the first time. Two additional parties, the Democratic-Republican Party and the Republican Party, played significant roles in the republic's earlier history but no longer exist as active political organizations.</p>
+
+      <h2 class="ndx-section-head" id="spectrum">The Political Spectrum</h2>
+
+      <table class="spectrum-table">
+        <thead>
+          <tr><th>Party</th><th>Position</th><th>Runoff Bloc</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="party-dot" style="background:#B22222;"></span><a href="social-progressive-alliance.html">Social Progressive Alliance</a></td>
+            <td>Left</td>
+            <td>SPA–Federalist</td>
+          </tr>
+          <tr>
+            <td><span class="party-dot" style="background:#D2691E;"></span><a href="federalist-party.html">Federalist Party</a></td>
+            <td>Centre-left</td>
+            <td>SPA–Federalist</td>
+          </tr>
+          <tr>
+            <td><span class="party-dot" style="background:#1E5631;"></span><a href="green-party.html">Green Party</a></td>
+            <td>Centre-left (environmental)</td>
+            <td>Flexible; tends SPA-aligned</td>
+          </tr>
+          <tr>
+            <td><span class="party-dot" style="background:#6B8E23;"></span><a href="democratic-party.html">Democratic Party</a></td>
+            <td>Centre-right</td>
+            <td>Democrat–JCA</td>
+          </tr>
+          <tr>
+            <td><span class="party-dot" style="background:#DAA520;"></span><a href="jeffersonian-constitutional-alliance.html">Jeffersonian Constitutional Alliance</a></td>
+            <td>Right</td>
+            <td>Democrat–JCA (weakening)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="ndx-section-head" id="active">Active Parties</h2>
+
+      <div class="party-banner" style="border-color:#B22222;" id="spa">
+        <h2 style="color:#B22222;"><a href="social-progressive-alliance.html">Social Progressive Alliance</a></h2>
+        <div class="party-meta">Founded c. 1878 · Left · SPA–Federalist bloc</div>
+        <p>The SPA has its roots in the communalist and utopian movements that flourished in the American Midwest following the War Between the States. Built across the late nineteenth and early twentieth centuries from labour unions, socialist organizations, immigrant community groups, and intellectual reformers, the Alliance's core commitments are to labour over capital, social welfare over market outcomes, and an expansive vision of social equality that has consistently put it ahead of the other parties on questions of gender, race, and sexuality. The Global War years significantly expanded its reach; its postwar electoral dominance shaped American social politics from Georgina Lincoln's landmark 1959 victory onward.</p>
+        <div class="party-presidents"><strong>Presidents:</strong> <a href="#">Georgina Lincoln</a> (33rd) · <a href="#">Julius Langston</a> (35th) · <a href="#">Jesse Pike</a> (37th) · <a href="#">Victor Liu</a> (39th) · <a href="#">Naomi Clearwater</a> (43rd)</div>
+      </div>
+
+      <div class="party-banner" style="border-color:#D2691E;" id="federalist">
+        <h2 style="color:#D2691E;"><a href="federalist-party.html">Federalist Party</a></h2>
+        <div class="party-meta">Founded 1787 · Centre-left · SPA–Federalist bloc</div>
+        <p>The oldest continuously operating political party in the United States, the Federalist Party traces its origins to the supporters of the Constitution of 1787. The party of strong central government within a constitutional framework, the Federalists have historically led on social reform — championing abolition, women's suffrage, and civil rights — while occupying a centrist position on economic matters. Their base lies in New England, the Freedmen States, the educated professional class, and Black Americans across the country. In the 2024 presidential runoff, the Federalists backed Green candidate Sophia Nakamura over the Democrat, a notable break reflecting the party's NAU-positive instincts.</p>
+        <div class="party-presidents"><strong>Presidents:</strong> <a href="#">Alexander Hamilton, Jr.</a> (7th) · <a href="#">Hugo Brandt</a> (14th, elected) · <a href="#">Horace Littlefield</a> (17th) · <a href="#">Leeland Rowling</a> (19th) · <a href="#">Colin Beck</a> (20th) · <a href="#">Alexander Fleak</a> (21st) · <a href="#">Peter Landon</a> (22nd) · <a href="#">Lance Hawkins</a> (27th) · <a href="#">Henry Freeman</a> (30th) · <a href="#">Cassandra Schultz</a> (34th) · <a href="#">Regina Holman</a> (38th) · <a href="#">Xavier Hudson</a> (42nd)</div>
+      </div>
+
+      <div class="party-banner" style="border-color:#6B8E23;" id="democratic">
+        <h2 style="color:#6B8E23;"><a href="democratic-party.html">Democratic Party</a></h2>
+        <div class="party-meta">Founded 1820 · Centre-right · Democrat–JCA bloc</div>
+        <p>Emerging from the Western wing of the Democratic-Republican Party in 1820, the Democratic Party's founding ideology — states' rights on social matters combined with enthusiastic federal investment in infrastructure — proved surprisingly durable. Frequently described as the republic's "natural governing party," the Democrats' broad coalition has governed effectively across the continent's varied regions. Their base consists of Western states, infrastructure advocates, moderate farmers, and pragmatic Southerners. The party has produced more presidents than any other, and its centrist positioning makes it a perennial coalition-builder in a five-party Congress.</p>
+        <div class="party-presidents"><strong>Presidents:</strong> <a href="#">William Crawford</a> (5th) · <a href="#">Henry Clay</a> (6th) · <a href="#">Victor Yates</a> (10th) · <a href="#">Wilbur Haines</a> (11th) · <a href="#">Hugo Brandt</a> (14th, acting) · <a href="#">John P. Quincy</a> (15th) · <a href="#">Bradley Kinder</a> (16th) · <a href="#">Theodore Drake</a> (18th) · <a href="#">Cornelius Roosevelt II</a> (23rd) · <a href="#">Patrick Hannah</a> (24th) · <a href="#">Benjamin King</a> (28th) · <a href="#">Leon Palmer</a> (29th) · <a href="#">Richard Whitmore</a> (36th) · <a href="#">Stephen Mercer</a> (40th) · <a href="#">Eleanor Sinclair</a> (41st)</div>
+      </div>
+
+      <div class="party-banner" style="border-color:#1E5631;" id="green">
+        <h2 style="color:#1E5631;"><a href="green-party.html">Green Party</a></h2>
+        <div class="party-meta">Founded c. 1970s (first congressional seats 1983) · Centre-left · Flexible runoff alignment</div>
+        <p>The Green Party emerged earlier in California than elsewhere, growing through the 1970s around environmental and social justice issues before winning its first congressional seats at the start of Jesse Pike's administration in 1983. The party's ideology overlaps with the SPA on labour and social equality but is distinctly environmental in its core program, and — unlike the SPA — is broadly NAU-positive and internationalist, giving it natural points of contact with the Federalist Party as well. Laura Marsh of Vermont made the first serious Green presidential run in 2000, winning 15% of the vote; Raj Sandhu became the party's standard bearer across two subsequent campaigns; and <a href="#">Sophia Nakamura</a> of Oregon became the first Green president, winning the 2024 election with 40% and carrying the runoff with Federalist backing. In runoffs, the Green Party has tended to align with the SPA but has not formalized this as a fixed arrangement.</p>
+        <div class="party-presidents"><strong>Presidents:</strong> <a href="#">Sophia Nakamura</a> (44th, incumbent)</div>
+      </div>
+
+      <div class="party-banner" style="border-color:#DAA520;" id="jca">
+        <h2 style="color:#DAA520;"><a href="jeffersonian-constitutional-alliance.html">Jeffersonian Constitutional Alliance</a></h2>
+        <div class="party-meta">Founded c. 1906–1908 · Right · Democrat–JCA bloc (weakening)</div>
+        <p>The youngest of the major parties, the JCA emerged from the wreckage of the Republican Party following the Matanzas War (1905–06). The party's ideology draws on the Jeffersonian tradition of limited federal government, states' rights, and agrarian values. Its opposition to American entry into the Global War left it politically isolated during the conflict, and the McCorker fracture of 1958 — which split the JCA vote and handed Georgina Lincoln a decisive runoff victory — ended the party's presidential era. The JCA has not held the presidency since Timothy Priest left office in 1959, though it remains a significant force in congressional politics. Its historically reliable runoff endorsement of the Democratic candidate has shown signs of strain in recent decades, with the party on at least one recent occasion sitting out the runoff entirely.</p>
+        <div class="party-presidents"><strong>Presidents:</strong> <a href="#">James P. Roosevelt, Jr.</a> (25th) · <a href="#">Alden Gunther</a> (26th) · <a href="#">James Nolan</a> (31st) · <a href="#">Timothy Priest</a> (32nd)</div>
+      </div>
+
+      <h2 class="ndx-section-head" id="extinct">Extinct Parties</h2>
+
+      <div class="extinct-banner">
+        <strong>Democratic-Republican Party</strong> (1792–1820) — Dominant organization of the early republic under Jefferson, Madison, and Crawford. Dissolved in the schism of 1820, splitting into the Democratic Party (Western faction) and the Republican Party (Southern faction).
+      </div>
+
+      <div class="extinct-banner">
+        <strong>Republican Party</strong> (1820–c.1908) — Southern faction of the Democratic-Republican split; built around the defense of slavery and states' sovereignty. Held the presidency under Calhoun (8th), Brandon (9th), Lee (12th), and Hawthorne (13th). Permanently associated with the slaver cause after the War Between the States; dissolved following its leadership's implication in the Coastal Rebel Uprising (1905).
+      </div>
+
+      <h2 class="ndx-section-head" id="mechanics">Electoral Mechanics</h2>
+
+      <p>Since the ratification of the <a href="#">Fourth Amendment (1911)</a>, presidential elections that produce no outright electoral majority are resolved by a runoff between the top two candidates held the following month. In practice, this mechanism reinforces the two-bloc structure of American politics: the SPA and Federalists have endorsed each other in runoffs consistently since the amendment's adoption. The Democratic–JCA alignment has held almost as consistently, though the JCA's endorsement of Democrats has at times been reluctant rather than enthusiastic — a calculated lesser-evil calculation rather than warm ideological kinship — and has recently broken down altogether on at least one occasion, with the JCA sitting out the runoff entirely. The Green Party does not have a fixed runoff endorsement arrangement; it has tended to align with the SPA but makes its decision election by election, and in 2024 its runoff benefited from Federalist backing rather than the other way around.</p>
+
+      <p>In Congress, the bloc structure is less rigid than in presidential elections. Cross-bloc coalitions form regularly on specific issues, and the five-party system produces a legislative environment where few majorities are automatic and most significant legislation requires genuine coalition-building. The addition of a Green caucus since the early 1980s has added a further independent variable to congressional arithmetic, particularly on environmental and NAU-related legislation.</p>
+
+      <div class="ndx-categories">
+        <strong>Categories:</strong>
+        <a href="#">United States politics</a>
+        <a href="#">Political parties</a>
+        <a href="#">Reference lists</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ndx-article-sidebar">
+
+    <div class="ndx-infobox">
+      <div class="ndx-infobox-title">US Political Parties</div>
+      <div class="ndx-infobox-sub">Five active parties · 2026</div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label" style="color:#B22222;">■</span><span class="ndx-infobox-val"><a href="social-progressive-alliance.html">Social Progressive Alliance</a></span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label" style="color:#D2691E;">■</span><span class="ndx-infobox-val"><a href="federalist-party.html">Federalist Party</a></span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label" style="color:#1E5631;">■</span><span class="ndx-infobox-val"><a href="green-party.html">Green Party</a></span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label" style="color:#6B8E23;">■</span><span class="ndx-infobox-val"><a href="democratic-party.html">Democratic Party</a></span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label" style="color:#DAA520;">■</span><span class="ndx-infobox-val"><a href="jeffersonian-constitutional-alliance.html">Jeffersonian Constitutional Alliance</a></span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Current president</span><span class="ndx-infobox-val">Sophia Nakamura (Green)<br>44th president</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Runoff system</span><span class="ndx-infobox-val">Since Fourth Amendment (1911)</span></div>
+    </div>
+
+    <div class="ndx-widget">
+      <div class="ndx-widget-head">See Also</div>
+      <div class="ndx-widget-body">
+        <a class="ndx-widget-link" href="social-progressive-alliance.html">Social Progressive Alliance</a>
+        <a class="ndx-widget-link" href="federalist-party.html">Federalist Party</a>
+        <a class="ndx-widget-link" href="green-party.html">Green Party</a>
+        <a class="ndx-widget-link" href="democratic-party.html">Democratic Party</a>
+        <a class="ndx-widget-link" href="jeffersonian-constitutional-alliance.html">Jeffersonian Constitutional Alliance</a>
+        <a class="ndx-widget-link" href="list_of_pres_usa.html">Presidents of the United States</a>
+        <a class="ndx-widget-link" href="#">Fourth Amendment (1911)</a>
+        <a class="ndx-widget-link" href="#">United States of America</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="ndx-footer">
+  <span>link://nan.nedex.org.nau/political-parties-usa &nbsp;·&nbsp; Nedex — The Free Encyclopaedia</span>
+  <div class="ndx-footer-links">
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script>
+initAddressBar('nan.nedex.org.nau/political-parties-usa');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+</body>
+</html>
