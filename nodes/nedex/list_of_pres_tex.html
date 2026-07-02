@@ -39,9 +39,8 @@
   <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
   <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
 </div>
-</div>
 
-<div class="ndx-header" style="position:sticky; top:64px; z-index:90;">
+<div class="ndx-header">
   <a class="ndx-logo" href="../nedex/index.html">Nedex</a>
   <span class="ndx-tagline">The Free Encyclopedia</span>
   <div class="ndx-search-wrap">
@@ -49,13 +48,14 @@
     <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
   </div>
 </div>
-<div class="ndx-subnav" style="position:sticky; top:calc(64px + 46px); z-index:89;">
+<div class="ndx-subnav">
   <a href="../nedex/index.html">Home</a>
   <a href="../nedex/category-countries.html">Countries</a>
   <a href="../nedex/category-biographies.html">Biographies</a>
   <a href="../nedex/category-history.html">History</a>
   <a href="../nedex/category-lists.html" class="active">Lists</a>
   <a href="../nedex/category-government.html">Government &amp; Politics</a>
+</div>
 </div>
 
 <div class="ndx-article-wrap">
@@ -161,7 +161,7 @@
 <script src="../nedex_index.js"></script>
 <script src="../nedex-search.js"></script>
 <script>
-  if (typeof initAddressBar === 'function') initAddressBar();
+  if (typeof initAddressBar === 'function') initAddressBar(nan.nedex.biz.usa/list_of_pres_tex);
   if (typeof initNdxSearch === 'function') initNdxSearch();
 </script>
 </body>
