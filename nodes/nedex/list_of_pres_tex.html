@@ -45,8 +45,8 @@
   <a class="ndx-logo" href="../nedex/index.html">Nedex</a>
   <span class="ndx-tagline">The Free Encyclopedia</span>
   <div class="ndx-search-wrap">
-    <input class="ndx-search" type="text" placeholder="Search Nedex…" />
-    <button class="ndx-search-btn">Search</button>
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
+    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
   </div>
 </div>
 <div class="ndx-subnav" style="position:sticky; top:calc(64px + 46px); z-index:89;">
