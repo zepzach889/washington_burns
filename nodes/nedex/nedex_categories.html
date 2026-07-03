@@ -141,10 +141,10 @@ allCats.forEach(cat => {
   const card = document.createElement('div');
   card.className = 'ndx-cat-card';
   card.dataset.catName = cat.toLowerCase();
-  card.onclick = () => card.card.onclick = (e) => {
+  card.onclick = (e) => {
   if (e.target.closest('a')) return;
   card.classList.toggle('open');
-};.toggle('open');
+};
   card.innerHTML = `
     <div class="ndx-cat-card-name">${cat}</div>
     <div class="ndx-cat-card-count">${articles.length} article${articles.length !== 1 ? 's' : ''}</div>
