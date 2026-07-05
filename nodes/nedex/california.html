@@ -46,7 +46,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -149,15 +149,15 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="#">History of the Union of the Californias</a>
-        <a class="ndx-widget-link" href="#">Premiers of the Union of the Californias</a>
-        <a class="ndx-widget-link" href="#">Ignacio Vallejo</a>
-        <a class="ndx-widget-link" href="#">Asamblea Nacional</a>
+        <a class="ndx-widget-link" href="history-of-california.html">History of the Union of the Californias</a>
+        <a class="ndx-widget-link" href="list_of_premiers_california.html">Premiers of the Union of the Californias</a>
+        <a class="ndx-widget-link" href="bio-ignacio-vallejo.html">Ignacio Vallejo</a>
+        <a class="ndx-widget-link" href="asemblea-nacional-ca.html">Asamblea Nacional</a>
         <a class="ndx-widget-link" href="nau.html">North American Union</a>
         <a class="ndx-widget-link" href="texas.html">Texas Federation</a>
         <a class="ndx-widget-link" href="mexico.html">Empire of Mexico</a>
-        <a class="ndx-widget-link" href="#">Second Mexican War</a>
-        <a class="ndx-widget-link" href="#">Second Treaty of New Orleans</a>
+        <a class="ndx-widget-link" href="second-mexican-war.html">Second Mexican War</a>
+        <a class="ndx-widget-link" href="second-treaty-of-new-orleans.html">Second Treaty of New Orleans</a>
       </div>
     </div>
 
@@ -175,6 +175,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/california');
 function updateArcClock() {
