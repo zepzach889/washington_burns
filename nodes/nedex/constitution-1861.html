@@ -46,7 +46,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -252,16 +252,16 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="#">Constitution of 1787</a>
-        <a class="ndx-widget-link" href="#">Constitutional Convention of 1861</a>
-        <a class="ndx-widget-link" href="#">War Between the States</a>
-        <a class="ndx-widget-link" href="#">Abraham Lincoln</a>
-        <a class="ndx-widget-link" href="#">Hugo Brandt</a>
-        <a class="ndx-widget-link" href="#">Secretary General of the House</a>
+        <a class="ndx-widget-link" href="constitution-1787.html">Constitution of 1787</a>
+        <a class="ndx-widget-link" href="constitutional-convention-1861.html">Constitutional Convention of 1861</a>
+        <a class="ndx-widget-link" href="war-between-the-states.html">War Between the States</a>
+        <a class="ndx-widget-link" href="bio-abraham-lincoln.html">Abraham Lincoln</a>
+        <a class="ndx-widget-link" href="hugo-brandt.html">Hugo Brandt</a>
+        <a class="ndx-widget-link" href="secretary-general.html">Secretary General of the United States</a>
         <a class="ndx-widget-link" href="grand-compromise-1817.html">Grand Compromise of 1817</a>
-        <a class="ndx-widget-link" href="#">Keyman v. Virginia (1903)</a>
-        <a class="ndx-widget-link" href="#">Third Amendment (Women's Suffrage)</a>
-        <a class="ndx-widget-link" href="#">Fourth Amendment (Presidential Runoff)</a>
+        <a class="ndx-widget-link" href="keyman-v-virginia.html">Keyman v. Virginia (1903)</a>
+        <a class="ndx-widget-link" href="third-amendment-1861.html">Third Amendment (Women's Suffrage)</a>
+        <a class="ndx-widget-link" href="fourth-amendment-1861.html">Fourth Amendment (Presidential Runoff)</a>
       </div>
     </div>
 
@@ -279,6 +279,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/constitution-1861');
 function updateArcClock() {
