@@ -45,7 +45,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -212,17 +212,17 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="#">Washington House</a>
+        <a class="ndx-widget-link" href="washington-house.html">Washington House</a>
         <a class="ndx-widget-link" href="congress-hall.html">Congress Hall</a>
-        <a class="ndx-widget-link" href="#">Union Avenue</a>
-        <a class="ndx-widget-link" href="#">George Washington Bridge</a>
-        <a class="ndx-widget-link" href="#">District of Washington</a>
+        <a class="ndx-widget-link" href="union-avenue.html">Union Avenue</a>
+        <a class="ndx-widget-link" href="george-washington-bridge.html">George Washington Bridge</a>
+        <a class="ndx-widget-link" href="franklin-dw.html">Franklin, D.W.</a>
         <a class="ndx-widget-link" href="grand-compromise-1817.html">Grand Compromise of 1817</a>
-        <a class="ndx-widget-link" href="#">University of the United States</a>
-        <a class="ndx-widget-link" href="#">Museum of the United States</a>
-        <a class="ndx-widget-link" href="#">War Between the States</a>
+        <a class="ndx-widget-link" href="uus-edu.html">University of the United States</a>
+        <a class="ndx-widget-link" href="museum-of-the-united-states.html">Museum of the United States</a>
+        <a class="ndx-widget-link" href="war-between-the-states.html">War Between the States</a>
         <a class="ndx-widget-link" href="hugo-brandt.html">Hugo Brandt</a>
-        <a class="ndx-widget-link" href="#">Brandt Memorial</a>
+        <a class="ndx-widget-link" href="brandt-memorial.html">Brandt Memorial</a>
       </div>
     </div>
 
@@ -240,6 +240,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/franklin-dw');
 function updateArcClock() {
