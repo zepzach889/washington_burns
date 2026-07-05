@@ -45,8 +45,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
   <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-  <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
-</div>
+  <button class="ndx-search-btn" type="button">Search</button></div>
 </div>
 
 <div class="ndx-subnav">
@@ -204,12 +203,12 @@
         <a class="ndx-widget-link" href="#">Constitution of 1861</a>
         <a class="ndx-widget-link" href="colin-beck.html">Colin Beck</a>
         <a class="ndx-widget-link" href="peter-landon.html">Peter Landon</a>
-        <a class="ndx-widget-link" href="#">Federalist Party</a>
-        <a class="ndx-widget-link" href="#">Education Acts of 1900</a>
-        <a class="ndx-widget-link" href="#">Belle of Matanzas Affair</a>
-        <a class="ndx-widget-link" href="#">Great European War (1899-1904)</a>
-        <a class="ndx-widget-link" href="#">Third Amendment to the Constitution of the 1861</a>
-        <a class="ndx-widget-link" href="list_of_pres_usa">Presidents of the United States</a>
+        <a class="ndx-widget-link" href="federalist-party.html">Federalist Party</a>
+        <a class="ndx-widget-link" href="education-acts-1900.html">Education Acts of 1900</a>
+        <a class="ndx-widget-link" href="belle-of-matanzas-affair.html">Belle of Matanzas Affair</a>
+        <a class="ndx-widget-link" href="great-european-war.html">Great European War (1899-1904)</a>
+        <a class="ndx-widget-link" href="third-amendment-1861.html">Third Amendment to the Constitution of the 1861</a>
+        <a class="ndx-widget-link" href="list_of_pres_usa.html">Presidents of the United States</a>
       </div>
     </div>
 
@@ -236,6 +235,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/alexander-fleak');
 function updateArcClock() {
