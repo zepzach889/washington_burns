@@ -22,12 +22,19 @@ function initNdxSearch() {
   }
 
   function doSearch(q) {
-    if (!q || q.length < 2) { dropdown.classList.remove('open'); return; }
+    if (!q || q.length < 2) {
+      dropdown.classList.remove('open');
+      return;
+    }
+
     var ql = q.toLowerCase();
+
     var results = NEDEX_ARTICLES.filter(function(a) {
       return a.title.toLowerCase().includes(ql) ||
              a.blurb.toLowerCase().includes(ql) ||
-             a.categories.some(function(c) { return c.toLowerCase().includes(ql); });
+             a.categories.some(function(c) {
+               return c.toLowerCase().includes(ql);
+             });
     }).slice(0, 8);
 
     if (results.length === 0) {
@@ -37,21 +44,47 @@ function initNdxSearch() {
         return '<a href="' + r.file + '">' +
           '<span class="ndx-drop-title">' + hi(r.title, q) + '</span>' +
           '<span class="ndx-drop-blurb">' + hi(r.blurb, q) + '</span>' +
-          '<span class="ndx-drop-cats">'  + r.categories.slice(0,3).join(' · ') + '</span>' +
+          '<span class="ndx-drop-cats">' + r.categories.slice(0, 3).join(' · ') + '</span>' +
           '</a>';
       }).join('');
     }
+
     dropdown.classList.add('open');
   }
 
-  inputEl.addEventListener('input', function() { doSearch(this.value.trim()); });
-  inputEl.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') doSearch(this.value.trim());
-    if (e.key === 'Escape') { dropdown.classList.remove('open'); this.blur(); }
+  function goToSearchPage(q) {
+    q = q.trim();
+    if (!q) return;
+
+    window.location.href = 'nedex_browse.html?q=' + encodeURIComponent(q);
+  }
+
+  inputEl.addEventListener('input', function() {
+    doSearch(this.value.trim());
   });
-  if (btnEl) btnEl.addEventListener('click', function() { doSearch(inputEl.value.trim()); });
+
+  inputEl.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      goToSearchPage(this.value);
+    }
+
+    if (e.key === 'Escape') {
+      dropdown.classList.remove('open');
+      this.blur();
+    }
+  });
+
+  if (btnEl) {
+    btnEl.addEventListener('click', function() {
+      goToSearchPage(inputEl.value);
+    });
+  }
+
   document.addEventListener('click', function(e) {
-    if (!wrap.contains(e.target)) dropdown.classList.remove('open');
+    if (!wrap.contains(e.target)) {
+      dropdown.classList.remove('open');
+    }
   });
 }
 
