@@ -46,7 +46,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -161,12 +161,12 @@
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
         <a class="ndx-widget-link" href="bio-kemal-sahin.html">Kemal Şahin</a>
-        <a class="ndx-widget-link" href="#">Mehmed V</a>
+        <a class="ndx-widget-link" href="bio-mehmed-4.html">Mehmed V</a>
         <a class="ndx-widget-link" href="ottoman-empire.html">Ottoman Empire</a>
-        <a class="ndx-widget-link" href="#">Karahan Interlude</a>
+        <a class="ndx-widget-link" href="karahan-interlude.html">Karahan Interlude</a>
         <a class="ndx-widget-link" href="bio-hafiz-karahan.html">Hafız Ibrahim Karahan</a>
-        <a class="ndx-widget-link" href="#">Istanbul Accord (1919)</a>
-        <a class="ndx-widget-link" href="#">Ottoman Constitution of 1883</a>
+        <a class="ndx-widget-link" href="istanbul-accord-1919.html">Istanbul Accord (1919)</a>
+        <a class="ndx-widget-link" href="ottoman-empire-1883.html">Ottoman Constitution of 1883</a>
       </div>
     </div>
 
@@ -184,6 +184,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/mahmud-3');
 function updateArcClock() {
