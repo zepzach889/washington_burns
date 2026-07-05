@@ -46,7 +46,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -186,16 +186,16 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="#">Political Parties of the United States</a>
+        <a class="ndx-widget-link" href="political-parties-usa.html">Political Parties of the United States</a>
         <a class="ndx-widget-link" href="federalist-party.html">Federalist Party</a>
-        <a class="ndx-widget-link" href="#">Jeffersonian Constitutional Alliance</a>
-        <a class="ndx-widget-link" href="#">Social Progressive Alliance</a>
+        <a class="ndx-widget-link" href="jeffersonian-constitutional-alliance.html">Jeffersonian Constitutional Alliance</a>
+        <a class="ndx-widget-link" href="social-progressive-alliance.html">Social Progressive Alliance</a>
         <a class="ndx-widget-link" href="hugo-brandt.html">Hugo Brandt</a>
-        <a class="ndx-widget-link" href="#">Leon Palmer</a>
-        <a class="ndx-widget-link" href="#">Federal Bureau of Improvements</a>
+        <a class="ndx-widget-link" href="leon-palmer.html">Leon Palmer</a>
+        <a class="ndx-widget-link" href="federal-bureau-of-improvements.html">Federal Bureau of Improvements</a>
         <a class="ndx-widget-link" href="grand-compromise-1817.html">Grand Compromise of 1817</a>
-        <a class="ndx-widget-link" href="#">Oslo Accords (1911)</a>
-        <a class="ndx-widget-link" href="#">War Between the States</a>
+        <a class="ndx-widget-link" href="oslo-accords.html">Oslo Accords (1911)</a>
+        <a class="ndx-widget-link" href="war-between-the-states.html">War Between the States</a>
       </div>
     </div>
 
@@ -213,6 +213,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/democratic-party');
 function updateArcClock() {
