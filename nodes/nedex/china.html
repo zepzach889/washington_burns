@@ -46,7 +46,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -273,18 +273,18 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="#">Lu Guowei</a>
-        <a class="ndx-widget-link" href="#">Huang Minzhi</a>
-        <a class="ndx-widget-link" href="#">Emperor Kāiming</a>
-        <a class="ndx-widget-link" href="#">Treaty of Suzhou (1905)</a>
-        <a class="ndx-widget-link" href="#">Treaty of Amoy (1842)</a>
-        <a class="ndx-widget-link" href="#">Empress Dowager Cixi</a>
-        <a class="ndx-widget-link" href="#">Global War</a>
-        <a class="ndx-widget-link" href="#">Chosŏn War (1966–1967)</a>
-        <a class="ndx-widget-link" href="#">Global Peace Council</a>
+        <a class="ndx-widget-link" href="bio-lu-guowei.html">Lu Guowei</a>
+        <a class="ndx-widget-link" href="bio-huang-minzhi.html">Huang Minzhi</a>
+        <a class="ndx-widget-link" href="bio-emperor-kaiming.html">Emperor Kāiming</a>
+        <a class="ndx-widget-link" href="treaty-of-suzhou.html">Treaty of Suzhou (1905)</a>
+        <a class="ndx-widget-link" href="treaty-of-amoy.html">Treaty of Amoy (1842)</a>
+        <a class="ndx-widget-link" href="bio-empress-dowager-cixi.html">Empress Dowager Cixi</a>
+        <a class="ndx-widget-link" href="global-war.html">Global War</a>
+        <a class="ndx-widget-link" href="choson-war.html">Chosŏn War (1966–1967)</a>
+        <a class="ndx-widget-link" href="global-peace-council.html">Global Peace Council</a>
         <a class="ndx-widget-link" href="japan.html">Japan</a>
         <a class="ndx-widget-link" href="choson.html">Chosŏn</a>
-        <a class="ndx-widget-link" href="#">British Empire</a>
+        <a class="ndx-widget-link" href="british-empire.html">British Empire</a>
       </div>
     </div>
 
@@ -302,6 +302,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/china');
 function updateArcClock() {
