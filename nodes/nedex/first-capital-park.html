@@ -45,7 +45,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -160,17 +160,17 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="#">Washington City</a>
-        <a class="ndx-widget-link" href="#">War of 1812</a>
-        <a class="ndx-widget-link" href="#">Battle of Washington (1814)</a>
+        <a class="ndx-widget-link" href="washington-city.html">Washington City</a>
+        <a class="ndx-widget-link" href="war-of-1812.html">War of 1812</a>
+        <a class="ndx-widget-link" href="battle-of-washington.html">Battle of Washington (1814)</a>
         <a class="ndx-widget-link" href="grand-compromise-1817.html">Grand Compromise of 1817</a>
-        <a class="ndx-widget-link" href="#">Potomac Preservation Society</a>
-        <a class="ndx-widget-link" href="#">Federal Parks Service</a>
+        <a class="ndx-widget-link" href="potomac-preservation-society.html">Potomac Preservation Society</a>
+        <a class="ndx-widget-link" href="federal-parks-service.html">Federal Parks Service</a>
         <a class="ndx-widget-link" href="franklin-dw.html">Franklin, District of Washington</a>
-        <a class="ndx-widget-link" href="#">Georgetown Address</a>
+        <a class="ndx-widget-link" href="georgetown-address.html">Georgetown Address</a>
         <a class="ndx-widget-link" href="leeland-rowling.html">Leeland Rowling</a>
         <a class="ndx-widget-link" href="cornelius-roosevelth-ii.html">Cornelius Roosevelt II</a>
-        <a class="ndx-widget-link" href="#">Georgina Lincoln</a>
+        <a class="ndx-widget-link" href="georgina-lincoln.html">Georgina Lincoln</a>
       </div>
     </div>
 
@@ -188,6 +188,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/first-capital-park');
 function updateArcClock() {
