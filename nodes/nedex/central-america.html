@@ -46,7 +46,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -173,10 +173,10 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="#">Treaty of Managua</a>
-        <a class="ndx-widget-link" href="#">Central American Canal</a>
-        <a class="ndx-widget-link" href="#">Rafael Gutiérrez Vega</a>
-        <a class="ndx-widget-link" href="#">Francisco Morazán</a>
+        <a class="ndx-widget-link" href="treaty-of-managua.html">Treaty of Managua</a>
+        <a class="ndx-widget-link" href="central-american-canal.html">Central American Canal</a>
+        <a class="ndx-widget-link" href="bio-rafael-gutierrez-vega.html">Rafael Gutiérrez Vega</a>
+        <a class="ndx-widget-link" href="bio-francisco-morazan.html">Francisco Morazán</a>
         <a class="ndx-widget-link" href="nau.html">North American Union</a>
         <a class="ndx-widget-link" href="mexico.html">Empire of Mexico</a>
         <a class="ndx-widget-link" href="canada.html">Dominion of Canada</a>
@@ -197,6 +197,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/central-america');
 function updateArcClock() {
