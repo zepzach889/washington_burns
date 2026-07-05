@@ -43,8 +43,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
   <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-  <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
-</div>
+  <button class="ndx-search-btn" type="button">Search</button></div>
 </div>
 
 <div class="ndx-subnav">
@@ -172,15 +171,15 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="#">Constitution of 1787</a>
+        <a class="ndx-widget-link" href="constitution-1787">Constitution of 1787</a>
         <a class="ndx-widget-link" href="henry-clay.html">Henry Clay</a>
         <a class="ndx-widget-link" href="john-c-calhoun.html">John C. Calhoun</a>
-        <a class="ndx-widget-link" href="#">Federalist Party</a>
-        <a class="ndx-widget-link" href="#">Franklin, District of Washington</a>
-        <a class="ndx-widget-link" href="#">Washington House</a>
-        <a class="ndx-widget-link" href="#">Franklin Indian Treaty</a>
-        <a class="ndx-widget-link" href="#">Cherokee Nation v. Georgia</a>
-        <a class="ndx-widget-link" href="list_of_pres_usa">Presidents of the United States</a>
+        <a class="ndx-widget-link" href="federalist-party.html">Federalist Party</a>
+        <a class="ndx-widget-link" href="franklin-dw.html">Franklin, District of Washington</a>
+        <a class="ndx-widget-link" href="washington-house.html">Washington House</a>
+        <a class="ndx-widget-link" href="franklin-indian-treaty.html">Franklin Indian Treaty</a>
+        <a class="ndx-widget-link" href="cherokee-nation-v-georgia.html">Cherokee Nation v. Georgia</a>
+        <a class="ndx-widget-link" href="list_of_pres_usa.html">Presidents of the United States</a>
       </div>
     </div>
 
@@ -207,7 +206,10 @@
 </div>
 
 <script src="../../router.js"></script>
-<script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
+  <script>
 initAddressBar('nan.nedex.org.nau/alexander-hamilton-jr');
 function updateArcClock() {
   const n = new Date();
