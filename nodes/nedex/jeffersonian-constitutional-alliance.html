@@ -45,7 +45,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -201,17 +201,17 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="#">Political Parties of the United States</a>
-        <a class="ndx-widget-link" href="#">Republican Party (historical)</a>
-        <a class="ndx-widget-link" href="#">Matanzas War (1905–06)</a>
-        <a class="ndx-widget-link" href="#">Coastal Rebel Uprising</a>
-        <a class="ndx-widget-link" href="#">James P. Roosevelt, Jr.</a>
-        <a class="ndx-widget-link" href="#">James Nolan</a>
-        <a class="ndx-widget-link" href="#">Timothy Priest</a>
-        <a class="ndx-widget-link" href="#">Georgina Lincoln</a>
-        <a class="ndx-widget-link" href="#">Global War</a>
-        <a class="ndx-widget-link" href="#">Democratic Party</a>
-        <a class="ndx-widget-link" href="#">Fourth Amendment (1911)</a>
+        <a class="ndx-widget-link" href="political-parties-usa.html">Political Parties of the United States</a>
+        <a class="ndx-widget-link" href="republican-party.html">Republican Party (historical)</a>
+        <a class="ndx-widget-link" href="matanzas-war.html">Matanzas War (1905–06)</a>
+        <a class="ndx-widget-link" href="coastal-rebel-uprising.html">Coastal Rebel Uprising</a>
+        <a class="ndx-widget-link" href="james-p-roosevelt.html">James P. Roosevelt, Jr.</a>
+        <a class="ndx-widget-link" href="james-nolan.html">James Nolan</a>
+        <a class="ndx-widget-link" href="timothy-priest.html">Timothy Priest</a>
+        <a class="ndx-widget-link" href="georgina-lincoln.html">Georgina Lincoln</a>
+        <a class="ndx-widget-link" href="global-war.html">Global War</a>
+        <a class="ndx-widget-link" href="democratic-party.html">Democratic Party</a>
+        <a class="ndx-widget-link" href="fourth-amendment-1861.html">Fourth Amendment (1911)</a>
       </div>
     </div>
 
@@ -229,6 +229,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/jeffersonian-constitutional-alliance');
 function updateArcClock() {
