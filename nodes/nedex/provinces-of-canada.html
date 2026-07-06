@@ -45,7 +45,7 @@
   <span class="ndx-tagline">The Free Encyclopedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 <div class="ndx-subnav">
@@ -164,7 +164,7 @@
 </div>
 
 <div class="ndx-footer">
-  <span>link://nan.nedex.biz.usa/provinces-of-canada &nbsp;·&nbsp; NANet Node &nbsp;·&nbsp; Nedex, the Free Encyclopedia</span>
+  <span>link://nan.nedex.org.nau/provinces-of-canada &nbsp;·&nbsp; NANet Node &nbsp;·&nbsp; Nedex, the Free Encyclopedia</span>
   <div class="ndx-footer-links">
     <a href="../nedex/about.html">About Nedex</a>
     <a href="#">Privacy</a>
@@ -174,11 +174,20 @@
 
 <script src="../../router.js"></script>
 <script src="../../content.js"></script>
-<script src="../nedex_index.js"></script>
-<script src="../nedex-search.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
-  if (typeof initAddressBar === 'function') initAddressBar(nan.nedex.org.nau/provinces-of-canada);
-  if (typeof initNdxSearch === 'function') initNdxSearch();
+initAddressBar('nan.nedex.org.nau/provinces-of-canada');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
 </script>
 </body>
 </html>
