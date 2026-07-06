@@ -46,7 +46,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -263,14 +263,14 @@
       <div class="ndx-widget-body">
         <a class="ndx-widget-link" href="german_republic.html">United German Republic</a>
         <a class="ndx-widget-link" href="union-of-german-states.html">Union of German States</a>
-        <a class="ndx-widget-link" href="#">Franz Hohenzollern</a>
-        <a class="ndx-widget-link" href="#">Great European War (1899–1904)</a>
-        <a class="ndx-widget-link" href="#">Global War</a>
-        <a class="ndx-widget-link" href="#">Treaty of Geneva (1939)</a>
-        <a class="ndx-widget-link" href="#">Revanchist Nationalist Party</a>
-        <a class="ndx-widget-link" href="#">Reunification of Germany (1996)</a>
-        <a class="ndx-widget-link" href="#">Frederick William V of Prussia</a>
-        <a class="ndx-widget-link" href="#">Karl-Albrecht II of Prussia</a>
+        <a class="ndx-widget-link" href="bio-franz-hohenzollern.html">Franz Hohenzollern</a>
+        <a class="ndx-widget-link" href="great-european-war.html">Great European War (1899–1904)</a>
+        <a class="ndx-widget-link" href="global-war.html">Global War</a>
+        <a class="ndx-widget-link" href="treaty-of-geneva.html">Treaty of Geneva (1939)</a>
+        <a class="ndx-widget-link" href="revanchist-nationalist-party.html">Revanchist Nationalist Party</a>
+        <a class="ndx-widget-link" href="reunification-of-germany.html">Reunification of Germany (1996)</a>
+        <a class="ndx-widget-link" href="bio-frederick-william-5.html">Frederick William V of Prussia</a>
+        <a class="ndx-widget-link" href="bio-karl-albrecht-2.html">Karl-Albrecht II of Prussia</a>
       </div>
     </div>
 
@@ -288,6 +288,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/prussia');
 function updateArcClock() {
