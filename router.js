@@ -38,6 +38,7 @@ const ROUTES = {
   'nan.nedex.org.nau/japan':                  '/nodes/nedex/japan.html',
   'nan.nedex.org.nau/nau':                    '/nodes/nedex/nau.html',
   'nan.nedex.org.nau/italy':                  '/nodes/nedex/italy.html',
+  'nan.nedex.org.nau/united-states':          '/nodes/nedex/united-states.html',
   'nan.nedex.org.nau/monarchs-hawaii':        '/nodes/nedex/monarchs-hawaii.html',
   'nan.nedex.org.nau/austria-hungary':        '/nodes/nedex/austria-hungary.html',
   'nan.nedex.org.nau/bio-mahmud-3':           '/nodes/nedex/bio-mahmud-3.html',
