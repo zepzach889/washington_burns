@@ -45,7 +45,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
   <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-  <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+  <button class="ndx-search-btn" type="button">Search</button>
 </div>
 </div>
 
@@ -168,12 +168,12 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="#">Constitution of 1787</a>
+        <a class="ndx-widget-link" href="constitution-1787.html">Constitution of 1787</a>
         <a class="ndx-widget-link" href="giles-brandon.html">Giles Brandon</a>
         <a class="ndx-widget-link" href="wilbur-haines.html">Wilbur Haines</a>
-        <a class="ndx-widget-link" href="#">Democratic Party</a>
-        <a class="ndx-widget-link" href="#">Grantham Act</a>
-        <a class="ndx-widget-link" href="#">Massachusetts Tariff</a>
+        <a class="ndx-widget-link" href="democratic-party.html">Democratic Party</a>
+        <a class="ndx-widget-link" href="grantham-act.html">Grantham Act</a>
+        <a class="ndx-widget-link" href="massachusetts-tariff.html">Massachusetts Tariff</a>
         <a class="ndx-widget-link" href="list_of_pres_usa">Presidents of the United States</a>
       </div>
     </div>
@@ -201,7 +201,10 @@
 </div>
 
 <script src="../../router.js"></script>
-<script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
+  <script>
 initAddressBar('nan.nedex.org.nau/victor-yates');
 function updateArcClock() {
   const n = new Date();
