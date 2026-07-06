@@ -45,7 +45,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -231,16 +231,16 @@
         <a class="ndx-widget-link" href="leon-palmer.html">Leon Palmer</a>
         <a class="ndx-widget-link" href="benjamin-king.html">Benjamin King</a>
         <a class="ndx-widget-link" href="henry-freeman.html">Henry Freeman</a>
-        <a class="ndx-widget-link" href="#">Treaty of Geneva (1939)</a>
-        <a class="ndx-widget-link" href="#">Global Peace Council</a>
-        <a class="ndx-widget-link" href="#">North American Mutual Defense Pact</a>
-        <a class="ndx-widget-link" href="#">Fourth North American Conference (1940)</a>
-        <a class="ndx-widget-link" href="#">Pan-American Passport</a>
-        <a class="ndx-widget-link" href="#">Defense of Busan</a>
+        <a class="ndx-widget-link" href="treaty-of-geneva.html">Treaty of Geneva (1939)</a>
+        <a class="ndx-widget-link" href="global-peace-council.html">Global Peace Council</a>
+        <a class="ndx-widget-link" href="north-american-mutual-defense-pact.html">North American Mutual Defense Pact</a>
+        <a class="ndx-widget-link" href="fourth-north-american-conference.html">Fourth North American Conference (1940)</a>
+        <a class="ndx-widget-link" href="pan-american-passport.html">Pan-American Passport</a>
+        <a class="ndx-widget-link" href="defense-of-busan.html">Defense of Busan</a>
         <a class="ndx-widget-link" href="uer.html">Union of European Republics</a>
         <a class="ndx-widget-link" href="prussia.html">Kingdom of Prussia</a>
         <a class="ndx-widget-link" href="german-republic.html">German Republic</a>
-        <a class="ndx-widget-link" href="#">Kingdom of Algeria</a>
+        <a class="ndx-widget-link" href="kingdom-of-algeria.html">Kingdom of Algeria</a>
       </div>
     </div>
 
@@ -258,6 +258,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/global-war');
 function updateArcClock() {
