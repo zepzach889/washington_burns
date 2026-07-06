@@ -45,7 +45,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -154,11 +154,11 @@
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
         <a class="ndx-widget-link" href="texas.html">Texas Federation</a>
-        <a class="ndx-widget-link" href="#">Presidents of the Texas Federation</a>
-        <a class="ndx-widget-link" href="#">Voss Affair</a>
+        <a class="ndx-widget-link" href="list_of_pres_tex.html">Presidents of the Texas Federation</a>
+        <a class="ndx-widget-link" href="voss-affair.html">Voss Affair</a>
         <a class="ndx-widget-link" href="nau.html">North American Union</a>
         <a class="ndx-widget-link" href="global-war.html">Global War</a>
-        <a class="ndx-widget-link" href="#">Hermes 8</a>
+        <a class="ndx-widget-link" href="hermes-8.html">Hermes 8</a>
       </div>
     </div>
 
@@ -176,6 +176,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/history-of-texas');
 function updateArcClock() {
