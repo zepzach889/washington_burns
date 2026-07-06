@@ -45,7 +45,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -203,12 +203,12 @@
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
         <a class="ndx-widget-link" href="canada.html">Dominion of Canada</a>
-        <a class="ndx-widget-link" href="#">Provinces and Territories of Canada</a>
+        <a class="ndx-widget-link" href="provinces-of-canada.html">Provinces and Territories of Canada</a>
         <a class="ndx-widget-link" href="governor-general-canada.html">Governor-General of Canada</a>
-        <a class="ndx-widget-link" href="#">Prime Minister of Canada</a>
-        <a class="ndx-widget-link" href="#">District of Manitoulin</a>
-        <a class="ndx-widget-link" href="#">Aurora</a>
-        <a class="ndx-widget-link" href="#">Trans-Canadian Railway</a>
+        <a class="ndx-widget-link" href="list_of_pm_canada.html">Prime Minister of Canada</a>
+        <a class="ndx-widget-link" href="district-of-manitoulin.html">District of Manitoulin</a>
+        <a class="ndx-widget-link" href="aurora-dm.html">Aurora</a>
+        <a class="ndx-widget-link" href="trans-canadian-railway.html">Trans-Canadian Railway</a>
         <a class="ndx-widget-link" href="global-war.html">Global War</a>
         <a class="ndx-widget-link" href="nau.html">North American Union</a>
       </div>
@@ -228,6 +228,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/history-of-canada');
 function updateArcClock() {
