@@ -45,7 +45,7 @@
   <span class="ndx-tagline">The Free Encyclopedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 <div class="ndx-subnav">
@@ -153,7 +153,9 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">Related Articles</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="../nedex/california.html">Union of the Californias</a>
+        <a class="ndx-widget-link" href="asemblea-nacional-ca.html">Asemblea Nacional</a>
+        <a class="ndx-widget-link" href="history-of-california.html">History of California</a>
+        <a class="ndx-widget-link" href="california.html">Union of the Californias</a>
       </div>
     </div>
 
@@ -179,8 +181,8 @@
 
 <script src="../../router.js"></script>
 <script src="../../content.js"></script>
-<script src="../nedex_index.js"></script>
-<script src="../nedex-search.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
   if (typeof initAddressBar === 'function') initAddressBar(nan.nedex.biz.usa/list_of_premiers_california);
   if (typeof initNdxSearch === 'function') initNdxSearch();
