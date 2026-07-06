@@ -46,7 +46,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -184,12 +184,11 @@
         <a class="ndx-widget-link" href="brazil.html">Empire of Brazil</a>
         <a class="ndx-widget-link" href="argentina.html">Argentine Republic</a>
         <a class="ndx-widget-link" href="colombia.html">Republic of Colombia</a>
-        <a class="ndx-widget-link" href="#">War of the Pacific (1879–1884)</a>
-        <a class="ndx-widget-link" href="#">War of the Río de la Plata</a>
-        <a class="ndx-widget-link" href="#">Gran Colombia</a>
-        <a class="ndx-widget-link" href="#">Global Peace Council</a>
-        <a class="ndx-widget-link" href="#">International Peace Council</a>
-        <a class="ndx-widget-link" href="#">Partido Colorado (Paraguay)</a>
+        <a class="ndx-widget-link" href="war-of-the-pacfici.html">War of the Pacific (1879–1884)</a>
+        <a class="ndx-widget-link" href="war-of-the-rio.html">War of the Río de la Plata</a>
+        <a class="ndx-widget-link" href="gran-colombia.html">Gran Colombia</a>
+        <a class="ndx-widget-link" href="global-peace-council.html">Global Peace Council</a>
+        <a class="ndx-widget-link" href="partido-colorado-paraguay.html">Partido Colorado (Paraguay)</a>
       </div>
     </div>
 
@@ -207,6 +206,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/nations-of-south-america');
 function updateArcClock() {
