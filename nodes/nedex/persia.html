@@ -46,7 +46,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -198,13 +198,13 @@
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
         <a class="ndx-widget-link" href="ottoman-empire.html">Ottoman Empire</a>
-        <a class="ndx-widget-link" href="#">Qanun-e Asasi (1890)</a>
-        <a class="ndx-widget-link" href="#">Mirza Hossein Khan</a>
-        <a class="ndx-widget-link" href="#">Dar ul-Funun</a>
-        <a class="ndx-widget-link" href="#">Great European War (1899–1904)</a>
-        <a class="ndx-widget-link" href="#">Global War</a>
-        <a class="ndx-widget-link" href="#">Global Peace Council</a>
-        <a class="ndx-widget-link" href="#">Russia</a>
+        <a class="ndx-widget-link" href="qanun-e-asasi.html">Qanun-e Asasi (1890)</a>
+        <a class="ndx-widget-link" href="bio-mirza-khan.html">Mirza Hossein Khan</a>
+        <a class="ndx-widget-link" href="bio-dar-ul-funun.html">Dar ul-Funun</a>
+        <a class="ndx-widget-link" href="great-european-war.html">Great European War (1899–1904)</a>
+        <a class="ndx-widget-link" href="global-war.html">Global War</a>
+        <a class="ndx-widget-link" href="global-peace-council.html">Global Peace Council</a>
+        <a class="ndx-widget-link" href="russia.html">Russia</a>
       </div>
     </div>
 
@@ -222,6 +222,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/persia');
 function updateArcClock() {
