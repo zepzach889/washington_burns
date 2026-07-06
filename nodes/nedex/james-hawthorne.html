@@ -43,25 +43,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
   <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-  <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
-</div>
-</div>
-
-<div class="ndx-subnav">
-  <a href="./">Main Page</a>
-  <a href="#" class="active">Article</a>
-  <a href="#">Talk</a>
-  <a href="#">Edit</a>
-  <a href="#">History</a>
-</div>
-</div>
-
-<div class="ndx-article-wrap">
-  <div class="ndx-article-body">
-
-    <div class="ndx-article-title">James Hawthorne</div>
-    <div class="ndx-article-subtitle">13th President of the United States (1856-1860) - <br><i>Filled vacany after Lee's assassination, elected in 1856, resigned in 1860</i></div>
-
+  <button class="ndx-search-btn" type="button">Search</button>
     <!-- TOC -->
     <div class="ndx-toc">
       <div class="ndx-toc-title">Contents</div>
@@ -169,14 +151,14 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="#">Constitution of 1787</a>
+        <a class="ndx-widget-link" href="constitution-1787.html">Constitution of 1787</a>
         <a class="ndx-widget-link" href="robert-lee.html">Robert Lee</a>
         <a class="ndx-widget-link" href="hugo-brandt.html">Hugo Brandt</a>
-        <a class="ndx-widget-link" href="#">Republican Party</a>
-        <a class="ndx-widget-link" href="#">Josiah Blankenship</a>
-        <a class="ndx-widget-link" href="#">Matnzas Bay Compact</a>
-        <a class="ndx-widget-link" href="#">Ulysses Portman</a>
-        <a class="ndx-widget-link" href="#">War Between the States (1857-1860)</a>
+        <a class="ndx-widget-link" href="republican-party.html">Republican Party</a>
+        <a class="ndx-widget-link" href="bio-josiah-blankenship.html">Josiah Blankenship</a>
+        <a class="ndx-widget-link" href="matanzas-bay-compact.html">Matnzas Bay Compact</a>
+        <a class="ndx-widget-link" href="bio-ulysses-portman.html">Ulysses Portman</a>
+        <a class="ndx-widget-link" href="war-between-the-states.html">War Between the States (1857-1860)</a>
         <a class="ndx-widget-link" href="list_of_pres_usa">Presidents of the United States</a>
       </div>
     </div>
@@ -204,6 +186,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/james-hawthorne');
 function updateArcClock() {
