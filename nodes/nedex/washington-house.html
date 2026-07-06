@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
 <link rel="manifest" href="/washington_burns/site.webmanifest">
 <title>Washington House — Nedex</title>
-<link rel="stylesheet" href="../shared.css">
+<link rel="stylesheet" href="../../shared.css">
 <link rel="stylesheet" href="nedex.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
     <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
     <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
   </div>
-  <a class="wm-arc-logo" href="../index.html"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
   <div class="wm-address-wrap" id="wm-address-wrap">
     <input class="wm-address-input" id="wm-address-input" type="text" placeholder="link://nan.nedex.org.nau/washington-house" spellcheck="false" autocomplete="off" />
     <button class="wm-go-btn" id="wm-go-btn" title="Navigate">→</button>
@@ -27,7 +27,7 @@
   <div class="arc-clock" id="arc-clock"></div>
 </div>
 <div class="arc-bookmarks">
-  <a class="arc-bmark" href="../index.html"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
   <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
   <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
   <a class="arc-bmark" href="../linkvid/"><span class="arc-bmark-icon">🎥</span>LinkVid</a>
@@ -42,7 +42,7 @@
 
 <div class="ndx-header">
   <a class="ndx-logo" href="index.html">Nedex</a>
-  <span class="ndx-tagline">The Free Encyclopedia</span>
+  <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" id="ndx-search-input" placeholder="Search Nedex…" />
     <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
@@ -60,7 +60,7 @@
 
 <div class="ndx-article-wrap">
   <div class="ndx-article-body">
-    <h1 class="ndx-article-title">Washington House</h1>
+    <div class="ndx-article-title">Washington House</div>
     <div class="ndx-article-subtitle">Official residence and workplace of the President of the United States</div>
 
     <div class="ndx-toc">
@@ -215,7 +215,7 @@
 </div>
 
 <div class="ndx-footer">
-  <span>link://nan.nedex.org.nau/washington-house &nbsp;·&nbsp; NANet Node &nbsp;·&nbsp; Nedex, the Free Encyclopedia</span>
+  <span>link://nan.nedex.org.nau/washington-house &nbsp;·&nbsp; NANet Node &nbsp;·&nbsp; Nedex, the Free Encyclopaedia</span>
   <div class="ndx-footer-links">
     <a href="about.html">About Nedex</a>
     <a href="#">Privacy</a>
@@ -223,13 +223,22 @@
   </div>
 </div>
 
-<script src="../router.js"></script>
-<script src="../content.js"></script>
+<script src="../../router.js"></script>
+<script src="../../content.js"></script>
 <script src="nedex_index.js"></script>
 <script src="nedex-search.js"></script>
 <script>
   initAddressBar('nan.nedex.org.nau/washington-house');
-  if (typeof initNdxSearch === 'function') initNdxSearch();
+  function updateArcClock() {
+    const n = new Date();
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const hh = String(n.getHours()).padStart(2,'0');
+    const mm = String(n.getMinutes()).padStart(2,'0');
+    const el = document.getElementById('arc-clock');
+    if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+  }
+  setInterval(updateArcClock, 10000);
+  updateArcClock();
 </script>
 </body>
 </html>
