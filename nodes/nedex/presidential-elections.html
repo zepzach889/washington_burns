@@ -45,7 +45,7 @@
   <span class="ndx-tagline">The Free Encyclopedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 <div class="ndx-subnav">
@@ -191,10 +191,10 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">Related Articles</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="../nedex/president-of-the-united-states.html">President of the United States</a>
-        <a class="ndx-widget-link" href="../nedex/list_of_pres_usa.html">Presidents of the United States</a>
-        <a class="ndx-widget-link" href="../nedex/constitution-1861.html">Constitution of 1861</a>
-        <a class="ndx-widget-link" href="../nedex/grand-compromise-1817.html">Grand Compromise of 1817</a>
+        <a class="ndx-widget-link" href="president-of-the-united-states.html">President of the United States</a>
+        <a class="ndx-widget-link" href="list_of_pres_usa.html">Presidents of the United States</a>
+        <a class="ndx-widget-link" href="constitution-1861.html">Constitution of 1861</a>
+        <a class="ndx-widget-link" href="grand-compromise-1817.html">Grand Compromise of 1817</a>
       </div>
     </div>
     <div class="ndx-widget">
@@ -219,8 +219,8 @@
 
 <script src="../../router.js"></script>
 <script src="../../content.js"></script>
-<script src="../nedex_index.js"></script>
-<script src="../nedex-search.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
   if (typeof initAddressBar === 'function') initAddressBar(nan.nedex.biz.usa/presidential-elections);
   if (typeof initNdxSearch === 'function') initNdxSearch();
