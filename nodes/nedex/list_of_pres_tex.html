@@ -45,7 +45,7 @@
   <span class="ndx-tagline">The Free Encyclopedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 <div class="ndx-subnav">
@@ -140,8 +140,8 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">Related Articles</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="../nedex/texas.html">Texas Federation</a>
-        <a class="ndx-widget-link" href="../nedex/history-of-texas.html">History of the Texas Federation</a>
+        <a class="ndx-widget-link" href="texas.html">Texas Federation</a>
+        <a class="ndx-widget-link" href="history-of-texas.html">History of the Texas Federation</a>
       </div>
     </div>
   </div>
@@ -158,8 +158,8 @@
 
 <script src="../../router.js"></script>
 <script src="../../content.js"></script>
-<script src="../nedex_index.js"></script>
-<script src="../nedex-search.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
   if (typeof initAddressBar === 'function') initAddressBar(nan.nedex.biz.usa/list_of_pres_tex);
   if (typeof initNdxSearch === 'function') initNdxSearch();
