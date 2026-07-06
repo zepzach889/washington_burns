@@ -46,7 +46,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -265,15 +265,15 @@
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
         <a class="ndx-widget-link" href="kingdom-of-france.html">Kingdom of France</a>
-        <a class="ndx-widget-link" href="#">Great European War</a>
-        <a class="ndx-widget-link" href="#">Global War</a>
-        <a class="ndx-widget-link" href="#">Jean Marchand</a>
-        <a class="ndx-widget-link" href="#">François Juarez</a>
-        <a class="ndx-widget-link" href="#">Mathias Holtz</a>
-        <a class="ndx-widget-link" href="#">South German Confederation</a>
-        <a class="ndx-widget-link" href="#">Kingdom of Algeria</a>
-        <a class="ndx-widget-link" href="#">Treaty of Geneva</a>
-        <a class="ndx-widget-link" href="#">Global Peace Council</a>
+        <a class="ndx-widget-link" href="great-european-war.html">Great European War</a>
+        <a class="ndx-widget-link" href="global-war.html">Global War</a>
+        <a class="ndx-widget-link" href="bio-jean-marchand.html">Jean Marchand</a>
+        <a class="ndx-widget-link" href="bio-francois-juarez.html">François Juarez</a>
+        <a class="ndx-widget-link" href="bio-mathias-holtz.html">Mathias Holtz</a>
+        <a class="ndx-widget-link" href="south-german-confederation.html">South German Confederation</a>
+        <a class="ndx-widget-link" href="kingdom-of-algeria.html">Kingdom of Algeria</a>
+        <a class="ndx-widget-link" href="treaty-of-geneva.html">Treaty of Geneva</a>
+        <a class="ndx-widget-link" href="global-peace-council.html">Global Peace Council</a>
       </div>
     </div>
 
@@ -291,6 +291,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/uer');
 function updateArcClock() {
