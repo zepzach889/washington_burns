@@ -46,7 +46,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -134,12 +134,12 @@
       <div class="ndx-widget-body">
         <a class="ndx-widget-link" href="hist_of_texas.html">History of the Texas Federation</a>
         <a class="ndx-widget-link" href="list_of_pres_tex.html">Presidents of Texas</a>
-        <a class="ndx-widget-link" href="#">National Assembly of Texas</a>
-        <a class="ndx-widget-link" href="#">Global War</a>
-        <a class="ndx-widget-link" href="#">Global Peace Council</a>
+        <a class="ndx-widget-link" href="national-assembly-tx.html">National Assembly of Texas</a>
+        <a class="ndx-widget-link" href="global-war.html">Global War</a>
+        <a class="ndx-widget-link" href="global-peace-council.html">Global Peace Council</a>
         <a class="ndx-widget-link" href="nau.html">North American Union</a>
         <a class="ndx-widget-link" href="mexico.html">Empire of Mexico</a>
-        <a class="ndx-widget-link" href="#">Second Mexican War</a>
+        <a class="ndx-widget-link" href="second-mexican-war.html">Second Mexican War</a>
       </div>
     </div>
 
@@ -157,6 +157,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/texas');
 function updateArcClock() {
