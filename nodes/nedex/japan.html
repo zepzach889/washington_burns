@@ -46,7 +46,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -222,19 +222,19 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="#">Japanese Civil War</a>
-        <a class="ndx-widget-link" href="#">Treaty of Nagasaki (1905)</a>
-        <a class="ndx-widget-link" href="#">Treaty of Suzhou (1905)</a>
-        <a class="ndx-widget-link" href="#">Anglo-Chinese War</a>
-        <a class="ndx-widget-link" href="#">Zhongxing Dynasty</a>
+        <a class="ndx-widget-link" href="japanese-civil-war.html">Japanese Civil War</a>
+        <a class="ndx-widget-link" href="treaty-of-nagasaki.html">Treaty of Nagasaki (1905)</a>
+        <a class="ndx-widget-link" href="treaty-of-suzhou.html">Treaty of Suzhou (1905)</a>
+        <a class="ndx-widget-link" href="anglo-chinese-war.html">Anglo-Chinese War</a>
+        <a class="ndx-widget-link" href="zhongxing-dynasty.html">Zhongxing Dynasty</a>
         <a class="ndx-widget-link" href="choson.html">Choson</a>
         <a class="ndx-widget-link" href="china.html">Empire of China</a>
         <a class="ndx-widget-link" href="hawaii.html">Kingdom of Hawaii</a>
         <a class="ndx-widget-link" href="california.html">Union of the Californias</a>
-        <a class="ndx-widget-link" href="#">Global War</a>
-        <a class="ndx-widget-link" href="#">Global Peace Council</a>
-        <a class="ndx-widget-link" href="#">Mori Takehiko</a>
-        <a class="ndx-widget-link" href="#">Ōshima Ryūta</a>
+        <a class="ndx-widget-link" href="global-war.html">Global War</a>
+        <a class="ndx-widget-link" href="global-peace-council.html">Global Peace Council</a>
+        <a class="ndx-widget-link" href="bio-mori-takehiko.html">Mori Takehiko</a>
+        <a class="ndx-widget-link" href="bio-oshima-ryuta.html">Ōshima Ryūta</a>
       </div>
     </div>
 
@@ -252,6 +252,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/japan');
 function updateArcClock() {
