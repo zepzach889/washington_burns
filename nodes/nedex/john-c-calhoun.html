@@ -43,7 +43,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
   <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-  <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+  <button class="ndx-search-btn" type="button">Search</button>
 </div>
 </div>
 
@@ -161,16 +161,16 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="#">Constitution of 1787</a>
+        <a class="ndx-widget-link" href="constitution-1787.html">Constitution of 1787</a>
         <a class="ndx-widget-link" href="alexander-hamilton-jr.html">Alexander Hamilton, Jr.</a>
         <a class="ndx-widget-link" href="giles-brandon.html">Giles Brandon</a>
-        <a class="ndx-widget-link" href="#">Republican Party</a>
-        <a class="ndx-widget-link" href="#">United States Railway Company</a>
-        <a class="ndx-widget-link" href="#">Franklin Indian Treaty</a>
-        <a class="ndx-widget-link" href="#">Treaty of New Orleans (1837)</a>
-        <a class="ndx-widget-link" href="#">Firs Mexican War</a>
-        <a class="ndx-widget-link" href="#">Presidential Guard</a>
-        <a class="ndx-widget-link" href="list_of_pres_usa">Presidents of the United States</a>
+        <a class="ndx-widget-link" href="republican-party.html">Republican Party</a>
+        <a class="ndx-widget-link" href="united-states-railway-company.html">United States Railway Company</a>
+        <a class="ndx-widget-link" href="franklin-indian-treaty.html">Franklin Indian Treaty</a>
+        <a class="ndx-widget-link" href="treaty-of-new-orleans.html">Treaty of New Orleans (1837)</a>
+        <a class="ndx-widget-link" href="first-mexican-war.html">First Mexican War</a>
+        <a class="ndx-widget-link" href="presidential-guard.html">Presidential Guard</a>
+        <a class="ndx-widget-link" href="list_of_pres_usa.html">Presidents of the United States</a>
       </div>
     </div>
 
@@ -197,6 +197,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/john-c-calhoun');
 function updateArcClock() {
