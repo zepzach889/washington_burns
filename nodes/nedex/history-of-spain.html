@@ -45,7 +45,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -268,14 +268,14 @@
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
         <a class="ndx-widget-link" href="spain.html">Kingdom of Spain</a>
-        <a class="ndx-widget-link" href="#">Matanzas War</a>
-        <a class="ndx-widget-link" href="#">Treaty of Copenhagen</a>
+        <a class="ndx-widget-link" href="matanzas-war.html">Matanzas War</a>
+        <a class="ndx-widget-link" href="treaty-of-copenhagen.html">Treaty of Copenhagen</a>
         <a class="ndx-widget-link" href="global-war.html">Global War</a>
         <a class="ndx-widget-link" href="uer.html">Union of European Republics</a>
-        <a class="ndx-widget-link" href="#">Alejandro I of Spain</a>
-        <a class="ndx-widget-link" href="#">Rodrigo Montilla y Vega</a>
-        <a class="ndx-widget-link" href="#">Ramón Calvo y Serrano</a>
-        <a class="ndx-widget-link" href="#">Matanzas Bay Clique</a>
+        <a class="ndx-widget-link" href="bio-alejandro-1-spain.html">Alejandro I of Spain</a>
+        <a class="ndx-widget-link" href="bio-rodrigo-montilla-y-vega.html">Rodrigo Montilla y Vega</a>
+        <a class="ndx-widget-link" href="bio-ramon-calvo-y-serrano.html">Ramón Calvo y Serrano</a>
+        <a class="ndx-widget-link" href="matanzas-bay-compact.html">Matanzas Bay Clique</a>
       </div>
     </div>
 
@@ -293,6 +293,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/history-of-spain');
 function updateArcClock() {
