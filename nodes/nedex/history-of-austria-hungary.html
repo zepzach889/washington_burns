@@ -45,7 +45,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -293,10 +293,10 @@
       <div class="ndx-widget-body">
         <a class="ndx-widget-link" href="austria-hungary.html">Austria-Hungary</a>
         <a class="ndx-widget-link" href="monarchs-austria-hungary.html">Monarchs of Austria-Hungary</a>
-        <a class="ndx-widget-link" href="#">Kingdom of Austria</a>
+        <a class="ndx-widget-link" href="kingdom-of-austria.html">Kingdom of Austria</a>
         <a class="ndx-widget-link" href="great-european-war.html">Great European War</a>
         <a class="ndx-widget-link" href="global-war.html">Global War</a>
-        <a class="ndx-widget-link" href="#">Treaty of Geneva (1939)</a>
+        <a class="ndx-widget-link" href="treaty-of-geneva.html">Treaty of Geneva (1939)</a>
         <a class="ndx-widget-link" href="uer.html">Union of European Republics</a>
         <a class="ndx-widget-link" href="prussia.html">Kingdom of Prussia</a>
       </div>
@@ -316,6 +316,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/history-of-austria-hungary');
 function updateArcClock() {
