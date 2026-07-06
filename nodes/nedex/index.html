@@ -78,7 +78,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
   <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-  <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+  <button class="ndx-search-btn" type="button">Search</button>
 </div>
 </div>
 
@@ -176,7 +176,24 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
 <script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
+<script>
+  initAddressBar('nan.nedex.org.nau/africa');
+
+  function updateArcClock() {
+    const n = new Date();
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const hh = String(n.getHours()).padStart(2,'0');
+    const mm = String(n.getMinutes()).padStart(2,'0');
+    const el = document.getElementById('arc-clock');
+    if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+  }
+
+  setInterval(updateArcClock, 10000);
+  updateArcClock();
+</script>
 <script>
 initAddressBar('nan.nedex.org.nau');
 
