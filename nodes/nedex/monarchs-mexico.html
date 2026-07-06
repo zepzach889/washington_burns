@@ -45,7 +45,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -168,9 +168,9 @@
         <a class="ndx-widget-link" href="mexico.html">Empire of Mexico</a>
         <a class="ndx-widget-link" href="history-of-mexico.html">History of the Empire of Mexico</a>
         <a class="ndx-widget-link" href="prime-ministers-mexico.html">List of Prime Ministers of Mexico</a>
-        <a class="ndx-widget-link" href="#">House of Guerra</a>
-        <a class="ndx-widget-link" href="#">Constitution of 1922 (Mexico)</a>
-        <a class="ndx-widget-link" href="#">Mexican Civil War (1913–1921)</a>
+        <a class="ndx-widget-link" href="house-of-guerra.html">House of Guerra</a>
+        <a class="ndx-widget-link" href="mexican-constitution-1922.html">Constitution of 1922 (Mexico)</a>
+        <a class="ndx-widget-link" href="mexican-civil-war-1913-1922.html">Mexican Civil War (1913–1921)</a>
       </div>
     </div>
 
@@ -188,6 +188,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/monarchs-mexico');
 function updateArcClock() {
