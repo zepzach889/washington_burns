@@ -95,7 +95,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
   <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-  <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+  <button class="ndx-search-btn" type="button">Search</button>
 </div>
 </div>
 
@@ -230,10 +230,10 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">Navigation</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="#">President of the United States</a>
-        <a class="ndx-widget-link" href="#">History of the United States</a>
-        <a class="ndx-widget-link" href="#">United States of America</a>
-        <a class="ndx-widget-link" href="#">Washington House</a>
+        <a class="ndx-widget-link" href="president-of-the-united-states.html">President of the United States</a>
+        <a class="ndx-widget-link" href="histor-of-usa.html">History of the United States</a>
+        <a class="ndx-widget-link" href="united-states.html">United States of America</a>
+        <a class="ndx-widget-link" href="washington-house.html">Washington House</a>
       </div>
     </div>
   </div>
@@ -250,6 +250,9 @@
 </div>
   
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/list_of_pres_usa');
 function updateArcClock() {
