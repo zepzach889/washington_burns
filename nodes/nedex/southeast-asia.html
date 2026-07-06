@@ -46,7 +46,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -177,15 +177,15 @@
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
         <a class="ndx-widget-link" href="india.html">Dominion of India</a>
-        <a class="ndx-widget-link" href="#">British Empire</a>
+        <a class="ndx-widget-link" href="british-empire.html">British Empire</a>
         <a class="ndx-widget-link" href="kingdom-of-france.html">Kingdom of France</a>
         <a class="ndx-widget-link" href="uer.html">Union of European Republics</a>
-        <a class="ndx-widget-link" href="#">Matanzas War (1905–1906)</a>
+        <a class="ndx-widget-link" href="matanzas-war.html">Matanzas War (1905–1906)</a>
         <a class="ndx-widget-link" href="spain.html">Kingdom of Spain</a>
-        <a class="ndx-widget-link" href="#">Great European War (1899–1904)</a>
-        <a class="ndx-widget-link" href="#">Global War</a>
-        <a class="ndx-widget-link" href="#">Philippine Republic</a>
-        <a class="ndx-widget-link" href="#">Kingdom of Vietnam</a>
+        <a class="ndx-widget-link" href="great-european-war.html">Great European War (1899–1904)</a>
+        <a class="ndx-widget-link" href="global-war.html">Global War</a>
+        <a class="ndx-widget-link" href="philippine-republic.html">Philippine Republic</a>
+        <a class="ndx-widget-link" href="kingdom-of-vietnam.html">Kingdom of Vietnam</a>
       </div>
     </div>
 
@@ -203,7 +203,10 @@
 </div>
 
 <script src="../../router.js"></script>
-<script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
+  <script>
 initAddressBar('nan.nedex.org.nau/southeast-asia');
 function updateArcClock() {
   const n = new Date();
