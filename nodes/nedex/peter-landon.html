@@ -45,7 +45,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
   <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-  <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+  <button class="ndx-search-btn" type="button">Search</button>
 </div>
 </div>
 
@@ -185,14 +185,14 @@
     <div class="ndx-widget">
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
-        <a class="ndx-widget-link" href="#">Constitution of 1861</a>
+        <a class="ndx-widget-link" href="constitution-1861.html">Constitution of 1861</a>
         <a class="ndx-widget-link" href="alexander-fleak.html">Alexander Fleak</a>
         <a class="ndx-widget-link" href="cornelius_roosevelt_ii.html">Cornelius Roosevelt II</a>
-        <a class="ndx-widget-link" href="#">Federalist Party</a>
-        <a class="ndx-widget-link" href="#">Zachary Lowell</a>
-        <a class="ndx-widget-link" href="#">Belle of Matanzas Affair</a>
-        <a class="ndx-widget-link" href="#">Harrington Incident (1904)</a>
-        <a class="ndx-widget-link" href="#">Caribbean War</a>
+        <a class="ndx-widget-link" href="federalist-party.html">Federalist Party</a>
+        <a class="ndx-widget-link" href="zachary-locwell.html">Zachary Lowell</a>
+        <a class="ndx-widget-link" href="belle-of-matanzas-affair.html">Belle of Matanzas Affair</a>
+        <a class="ndx-widget-link" href="harrington-incident.html">Harrington Incident (1904)</a>
+        <a class="ndx-widget-link" href="caribbean-war.html">Caribbean War</a>
         <a class="ndx-widget-link" href="list_of_pres_usa">Presidents of the United States</a>
       </div>
     </div>
@@ -220,6 +220,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/peter-landon');
 function updateArcClock() {
