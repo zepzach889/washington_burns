@@ -46,7 +46,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -201,11 +201,11 @@
         <a class="ndx-widget-link" href="union-of-german-states.html">Union of German States</a>
         <a class="ndx-widget-link" href="hanover.html">Kingdom of Hanover</a>
         <a class="ndx-widget-link" href="prussia.html">Kingdom of Prussia</a>
-        <a class="ndx-widget-link" href="#">Ernst I, Grand Duke of Thuringia</a>
-        <a class="ndx-widget-link" href="#">Victoria, Grand Duchess of Thuringia</a>
-        <a class="ndx-widget-link" href="#">Democratic Coalition (Germany)</a>
-        <a class="ndx-widget-link" href="#">Treaty of Potsdam (1857)</a>
-        <a class="ndx-widget-link" href="#">Global War</a>
+        <a class="ndx-widget-link" href="bio-ernst-1.html">Ernst I, Grand Duke of Thuringia</a>
+        <a class="ndx-widget-link" href="bio-victoria.html">Victoria, Grand Duchess of Thuringia</a>
+        <a class="ndx-widget-link" href="democratic-coalition-germany.html">Democratic Coalition (Germany)</a>
+        <a class="ndx-widget-link" href="treaty-of-potsdam.html">Treaty of Potsdam (1857)</a>
+        <a class="ndx-widget-link" href="global-war.html">Global War</a>
       </div>
     </div>
 
@@ -223,6 +223,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/thuringia');
 function updateArcClock() {
