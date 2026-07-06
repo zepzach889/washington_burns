@@ -46,7 +46,7 @@
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
     <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
-    <button class="ndx-search-btn" onclick="var q=document.getElementById('ndx-search-input').value.trim();if(q)window.location.href='nedex_browse.html?q='+encodeURIComponent(q);">Search</button>
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -216,12 +216,12 @@
       <div class="ndx-widget-head">See Also</div>
       <div class="ndx-widget-body">
         <a class="ndx-widget-link" href="united-kingdom.html">United Kingdom</a>
-        <a class="ndx-widget-link" href="#">House of Westminster</a>
-        <a class="ndx-widget-link" href="#">War Between the States</a>
-        <a class="ndx-widget-link" href="#">Global War</a>
-        <a class="ndx-widget-link" href="#">Charlotte I</a>
-        <a class="ndx-widget-link" href="#">Charles III</a>
-        <a class="ndx-widget-link" href="#">Victor I</a>
+        <a class="ndx-widget-link" href="house-of-westminster.html">House of Westminster</a>
+        <a class="ndx-widget-link" href="war-between-the-states.html">War Between the States</a>
+        <a class="ndx-widget-link" href="global-war.html">Global War</a>
+        <a class="ndx-widget-link" href="bio-charlotte-1.html">Charlotte I</a>
+        <a class="ndx-widget-link" href="bio-charles-3.html">Charles III</a>
+        <a class="ndx-widget-link" href="bio-victor-1.html">Victor I</a>
       </div>
     </div>
 
@@ -239,6 +239,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/monarchs-uk');
 function updateArcClock() {
