@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>The Administration — Washington House</title>
+<link rel="stylesheet" href="../../shared.css">
+<style>
+  :root {
+    --wh-blue: #1B3A6B;
+    --wh-blue-dark: #102444;
+    --wh-blue-mid: #2A4E8A;
+    --wh-gold: #B8972A;
+    --wh-gold-light: #D4AE4A;
+  }
+
+  /* ── HERO ── */
+  .wh-hero { position: relative; background: var(--wh-blue-dark); overflow: hidden; }
+  .wh-hero-img { width: 100%; height: 280px; object-fit: cover; object-position: center 40%; display: block; opacity: 0.75; }
+  .wh-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, var(--wh-blue-dark) 0%, transparent 22%, transparent 78%, var(--wh-blue-dark) 100%), linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.72) 100%); pointer-events: none; }
+  .wh-hero-text { position: absolute; bottom: 0; left: 0; right: 0; text-align: center; padding: 24px 20px 22px; color: #fff; background: linear-gradient(to top, rgba(10,20,40,0.92) 0%, rgba(10,20,40,0.7) 60%, transparent 100%); }
+  .wh-kicker { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--wh-gold-light); margin-bottom: 6px; font-weight: 600; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
+  .wh-title { font-family: 'DM Serif Display', serif; font-size: 40px; letter-spacing: -0.01em; line-height: 1.1; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.7); }
+  .wh-subtitle { font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 6px; text-shadow: 0 1px 4px rgba(0,0,0,0.7); }
+  .wh-address-tag { display: inline-block; margin-top: 10px; font-size: 11px; background: rgba(0,0,0,0.45); border: 0.5px solid rgba(255,255,255,0.25); padding: 4px 12px; border-radius: 12px; color: rgba(255,255,255,0.8); font-family: monospace; }
+
+  /* ── NAV ── */
+  .wh-nav { display: flex; justify-content: center; background: var(--wh-blue); flex-wrap: wrap; border-bottom: 2px solid var(--wh-gold); position: sticky; top: 70px; z-index: 90; }
+  .wh-nav a { font-size: 12px; color: rgba(255,255,255,0.70); text-decoration: none; padding: 10px 18px; font-weight: 500; transition: all 0.1s; }
+  .wh-nav a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+  .wh-nav a.active { color: var(--wh-gold-light); border-bottom: 2px solid var(--wh-gold-light); }
+
+  /* ── BODY ── */
+  .wh-body { display: grid; grid-template-columns: 1fr 300px; max-width: 1100px; margin: 0 auto; }
+  .wh-main { padding: 28px 24px; border-right: 0.5px solid var(--border); }
+  .wh-sidebar { padding: 24px 16px; background: var(--bg-secondary); }
+
+  /* ── SECTIONS ── */
+  .wh-section { margin-bottom: 28px; }
+  .wh-section-hed { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text-primary); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1.5px solid var(--wh-gold); }
+  .wh-intro { font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px; }
+
+  /* ── FEATURE CARDS (VP & Secretary General) ── */
+  .wh-officer-card {
+    display: flex;
+    gap: 18px;
+    background: #fff;
+    border: 0.5px solid var(--border);
+    border-top: 3px solid var(--wh-gold);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .wh-officer-monogram {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: var(--wh-blue);
+    border: 2px solid var(--wh-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--wh-gold-light);
+  }
+  .wh-officer-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 3px; }
+  .wh-officer-name { font-family: 'DM Serif Display', serif; font-size: 21px; color: var(--text-primary); line-height: 1.15; margin-bottom: 4px; }
+  .wh-officer-detail { font-size: 12px; color: var(--text-secondary); line-height: 1.65; }
+
+  /* ── CABINET GRID ── */
+  .wh-cab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .wh-cab-card {
+    background: #fff;
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: 4px 1fr;
+    gap: 0 12px;
+    align-items: start;
+  }
+  .wh-cab-card.tba { border-style: dashed; background: var(--bg-secondary); }
+  .wh-cab-stripe { width: 4px; border-radius: 2px; align-self: stretch; min-height: 40px; background: var(--wh-blue); }
+  .wh-cab-office { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 3px; }
+  .wh-cab-name { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--text-primary); line-height: 1.2; }
+  .wh-cab-card.tba .wh-cab-name { font-style: italic; color: var(--text-tertiary); font-size: 14px; }
+  .wh-cab-note { font-size: 11px; color: var(--text-secondary); line-height: 1.5; margin-top: 3px; }
+  .wh-party-tag { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; padding: 1px 7px; border-radius: 3px; margin-top: 5px; }
+
+  /* ── WIDGETS ── */
+  .wh-widget { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+  .wh-widget:last-child { margin-bottom: 0; }
+  .wh-widget-head { background: var(--wh-blue); padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); border-bottom: 1px solid var(--wh-gold); }
+  .wh-widget-body { padding: 12px; font-size: 12px; }
+
+  .wh-succ-row { display: flex; gap: 10px; padding: 5px 0; border-bottom: 0.5px solid var(--border); align-items: baseline; }
+  .wh-succ-row:last-child { border-bottom: none; }
+  .wh-succ-num { font-family: monospace; font-size: 11px; color: var(--wh-blue); font-weight: 700; width: 16px; flex-shrink: 0; text-align: right; }
+  .wh-succ-office { font-size: 12px; color: var(--text-secondary); }
+
+  .wh-widget-link { display: block; font-size: 12px; color: var(--wh-blue); text-decoration: none; font-weight: 600; padding: 6px 0; border-bottom: 0.5px solid var(--border); }
+  .wh-widget-link:last-child { border-bottom: none; }
+  .wh-widget-link:hover { color: var(--wh-blue-mid); }
+
+  @media (max-width: 700px) {
+    .wh-body { grid-template-columns: 1fr; }
+    .wh-cab-grid { grid-template-columns: 1fr; }
+    .wh-title { font-size: 30px; }
+    .wh-hero-img { height: 200px; }
+    .wh-officer-card { flex-direction: row; }
+  }
+</style>
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../linkvid/"><span class="arc-bmark-icon">🎥</span>LinkVid</a>
+  <a class="arc-bmark" href="../csn/"><span class="arc-bmark-icon">⚾</span>CSN</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+</div>
+
+<div class="wh-hero">
+  <img class="wh-hero-img" src="../../images/washington-house/Washington%20House%20Standard.png" alt="Washington House" />
+  <div class="wh-hero-overlay"></div>
+  <div class="wh-hero-text">
+    <div class="wh-kicker">Official Residence &amp; Office of the President of the United States</div>
+    <div class="wh-title">The Administration</div>
+    <div class="wh-subtitle">The Cabinet of President Sophia R. Nakamura</div>
+    <div class="wh-address-tag">link://nan.washingtonhouse.gov.usa/administration</div>
+  </div>
+</div>
+
+<nav class="wh-nav">
+  <a href="./">Home</a>
+  <a href="#">The President</a>
+  <a href="wh_administration.html" class="active">Administration</a>
+  <a href="#">Briefing Room</a>
+  <a href="#">Plan a Visit</a>
+  <a href="#">History</a>
+  <a href="wh_presidents.html">The Presidents</a>
+  <a href="#">Contact</a>
+</nav>
+
+<div class="wh-body">
+  <div class="wh-main">
+
+    <p class="wh-intro">The Nakamura Administration took office in February 2025. Under the Constitution of 1861, the officers of the cabinet are nominated by the President and confirmed by the House of Representatives, which retains the power to withdraw its consent from any cabinet officer. The cabinet is presided over by the Secretary General, a sitting member of the House chosen by that body — the constitutional bridge between Washington House and Congress.</p>
+
+    <div class="wh-section">
+      <div class="wh-section-hed">The Vice President</div>
+      <div class="wh-officer-card">
+        <div class="wh-officer-monogram">MK</div>
+        <div>
+          <div class="wh-officer-label">Vice President of the United States</div>
+          <div class="wh-officer-name">Miriam Katz</div>
+          <div class="wh-officer-detail">
+            Green Party · Brooklyn<br>
+            Elected on the Nakamura–Katz ticket in the election of 2024 and inaugurated alongside the President on February 11, 2025.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wh-section">
+      <div class="wh-section-hed">The Secretary General</div>
+      <div class="wh-officer-card">
+        <div class="wh-officer-monogram">DM</div>
+        <div>
+          <div class="wh-officer-label">Secretary General of the House of Representatives</div>
+          <div class="wh-officer-name">Diane Moss</div>
+          <div class="wh-officer-detail">
+            Green Party · Member of the House of Representatives, Mississippi Gulf Coast<br>
+            As Secretary General, presides over the cabinet and serves as the constitutional link between the executive and the House of Representatives.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wh-section">
+      <div class="wh-section-hed">The Cabinet</div>
+      <div class="wh-cab-grid">
+
+        <div class="wh-cab-card">
+          <div class="wh-cab-stripe" style="background:#1E5631"></div>
+          <div>
+            <div class="wh-cab-office">Secretary of the Exterior</div>
+            <div class="wh-cab-name">Raymond Okafor</div>
+            <div class="wh-cab-note">Former United States Senator</div>
+            <span class="wh-party-tag" style="background:#1E5631">Green</span>
+          </div>
+        </div>
+
+        <div class="wh-cab-card">
+          <div class="wh-cab-stripe" style="background:#B22222"></div>
+          <div>
+            <div class="wh-cab-office">Secretary of the Armed Forces</div>
+            <div class="wh-cab-name">Roberto Fuentes</div>
+            <div class="wh-cab-note">Veteran of the Ottoman Intervention</div>
+            <span class="wh-party-tag" style="background:#B22222">SPA</span>
+          </div>
+        </div>
+
+        <div class="wh-cab-card">
+          <div class="wh-cab-stripe"></div>
+          <div>
+            <div class="wh-cab-office">Secretary of the Treasury</div>
+            <div class="wh-cab-name">Rebecca Alden</div>
+          </div>
+        </div>
+
+        <div class="wh-cab-card">
+          <div class="wh-cab-stripe"></div>
+          <div>
+            <div class="wh-cab-office">Secretary of the Interior</div>
+            <div class="wh-cab-name">Owen Castellano</div>
+          </div>
+        </div>
+
+        <div class="wh-cab-card">
+          <div class="wh-cab-stripe"></div>
+          <div>
+            <div class="wh-cab-office">Attorney General</div>
+            <div class="wh-cab-name">Nathaniel Thompson</div>
+          </div>
+        </div>
+
+        <div class="wh-cab-card">
+          <div class="wh-cab-stripe"></div>
+          <div>
+            <div class="wh-cab-office">Secretary of Health</div>
+            <div class="wh-cab-name">Peter Halloran</div>
+          </div>
+        </div>
+
+        <div class="wh-cab-card">
+          <div class="wh-cab-stripe" style="background:#1E5631"></div>
+          <div>
+            <div class="wh-cab-office">Secretary of Transportation</div>
+            <div class="wh-cab-name">Alex Anderson</div>
+            <span class="wh-party-tag" style="background:#1E5631">Green</span>
+          </div>
+        </div>
+
+        <div class="wh-cab-card">
+          <div class="wh-cab-stripe"></div>
+          <div>
+            <div class="wh-cab-office">Secretary of Education</div>
+            <div class="wh-cab-name">Kenji Ishikawa</div>
+          </div>
+        </div>
+
+        <div class="wh-cab-card">
+          <div class="wh-cab-stripe"></div>
+          <div>
+            <div class="wh-cab-office">Secretary of Agriculture</div>
+            <div class="wh-cab-name">Walter Kingfisher</div>
+          </div>
+        </div>
+
+        <div class="wh-cab-card">
+          <div class="wh-cab-stripe"></div>
+          <div>
+            <div class="wh-cab-office">Secretary of Labor</div>
+            <div class="wh-cab-name">Frank Dolan</div>
+          </div>
+        </div>
+
+        <div class="wh-cab-card tba">
+          <div class="wh-cab-stripe" style="background:var(--border)"></div>
+          <div>
+            <div class="wh-cab-office">Secretary of Commerce &amp; Industry</div>
+            <div class="wh-cab-name">To be announced</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="wh-section">
+      <div class="wh-section-hed">Office of Communications</div>
+      <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;">The Washington House Office of Communications conducts daily press briefings from the East Wing and administers press credentials for the Washington House press corps. Briefings are led by Press Secretary Delacroix. Transcripts of all briefings, presidential statements, and executive actions are published through the Briefing Room.</p>
+    </div>
+
+  </div>
+
+  <div class="wh-sidebar">
+
+    <div class="wh-widget">
+      <div class="wh-widget-head">Line of Succession</div>
+      <div class="wh-widget-body">
+        <div class="wh-succ-row"><div class="wh-succ-num">1</div><div class="wh-succ-office">Vice President</div></div>
+        <div class="wh-succ-row"><div class="wh-succ-num">2</div><div class="wh-succ-office">Speaker of the House of Representatives</div></div>
+        <div class="wh-succ-row"><div class="wh-succ-num">3</div><div class="wh-succ-office">Secretary General</div></div>
+        <div class="wh-succ-row"><div class="wh-succ-num">4</div><div class="wh-succ-office">President pro tempore of the Senate</div></div>
+        <div class="wh-succ-row"><div class="wh-succ-num">5</div><div class="wh-succ-office">Secretary of the Exterior</div></div>
+        <div class="wh-succ-row"><div class="wh-succ-num">6</div><div class="wh-succ-office">Secretary of the Armed Forces</div></div>
+        <div class="wh-succ-row"><div class="wh-succ-num">7</div><div class="wh-succ-office">Secretary of the Treasury</div></div>
+        <div class="wh-succ-row"><div class="wh-succ-num">8</div><div class="wh-succ-office">Secretary of the Interior</div></div>
+        <div class="wh-succ-row"><div class="wh-succ-num">9</div><div class="wh-succ-office">Attorney General</div></div>
+      </div>
+    </div>
+
+    <div class="wh-widget">
+      <div class="wh-widget-head">The Cabinet System</div>
+      <div class="wh-widget-body" style="font-size:12px;color:var(--text-secondary);line-height:1.7;">
+        Under the Constitution of 1861, cabinet officers are nominated by the President and confirmed by the House of Representatives. The House may withdraw its consent from any cabinet officer, including the Secretary General, by majority vote. The Secretary General — a sitting House member chosen by the chamber — presides over the cabinet.
+      </div>
+    </div>
+
+    <div class="wh-widget">
+      <div class="wh-widget-head">See Also</div>
+      <div class="wh-widget-body">
+        <a class="wh-widget-link" href="wh_presidents.html">The Presidents of the United States</a>
+        <a class="wh-widget-link" href="./">Washington House — Home</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="wm-footer">
+  <span>link://nan.washingtonhouse.gov.usa/administration &nbsp;·&nbsp; Washington House &nbsp;·&nbsp; Franklin, D.W.</span>
+  <div class="wm-footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Accessibility</a>
+    <a href="#">Contact</a>
+    <a href="#">FOIA</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script>
+initAddressBar('nan.washingtonhouse.gov.usa/administration');
+
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+</body>
+</html>
