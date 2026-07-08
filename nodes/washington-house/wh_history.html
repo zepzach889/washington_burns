@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>History — Washington House</title>
+<link rel="stylesheet" href="../../shared.css">
+<style>
+  :root {
+    --wh-blue: #1B3A6B;
+    --wh-blue-dark: #102444;
+    --wh-blue-mid: #2A4E8A;
+    --wh-gold: #B8972A;
+    --wh-gold-light: #D4AE4A;
+  }
+
+  /* ── HERO ── */
+  .wh-hero { position: relative; background: var(--wh-blue-dark); overflow: hidden; }
+  .wh-hero-img { width: 100%; height: 280px; object-fit: cover; object-position: center 40%; display: block; opacity: 0.75; }
+  .wh-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, var(--wh-blue-dark) 0%, transparent 22%, transparent 78%, var(--wh-blue-dark) 100%), linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.72) 100%); pointer-events: none; }
+  .wh-hero-text { position: absolute; bottom: 0; left: 0; right: 0; text-align: center; padding: 24px 20px 22px; color: #fff; background: linear-gradient(to top, rgba(10,20,40,0.92) 0%, rgba(10,20,40,0.7) 60%, transparent 100%); }
+  .wh-kicker { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--wh-gold-light); margin-bottom: 6px; font-weight: 600; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
+  .wh-title { font-family: 'DM Serif Display', serif; font-size: 40px; letter-spacing: -0.01em; line-height: 1.1; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.7); }
+  .wh-subtitle { font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 6px; text-shadow: 0 1px 4px rgba(0,0,0,0.7); }
+  .wh-address-tag { display: inline-block; margin-top: 10px; font-size: 11px; background: rgba(0,0,0,0.45); border: 0.5px solid rgba(255,255,255,0.25); padding: 4px 12px; border-radius: 12px; color: rgba(255,255,255,0.8); font-family: monospace; }
+
+  /* ── NAV ── */
+  .wh-nav { display: flex; justify-content: center; background: var(--wh-blue); flex-wrap: wrap; border-bottom: 2px solid var(--wh-gold); position: sticky; top: 70px; z-index: 90; }
+  .wh-nav a { font-size: 12px; color: rgba(255,255,255,0.70); text-decoration: none; padding: 10px 18px; font-weight: 500; transition: all 0.1s; }
+  .wh-nav a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+  .wh-nav a.active { color: var(--wh-gold-light); border-bottom: 2px solid var(--wh-gold-light); }
+
+  /* ── BODY ── */
+  .wh-body { display: grid; grid-template-columns: 1fr 300px; max-width: 1100px; margin: 0 auto; }
+  .wh-main { padding: 28px 24px; border-right: 0.5px solid var(--border); }
+  .wh-sidebar { padding: 24px 16px; background: var(--bg-secondary); }
+
+  /* ── SECTIONS ── */
+  .wh-section { margin-bottom: 28px; }
+  .wh-section-hed { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text-primary); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1.5px solid var(--wh-gold); }
+  .wh-prose { font-size: 13px; color: var(--text-secondary); line-height: 1.75; }
+  .wh-prose p { margin-bottom: 12px; }
+  .wh-prose p:last-child { margin-bottom: 0; }
+  .wh-prose strong { color: var(--text-primary); }
+
+  /* ── WINGS ── */
+  .wh-wings { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+  .wh-wing { background: #fff; border: 0.5px solid var(--border); border-radius: 6px; padding: 10px 12px; border-left: 3px solid var(--wh-gold); }
+  .wh-wing-name { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--wh-blue); margin-bottom: 3px; }
+  .wh-wing-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* ── WIDGETS ── */
+  .wh-widget { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+  .wh-widget:last-child { margin-bottom: 0; }
+  .wh-widget-head { background: var(--wh-blue); padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); border-bottom: 1px solid var(--wh-gold); }
+  .wh-widget-body { padding: 12px; font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
+  .wh-widget-body strong { color: var(--text-primary); }
+
+  .wh-tl-row { display: flex; gap: 10px; padding: 6px 0; border-bottom: 0.5px solid var(--border); }
+  .wh-tl-row:last-child { border-bottom: none; }
+  .wh-tl-year { font-family: monospace; font-size: 11px; color: var(--wh-blue); font-weight: 700; width: 58px; flex-shrink: 0; }
+  .wh-tl-event { font-size: 11.5px; color: var(--text-secondary); line-height: 1.5; }
+
+  .wh-widget-link { display: block; font-size: 12px; color: var(--wh-blue); text-decoration: none; font-weight: 600; padding: 6px 0; border-bottom: 0.5px solid var(--border); }
+  .wh-widget-link:last-child { border-bottom: none; }
+  .wh-widget-link:hover { color: var(--wh-blue-mid); }
+
+  @media (max-width: 700px) {
+    .wh-body { grid-template-columns: 1fr; }
+    .wh-wings { grid-template-columns: 1fr; }
+    .wh-title { font-size: 30px; }
+    .wh-hero-img { height: 200px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../linkvid/"><span class="arc-bmark-icon">🎥</span>LinkVid</a>
+  <a class="arc-bmark" href="../csn/"><span class="arc-bmark-icon">⚾</span>CSN</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+</div>
+
+<div class="wh-hero">
+  <img class="wh-hero-img" src="../../images/washington-house/Washington%20House%20Standard.png" alt="Washington House" />
+  <div class="wh-hero-overlay"></div>
+  <div class="wh-hero-text">
+    <div class="wh-kicker">Official Residence &amp; Office of the President of the United States</div>
+    <div class="wh-title">History</div>
+    <div class="wh-subtitle">Two Centuries at the Heart of the Republic · 1821–Present</div>
+    <div class="wh-address-tag">link://nan.washingtonhouse.gov.usa/history</div>
+  </div>
+</div>
+
+<nav class="wh-nav">
+  <a href="./">Home</a>
+  <a href="wh_president.html">The President</a>
+  <a href="wh_administration.html">Administration</a>
+  <a href="wh_briefing.html">Briefing Room</a>
+  <a href="wh_visit.html">Plan a Visit</a>
+  <a href="wh_history.html" class="active">History</a>
+  <a href="wh_presidents.html">The Presidents</a>
+  <a href="wh_contact.html">Contact</a>
+</nav>
+
+<div class="wh-body">
+  <div class="wh-main">
+
+    <div class="wh-section">
+      <div class="wh-section-hed">Planning &amp; Construction, 1817–1827</div>
+      <div class="wh-prose">
+        <p>Washington House owes its existence to the <strong>Grand Compromise of 1817</strong>, which resolved to move the federal capital west to a new city on the Ohio River. When the Joint Committee for the Selection of a New Capital chose the site in October 1817, it commissioned a design competition for the city and its federal buildings. The winning plan, unveiled on March 15, 1818, merged proposals from Josiah Kemp of New York and <strong>Phillip Ogden of South Carolina</strong>; Ogden was appointed chief planner and took primary responsibility for designing the executive buildings — Washington House among them.</p>
+        <p>President William Crawford broke ground in May 1818, personally overseeing the clearing of what would become Union Avenue. President <strong>Henry Clay</strong>, who made the completion of Franklin a personal priority, laid the cornerstone of Washington House during his first visit to the capital in <strong>July 1821</strong>. It was Clay who decided that each executive building would honor the historical first holder of its office rather than its own first occupant — and so the presidential mansion became Washington House, alongside the Jefferson, Hamilton, and Knox Buildings.</p>
+        <p>When Alexander Hamilton, Jr. took the oath of office at the nearly completed Congress Hall on March 4, 1827 — the first inauguration in the new capital — Washington House stood ready to receive its first resident.</p>
+      </div>
+    </div>
+
+    <div class="wh-section">
+      <div class="wh-section-hed">The House at War, 1857–1863</div>
+      <div class="wh-prose">
+        <p>Washington House endured its darkest chapter during the <strong>War Between the States</strong>. On July 2, 1858, a bomb exploded at the building's entrance in an apparent attempt on the life of President James Hawthorne. Hawthorne was unharmed, but nearly a dozen Presidential Guardsmen and staff were killed. Days later, Hawthorne relocated his government to Atlanta, and by the end of July 1858 Washington House stood empty for the first time since its completion.</p>
+        <p>The building remained under occupation until the Free Army of the West under General Alexander Bloom captured Franklin in March 1859, after which Free State forces used it as a military headquarters for the remainder of the conflict. Despite the fighting that swept through the capital, the building came through the war largely intact. Acting President Hugo Brandt returned the seat of government to Franklin in 1862, and Washington House was restored to its proper function.</p>
+      </div>
+    </div>
+
+    <div class="wh-section">
+      <div class="wh-section-hed">Growth &amp; the Gilded Age</div>
+      <div class="wh-prose">
+        <p>The post-war decades saw the House refined as the presidency grew. The most significant addition of the 19th century came during the Littlefield Administration (1875–1881), when the <strong>South Portico</strong> was built, opening the Private Wing gracefully onto the formal gardens; the same project expanded the Grand Reception Hall and modernized the State Wing. Under the Rowling Administration, Washington House became one of the first fully electrified buildings in Franklin, with the project completed in 1889 — replacing the gas lighting that had served since the 1840s.</p>
+        <p>The era also fixed the building's place in the constitutional imagination. When President John P. Quincy departed before dawn on June 1, 1873, Vice President Bradley Kinder was sworn in that same day in the <strong>Grand Reception Hall</strong> — a scene of quiet dignity that established the Hall as the traditional setting for the swearing-in of successors ever since.</p>
+      </div>
+    </div>
+
+    <div class="wh-section">
+      <div class="wh-section-hed">The Priest Restoration, 1955–1959</div>
+      <div class="wh-prose">
+        <p>By the early 1950s, the building was more than 125 years old and had never undergone a comprehensive structural assessment. When engineers finally conducted one in 1954, the findings were alarming: decades of piecemeal renovation had left the interior structure dangerously compromised. The crisis reached the public in the summer of 1955, when First Lady Gloria Priest's bathtub fell through the floor of the Private Wing — an incident that, mercifully, injured no one, and which the press reported with barely concealed amusement.</p>
+        <p>President Timothy Priest announced a full restoration that autumn. It was the most extensive work undertaken since the original construction: the limestone exterior was preserved intact while the entire interior was gutted and rebuilt around modern structural steel, with the First Family relocating to Blair House for the duration. President <strong>Georgina Lincoln</strong> took up residence in the fully restored Washington House in the spring of 1959 — the first occupant of the rebuilt interior, and the first president for whom the Private Wing had been configured with a female head of state in mind.</p>
+      </div>
+    </div>
+
+    <div class="wh-section">
+      <div class="wh-section-hed">Architecture</div>
+      <div class="wh-prose">
+        <p>Washington House is a four-story neoclassical limestone structure organized around a central enclosed courtyard, its north face marked by a projecting Corinthian portico and the <strong>north balcony</strong> from which presidents deliver their inaugural addresses. Over two centuries the limestone has mellowed to a warm cream-gold tone, most striking in morning light as the sun rises over the legislative bank across the Ohio. Four wings surround the courtyard, each with its own purpose:</p>
+      </div>
+      <div class="wh-wings">
+        <div class="wh-wing">
+          <div class="wh-wing-name">State Wing — North</div>
+          <div class="wh-wing-desc">The principal facade and ceremonial heart. Grand Reception Hall, the President's Study, and the north balcony.</div>
+        </div>
+        <div class="wh-wing">
+          <div class="wh-wing-name">Executive Wing — East</div>
+          <div class="wh-wing-desc">The working wing. The President's working office, the Cabinet Room, the Press Briefing Room, and the Secretary General's office.</div>
+        </div>
+        <div class="wh-wing">
+          <div class="wh-wing-name">Diplomatic Wing — West</div>
+          <div class="wh-wing-desc">Foreign affairs and hospitality. The State Dining Room, the Ambassadors Suite, and the Union Gallery of the national art collection.</div>
+        </div>
+        <div class="wh-wing">
+          <div class="wh-wing-name">Private Wing — South</div>
+          <div class="wh-wing-desc">Home of the First Family, opening onto the formal gardens through the South Portico added in the Littlefield era.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wh-section">
+      <div class="wh-section-hed">The Inaugural Tradition</div>
+      <div class="wh-prose">
+        <p>Since Alexander Hamilton, Jr., every inauguration has followed the same ceremonial arc: the oath administered at <strong>Congress Hall</strong> on the legislative bank; the parade down Union Avenue and across the <strong>George Washington Bridge</strong> to the executive bank; and the new president's ascent to the north balcony of Washington House to address the crowd gathered in President's Square below. The crossing of the bridge — from the legislative bank to the executive — is often described as the moment the new president takes possession of the office in a practical as well as symbolic sense.</p>
+        <p>The tradition has been broken only once: Hugo Brandt's wartime inauguration of March 1863 was held in the House Chamber of Congress Hall, with no parade possible. It resumed with his successor and has been unbroken since.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wh-sidebar">
+
+    <div class="wh-widget">
+      <div class="wh-widget-head">Timeline</div>
+      <div class="wh-widget-body">
+        <div class="wh-tl-row"><div class="wh-tl-year">1817</div><div class="wh-tl-event">Grand Compromise; capital site selected on the Ohio</div></div>
+        <div class="wh-tl-row"><div class="wh-tl-year">1818</div><div class="wh-tl-event">Winning city plan unveiled; Crawford breaks ground</div></div>
+        <div class="wh-tl-row"><div class="wh-tl-year">1821</div><div class="wh-tl-event">President Clay lays the cornerstone of Washington House</div></div>
+        <div class="wh-tl-row"><div class="wh-tl-year">1827</div><div class="wh-tl-event">Hamilton Jr. becomes the first resident</div></div>
+        <div class="wh-tl-row"><div class="wh-tl-year">1858</div><div class="wh-tl-event">Bombing of the entrance; government abandons Franklin</div></div>
+        <div class="wh-tl-row"><div class="wh-tl-year">1859</div><div class="wh-tl-event">Free Army of the West retakes the capital</div></div>
+        <div class="wh-tl-row"><div class="wh-tl-year">1875–81</div><div class="wh-tl-event">South Portico added; State Wing modernized</div></div>
+        <div class="wh-tl-row"><div class="wh-tl-year">1889</div><div class="wh-tl-event">Full electrification completed</div></div>
+        <div class="wh-tl-row"><div class="wh-tl-year">1955–59</div><div class="wh-tl-event">The Priest Restoration — interior rebuilt in steel</div></div>
+        <div class="wh-tl-row"><div class="wh-tl-year">1959</div><div class="wh-tl-event">Georgina Lincoln takes residence in the restored House</div></div>
+      </div>
+    </div>
+
+    <div class="wh-widget">
+      <div class="wh-widget-head">Why "Washington" House?</div>
+      <div class="wh-widget-body">
+        President Henry Clay decreed that each executive building would honor the historical <strong>first holder</strong> of its office rather than its own first occupant. The presidential mansion thus honors George Washington — alongside the Jefferson Building (Exterior), the Hamilton Building (Treasury), and the Knox Building (War).
+      </div>
+    </div>
+
+    <div class="wh-widget">
+      <div class="wh-widget-head">See Also</div>
+      <div class="wh-widget-body">
+        <a class="wh-widget-link" href="wh_presidents.html">The Presidents of the United States</a>
+        <a class="wh-widget-link" href="wh_visit.html">Plan a Visit</a>
+        <a class="wh-widget-link" href="../nedex/washington-house.html">Washington House on Nedex</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="wm-footer">
+  <span>link://nan.washingtonhouse.gov.usa/history &nbsp;·&nbsp; Washington House &nbsp;·&nbsp; Franklin, D.W.</span>
+  <div class="wm-footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Accessibility</a>
+    <a href="#">Contact</a>
+    <a href="#">FOIA</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script>
+initAddressBar('nan.washingtonhouse.gov.usa/history');
+
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+</body>
+</html>
