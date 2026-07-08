@@ -174,8 +174,18 @@ function renderList(articles) {
 }
 
 // Initial render
-const urlQ = new URLSearchParams(window.location.search).get('q');
-if (urlQ) {
+const urlParams = new URLSearchParams(window.location.search);
+const urlQ = urlParams.get('q');
+const urlCat = urlParams.get('cat');
+// Normalize category strings so "Wars & Conflicts" === "wars and conflicts" etc.
+const normCat = s => s.toLowerCase().replace(/&/g, 'and').replace(/\s+/g, ' ').trim();
+if (urlCat) {
+  const h1 = document.querySelector('.ndx-browse-body h1');
+  if (h1) h1.textContent = 'Category: ' + urlCat;
+  document.title = 'Category: ' + urlCat + ' \u2014 Nedex';
+  const filtered = sorted.filter(a => a.categories.some(c => normCat(c) === normCat(urlCat)));
+  renderList(filtered);
+} else if (urlQ) {
   document.getElementById('browse-filter').value = urlQ;
   const filtered = sorted.filter(a =>
     a.title.toLowerCase().includes(urlQ.toLowerCase()) ||
