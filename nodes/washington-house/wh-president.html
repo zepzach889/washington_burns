@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>The President — Washington House</title>
+<link rel="stylesheet" href="../../shared.css">
+<style>
+  :root {
+    --wh-blue: #1B3A6B;
+    --wh-blue-dark: #102444;
+    --wh-blue-mid: #2A4E8A;
+    --wh-gold: #B8972A;
+    --wh-gold-light: #D4AE4A;
+  }
+
+  /* ── HERO ── */
+  .wh-hero { position: relative; background: var(--wh-blue-dark); overflow: hidden; }
+  .wh-hero-img { width: 100%; height: 280px; object-fit: cover; object-position: center 40%; display: block; opacity: 0.75; }
+  .wh-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, var(--wh-blue-dark) 0%, transparent 22%, transparent 78%, var(--wh-blue-dark) 100%), linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.72) 100%); pointer-events: none; }
+  .wh-hero-text { position: absolute; bottom: 0; left: 0; right: 0; text-align: center; padding: 24px 20px 22px; color: #fff; background: linear-gradient(to top, rgba(10,20,40,0.92) 0%, rgba(10,20,40,0.7) 60%, transparent 100%); }
+  .wh-kicker { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--wh-gold-light); margin-bottom: 6px; font-weight: 600; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
+  .wh-title { font-family: 'DM Serif Display', serif; font-size: 40px; letter-spacing: -0.01em; line-height: 1.1; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.7); }
+  .wh-subtitle { font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 6px; text-shadow: 0 1px 4px rgba(0,0,0,0.7); }
+  .wh-address-tag { display: inline-block; margin-top: 10px; font-size: 11px; background: rgba(0,0,0,0.45); border: 0.5px solid rgba(255,255,255,0.25); padding: 4px 12px; border-radius: 12px; color: rgba(255,255,255,0.8); font-family: monospace; }
+
+  /* ── NAV ── */
+  .wh-nav { display: flex; justify-content: center; background: var(--wh-blue); flex-wrap: wrap; border-bottom: 2px solid var(--wh-gold); position: sticky; top: 70px; z-index: 90; }
+  .wh-nav a { font-size: 12px; color: rgba(255,255,255,0.70); text-decoration: none; padding: 10px 18px; font-weight: 500; transition: all 0.1s; }
+  .wh-nav a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+  .wh-nav a.active { color: var(--wh-gold-light); border-bottom: 2px solid var(--wh-gold-light); }
+
+  /* ── BODY ── */
+  .wh-body { display: grid; grid-template-columns: 1fr 300px; max-width: 1100px; margin: 0 auto; }
+  .wh-main { padding: 28px 24px; border-right: 0.5px solid var(--border); }
+  .wh-sidebar { padding: 24px 16px; background: var(--bg-secondary); }
+
+  /* ── PORTRAIT CARD ── */
+  .wh-portrait-card {
+    display: flex;
+    gap: 22px;
+    background: #fff;
+    border: 0.5px solid var(--border);
+    border-top: 3px solid var(--wh-gold);
+    border-radius: 10px;
+    padding: 22px;
+    margin-bottom: 28px;
+    align-items: flex-start;
+  }
+  .wh-portrait {
+    width: 140px;
+    height: 175px;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid var(--wh-gold);
+    background: var(--bg-secondary);
+  }
+  .wh-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .wh-portrait-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 5px; }
+  .wh-portrait-name { font-family: 'DM Serif Display', serif; font-size: 30px; color: var(--text-primary); line-height: 1.1; margin-bottom: 8px; }
+  .wh-portrait-detail { font-size: 12.5px; color: var(--text-secondary); line-height: 1.75; }
+  .wh-portrait-term { display: inline-block; font-size: 10px; font-weight: 700; background: #EBF0FA; color: var(--wh-blue); padding: 2px 8px; border-radius: 4px; margin-top: 8px; }
+
+  /* ── SECTIONS ── */
+  .wh-section { margin-bottom: 28px; }
+  .wh-section-hed { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text-primary); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1.5px solid var(--wh-gold); }
+  .wh-prose { font-size: 13px; color: var(--text-secondary); line-height: 1.75; }
+  .wh-prose p { margin-bottom: 12px; }
+  .wh-prose p:last-child { margin-bottom: 0; }
+  .wh-prose strong { color: var(--text-primary); }
+
+  /* ── PULL QUOTE ── */
+  .wh-pull { background: #EBF0FA; border-left: 3px solid var(--wh-blue); border-radius: 0 8px 8px 0; padding: 16px 18px; margin: 20px 0; }
+  .wh-pull-text { font-family: 'DM Serif Display', serif; font-size: 16px; line-height: 1.5; color: var(--text-primary); font-style: italic; }
+  .wh-pull-attr { font-size: 11px; color: var(--text-tertiary); margin-top: 8px; }
+
+  /* ── WIDGETS ── */
+  .wh-widget { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+  .wh-widget:last-child { margin-bottom: 0; }
+  .wh-widget-head { background: var(--wh-blue); padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); border-bottom: 1px solid var(--wh-gold); }
+  .wh-widget-body { padding: 12px; font-size: 12px; }
+
+  .wh-fact-row { padding: 5px 0; border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; gap: 8px; }
+  .wh-fact-row:last-child { border-bottom: none; }
+  .wh-fact-label { color: var(--text-secondary); flex-shrink: 0; }
+  .wh-fact-val { font-weight: 600; color: var(--text-primary); text-align: right; }
+
+  /* ── ELECTION WIDGET ── */
+  .wh-elec-row { padding: 6px 0; border-bottom: 0.5px solid var(--border); }
+  .wh-elec-row:last-child { border-bottom: none; }
+  .wh-elec-top { display: flex; justify-content: space-between; font-size: 11.5px; margin-bottom: 4px; }
+  .wh-elec-name { color: var(--text-primary); font-weight: 600; }
+  .wh-elec-pct { font-family: monospace; color: var(--text-secondary); }
+  .wh-elec-bar { height: 6px; border-radius: 3px; background: var(--bg-tertiary); overflow: hidden; }
+  .wh-elec-fill { height: 100%; border-radius: 3px; }
+  .wh-elec-note { font-size: 10px; color: var(--text-tertiary); margin-top: 8px; line-height: 1.5; }
+
+  .wh-first-item { padding: 6px 0; border-bottom: 0.5px solid var(--border); font-size: 12px; color: var(--text-secondary); line-height: 1.5; display: flex; gap: 8px; }
+  .wh-first-item:last-child { border-bottom: none; }
+  .wh-first-star { color: var(--wh-gold); flex-shrink: 0; }
+
+  @media (max-width: 700px) {
+    .wh-body { grid-template-columns: 1fr; }
+    .wh-title { font-size: 30px; }
+    .wh-hero-img { height: 200px; }
+    .wh-portrait-card { flex-direction: column; align-items: center; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+  <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../linkvid/"><span class="arc-bmark-icon">🎥</span>LinkVid</a>
+  <a class="arc-bmark" href="../csn/"><span class="arc-bmark-icon">⚾</span>CSN</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+</div>
+
+<div class="wh-hero">
+  <img class="wh-hero-img" src="../../images/washington-house/Washington%20House%20Standard.png" alt="Washington House" />
+  <div class="wh-hero-overlay"></div>
+  <div class="wh-hero-text">
+    <div class="wh-kicker">Official Residence &amp; Office of the President of the United States</div>
+    <div class="wh-title">The President</div>
+    <div class="wh-subtitle">Sophia R. Nakamura · 44th President of the United States</div>
+    <div class="wh-address-tag">link://nan.washingtonhouse.gov.usa/president</div>
+  </div>
+</div>
+
+<nav class="wh-nav">
+  <a href="./">Home</a>
+  <a href="wh_president.html" class="active">The President</a>
+  <a href="wh_administration.html">Administration</a>
+  <a href="wh_briefing.html">Briefing Room</a>
+  <a href="wh_visit.html">Plan a Visit</a>
+  <a href="wh_history.html">History</a>
+  <a href="wh_presidents.html">The Presidents</a>
+  <a href="wh_contact.html">Contact</a>
+</nav>
+
+<div class="wh-body">
+  <div class="wh-main">
+
+    <div class="wh-portrait-card">
+      <div class="wh-portrait">
+        <img src="../../images/washington-house/44-Photo-Nakamura.png" alt="President Sophia R. Nakamura" />
+      </div>
+      <div>
+        <div class="wh-portrait-label">44th President of the United States</div>
+        <div class="wh-portrait-name">Sophia R. Nakamura</div>
+        <div class="wh-portrait-detail">
+          Green Party · Oregon<br>
+          Inaugurated February 11, 2025<br>
+          Previously: United States Senator (Green–Oregon, 2013–2025); Mayor of New Boston, Oregon
+        </div>
+        <span class="wh-portrait-term">Term: 2025–2031</span>
+      </div>
+    </div>
+
+    <div class="wh-section">
+      <div class="wh-section-hed">Biography</div>
+      <div class="wh-prose">
+        <p>Sophia R. Nakamura was born in New Boston, Oregon, in the heart of the Willamette Valley. A third-generation Oregonian of Japanese-American heritage, she trained in environmental law and urban planning before entering public life — a professional grounding that has shaped her approach to government ever since: precise, methodical, and rooted in the conviction that public institutions can be made to work.</p>
+        <p>Her career in elected office began in her home city, where she served as <strong>Mayor of New Boston</strong>, earning a national reputation for the city's transit expansion and environmental planning. In 2012 she was elected to the <strong>United States Senate</strong>, where she represented Oregon from 2013 until her inauguration as president. In the Senate she became one of the Green Party's most prominent national voices — a movement figure with a technocrat's instincts, known for mastering the detail of legislation as thoroughly as its ideals.</p>
+        <p>Her choice of party was itself a statement of conviction. Rather than joining the Socialist Progressive Alliance, the established party of the American left, she joined the younger Green Party — believing that the environmental question was not one issue among many, but the organizing challenge of her political generation.</p>
+      </div>
+    </div>
+
+    <div class="wh-section">
+      <div class="wh-section-hed">The Road to Washington House</div>
+      <div class="wh-prose">
+        <p>In the election of 2024, Senator Nakamura and her running mate, <strong>Miriam Katz</strong> of Brooklyn, led a five-party field in the general election with 40 percent of the vote — the strongest showing in the Green Party's history. In the December run-off she defeated Governor Mary Anne Caldwell of Tennessee by 62 percent to 38, winning a broad mandate that drew support from across the political spectrum.</p>
+        <p>Seventy days later, on <strong>February 11, 2025</strong>, she took the oath of office at Washington House as the <strong>first Green Party president</strong> in American history and the second Asian-American to hold the office, after Victor Liu. Her inaugural address, delivered on the eve of the republic's semiquincentennial, framed the work of her presidency in a single arc: continuity, stewardship, and expansion — the work of preparing the republic for its next 250 years.</p>
+      </div>
+    </div>
+
+    <div class="wh-section">
+      <div class="wh-section-hed">The Presidency</div>
+      <div class="wh-prose">
+        <p>The defining project of the Nakamura presidency is the <strong>NAU Constitutional Consolidation</strong> — the effort to complete and ratify a formal constitution for the North American Union, codifying the Council, the Assembly, the Continental Bank, and continental citizenship into a single founding document. The administration pursues the work on two tracks: diplomacy with the remaining member-state holdouts abroad, and the domestic authorization process at home.</p>
+        <p>In its first year, the administration secured passage of the <strong>Climate Infrastructure Package</strong> — the first major legislative achievement of a Green presidency — and introduced the first federal framework for the regulation of artificial intelligence, addressing intellectual property protection and labor displacement. The administration has also continued the expansion of Rural Interlink access and oversees the final preparations for the crewed Mars orbital mission planned for the latter years of the term.</p>
+        <p>President Nakamura's second year in office coincides with the <strong>semiquincentennial of the United States</strong> — 250 years since the Declaration of Independence — a season of national commemoration over which she presides.</p>
+      </div>
+    </div>
+
+    <div class="wh-section">
+      <div class="wh-section-hed">The First Family</div>
+      <div class="wh-prose">
+        <p>President Nakamura is married to <strong>Annalese Mackay</strong>, a Canadian-born environmental historian. They are the parents of two children, <strong>Kenji</strong> and <strong>Nora Mackay-Nakamura</strong>, who reside with their mothers in the South Wing of Washington House — the private residence of the First Family.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wh-sidebar">
+
+    <div class="wh-widget">
+      <div class="wh-widget-head">At a Glance</div>
+      <div class="wh-widget-body">
+        <div class="wh-fact-row"><span class="wh-fact-label">Born</span><span class="wh-fact-val">New Boston, Oregon</span></div>
+        <div class="wh-fact-row"><span class="wh-fact-label">Party</span><span class="wh-fact-val">Green</span></div>
+        <div class="wh-fact-row"><span class="wh-fact-label">Inaugurated</span><span class="wh-fact-val">February 11, 2025</span></div>
+        <div class="wh-fact-row"><span class="wh-fact-label">Term</span><span class="wh-fact-val">2025–2031</span></div>
+        <div class="wh-fact-row"><span class="wh-fact-label">Vice President</span><span class="wh-fact-val">Miriam Katz</span></div>
+        <div class="wh-fact-row"><span class="wh-fact-label">Senate</span><span class="wh-fact-val">Oregon, 2013–2025</span></div>
+        <div class="wh-fact-row"><span class="wh-fact-label">Spouse</span><span class="wh-fact-val">Annalese Mackay</span></div>
+        <div class="wh-fact-row"><span class="wh-fact-label">Children</span><span class="wh-fact-val">Kenji &amp; Nora</span></div>
+      </div>
+    </div>
+
+    <div class="wh-widget">
+      <div class="wh-widget-head">The Election of 2024</div>
+      <div class="wh-widget-body">
+        <div class="wh-elec-row">
+          <div class="wh-elec-top"><span class="wh-elec-name">Nakamura / Katz</span><span class="wh-elec-pct">40%</span></div>
+          <div class="wh-elec-bar"><div class="wh-elec-fill" style="width:40%;background:#1E5631"></div></div>
+        </div>
+        <div class="wh-elec-row">
+          <div class="wh-elec-top"><span class="wh-elec-name">Caldwell / Webb</span><span class="wh-elec-pct">17%</span></div>
+          <div class="wh-elec-bar"><div class="wh-elec-fill" style="width:17%;background:#6B8E23"></div></div>
+        </div>
+        <div class="wh-elec-row">
+          <div class="wh-elec-top"><span class="wh-elec-name">Castellano / Kowalski</span><span class="wh-elec-pct">16%</span></div>
+          <div class="wh-elec-bar"><div class="wh-elec-fill" style="width:16%;background:#B22222"></div></div>
+        </div>
+        <div class="wh-elec-row">
+          <div class="wh-elec-top"><span class="wh-elec-name">Landry / Holloway</span><span class="wh-elec-pct">14%</span></div>
+          <div class="wh-elec-bar"><div class="wh-elec-fill" style="width:14%;background:#D2691E"></div></div>
+        </div>
+        <div class="wh-elec-row">
+          <div class="wh-elec-top"><span class="wh-elec-name">Drummond / Taggart</span><span class="wh-elec-pct">13%</span></div>
+          <div class="wh-elec-bar"><div class="wh-elec-fill" style="width:13%;background:#DAA520"></div></div>
+        </div>
+        <div class="wh-elec-note">December run-off: Nakamura 62% — Caldwell 38%</div>
+      </div>
+    </div>
+
+    <div class="wh-widget">
+      <div class="wh-widget-head">Presidential Firsts</div>
+      <div class="wh-widget-body">
+        <div class="wh-first-item"><span class="wh-first-star">★</span><span>First Green Party President of the United States</span></div>
+        <div class="wh-first-item"><span class="wh-first-star">★</span><span>Second Asian-American president, after Victor Liu (1995–2001)</span></div>
+        <div class="wh-first-item"><span class="wh-first-star">★</span><span>President of the semiquincentennial — 250 years of the republic</span></div>
+      </div>
+    </div>
+
+    <div class="wh-widget">
+      <div class="wh-widget-head">See Also</div>
+      <div class="wh-widget-body">
+        <a class="wh-widget-link" href="wh_administration.html" style="display:block;font-size:12px;color:var(--wh-blue);text-decoration:none;font-weight:600;padding:6px 0;border-bottom:0.5px solid var(--border);">The Administration</a>
+        <a class="wh-widget-link" href="wh_presidents.html" style="display:block;font-size:12px;color:var(--wh-blue);text-decoration:none;font-weight:600;padding:6px 0;">The Presidents of the United States</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="wm-footer">
+  <span>link://nan.washingtonhouse.gov.usa/president &nbsp;·&nbsp; Washington House &nbsp;·&nbsp; Franklin, D.W.</span>
+  <div class="wm-footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Accessibility</a>
+    <a href="#">Contact</a>
+    <a href="#">FOIA</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script>
+initAddressBar('nan.washingtonhouse.gov.usa/president');
+
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+</body>
+</html>
