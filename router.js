@@ -2,92 +2,178 @@
 // Maps in-universe NANet addresses to GitHub Pages paths
 
 const ROUTES = {
+
+  // ════════════════════════════════════════════════════════
+  // WAYMARK (homepage)
+  // ════════════════════════════════════════════════════════
   'nan.waymark.biz.usa':                      '/',
+
+  // ════════════════════════════════════════════════════════
+  // NEWS & MEDIA
+  // ════════════════════════════════════════════════════════
   'nan.franklin-ob.pr.usa':                   '/nodes/franklin-observer/',
   'nan.abnnews.pr.usa':                       '/nodes/abn/',
   'nan.csn.pr.usa':                           '/nodes/csn/',
   'nan.linkvid.pr.usa':                       '/nodes/linkvid/',
   'nan.linkvid.pr.usa/films':                 '/nodes/linkvid/films.html',
   'nan.linkvid.pr.usa/series':                '/nodes/linkvid/series.html',
+
+  // ════════════════════════════════════════════════════════
+  // NEDEX — Site pages
+  // ════════════════════════════════════════════════════════
   'nan.nedex.org.nau':                        '/nodes/nedex/',
   'nan.nedex.org.nau/browse':                 '/nodes/nedex/nedex_browse.html',
   'nan.nedex.org.nau/categories':             '/nodes/nedex/nedex_categories.html',
+
+  // ════════════════════════════════════════════════════════
+  // NEDEX — Countries & nations
+  // ════════════════════════════════════════════════════════
+  'nan.nedex.org.nau/africa':                 '/nodes/nedex/africa.html',
+  'nan.nedex.org.nau/argentina':              '/nodes/nedex/argentina.html',
+  'nan.nedex.org.nau/australia':              '/nodes/nedex/australia.html',
   'nan.nedex.org.nau/austria-hungary':        '/nodes/nedex/austria-hungary.html',
+  'nan.nedex.org.nau/brazil':                 '/nodes/nedex/brazil.html',
   'nan.nedex.org.nau/california':             '/nodes/nedex/california.html',
   'nan.nedex.org.nau/canada':                 '/nodes/nedex/canada.html',
-  'nan.nedex.org.nau/thuringia':              '/nodes/nedex/thuringia.html',
-  'nan.nedex.org.nau/argentina':              '/nodes/nedex/argentina.html',
-  'nan.nedex.org.nau/spain':                  '/nodes/nedex/spain.html',
-  'nan.nedex.org.nau/bio-abraham-lincoln':          '/nodes/nedex/bio-abraham-lincoln.html',
-  'nan.nedex.org.nau/kingdom-of-france':            '/nodes/nedex/kingdom-of-france.html',
-  'nan.nedex.org.nau/uniong-of-german-states':      '/nodes/nedex/union-of-german-states.html',
-  'nan.nedex.org.nau/nations-of-south-america':     '/nodes/nedex/nations-of-south-america.html',
-  'nan.nedex.org.nau/persia':                 '/nodes/nedex/persia.html',
-  'nan.nedex.org.nau/monarchs-uk':            '/nodes/nedex/monarchs-uk.html',
-  'nan.nedex.org.nau/prussia':                '/nodes/nedex/prussia.html',
+  'nan.nedex.org.nau/central-america':        '/nodes/nedex/central-america.html',
   'nan.nedex.org.nau/china':                  '/nodes/nedex/china.html',
-  'nan.nedex.org.nau/africa':                 '/nodes/nedex/africa.html',
-  'nan.nedex.org.nau/australia':              '/nodes/nedex/australia.html',
+  'nan.nedex.org.nau/choson':                 '/nodes/nedex/choson.html',
+  'nan.nedex.org.nau/colombia':               '/nodes/nedex/colombia.html',
+  'nan.nedex.org.nau/hawaii':                 '/nodes/nedex/hawaii.html',
+  'nan.nedex.org.nau/india':                  '/nodes/nedex/india.html',
+  'nan.nedex.org.nau/ireland':                '/nodes/nedex/ireland.html',
+  'nan.nedex.org.nau/italy':                  '/nodes/nedex/italy.html',
+  'nan.nedex.org.nau/japan':                  '/nodes/nedex/japan.html',
+  'nan.nedex.org.nau/mexico':                 '/nodes/nedex/mexico.html',
+  'nan.nedex.org.nau/nations-of-south-america': '/nodes/nedex/nations-of-south-america.html',
+  'nan.nedex.org.nau/ottoman-empire':         '/nodes/nedex/ottoman-empire.html',
+  'nan.nedex.org.nau/persia':                 '/nodes/nedex/persia.html',
+  'nan.nedex.org.nau/russia':                 '/nodes/nedex/russia.html',
   'nan.nedex.org.nau/south-africa':           '/nodes/nedex/south-africa.html',
   'nan.nedex.org.nau/southeast-asia':         '/nodes/nedex/southeast-asia.html',
-  'nan.nedex.org.nau/hanover':                '/nodes/nedex/hanover.html',
-  'nan.nedex.org.nau/ireland':                '/nodes/nedex/ireland.html',
-  'nan.nedex.org.nau/brazil':                 '/nodes/nedex/brazil.html',
-  'nan.nedex.org.nau/united-kingdom':         '/nodes/nedex/united-kingdom.html',
-  'nan.nedex.org.nau/choson':                 '/nodes/nedex/choson.html',
-  'nan.nedex.org.nau/japan':                  '/nodes/nedex/japan.html',
-  'nan.nedex.org.nau/nau':                    '/nodes/nedex/nau.html',
-  'nan.nedex.org.nau/italy':                  '/nodes/nedex/italy.html',
-  'nan.nedex.org.nau/united-states':          '/nodes/nedex/united-states.html',
-  'nan.nedex.org.nau/monarchs-hawaii':        '/nodes/nedex/monarchs-hawaii.html',
-  'nan.nedex.org.nau/austria-hungary':        '/nodes/nedex/austria-hungary.html',
-  'nan.nedex.org.nau/bio-mahmud-3':           '/nodes/nedex/bio-mahmud-3.html',
-  'nan.nedex.org.nau/india':                  '/nodes/nedex/india.html',
-  'nan.nedex.org.nau/bio-karahan':            '/nodes/nedex/bio-karahan.html',
-  'nan.nedex.org.nau/ottoman-empire':         '/nodes/nedex/ottoman-empire.html',
-  'nan.nedex.org.nau/bio-sahin':              '/nodes/nedex/bio-sahin.html',
-  'nan.nedex.org.nau/colombia':               '/nodes/nedex/colombia.html',
-  'nan.nedex.org.nau/central-america':        '/nodes/nedex/central-america.html',
-  'nan.nedex.org.nau/mexico':                 '/nodes/nedex/mexico.html',
-  'nan.nedex.org.nau/ugr':                    '/nodes/nedex/german_republic.html',
-  'nan.nedex.org.nau/hawaii':                 '/nodes/nedex/hawaii.html',
+  'nan.nedex.org.nau/spain':                  '/nodes/nedex/spain.html',
   'nan.nedex.org.nau/texas':                  '/nodes/nedex/texas.html',
-  'nan.nedex.org.nau/history-of-texas':       '/nodes/nedex/history-of-texas.html',
-  'nan.nedex.org.nau/history-of-canada':      '/nodes/nedex/history-of-canada.html',
-  'nan.nedex.org.nau/history-of-ireland':     '/nodes/nedex/history-of-ireland.html',
-  'nan.nedex.org.nau/history-of-california':  '/nodes/nedex/history-of-california.html',
-  'nan.nedex.org.nau/history-of-mexico':      '/nodes/nedex/history-of-mexico.html',
-  'nan.nedex.org.nau/history-of-spain':       '/nodes/nedex/history-of-spai .html',
-  'nan.nedex.org.nau/history-of-austria-hungary':       '/nodes/nedex/history-of-austria-hungary.html',
-  'nan.nedex.org.nau/history-of-the-united-kingdom':    '/nodes/nedex/history-of-the-united-kingdom.html',
-  'nan.nedex.org.nau/istanbul-accord-1919':   '/nodes/nedex/istanbul-accord-1919.html',
-  'nan.nedex.org.nau/jeffersonian-constitutional-alliance':          '/nodes/nedex/jefferson-constitutional-alliance.html',
-  'nan.nedex.org.nau/karahan-interlude':      '/nodes/nedex/karahan-interlude.html',
-  'nan.nedex.org.nau/macedonian-crisis':      '/nodes/nedex/macedonian-crisis.html',
-  'nan.nedex.org.nau/monarchs-mexico':        '/nodes/nedex/monarchs-mexico.html',
-  'nan.nedex.org.nau/ottoman-constitution-1883':        '/nodes/nedex/ottoman-constitution-1883.html',
-  'nan.nedex.org.nau/prime-ministers-mexico': '/nodes/nedex/prime-ministers-mexico.html',
-  'nan.nedex.org.nau/prime-ministers-russia': '/nodes/nedex/prime-ministers-russia.html',
-  'nan.nedex.org.nau/tsars-russia':           '/nodes/nedex/tsars-russia.html',
+  'nan.nedex.org.nau/uer':                    '/nodes/nedex/uer.html',
+  'nan.nedex.org.nau/ugr':                    '/nodes/nedex/german_republic.html',
+  'nan.nedex.org.nau/united-kingdom':         '/nodes/nedex/united-kingdom.html',
+  'nan.nedex.org.nau/united-states':          '/nodes/nedex/united-states.html',
 
+  // ════════════════════════════════════════════════════════
+  // NEDEX — Historical & defunct states
+  // ════════════════════════════════════════════════════════
+  'nan.nedex.org.nau/hanover':                '/nodes/nedex/hanover.html',
+  'nan.nedex.org.nau/kingdom-of-france':      '/nodes/nedex/kingdom-of-france.html',
+  'nan.nedex.org.nau/prussia':                '/nodes/nedex/prussia.html',
+  'nan.nedex.org.nau/thuringia':              '/nodes/nedex/thuringia.html',
+  'nan.nedex.org.nau/union-of-german-states': '/nodes/nedex/union-of-german-states.html',
+
+  // ════════════════════════════════════════════════════════
+  // NEDEX — Supranational organizations
+  // ════════════════════════════════════════════════════════
+  'nan.nedex.org.nau/global-peace-council':   '/nodes/nedex/global-peace-council.html',
+  'nan.nedex.org.nau/nau':                    '/nodes/nedex/nau.html',
+
+  // ════════════════════════════════════════════════════════
+  // NEDEX — Landmarks, locations & geography
+  // ════════════════════════════════════════════════════════
   'nan.nedex.org.nau/congress-hall':          '/nodes/nedex/congress-hall.html',
-  'nan.nedex.org.nau/constitution-1861':      '/nodes/nedex/constitution-1861.html',
+  'nan.nedex.org.nau/first-capital-park':     '/nodes/nedex/first-capital-park.html',
+  'nan.nedex.org.nau/franklin-dw':            '/nodes/nedex/franklin-dw.html',
+  'nan.nedex.org.nau/provinces-of-canada':    '/nodes/nedex/provinces-of-canada.html',
+  'nan.nedex.org.nau/washington-house':       '/nodes/nedex/washington-house.html',
+
+  // ════════════════════════════════════════════════════════
+  // NEDEX — Political parties
+  // ════════════════════════════════════════════════════════
   'nan.nedex.org.nau/democratic-party':       '/nodes/nedex/democratic-party.html',
   'nan.nedex.org.nau/federalist-party':       '/nodes/nedex/federalist-party.html',
-  'nan.nedex.org.nau/fourteenth-amdentment-1787':       '/nodes/nedex/fourteenth-amendment-1787.html',
-  'nan.nedex.org.nau/fifteenth-amdentment-1787':        '/nodes/nedex/fifteenth-amendment-1787.html',
-  'nan.nedex.org.nau/first-capital-park':     '/nodes/nedex/first-capital-park.html',
-  'nan.nedex.org.nau/franklin-dw':               '/nodes/nedex/franklin-dw.html',
+  'nan.nedex.org.nau/jeffersonian-constitutional-alliance': '/nodes/nedex/jeffersonian-constitutional-alliance.html',
+  'nan.nedex.org.nau/political-parties-usa':  '/nodes/nedex/political-parties-usa.html',
+  'nan.nedex.org.nau/social-progressive-alliance': '/nodes/nedex/social-progressive-alliance.html',
+
+  // ════════════════════════════════════════════════════════
+  // NEDEX — National histories
+  // ════════════════════════════════════════════════════════
+  'nan.nedex.org.nau/history-of-austria-hungary':       '/nodes/nedex/history-of-austria-hungary.html',
+  'nan.nedex.org.nau/history-of-california':  '/nodes/nedex/history-of-california.html',
+  'nan.nedex.org.nau/history-of-canada':      '/nodes/nedex/history-of-canada.html',
+  'nan.nedex.org.nau/history-of-ireland':     '/nodes/nedex/history-of-ireland.html',
+  'nan.nedex.org.nau/history-of-mexico':      '/nodes/nedex/history-of-mexico.html',
+  'nan.nedex.org.nau/history-of-spain':       '/nodes/nedex/history-of-spain.html',
+  'nan.nedex.org.nau/history-of-texas':       '/nodes/nedex/history-of-texas.html',
+  'nan.nedex.org.nau/history-of-the-united-kingdom':    '/nodes/nedex/history-of-the-united-kingdom.html',
+  'nan.nedex.org.nau/history-of-the-united-states':     '/nodes/nedex/history-of-the-united-states.html',
+
+  // ════════════════════════════════════════════════════════
+  // NEDEX — Wars & conflicts
+  // ════════════════════════════════════════════════════════
+  'nan.nedex.org.nau/choson-war':             '/nodes/nedex/choson-war.html',
+  'nan.nedex.org.nau/first-mexican-war':      '/nodes/nedex/first-mexican-war.html',
   'nan.nedex.org.nau/global-war':             '/nodes/nedex/global-war.html',
-  'nan.nedex.org.nau/governor-general-canada':          '/nodes/nedex/governor-general-canada.html',
-  'nan.nedex.org.nau/grand-compromise-1817':  '/nodes/nedex/grand-compromise-1817.html',
   'nan.nedex.org.nau/great-european-war':     '/nodes/nedex/great-european-war.html',
-  'nan.nedex.org.nau/monarchs-austria-hungary':         '/nodes/nedex/monarchs-austria-hungary.html',
-  'nan.nedex.org.nau/monarchs-kingdom-of-austria':      '/nodes/nedex/monarchs-kingdom-of-austria.html',
-  'nan.nedex.org.nau/russia':                 '/nodes/nedex/russia.html',
-  'nan.nedex.org.nau/list_of_pres_tex':       '/nodes/nedex/list_of_pres_tex.html', 
-  'nan.nedex.org.nau/uer':                    '/nodes/nedex/uer.html',
-  'nan.nedex.org.nau/list_of_pres_usa':       '/nodes/nedex/list_of_pres_usa.html',
+  'nan.nedex.org.nau/matanzas-war':           '/nodes/nedex/matanzas-war.html',
+  'nan.nedex.org.nau/second-mexican-war':     '/nodes/nedex/second-mexican-war.html',
+  'nan.nedex.org.nau/war-between-the-states': '/nodes/nedex/war-between-the-states.html',
+  'nan.nedex.org.nau/war-of-balkan-liberation': '/nodes/nedex/war-of-balkan-liberation.html',
+
+  // ════════════════════════════════════════════════════════
+  // NEDEX — Treaties & constitutional documents
+  // ════════════════════════════════════════════════════════
+  'nan.nedex.org.nau/constitution-1787':      '/nodes/nedex/constitution-1787.html',
+  'nan.nedex.org.nau/constitution-1861':      '/nodes/nedex/constitution-1861.html',
+  'nan.nedex.org.nau/first-amendment-1861':   '/nodes/nedex/first-amendment-1861.html',
+  'nan.nedex.org.nau/second-amendment-1861':  '/nodes/nedex/second-amendment-1861.html',
+  'nan.nedex.org.nau/third-amendment-1861':   '/nodes/nedex/third-amendment-1861.html',
+  'nan.nedex.org.nau/fourth-amendment-1861':  '/nodes/nedex/fourth-amendment-1861.html',
+  'nan.nedex.org.nau/fifth-amendment-1861':   '/nodes/nedex/fifth-amendment-1861.html',
+  'nan.nedex.org.nau/thirteenth-amendment-1787': '/nodes/nedex/thirteenth-amendment-1787.html',
+  'nan.nedex.org.nau/fourteenth-amendment-1787': '/nodes/nedex/fourteenth-amendment-1787.html',
+  'nan.nedex.org.nau/fifteenth-amendment-1787':  '/nodes/nedex/fifteenth-amendment-1787.html',
+  'nan.nedex.org.nau/sixteenth-amendment-1787':  '/nodes/nedex/sixteenth-amendment-1787.html',
+  'nan.nedex.org.nau/grand-compromise-1817':  '/nodes/nedex/grand-compromise-1817.html',
+  'nan.nedex.org.nau/istanbul-accord-1919':   '/nodes/nedex/istanbul-accord-1919.html',
+  'nan.nedex.org.nau/ottoman-constitution-1883': '/nodes/nedex/ottoman-constitution-1883.html',
+  'nan.nedex.org.nau/treaty-of-geneva':       '/nodes/nedex/treaty-of-geneva.html',
+  'nan.nedex.org.nau/treaty-of-managua':      '/nodes/nedex/treaty-of-managua.html',
+
+  // ════════════════════════════════════════════════════════
+  // NEDEX — Historical events
+  // ════════════════════════════════════════════════════════
+  'nan.nedex.org.nau/karahan-interlude':      '/nodes/nedex/karahan-interlude.html',
+  'nan.nedex.org.nau/macedonian-crisis':      '/nodes/nedex/macedonian-crisis.html',
+  'nan.nedex.org.nau/russian-constitutional-crisis-1907': '/nodes/nedex/russian-constitutional-crisis-1907.html',
+  'nan.nedex.org.nau/ss-hesperia':            '/nodes/nedex/ss-hesperia.html',
+  'nan.nedex.org.nau/suez-canal':             '/nodes/nedex/suez-canal.html',
+
+  // ════════════════════════════════════════════════════════
+  // NEDEX — Government offices
+  // ════════════════════════════════════════════════════════
+  'nan.nedex.org.nau/president-of-the-united-states': '/nodes/nedex/president-of-the-united-states.html',
+  'nan.nedex.org.nau/secretary-general':      '/nodes/nedex/secretary-general.html',
+
+  // ════════════════════════════════════════════════════════
+  // NEDEX — Lists of leaders & elections
+  // ════════════════════════════════════════════════════════
+  'nan.nedex.org.nau/governor-general-canada':    '/nodes/nedex/governor-general-canada.html',
+  'nan.nedex.org.nau/list_of_pm_canada':          '/nodes/nedex/list_of_pm_canada.html',
+  'nan.nedex.org.nau/list_of_premiers_california': '/nodes/nedex/list_of_premiers_california.html',
+  'nan.nedex.org.nau/list_of_pres_ireland':       '/nodes/nedex/list_of_pres_ireland.html',
+  'nan.nedex.org.nau/list_of_pres_tex':           '/nodes/nedex/list_of_pres_tex.html',
+  'nan.nedex.org.nau/list_of_pres_usa':           '/nodes/nedex/list_of_pres_usa.html',
+  'nan.nedex.org.nau/list_of_taoisigh_ireland':   '/nodes/nedex/list_of_taoisigh_ireland.html',
+  'nan.nedex.org.nau/monarchs-austria-hungary':   '/nodes/nedex/monarchs-austria-hungary.html',
+  'nan.nedex.org.nau/monarchs-hawaii':            '/nodes/nedex/monarchs-hawaii.html',
+  'nan.nedex.org.nau/monarchs-kingdom-of-austria': '/nodes/nedex/monarchs-kingdom-of-austria.html',
+  'nan.nedex.org.nau/monarchs-mexico':            '/nodes/nedex/monarchs-mexico.html',
+  'nan.nedex.org.nau/monarchs-uk':                '/nodes/nedex/monarchs-uk.html',
+  'nan.nedex.org.nau/presidential-elections':     '/nodes/nedex/presidential-elections.html',
+  'nan.nedex.org.nau/prime-ministers-mexico':     '/nodes/nedex/prime-ministers-mexico.html',
+  'nan.nedex.org.nau/prime-ministers-russia':     '/nodes/nedex/prime-ministers-russia.html',
+  'nan.nedex.org.nau/tsars-russia':               '/nodes/nedex/tsars-russia.html',
+
+  // ════════════════════════════════════════════════════════
+  // NEDEX — Biographies: US presidents
+  // ════════════════════════════════════════════════════════
   'nan.nedex.org.nau/george-washington':      '/nodes/nedex/george-washington.html',
   'nan.nedex.org.nau/john-adams':             '/nodes/nedex/john-adams.html',
   'nan.nedex.org.nau/thomas-jefferson':       '/nodes/nedex/thomas-jefferson.html',
@@ -111,16 +197,36 @@ const ROUTES = {
   'nan.nedex.org.nau/alexander-fleak':        '/nodes/nedex/alexander-fleak.html',
   'nan.nedex.org.nau/peter-landon':           '/nodes/nedex/peter-landon.html',
   'nan.nedex.org.nau/cornelius-roosevelt-ii': '/nodes/nedex/cornelius-roosevelt-ii.html',
+
+  // ════════════════════════════════════════════════════════
+  // NEDEX — Biographies: foreign leaders & historical figures
+  // ════════════════════════════════════════════════════════
+  'nan.nedex.org.nau/bio-abraham-lincoln':    '/nodes/nedex/bio-abraham-lincoln.html',
+  'nan.nedex.org.nau/bio-hafiz-karahan':      '/nodes/nedex/bio-hafiz-karahan.html',
+  'nan.nedex.org.nau/bio-kemal-sahin':        '/nodes/nedex/bio-kemal-sahin.html',
+  'nan.nedex.org.nau/bio-mahmud-3':           '/nodes/nedex/bio-mahmud-3.html',
+
+  // ════════════════════════════════════════════════════════
+  // GOVERNMENT & CIVIC SITES
+  // ════════════════════════════════════════════════════════
   'nan.usrc.gov.usa':                         '/nodes/usrc/',
   'nan.assembly.nau':                         '/nodes/assembly/',
   'nan.washingtonhouse.gov.usa':              '/nodes/washington-house/',
   'nan.washingtonhouse.gov.usa/presidents':   '/nodes/washington-house/wh_presidents.html',
+  'nan.fps.gov.usa':                          '/nodes/fps/',
+
+  // ════════════════════════════════════════════════════════
+  // MUSEUM OF THE UNITED STATES
+  // ════════════════════════════════════════════════════════
   'nan.mususa.edu.usa':                       '/nodes/amhistory/',
   'nan.mususa.edu.usa/archives':              '/nodes/amhistory/archives.html',
   'nan.mususa.edu.usa/doc-declaration':       '/nodes/amhistory/doc-declaration.html',
   'nan.mususa.edu.usa/doc-constitution-1787': '/nodes/amhistory/doc-constitution-1787.html',
   'nan.mususa.edu.usa/doc-constitution-1861': '/nodes/amhistory/doc-constitution-1861.html',
-  'nan.fps.gov.usa':                          '/nodes/fps/',
+
+  // ════════════════════════════════════════════════════════
+  // DIV814 (reference / out-of-universe)
+  // ════════════════════════════════════════════════════════
   'nan.div814.gov.usa':                       '/nodes/ref/',
   'nan.div814.gov.usa/stories':               '/nodes/ref/stories',
   'nan.div814.gov.usa/nedex-builder':         '/nodes/ref/nedex-builder',
@@ -131,7 +237,7 @@ const ROUTES = {
   'nan.div814.gov.usa/wbt_sports_history':    '/nodes/ref/wbt_sports_history',
   'nan.div814.gov.usa/wbt_sports_olympics':   '/nodes/ref/wbt_sports_olympics',
   'nan.div814.gov.usa/wbt_sports_teams':      '/nodes/ref/wbt_sports_teams',
-  'nan.div814.gov.usa/wbt_tech_media_reference':   '/nodes/ref/wbt_tech_media_reference',
+  'nan.div814.gov.usa/wbt_tech_media_reference': '/nodes/ref/wbt_tech_media_reference',
 
 };
 
