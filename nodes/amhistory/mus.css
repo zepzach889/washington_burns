@@ -162,3 +162,14 @@ a.mus-room:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
   .mus-floor { grid-template-columns: 64px 1fr; }
   .mus-room { flex-basis: 100%; }
 }
+
+/* ── 9. ABOUT PAGE ────────────────────────────────────────────── */
+.mus-prose { font-size: 14px; color: var(--text-primary); line-height: 1.75; margin-bottom: 24px; }
+.mus-prose p { margin-bottom: 14px; }
+.mus-prose p:last-child { margin-bottom: 0; }
+.mus-prose strong { color: var(--mus-brown); }
+.mus-timeline { display: flex; flex-direction: column; margin-bottom: 28px; }
+.mus-tl-row { display: grid; grid-template-columns: 64px 1fr; gap: 14px; padding: 10px 0; border-bottom: 0.5px solid var(--border); }
+.mus-tl-row:last-child { border-bottom: none; }
+.mus-tl-year { font-family: "DM Serif Display", serif; font-size: 16px; color: var(--mus-gold); text-align: right; }
+.mus-tl-text { font-size: 13px; color: var(--text-secondary); line-height: 1.6; align-self: center; }
