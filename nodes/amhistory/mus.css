@@ -131,3 +131,34 @@
   .arc-doc-grid { grid-template-columns: 1fr; }
   .arc-doc-body { padding: 20px; }
 }
+
+/* ── 7. MUSEUM MAP (index.html) ───────────────────────────────── */
+.mus-map { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+.mus-floor { display: grid; grid-template-columns: 86px 1fr; gap: 10px; align-items: stretch; }
+.mus-floor-label { background: var(--mus-brown); color: var(--mus-gold); font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 6px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8px 6px; }
+.mus-floor-rooms { display: flex; gap: 8px; flex-wrap: wrap; }
+.mus-room { flex: 1 1 140px; background: #fff; border: 0.5px solid var(--border); border-top: 3px solid var(--mus-brown-mid); border-radius: 6px; padding: 10px 12px; text-decoration: none; display: flex; flex-direction: column; gap: 2px; transition: box-shadow 0.1s; min-width: 0; }
+a.mus-room:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+.mus-room-name { font-family: "DM Serif Display", serif; font-size: 13px; color: var(--text-primary); line-height: 1.25; }
+.mus-room-loc { font-size: 9.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mus-gold); }
+.mus-room--special { border-top-color: var(--mus-gold); background: #FFFDF5; }
+.mus-room--archives { border-top-color: var(--mus-gold); background: linear-gradient(135deg, #1A0F08, #2C1810); }
+.mus-room--archives .mus-room-name { color: #fff; }
+.mus-room--archives .mus-room-loc { color: var(--mus-gold); }
+.mus-room--amenity { border-top-color: var(--border); background: var(--bg-secondary); }
+.mus-room--amenity .mus-room-name { font-family: "DM Sans", sans-serif; font-size: 11.5px; color: var(--text-secondary); }
+.mus-room--amenity .mus-room-loc { color: var(--text-tertiary); }
+
+/* ── 8. EXHIBITIONS PAGE EXTRAS ───────────────────────────────── */
+.mus-gallery-highlights { font-size: 11px; color: var(--text-secondary); line-height: 1.5; margin-top: 6px; }
+.mus-gallery-highlights strong { color: var(--mus-gold); font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-right: 4px; }
+.mus-past-list { display: flex; flex-direction: column; margin-bottom: 28px; }
+.mus-past-row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 2px; border-bottom: 0.5px solid var(--border); font-size: 13px; }
+.mus-past-row:last-child { border-bottom: none; }
+.mus-past-title { font-family: "DM Serif Display", serif; color: var(--text-primary); }
+.mus-past-year { color: var(--text-tertiary); font-size: 11px; font-weight: 600; white-space: nowrap; align-self: center; }
+
+@media (max-width: 700px) {
+  .mus-floor { grid-template-columns: 64px 1fr; }
+  .mus-room { flex-basis: 100%; }
+}
