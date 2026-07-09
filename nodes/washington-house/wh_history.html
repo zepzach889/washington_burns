@@ -9,73 +9,7 @@
 <link rel="manifest" href="/washington_burns/site.webmanifest">
 <title>History — Washington House</title>
 <link rel="stylesheet" href="../../shared.css">
-<style>
-  :root {
-    --wh-blue: #1B3A6B;
-    --wh-blue-dark: #102444;
-    --wh-blue-mid: #2A4E8A;
-    --wh-gold: #B8972A;
-    --wh-gold-light: #D4AE4A;
-  }
-
-  /* ── HERO ── */
-  .wh-hero { position: relative; background: var(--wh-blue-dark); overflow: hidden; }
-  .wh-hero-img { width: 100%; height: 280px; object-fit: cover; object-position: center 40%; display: block; opacity: 0.75; }
-  .wh-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, var(--wh-blue-dark) 0%, transparent 22%, transparent 78%, var(--wh-blue-dark) 100%), linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.72) 100%); pointer-events: none; }
-  .wh-hero-text { position: absolute; bottom: 0; left: 0; right: 0; text-align: center; padding: 24px 20px 22px; color: #fff; background: linear-gradient(to top, rgba(10,20,40,0.92) 0%, rgba(10,20,40,0.7) 60%, transparent 100%); }
-  .wh-kicker { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--wh-gold-light); margin-bottom: 6px; font-weight: 600; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
-  .wh-title { font-family: 'DM Serif Display', serif; font-size: 40px; letter-spacing: -0.01em; line-height: 1.1; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.7); }
-  .wh-subtitle { font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 6px; text-shadow: 0 1px 4px rgba(0,0,0,0.7); }
-  .wh-address-tag { display: inline-block; margin-top: 10px; font-size: 11px; background: rgba(0,0,0,0.45); border: 0.5px solid rgba(255,255,255,0.25); padding: 4px 12px; border-radius: 12px; color: rgba(255,255,255,0.8); font-family: monospace; }
-
-  /* ── NAV ── */
-  .wh-nav { display: flex; justify-content: center; background: var(--wh-blue); flex-wrap: wrap; border-bottom: 2px solid var(--wh-gold); position: sticky; top: 70px; z-index: 90; }
-  .wh-nav a { font-size: 12px; color: rgba(255,255,255,0.70); text-decoration: none; padding: 10px 18px; font-weight: 500; transition: all 0.1s; }
-  .wh-nav a:hover { background: rgba(255,255,255,0.08); color: #fff; }
-  .wh-nav a.active { color: var(--wh-gold-light); border-bottom: 2px solid var(--wh-gold-light); }
-
-  /* ── BODY ── */
-  .wh-body { display: grid; grid-template-columns: 1fr 300px; max-width: 1100px; margin: 0 auto; }
-  .wh-main { padding: 28px 24px; border-right: 0.5px solid var(--border); }
-  .wh-sidebar { padding: 24px 16px; background: var(--bg-secondary); }
-
-  /* ── SECTIONS ── */
-  .wh-section { margin-bottom: 28px; }
-  .wh-section-hed { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text-primary); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1.5px solid var(--wh-gold); }
-  .wh-prose { font-size: 13px; color: var(--text-secondary); line-height: 1.75; }
-  .wh-prose p { margin-bottom: 12px; }
-  .wh-prose p:last-child { margin-bottom: 0; }
-  .wh-prose strong { color: var(--text-primary); }
-
-  /* ── WINGS ── */
-  .wh-wings { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
-  .wh-wing { background: #fff; border: 0.5px solid var(--border); border-radius: 6px; padding: 10px 12px; border-left: 3px solid var(--wh-gold); }
-  .wh-wing-name { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--wh-blue); margin-bottom: 3px; }
-  .wh-wing-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
-
-  /* ── WIDGETS ── */
-  .wh-widget { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
-  .wh-widget:last-child { margin-bottom: 0; }
-  .wh-widget-head { background: var(--wh-blue); padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); border-bottom: 1px solid var(--wh-gold); }
-  .wh-widget-body { padding: 12px; font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
-  .wh-widget-body strong { color: var(--text-primary); }
-
-  .wh-tl-row { display: flex; gap: 10px; padding: 6px 0; border-bottom: 0.5px solid var(--border); }
-  .wh-tl-row:last-child { border-bottom: none; }
-  .wh-tl-year { font-family: monospace; font-size: 11px; color: var(--wh-blue); font-weight: 700; width: 58px; flex-shrink: 0; }
-  .wh-tl-event { font-size: 11.5px; color: var(--text-secondary); line-height: 1.5; }
-
-  .wh-widget-link { display: block; font-size: 12px; color: var(--wh-blue); text-decoration: none; font-weight: 600; padding: 6px 0; border-bottom: 0.5px solid var(--border); }
-  .wh-widget-link:last-child { border-bottom: none; }
-  .wh-widget-link:hover { color: var(--wh-blue-mid); }
-
-  @media (max-width: 700px) {
-    .wh-body { grid-template-columns: 1fr; }
-    .wh-wings { grid-template-columns: 1fr; }
-    .wh-title { font-size: 30px; }
-    .wh-hero-img { height: 200px; }
-  }
-</style>
+<link rel="stylesheet" href="/washington_burns/nodes/washington-house/wh.css">
 </head>
 <body>
 
