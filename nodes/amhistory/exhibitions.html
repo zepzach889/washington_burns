@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>Exhibitions — Museum of the United States</title>
+<link rel="stylesheet" href="../../shared.css">
+<link rel="stylesheet" href="mus.css">
+</head>
+<body><div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+<div class="arc-bookmarks">
+ <a class="arc-bmark" href="../../"><span class="arc-bmark-icon">🔍</span>Waymark</a>
+  <a class="arc-bmark" href="../franklin-observer/"><span class="arc-bmark-icon">📰</span>Franklin Observer</a>
+  <a class="arc-bmark" href="../abn/"><span class="arc-bmark-icon">📺</span>ABN News</a>
+  <a class="arc-bmark" href="../linkvid/"><span class="arc-bmark-icon">🎥</span>LinkVid</a>
+  <a class="arc-bmark" href="../csn/"><span class="arc-bmark-icon">⚾</span>CSN</a>
+  <a class="arc-bmark" href="../nedex/"><span class="arc-bmark-icon">📖</span>Nedex</a>
+  <a class="arc-bmark" href="../usrc/"><span class="arc-bmark-icon">🚂</span>USRC Rail</a>
+  <a class="arc-bmark" href="../assembly/"><span class="arc-bmark-icon">⚖️</span>NAU Assembly</a>
+  <a class="arc-bmark" href="../washington-house/"><span class="arc-bmark-icon">🏛️</span>Washington House</a>
+  <a class="arc-bmark" href="../amhistory/"><span class="arc-bmark-icon">🏺</span>Museum of the US</a>
+  <a class="arc-bmark" href="../fps/"><span class="arc-bmark-icon">🌲</span>Federal Parks</a>
+</div>
+<div class="mus-hero">
+  <div class="mus-kicker">Museum of the United States · What's On</div>
+  <div class="mus-title">Exhibitions</div>
+  <div class="mus-subtitle">link://nan.mususa.edu.usa/exhibitions &nbsp;·&nbsp; Special Exhibitions · The Great Hall of the Republic · Permanent Galleries</div>
+</div>
+<nav class="mus-nav">
+  <a href="index.html">Home</a>
+  <a href="exhibitions.html" class="active">Exhibitions</a>
+  <a href="archives.html">National Archives</a>
+  <a href="collections.html">Collections</a>
+  <a href="events.html">Events</a>
+  <a href="learn.html">Learn &amp; Research</a>
+  <a href="about.html">About</a>
+  <a href="support.html">Support</a>
+</nav>
+</div>
+<div class="arc-body">
+
+  <p class="arc-intro">The Museum of the United States presents the story of the American republic across three floors of permanent galleries, the Great Hall of the Republic, and a changing program of special exhibitions. All galleries are included with free general admission.</p>
+
+  <div class="wm-section-label">Special Exhibition</div>
+  <div class="mus-featured">
+    <div class="mus-featured-img">
+      <img src="../../images/amhistory/wash_burns1.jpg" alt="The Burning and the Building" />
+    </div>
+    <div class="mus-featured-body">
+      <div class="mus-featured-tag">Special Exhibition — Now Open</div>
+      <div class="mus-featured-title">The Burning and the Building: Washington, August 1814</div>
+      <div class="mus-featured-desc">A landmark exhibition examining the destruction of the federal city on the Potomac and the extraordinary choices that followed — the debates, the journeys, and the founding of Franklin on the Ohio. Drawing on objects, maps, and personal accounts from the National Collection, the exhibition traces how a catastrophe became a founding moment. Highlights include original correspondence from the 1814 evacuation, surveyors' instruments and plats from the earliest plans for the new capital, and salvaged fragments recovered from the Potomac site.</div>
+      <div class="mus-featured-dates">Open through 30 November 2026 &nbsp;·&nbsp; West Wing, Level 2 &nbsp;·&nbsp; Free timed entry</div>
+    </div>
+  </div>
+
+  <div class="wm-section-label">Permanent Installation</div>
+  <div class="mus-archives">
+    <div class="mus-archives-tag">Central Atrium · Ground Floor · Since 1879</div>
+    <div class="mus-archives-title">The Great Hall of the Republic</div>
+    <div class="mus-archives-desc">At the heart of the Museum, beneath the great dome, the central atrium has welcomed visitors since opening day in 1879. The Great Hall is the permanent home of John Trumbull's most celebrated works of patriotic American art, displayed alongside items belonging to the early presidents and artifacts of the republic's founding era.</div>
+    <div class="mus-archives-docs">
+      <span class="mus-doc-tag">Declaration of Independence · John Trumbull</span>
+      <span class="mus-doc-tag">Burning of the Federal City · John Trumbull</span>
+      <span class="mus-doc-tag">Victory at Yorktown · John Trumbull</span>
+    </div>
+    <div class="mus-archives-note">The Great Hall is open during all Museum hours. No timed entry required.</div>
+  </div>
+
+  <div class="wm-section-label">Permanent Galleries</div>
+  <div class="mus-gallery-list" id="mus-perm-galleries"></div>
+
+  <div class="arc-visitor-note">
+    <strong>Planning Your Visit</strong>
+    All permanent galleries and the Great Hall of the Republic are included with free general admission. Special exhibitions and the National Archives Gallery require free timed entry passes, available in advance or from the information desk. Galleries may occasionally close for installation work.
+  </div>
+
+</div>
+<div class="wm-footer">
+  <span>link://nan.mususa.edu.usa/exhibitions &nbsp;·&nbsp; Museum of the United States &nbsp;·&nbsp; Franklin, D.W.</span>
+  <div class="wm-footer-links">
+    <a href="about.html">About</a>
+    <a href="#">Accessibility</a>
+    <a href="learn.html">Research Access</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+<script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script>
+initAddressBar('nan.mususa.edu.usa/exhibitions');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+
+// Render the permanent galleries from the shared content.js pool
+const galleryEl = document.getElementById('mus-perm-galleries');
+if (galleryEl && typeof WBT_MUSEUM_GALLERIES !== 'undefined') {
+  galleryEl.innerHTML = WBT_MUSEUM_GALLERIES.map(g => `
+    <div class="mus-gallery-item">
+      <div class="mus-gallery-img"><img src="${g.img}" alt="${g.title}" /></div>
+      <div class="mus-gallery-body">
+        <div class="mus-gallery-floor">${g.floor}</div>
+        <div class="mus-gallery-title">${g.title}</div>
+        <div class="mus-gallery-desc">${g.desc}</div>
+      </div>
+    </div>
+  `).join('');
+}
+</script>
+</body>
+</html>
