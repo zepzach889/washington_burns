@@ -152,12 +152,12 @@ const WBT_FLOOR_BANNERS = [
 
 // ── MUSEUM OF THE UNITED STATES ────────────────────────────────────────
 const WBT_MUSEUM_GALLERIES = [
-  { title: 'The American Presidency: From Washington to Nakamura', floor: 'Level 1 · East Wing', desc: "Two centuries of executive leadership — objects, documents, and portraits tracing every president from the republic's founding to the present day." },
-  { title: 'Iron Nation: Two Centuries of American Rail', floor: 'Level 1 · West Wing', desc: 'From the founding of the USRC in 1834 to the modern high-speed network — the story of how rail shaped the American continent.' },
-  { title: 'War Between the States, 1857-1860: The Crisis That Remade America', floor: 'Level 2 · Central Hall', desc: 'The defining conflict of the nineteenth century — from the collapse of the Hawthorne government to the Philadelphia Convention and the Constitution of 1861.' },
-  { title: 'The Global War: America and the World, 1932-1940', floor: 'Level 2 · North Gallery', desc: "America's defining international conflict — from the first Prussian advances to the Treaty of Geneva and the founding of the Global Peace Council." },
-  { title: 'Votes and Voices: Two Centuries of American Democracy', floor: 'Level 3 · South Gallery', desc: 'From the first elections under the 1787 Constitution to the Third Amendment and universal suffrage — the long arc of democratic participation in America.' },
-  { title: 'American Arts & Material Culture, 1814-Present', floor: 'Level 3 · East Gallery', desc: 'Objects, artworks, and everyday items tracing American material life from the founding of Franklin to the present — furniture, fashion, fine art, and folk tradition.' },
+  { title: 'The American Presidency: From Washington to Nakamura', floor: 'Level 1 · East Wing', img: '/washington_burns/images/amhistory/wash_2_naka.png', desc: "Two centuries of executive leadership — objects, documents, and portraits tracing every president from the republic's founding to the present day." },
+  { title: 'Iron Nation: Two Centuries of American Rail', floor: 'Level 1 · West Wing', img: '/washington_burns/images/amhistory/railroad1.jpg', desc: 'From the founding of the USRC in 1834 to the modern high-speed network — the story of how rail shaped the American continent.' },
+  { title: 'War Between the States, 1857-1860: The Crisis That Remade America', floor: 'Level 2 · Central Hall', img: '/washington_burns/images/amhistory/war_between_states1.png', desc: 'The defining conflict of the nineteenth century — from the collapse of the Hawthorne government to the Philadelphia Convention and the Constitution of 1861.' },
+  { title: 'The Global War: America and the World, 1932-1940', floor: 'Level 2 · North Gallery', img: '/washington_burns/images/amhistory/global_war.jpg', desc: "America's defining international conflict — from the first Prussian advances to the Treaty of Geneva and the founding of the Global Peace Council." },
+  { title: 'Votes and Voices: Two Centuries of American Democracy', floor: 'Level 3 · South Gallery', img: '/washington_burns/images/amhistory/suffrage1.jpg', desc: 'From the first elections under the 1787 Constitution to the Third Amendment and universal suffrage — the long arc of democratic participation in America.' },
+  { title: 'American Arts & Material Culture, 1814-Present', floor: 'Level 3 · East Gallery', img: '/washington_burns/images/amhistory/am_arts.jpg', desc: 'Objects, artworks, and everyday items tracing American material life from the founding of Franklin to the present — furniture, fashion, fine art, and folk tradition.' },
 ];
 
 const WBT_MUSEUM_EVENTS = [
