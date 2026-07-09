@@ -1,0 +1,133 @@
+/* ═══════════════════════════════════════════════════════════════
+   mus.css — Museum of the United States · consolidated stylesheet
+   Loaded by every page in nodes/amhistory/ alongside shared.css.
+   Replaces the old mus-archives.css and the inline styles that
+   previously lived in index.html.
+
+   Sections:
+     1. Variables
+     2. Site chrome (hero + nav)
+     3. Homepage layout (index.html)
+     4. Archives landing (archives.html)
+     5. Document pages (doc-*.html)
+     6. Responsive
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 1. VARIABLES ─────────────────────────────────────────────── */
+:root {
+  --mus-brown: #2C1810;
+  --mus-brown-mid: #5D3A1A;
+  --mus-gold: #C8962A;
+  --mus-gold-light: #D4AE4A;
+}
+
+/* ── 2. SITE CHROME (hero + nav, all pages) ───────────────────── */
+.mus-hero { background: var(--mus-brown); color: #fff; padding: 36px 24px 28px; position: relative; overflow: hidden; }
+.mus-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--mus-gold), var(--mus-brown-mid), var(--mus-gold)); }
+.mus-kicker { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px; font-weight: 600; }
+.mus-title { font-family: "DM Serif Display", serif; font-size: 38px; letter-spacing: -0.01em; line-height: 1.1; }
+.mus-subtitle { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 8px; }
+
+.mus-nav { display: flex; gap: 0; background: #3D2010; overflow-x: auto; }
+.mus-nav a { font-size: 12px; color: rgba(255,255,255,0.65); text-decoration: none; padding: 10px 18px; font-weight: 500; white-space: nowrap; transition: all 0.1s; border-right: 0.5px solid rgba(255,255,255,0.08); }
+.mus-nav a:hover { background: rgba(255,255,255,0.07); color: #fff; }
+.mus-nav a.active { color: var(--mus-gold); border-bottom: 2px solid var(--mus-gold); }
+
+/* ── 3. HOMEPAGE LAYOUT (index.html) ──────────────────────────── */
+.mus-body { display: grid; grid-template-columns: 1fr 280px; max-width: 1100px; margin: 0 auto; }
+.mus-main { padding: 28px 24px; border-right: 0.5px solid var(--border); }
+.mus-sidebar { padding: 24px 16px; background: var(--bg-secondary); }
+
+/* Archives promo block */
+.mus-archives { background: linear-gradient(135deg, #1A0F08 0%, #2C1810 60%, #3D2010 100%); border-radius: 10px; padding: 20px 22px; margin-bottom: 28px; border: 1px solid var(--mus-gold); color: #fff; position: relative; overflow: hidden; }
+.mus-archives::before { content: '📜'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 64px; opacity: 0.12; }
+.mus-archives-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mus-gold); margin-bottom: 6px; }
+.mus-archives-title { font-family: "DM Serif Display", serif; font-size: 22px; line-height: 1.2; margin-bottom: 8px; color: #fff; }
+.mus-archives-desc { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 12px; }
+.mus-archives-docs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.mus-doc-tag { font-size: 10px; font-weight: 600; background: rgba(200,150,42,0.2); border: 0.5px solid var(--mus-gold); color: var(--mus-gold); padding: 3px 9px; border-radius: 3px; letter-spacing: 0.04em; }
+.mus-archives-note { font-size: 11px; color: rgba(255,255,255,0.45); font-style: italic; }
+.mus-archives-btn { display: inline-block; margin-top: 12px; background: var(--mus-gold); color: #1A0F08; font-size: 11px; font-weight: 700; padding: 7px 16px; border-radius: 6px; text-decoration: none; transition: background 0.1s; }
+.mus-archives-btn:hover { background: #D4AE4A; }
+
+/* Featured exhibition */
+.mus-featured { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 24px; }
+.mus-featured-img { height: 130px; overflow: hidden; }
+.mus-featured-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mus-featured-body { padding: 16px 18px; }
+.mus-featured-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #8B4513; margin-bottom: 5px; }
+.mus-featured-title { font-family: "DM Serif Display", serif; font-size: 22px; color: var(--text-primary); margin-bottom: 6px; line-height: 1.2; }
+.mus-featured-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 10px; }
+.mus-featured-dates { font-size: 11px; color: var(--text-tertiary); font-weight: 600; }
+.mus-btn { display: inline-block; margin-top: 10px; background: var(--mus-brown); color: #fff; font-size: 11px; font-weight: 600; padding: 7px 16px; border-radius: 6px; text-decoration: none; transition: background 0.1s; }
+.mus-btn:hover { background: var(--mus-brown-mid); }
+
+/* Gallery list */
+.mus-gallery-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+.mus-gallery-item { display: grid; grid-template-columns: 160px 1fr; background: #fff; border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; text-decoration: none; transition: box-shadow 0.1s; }
+.mus-gallery-item:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.1); }
+.mus-gallery-img { width: 160px; height: 110px; overflow: hidden; flex-shrink: 0; background: var(--bg-secondary); }
+.mus-gallery-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mus-gallery-body { padding: 12px 16px; display: flex; flex-direction: column; justify-content: center; }
+.mus-gallery-floor { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mus-gold); margin-bottom: 4px; }
+.mus-gallery-title { font-family: "DM Serif Display", serif; font-size: 15px; color: var(--text-primary); line-height: 1.3; margin-bottom: 5px; }
+.mus-gallery-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+
+/* Sidebar widgets */
+.mus-widget { background: #fff; border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+.mus-widget:last-child { margin-bottom: 0; }
+.mus-widget-head { background: var(--mus-brown); padding: 8px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.75); border-bottom: 1px solid var(--mus-gold); }
+.mus-widget-body { padding: 12px; font-size: 12px; }
+.mus-info-row { padding: 5px 0; border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; gap: 8px; }
+.mus-info-row:last-child { border-bottom: none; }
+.mus-info-label { color: var(--text-secondary); }
+.mus-info-val { font-weight: 600; color: var(--text-primary); text-align: right; font-size: 11px; }
+.mus-event-row { padding: 7px 0; border-bottom: 0.5px solid var(--border); }
+.mus-event-row:last-child { border-bottom: none; }
+.mus-event-date { font-weight: 600; color: var(--text-primary); font-size: 11px; }
+.mus-event-title { color: var(--text-secondary); font-size: 12px; margin-top: 1px; }
+
+/* ── 4. ARCHIVES LANDING (archives.html) ──────────────────────── */
+.arc-body { max-width: 900px; margin: 0 auto; padding: 32px 24px 48px; }
+.arc-intro { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 28px; }
+.arc-doc-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+.arc-doc-card { background: #fff; border: 0.5px solid var(--border); border-top: 3px solid var(--mus-gold); border-radius: 8px; padding: 18px; text-decoration: none; transition: box-shadow 0.1s; display: block; }
+.arc-doc-card:hover { box-shadow: 0 3px 14px rgba(0,0,0,0.1); }
+.arc-doc-icon { font-size: 30px; margin-bottom: 10px; }
+.arc-doc-title { font-family: "DM Serif Display", serif; font-size: 16px; color: var(--text-primary); margin-bottom: 4px; line-height: 1.3; }
+.arc-doc-date { font-size: 11px; color: var(--mus-gold); font-weight: 700; margin-bottom: 8px; }
+.arc-doc-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+
+.arc-visitor-note { background: linear-gradient(135deg, #1A0F08, #2C1810); border-radius: 8px; padding: 16px 20px; color: rgba(255,255,255,0.8); font-size: 12px; line-height: 1.6; margin-bottom: 28px; border: 0.5px solid var(--mus-gold); }
+.arc-visitor-note strong { color: var(--mus-gold); display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+
+/* ── 5. DOCUMENT PAGES (doc-*.html) ───────────────────────────── */
+.arc-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--mus-brown-mid); text-decoration: none; font-weight: 600; margin-bottom: 20px; padding: 32px 24px 0; display: block; }
+.arc-back:hover { color: var(--mus-brown); }
+
+.arc-doc-header { background: linear-gradient(135deg, #1A0F08 0%, #2C1810 100%); padding: 28px 36px 24px; color: #fff; border-bottom: 2px solid var(--mus-gold); }
+.arc-doc-header-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mus-gold); margin-bottom: 8px; }
+.arc-doc-header-title { font-family: "DM Serif Display", serif; font-size: 30px; line-height: 1.2; margin-bottom: 6px; }
+.arc-doc-header-meta { font-size: 12px; color: rgba(255,255,255,0.6); }
+.arc-doc-header-img { width: 100%; max-height: 260px; object-fit: cover; margin-top: 18px; border-radius: 4px; opacity: 0.85; display: block; }
+
+.arc-doc-body { max-width: 900px; margin: 0 auto; padding: 32px 36px 48px; background: #FDFAF6; font-family: Georgia, serif; font-size: 14px; line-height: 1.9; color: #1A1A1A; }
+.arc-preamble { font-size: 15px; font-style: italic; color: #3A2A1A; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid #D4C4A8; line-height: 1.8; }
+.arc-article { font-family: "DM Serif Display", serif; font-size: 20px; color: var(--mus-brown); margin: 32px 0 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--mus-gold); }
+.arc-section { font-family: "DM Serif Display", serif; font-size: 15px; color: var(--mus-brown-mid); margin: 20px 0 6px; font-style: italic; }
+.arc-para { margin-bottom: 14px; }
+.arc-clause { margin-bottom: 10px; padding-left: 24px; border-left: 2px solid #D4C4A8; margin-left: 8px; }
+.arc-divider { border: none; border-top: 1px solid #D4C4A8; margin: 28px 0; }
+
+.arc-annotation { background: #FFF8E6; border: 0.5px solid #D4AE4A; border-left: 4px solid var(--mus-gold); border-radius: 0 6px 6px 0; padding: 12px 16px; margin: 20px 0; font-family: "DM Sans", sans-serif; font-size: 12px; color: #4A3000; line-height: 1.6; }
+.arc-annotation-head { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mus-gold); margin-bottom: 5px; }
+
+/* ── 6. RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .mus-body { grid-template-columns: 1fr; }
+  .mus-title { font-size: 28px; }
+  .mus-gallery-item { grid-template-columns: 1fr; }
+  .mus-gallery-img { width: 100%; }
+  .arc-doc-grid { grid-template-columns: 1fr; }
+  .arc-doc-body { padding: 20px; }
+}
