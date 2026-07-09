@@ -223,6 +223,12 @@ const ROUTES = {
   'nan.mususa.edu.usa/doc-declaration':       '/nodes/amhistory/doc-declaration.html',
   'nan.mususa.edu.usa/doc-constitution-1787': '/nodes/amhistory/doc-constitution-1787.html',
   'nan.mususa.edu.usa/doc-constitution-1861': '/nodes/amhistory/doc-constitution-1861.html',
+  'nan.mususa.edu.usa/exhibitions':           '/nodes/amhistory/exhibitions.html',
+  'nan.mususa.edu.usa/collections':           '/nodes/amhistory/collections.html',
+  'nan.mususa.edu.usa/events':                '/nodes/amhistory/events.html',
+  'nan.mususa.edu.usa/learn':                 '/nodes/amhistory/learn.html',
+  'nan.mususa.edu.usa/about':                 '/nodes/amhistory/about.html',
+  'nan.mususa.edu.usa/support':               '/nodes/amhistory/support.html',
 
   // ════════════════════════════════════════════════════════
   // DIV814 (reference / out-of-universe)
