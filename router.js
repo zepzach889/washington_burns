@@ -207,14 +207,25 @@ const ROUTES = {
   'nan.nedex.org.nau/bio-mahmud-3':           '/nodes/nedex/bio-mahmud-3.html',
 
   // ════════════════════════════════════════════════════════
-  // GOVERNMENT & CIVIC SITES
+  // STAND ALONE GOVERNMENT & CIVIC SITES
   // ════════════════════════════════════════════════════════
   'nan.usrc.gov.usa':                         '/nodes/usrc/',
   'nan.assembly.nau':                         '/nodes/assembly/',
-  'nan.washingtonhouse.gov.usa':              '/nodes/washington-house/',
-  'nan.washingtonhouse.gov.usa/presidents':   '/nodes/washington-house/wh_presidents.html',
   'nan.fps.gov.usa':                          '/nodes/fps/',
 
+  // ════════════════════════════════════════════════════════
+  // WASHINGTON HOUSE - PRESIDENCY
+  // ════════════════════════════════════════════════════════
+  'nan.washingtonhouse.gov.usa':              '/nodes/washington-house/',
+  'nan.washingtonhouse.gov.usa/presidents':   '/nodes/washington-house/wh_presidents.html',
+  'nan.washingtonhouse.gov.usa/president':      '/nodes/washington-house/wh_president.html',
+  'nan.washingtonhouse.gov.usa/administration': '/nodes/washington-house/wh_administration.html',
+  'nan.washingtonhouse.gov.usa/briefing':       '/nodes/washington-house/wh_briefing.html',
+  'nan.washingtonhouse.gov.usa/visit':          '/nodes/washington-house/wh_visit.html',
+  'nan.washingtonhouse.gov.usa/history':        '/nodes/washington-house/wh_history.html',
+  'nan.washingtonhouse.gov.usa/contact':        '/nodes/washington-house/wh_contact.html',
+
+  
   // ════════════════════════════════════════════════════════
   // MUSEUM OF THE UNITED STATES
   // ════════════════════════════════════════════════════════
