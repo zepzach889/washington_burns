@@ -98,7 +98,7 @@
     <div class="ndx-welcome">
       <div class="ndx-welcome-title">Welcome to Nedex</div>
       <div class="ndx-welcome-text">Nedex is the free encyclopaedia of the North American Union and the wider world — a collaborative reference covering history, geography, politics, science, culture, and more. All content is written from a neutral point of view and freely available to all users of the Interlink.</div>
-      <div class="ndx-welcome-stats">Currently hosting <strong id="ndx-article-count">22</strong> articles · Growing daily</div>
+      <div class="ndx-welcome-stats">Currently hosting <strong id="ndx-article-count"></strong> articles · Growing daily</div>
     </div>
 
     <div class="ndx-section-label">Featured Article</div>
@@ -180,21 +180,6 @@
 <script src="nedex_index.js"></script>
 <script src="nedex-search.js"></script>
 <script>
-  initAddressBar('nan.nedex.org.nau/africa');
-
-  function updateArcClock() {
-    const n = new Date();
-    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-    const hh = String(n.getHours()).padStart(2,'0');
-    const mm = String(n.getMinutes()).padStart(2,'0');
-    const el = document.getElementById('arc-clock');
-    if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
-  }
-
-  setInterval(updateArcClock, 10000);
-  updateArcClock();
-</script>
-<script>
 initAddressBar('nan.nedex.org.nau');
 
 function updateArcClock() {
@@ -220,7 +205,7 @@ document.getElementById('ndx-featured-slot').innerHTML = `
   <div class="ndx-featured-img">${imgHtml}</div>
   <div>
     <div class="ndx-featured-title">${f.title}</div>
-    <div class="ndx-featured-sub">${f.subtitle}</div>
+    ${f.subtitle ? `<div class="ndx-featured-sub">${f.subtitle}</div>` : ''}
     <div class="ndx-featured-text">${f.summary}</div>
     <a class="ndx-featured-link" href="${f.file}">Read full article →</a>
   </div>
