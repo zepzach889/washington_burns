@@ -86,6 +86,23 @@
   <div class="wm-section-label">Permanent Galleries</div>
   <div class="mus-gallery-list" id="mus-perm-galleries"></div>
 
+  <div class="wm-section-label">Upcoming Exhibition</div>
+  <div class="mus-featured">
+    <div class="mus-featured-body">
+      <div class="mus-featured-tag">Opening Autumn 2026 — Semiquincentennial</div>
+      <div class="mus-featured-title">The Republic at 250</div>
+      <div class="mus-featured-desc">Marking two hundred and fifty years since the Declaration of Independence, the Museum's landmark semiquincentennial exhibition will bring together treasures from across the National Collection — from the founding generation to the present day — to tell the story of the American republic in a single sweeping installation. Full details and timed entry booking will be announced later this year.</div>
+      <div class="mus-featured-dates">Opening Autumn 2026 &nbsp;·&nbsp; Great Hall of the Republic &amp; Level 2 Galleries</div>
+    </div>
+  </div>
+
+  <div class="wm-section-label">Past Exhibitions</div>
+  <div class="mus-past-list">
+    <div class="mus-past-row"><span class="mus-past-title">Geneva at 85: Making the Peace</span><span class="mus-past-year">2025</span></div>
+    <div class="mus-past-row"><span class="mus-past-title">The Northern Excursion: Littlefield in Canada, 1880</span><span class="mus-past-year">2024</span></div>
+    <div class="mus-past-row"><span class="mus-past-title">American Quilts and the Domestic Republic</span><span class="mus-past-year">2023</span></div>
+  </div>
+
   <div class="arc-visitor-note">
     <strong>Planning Your Visit</strong>
     All permanent galleries and the Great Hall of the Republic are included with free general admission. Special exhibitions and the National Archives Gallery require free timed entry passes, available in advance or from the information desk. Galleries may occasionally close for installation work.
@@ -126,6 +143,7 @@ if (galleryEl && typeof WBT_MUSEUM_GALLERIES !== 'undefined') {
         <div class="mus-gallery-floor">${g.floor}</div>
         <div class="mus-gallery-title">${g.title}</div>
         <div class="mus-gallery-desc">${g.desc}</div>
+        ${g.highlights ? `<div class="mus-gallery-highlights"><strong>Highlights</strong>${g.highlights}</div>` : ''}
       </div>
     </div>
   `).join('');
