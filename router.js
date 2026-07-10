@@ -242,6 +242,15 @@ const ROUTES = {
   'nan.mususa.edu.usa/support':               '/nodes/amhistory/support.html',
 
   // ════════════════════════════════════════════════════════
+  // SPECHIST.SOC — Speculative history board
+  // ════════════════════════════════════════════════════════
+  'nan.speculativehistory.soc.usa':                          '/nodes/spechist/',
+  'nan.speculativehistory.soc.usa/before-1900':              '/nodes/spechist/board-before-1900.html',
+  'nan.speculativehistory.soc.usa/after-1900':               '/nodes/spechist/board-after-1900.html',
+  'nan.speculativehistory.soc.usa/zli':                      '/nodes/spechist/board-zli.html',
+  'nan.speculativehistory.soc.usa/before-1900/washington-city': '/nodes/spechist/thread-washington-city.html',
+
+  // ════════════════════════════════════════════════════════
   // DIV814 (reference / out-of-universe)
   // ════════════════════════════════════════════════════════
   'nan.div814.gov.usa':                       '/nodes/ref/',
@@ -314,4 +323,50 @@ function initAddressBar(currentAddress) {
   });
   const goBtn = document.getElementById('wm-go-btn');
   if (goBtn) goBtn.addEventListener('click', () => navigate(input.value));
+}
+
+// ════════════════════════════════════════════════════════
+// BOOKMARKS BAR — single source of truth for every page
+// To add a new node to the bar sitewide, add ONE line here.
+// Paths are base-absolute; getBase() handles the GitHub
+// Pages subdirectory automatically at any folder depth.
+// ════════════════════════════════════════════════════════
+const BOOKMARKS = [
+  { icon: '🔍',  label: 'Waymark',           path: '/' },
+  { icon: '📰', label: 'Franklin Observer', path: '/nodes/franklin-observer/' },
+  { icon: '📺', label: 'ABN News',          path: '/nodes/abn/' },
+  { icon: '🎥', label: 'LinkVid',           path: '/nodes/linkvid/' },
+  { icon: '⚾', label: 'CSN',               path: '/nodes/csn/' },
+  { icon: '📖', label: 'Nedex',             path: '/nodes/nedex/' },
+  { icon: '🚂', label: 'USRC Rail',         path: '/nodes/usrc/' },
+  { icon: '⚖️', label: 'NAU Assembly',      path: '/nodes/assembly/' },
+  { icon: '🏛️', label: 'Washington House',  path: '/nodes/washington-house/' },
+  { icon: '🏺', label: 'Museum of the US',  path: '/nodes/amhistory/' },
+  { icon: '🌲', label: 'Federal Parks',     path: '/nodes/fps/' },
+  { icon: '📜', label: 'SpecHist',          path: '/nodes/spechist/' },
+  // { icon: '📨', label: 'Dispatch',          path: '/nodes/dispatch/' },   // uncomment when the node ships
+  // { icon: '🧩', label: 'Mosaic',            path: '/nodes/mosaic/' },     // uncomment when the node ships
+];
+
+function renderBookmarks() {
+  const chrome = document.querySelector('.arc-chrome');
+  if (!chrome) return;
+  // Remove any leftover static bar so it never doubles up
+  const old = chrome.querySelector('.arc-bookmarks');
+  if (old) old.remove();
+  const base = getBase();
+  const bar = document.createElement('div');
+  bar.className = 'arc-bookmarks';
+  bar.innerHTML = BOOKMARKS.map(b =>
+    '<a class="arc-bmark" href="' + base + b.path + '"><span class="arc-bmark-icon">' + b.icon + '</span>' + b.label + '</a>'
+  ).join('');
+  const topbar = chrome.querySelector('.wm-topbar');
+  if (topbar) topbar.insertAdjacentElement('afterend', bar);
+  else chrome.prepend(bar);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', renderBookmarks);
+} else {
+  renderBookmarks();
 }
