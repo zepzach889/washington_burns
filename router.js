@@ -349,10 +349,14 @@ const BOOKMARKS = [
 ];
 
 function renderBookmarks() {
+  // Anchor on the topbar itself — on standard pages it lives inside
+  // .arc-chrome; on legacy builds (e.g. LinkVid's .lv-arc-wrapper) it
+  // lives inside a custom wrapper. Either way the bar goes right after it.
+  const topbar = document.querySelector('.wm-topbar');
   const chrome = document.querySelector('.arc-chrome');
-  if (!chrome) return;
+  if (!topbar && !chrome) return;
   // Remove any leftover static bar so it never doubles up
-  const old = chrome.querySelector('.arc-bookmarks');
+  const old = document.querySelector('.arc-bookmarks');
   if (old) old.remove();
   const base = getBase();
   const bar = document.createElement('div');
@@ -360,7 +364,6 @@ function renderBookmarks() {
   bar.innerHTML = BOOKMARKS.map(b =>
     '<a class="arc-bmark" href="' + base + b.path + '"><span class="arc-bmark-icon">' + b.icon + '</span>' + b.label + '</a>'
   ).join('');
-  const topbar = chrome.querySelector('.wm-topbar');
   if (topbar) topbar.insertAdjacentElement('afterend', bar);
   else chrome.prepend(bar);
 }
