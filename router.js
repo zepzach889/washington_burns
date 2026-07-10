@@ -246,9 +246,13 @@ const ROUTES = {
   // ════════════════════════════════════════════════════════
   'nan.speculativehistory.soc.usa':                          '/nodes/spechist/',
   'nan.speculativehistory.soc.usa/before-1900':              '/nodes/spechist/board-before-1900.html',
-  'nan.speculativehistory.soc.usa/after-1900':               '/nodes/spechist/board-after-1900.html',
-  'nan.speculativehistory.soc.usa/zli':                      '/nodes/spechist/board-zli.html',
   'nan.speculativehistory.soc.usa/before-1900/washington-city': '/nodes/spechist/thread-washington-city.html',
+  'nan.speculativehistory.soc.usa/after-1900':               '/nodes/spechist/board-after-1900.html',
+  'nan.speculativehistory.soc.usa/future-history':           '/nodes/spechist/board-future-history.html',
+  'nan.speculativehistory.soc.usa/zli':                      '/nodes/spechist/board-zli.html',
+  'nan.speculativehistory.soc.usa/maps-graphics':            '/nodes/spechist/board-maps-graphics.html',
+  'nan.speculativehistory.soc.usa/shared-worlds':            '/nodes/spechist/board-shared-worlds.html',
+  'nan.speculativehistory.soc.usa/books-film-media':         '/nodes/spechist/board-books-film-media.html',
 
   // ════════════════════════════════════════════════════════
   // DIV814 (reference / out-of-universe)
