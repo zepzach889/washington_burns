@@ -337,7 +337,7 @@ const NEDEX_DYK = [
   'President Robert Lee owned over a hundred enslaved people at the time he took office in 1851, yet wrote privately that he hoped to keep the presidency above the slavery debate and seek a lasting compromise — a goal that proved impossible.',
   'George Washington\'s decision not to seek a third term established the precedent of the two-term presidency — a tradition that was later codified in law under the Constitution of 1861.',
   'The election of 1826 was the second in American history to be decided by the House of Representatives, after no candidate won an outright majority of the electoral college. Alexander Hamilton Jr. was chosen despite John C. Calhoun receiving the most electoral votes — a result Republicans called the "Devil\'s Bargain."',
-  'Peter Landon, the twenty-second president, was the first Black man to serve as President of the United States — elected in 1903 as the Federalist candidate at a moment when the party\'s abolitionist legacy gave it particular strength among Black voters in the South.',
+  'Peter Landon, the twenty-second president, was the first Black man to serve as President of the United States — taking office after the death of President Fleak in 1903. It would be another 36 years before the USA actually elected a Black man as president.',
 
   // Crawford era & Grand Compromise
   'The Grand Compromise of 1817 settled four major disputes at once: replacing Vice President Tompkins (who had died before the inauguration), moving the capital westward, reforming the presidential term to a single six-year period, and setting a higher threshold for declarations of war.',
