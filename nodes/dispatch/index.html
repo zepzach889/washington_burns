@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>Dispatch — The Public Feeds</title>
+<link rel="stylesheet" href="/washington_burns/shared.css">
+<link rel="stylesheet" href="/washington_burns/nodes/dispatch/dispatch.css">
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+</div>
+
+<div class="dp-page">
+
+  <div class="dp-header">
+    <div class="dp-header-inner">
+      <a class="dp-logo" href="./">dispatch<em>.</em></a>
+      <div class="dp-chip">Feed: Chronological ▾</div>
+      <div class="dp-search">Search the feeds</div>
+      <a class="dp-login" href="login.html">Log in</a>
+      <a class="dp-postbtn" href="login.html">Post</a>
+    </div>
+  </div>
+
+  <div class="dp-pubbar">
+    <div class="dp-pubbar-inner">You're browsing the <b>public feeds</b> — trending posts from across Dispatch. Log in to post, relay, and follow.</div>
+  </div>
+
+  <div class="dp-shell">
+    <div class="dp-cols">
+
+      <div class="dp-feed" id="dp-feed">
+
+        <div class="dp-card">
+          <div class="dp-row1">
+            <div class="dp-av">W</div>
+            <div class="dp-who">
+              <span class="dp-dname">Washington House</span><span class="dp-check">✓</span><br>
+              <span class="dp-dateline">+WASHHOUSE · FRANKLIN, D.W.</span> <span class="dp-meta">· 26m</span>
+            </div>
+          </div>
+          <div class="dp-text">President Nakamura will deliver remarks on the continental rail program from the South Garden at 2:30 p.m. Watch live on the Washington House node.</div>
+          <div class="dp-actions"><span class="dp-relay">↻ Relay 1.2K</span><span class="dp-nod">Nod 4.8K</span><span class="dp-reply">Reply 391</span></div>
+        </div>
+
+        <div class="dp-card">
+          <div class="dp-row1">
+            <div class="dp-av" style="background:#3d8298;">M</div>
+            <div class="dp-who">
+              <span class="dp-dname">Marta Kowalczyk</span><br>
+              <span class="dp-meta">+unionavelunch · 40m</span>
+            </div>
+          </div>
+          <div class="dp-text">Forty people deep at the pierogi window this morning. Franklin lunch culture remains undefeated.</div>
+          <div class="dp-photo">[ photo: the line, inevitably ]</div>
+          <div class="dp-actions"><span class="dp-relay">↻ Relay 31</span><span class="dp-nod">Nod 402</span><span class="dp-reply">Reply 17</span></div>
+        </div>
+
+        <div class="dp-card">
+          <div class="dp-row1">
+            <div class="dp-av" style="background:#e8955f;">P</div>
+            <div class="dp-who">
+              <span class="dp-dname">The Pierogi Window</span><br>
+              <span class="dp-meta">+thepierogiwindow · 31m</span>
+            </div>
+          </div>
+          <div class="dp-text">We see the line. We love the line. Second fryer arrives Thursday.</div>
+          <div class="dp-actions"><span class="dp-relay">↻ Relay 189</span><span class="dp-nod">Nod 1.4K</span><span class="dp-reply">Reply 63</span></div>
+        </div>
+
+        <div class="dp-card">
+          <div class="dp-row1">
+            <div class="dp-av" style="background:#122b33;">A</div>
+            <div class="dp-who">
+              <span class="dp-dname">ABN News</span><span class="dp-check">✓</span><br>
+              <span class="dp-dateline">+ABNNEWS · FRANKLIN, D.W.</span> <span class="dp-meta">· 1h</span>
+            </div>
+          </div>
+          <div class="dp-text">Assembly passes rail appropriations bill, 118–61. Full report at the top of the hour.</div>
+          <div class="dp-actions"><span class="dp-relay">↻ Relay 214</span><span class="dp-nod">Nod 1.9K</span><span class="dp-reply">Reply 48</span></div>
+        </div>
+
+        <div class="dp-card">
+          <div class="dp-row1">
+            <div class="dp-av" style="background:#1f7a5c;">A</div>
+            <div class="dp-who">
+              <span class="dp-dname">Sec. Alex Anderson</span><span class="dp-check">✓</span><br>
+              <span class="dp-dateline">+SECANDERSON · DEPT. OF TRANSPORTATION</span> <span class="dp-meta">· 2h</span>
+            </div>
+          </div>
+          <div class="dp-text">Rode the first refitted Meridian-class out of Franklin Central this morning before the signing. The future hums. (Yes, I have pictures. No, I will not be posting all forty.)</div>
+          <div class="dp-actions"><span class="dp-relay">↻ Relay 876</span><span class="dp-nod">Nod 5.2K</span><span class="dp-reply">Reply 204</span></div>
+        </div>
+
+        <div class="dp-card">
+          <div class="dp-row1">
+            <div class="dp-av" style="background:#ff7d6b;">K</div>
+            <div class="dp-who">
+              <span class="dp-dname">Kettle</span><br>
+              <span class="dp-meta">+kettleboils · 2h</span>
+            </div>
+          </div>
+          <div class="dp-text">The rail bill passing the same week the Mars window opens. Historians are going to think 2026 was invented for a museum exhibit.</div>
+          <div class="dp-actions"><span class="dp-relay">↻ Relay 88</span><span class="dp-nod">Nod 743</span><span class="dp-reply">Reply 52</span></div>
+        </div>
+
+        <div class="dp-card">
+          <div class="dp-row1">
+            <div class="dp-av" style="background:#8a5aa8;">R</div>
+            <div class="dp-who">
+              <span class="dp-dname">Rachel Klein</span><span class="dp-check">✓</span><br>
+              <span class="dp-meta">+RachelKlein · 3h</span>
+            </div>
+          </div>
+          <div class="dp-text">New song Friday. It's about the feeds. You're all in it. Yes, you specifically.</div>
+          <div class="dp-actions"><span class="dp-relay">↻ Relay 2.3K</span><span class="dp-nod">Nod 11.7K</span><span class="dp-reply">Reply 840</span></div>
+        </div>
+
+        <div class="dp-card">
+          <div class="dp-row1">
+            <div class="dp-av" style="background:#b3452e;">R</div>
+            <div class="dp-who">
+              <span class="dp-dname">Rafi Mendoza</span><span class="dp-check">✓</span><br>
+              <span class="dp-meta">+RafiMendoza · 5h</span>
+            </div>
+          </div>
+          <div class="dp-text">Good win tonight. Big series this weekend against the Islanders. Seat 14 — I heard you from the box. Rest the voice.</div>
+          <div class="dp-actions"><span class="dp-relay">↻ Relay 604</span><span class="dp-nod">Nod 8.9K</span><span class="dp-reply">Reply 377</span></div>
+        </div>
+
+        <div class="dp-card">
+          <div class="dp-row1">
+            <div class="dp-av" style="background:#4a6b8a;">T</div>
+            <div class="dp-who">
+              <span class="dp-dname">Theo Marsh</span><br>
+              <span class="dp-meta">+moonwatcher76 · 6h</span>
+            </div>
+          </div>
+          <div class="dp-text">Launch window opens in under six months. There are people alive who watched the first landing on a neighbor's television and will watch this one from a phone on a train. Think about that.</div>
+          <div class="dp-actions"><span class="dp-relay">↻ Relay 341</span><span class="dp-nod">Nod 2.6K</span><span class="dp-reply">Reply 95</span></div>
+        </div>
+
+        <div class="dp-card">
+          <div class="dp-row1">
+            <div class="dp-av" style="background:#c46a9a;">R</div>
+            <div class="dp-who">
+              <span class="dp-dname">Rosa Delgadillo</span><br>
+              <span class="dp-meta">+brooklynabuela · 9h</span>
+            </div>
+          </div>
+          <div class="dp-text">My grandson taught me to use the relay button today. He says hello to all of you. Eat something, it's late.</div>
+          <div class="dp-actions"><span class="dp-relay">↻ Relay 4.1K</span><span class="dp-nod">Nod 22.3K</span><span class="dp-reply">Reply 1.1K</span></div>
+        </div>
+
+      </div>
+
+      <div class="dp-side">
+
+        <div class="dp-sidebox">
+          <div class="dp-sidehead">Trending across the feeds</div>
+          <div id="dp-trending">
+            <div class="dp-trend"><span class="dp-trend-tag">Rail Appropriations</span><br><span class="dp-trend-ct">12.4K posts today</span></div>
+            <div class="dp-trend"><span class="dp-trend-tag">Mars Launch Window</span><br><span class="dp-trend-ct">9.1K posts today</span></div>
+            <div class="dp-trend"><span class="dp-trend-tag">Senators–Islanders Series</span><br><span class="dp-trend-ct">6.7K posts today</span></div>
+            <div class="dp-trend"><span class="dp-trend-tag">Rachel Klein</span><br><span class="dp-trend-ct">4.2K posts today</span></div>
+            <div class="dp-trend"><span class="dp-trend-tag">Union Avenue Pierogi</span><br><span class="dp-trend-ct">318 posts today</span></div>
+          </div>
+        </div>
+
+        <div class="dp-sidebox">
+          <div class="dp-sidehead">Verified on Dispatch</div>
+          <div id="dp-verified">
+            <div class="dp-trend"><span class="dp-trend-tag">+PresNakamura</span> <span class="dp-trend-ct">· President Sophia Nakamura</span></div>
+            <div class="dp-trend"><span class="dp-trend-tag">+WashHouse</span> <span class="dp-trend-ct">· Washington House</span></div>
+            <div class="dp-trend"><span class="dp-trend-tag">+ABNNews</span> <span class="dp-trend-ct">· ABN News</span></div>
+            <div class="dp-trend"><span class="dp-trend-tag">+FranklinObserver</span> <span class="dp-trend-ct">· The Franklin Observer</span></div>
+            <div class="dp-trend"><span class="dp-trend-tag">+CSN</span> <span class="dp-trend-ct">· Continental Sports Network</span></div>
+            <div class="dp-trend"><span class="dp-trend-tag">+TerryHamerkop</span> <span class="dp-trend-ct">· Terry Hamerkop</span></div>
+          </div>
+        </div>
+
+        <div class="dp-sidebox dp-about">
+          <b>Dispatch</b> is a service of Signalworks, founded in Calumet, D.D., in 2008. What began as a small lakefront messaging startup grew into the continent's busiest public feed after the Interlink Treaty opened the networks to one another.<br><br>
+          Dispatch carries no targeted advertising, in accordance with NAU Assembly directive. Every new account begins with a chronological feed, per NRC regulation.<br><br>
+          <b>Your feed, your rules.</b><br><br>
+          link://nan.dispatch.biz.nau
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="dp-footer">
+    <div class="dp-footer-inner">Dispatch · a Signalworks service · Calumet, D.D. · est. 2008 · Terms · Verification · The Feed Rules · Signalworks Careers</div>
+  </div>
+
+</div>
+
+<script src="/washington_burns/router.js"></script>
+<script src="/washington_burns/content.js"></script>
+<script>
+initAddressBar('nan.dispatch.biz.nau');
+</script>
+
+</body>
+</html>
