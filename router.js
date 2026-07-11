@@ -255,6 +255,11 @@ const ROUTES = {
   'nan.speculativehistory.soc.usa/books-film-media':         '/nodes/spechist/board-books-film-media.html',
 
   // ════════════════════════════════════════════════════════
+  // Dispatch — Premier Intercon Node
+  // ════════════════════════════════════════════════════════
+  'nan.dispatch.biz.nau':                                    '/nodes/dispatch/',
+
+  // ════════════════════════════════════════════════════════
   // DIV814 (reference / out-of-universe)
   // ════════════════════════════════════════════════════════
   'nan.div814.gov.usa':                       '/nodes/ref/',
@@ -348,7 +353,7 @@ const BOOKMARKS = [
   { icon: '🏺', label: 'Museum of the US',  path: '/nodes/amhistory/' },
   { icon: '🌲', label: 'Federal Parks',     path: '/nodes/fps/' },
   { icon: '📜', label: 'SpecHist',          path: '/nodes/spechist/' },
-  // { icon: '📨', label: 'Dispatch',          path: '/nodes/dispatch/' },   // uncomment when the node ships
+  { icon: '📨', label: 'Dispatch',          path: '/nodes/dispatch/' },  
   // { icon: '🧩', label: 'Mosaic',            path: '/nodes/mosaic/' },     // uncomment when the node ships
 ];
 
