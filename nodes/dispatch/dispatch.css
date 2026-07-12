@@ -598,3 +598,37 @@
   padding: 26px 18px; color: var(--dp-muted);
   font-size: 13.5px; text-align: center;
 }
+
+/* ── PROFILE LINKS (clickable, but not "linky") ─────────────── */
+/* Names and avatars link to profiles. No blue, no underline —
+   only a quiet hover cue on devices that hover. Invisible on touch. */
+
+a.dp-plink {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+a.dp-plink.dp-av {
+  /* avatar is an <a> now; keep it a flex box like the div was */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+a.dp-dname.dp-plink { color: var(--dp-ink); }
+
+@media (hover: hover) {
+  a.dp-plink.dp-dname:hover { text-decoration: underline; text-underline-offset: 2px; }
+  a.dp-plink.dp-dateline:hover,
+  a.dp-plink.dp-meta:hover { color: var(--dp-petrol); }
+  a.dp-plink.dp-av:hover { filter: brightness(1.08); }
+}
+
+.dp-userchip-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+}
+@media (hover: hover) {
+  .dp-userchip-link:hover .dp-userchip-handle { text-decoration: underline; text-underline-offset: 2px; }
+}
