@@ -92,6 +92,7 @@
 <script src="../../router.js"></script>
 <script src="../../content.js"></script>
 <script>
+  (function(){
 initAddressBar('nan.mususa.edu.usa/events');
 function updateArcClock() {
   const n = new Date();
@@ -138,6 +139,7 @@ if (schedEl && typeof WBT_MUSEUM_EVENTS !== 'undefined') {
     </div>`;
   }).join('');
 }
+    })();
 </script>
 </body>
 </html>
