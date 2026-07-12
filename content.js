@@ -3003,3 +3003,822 @@ const WAYMARK_HEADLINES = [
     link: './nodes/franklin-observer/'
   }
 ];
+
+/* ═══════════════════════════════════════════════════════════════
+   SPECHIST.SOC — Layer 2 rotating content engine
+   Thread pools, daily selection, stat drift, member rotation.
+   Boards call renderSpecHistBoard('<key>'); the index calls
+   renderSpecHistIndex(); the thread page calls
+   renderSpecHistThread('<id>'). All selection is seeded by SEED,
+   so index and boards always agree on any given day.
+   ═══════════════════════════════════════════════════════════════ */
+
+const SH_EPOCH = new Date(2026, 6, 10);
+const SH_DAYS  = Math.max(0, Math.floor((_now - SH_EPOCH) / 86400000));
+
+function shRand(n) {
+  const x = Math.sin(SEED * 7919 + n * 104729) * 10000;
+  return x - Math.floor(x);
+}
+function shInt(n, min, max) { return min + Math.floor(shRand(n) * (max - min + 1)); }
+
+const SH_USERS = ['Hawthorne63','Mimeograph','LettersPage','Cpl.Anachronism','OhioRiverRat','Cartograbber','TreatyOfWherever','Semaphore','GrandBanksman','QuillAndPowder','FerdinandTheNinth','wxyz_1899','MothballFleet','PlausibilityPolice','TudorRosette','lurker_no_more','Porchlight','Toast4Breakfast','grumblesaurus','StaticCling','here_by_accident','DecafHeretic','Bumblefish','NightOwl_2019','Kettle','umbra'];
+
+const SH_NEW_MEMBERS = ['PikesPeakPolly','cast_iron_stove','MapleAndOak','quiet_quill','ZLIcurious','RiverboatGambit','HalfpennyHistorian','WaywardCanuck','ClioFan','first_map_bad','ZepZach','GrandBanksman2'];
+
+const SH_REGULARS = {
+  'before-1900':     ['Mimeograph','QuillAndPowder','FerdinandTheNinth','TudorRosette','OhioRiverRat','Hawthorne63','umbra'],
+  'after-1900':      ['wxyz_1899','Semaphore','MothballFleet','Kettle','GrandBanksman','TreatyOfWherever','Mimeograph'],
+  'zli':             ['grumblesaurus','here_by_accident','PlausibilityPolice','Bumblefish','Toast4Breakfast','Kettle'],
+  'maps-graphics':   ['Cartograbber','Bumblefish','GrandBanksman','StaticCling','umbra','Porchlight'],
+  'books-film-media':['LettersPage','Hawthorne63','Toast4Breakfast','Kettle','DecafHeretic','Mimeograph','umbra'],
+  'shared-worlds':   ['TreatyOfWherever','QuillAndPowder','Semaphore','GrandBanksman','Cartograbber','NightOwl_2019','wxyz_1899'],
+  'future-history':  ['Semaphore','NightOwl_2019','Porchlight','StaticCling','MothballFleet','Mimeograph','GrandBanksman']
+};
+
+/* Pool entry fields: t title (string or fn(SH_DAYS)), a author, d start date,
+   r base replies, v base views, rr replies/day, vr views/day, tag hot|poll|locked,
+   real url (always shown, links to built page), pg base pages, gm (credit as GM),
+   x exclusion-group key (max one per group per day), always (must appear) */
+
+const SH_POOLS = {
+'before-1900': [
+ {t:'WI: The British never burn Washington City?', a:'Porchlight', d:'Jun 30, 2026', r:264, v:19412, rr:5, vr:320, tag:'hot', real:'thread-washington-city.html', pg:11, always:true},
+ {t:'SHC: The Western Roman Empire limps to 800 AD', a:'umbra', d:'Jul 6, 2026', r:57, v:2800, rr:2, vr:90},
+ {t:'Most underused pre-1900 point of divergence?', a:'Toast4Breakfast', d:'Jul 4, 2026', r:203, v:8900, rr:3, vr:150, tag:'poll'},
+ {t:'WI: Zheng He rounds the Cape of Good Hope', a:'Bumblefish', d:'Jul 7, 2026', r:41, v:1900, rr:2, vr:80},
+ {t:'Matanzas War: Spain holds at sea — how long can Ferdinand VIII keep Cuba?', a:'FerdinandTheNinth', d:'Jul 5, 2026', r:88, v:4100, rr:2, vr:100},
+ {t:'WI: No Constitution of 1861 — how long does plurality-wins survive?', a:'Statehouse_Ghost', d:'Jul 3, 2026', r:116, v:5600, rr:2, vr:110},
+ {t:'SHC: Keep the capital on the Potomac after 1814', a:'OhioRiverRat', d:'Jul 2, 2026', r:73, v:3500, rr:1, vr:70},
+ {t:'PC: A Norse Vinland colony that actually survives', a:'GrandBanksman', d:'Jun 29, 2026', r:129, v:6700, rr:2, vr:100},
+ {t:'WI: The Armada lands in Kent, 1588', a:'TudorRosette', d:'Jun 27, 2026', r:164, v:7800, rr:2, vr:110},
+ {t:'WI: Tecumseh survives — the confederacy question', a:'Hawthorne63', d:'Jun 26, 2026', r:97, v:5000, rr:1, vr:80},
+ {t:'WI: The Louisiana Purchase falls through', a:'DecafHeretic', d:'Jun 24, 2026', r:142, v:6900, rr:1, vr:90},
+ {t:'SHC: Justinian\u2019s reconquest of Italy sticks', a:'QuillAndPowder', d:'Jun 22, 2026', r:66, v:3200, rr:1, vr:60},
+ {t:'WI: The Grand Compromise fails in the Senate', a:'Statehouse_Ghost', d:'Jun 19, 2026', r:104, v:5300, rr:2, vr:90},
+ {t:'WI: Britain refuses the Wisconsin Treaty', a:'TreatyOfWherever', d:'Jun 17, 2026', r:91, v:4600, rr:1, vr:80},
+ {t:'WI: Joshua Black\u2019s uprising fails', a:'OhioRiverRat', d:'Jun 14, 2026', r:178, v:8400, rr:2, vr:120},
+ {t:'WI: Hawthorne holds Atlanta', a:'wxyz_1899', d:'Jun 11, 2026', r:133, v:6300, rr:2, vr:100},
+ {t:'WI: The S.S. Bostonian arrives safely — no Second Mexican War', a:'FerdinandTheNinth', d:'Jun 8, 2026', r:87, v:4200, rr:1, vr:70},
+ {t:'PC: A French New Orleans into the 1850s', a:'DecafHeretic', d:'Jun 5, 2026', r:62, v:3100, rr:1, vr:60},
+ {t:'Best pre-1900 timeline currently updating?', a:'Toast4Breakfast', d:'Jun 2, 2026', r:118, v:6800, rr:1, vr:90, tag:'poll'},
+ {t:'WI: Charlemagne\u2019s empire holds together', a:'umbra', d:'May 29, 2026', r:145, v:7100, rr:1, vr:80},
+ {t:'SHC: Industrialize the Ottomans by 1850', a:'QuillAndPowder', d:'May 26, 2026', r:96, v:4700, rr:1, vr:70},
+ {t:'SHC: A Viking Constantinople', a:'GrandBanksman', d:'May 22, 2026', r:109, v:5200, rr:1, vr:70}
+],
+'after-1900': [
+ {t:'SHC: Avert the Great European War with one telegram', a:'Kettle', d:'Jul 3, 2026', r:171, v:11200, rr:4, vr:250, tag:'hot', pg:7},
+ {t:'WI: Louis-Charles survives Munich, 1899', a:'wxyz_1899', d:'Jul 1, 2026', r:146, v:8300, rr:3, vr:150},
+ {t:'WI: The Busan line breaks, winter 1935\u201336', a:'MothballFleet', d:'Jul 6, 2026', r:64, v:3100, rr:2, vr:90},
+ {t:'Which Geneva settlement decision aged worst?', a:'TreatyOfWherever', d:'Jul 5, 2026', r:228, v:9800, rr:3, vr:160, tag:'poll'},
+ {t:'WI: Holtz purges the army and gets away with it', a:'umbra', d:'Jul 4, 2026', r:93, v:4600, rr:2, vr:100},
+ {t:'WI: No Prussian revolution in 1937 — the war grinds into the 1940s', a:'Semaphore', d:'Jul 2, 2026', r:118, v:5900, rr:2, vr:110},
+ {t:'WI: Landon wins in 1904', a:'Porchlight', d:'Jun 30, 2026', r:87, v:4400, rr:1, vr:80},
+ {t:'PC: The Matanzas War drags past 1906', a:'FerdinandTheNinth', d:'Jun 28, 2026', r:52, v:2700, rr:1, vr:60},
+ {t:'WI: The treaty ports go back at the Asian settlement, 1940', a:'GrandBanksman', d:'Jun 27, 2026', r:139, v:7100, rr:2, vr:110},
+ {t:'SHC: A crewed Chinese lunar landing before 1975', a:'NightOwl_2019', d:'Jun 26, 2026', r:71, v:3800, rr:1, vr:70},
+ {t:'WI: The Chos\u014fn War goes badly — no Treaty of Delhi', a:'Hawthorne63', d:'Jun 25, 2026', r:104, v:5200, rr:1, vr:90},
+ {t:'WI: Prussia opens up in the 1960s instead of 1996', a:'DecafHeretic', d:'Jun 23, 2026', r:83, v:4000, rr:1, vr:70},
+ {t:'WI: The Hesperia makes it home, 1913', a:'MothballFleet', d:'Jun 20, 2026', r:127, v:6400, rr:2, vr:100},
+ {t:'WI: Gabriella loses the succession war', a:'FerdinandTheNinth', d:'Jun 17, 2026', r:98, v:4900, rr:1, vr:80},
+ {t:'WI: The 1938 revolution spreads to Prussia proper', a:'Semaphore', d:'Jun 14, 2026', r:112, v:5500, rr:2, vr:90},
+ {t:'WI: No Chinese Spring in 2019', a:'Kettle', d:'Jun 11, 2026', r:156, v:7900, rr:2, vr:120},
+ {t:'PC: The Interlink Treaty twenty years early', a:'StaticCling', d:'Jun 8, 2026', r:74, v:3600, rr:1, vr:60},
+ {t:'WI: The Matanzas Bay Compact survives', a:'TreatyOfWherever', d:'Jun 5, 2026', r:89, v:4300, rr:1, vr:70},
+ {t:'Most plausible Global War SHC?', a:'Porchlight', d:'Jun 2, 2026', r:184, v:8800, rr:2, vr:120, tag:'poll'},
+ {t:'WI: The GPC fails at founding, 1940', a:'wxyz_1899', d:'May 30, 2026', r:121, v:5900, rr:1, vr:90},
+ {t:'SHC: Avert the Chos\u014fn War', a:'Kettle', d:'May 27, 2026', r:95, v:4600, rr:1, vr:70},
+ {t:'WI: The 1996 Prussian reunification referendum fails', a:'umbra', d:'May 24, 2026', r:107, v:5100, rr:1, vr:80}
+],
+'zli': [
+ {t:'Carthage wins all three wars. Every time. Discuss.', a:'grumblesaurus', d:'Jul 6, 2026', r:94, v:6800, rr:3, vr:180, tag:'hot', pg:4},
+ {t:'Odyssey: Franklin, D.W. wakes up in 1500 BC', a:'Cartograbber', d:'Jul 5, 2026', r:137, v:7900, rr:2, vr:130},
+ {t:'WI: Every musket ball fired between 1700 and 1750 misses', a:'Bumblefish', d:'Jul 4, 2026', r:76, v:4200, rr:2, vr:90},
+ {t:'WI: The Ohio River flows north', a:'OhioRiverRat', d:'Jul 3, 2026', r:112, v:6100, rr:2, vr:110},
+ {t:'Taxonomy, round 40: how much interference is Zeus-level? (the eternal thread)', a:'PlausibilityPolice', d:'Jul 1, 2026', r:241, v:10400, rr:3, vr:150, tag:'poll'},
+ {t:'The Global War, but every navy is under sail', a:'MothballFleet', d:'Jun 30, 2026', r:68, v:3700, rr:1, vr:70},
+ {t:'WI: Immortal George Washington (yes, again, but hear me out)', a:'Toast4Breakfast', d:'Jun 29, 2026', r:153, v:8500, rr:2, vr:120},
+ {t:'Zeus attends the Geneva Conference (in person, credentialed)', a:'here_by_accident', d:'Jun 28, 2026', r:201, v:11600, rr:2, vr:150},
+ {t:'WI: Every horse on Earth vanishes in 1200 AD', a:'Kettle', d:'Jun 26, 2026', r:184, v:9300, rr:2, vr:120},
+ {t:'Odyssey: The 1826 electorate votes in the 2020 election (and vice versa)', a:'DecafHeretic', d:'Jun 25, 2026', r:97, v:5400, rr:1, vr:90},
+ {t:'WI: The Moon is habitable — the colonial race starts in the 1600s', a:'NightOwl_2019', d:'Jun 23, 2026', r:226, v:12800, rr:2, vr:160},
+ {t:'WI: Bears gain the franchise (state by state, please, be serious)', a:'grumblesaurus', d:'Jun 21, 2026', r:143, v:7700, rr:2, vr:110},
+ {t:'Odyssey: The NAU Assembly, 1200 AD', a:'here_by_accident', d:'Jun 18, 2026', r:88, v:4900, rr:1, vr:80},
+ {t:'WI: Gunpowder never works', a:'QuillAndPowder', d:'Jun 15, 2026', r:167, v:8600, rr:2, vr:110},
+ {t:'WI: The Mississippi is an ocean strait', a:'Cartograbber', d:'Jun 12, 2026', r:104, v:5700, rr:1, vr:90},
+ {t:'Zeus grants you one telegram: worst possible use thread', a:'grumblesaurus', d:'Jun 9, 2026', r:219, v:11200, rr:2, vr:140},
+ {t:'WI: Everyone speaks one language from 500 BC', a:'umbra', d:'Jun 6, 2026', r:131, v:6600, rr:1, vr:90},
+ {t:'WI: Immortal Vera Hollis directs forever', a:'Toast4Breakfast', d:'Jun 3, 2026', r:92, v:5100, rr:1, vr:70},
+ {t:'PC: Sentient rivers negotiate the 1817 capital site', a:'Bumblefish', d:'May 31, 2026', r:78, v:4300, rr:1, vr:60},
+ {t:'Odyssey: Parkertopia, 44 BC', a:'NightOwl_2019', d:'May 28, 2026', r:116, v:6200, rr:1, vr:80},
+ {t:'WI: The Moon never existed', a:'Semaphore', d:'May 25, 2026', r:158, v:8100, rr:1, vr:100},
+ {t:'Every treaty since 1700 is binding forever — court chaos thread', a:'TreatyOfWherever', d:'May 22, 2026', r:99, v:5300, rr:1, vr:70}
+],
+'maps-graphics': [
+ {t:'Basemap request: 1840s river borders, Ohio Valley', a:'QuillAndPowder', d:'Jul 8, 2026', r:23, v:1400, rr:2, vr:70, tag:'hot'},
+ {t:'The Cartograbber Catalog — twenty years of plans and plates, indexed', a:'Cartograbber', d:'Mar 3, 2006', r:1072, v:214000, rr:1, vr:120, pg:44},
+ {t:function(n){return 'Flag challenge #' + (212 + Math.floor(n/30)) + ': a surviving Norse Vinland';}, a:'GrandBanksman', d:'Jul 5, 2026', r:48, v:2900, rr:2, vr:80},
+ {t:function(n){return 'Recreating the war-room maps from the Worlds at War films — group project, plate ' + Math.min(9, 3 + Math.floor(n/21)) + ' of 9';}, a:'MothballFleet', d:'Jun 29, 2026', r:156, v:8700, rr:2, vr:110},
+ {t:'Nedex-style infobox templates for your timeline, v4 — now with succession boxes', a:'StaticCling', d:'Jun 26, 2026', r:89, v:6200, rr:1, vr:90},
+ {t:'My first map — be gentle (Iberia, 1600, three crowns)', a:'Bumblefish', d:'Jul 7, 2026', r:31, v:1800, rr:1, vr:60},
+ {t:'Wirephoto manipulation tutorial: aging, grain, and caption typography', a:'Porchlight', d:'Jun 24, 2026', r:64, v:5500, rr:1, vr:80},
+ {t:'Railway diagrams thread: your timeline\u2019s network, USRC style', a:'OhioRiverRat', d:'Jun 20, 2026', r:112, v:7300, rr:1, vr:90},
+ {t:'Portrait commissions &amp; trades — the running thread', a:'TudorRosette', d:'May 30, 2026', r:297, v:15900, rr:2, vr:130},
+ {t:'Historical atlas scans: public-domain plates worth tracing (curated list)', a:'Mimeograph', d:'Apr 12, 2026', r:143, v:11400, rr:1, vr:90},
+ {t:function(n){return 'Flag challenge #' + (213 + Math.floor(n/30)) + ': the Republic of New Africa endures';}, a:'GrandBanksman', d:'Jul 9, 2026', r:19, v:1100, rr:2, vr:70},
+ {t:'MotM prompt suggestions — next month\u2019s theme', a:'The Moderators', d:'Jul 8, 2026', r:37, v:2100, rr:1, vr:60},
+ {t:'Tutorial: parchment aging for treaty props', a:'Porchlight', d:'Jun 16, 2026', r:58, v:4700, rr:1, vr:70},
+ {t:'Request: rail map for a Free State victory delayed to 1865', a:'OhioRiverRat', d:'Jun 13, 2026', r:26, v:1600, rr:1, vr:50},
+ {t:'Wirephoto challenge: a 1913 that kept the Hesperia', a:'MothballFleet', d:'Jun 10, 2026', r:71, v:4400, rr:1, vr:70},
+ {t:'My Tenochtitlan-inspired city plan — WIP, critique welcome', a:'Bumblefish', d:'Jun 7, 2026', r:44, v:2800, rr:1, vr:60},
+ {t:'Infobox check: a fictional Sixth Amendment to the 1861 constitution', a:'StaticCling', d:'Jun 4, 2026', r:33, v:2200, rr:1, vr:50},
+ {t:'Font ID help: 1870s Franklin Observer mastheads', a:'Kettle', d:'Jun 1, 2026', r:29, v:1900, rr:1, vr:40},
+ {t:'Labels vs. keys — end this', a:'umbra', d:'May 28, 2026', r:186, v:9600, rr:1, vr:100, tag:'poll'},
+ {t:function(n){return 'The basemap patch queue — batch ' + (14 + Math.floor(n/30));}, a:'Cartograbber', d:'May 25, 2026', r:94, v:6100, rr:1, vr:70}
+],
+'books-film-media': [
+ {t:'Hawthorneland restoration screening — megathread', a:'Hawthorne63', d:'Jun 21, 2026', r:218, v:14600, rr:4, vr:220, tag:'hot', pg:9},
+ {t:'Worlds at War: Warm Front — post-release discussion (SPOILERS from post one)', a:'Kettle', d:'Jun 15, 2026', r:412, v:27300, rr:5, vr:280, pg:17},
+ {t:'A House Divided (2009) reappraisal thread, round four', a:'Toast4Breakfast', d:'Jul 2, 2026', r:187, v:9800, rr:3, vr:140},
+ {t:'New Terry Hamerkop announced for spring — cover and premise revealed', a:'TudorRosette', d:'Jul 6, 2026', r:94, v:6100, rr:2, vr:110},
+ {t:'Tenochtitlan (1968): still the strangest film the genre ever produced?', a:'umbra', d:'Jun 30, 2026', r:76, v:4400, rr:1, vr:80},
+ {t:'The Home Front (1979) appreciation: has any film out-worldbuilt it since?', a:'wxyz_1899', d:'Jun 27, 2026', r:142, v:8200, rr:2, vr:100},
+ {t:'POD archive project: scanning the letters columns, 1968\u20131985 (volunteers wanted)', a:'Mimeograph', d:'Jun 12, 2026', r:88, v:7700, rr:1, vr:80, pg:3},
+ {t:'Ranking the Worlds at War trilogy now it\u2019s complete', a:'MothballFleet', d:'Jun 22, 2026', r:203, v:11900, rr:2, vr:130, tag:'poll'},
+ {t:'Adaptation watch: is anyone ever going to film a Hamerkop novel?', a:'DecafHeretic', d:'Jun 19, 2026', r:67, v:3900, rr:1, vr:70},
+ {t:'The late-60s wave retrospective: what actually ended the first boom?', a:'QuillAndPowder', d:'Jun 16, 2026', r:119, v:6800, rr:1, vr:90},
+ {t:'Genre boundary fight, annual edition: does Ash and Stars count? (No. But argue anyway.)', a:'here_by_accident', d:'Jun 10, 2026', r:156, v:8500, rr:2, vr:100},
+ {t:function(n){return 'Hamerkop reread project: The Free States, book ' + Math.min(6, 2 + Math.floor(n/45));}, a:'LettersPage', d:'Jun 6, 2026', r:132, v:7400, rr:2, vr:90},
+ {t:'Casting the inevitable Home Front remake', a:'Toast4Breakfast', d:'Jun 3, 2026', r:97, v:5600, rr:1, vr:80},
+ {t:'Worlds at War TC series — the rumor thread', a:'Kettle', d:'May 31, 2026', r:178, v:9900, rr:2, vr:120},
+ {t:'Underrated: the 1970s wave\u2019s forgotten B-pictures', a:'LettersPage', d:'May 28, 2026', r:84, v:5100, rr:1, vr:70},
+ {t:'POD issue #1 (1968) found in an attic — scans inside', a:'Mimeograph', d:'May 25, 2026', r:211, v:13700, rr:2, vr:140},
+ {t:'Tenochtitlan restoration when? The print situation is dire', a:'umbra', d:'May 22, 2026', r:59, v:3400, rr:1, vr:60},
+ {t:'A House Divided: the Lincoln casting, sixteen years on', a:'Hawthorne63', d:'May 19, 2026', r:106, v:6200, rr:1, vr:80},
+ {t:'Books that predicted the Chinese Spring (badly)', a:'DecafHeretic', d:'May 16, 2026', r:73, v:4300, rr:1, vr:60},
+ {t:'Best genre film score', a:'NightOwl_2019', d:'May 13, 2026', r:148, v:8300, rr:1, vr:90, tag:'poll'}
+],
+'shared-worlds': [
+ {t:function(n){return 'Concert of Nations V — game thread (turn ' + (12 + Math.floor(n/7)) + ' orders due Friday)';}, a:'TreatyOfWherever', d:'Jan 20, 2026', r:2193, v:61200, rr:12, vr:350, tag:'hot', pg:88, gm:true, always:true},
+ {t:'Concert of Nations V — embassy row (diplomacy &amp; table talk)', a:'TreatyOfWherever', d:'Jan 20, 2026', r:2586, v:48700, rr:15, vr:300, pg:104, gm:true},
+ {t:function(n){return 'The Great Game, 1815 — map game, turn ' + (43 + Math.floor(n/7)) + ': the Persian question';}, a:'QuillAndPowder', d:'Sep 14, 2025', r:3264, v:72900, rr:10, vr:320, pg:131, gm:true},
+ {t:function(n){return 'Rebuild the World — post-Global War collaborative timeline, chapter ' + (7 + Math.floor(n/12));}, a:'Semaphore', d:'Mar 2, 2026', r:881, v:24500, rr:6, vr:180, pg:36, gm:'Coordinator'},
+ {t:function(n){var left = Math.max(0, 3 - Math.floor(n/4)); return 'The Powder Keg: an 1899 crisis game — ' + (left > 0 ? 'sign-ups open, ' + left + ' chancelleries left' : 'game thread, the July crisis opens');}, a:'wxyz_1899', d:'Jul 5, 2026', r:54, v:3200, rr:4, vr:110, gm:true},
+ {t:function(n){return 'Hermes Beyond — the 1980s space race that kept going (turn ' + (6 + Math.floor(n/9)) + ')';}, a:'NightOwl_2019', d:'Apr 19, 2026', r:532, v:15800, rr:5, vr:140, pg:22, gm:true},
+ {t:'Odyssey game interest check: the city of Franklin, 1500 BC (yes, ZLI is leaking again)', a:'Cartograbber', d:'Jul 7, 2026', r:41, v:2600, rr:2, vr:80},
+ {t:'Concert of Nations I\u2013IV: the archive thread (links, final maps, and how III actually ended)', a:'TreatyOfWherever', d:'Nov 8, 2024', r:127, v:19400, rr:1, vr:60},
+ {t:'What\u2019s the longest game this board ever finished? (settle a bet)', a:'Toast4Breakfast', d:'Jun 28, 2026', r:96, v:5700, rr:1, vr:70},
+ {t:'GM burnout: how do you keep a game alive past turn 20? (advice thread)', a:'Semaphore', d:'Jun 23, 2026', r:78, v:4900, rr:1, vr:60},
+ {t:'Crowns of Iberia — moved to the graveyard (sixty-day rule; GM, message us if you\u2019re back)', a:'FerdinandTheNinth', d:'Feb 9, 2026', r:614, v:17200, rr:0, vr:30, tag:'locked', gm:true, x:'iberia'},
+ {t:'Crowns of Iberia REVIVED — new GM, same save', a:'FerdinandTheNinth', d:'Jul 8, 2026', r:88, v:4100, rr:4, vr:120, gm:true, x:'iberia'},
+ {t:'Interest check: a Treaty of Geneva renegotiation game', a:'TreatyOfWherever', d:'Jul 3, 2026', r:47, v:2900, rr:2, vr:70},
+ {t:'Map game proposal: 1492 fresh start, weekly turns', a:'Cartograbber', d:'Jun 26, 2026', r:63, v:3800, rr:1, vr:60},
+ {t:'Graveyard remembrance thread: games we loved and lost', a:'Toast4Breakfast', d:'Jun 20, 2026', r:109, v:6400, rr:1, vr:70},
+ {t:'Recruiting a co-GM for Great Game 1815 — inquire within', a:'QuillAndPowder', d:'Jun 15, 2026', r:22, v:1700, rr:1, vr:40},
+ {t:function(n){return 'R&amp;R after-action report: restoring the Kingdom of Algeria, part ' + (9 + Math.floor(n/10));}, a:'GrandBanksman', d:'May 20, 2026', r:167, v:9800, rr:2, vr:100},
+ {t:'Stats systems: dice or GM fiat? (the eternal argument)', a:'GrandBanksman', d:'Jun 9, 2026', r:84, v:4600, rr:1, vr:60}
+],
+'future-history': [
+ {t:'PC: A self-sufficient Moon by 2070?', a:'DecafHeretic', d:'Jul 4, 2026', r:89, v:4700, rr:2, vr:110},
+ {t:'Lunar residency: when does the base become a town? (and the independence question nobody wants to say out loud)', a:'Porchlight', d:'Jul 1, 2026', r:164, v:8900, rr:3, vr:150, pg:3},
+ {t:'The NAU in 2126: one nation, one federation, or thirty? (round who\u2019s-even-counting)', a:'TreatyOfWherever', d:'Jun 29, 2026', r:147, v:7800, rr:2, vr:120, pg:6},
+ {t:'After Mars: Venus, the Belt, or consolidate? The eternal next-target thread', a:'wxyz_1899', d:'Jun 26, 2026', r:108, v:5600, rr:2, vr:100},
+ {t:'Machine intelligence, 2026 edition: how close is it, and does the NRC even have jurisdiction?', a:'StaticCling', d:'Jun 24, 2026', r:132, v:7100, rr:2, vr:110},
+ {t:'Climate outlook 2026\u20132100: the pace of the transition (megathread — keep it civil, mods are watching)', a:'GrandBanksman', d:'Jun 20, 2026', r:193, v:10300, rr:2, vr:130, pg:8},
+ {t:'Thirty years on: which prediction from the great 1996 predictions thread aged worst?', a:'Mimeograph', d:'Jun 18, 2026', r:176, v:9400, rr:2, vr:110, tag:'poll'},
+ {t:function(n){return 'Continental Century — a 2026\u20132126 future timeline (chapter ' + (12 + Math.floor(n/12)) + ')';}, a:'Hawthorne63', d:'Feb 14, 2026', r:362, v:18700, rr:3, vr:130, pg:15},
+ {t:'The Interlink in 2060: when the handheld in your pocket outruns the console on your desk, what\u2019s left of browsing?', a:'Toast4Breakfast', d:'Jun 15, 2026', r:84, v:4500, rr:1, vr:70},
+ {t:'What will the 2126 version of this board laugh at us for?', a:'here_by_accident', d:'Jun 12, 2026', r:118, v:6200, rr:1, vr:90},
+ {t:'Olympics on the Moon by 2100: logistics thread (yes, we\u2019re doing this seriously)', a:'Bumblefish', d:'Jun 9, 2026', r:97, v:5100, rr:1, vr:80},
+ {t:'PC: The first lunar-born human before 2040?', a:'Porchlight', d:'Jun 6, 2026', r:76, v:4100, rr:1, vr:70},
+ {t:'The 2126 NANet: what replaces the address bar?', a:'StaticCling', d:'Jun 3, 2026', r:69, v:3700, rr:1, vr:60},
+ {t:'Beyond fission: the energy mix in 2075', a:'GrandBanksman', d:'May 31, 2026', r:113, v:5900, rr:1, vr:80},
+ {t:'WI-forward: China reaches Mars first — how different is 2040?', a:'MothballFleet', d:'May 28, 2026', r:141, v:7300, rr:1, vr:90},
+ {t:'Predictions thread, 2026 edition: seal your guesses for 2056', a:'Mimeograph', d:'May 25, 2026', r:187, v:9800, rr:2, vr:110},
+ {t:'Ocean settlement: the forgotten frontier', a:'Bumblefish', d:'May 22, 2026', r:58, v:3200, rr:1, vr:50},
+ {t:'PC: A GPC seat for the Moon by 2100?', a:'TreatyOfWherever', d:'May 19, 2026', r:92, v:4800, rr:1, vr:70},
+ {t:'Demographics 2100: where does everyone live?', a:'umbra', d:'May 16, 2026', r:104, v:5400, rr:1, vr:70}
+]
+};
+
+const SH_BOARD_META = {
+ 'before-1900':      {countId:'sh-count-before1900', latestId:'sh-latest-before1900', totalBase:67533,  totalRate:15, msgBase:2700000, msgRate:900},
+ 'after-1900':       {countId:'sh-count-after1900',  latestId:'sh-latest-after1900',  totalBase:98214,  totalRate:22, msgBase:4200000, msgRate:1400},
+ 'zli':              {countId:'sh-count-zli',        latestId:'sh-latest-zli',        totalBase:50662,  totalRate:12, msgBase:2100000, msgRate:700},
+ 'maps-graphics':    {countId:'sh-count-maps',       latestId:'sh-latest-maps',       totalBase:30884,  totalRate:8,  msgBase:890000,  msgRate:300},
+ 'books-film-media': {countId:'sh-count-media',      latestId:'sh-latest-media',      totalBase:44207,  totalRate:10, msgBase:2600000, msgRate:850},
+ 'shared-worlds':    {countId:'sh-count-shared',     latestId:'sh-latest-shared',     totalBase:21406,  totalRate:5,  msgBase:6800000, msgRate:2300},
+ 'future-history':   {countId:'sh-count-future',     latestId:'sh-latest-future',     totalBase:18341,  totalRate:6,  msgBase:640000,  msgRate:200}
+};
+
+function shFmtCount(v) {
+  if (v >= 1000000) return (v / 1000000).toFixed(1) + 'M';
+  if (v >= 100000)  return Math.round(v / 1000) + 'K';
+  if (v >= 1000)    return (v / 1000).toFixed(1) + 'K';
+  return String(v);
+}
+function shFmtReplies(r) { return r.toLocaleString('en-US'); }
+
+function shTimeLabel(rank, salt) {
+  const r1 = shInt(salt, 0, 9), hh = shInt(salt + 1, 1, 11), mm = shInt(salt + 2, 0, 59);
+  const mmStr = (mm < 10 ? '0' : '') + mm;
+  if (rank === 0) return (2 + r1) + ' minutes ago';
+  if (rank === 1) return (14 + r1 * 4) + ' minutes ago';
+  if (rank === 2) return (r1 < 5 ? (48 + r1 * 2) + ' minutes ago' : '1 hour ago');
+  if (rank <= 4)  return (rank + shInt(salt, 0, 2)) + ' hours ago';
+  if (rank <= 6)  return 'Today, ' + hh + ':' + mmStr + ' a.m.';
+  if (rank <= 8)  return 'Yesterday, ' + hh + ':' + mmStr + (r1 < 5 ? ' p.m.' : ' a.m.');
+  return formatDaysAgoDate(shInt(salt, 2, 6));
+}
+
+function shLastPoster(board, salt, exclude) {
+  const regs = SH_REGULARS[board] || SH_USERS;
+  const pool = shRand(salt) < 0.7 ? regs : SH_USERS;
+  let name = pool[shInt(salt + 3, 0, pool.length - 1)];
+  if (name === exclude) name = pool[(shInt(salt + 3, 0, pool.length - 1) + 1) % pool.length];
+  return name;
+}
+
+// Daily thread selection for a board — shared by board pages and the index.
+function shSelectThreads(board, count) {
+  const pool = SH_POOLS[board];
+  if (!pool) return [];
+  const shuffled = seededShuffle(pool.slice(), SEED + 60 + board.length * 7);
+  const taken = [], groups = {};
+  for (const th of shuffled) {
+    if (th.x) { if (groups[th.x]) continue; groups[th.x] = true; }
+    taken.push(th);
+    if (taken.length >= count) break;
+  }
+  for (const th of pool) {
+    if (th.always && taken.indexOf(th) === -1) { taken[taken.length - 1] = th; }
+  }
+  return taken;
+}
+
+function shThreadComputed(board, th, rank) {
+  const salt = (board.length * 131) + (typeof th.t === 'string' ? th.t.length : 999) + th.r + rank * 17;
+  const title = typeof th.t === 'function' ? th.t(SH_DAYS) : th.t;
+  const replies = th.r + Math.round((th.rr || 1) * SH_DAYS);
+  const views = th.v + Math.round((th.vr || 50) * SH_DAYS);
+  const pages = th.pg ? Math.max(th.pg, Math.ceil(replies / 25)) : null;
+  const lastBy = th.tag === 'locked' ? 'The Moderators' : shLastPoster(board, salt, th.a);
+  const lastAt = th.tag === 'locked' ? th.d : shTimeLabel(rank, salt);
+  return { title: title, replies: replies, views: views, pages: pages, lastBy: lastBy, lastAt: lastAt, th: th };
+}
+
+function shRowHtml(board, c) {
+  const th = c.th;
+  let tags = '';
+  if (th.tag === 'hot') tags += '<span class="sh-tag sh-tag-hot">HOT</span>';
+  if (th.tag === 'poll') tags += '<span class="sh-tag sh-tag-poll">POLL</span>';
+  if (th.tag === 'locked') tags += '<span class="sh-tag sh-tag-locked">LOCKED</span>';
+  const href = th.real || '#';
+  let pagesHtml = '';
+  if (c.pages) {
+    pagesHtml = ' · pages: <a href="' + href + '">1</a> <a href="#">2</a> … <a href="#">' + c.pages + '</a>';
+  }
+  const byLabel = th.gm ? (th.gm === true ? 'GM' : th.gm) + ': ' : 'by ';
+  return '<div class="sh-thread-row">' +
+    '<div class="sh-col-main">' +
+      '<div class="sh-thread-title">' + tags + '<a href="' + href + '">' + c.title + '</a></div>' +
+      '<div class="sh-thread-meta">' + byLabel + '<a href="#">' + th.a + '</a> · ' + th.d + pagesHtml + '</div>' +
+    '</div>' +
+    '<div class="sh-col-stats">' + shFmtReplies(c.replies) + ' · ' + shFmtCount(c.views) + '</div>' +
+    '<div class="sh-col-latest"><a href="' + href + '">' + c.lastAt + '</a><br>by ' + c.lastBy + '</div>' +
+  '</div>';
+}
+
+function shAltStripe(container) {
+  const rows = container.querySelectorAll('.sh-thread-row:not(.sh-thread-sticky)');
+  rows.forEach(function(row, i) { row.classList.toggle('sh-thread-alt', i % 2 === 1); });
+}
+
+function renderSpecHistBoard(board) {
+  const container = document.querySelector('.sh-threads');
+  if (!container || !SH_POOLS[board]) return;
+  container.querySelectorAll('.sh-thread-row:not(.sh-thread-sticky)').forEach(function(r) { r.remove(); });
+  const picks = shSelectThreads(board, 12);
+  let html = '';
+  picks.forEach(function(th, i) { html += shRowHtml(board, shThreadComputed(board, th, i)); });
+  container.insertAdjacentHTML('beforeend', html);
+  shAltStripe(container);
+  const meta = SH_BOARD_META[board];
+  const showing = document.querySelector('.sh-toolbar .sh-board-footer-note');
+  if (showing && meta) {
+    const total = (meta.totalBase + meta.totalRate * SH_DAYS).toLocaleString('en-US');
+    showing.innerHTML = 'Showing threads 1–' + picks.length + ' of ' + total + ' · sorted by latest reply <em>(chronological default per NRC feed rules — <a href="#">customize</a>)</em>';
+  }
+  const viewers = document.getElementById('sh-board-viewers');
+  if (viewers) {
+    const names = seededShuffle(SH_USERS.slice(), SEED + 70 + board.length).slice(0, shInt(board.length, 3, 4));
+    viewers.textContent = 'Users viewing this board: ' + names.join(', ') + ', and ' + shInt(board.length + 5, 60, 520) + ' guests';
+  }
+}
+
+function renderSpecHistIndex() {
+  Object.keys(SH_BOARD_META).forEach(function(board) {
+    const meta = SH_BOARD_META[board];
+    const countEl = document.getElementById(meta.countId);
+    if (countEl) countEl.textContent = shFmtCount(meta.msgBase + meta.msgRate * SH_DAYS);
+    const latestEl = document.getElementById(meta.latestId);
+    if (latestEl) {
+      const top = shSelectThreads(board, 12)[0];
+      if (top) {
+        const c = shThreadComputed(board, top, 0);
+        const href = top.real ? 'thread-washington-city.html' : (SH_BOARD_META[board] ? 'board-' + board + '.html' : '#');
+        latestEl.innerHTML = 'Latest: <a href="' + (top.real || 'board-' + board + '.html') + '">' + c.title + '</a> · ' + c.lastAt + ' · ' + c.lastBy;
+      }
+    }
+  });
+  // Static-count boards not yet pooled drift gently too
+  const staticDrift = [['sh-count-finished', 9400, 3], ['sh-count-writers', 410000, 130], ['sh-count-fandom', 2900000, 950]];
+  staticDrift.forEach(function(s) {
+    const el = document.getElementById(s[0]);
+    if (el) el.textContent = shFmtCount(s[1] + s[2] * SH_DAYS);
+  });
+  // Sidebar: members online
+  const online = document.getElementById('sh-members-online');
+  if (online) {
+    const names = seededShuffle(SH_USERS.slice(), SEED + 80).slice(0, 24);
+    const parts = names.map(function(n, i) { return i % 2 === 0 ? '<a href="#">' + n + '</a>' : n; });
+    const members = 360 + shInt(90, 0, 130);
+    const guests = 2300 + shInt(91, 0, 1100);
+    online.innerHTML = parts.join(', ') + ' … <span id="sh-online-more">and ' + (280 + shInt(92, 0, 180)) + ' more</span>' +
+      '<div style="border-top: 1px dotted var(--sh-line); margin-top: 8px; padding-top: 7px;">' +
+      'Total online: <span class="sh-stat-num" id="sh-online-total">' + (members + guests).toLocaleString('en-US') + '</span><br>' +
+      '(members: <span id="sh-online-members">' + members + '</span>, guests: <span id="sh-online-guests">' + guests.toLocaleString('en-US') + '</span>)</div>';
+  }
+  // Sidebar: board statistics
+  const stats = [
+    ['sh-stat-threads', 452806, 120],
+    ['sh-stat-messages', 24833519, 3400],
+    ['sh-stat-members', 146208, 35]
+  ];
+  stats.forEach(function(s) {
+    const el = document.getElementById(s[0]);
+    if (el) el.textContent = (s[1] + s[2] * SH_DAYS + shInt(s[1] % 97, 0, 40)).toLocaleString('en-US');
+  });
+  const newest = document.getElementById('sh-stat-newest');
+  if (newest) newest.textContent = SH_NEW_MEMBERS[(SH_DAYS + shInt(99, 0, 3)) % SH_NEW_MEMBERS.length];
+}
+
+function renderSpecHistThread(id) {
+  if (id !== 'washington-city') return;
+  const pool = SH_POOLS['before-1900'];
+  const th = pool.filter(function(t) { return t.real === 'thread-washington-city.html'; })[0];
+  if (!th) return;
+  const replies = th.r + Math.round(th.rr * SH_DAYS);
+  const views = th.v + Math.round(th.vr * SH_DAYS);
+  const meta = document.querySelector('.sh-thread-head-meta');
+  if (meta) meta.textContent = 'Started by ' + th.a + ' · ' + th.d + ' · ' + replies.toLocaleString('en-US') + ' replies · ' + views.toLocaleString('en-US') + ' views';
+  const pages = Math.max(th.pg, Math.ceil(replies / 25));
+  document.querySelectorAll('.sh-pagenav').forEach(function(nav) {
+    const last = nav.querySelectorAll('a');
+    if (last.length >= 2) last[last.length - 2].textContent = pages;
+  });
+  const viewers = document.getElementById('sh-thread-viewers');
+  if (viewers) {
+    const names = seededShuffle(SH_USERS.slice(), SEED + 90).slice(0, 3);
+    viewers.textContent = 'Users viewing this thread: ' + names.join(', ') + ', and ' + shInt(31, 12, 70) + ' guests';
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DISPATCH — Layer 2 rotating feed engine
+   Institutional link-card posts auto-derived from the day's wire
+   stories (always in sync with ABN / Franklin Observer / Washington
+   House), cast reactions (reply or relay mode), and an evergreen
+   pool on a fixed-order no-repeat cycle (64 posts, 4/day, 16-day
+   full rotation). The page calls renderDispatchFeed().
+   ═══════════════════════════════════════════════════════════════ */
+
+const DP_SITE = {
+  abn: { domain: 'nan.abnnews.pr.usa', path: '/nodes/abn/', name: 'ABN News' },
+  fo:  { domain: 'nan.franklin-ob.pr.usa', path: '/nodes/franklin-observer/', name: 'The Franklin Observer' },
+  wh:  { domain: 'nan.washingtonhouse.gov.usa', path: '/nodes/washington-house/', name: 'Washington House' }
+};
+
+const DP_CAST = {
+  ABNNews:          { n: 'ABN News', v: 1, dl: 'FRANKLIN, D.W.', c: '#122b33' },
+  FranklinObserver: { n: 'The Franklin Observer', v: 1, dl: 'FRANKLIN, D.W.', c: '#2f4858' },
+  WashHouse:        { n: 'Washington House', v: 1, dl: 'FRANKLIN, D.W.', c: '#155e75' },
+  Signalworks:      { n: 'Signalworks', v: 1, dl: 'CALUMET, D.D.', c: '#0e4a5e' },
+  SecAnderson:      { n: 'Sec. Alex Anderson', v: 1, dl: 'DEPT. OF TRANSPORTATION', c: '#1f7a5c' },
+  JamesCalloway:    { n: 'James Calloway', v: 1, c: '#4a5568' },
+  ElenaABN:         { n: 'Elena Vasquez', v: 1, c: '#7a4a68' },
+  HotCornerCSN:     { n: 'Hot Corner', v: 1, c: '#a85a2a' },
+  TerryHamerkop:    { n: 'Terry Hamerkop', v: 1, c: '#5c4a32' },
+  MargauxRobins:    { n: 'Margaux Robins', v: 1, c: '#8a3a5c' },
+  AsherVale:        { n: 'Asher Vale', v: 1, c: '#3a6b8a' },
+  HarlanFerris:     { n: 'Harlan Ferris', v: 1, c: '#6b5a3a' },
+  PriyaAnand:       { n: 'Priya Anand', v: 1, c: '#9a4a8a' },
+  Jubilee:          { n: 'Jubilee', v: 1, c: '#c4903a' },
+  RachelKlein:      { n: 'Rachel Klein', v: 1, c: '#8a5aa8' },
+  JosephRedcloud:   { n: 'Joseph Redcloud', v: 1, c: '#7a3a2a' },
+  RafiMendoza:      { n: 'Rafi Mendoza', v: 1, c: '#b3452e' },
+  BigSalGreco:      { n: 'Sal Greco', v: 1, c: '#2a4a8a' },
+  KofiMensah10:     { n: 'Kofi Mensah', v: 1, c: '#2a7a4a' },
+  TaliLowak:        { n: 'Tali Lowak', v: 1, c: '#8a5a2a' },
+  ColtBriscoe:      { n: 'Colt Briscoe', v: 1, c: '#6b4a2a' },
+  GabyRoy:          { n: 'Gabrielle Roy', v: 1, c: '#3a5a9a' },
+  DomCharles:       { n: 'Dominique Charles', v: 1, c: '#5a3a8a' },
+  unionavelunch:    { n: 'Marta Kowalczyk', c: '#3d8298' },
+  thepierogiwindow: { n: 'The Pierogi Window', c: '#e8955f' },
+  calumetgrid:      { n: 'Dev Chandra', c: '#2a6a7a' },
+  lakeeffectlou:    { n: 'Lou Bertolini', c: '#5a6a72' },
+  stormwatch_dd:    { n: 'Prue Hardy', c: '#4a7a9a' },
+  senatorsseat14:   { n: 'Marcus Deene', c: '#8a2a2a' },
+  nightshiftnurse:  { n: 'Renata Ochoa', c: '#4a8a7a' },
+  papercutclerk:    { n: 'Clerk, Probably', c: '#7a7a5a' },
+  halffare:         { n: 'Sam Halvorsen', c: '#5a8a5a' },
+  brooklynabuela:   { n: 'Rosa Delgadillo', c: '#c46a9a' },
+  txhighplains:     { n: 'Wade Kessler', c: '#a8743a' },
+  continentaldrifter:{ n: 'June Park', c: '#3a8a8a' },
+  moonwatcher76:    { n: 'Theo Marsh', c: '#4a6b8a' },
+  hollow_oak:       { n: 'Helen Cho', c: '#5a7a4a' },
+  kettleboils:      { n: 'Kettle', c: '#ff7d6b' }
+};
+
+/* Reaction entry: h handle, m 'reply'|'relay', t text, img optional */
+const DP_REACTIONS = {
+'nau-consolidation-vote': [
+ { h:'JamesCalloway', m:'relay', t:'The margin is the story here. Two years ago this vote doesn\u2019t get close.' },
+ { h:'txhighplains', m:'relay', t:'A lot of us out here want to see the judiciary details before anyone celebrates. That\u2019s not obstruction, that\u2019s reading.' },
+ { h:'papercutclerk', m:'reply', t:'The briefing binder for this one is 340 pages. Sending thoughts to every staffer tonight.' }
+],
+'usrc-modernisation-bill': [
+ { h:'calumetgrid', m:'relay', t:'The rolling stock annex includes the lakefront spur. Been waiting ten years to type that sentence.', img:'stationmorning1.png' },
+ { h:'halffare', m:'reply', t:'Genuinely good news. Now hold the fare schedule steady.' }
+],
+'mars-crew-announcement': [
+ { h:'moonwatcher76', m:'relay', t:'Learn these names. Your grandkids will ask if you remember this announcement.' },
+ { h:'PriyaAnand', m:'reply', t:'The crew photo got me. What a thing to be alive for.' },
+ { h:'HotCornerCSN', m:'reply', t:'Even I\u2019m watching this one and it\u2019s not a sport.' }
+],
+'uus-space-medicine': [
+ { h:'nightshiftnurse', m:'relay', t:'This is careful, unglamorous research and it\u2019s the reason crews come home healthy. More of this.' },
+ { h:'moonwatcher76', m:'reply', t:'The bone density findings will shape the Mars rotation schedule. Underrated story today.' }
+],
+'china-cinema-spring': [
+ { h:'MargauxRobins', m:'relay', t:'The new Chinese cinema is the most vital filmmaking anywhere right now. See it in a theater if you can.' },
+ { h:'continentaldrifter', m:'reply', t:'Caught two of these in Calumet with a full house. Nobody moved.' }
+],
+'nau-qualifications-bill': [
+ { h:'JamesCalloway', m:'relay', t:'Procedural and dry, and it will matter more than most of what made headlines this month.' },
+ { h:'papercutclerk', m:'reply', t:'Week six with this bill. We\u2019ve grown close.' }
+],
+'britain-nau-trade': [
+ { h:'continentaldrifter', m:'relay', t:'Crossed that border a dozen times for work. Every form they remove is an afternoon returned.' },
+ { h:'lakeeffectlou', m:'reply', t:'If this makes coffee cheaper I\u2019ll take back some of what I\u2019ve said about trade ministers.' }
+],
+'mare-imbrium-film': [
+ { h:'HarlanFerris', m:'relay', t:'Saw it with my grandchildren. They asked if it really happened that way. Mostly, yes. That\u2019s the miracle.' },
+ { h:'TerryHamerkop', m:'relay', t:'Its best quality is restraint. The event doesn\u2019t need help being large.' },
+ { h:'AsherVale', m:'reply', t:'My father watched the landing from a couch in Dearborn. Called me after the film. Couldn\u2019t talk long.' }
+],
+'uer-media-reforms': [
+ { h:'ElenaABN', m:'relay', t:'Press freedom stories deserve sustained attention, not one cycle. We\u2019ll stay on this.' },
+ { h:'JamesCalloway', m:'reply', t:'The test isn\u2019t the announcement, it\u2019s the first critical editorial afterward.' }
+],
+'russia-duma-deadlock': [
+ { h:'JamesCalloway', m:'relay', t:'Fourth ballot, no majority. Coalition math this broken usually resolves outside the chamber, one way or another.' },
+ { h:'kettleboils', m:'reply', t:'Following this closely. Deadlocks like this are how eras end quietly.' }
+],
+'commander-black-federal-park': [
+ { h:'kettleboils', m:'relay', t:'Black got a paragraph in my school textbook. A park is permanent in a way paragraphs aren\u2019t. Glad I\u2019ll get to walk it.' },
+ { h:'hollow_oak', m:'reply', t:'Visited that land last autumn before the designation. It earns this on beauty alone.' }
+],
+'canada-pm-visit': [
+ { h:'brooklynabuela', m:'reply', t:'Tremblay seems like a serious person. We could use more of those.' },
+ { h:'papercutclerk', m:'reply', t:'Protocol office pulled off a four-flag arrival in the rain. Respect.' }
+],
+'mars-launch': [
+ { h:'moonwatcher76', m:'relay', t:'The window is open. After all these years of posting about it \u2014 the window is open.' },
+ { h:'Jubilee', m:'reply', t:'the whole city is watching one rocket together. i love us', img:'launchcrowd1.png' },
+ { h:'stormwatch_dd', m:'reply', t:'Launch corridor weather is clean through the weekend. Exhale.' }
+],
+'great-lakes-compact': [
+ { h:'hollow_oak', m:'relay', t:'Water doesn\u2019t recognize borders. Good to see the governments finally drafting like they know that.' },
+ { h:'lakeeffectlou', m:'reply', t:'Decades overdue. I\u2019ll grumble about something else this week.' },
+ { h:'stormwatch_dd', m:'reply', t:'Shared monitoring means better forecasts for forty million people. Real result.' }
+],
+'ai-regulation-bill': [
+ { h:'RachelKlein', m:'relay', t:'I wrote about this three years ago and got called dramatic. Glad the Assembly caught up.' },
+ { h:'papercutclerk', m:'reply', t:'The machine intelligence hearings are genuinely substantive. Worth watching the full sessions.' },
+ { h:'Signalworks', m:'relay', t:'Signalworks supports clear continental rules for machine intelligence. Our full position is published on our policy page.' }
+],
+'india-china-relations': [
+ { h:'continentaldrifter', m:'relay', t:'Rode the Delhi\u2013Canton line last spring. The thaw is visible at ground level in ways summits don\u2019t capture.' },
+ { h:'JamesCalloway', m:'reply', t:'Watch the shipping agreements underneath the headlines. That\u2019s where this is real or isn\u2019t.' }
+],
+'hawaii-state-dinner': [
+ { h:'brooklynabuela', m:'relay', t:'I watched the whole arrival. Say what you like, the Kingdom knows how to dress for history.' },
+ { h:'unionavelunch', m:'reply', t:'The menu is Hawaiian-Franklin fusion and I have questions I need answered by a chef immediately.' }
+],
+'texas-consolidation-friction': [
+ { h:'txhighplains', m:'relay', t:'Texas isn\u2019t stalling. Texas is asking who interprets the charter when members disagree. Somebody has to.' },
+ { h:'JamesCalloway', m:'relay', t:'Sovereignty disputes are rarely about the clause on the table. This one is about trust.' },
+ { h:'papercutclerk', m:'reply', t:'For the record, the Texian delegation is unfailingly polite. The coffee thing is real though.' }
+],
+'cuba-sugar-tariff': [
+ { h:'unionavelunch', m:'relay', t:'Every bakery on Union Avenue watches sugar tariffs the way farmers watch the sky. This matters here.' },
+ { h:'halffare', m:'reply', t:'Groceries follow this stuff six months later. Noting the date.' }
+],
+'egypt-suez-cooperation': [
+ { h:'continentaldrifter', m:'relay', t:'Transited the canal in \u201922. You don\u2019t forget the scale. Steady cooperation there steadies everything downstream.' },
+ { h:'kettleboils', m:'reply', t:'The canal has outlived every government that claimed it. Good week for continuity.' }
+],
+'labor-automation-hearings': [
+ { h:'nightshiftnurse', m:'relay', t:'Automate the paperwork before you automate a single person. Everyone on nights co-signs this.' },
+ { h:'JosephRedcloud', m:'reply', t:'My grandfather heard the same promises about different machines. Watching who gets protected this time.' },
+ { h:'RachelKlein', m:'reply', t:'Sat in on Tuesday\u2019s session. More honest than I expected.' }
+],
+'franklin-orchestra-tour': [
+ { h:'Jubilee', m:'relay', t:'the orchestra carrying Franklin\u2019s sound across the continent. proud is not a big enough word' },
+ { h:'brooklynabuela', m:'reply', t:'My niece is second violin. I will be mentioning this at every stop of the tour.' }
+],
+'fab-reauthorization': [
+ { h:'papercutclerk', m:'relay', t:'Nobody throws parades for arbitration bureaus. But this is the machinery that keeps member disputes out of the headlines.' },
+ { h:'JamesCalloway', m:'reply', t:'Quiet institutions doing their jobs is the whole story of the last eighty years.' }
+],
+'uus-great-lakes-research': [
+ { h:'stormwatch_dd', m:'relay', t:'The new buoy network means measurably better forecasts for the whole basin. Great day for the lakes.' },
+ { h:'hollow_oak', m:'reply', t:'Long-term monitoring is a gift to people who aren\u2019t born yet.' }
+],
+'british-royal-tour': [
+ { h:'brooklynabuela', m:'relay', t:'I have no time for monarchy and I watched every minute. Both things are true.' },
+ { h:'lakeeffectlou', m:'reply', t:'They\u2019re doing the lakefront Thursday. Plan your commute accordingly, I\u2019m serious.' }
+],
+'caribbean-port-modernization': [
+ { h:'continentaldrifter', m:'relay', t:'The new Matanzas terminals are genuinely impressive. The Caribbean members are building for the next fifty years.' },
+ { h:'halffare', m:'reply', t:'Port efficiency shows up in prices eventually. Rooting for the cranes.' }
+],
+'bolt-music-cultural-moment': [
+ { h:'JosephRedcloud', m:'relay', t:'Bolt was kept alive for decades by people the big stations never played. Whatever happens with this moment, remember who carried it here.' },
+ { h:'Jubilee', m:'reply', t:'everyone in the studio has been playing these records for weeks. deserved.' },
+ { h:'RachelKlein', m:'reply', t:'The songwriting on these records is just excellent. That\u2019s the whole take.' }
+],
+'mexico-economic-growth': [
+ { h:'JamesCalloway', m:'relay', t:'The underreported story of the decade: the southern members are outgrowing the north, and it\u2019s changing the Union\u2019s center of gravity.' },
+ { h:'txhighplains', m:'reply', t:'Half of Texas is built on trade south. Good numbers down there are good news up here.' }
+],
+'german-reunification-30th': [
+ { h:'kettleboils', m:'relay', t:'Thirty years. There are adults in Berlin who never knew the closed years. When history finally moves, it moves fast.' },
+ { h:'continentaldrifter', m:'reply', t:'I was there for the twentieth. The candles along Unter den Linden. I think about it still.' }
+],
+'continental-bank-rates': [
+ { h:'halffare', m:'reply', t:'Held steady. My loan and I both exhale.' },
+ { h:'JamesCalloway', m:'relay', t:'The bank held, as expected. The interesting line is in the statement\u2019s third paragraph, about wage growth.' }
+],
+'oldest-usrc-conductor': [
+ { h:'calumetgrid', m:'relay', t:'Sixty years on the same line. Name a locomotive after him while he can attend the ceremony.' },
+ { h:'brooklynabuela', m:'reply', t:'He knows every regular by name. That\u2019s the whole job, done perfectly.' },
+ { h:'SecAnderson', m:'reply', t:'Met him this spring. Asked for advice. He said: run them on time. We\u2019re trying, sir.' }
+],
+'jamaica-cultural-exchange': [
+ { h:'Jubilee', m:'relay', t:'the exchange bands are extraordinary. see every show you can get to' },
+ { h:'continentaldrifter', m:'reply', t:'Kingston direct from Calumet now. The continent keeps getting smaller in the best way.' }
+],
+'interlink-rural-access': [
+ { h:'hollow_oak', m:'relay', t:'94 percent coverage. The last six percent will be the hardest and the most worth doing.' },
+ { h:'brooklynabuela', m:'relay', t:'My sister in the valley can finally see the grandbabies\u2019 photos at home instead of the library. This is what all of it is for.' },
+ { h:'txhighplains', m:'reply', t:'The high plains waited a long time for this. Credit where due.' }
+]
+};
+
+const DP_EVERGREEN = [
+ { h:'unionavelunch', t:'The soup cart on Third finally reopened. Fall schedule, same ladle, same man, same perfect barley soup. All is right.', img:'soupcart1.png' },
+ { h:'unionavelunch', t:'Ranked every lunch counter within four blocks of the Assembly. Post coming Friday. Lawyers have been consulted.' },
+ { h:'unionavelunch', t:'A tourist asked me where the locals eat and I gave him a real answer. Growth.' },
+ { h:'unionavelunch', t:'Ate at the new place so you don\u2019t have to. You have to. It\u2019s wonderful.' },
+ { h:'thepierogiwindow', t:'Sold out by 1:40 today. We are sorry. We are also proud. Mostly sorry.' },
+ { h:'thepierogiwindow', t:'The second fryer has a name now. We will not be sharing it. Staff decision.' },
+ { h:'thepierogiwindow', t:'Reminder: we take the Continental, exact change appreciated, compliments accepted in any currency.' },
+ { h:'calumetgrid', t:'The 7:42 lakefront express has been on time eleven straight days. Somebody at dispatch is having a career month.' },
+ { h:'calumetgrid', t:'New platform signage at Calumet Union went up overnight. Legible from forty meters. This is what good looks like.', img:'platformsign1.png' },
+ { h:'calumetgrid', t:'Rode the whole Blue Line end to end today for no reason. Recommend it. You learn the city\u2019s spine.' },
+ { h:'calumetgrid', t:'Annual reminder that the transfer concourse mosaic is public art of the highest order and we walk past it like it\u2019s wallpaper.', img:'mosaic1.png' },
+ { h:'lakeeffectlou', t:'Wind off the lake today could file your taxes for you. Dress accordingly.' },
+ { h:'lakeeffectlou', t:'The good bench by the north pier is occupied by tourists again. I\u2019ll wait. I\u2019ve outlasted better.', img:'goodbench1.png' },
+ { h:'lakeeffectlou', t:'Calumet drivers saw one drop of rain and forgot collectively how roads work. Every time.' },
+ { h:'stormwatch_dd', t:'Front coming across the lake tonight. Secure the patio furniture, charge the handheld, enjoy the show.' },
+ { h:'stormwatch_dd', t:'Today\u2019s sky is doing something the textbooks call \u201cunstable\u201d and I call \u201cworth stepping outside for.\u201d', img:'lakesky1.png' },
+ { h:'stormwatch_dd', t:'Forecast verification post: I said rain by four. It rained at 3:55. I will be taking the rest of the day off.' },
+ { h:'senatorsseat14', t:'Season seat renewal came in the mail. Didn\u2019t even hesitate. This is a sickness and I am at peace with it.' },
+ { h:'senatorsseat14', t:'You can tell how the Senators are playing by how fast I walk home from the park. Tonight I strolled.' },
+ { h:'senatorsseat14', t:'Seat 14 fact: I have seen three triple plays from this chair. I have earned my opinions.', img:'seat14view1.png' },
+ { h:'RafiMendoza', t:'Early work at the park this morning. Empty stadium, coffee, ground balls. Best part of the job nobody sees.', img:'morningpark1.png' },
+ { h:'RafiMendoza', t:'Kids at the clinic today asked more questions in an hour than reporters ask all season. Better ones, too.' },
+ { h:'BigSalGreco', t:'Franklin fans booing me before I even swing now. Saves us all time. Appreciate the efficiency.' },
+ { h:'BigSalGreco', t:'I hit them far. That\u2019s the post. That\u2019s always been the post.' },
+ { h:'KofiMensah10', t:'Training done. Legs good. Weekend coming. You know where to be.' },
+ { h:'TaliLowak', t:'My grandfather taught me this game with a stick he carved himself. Every professional season, I think of that stick.' },
+ { h:'TaliLowak', t:'People ask what stickball is like at full speed. It\u2019s like nothing else. Come see for yourself, that\u2019s the whole answer.' },
+ { h:'ColtBriscoe', t:'Aroball wisdom from my first coach: the wall doesn\u2019t move, so you\u2019d better. Still true, on and off the court.' },
+ { h:'ColtBriscoe', t:'San Antonio crowd last night was the loudest building I\u2019ve played in. My ears agree this morning.' },
+ { h:'GabyRoy', t:'Montr\u00e9al in the morning, training by nine, poutine strictly hypothetical until the off-season. The discipline is real.' },
+ { h:'DomCharles', t:'Track at 6 a.m. belongs to the people who want it. Good morning to all eleven of us.' },
+ { h:'DomCharles', t:'Someone asked what I think about during the hundred. Nothing. That\u2019s years of work, thinking nothing.' },
+ { h:'nightshiftnurse', t:'3 a.m. on the ward is the quietest hour in the world and someone is always awake in it with you. That\u2019s the job.' },
+ { h:'nightshiftnurse', t:'Shoutout to whoever keeps leaving good coffee in the break room. You\u2019re saving lives one step removed.' },
+ { h:'nightshiftnurse', t:'Night shift observation: the city you see at 4 a.m. is gentler than its reputation.' },
+ { h:'nightshiftnurse', t:'Slept through two alarms and a thunderstorm. Day sleeper skills at their peak. Respect us.' },
+ { h:'papercutclerk', t:'The committee scheduled a meeting to schedule the meeting. I\u2019ve stopped fighting it. I\u2019ve started documenting it.' },
+ { h:'papercutclerk', t:'Someone returned a binder to the archive today that was checked out in 2019. No note. Legend behavior.' },
+ { h:'papercutclerk', t:'The Assembly cafeteria changed the soup rotation without a hearing. Institutional norms mean nothing anymore.' },
+ { h:'halffare', t:'Monthly pass renewed. My budget spreadsheet has a moment of silence scheduled.' },
+ { h:'halffare', t:'Library, train, lecture, train, library. The student circuit. The fare machine knows me by sound.' },
+ { h:'halffare', t:'Found a coffee place near campus that refills for a quarter-Continental. Not sharing the location. Some things are sacred.' },
+ { h:'brooklynabuela', t:'Called all three of my children today. Two answered. The third will be hearing about it.' },
+ { h:'brooklynabuela', t:'My neighbor taught me to post photos. Prepare yourselves for the garden. It is doing very well.', img:'rosasgarden1.png' },
+ { h:'brooklynabuela', t:'Advice for free: eat before you argue. Most fights are hunger wearing a costume.' },
+ { h:'continentaldrifter', t:'Member nation count: fourteen visited, three to go. The little border stamps are my proudest possession.', img:'borderstamps1.png' },
+ { h:'continentaldrifter', t:'Every city on this continent has one perfect diner and finding it is the whole point of travel.' },
+ { h:'continentaldrifter', t:'Overnight train somewhere over the plains. No feed signal for an hour. Reader, I survived, and it was lovely.' },
+ { h:'moonwatcher76', t:'Clear skies tonight. The Moon base lights are visible with decent binoculars if you know where to look. There are people up there. Never gets old.', img:'nightsky1.png' },
+ { h:'moonwatcher76', t:'Reminder that a scheduled resupply launch is still a miracle. We just got organized about miracles.' },
+ { h:'moonwatcher76', t:'Teaching my daughter the constellations. She asked which star is Mars. Soon, kid. Soon.' },
+ { h:'hollow_oak', t:'The oak in the back garden is older than the district it stands in. I just work here.' },
+ { h:'hollow_oak', t:'Planted for the fall today. Gardening is scheduling hope.' },
+ { h:'hollow_oak', t:'A hummingbird fought a bee over the salvia for ten minutes. No feed drama will top it.', img:'hummingbird1.png' },
+ { h:'kettleboils', t:'Today\u2019s a quiet anniversary of a treaty nobody remembers that shaped everything you did this morning. History\u2019s like that.' },
+ { h:'kettleboils', t:'Reading an old newspaper archive for fun. The ads are better history than the headlines.', img:'oldnews1.png' },
+ { h:'AsherVale', t:'Filming at 5 a.m. means I\u2019ve seen every sunrise this month and been awake for none of them.' },
+ { h:'HarlanFerris', t:'My grandson fixed my account settings in nine seconds. Decades of stunt work and I\u2019ve never felt older.' },
+ { h:'PriyaAnand', t:'Read a script in one sitting for the first time in a year. Won\u2019t say which. You\u2019ll know.' },
+ { h:'MargauxRobins', t:'Producing means a hundred unglamorous phone calls so one glamorous thing can exist. I love it. Ask me again Thursday.' },
+ { h:'Jubilee', t:'studio at midnight. something good is happening. that\u2019s all you get', img:'studio1.png' },
+ { h:'RachelKlein', t:'Wrote a verse today that scared me a little. Keeping it.' },
+ { h:'JosephRedcloud', t:'Sound check in an empty hall is the most honest a room ever sounds.' },
+ { h:'TerryHamerkop', t:'Research note: spent today in a regional archive reading ferry schedules from the 1880s. This is the job, and I would not trade it.' }
+];
+
+/* Fixed-order no-repeat evergreen cycle: 4/day, full pool before any repeat */
+const _DP_EG_ORDER = seededShuffle(DP_EVERGREEN.slice(), 777001);
+function dpTodaysEvergreens() {
+  const n = _DP_EG_ORDER.length, k = 4;
+  const start = ((SH_DAYS % Math.ceil(n / k)) * k) % n;
+  const out = [];
+  for (let i = 0; i < k; i++) out.push(_DP_EG_ORDER[(start + i) % n]);
+  return out;
+}
+
+function dpRand(n) {
+  const x = Math.sin(SEED * 6151 + n * 92821) * 10000;
+  return x - Math.floor(x);
+}
+function dpInt(n, min, max) { return min + Math.floor(dpRand(n) * (max - min + 1)); }
+
+function dpFmt(v) {
+  if (v >= 1000) return (v / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+  return String(v);
+}
+
+function dpTime(mins) {
+  if (mins < 60) return mins + 'm';
+  return Math.round(mins / 60) + 'h';
+}
+
+function dpEsc(s) { return s; } /* texts are trusted internal strings */
+
+function dpBase() { return (typeof getBase === 'function') ? getBase() : '/washington_burns'; }
+
+function dpAvatar(handle) {
+  const c = DP_CAST[handle] || { n: handle, c: '#155e75' };
+  const initial = c.n.charAt(0).toUpperCase();
+  return '<div class="dp-av" style="background:' + c.c + ';">' + initial + '</div>';
+}
+
+function dpWho(handle, mins) {
+  const c = DP_CAST[handle] || { n: handle };
+  let out = '<div class="dp-who"><span class="dp-dname">' + c.n + '</span>';
+  if (c.v) out += '<span class="dp-check">\u2713</span>';
+  out += '<br>';
+  if (c.dl) {
+    out += '<span class="dp-dateline">+' + handle.toUpperCase() + ' \u00b7 ' + c.dl + '</span> <span class="dp-meta">\u00b7 ' + dpTime(mins) + '</span>';
+  } else {
+    out += '<span class="dp-meta">+' + handle + ' \u00b7 ' + dpTime(mins) + '</span>';
+  }
+  return out + '</div>';
+}
+
+function dpPhoto(img) {
+  if (!img) return '';
+  const src = dpBase() + '/images/dispatch/' + img;
+  return '<div class="dp-photo"><img src="' + src + '" alt="" onerror="this.parentElement.classList.add(\'dp-photo-pending\'); this.parentElement.textContent=\'[ photo ]\';"></div>';
+}
+
+function dpActions(salt, scale) {
+  const relay = dpInt(salt, 8, 60) * scale;
+  const nod = relay * dpInt(salt + 1, 4, 9);
+  const reply = Math.max(2, Math.round(relay * 0.3));
+  return '<div class="dp-actions"><span class="dp-relay">\u21bb Relay ' + dpFmt(relay) + '</span><span class="dp-nod">Nod ' + dpFmt(nod) + '</span><span class="dp-reply">Reply ' + dpFmt(reply) + '</span></div>';
+}
+
+function dpLinkCard(hed, site) {
+  return '<a class="dp-linkcard" href="' + dpBase() + site.path + '">' +
+    '<div class="dp-linkcard-hed">' + hed + '</div>' +
+    '<div class="dp-linkcard-domain">' + site.domain + '</div></a>';
+}
+
+function dpQuoteCard(handle, hed, site) {
+  const c = DP_CAST[handle];
+  return '<a class="dp-quote" href="' + dpBase() + site.path + '">' +
+    '<div class="dp-quote-who">' + c.n + ' <span class="dp-check">\u2713</span> <span class="dp-meta">+' + handle + '</span></div>' +
+    '<div class="dp-quote-hed">' + hed + '</div>' +
+    '<div class="dp-linkcard-domain">' + site.domain + '</div></a>';
+}
+
+function dpCard(inner) { return '<div class="dp-card">' + inner + '</div>'; }
+
+function renderDispatchFeed() {
+  const feedEl = document.getElementById('dp-feed');
+  if (!feedEl || typeof WIRE_LEAD_TODAY === 'undefined') return;
+
+  const stories = [WIRE_LEAD_TODAY].concat(WIRE_SECONDARY_TODAY || []);
+  const posts = [];
+
+  /* Institutional posts, auto-derived from today's wire */
+  const lead = stories[0];
+  if (lead && lead.abn) {
+    posts.push({ mins: dpInt(1, 40, 75), html:
+      '<div class="dp-row1">' + dpAvatar('ABNNews') + dpWho('ABNNews', 0) + '</div>' +
+      '<div class="dp-text">' + (lead.abn.dek || lead.abn.hed) + '</div>' +
+      dpLinkCard(lead.abn.hed, DP_SITE.abn) + dpActions(11, 8),
+      whoMins: true, handle: 'ABNNews' });
+  }
+  if (lead && lead.wh && lead.wh.statement) {
+    posts.push({ mins: dpInt(2, 20, 38), html:
+      '<div class="dp-row1">' + dpAvatar('WashHouse') + dpWho('WashHouse', 0) + '</div>' +
+      '<div class="dp-text">' + lead.wh.statement + '</div>' +
+      dpLinkCard('Statement from the President', DP_SITE.wh) + dpActions(12, 14),
+      whoMins: true, handle: 'WashHouse' });
+  }
+  const second = stories[1];
+  if (second && second.fo) {
+    posts.push({ mins: dpInt(3, 90, 150), html:
+      '<div class="dp-row1">' + dpAvatar('FranklinObserver') + dpWho('FranklinObserver', 0) + '</div>' +
+      '<div class="dp-text">' + (second.fo.dek || second.fo.hed) + '</div>' +
+      dpLinkCard(second.fo.hed, DP_SITE.fo) + dpActions(13, 6),
+      whoMins: true, handle: 'FranklinObserver' });
+  }
+
+  /* Reactions for surfaced stories */
+  stories.forEach(function(story, si) {
+    if (!story) return;
+    const set = DP_REACTIONS[story.id];
+    if (!set) return;
+    const picks = seededShuffle(set.slice(), SEED + 30 + si).slice(0, si === 0 ? 3 : 2);
+    picks.forEach(function(r, ri) {
+      const salt = 40 + si * 10 + ri;
+      const mins = dpInt(salt, 6, 34) + si * 45;
+      let inner = '';
+      if (r.m === 'reply') {
+        inner += '<div class="dp-replyline">Replying to <span>+ABNNews</span></div>';
+      }
+      inner += '<div class="dp-row1">' + dpAvatar(r.h) + dpWho(r.h, mins) + '</div>' +
+        '<div class="dp-text">' + r.t + '</div>' + dpPhoto(r.img);
+      if (r.m === 'relay') {
+        const hed = (story.abn && story.abn.hed) || (story.fo && story.fo.hed) || '';
+        inner += dpQuoteCard('ABNNews', hed, DP_SITE.abn);
+      }
+      inner += dpActions(salt + 3, DP_CAST[r.h] && DP_CAST[r.h].v ? 5 : 1);
+      posts.push({ mins: mins, html: inner });
+    });
+  });
+
+  /* Evergreens */
+  dpTodaysEvergreens().forEach(function(eg, i) {
+    const mins = dpInt(60 + i, 150, 640);
+    posts.push({ mins: mins, html:
+      '<div class="dp-row1">' + dpAvatar(eg.h) + dpWho(eg.h, mins) + '</div>' +
+      '<div class="dp-text">' + eg.t + '</div>' + dpPhoto(eg.img) +
+      dpActions(70 + i, DP_CAST[eg.h] && DP_CAST[eg.h].v ? 4 : 1) });
+  });
+
+  /* Institutional whoMins placeholders need their real minutes injected */
+  posts.forEach(function(p) {
+    if (p.whoMins) p.html = p.html.replace('\u00b7 0m<', '\u00b7 ' + dpTime(p.mins) + '<');
+  });
+
+  posts.sort(function(a, b) { return a.mins - b.mins; });
+  feedEl.innerHTML = posts.map(function(p) { return dpCard(p.html); }).join('');
+
+  /* Trending: derive from today's stories + a seeded evergreen topic */
+  const trendEl = document.getElementById('dp-trending');
+  if (trendEl) {
+    const labels = stories.filter(Boolean).map(function(s) {
+      return s.id.split('-').map(function(w) {
+        return w.length <= 3 && w === w.toLowerCase() && ['nau','usrc','uus','uer','ai','fab'].indexOf(w) !== -1
+          ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1);
+      }).join(' ');
+    });
+    const extras = ['Senators\u2013Islanders Series', 'Union Avenue Pierogi', 'Lakefront Weather', 'New Rachel Klein', 'Blue Line On-Time Streak'];
+    labels.push(extras[SH_DAYS % extras.length]);
+    trendEl.innerHTML = labels.map(function(l, i) {
+      const ct = i === 0 ? dpInt(80 + i, 8, 16) + '.' + dpInt(85 + i, 0, 9) + 'K' : (i < 3 ? dpInt(80 + i, 2, 9) + '.' + dpInt(85 + i, 0, 9) + 'K' : dpInt(80 + i, 180, 900));
+      return '<div class="dp-trend"><span class="dp-trend-tag">' + l + '</span><br><span class="dp-trend-ct">' + ct + ' posts today</span></div>';
+    }).join('');
+  }
+}
