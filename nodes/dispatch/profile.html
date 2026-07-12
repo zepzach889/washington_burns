@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>Dispatch — Profile</title>
+<link rel="stylesheet" href="/washington_burns/shared.css">
+<link rel="stylesheet" href="/washington_burns/nodes/dispatch/dispatch.css">
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+</div>
+
+<div class="dp-page">
+
+  <div class="dp-header">
+    <div class="dp-header-inner">
+      <a class="dp-logo" href="./">dispatch<em>.</em></a>
+      <div class="dp-chip">Feed: Chronological ▾</div>
+      <div class="dp-search">Search the feeds</div>
+      <a class="dp-login" href="login.html">Log in</a>
+      <a class="dp-postbtn" href="login.html">Post</a>
+    </div>
+  </div>
+
+  <div class="dp-shell">
+    <div class="dp-cols">
+
+      <div class="dp-feed">
+        <div class="dp-profile-head" id="dp-profile-head">
+          <div class="dp-profile-loading">Loading profile…</div>
+        </div>
+        <div id="dp-feed"></div>
+        <div class="dp-profile-empty" id="dp-profile-empty" style="display:none;"></div>
+      </div>
+
+      <div class="dp-side">
+        <div class="dp-sidebox">
+          <div class="dp-sidehead">About Dispatch</div>
+          <div class="dp-about">
+            <b>Dispatch</b> is a service of Signalworks, founded in Calumet, D.D., in 2008.<br><br>
+            <a class="dp-trend-tag" href="./" style="text-decoration:none;">← Back to the feeds</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="dp-footer">
+    <div class="dp-footer-inner">Dispatch · a Signalworks service · Calumet, D.D. · est. 2008 · Terms · Verification · The Feed Rules · Signalworks Careers</div>
+  </div>
+
+</div>
+
+<script src="/washington_burns/router.js"></script>
+<script src="/washington_burns/content.js"></script>
+<script src="/washington_burns/nodes/dispatch/dispatch.js"></script>
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var handle = (params.get('handle') || '').replace(/[^A-Za-z0-9_]/g, '');
+  initAddressBar('nan.dispatch.biz.nau/+' + (handle || 'profile'));
+  dpRenderHeader();
+
+  var headEl = document.getElementById('dp-profile-head');
+  var feedEl = document.getElementById('dp-feed');
+  var emptyEl = document.getElementById('dp-profile-empty');
+
+  if (!handle) {
+    headEl.innerHTML = '<div class="dp-profile-empty">No handle specified.</div>';
+    return;
+  }
+
+  var id = dpResolveIdentity(handle, handle);
+
+  // Profile header
+  headEl.innerHTML =
+    '<div class="dp-profile-banner"></div>' +
+    '<div class="dp-profile-idrow">' +
+      '<div class="dp-profile-av" style="background:' + id.color + ';">' + id.name.charAt(0).toUpperCase() + '</div>' +
+      '<div class="dp-profile-names">' +
+        '<div class="dp-profile-name">' + id.name + (id.verified ? '<span class="dp-check">\u2713</span>' : '') + '</div>' +
+        '<div class="dp-profile-handle">+' + id.handle + (id.dl ? ' \u00b7 ' + id.dl : '') + '</div>' +
+      '</div>' +
+    '</div>';
+
+  // Cast evergreen posts (their fictional oeuvre), shown beneath any live posts
+  var castPosts = [];
+  if (id.cast && typeof DP_EVERGREEN !== 'undefined') {
+    DP_EVERGREEN.forEach(function (eg) {
+      if (eg.h.toLowerCase() === id.handle.toLowerCase()) castPosts.push(eg);
+    });
+  }
+
+  function renderCard(name, verified, dl, handleStr, color, text, img, ageLabel) {
+    return '<div class="dp-card">' +
+      '<div class="dp-row1">' +
+        '<div class="dp-av" style="background:' + color + ';">' + name.charAt(0).toUpperCase() + '</div>' +
+        '<div class="dp-who"><span class="dp-dname">' + dpTextSafe(name) + '</span>' +
+          (verified ? '<span class="dp-check">\u2713</span>' : '') + '<br>' +
+          (dl ? '<span class="dp-dateline">+' + handleStr.toUpperCase() + ' \u00b7 ' + dl + '</span>' + (ageLabel ? ' <span class="dp-meta">\u00b7 ' + ageLabel + '</span>' : '')
+              : '<span class="dp-meta">+' + handleStr + (ageLabel ? ' \u00b7 ' + ageLabel : '') + '</span>') +
+        '</div></div>' +
+      '<div class="dp-text">' + dpTextSafe(text) + '</div>' +
+      (img ? dpPhoto(img) : '') +
+      '<div class="dp-actions"><span class="dp-relay">\u21bb Relay</span><span class="dp-nod">Nod</span><span class="dp-reply">Reply</span></div>' +
+    '</div>';
+  }
+
+  function paintCast() {
+    if (!castPosts.length) return '';
+    return castPosts.map(function (eg) {
+      return renderCard(id.name, id.verified, id.dl, id.handle, id.color, eg.t, eg.img, '');
+    }).join('');
+  }
+
+  // Fetch live posts for this handle
+  fetch(DP_LIVE.URL + '?handle=' + encodeURIComponent(id.handle))
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      var live = (data && data.posts) ? data.posts : [];
+      var now = Date.now();
+      var liveHtml = live.map(function (p) {
+        var ageMin = Math.max(1, Math.round((now - p.ts) / 60000));
+        return renderCard(id.name, id.verified, id.dl, id.handle, id.color, p.text, p.img, dpAgeLabel(ageMin));
+      }).join('');
+      var castHtml = paintCast();
+      if (!liveHtml && !castHtml) {
+        feedEl.innerHTML = '';
+        emptyEl.style.display = 'block';
+        emptyEl.textContent = 'No posts yet from +' + id.handle + '.';
+      } else {
+        feedEl.innerHTML = liveHtml + castHtml;
+      }
+    })
+    .catch(function () {
+      var castHtml = paintCast();
+      feedEl.innerHTML = castHtml;
+      if (!castHtml) { emptyEl.style.display = 'block'; emptyEl.textContent = 'Could not load posts right now.'; }
+    });
+})();
+</script>
+
+</body>
+</html>
