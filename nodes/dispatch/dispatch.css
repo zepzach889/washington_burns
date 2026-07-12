@@ -392,3 +392,58 @@
   font-weight: 700;
   color: var(--dp-muted-deep);
 }
+
+/* ── THREADED REPLIES (parent post + rail + reply) ──────────── */
+
+.dp-thread {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2px;
+}
+
+.dp-thread-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 38px;
+  flex-shrink: 0;
+}
+
+.dp-av-sm {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.dp-rail-line {
+  width: 2px;
+  flex: 1;
+  min-height: 14px;
+  margin-top: 4px;
+  background: var(--dp-line);
+  border-radius: 2px;
+}
+
+.dp-thread-body {
+  min-width: 0;
+  padding-bottom: 10px;
+}
+
+.dp-thread-who {
+  font-size: 12.5px;
+  line-height: 1.3;
+}
+
+.dp-thread-who .dp-check {
+  width: 12px;
+  height: 12px;
+  font-size: 8px;
+}
+
+.dp-thread-text {
+  font-size: 13px;
+  color: var(--dp-ink);
+  line-height: 1.45;
+  margin-top: 2px;
+}
