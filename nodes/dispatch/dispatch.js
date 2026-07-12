@@ -58,10 +58,13 @@ function dpRenderHeader() {
   if (s && s.handle) {
     const id = dpResolveIdentity(s.handle, s.name);
     if (loginEl) {
+      const purl = dpBase() + '/nodes/dispatch/profile.html?handle=' + encodeURIComponent(id.handle);
       loginEl.outerHTML =
         '<div class="dp-userchip" id="dp-userchip">' +
-          '<span class="dp-userchip-av" style="background:' + id.color + ';">' + id.name.charAt(0).toUpperCase() + '</span>' +
-          '<span class="dp-userchip-handle">+' + id.handle + '</span>' +
+          '<a class="dp-userchip-link" href="' + purl + '">' +
+            '<span class="dp-userchip-av" style="background:' + id.color + ';">' + id.name.charAt(0).toUpperCase() + '</span>' +
+            '<span class="dp-userchip-handle">+' + id.handle + '</span>' +
+          '</a>' +
           '<span class="dp-userchip-logout" onclick="dpLogout()">Log out</span>' +
         '</div>';
     }
@@ -204,6 +207,11 @@ function dpDoPost() {
    live posts within the last ~18h interleave by their real age;
    older ones sort to the bottom. */
 
+function dpProfileUrlLive(handle) {
+  const base = (typeof dpBase === 'function') ? dpBase() : '/washington_burns';
+  return base + '/nodes/dispatch/profile.html?handle=' + encodeURIComponent(String(handle).replace(/[^A-Za-z0-9_]/g, ''));
+}
+
 let _dpLiveCache = null;
 
 function dpLoadLive(force) {
@@ -232,13 +240,14 @@ function dpMergeLive() {
     const card = document.createElement('div');
     card.className = 'dp-card dp-card-live';
     card.setAttribute('data-age', ageMin);
+    const purl = dpProfileUrlLive(id.handle);
     card.innerHTML =
       '<div class="dp-row1">' +
-        '<div class="dp-av" style="background:' + id.color + ';">' + id.name.charAt(0).toUpperCase() + '</div>' +
-        '<div class="dp-who"><span class="dp-dname">' + dpTextSafe(id.name) + '</span>' +
+        '<a class="dp-plink dp-av" href="' + purl + '" style="background:' + id.color + ';">' + id.name.charAt(0).toUpperCase() + '</a>' +
+        '<div class="dp-who"><a class="dp-plink dp-dname" href="' + purl + '">' + dpTextSafe(id.name) + '</a>' +
           (id.verified ? '<span class="dp-check">\u2713</span>' : '') + '<br>' +
-          (id.dl ? '<span class="dp-dateline">+' + id.handle.toUpperCase() + ' \u00b7 ' + id.dl + '</span> <span class="dp-meta">\u00b7 ' + dpAgeLabel(ageMin) + '</span>'
-                 : '<span class="dp-meta">+' + id.handle + ' \u00b7 ' + dpAgeLabel(ageMin) + '</span>') +
+          (id.dl ? '<a class="dp-plink dp-dateline" href="' + purl + '">+' + id.handle.toUpperCase() + '</a><span class="dp-dateline"> \u00b7 ' + id.dl + '</span> <span class="dp-meta">\u00b7 ' + dpAgeLabel(ageMin) + '</span>'
+                 : '<a class="dp-plink dp-meta" href="' + purl + '">+' + id.handle + '</a><span class="dp-meta"> \u00b7 ' + dpAgeLabel(ageMin) + '</span>') +
         '</div></div>' +
       '<div class="dp-text">' + dpTextSafe(p.text) + '</div>' +
       (p.img ? dpPhoto(p.img) : '') +
