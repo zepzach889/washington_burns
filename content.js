@@ -3684,21 +3684,26 @@ function dpEsc(s) { return s; } /* texts are trusted internal strings */
 
 function dpBase() { return (typeof getBase === 'function') ? getBase() : '/washington_burns'; }
 
+function dpProfileUrl(handle) {
+  return dpBase() + '/nodes/dispatch/profile.html?handle=' + encodeURIComponent(String(handle).replace(/[^A-Za-z0-9_]/g, ''));
+}
+
 function dpAvatar(handle) {
   const c = DP_CAST[handle] || { n: handle, c: '#155e75' };
   const initial = c.n.charAt(0).toUpperCase();
-  return '<div class="dp-av" style="background:' + c.c + ';">' + initial + '</div>';
+  return '<a class="dp-plink dp-av" href="' + dpProfileUrl(handle) + '" style="background:' + c.c + ';">' + initial + '</a>';
 }
 
 function dpWho(handle, mins) {
   const c = DP_CAST[handle] || { n: handle };
-  let out = '<div class="dp-who"><span class="dp-dname">' + c.n + '</span>';
+  const url = dpProfileUrl(handle);
+  let out = '<div class="dp-who"><a class="dp-plink dp-dname" href="' + url + '">' + c.n + '</a>';
   if (c.v) out += '<span class="dp-check">\u2713</span>';
   out += '<br>';
   if (c.dl) {
-    out += '<span class="dp-dateline">+' + handle.toUpperCase() + ' \u00b7 ' + c.dl + '</span> <span class="dp-meta">\u00b7 ' + dpTime(mins) + '</span>';
+    out += '<a class="dp-plink dp-dateline" href="' + url + '">+' + handle.toUpperCase() + '</a><span class="dp-dateline"> \u00b7 ' + c.dl + '</span> <span class="dp-meta">\u00b7 ' + dpTime(mins) + '</span>';
   } else {
-    out += '<span class="dp-meta">+' + handle + ' \u00b7 ' + dpTime(mins) + '</span>';
+    out += '<a class="dp-plink dp-meta" href="' + url + '">+' + handle + '</a><span class="dp-meta"> \u00b7 ' + dpTime(mins) + '</span>';
   }
   return out + '</div>';
 }
