@@ -3730,6 +3730,18 @@ function dpQuoteCard(handle, hed, site) {
     '<div class="dp-linkcard-domain">' + site.domain + '</div></a>';
 }
 
+function dpThreadParent(story) {
+  const c = DP_CAST['ABNNews'];
+  const raw = (story.abn && (story.abn.dek || story.abn.hed)) || '';
+  const t = raw.length > 170 ? raw.slice(0, 167) + '\u2026' : raw;
+  return '<div class="dp-thread">' +
+    '<div class="dp-thread-rail"><div class="dp-av dp-av-sm" style="background:' + c.c + ';">A</div><div class="dp-rail-line"></div></div>' +
+    '<div class="dp-thread-body">' +
+      '<div class="dp-thread-who"><span class="dp-dname">' + c.n + '</span><span class="dp-check">\u2713</span> <span class="dp-meta">+ABNNews</span></div>' +
+      '<div class="dp-thread-text">' + t + '</div>' +
+    '</div></div>';
+}
+
 function dpCard(inner) { return '<div class="dp-card">' + inner + '</div>'; }
 
 function renderDispatchFeed() {
@@ -3775,10 +3787,13 @@ function renderDispatchFeed() {
       const mins = dpInt(salt, 6, 34) + si * 45;
       let inner = '';
       if (r.m === 'reply') {
+        inner += dpThreadParent(story);
+      }
+      inner += '<div class="dp-row1">' + dpAvatar(r.h) + dpWho(r.h, mins) + '</div>';
+      if (r.m === 'reply') {
         inner += '<div class="dp-replyline">Replying to <span>+ABNNews</span></div>';
       }
-      inner += '<div class="dp-row1">' + dpAvatar(r.h) + dpWho(r.h, mins) + '</div>' +
-        '<div class="dp-text">' + r.t + '</div>' + dpPhoto(r.img);
+      inner += '<div class="dp-text">' + r.t + '</div>' + dpPhoto(r.img);
       if (r.m === 'relay') {
         const hed = (story.abn && story.abn.hed) || (story.fo && story.fo.hed) || '';
         inner += dpQuoteCard('ABNNews', hed, DP_SITE.abn);
