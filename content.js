@@ -3598,7 +3598,7 @@ const DP_EVERGREEN = [
  { h:'calumetgrid', t:'The 7:42 lakefront express has been on time eleven straight days. Somebody at dispatch is having a career month.' },
  { h:'calumetgrid', t:'New platform signage at Calumet Union went up overnight. Legible from forty meters. This is what good looks like.', img:'platformsign1.png' },
  { h:'calumetgrid', t:'Rode the whole Blue Line end to end today for no reason. Recommend it. You learn the city\u2019s spine.' },
- { h:'calumetgrid', t:'Annual reminder that the transfer concourse mosaic is public art of the highest order and we walk past it like it\u2019s wallpaper.', <img src="/washington_burns/images/dispatch/station-mosaic.png">' },
+ { h:'calumetgrid', t:'Annual reminder that the transfer concourse mosaic is public art of the highest order and we walk past it like it\u2019s wallpaper.',img:'mosaic1.png' },
  { h:'lakeeffectlou', t:'Wind off the lake today could file your taxes for you. Dress accordingly.' },
  { h:'lakeeffectlou', t:'The good bench by the north pier is occupied by tourists again. I\u2019ll wait. I\u2019ve outlasted better.', img:'goodbench1.png' },
  { h:'lakeeffectlou', t:'Calumet drivers saw one drop of rain and forgot collectively how roads work. Every time.' },
