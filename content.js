@@ -3842,3 +3842,560 @@ function renderDispatchFeed() {
     }).join('');
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   MOSAIC — Layer 2 engine
+   Front-grid hot-tile rotation, per-tile post pools (hot tiles get
+   hand-written pools; long-tail tiles get a template treatment),
+   wire-story echoes tying Mosaic to ABN/Observer/Dispatch, vote &
+   member drift, and a functional Ranked/Chronological toggle.
+
+   Front page calls renderMosaicGrid(); tile pages call
+   renderMosaicTile(handle). Reuses SEED, seededShuffle, SH_DAYS,
+   DP_SITE, and the WIRE_*_TODAY globals from earlier in this file.
+   ═══════════════════════════════════════════════════════════════ */
+
+function moRand(n) {
+  const x = Math.sin(SEED * 5381 + n * 88603) * 10000;
+  return x - Math.floor(x);
+}
+function moInt(n, min, max) { return min + Math.floor(moRand(n) * (max - min + 1)); }
+
+/* Full tile registry: handle -> {name, color, base members, base online,
+   category, wire[] (story ids this tile echoes)}. Colors match L1 grid. */
+const MO_REG = {
+  marsmission:   { c:'linear-gradient(140deg,#d0453a,#912c24)', s:'#912c24', m:720412, o:340, wire:['mars-launch','mars-crew-announcement','uus-space-medicine'] },
+  spaceflight:   { c:'#2c6e8f', m:970004, o:410, wire:['mars-launch','mars-crew-announcement','uus-space-medicine'] },
+  nauwatch:      { c:'#3a8a5a', m:720118, o:360, wire:['nau-consolidation-vote','nau-qualifications-bill','britain-nau-trade','texas-consolidation-friction','hawaii-state-dinner'] },
+  baseball:      { c:'#b0742a', m:680540, o:290, wire:[] },
+  todayilearned: { c:'#c89030', m:1204559, o:520, wire:[] },
+  cinema:        { c:'#8a4a9a', m:580221, o:300, wire:['china-cinema-spring','mare-imbrium-film'] },
+  uspolitics:    { c:'#4a7ab0', m:810337, o:430, wire:['ai-regulation-bill','labor-automation-hearings','fab-reauthorization','commander-black-federal-park'] },
+  food:          { c:'#2a8a8a', m:640102, o:280, wire:['cuba-sugar-tariff'] },
+  history:       { c:'#5a8a3a', m:720890, o:310, wire:['german-reunification-30th'] },
+  music:         { c:'#b04a6a', m:490233, o:240, wire:['bolt-music-cultural-moment','franklin-orchestra-tour','jamaica-cultural-exchange'] },
+  football:      { c:'#3a6a9a', m:510677, o:250, wire:[] },
+  gaming:        { c:'#8a6a3a', m:470112, o:260, wire:[] },
+  askscience:    { c:'#3a8a7a', m:550118, o:270, wire:['ai-regulation-bill','uus-space-medicine','uus-great-lakes-research'] },
+  maproom:       { c:'#5a6ab0', m:520000, o:230, wire:[] },
+  telecinema:    { c:'#7a5aa0', m:410445, o:210, wire:[] },
+  books:         { c:'#8a5a4a', m:380221, o:180, wire:[] },
+  photography:   { c:'#4a8a9a', m:360118, o:190, wire:[] },
+  franklin:      { c:'#3a6a8a', m:340667, o:170, wire:[] },
+  mosaic:        { c:'#6a6a72', m:300112, o:150, wire:[] },
+  calumet:       { c:'#4a7a7a', m:280445, o:160, wire:['great-lakes-compact','uus-great-lakes-research'] },
+  spechistory:   { c:'#7a4a6a', m:260778, o:200, wire:[] },
+  newyork:       { c:'#5a5a8a', m:260112, o:150, wire:[] },
+  california:    { c:'#b07a3a', m:250667, o:140, wire:[] },
+  mexico:        { c:'#3a8a5a', m:250221, o:150, wire:['mexico-economic-growth'] },
+  lunar:         { c:'#5a6a8a', m:380445, o:210, wire:['uus-space-medicine'] },
+  texas:         { c:'#a05a3a', m:240118, o:130, wire:['texas-consolidation-friction'] },
+  canada:        { c:'#8a3a3a', m:230667, o:140, wire:['canada-pm-visit'] },
+  boston:        { c:'#5a7a5a', m:230221, o:120, wire:[] },
+  ohio:          { c:'#6a8a4a', m:220445, o:130, wire:[] },
+  askthecontinent:{ c:'#7a6a3a', m:610112, o:280, wire:[] },
+  gardening:     { c:'#4a8a4a', m:210667, o:110, wire:[] },
+  brandt:        { c:'#8a5a3a', m:200221, o:100, wire:[] },
+  stickball:     { c:'#7a4a3a', m:190445, o:120, wire:[] },
+  rail:          { c:'#6a5a4a', m:175112, o:90, wire:['usrc-modernisation-bill','oldest-usrc-conductor'] },
+  federalparks:  { c:'#4a7a5a', m:165667, o:100, wire:['commander-black-federal-park'] },
+  aroball:       { c:'#a06a2a', m:430221, o:230, wire:[] },
+  thecaribbean:  { c:'#3a8a8a', m:140445, o:80, wire:['caribbean-port-modernization','cuba-sugar-tariff'] },
+  wbts:          { c:'#7a5a5a', m:130112, o:90, wire:[] },
+  nightsky:      { c:'#4a5a8a', m:240667, o:130, wire:[] },
+  thefreestates: { c:'#6a4a7a', m:95221, o:70, wire:[] }
+};
+
+/* Hot-tile pools: hand-written posts, daily-shuffled. Fields:
+   v base votes, t title, by handle, age hours, c base comments,
+   tag optional [class,label], sticky optional, drift votes/day. */
+
+const MO_POOLS = {
+marsmission: [
+ { v:4231, t:'Crew announcement livethread \u2014 they said the names, and I\u2019m not okay', by:'starboundphil', age:6, c:1204, tag:['mega','MEGATHREAD'], sticky:true, dr:40 },
+ { v:3102, t:'Launch window opens in under six months. Every milestone between now and ignition.', by:'deltavdan', age:9, c:487, dr:30 },
+ { v:2610, t:'The mission patch was designed by a 14-year-old from Brandt. The story behind it is wonderful.', by:'orbitalmechanic', age:12, c:213, dr:22 },
+ { v:1904, t:'Will the crew\u2019s home members become a diplomatic issue at the NAU level?', by:'redplanetreader', age:14, c:356, tag:['disc','DISCUSSION'], dr:18 },
+ { v:1421, t:'My grandmother watched the Moon landing in \u201976. Tonight she asked me to explain the Mars feed. We cried.', by:'secondgenstarwatcher', age:21, c:402, dr:16 },
+ { v:988, t:'Comparison: this mission\u2019s timeline vs. the first lunar landing, side by side.', by:'apogee', age:18, c:178, dr:12 },
+ { v:743, t:'What happens to the Hermes program after Mars? Honest question about the next twenty years.', by:'deltavdan', age:26, c:231, dr:10 },
+ { v:612, t:'The three-second comms delay is going to change how we experience the whole mission. Nobody\u2019s ready.', by:'foldedmap', age:30, c:144, dr:9 },
+ { v:507, t:'Petition to name a crater after Vera Hollis is gaining signatures. Thoughts?', by:'silvernitrate', age:34, c:198, dr:8 },
+ { v:431, t:'Unpopular opinion: the countdown coverage is too sentimental and it\u2019s burying the science.', by:'sinequanon', age:29, c:276, tag:['disc','DISCUSSION'], dr:7 },
+ { v:389, t:'Where were you when they announced the mission? Thread.', by:'barleywinter', age:40, c:512, dr:6 },
+ { v:298, t:'Steward note: keep launch-day doom out of here. Hope is the house style.', by:'apogee', age:48, c:87, sticky:true, dr:4 }
+],
+spaceflight: [
+ { v:2890, t:'Hermes program timeline, fully updated for the launch window \u2014 bookmark this', by:'deltavdan', age:8, c:341, sticky:true, dr:26 },
+ { v:2140, t:'The Moon base just passed 80 permanent residents. Quiet milestone, huge implications.', by:'apogee', age:11, c:288, dr:20 },
+ { v:1760, t:'ELI5: why the Mars window only opens every 26 months', by:'orbitalmechanic', age:15, c:167, tag:['ask','ASK'], dr:15 },
+ { v:1433, t:'China\u2019s lunar program in the 1980s deserves more credit than the histories give it.', by:'foldedmap', age:19, c:294, tag:['disc','DISCUSSION'], dr:13 },
+ { v:1102, t:'Resupply launch went off clean this morning. Never stops being a miracle.', by:'starboundphil', age:22, c:112, dr:11 },
+ { v:876, t:'The engineering behind the lunar greenhouses is genuinely underappreciated. Long post.', by:'civ_and_soil', age:28, c:143, dr:9 },
+ { v:654, t:'Where does the program go in the 2030s if Mars succeeds? Speculation thread.', by:'redplanetreader', age:33, c:221, tag:['disc','DISCUSSION'], dr:7 },
+ { v:521, t:'Old Hermes mission photography is some of the most beautiful imagery ever made. Album.', by:'silvernitrate', age:37, c:98, dr:6 },
+ { v:432, t:'The case for a permanent Mars presence, not just a mission. Hear me out.', by:'deltavdan', age:41, c:187, dr:5 },
+ { v:361, t:'Amateur tracking: you really can spot the Moon base lights with decent binoculars.', by:'barleywinter', age:45, c:76, dr:4 }
+],
+nauwatch: [
+ { v:3401, t:'Ratification tracker: where every member stands, updated daily', by:'quorumcall', age:5, c:890, sticky:true, dr:34 },
+ { v:2810, t:'The consolidation math is tighter than the headlines suggest. Breaking down the whip count.', by:'marginaliae', age:9, c:434, dr:26 },
+ { v:2201, t:'Steelman the case against deeper union. This tile leans one way and we should hear the other.', by:'pariah_caucus', age:12, c:612, tag:['disc','DISCUSSION'], dr:20 },
+ { v:1702, t:'The Council vs. Assembly power question is the whole ballgame and nobody\u2019s explaining it well. Let me try.', by:'quorumcall', age:16, c:287, dr:16 },
+ { v:1503, t:'Texas isn\u2019t bluffing about the judiciary chapter. A Texian\u2019s honest read.', by:'sinequanon', age:14, c:398, dr:14 },
+ { v:1104, t:'This tile has a strict no-brigading rule during ratification season. Steward PSA.', by:'pariah_caucus', age:20, c:76, sticky:true, dr:10 },
+ { v:894, t:'Hawaii\u2019s 1951 accession is the precedent everyone\u2019s citing wrong. Here\u2019s what actually happened.', by:'foldedmap', age:24, c:203, dr:8 },
+ { v:776, t:'If ratification fails, what does the \u201crenegotiated relationship\u201d actually look like?', by:'marginaliae', age:28, c:254, tag:['disc','DISCUSSION'], dr:7 },
+ { v:682, t:'Mapping every member\u2019s referendum date and polling, one thread.', by:'foldedmap', age:31, c:142, dr:6 },
+ { v:534, t:'The language-protection clause is the quiet reason Qu\u00e9bec-in-Canada matters here.', by:'marginal_notes', age:35, c:118, dr:5 },
+ { v:467, t:'Continental citizenship is the part nobody talks about and it\u2019s the biggest change of all.', by:'quorumcall', age:39, c:167, dr:4 },
+ { v:398, t:'Watching the Mexico campaign with genuine anxiety. The conservative opposition is running hard.', by:'barleywinter', age:43, c:203, dr:4 }
+],
+baseball: [
+ { v:2401, t:'Senators\u2013Islanders series thread \u2014 the pennant race is right here', by:'seventhinning', age:4, c:687, sticky:true, dr:24 },
+ { v:1810, t:'Mendoza is quietly having an MVP season and the national coverage is asleep on it.', by:'rbi_or_bust', age:8, c:334, dr:18 },
+ { v:1420, t:'Big Sal Greco got booed before he stepped in the box last night. He tipped his cap. Legend.', by:'pennantchase', age:11, c:221, dr:14 },
+ { v:1103, t:'The Senators\u2019 bullpen math for the final month, spreadsheet included.', by:'thehotcorner', age:14, c:156, tag:['disc','DISCUSSION'], dr:11 },
+ { v:876, t:'Seat 14 at the Franklin park has become a folk legend on the feeds and I\u2019m here for it.', by:'seventhinning', age:18, c:198, dr:9 },
+ { v:654, t:'Trade deadline retrospective: who won, who panicked.', by:'rbi_or_bust', age:22, c:143, dr:7 },
+ { v:521, t:'Defending the most hated call of the season. Yes, really. Frame by frame.', by:'thehotcorner', age:26, c:287, tag:['disc','DISCUSSION'], dr:6 },
+ { v:432, t:'The Islanders are beatable and here is the tape that proves it.', by:'pennantchase', age:30, c:176, dr:5 },
+ { v:361, t:'Minor league call-up watch: who\u2019s knocking on the door in September.', by:'rbi_or_bust', age:34, c:98, dr:4 },
+ { v:298, t:'Ballpark food power rankings, all fourteen NBA cities. Fight me.', by:'thehotcorner', age:38, c:312, dr:4 }
+],
+cinema: [
+ { v:2210, t:'The China new-wave megathread \u2014 what to see, where to see it', by:'reeltoreel', age:6, c:445, sticky:true, dr:22 },
+ { v:1780, t:'Warm Front completes the Worlds at War trilogy. Spoiler-tagged discussion inside.', by:'thirdact', age:9, c:512, dr:17 },
+ { v:1340, t:'Hawthorneland at 60: the restoration screening was a religious experience.', by:'silvernitrate', age:13, c:234, dr:13 },
+ { v:1020, t:'Unpopular: A House Divided is a better film than the genre crowd admits. Round five.', by:'thirdact', age:16, c:398, tag:['disc','DISCUSSION'], dr:10 },
+ { v:812, t:'Tenochtitlan (1968) is still the strangest thing the genre ever produced. Appreciation post.', by:'reeltoreel', age:20, c:176, dr:8 },
+ { v:643, t:'The Mare Imbrium film gets the emotional weight of the landing exactly right. No notes.', by:'secondgenstarwatcher', age:24, c:143, dr:6 },
+ { v:521, t:'Casting the inevitable Home Front remake. My dream list inside.', by:'silvernitrate', age:28, c:287, tag:['disc','DISCUSSION'], dr:5 },
+ { v:432, t:'Underrated: the 1970s B-picture wave that everyone forgets. Watchlist.', by:'reeltoreel', age:32, c:98, dr:4 },
+ { v:361, t:'The Franklin film archive is digitizing letters columns from the 60s. Treasure.', by:'foldedmap', age:36, c:76, dr:4 },
+ { v:298, t:'Will anyone ever adapt a Hamerkop novel? The eternal question.', by:'thirdact', age:40, c:154, dr:3 }
+],
+uspolitics: [
+ { v:2810, t:'The machine-intelligence hearings are the best theater in Franklin. Live thread.', by:'quorumcall', age:5, c:534, sticky:true, dr:28 },
+ { v:2140, t:'What the AI regulation bill actually does, minus the panic. Section by section.', by:'marginaliae', age:8, c:334, dr:20 },
+ { v:1680, t:'The labor-automation hearings are the real story and they\u2019re getting no coverage.', by:'pariah_caucus', age:12, c:287, dr:16 },
+ { v:1320, t:'Steelman the opposition\u2019s position on the Court jurisdiction fight. Good-faith thread.', by:'sinequanon', age:15, c:412, tag:['disc','DISCUSSION'], dr:12 },
+ { v:1010, t:'The Arbitration Bureau reauthorization matters more than its zero headlines suggest.', by:'quorumcall', age:19, c:143, dr:10 },
+ { v:812, t:'Commander Black getting a federal park is a small act of historical justice. Glad it happened.', by:'foldedmap', age:23, c:198, dr:8 },
+ { v:643, t:'How a bill actually moves through Congress, for everyone confused by the news. Explainer.', by:'marginaliae', age:27, c:167, tag:['ask','ASK'], dr:6 },
+ { v:521, t:'The federal-vs-continental jurisdiction question is going to define the decade.', by:'pariah_caucus', age:31, c:254, tag:['disc','DISCUSSION'], dr:5 },
+ { v:432, t:'Cabinet-watch: the Transportation secretary keeps quietly shipping. Credit where due.', by:'sinequanon', age:35, c:132, dr:4 },
+ { v:361, t:'Reminder to keep it civil. This tile survives on good-faith disagreement.', by:'quorumcall', age:44, c:87, sticky:true, dr:3 }
+],
+history: [
+ { v:2010, t:'TIL-adjacent: the capital moved twice before Franklin, and the second time was almost St. Louis', by:'foldedmap', age:6, c:334, sticky:true, dr:20 },
+ { v:1620, t:'German reunification at 30: the candles down Unter den Linden still get me.', by:'kettleboils', age:10, c:287, dr:15 },
+ { v:1280, t:'The Second Constitution of 1861 is the most underrated document in continental history. Essay.', by:'marginal_notes', age:14, c:198, tag:['disc','DISCUSSION'], dr:12 },
+ { v:980, t:'Reading the Treaty of Geneva\u2019s actual text is wild. It settled everything and pleased no one.', by:'quorumcall', age:18, c:143, dr:9 },
+ { v:780, t:'The Global War\u2019s eastern front gets a fraction of the attention it deserves. Long read.', by:'foldedmap', age:22, c:176, dr:7 },
+ { v:620, t:'Old newspaper archives are better history than the textbooks. The ads especially.', by:'kettleboils', age:26, c:98, dr:6 },
+ { v:510, t:'The 1814 burning: what actually happened vs. the myths that grew up around it.', by:'marginal_notes', age:30, c:221, tag:['disc','DISCUSSION'], dr:5 },
+ { v:420, t:'Franklin as a planned city: the 1817 site debate, mapped.', by:'foldedmap', age:34, c:87, dr:4 },
+ { v:360, t:'Photography thread: the oldest surviving images of the second capital.', by:'silvernitrate', age:38, c:76, dr:4 },
+ { v:290, t:'The Abernathy Marches deserve a permanent place in how we teach the 1940s.', by:'thetenthmuse', age:42, c:154, dr:3 }
+],
+food: [
+ { v:1240, t:'The eternal question: best barley soup in Franklin?', by:'the_ladle', age:6, c:398, sticky:true, dr:12 },
+ { v:847, t:'The pierogi window discourse has reached my workplace. What have we done.', by:'breadandsalt', age:10, c:221, dr:9 },
+ { v:692, t:'Regional rivalry thread: whose lakefront fish fry actually wins? (Calumet is correct.)', by:'lakeeffectlou', age:14, c:287, tag:['disc','DISCUSSION'], dr:7 },
+ { v:458, t:'Cooking with the Continental\u2019s seasonal produce \u2014 what\u2019s good right now, member by member.', by:'the_ladle', age:18, c:143, dr:5 },
+ { v:391, t:'My grandmother\u2019s recipe card just said \u201ccook until it smells right.\u201d I have never been more lost or more moved.', by:'breadandsalt', age:24, c:176, dr:4 }
+]
+};
+
+/* Template-tier tiles: each gets a small set of evergreen posts,
+   assembled from per-tile flavor lines. Handle -> array of {t, by, tag?}.
+   Votes/comments/age are generated so they feel alive without
+   hand-authoring every number. */
+
+const MO_TEMPLATE = {
+ todayilearned: [
+  { t:'TIL the second capital was almost built at St. Louis before the Franklin site won out', by:'foldedmap' },
+  { t:'TIL the Continental currency symbol predates the NAU by decades', by:'marginal_notes' },
+  { t:'TIL a single vote decided the 1861 constitutional convention\u2019s adjournment', by:'quorumcall' },
+  { t:'TIL the oldest continuously-running rail line still uses part of its original 1840s route', by:'barleywinter' },
+  { t:'TIL the Moon base grows more of its own food than most people realize', by:'civ_and_soil' },
+  { t:'TIL Vera Hollis directed her last film the year she died and nobody knew it was her', by:'silvernitrate' }
+ ],
+ music: [
+  { t:'Bolt\u2019s cultural moment is real and it was decades in the making. Appreciation thread.', by:'thetenthmuse' },
+  { t:'Jubilee live in Franklin last night. The whole city sang. I have no words.', by:'barleywinter' },
+  { t:'Rachel Klein\u2019s new one is her sharpest yet. The satire cuts deep.', by:'marginal_notes' },
+  { t:'The orchestra taking Franklin\u2019s sound on tour is a big deal. Catch a date if you can.', by:'thetenthmuse' },
+  { t:'Genre-by-genre: what everyone\u2019s actually listening to across the continent right now.', by:'reeltoreel', tag:['disc','DISCUSSION'] }
+ ],
+ gaming: [
+  { t:'Realms & Rulers patch dropped. The Algeria rework is enormous. Notes inside.', by:'foldedmap', tag:['news','NEWS'] },
+  { t:'800 hours into R&R and I just discovered a mechanic I never knew existed. Send help.', by:'barleywinter' },
+  { t:'The best grand-strategy campaigns start with a bad map and a worse idea. Share yours.', by:'marginal_notes', tag:['disc','DISCUSSION'] },
+  { t:'What R&R gets right about the treaty system that the history books gloss over.', by:'kettleboils' },
+  { t:'Local multiplayer night recommendations that aren\u2019t R&R for once.', by:'saltlick' }
+ ],
+ football: [
+  { t:'Nationals matchday thread \u2014 Mensah starting, hopes high', by:'pennantchase', tag:['mega','MATCHDAY'] },
+  { t:'Montreal\u2019s form this season is quietly terrifying. Tape thread.', by:'thehotcorner' },
+  { t:'The NAFA title race is the tightest it\u2019s been in a decade. Standings breakdown.', by:'seventhinning', tag:['disc','DISCUSSION'] },
+  { t:'Kofi Mensah\u2019s movement off the ball is criminally underrated.', by:'rbi_or_bust' },
+  { t:'Away-day guide: every NAFA ground, ranked by atmosphere.', by:'pennantchase' }
+ ],
+ aroball: [
+  { t:'Vaqueros vs. everyone \u2014 San Antonio\u2019s wall defense is unfair', by:'thehotcorner', tag:['mega','GAMEDAY'] },
+  { t:'Colt Briscoe\u2019s footwork is a masterclass. Breaking down last night.', by:'seventhinning' },
+  { t:'Aroball\u2019s Aztec-ballgame roots are the coolest origin story in sport. History thread.', by:'foldedmap', tag:['disc','DISCUSSION'] },
+  { t:'The MLA scoring records that will never be broken. Change my mind.', by:'rbi_or_bust' },
+  { t:'New fan, learning the rules. This community has been so welcoming.', by:'saltlick' }
+ ],
+ stickball: [
+  { t:'Redsticks pride thread \u2014 the season starts strong', by:'seventhinning', tag:['mega','GAMEDAY'] },
+  { t:'Tali Lowak on carrying her grandfather\u2019s carved stick every game. Beautiful interview.', by:'thetenthmuse' },
+  { t:'Stickball\u2019s indigenous heritage runs deeper than any other pro sport. Long read.', by:'foldedmap', tag:['disc','DISCUSSION'] },
+  { t:'First time at a Pushmataha home game. The speed in person is unreal.', by:'saltlick' },
+  { t:'ANSA newcomer\u2019s guide: how the game actually works.', by:'rbi_or_bust', tag:['ask','ASK'] }
+ ],
+ askscience: [
+  { t:'How do the Moon-base gardens handle low gravity? Actual botanist here to answer.', by:'civ_and_soil', tag:['ask','ASK'] },
+  { t:'The space-medicine bone-density findings, explained without the jargon.', by:'orbitalmechanic' },
+  { t:'What does \u201cmachine intelligence\u201d actually mean in the regulation debate? Real definitions.', by:'marginaliae', tag:['disc','DISCUSSION'] },
+  { t:'Great Lakes research buoys: why better freshwater data matters for everyone.', by:'saltlick' },
+  { t:'Ask me anything about atmospheric science \u2014 storm season edition.', by:'nightporter', tag:['ask','ASK'] }
+ ],
+ maproom: [
+  { t:'Hand-drawn NAU rail network, five years in the making. Feedback welcome.', by:'foldedmap', tag:['mega','SHOWCASE'] },
+  { t:'Mapping the 1859 front lines of the War Between the States, corrected for the sources.', by:'marginal_notes' },
+  { t:'Every capital the continent almost had, on one map.', by:'foldedmap', tag:['disc','DISCUSSION'] },
+  { t:'Basemap request: Ohio Valley river borders, 1840s. Anyone have a good source?', by:'saltlick', tag:['ask','ASK'] },
+  { t:'The typography of old Franklin Observer maps is a lost art. Appreciation.', by:'silvernitrate' }
+ ],
+ telecinema: [
+  { t:'The Free States adaptation rumors \u2014 what we actually know', by:'thirdact', tag:['mega','MEGATHREAD'] },
+  { t:'Best TC drama of the year, no contest. Spoiler-free case inside.', by:'reeltoreel' },
+  { t:'Why nobody makes telecinema like the 1980s anymore. Discuss.', by:'thirdact', tag:['disc','DISCUSSION'] },
+  { t:'The China new-wave is bleeding into TC and it\u2019s thrilling.', by:'reeltoreel' },
+  { t:'Comfort-watch recommendations for a long winter. Go.', by:'saltlick' }
+ ],
+ books: [
+  { t:'Hamerkop reread club: The Free States, book two. Discussion starts now.', by:'marginal_notes', tag:['mega','BOOK CLUB'] },
+  { t:'The best in-world history writing of the decade, ranked and argued.', by:'foldedmap', tag:['disc','DISCUSSION'] },
+  { t:'Found a 1968 first edition in an attic. The letters column alone is a treasure.', by:'silvernitrate' },
+  { t:'What are you reading this week? The eternal thread.', by:'the_ladle' },
+  { t:'Underrated authors the genre crowd sleeps on. Add yours.', by:'thetenthmuse' }
+ ],
+ photography: [
+  { t:'Lakefront storm rolled in last night. One shot, no edits.', by:'nightporter', tag:['mega','SHOWCASE'] },
+  { t:'The city at 4 a.m. is a different, gentler place. Series inside.', by:'nightporter' },
+  { t:'Golden hour at the Franklin rail yards. Trains and light.', by:'saltlick' },
+  { t:'Amateur astrophotography: my best Moon shot yet, gear in comments.', by:'apogee', tag:['disc','DISCUSSION'] },
+  { t:'Critique welcome: first roll on a borrowed old camera.', by:'silvernitrate' }
+ ],
+ franklin: [
+  { t:'Best barley soup in the capital? The debate that never ends.', by:'the_ladle', tag:['mega','MEGATHREAD'] },
+  { t:'The pierogi window line hit the corner today. A city landmark now, honestly.', by:'breadandsalt' },
+  { t:'New resident asking: which neighborhood actually feels like home here?', by:'saltlick', tag:['ask','ASK'] },
+  { t:'The capital\u2019s hidden staircases and river walks, mapped.', by:'foldedmap' },
+  { t:'Reminder that Franklin has the best free museums on the continent and we take them for granted.', by:'thetenthmuse' }
+ ],
+ calumet: [
+  { t:'The Blue Line\u2019s on-time streak hit eleven days. Someone at dispatch is a hero.', by:'lakeeffectlou', tag:['mega','MEGATHREAD'] },
+  { t:'Lake-effect weather appreciation (and complaint) thread.', by:'nightporter' },
+  { t:'The lakefront concourse mosaic is world-class public art. Look up sometime.', by:'silvernitrate' },
+  { t:'Calumet fish fry rankings. This will end friendships.', by:'lakeeffectlou', tag:['disc','DISCUSSION'] },
+  { t:'The D.D. is more than Signalworks and a skyline. Love letter to my city.', by:'saltlick' }
+ ],
+ spechistory: [
+  { t:'WI: the capital never burned in 1814? The classic that started it all.', by:'kettleboils', tag:['mega','MEGATHREAD'] },
+  { t:'Casual spec-history is a different joy than the serious forum. No offense to SpecHist.soc.', by:'marginal_notes', tag:['disc','DISCUSSION'] },
+  { t:'WI: California and Texas had joined the USA instead of staying independent?', by:'foldedmap' },
+  { t:'Low-effort but fun: the smallest divergence with the biggest downstream chaos.', by:'saltlick' },
+  { t:'The Free States novels basically invented this hobby\u2019s mainstream. Fight me.', by:'kettleboils' }
+ ],
+ lunar: [
+  { t:'Moon-base residency just passed 80. When does a base become a town?', by:'apogee', tag:['mega','MEGATHREAD'] },
+  { t:'The independence question nobody on the base wants to say out loud. Careful thread.', by:'redplanetreader', tag:['disc','DISCUSSION'] },
+  { t:'Life at one-sixth gravity, from someone who did a six-month rotation. AMA.', by:'civ_and_soil', tag:['ask','ASK'] },
+  { t:'The lunar greenhouses are the quiet triumph of the whole program.', by:'orbitalmechanic' },
+  { t:'Spotting the base tonight: a beginner\u2019s guide.', by:'nightporter' }
+ ],
+ nightsky: [
+  { t:'Moon-base spotting tonight \u2014 clear skies, here\u2019s where to look', by:'nightporter', tag:['mega','TONIGHT']},
+  { t:'First telescope advice thread. This community is the best for beginners.', by:'saltlick', tag:['ask','ASK'] },
+  { t:'The Mars window means the red planet is putting on a show. Observing tips.', by:'apogee' },
+  { t:'Astrophotography on a budget: proof it can be done.', by:'silvernitrate', tag:['disc','DISCUSSION'] },
+  { t:'Teaching my kid the constellations. She asked which star is Mars. Soon.', by:'secondgenstarwatcher' }
+ ],
+ uspolitics_placeholder: []
+};
+
+/* Generic filler for any registry tile without its own template block,
+   so every one of the ~39 tiles renders a coherent list. */
+function moGenericPosts(handle) {
+  const cap = handle.charAt(0).toUpperCase() + handle.slice(1);
+  return [
+    { t:'Welcome to m/' + handle + ' \u2014 introduce yourself and say what brought you here.', by:'saltlick', tag:['mega','WELCOME'] },
+    { t:'The weekly m/' + handle + ' discussion thread. Anything goes, be decent.', by:'foldedmap' },
+    { t:'What does this tile do best? Tell a newcomer what to read first.', by:'marginal_notes', tag:['ask','ASK'] },
+    { t:'Steward note: we\u2019re looking for a couple more volunteers. Message us if interested.', by:'saltlick' },
+    { t:'Appreciation thread. What do you love about this corner of Mosaic?', by:'thetenthmuse' }
+  ];
+}
+
+/* Steward lists per tile (recurring keeper class). */
+const MO_STEWARDS_DEFAULT = ['foldedmap','saltlick','thetenthmuse'];
+const MO_STEWARDS = {
+  marsmission:['deltavdan','orbitalmechanic','apogee'],
+  spaceflight:['deltavdan','apogee','civ_and_soil'],
+  nauwatch:['quorumcall','marginaliae','pariah_caucus'],
+  baseball:['seventhinning','rbi_or_bust','thehotcorner'],
+  cinema:['reeltoreel','thirdact','silvernitrate'],
+  uspolitics:['quorumcall','pariah_caucus','marginaliae'],
+  history:['foldedmap','marginal_notes','kettleboils'],
+  food:['the_ladle','breadandsalt','lakeeffectlou'],
+  lunar:['apogee','civ_and_soil','orbitalmechanic'],
+  music:['thetenthmuse','reeltoreel','barleywinter']
+};
+
+/* About + rules per tile: hot tiles get bespoke; others get a decent default. */
+const MO_ABOUT = {
+  marsmission:{ a:'Everything on the crewed Mars mission \u2014 crew, hardware, the launch window, and following the countdown together. Be kind; we\u2019re all a little overwhelmed.', r:['Stay on mission. Broader spaceflight \u2192 m/spaceflight.','No launch-day doom. Hope is allowed here.','Sources for claims. This is history.'] },
+  nauwatch:{ a:'Continental politics: the Assembly, the Council, consolidation, and the ratification question. Good-faith disagreement only.', r:['No brigading, especially in ratification season.','Steelman before you strawman.','Cite the clause. Vibes are not analysis.'] },
+  uspolitics:{ a:'US federal politics: Congress, the Washington House, the administration, and the departments. Keep it civil and sourced.', r:['Federal focus. Continental matters \u2192 m/nauwatch.','No personal attacks. Argue the policy.','Sources for factual claims.'] },
+  baseball:{ a:'The NBA, all fourteen clubs, one long pennant race. Home of the Senators\u2013Islanders wars.', r:['No spoilers in titles for same-day games.','Rivalry heat is fine. Cruelty isn\u2019t.','Tag your tape and trade rumors.'] },
+  food:{ a:'Continental cooking, regional rivalries, and the eternal pierogi discourse. Everyone eats; everyone\u2019s welcome.', r:['Recipes welcome, gatekeeping isn\u2019t.','Regional pride, not regional war.','No spam \u2014 Mosaic is non-profit.'] }
+};
+
+function moAbout(handle) {
+  if (MO_ABOUT[handle]) return MO_ABOUT[handle];
+  return { a:'A community on Mosaic, stewarded by volunteers. Part of the Tessera Collective since 2004.', r:['Be decent. This is a shared space.','Stay on topic for this tile.','No commercial spam \u2014 Mosaic is non-profit.'] };
+}
+
+/* ── WIRE ECHO ──────────────────────────────────────────────── */
+/* If the day's surfaced wire stories match a tile's beat, produce a
+   NEWS post linking to the real ABN story \u2014 the cross-node tissue. */
+
+function moWireEcho(handle) {
+  const reg = MO_REG[handle];
+  if (!reg || !reg.wire || !reg.wire.length) return null;
+  if (typeof WIRE_LEAD_TODAY === 'undefined') return null;
+  const today = [WIRE_LEAD_TODAY].concat(WIRE_SECONDARY_TODAY || []).filter(Boolean);
+  for (const story of today) {
+    if (reg.wire.indexOf(story.id) !== -1) {
+      const hed = (story.abn && story.abn.hed) || (story.fo && story.fo.hed) || '';
+      if (!hed) continue;
+      return {
+        v: moInt(handle.length + 1, 700, 1600),
+        t: hed,
+        by: 'foldedmap',
+        age: moInt(handle.length + 2, 2, 5),
+        c: moInt(handle.length + 3, 60, 240),
+        tag: ['news','NEWS'],
+        wireHref: (typeof DP_SITE !== 'undefined' ? dpBase() + DP_SITE.abn.path : '#'),
+        wireDomain: (typeof DP_SITE !== 'undefined' ? DP_SITE.abn.domain : '')
+      };
+    }
+  }
+  return null;
+}
+
+/* ── POST ASSEMBLY ──────────────────────────────────────────── */
+
+function moBuildPosts(handle) {
+  const wire = moWireEcho(handle);
+  let posts = [];
+
+  if (MO_POOLS[handle]) {
+    // hot tile: shuffle non-sticky, keep sticky pinned, apply drift
+    const pool = MO_POOLS[handle].slice();
+    const sticky = pool.filter(function(p){ return p.sticky; });
+    const rest = seededShuffle(pool.filter(function(p){ return !p.sticky; }), SEED + handle.length * 11);
+    posts = sticky.concat(rest).map(function(p){
+      return {
+        v: p.v + Math.round((p.dr || 5) * SH_DAYS),
+        t: p.t, by: p.by, tag: p.tag, sticky: p.sticky,
+        age: p.age, c: p.c + Math.round((p.dr || 5) * SH_DAYS * 0.3)
+      };
+    });
+  } else {
+    // template / generic tile
+    const tmpl = MO_TEMPLATE[handle] || moGenericPosts(handle);
+    const shuffled = seededShuffle(tmpl.slice(), SEED + handle.length * 7);
+    posts = shuffled.map(function(p, i){
+      return {
+        v: moInt(handle.length * 3 + i, 120, 900) + Math.round(4 * SH_DAYS),
+        t: p.t, by: p.by, tag: p.tag,
+        age: 4 + i * moInt(i + 1, 3, 7),
+        c: moInt(handle.length + i, 20, 260)
+      };
+    });
+  }
+
+  if (wire) posts.unshift(wire);
+  return posts;
+}
+
+/* ── RENDER: TILE PAGE ──────────────────────────────────────── */
+
+let _moCurrentPosts = null;
+let _moCurrentSort = 'ranked';
+
+function moTagHtml(tag) {
+  if (!tag) return '';
+  const cls = { mega:'mo-tag-mega', disc:'mo-tag-disc', ask:'mo-tag-ask', news:'mo-tag-news' }[tag[0]] || 'mo-tag-disc';
+  return '<span class="mo-post-tag ' + cls + '">' + tag[1] + '</span>';
+}
+function moAgeLabel(h) {
+  if (h < 1) return 'just now';
+  if (h < 24) return h + (h === 1 ? ' hour ago' : ' hours ago');
+  const d = Math.round(h / 24);
+  return d + (d === 1 ? ' day ago' : ' days ago');
+}
+function moVoteFmt(v) {
+  if (typeof v !== 'number') return v;
+  if (v >= 1000) return (v/1000).toFixed(1).replace(/\.0$/,'') + 'K';
+  return String(v);
+}
+
+function moRenderPosts() {
+  const el = document.getElementById('mo-posts');
+  if (!el || !_moCurrentPosts) return;
+  let list = _moCurrentPosts.slice();
+  if (_moCurrentSort === 'chrono') {
+    // chronological: youngest age first, but stickies still lead
+    list.sort(function(a,b){
+      if (a.sticky && !b.sticky) return -1;
+      if (b.sticky && !a.sticky) return 1;
+      return a.age - b.age;
+    });
+  }
+  el.innerHTML = list.map(function(p){
+    const hot = (typeof p.v === 'number' && p.v >= 2000) || p.sticky;
+    const meta = 'by <a href="#">+' + p.by + '</a> \u00b7 ' + moAgeLabel(p.age) + ' \u00b7 ' + p.c + ' comments' + (p.sticky ? ' \u00b7 stickied by the stewards' : '');
+    const wireCard = p.wireHref ? '<a class="mo-wire-link" href="' + p.wireHref + '">' + p.wireDomain + ' \u2192</a>' : '';
+    return '<div class="mo-post">' +
+      '<div class="mo-votes"><span class="mo-varrow mo-varrow-up">\u25B2</span>' +
+        '<span class="mo-vcount' + (hot ? ' mo-vcount-hot' : '') + '">' + moVoteFmt(p.v) + '</span>' +
+        '<span class="mo-varrow mo-varrow-down">\u25BC</span></div>' +
+      '<div class="mo-post-body">' +
+        '<div class="mo-post-title">' + moTagHtml(p.tag) + '<a href="#">' + p.t + '</a></div>' +
+        '<div class="mo-post-meta">' + meta + wireCard + '</div>' +
+      '</div></div>';
+  }).join('');
+}
+
+function moSetSort(sort) {
+  _moCurrentSort = sort;
+  const on = document.querySelector('.mo-sort-on'), off = document.querySelector('.mo-sort-off');
+  const btns = document.querySelectorAll('.mo-sort');
+  btns.forEach(function(b){
+    const isRanked = b.textContent.trim().toLowerCase() === 'ranked';
+    const active = (sort === 'ranked' && isRanked) || (sort === 'chrono' && !isRanked);
+    b.className = 'mo-sort ' + (active ? 'mo-sort-on' : 'mo-sort-off');
+  });
+  const note = document.querySelector('.mo-sortnote');
+  if (note) note.innerHTML = (sort === 'ranked' ? 'You\u2019re seeing top-voted posts' : 'You\u2019re seeing newest first') + ' \u00b7 <a href="#" onclick="moSetSort(\'' + (sort==='ranked'?'chrono':'ranked') + '\');return false;">switch</a>';
+  moRenderPosts();
+}
+
+function renderMosaicTile(handleArg) {
+  const params = new URLSearchParams(location.search);
+  const handle = (handleArg || params.get('t') || 'marsmission').replace(/[^a-z0-9]/gi, '');
+  const reg = MO_REG[handle] || { c:'#4a6a7a', s:'#4a6a7a', m:0, o:0 };
+  const about = moAbout(handle);
+  const stewards = MO_STEWARDS[handle] || MO_STEWARDS_DEFAULT;
+
+  if (typeof initAddressBar === 'function') initAddressBar('nan.mosaic.soc.usa/m/' + handle);
+  document.title = 'Mosaic \u2014 m/' + handle;
+
+  const banner = document.getElementById('mo-banner');
+  if (banner) banner.style.background = reg.c;
+  const solid = reg.s || reg.c;
+  const joinBtn = document.querySelector('.mo-join');
+  if (joinBtn) joinBtn.style.color = solid;
+
+  const crumb = document.getElementById('mo-crumb-name'); if (crumb) crumb.textContent = 'm/' + handle;
+  const title = document.getElementById('mo-title'); if (title) title.textContent = 'm/' + handle;
+  const desc = document.getElementById('mo-desc'); if (desc) desc.textContent = about.a;
+
+  const members = reg.m ? (reg.m + Math.round(reg.m * 0.00002 * SH_DAYS)).toLocaleString('en-US') : '\u2014';
+  const online = reg.o ? (reg.o + moInt(handle.length, -20, 60)) : '\u2014';
+  const stats = document.getElementById('mo-stats');
+  if (stats) stats.innerHTML = '<span>\uD83D\uDC65 ' + members + ' members</span><span>\uD83D\uDFE2 ' + online + ' online</span><span>\uD83D\uDEE1 ' + stewards.length + ' stewards</span>';
+
+  _moCurrentPosts = moBuildPosts(handle);
+  _moCurrentSort = 'ranked';
+  moRenderPosts();
+
+  const aboutEl = document.getElementById('mo-about'); if (aboutEl) aboutEl.textContent = about.a;
+  const stwEl = document.getElementById('mo-stewards');
+  if (stwEl) stwEl.innerHTML = stewards.map(function(s){ return '<div class="mo-steward"><span class="mo-steward-dot"></span>+' + s + '</div>'; }).join('');
+  const rulesEl = document.getElementById('mo-rules');
+  if (rulesEl) rulesEl.innerHTML = about.r.map(function(r,i){ return '<div class="mo-side-rule"><span class="mo-side-num">' + (i+1) + '.</span> ' + r + '</div>'; }).join('');
+
+  // wire the sort buttons
+  const btns = document.querySelectorAll('.mo-sort');
+  btns.forEach(function(b){
+    b.onclick = function(){ moSetSort(b.textContent.trim().toLowerCase() === 'ranked' ? 'ranked' : 'chrono'); };
+  });
+}
+
+/* ── RENDER: FRONT GRID (hot rotation + drift) ──────────────── */
+
+const MO_HOT_CANDIDATES = ['marsmission','spaceflight','nauwatch','baseball','cinema','uspolitics','history','food','music','lunar','todayilearned','aroball'];
+
+function renderMosaicGrid() {
+  const grid = document.getElementById('mo-grid');
+  if (!grid) return;
+
+  // choose today's hot tile (the 2x2). Rotate through candidates by day.
+  const hotOrder = seededShuffle(MO_HOT_CANDIDATES.slice(), SEED + 5);
+  const hotHandle = hotOrder[0];
+
+  // update member counts on every tile via drift
+  grid.querySelectorAll('.mo-tile').forEach(function(tileEl){
+    const href = tileEl.getAttribute('href') || '';
+    const m = href.match(/t=([a-z0-9]+)/);
+    if (!m) return;
+    const h = m[1];
+    const reg = MO_REG[h];
+    if (reg && reg.m) {
+      const drifted = reg.m + Math.round(reg.m * 0.00002 * SH_DAYS);
+      const metaEl = tileEl.querySelector('.mo-tile-meta');
+      if (metaEl) metaEl.textContent = moVoteFmt(drifted).replace('K',(drifted>=1000000?'M':'K')) + ' members';
+      // give the big drifted number a cleaner format:
+      if (metaEl) metaEl.textContent = (drifted >= 1000000 ? (drifted/1000000).toFixed(1)+'M' : Math.round(drifted/1000)+'K') + ' members';
+    }
+  });
+
+  // if today's hot tile isn't already the enlarged one, swap the classes
+  const currentHot = grid.querySelector('.mo-tile-hot');
+  const targetHot = grid.querySelector('.mo-tile[href*="t=' + hotHandle + '"]');
+  if (currentHot && targetHot && currentHot !== targetHot) {
+    // demote current, promote target: move target to front and restyle
+    const reg = MO_REG[hotHandle];
+    const about = moAbout(hotHandle);
+    // build hot inner
+    targetHot.classList.add('mo-tile-hot');
+    targetHot.style.background = reg.c;
+    const drifted = reg.m + Math.round(reg.m * 0.00002 * SH_DAYS);
+    const memLabel = (drifted >= 1000000 ? (drifted/1000000).toFixed(1)+'M' : Math.round(drifted/1000)+'K');
+    targetHot.innerHTML =
+      '<div><div class="mo-hot-kicker">\uD83D\uDD25 HOT TODAY</div>' +
+      '<div class="mo-hot-name">m/' + hotHandle + '</div>' +
+      '<div class="mo-hot-desc">' + about.a + '</div></div>' +
+      '<div class="mo-hot-foot">' + memLabel + ' members \u00b7 ' + (reg.o + moInt(hotHandle.length,0,40)) + ' online</div>';
+    // demote the previously-hot tile to a normal tile
+    currentHot.classList.remove('mo-tile-hot');
+    const oldHandle = (currentHot.getAttribute('href')||'').match(/t=([a-z0-9]+)/);
+    if (oldHandle) {
+      const oh = oldHandle[1], oreg = MO_REG[oh] || {c:'#4a6a7a',m:0};
+      currentHot.style.background = oreg.c;
+      const od = oreg.m ? (oreg.m >= 1000000 ? (oreg.m/1000000).toFixed(1)+'M' : Math.round(oreg.m/1000)+'K') : '\u2014';
+      currentHot.innerHTML = '<div><div class="mo-tile-name">m/' + oh + '</div><div class="mo-tile-meta">' + od + ' members</div><div class="mo-tile-top"></div></div>';
+    }
+    // move target to be the first grid child so the 2x2 sits top-left
+    grid.insertBefore(targetHot, grid.firstChild);
+  }
+}
