@@ -258,6 +258,7 @@ const ROUTES = {
   // Dispatch — Premier Intercon Node
   // ════════════════════════════════════════════════════════
   'nan.dispatch.biz.nau':                                    '/nodes/dispatch/',
+  'nan.mosaic.soc.usa':                       '/nodes/mosaic/',
 
   // ════════════════════════════════════════════════════════
   // DIV814 (reference / out-of-universe)
