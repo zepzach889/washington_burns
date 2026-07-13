@@ -355,7 +355,7 @@ const BOOKMARKS = [
   { icon: '🌲', label: 'Federal Parks',     path: '/nodes/fps/' },
   { icon: '📜', label: 'SpecHist',          path: '/nodes/spechist/' },
   { icon: '📨', label: 'Dispatch',          path: '/nodes/dispatch/' },  
-  // { icon: '🧩', label: 'Mosaic',            path: '/nodes/mosaic/' },     // uncomment when the node ships
+  { icon: '🧩', label: 'Mosaic',            path: '/nodes/mosaic/' },    
 ];
 
 function renderBookmarks() {
