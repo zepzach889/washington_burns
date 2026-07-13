@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>Mosaic — A community of the Tessera Collective</title>
+<link rel="stylesheet" href="/washington_burns/shared.css">
+<link rel="stylesheet" href="/washington_burns/nodes/mosaic/mosaic.css">
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+</div>
+
+<div class="mo-page">
+
+  <div class="mo-header">
+    <div class="mo-header-inner">
+      <a class="mo-logo" href="./"><span class="mo-logo-mark">◧</span> Mosaic</a>
+      <div class="mo-search">Search tiles and posts</div>
+      <div class="mo-sort-global">Ranked ▾</div>
+      <a class="mo-login" href="login.html">Log in</a>
+    </div>
+  </div>
+
+  <div class="mo-shell">
+    <div class="mo-grid" id="mo-grid">
+
+      <a class="mo-tile mo-tile-hot" href="tile.html?t=marsmission" style="background:linear-gradient(140deg,#d0453a,#912c24);">
+        <div>
+          <div class="mo-hot-kicker">🔥 HOT TODAY</div>
+          <div class="mo-hot-name">m/marsmission</div>
+          <div class="mo-hot-desc">The crewed Mars mission — crew, launch window, and following the countdown together.</div>
+        </div>
+        <div class="mo-hot-foot">720K members · 340 online</div>
+      </a>
+
+      <a class="mo-tile" href="tile.html?t=spaceflight" style="background:#2c6e8f;"><div><div class="mo-tile-name">m/spaceflight</div><div class="mo-tile-meta">970K members</div><div class="mo-tile-top">"Hermes program timeline, updated"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=nauwatch" style="background:#3a8a5a;"><div><div class="mo-tile-name">m/nauwatch</div><div class="mo-tile-meta">720K members</div><div class="mo-tile-top">"Ratification math thread"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=baseball" style="background:#b0742a;"><div><div class="mo-tile-name">m/baseball</div><div class="mo-tile-meta">680K members</div><div class="mo-tile-top">"Senators–Islanders series"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=todayilearned" style="background:#c89030;"><div><div class="mo-tile-name">m/todayilearned</div><div class="mo-tile-meta">1.2M members</div><div class="mo-tile-top">"TIL the capital moved twice"</div></div></a>
+
+      <a class="mo-tile" href="tile.html?t=cinema" style="background:#8a4a9a;"><div><div class="mo-tile-name">m/cinema</div><div class="mo-tile-meta">580K members</div><div class="mo-tile-top">"China new-wave megathread"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=uspolitics" style="background:#4a7ab0;"><div><div class="mo-tile-name">m/uspolitics</div><div class="mo-tile-meta">810K members</div><div class="mo-tile-top">"Congress floor-watch"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=food" style="background:#2a8a8a;"><div><div class="mo-tile-name">m/food</div><div class="mo-tile-meta">640K members</div><div class="mo-tile-top">"The pierogi discourse continues"</div></div></a>
+
+      <a class="mo-tile" href="tile.html?t=history" style="background:#5a8a3a;"><div><div class="mo-tile-name">m/history</div><div class="mo-tile-meta">720K members</div><div class="mo-tile-top">"On the second capital's founding"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=music" style="background:#b04a6a;"><div><div class="mo-tile-name">m/music</div><div class="mo-tile-meta">490K members</div><div class="mo-tile-top">"Bolt's cultural moment"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=football" style="background:#3a6a9a;"><div><div class="mo-tile-name">m/football</div><div class="mo-tile-meta">510K members</div><div class="mo-tile-top">"Nationals matchday thread"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=gaming" style="background:#8a6a3a;"><div><div class="mo-tile-name">m/gaming</div><div class="mo-tile-meta">470K members</div><div class="mo-tile-top">"Realms & Rulers patch notes"</div></div></a>
+
+      <a class="mo-tile" href="tile.html?t=askscience" style="background:#3a8a7a;"><div><div class="mo-tile-name">m/askscience</div><div class="mo-tile-meta">550K members</div><div class="mo-tile-top">"How do the Moon-base gardens work?"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=maproom" style="background:#5a6ab0;"><div><div class="mo-tile-name">m/maproom</div><div class="mo-tile-meta">520K members</div><div class="mo-tile-top">"NAU rail network, hand-drawn"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=telecinema" style="background:#7a5aa0;"><div><div class="mo-tile-name">m/telecinema</div><div class="mo-tile-meta">410K members</div><div class="mo-tile-top">"The Free States adaptation rumors"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=books" style="background:#8a5a4a;"><div><div class="mo-tile-name">m/books</div><div class="mo-tile-meta">380K members</div><div class="mo-tile-top">"Hamerkop reread club"</div></div></a>
+
+      <a class="mo-tile" href="tile.html?t=photography" style="background:#4a8a9a;"><div><div class="mo-tile-name">m/photography</div><div class="mo-tile-meta">360K members</div><div class="mo-tile-top">"Lakefront storm, last night"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=franklin" style="background:#3a6a8a;"><div><div class="mo-tile-name">m/franklin</div><div class="mo-tile-meta">340K members</div><div class="mo-tile-top">"Best barley soup in the capital?"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=mosaic" style="background:#6a6a72;"><div><div class="mo-tile-name">m/mosaic</div><div class="mo-tile-meta">300K members</div><div class="mo-tile-top">"Steward elections open"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=calumet" style="background:#4a7a7a;"><div><div class="mo-tile-name">m/calumet</div><div class="mo-tile-meta">280K members</div><div class="mo-tile-top">"Blue Line on-time streak"</div></div></a>
+
+      <a class="mo-tile" href="tile.html?t=spechistory" style="background:#7a4a6a;"><div><div class="mo-tile-name">m/spechistory</div><div class="mo-tile-meta">260K members</div><div class="mo-tile-top">"WI: the capital never burned?"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=newyork" style="background:#5a5a8a;"><div><div class="mo-tile-name">m/newyork</div><div class="mo-tile-meta">260K members</div><div class="mo-tile-top">"The eastern hub weekly"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=california" style="background:#b07a3a;"><div><div class="mo-tile-name">m/california</div><div class="mo-tile-meta">250K members</div><div class="mo-tile-top">"West coast check-in"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=mexico" style="background:#3a8a5a;"><div><div class="mo-tile-name">m/mexico</div><div class="mo-tile-meta">250K members</div><div class="mo-tile-top">"The growth story, ground level"</div></div></a>
+
+      <a class="mo-tile" href="tile.html?t=lunar" style="background:#5a6a8a;"><div><div class="mo-tile-name">m/lunar</div><div class="mo-tile-meta">380K members</div><div class="mo-tile-top">"Moon-base residency at 80"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=texas" style="background:#a05a3a;"><div><div class="mo-tile-name">m/texas</div><div class="mo-tile-meta">240K members</div><div class="mo-tile-top">"Consolidation, read the charter"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=canada" style="background:#8a3a3a;"><div><div class="mo-tile-name">m/canada</div><div class="mo-tile-meta">230K members</div><div class="mo-tile-top">"From coast to coast to coast"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=boston" style="background:#5a7a5a;"><div><div class="mo-tile-name">m/boston</div><div class="mo-tile-meta">230K members</div><div class="mo-tile-top">"The old city, new rail"</div></div></a>
+
+      <a class="mo-tile" href="tile.html?t=ohio" style="background:#6a8a4a;"><div><div class="mo-tile-name">m/ohio</div><div class="mo-tile-meta">220K members</div><div class="mo-tile-top">"The valley heartland"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=askthecontinent" style="background:#7a6a3a;"><div><div class="mo-tile-name">m/askthecontinent</div><div class="mo-tile-meta">610K members</div><div class="mo-tile-top">"Explain your member nation"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=gardening" style="background:#4a8a4a;"><div><div class="mo-tile-name">m/gardening</div><div class="mo-tile-meta">210K members</div><div class="mo-tile-top">"Fall planting, zone by zone"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=brandt" style="background:#8a5a3a;"><div><div class="mo-tile-name">m/brandt</div><div class="mo-tile-meta">200K members</div><div class="mo-tile-top">"Mountain-west state pride"</div></div></a>
+
+      <a class="mo-tile" href="tile.html?t=stickball" style="background:#7a4a3a;"><div><div class="mo-tile-name">m/stickball</div><div class="mo-tile-meta">190K members</div><div class="mo-tile-top">"Redsticks pride thread"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=rail" style="background:#6a5a4a;"><div><div class="mo-tile-name">m/rail</div><div class="mo-tile-meta">175K members</div><div class="mo-tile-top">"USRC modernization watch"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=federalparks" style="background:#4a7a5a;"><div><div class="mo-tile-name">m/federalparks</div><div class="mo-tile-meta">165K members</div><div class="mo-tile-top">"Commander Black park trip reports"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=aroball" style="background:#a06a2a;"><div><div class="mo-tile-name">m/aroball</div><div class="mo-tile-meta">430K members</div><div class="mo-tile-top">"Vaqueros vs. everyone"</div></div></a>
+
+      <a class="mo-tile" href="tile.html?t=thecaribbean" style="background:#3a8a8a;"><div><div class="mo-tile-name">m/thecaribbean</div><div class="mo-tile-meta">140K members</div><div class="mo-tile-top">"Matanzas port modernization"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=wbts" style="background:#7a5a5a;"><div><div class="mo-tile-name">m/wbts</div><div class="mo-tile-meta">130K members</div><div class="mo-tile-top">"The 1850s, endlessly"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=nightsky" style="background:#4a5a8a;"><div><div class="mo-tile-name">m/nightsky</div><div class="mo-tile-meta">240K members</div><div class="mo-tile-top">"Moon-base spotting tonight"</div></div></a>
+      <a class="mo-tile" href="tile.html?t=thefreestates" style="background:#6a4a7a;"><div><div class="mo-tile-name">m/thefreestates</div><div class="mo-tile-meta">95K members</div><div class="mo-tile-top">"Hamerkop's stalemate, discussed"</div></div></a>
+
+    </div>
+  </div>
+
+  <div class="mo-footer">
+    <div class="mo-footer-inner">Mosaic · a community of the Tessera Collective · est. 2004 · stewarded by volunteers · About · The Collective · Tile Guidelines · link://nan.mosaic.soc.usa</div>
+  </div>
+
+</div>
+
+<script src="/washington_burns/router.js"></script>
+<script src="/washington_burns/content.js"></script>
+<script>
+initAddressBar('nan.mosaic.soc.usa');
+</script>
+
+</body>
+</html>

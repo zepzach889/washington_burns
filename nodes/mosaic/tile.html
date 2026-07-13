@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>Mosaic — Tile</title>
+<link rel="stylesheet" href="/washington_burns/shared.css">
+<link rel="stylesheet" href="/washington_burns/nodes/mosaic/mosaic.css">
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+</div>
+
+<div class="mo-page">
+
+  <div class="mo-header">
+    <div class="mo-header-inner">
+      <a class="mo-logo" href="./"><span class="mo-logo-mark">◧</span> Mosaic</a>
+      <div class="mo-search">Search tiles and posts</div>
+      <div class="mo-sort-global">Ranked ▾</div>
+      <a class="mo-login" href="login.html">Log in</a>
+    </div>
+  </div>
+
+  <div class="mo-shell">
+    <div class="mo-banner" id="mo-banner">
+      <div class="mo-crumb"><a href="./">Mosaic</a> › <span id="mo-crumb-name">m/…</span></div>
+      <div class="mo-title" id="mo-title">m/…</div>
+      <div class="mo-desc" id="mo-desc"></div>
+      <div class="mo-stats" id="mo-stats"></div>
+      <button class="mo-join">Join</button>
+    </div>
+
+    <div class="mo-body">
+      <div class="mo-main">
+        <div class="mo-sortbar">
+          <button class="mo-sort mo-sort-on">Ranked</button>
+          <button class="mo-sort mo-sort-off">Chronological</button>
+          <span class="mo-sortnote">You're seeing top-voted posts · <a href="#">switch default</a></span>
+        </div>
+        <div id="mo-posts"></div>
+      </div>
+
+      <div class="mo-side">
+        <div class="mo-side-box">
+          <div class="mo-side-head">About this tile</div>
+          <div class="mo-side-text" id="mo-about"></div>
+        </div>
+        <div class="mo-side-box">
+          <div class="mo-side-head">Stewards</div>
+          <div id="mo-stewards"></div>
+          <div class="mo-side-text" style="margin-top:6px;">Volunteer stewards keep this tile tidy. Message them with issues.</div>
+        </div>
+        <div class="mo-side-box">
+          <div class="mo-side-head">Tile rules</div>
+          <div id="mo-rules"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mo-footer">
+    <div class="mo-footer-inner">Mosaic · a community of the Tessera Collective · est. 2004 · stewarded by volunteers · link://nan.mosaic.soc.usa</div>
+  </div>
+
+</div>
+
+<script src="/washington_burns/router.js"></script>
+<script src="/washington_burns/content.js"></script>
+<script>
+/* ── Layer 1 tile data ──────────────────────────────────────────
+   Minimal per-tile map so every tile renders correctly on its own.
+   Layer 2 will replace the post lists with rotating generated
+   content; this shell provides banner colour, description, stats,
+   stewards, rules, and a representative set of posts. ──────────── */
+
+const MO_TILES = {
+  marsmission: { name:'m/marsmission', color:'linear-gradient(140deg,#d0453a,#912c24)', solid:'#912c24',
+    desc:'The crewed Mars mission — crew, launch window, and following the countdown together.',
+    members:'720,412', online:'340', stewards:['+deltavdan','+orbitalmechanic','+apogee'],
+    about:'Everything on the crewed Mars mission — crew, hardware, the launch window, and following the countdown together. Be kind; we\u2019re all a little overwhelmed.',
+    rules:['Stay on mission. Broader spaceflight \u2192 m/spaceflight.','No launch-day doom. Hope is allowed here.','Sources for claims. This is history.'],
+    posts:[
+      { v:'4.2K', hot:true, tag:['mega','MEGATHREAD'], t:'Crew announcement livethread — they said the names, and I\u2019m not okay', by:'+starboundphil', age:'6 hours ago', c:'1,204' },
+      { v:'3.1K', t:'Launch window opens in under six months. Here\u2019s every milestone between now and ignition.', by:'+deltavdan', age:'9 hours ago', c:'487' },
+      { v:'2.6K', t:'The mission patch was designed by a 14-year-old from Brandt. The story behind it is wonderful.', by:'+orbitalmechanic', age:'12 hours ago', c:'213' },
+      { v:'1.9K', tag:['disc','DISCUSSION'], t:'Will the Mars crew\u2019s home members become a diplomatic issue at the NAU level?', by:'+redplanetreader', age:'14 hours ago', c:'356' },
+      { v:'1.4K', t:'Comparison: this mission\u2019s timeline vs. the first lunar landing, side by side', by:'+apogee', age:'18 hours ago', c:'178' },
+      { v:'988', t:'My grandmother watched the Moon landing in \u201976. Tonight she asked me to explain the Mars feed. We cried.', by:'+secondgenstarwatcher', age:'21 hours ago', c:'402' }
+    ]
+  }
+};
+
+/* Generic fallback for tiles without a full data entry yet (Layer 1).
+   Produces a coherent page from the handle + a colour + generic posts. */
+const MO_FALLBACK_COLORS = {
+  spaceflight:'#2c6e8f', nauwatch:'#3a8a5a', baseball:'#b0742a', todayilearned:'#c89030',
+  cinema:'#8a4a9a', uspolitics:'#4a7ab0', food:'#2a8a8a', history:'#5a8a3a', music:'#b04a6a',
+  football:'#3a6a9a', gaming:'#8a6a3a', askscience:'#3a8a7a', maproom:'#5a6ab0', telecinema:'#7a5aa0',
+  books:'#8a5a4a', photography:'#4a8a9a', franklin:'#3a6a8a', mosaic:'#6a6a72', calumet:'#4a7a7a',
+  spechistory:'#7a4a6a', newyork:'#5a5a8a', california:'#b07a3a', mexico:'#3a8a5a', lunar:'#5a6a8a',
+  texas:'#a05a3a', canada:'#8a3a3a', boston:'#5a7a5a', ohio:'#6a8a4a', askthecontinent:'#7a6a3a',
+  gardening:'#4a8a4a', brandt:'#8a5a3a', stickball:'#7a4a3a', rail:'#6a5a4a', federalparks:'#4a7a5a',
+  aroball:'#a06a2a', thecaribbean:'#3a8a8a', wbts:'#7a5a5a', nightsky:'#4a5a8a', thefreestates:'#6a4a7a'
+};
+
+function moGetTile(handle) {
+  if (MO_TILES[handle]) return MO_TILES[handle];
+  const color = MO_FALLBACK_COLORS[handle] || '#4a6a7a';
+  const cap = handle.charAt(0).toUpperCase() + handle.slice(1);
+  return {
+    name: 'm/' + handle, color: color, solid: color,
+    desc: 'A community of the Tessera Collective.',
+    members: '—', online: '—', stewards: ['+steward_one','+steward_two'],
+    about: 'A community on Mosaic, stewarded by volunteers. More posts arrive as the tile grows.',
+    rules: ['Be decent. This is a shared space.','Stay on topic for m/' + handle + '.','No commercial spam \u2014 Mosaic is non-profit.'],
+    posts: [
+      { v:'—', t:'Welcome to m/' + handle + '. This tile is just getting going.', by:'+' + handle + 'steward', age:'recently', c:'0' }
+    ]
+  };
+}
+
+function moTagHtml(tag) {
+  if (!tag) return '';
+  const cls = { mega:'mo-tag-mega', disc:'mo-tag-disc', ask:'mo-tag-ask', news:'mo-tag-news' }[tag[0]] || 'mo-tag-disc';
+  return '<span class="mo-post-tag ' + cls + '">' + tag[1] + '</span>';
+}
+
+function moRenderTile() {
+  const params = new URLSearchParams(location.search);
+  const handle = (params.get('t') || 'marsmission').replace(/[^a-z0-9]/gi, '');
+  const d = moGetTile(handle);
+
+  initAddressBar('nan.mosaic.soc.usa/' + d.name);
+  document.title = 'Mosaic — ' + d.name;
+
+  document.getElementById('mo-banner').style.background = d.color;
+  document.getElementById('mo-crumb-name').textContent = d.name;
+  document.getElementById('mo-title').textContent = d.name;
+  document.getElementById('mo-desc').textContent = d.desc;
+  document.querySelector('.mo-join').style.color = d.solid;
+
+  document.getElementById('mo-stats').innerHTML =
+    '<span>\uD83D\uDC65 ' + d.members + ' members</span>' +
+    '<span>\uD83D\uDFE2 ' + d.online + ' online</span>' +
+    '<span>\uD83D\uDEE1 ' + d.stewards.length + ' stewards</span>';
+
+  document.getElementById('mo-posts').innerHTML = d.posts.map(function(p) {
+    return '<div class="mo-post">' +
+      '<div class="mo-votes"><span class="mo-varrow mo-varrow-up">\u25B2</span>' +
+        '<span class="mo-vcount' + (p.hot ? ' mo-vcount-hot' : '') + '">' + p.v + '</span>' +
+        '<span class="mo-varrow mo-varrow-down">\u25BC</span></div>' +
+      '<div class="mo-post-body">' +
+        '<div class="mo-post-title">' + moTagHtml(p.tag) + '<a href="#">' + p.t + '</a></div>' +
+        '<div class="mo-post-meta">by <a href="#">' + p.by + '</a> \u00b7 ' + p.age + ' \u00b7 ' + p.c + ' comments' +
+          (p.hot ? ' \u00b7 stickied by the stewards' : '') + '</div>' +
+      '</div></div>';
+  }).join('');
+
+  document.getElementById('mo-about').textContent = d.about;
+  document.getElementById('mo-stewards').innerHTML = d.stewards.map(function(s) {
+    return '<div class="mo-steward"><span class="mo-steward-dot"></span>' + s + '</div>';
+  }).join('');
+  document.getElementById('mo-rules').innerHTML = d.rules.map(function(r, i) {
+    return '<div class="mo-side-rule"><span class="mo-side-num">' + (i+1) + '.</span> ' + r + '</div>';
+  }).join('');
+}
+
+moRenderTile();
+</script>
+
+</body>
+</html>
