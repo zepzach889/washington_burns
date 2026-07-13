@@ -266,11 +266,19 @@ function dpMergeLive() {
 
 function dpCardAge(card) {
   if (card.hasAttribute('data-age')) return parseInt(card.getAttribute('data-age'), 10);
-  // parse the generated "· Nm" / "· Nh" from the meta line
-  const meta = card.querySelector('.dp-meta');
-  if (meta) {
-    const m = meta.textContent.match(/(\d+)\s*([mh])/);
-    if (m) return m[2] === 'h' ? parseInt(m[1], 10) * 60 : parseInt(m[1], 10);
+  // The time label lives in a .dp-meta span, but handle links also carry
+  // .dp-meta — so scan every .dp-meta, skip the handle labels (they begin
+  // with "+"), and take the first that parses as a relative time.
+  const metas = card.querySelectorAll('.dp-meta');
+  for (let i = 0; i < metas.length; i++) {
+    const txt = metas[i].textContent;
+    if (txt.trim().charAt(0) === '+') continue;
+    const m = txt.match(/(\d+)\s*([mhd])\b/);
+    if (m) {
+      if (m[2] === 'd') return parseInt(m[1], 10) * 1440;
+      if (m[2] === 'h') return parseInt(m[1], 10) * 60;
+      return parseInt(m[1], 10);
+    }
   }
   return 99999;
 }
