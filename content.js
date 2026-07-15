@@ -2578,7 +2578,7 @@ const LV_FILMS = [
     studio: null,
     platform: 'jubilee',
     synopsis: "The trilogy's structural surprise — an entire film from the alien perspective, following their long journey toward the Sol system. Not villains, not invaders in any simple sense — travelers, with their own logic and their own losses.",
-    poster: 'cinema_ff_the_voyagers_poster.png',
+    poster: 'cinema_ff_voyagers_poster.png',
   },
 
   {
