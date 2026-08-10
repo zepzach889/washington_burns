@@ -214,6 +214,8 @@ const ROUTES = {
   'nan.usrc.gov.usa':                         '/nodes/usrc/',
   'nan.assembly.nau':                         '/nodes/assembly/',
   'nan.fps.gov.usa':                          '/nodes/fps/',
+  'nan.bna.org.nau':              '/nodes/bna/',
+  'nan.bna.org.nau/continental':  '/nodes/bna/bna_continental.html',
 
   // ════════════════════════════════════════════════════════
   // WASHINGTON HOUSE - PRESIDENCY
@@ -269,6 +271,7 @@ const ROUTES = {
   'nan.div814.gov.usa/stories':               '/nodes/ref/stories',
   'nan.div814.gov.usa/nedex-builder':         '/nodes/ref/nedex-builder',
   'nan.div814.gov.usa/wbt_cinema_bible':      '/nodes/ref/wbt_cinema_bible_v8',
+  'nan.div814.gov.usa/wbt_aero_bible':       '/nodes/ref/wbt_music_bible',
   'nan.div814.gov.usa/wbt_music_bible':       '/nodes/ref/wbt_music_bible',
   'nan.div814.gov.usa/wbt_reference':         '/nodes/ref/wbt_reference',
   'nan.div814.gov.usa/wbt_space_history':     '/nodes/ref/wbt_space_history_3',
@@ -352,6 +355,7 @@ const BOOKMARKS = [
   { icon: '📖', label: 'Nedex',             path: '/nodes/nedex/' },
   { icon: '🚂', label: 'USRC Rail',         path: '/nodes/usrc/' },
   { icon: '⚖️', label: 'NAU Assembly',      path: '/nodes/assembly/' },
+  { icon: '🏦', label: 'Bank of N.A.',      path: '/nodes/bna/' },
   { icon: '🏛️', label: 'Washington House',  path: '/nodes/washington-house/' },
   { icon: '🏺', label: 'Museum of the US',  path: '/nodes/amhistory/' },
   { icon: '🌲', label: 'Federal Parks',     path: '/nodes/fps/' },
