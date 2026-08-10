@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WBT — Space Exploration History</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1714;
+    --ink-mid: #3d3830;
+    --ink-muted: #6b6358;
+    --ink-faint: #9c9488;
+    --paper: #f5f0e8;
+    --paper-mid: #ede8dc;
+    --paper-dark: #ddd7c8;
+    --red: #8b1a1a;
+    --red-light: #c0392b;
+    --gold: #b8860b;
+    --rule: #1a1714;
+    --rule-light: #c8c0b0;
+    --rule-mid: #8b8070;
+    --open: #1a4d6e;
+    --open-bg: #e8f2f8;
+    --hard: #1a4d1a;
+    --hard-bg: #e8f5e8;
+    --warn: #5d3a00;
+    --warn-bg: #fdf3e0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* MASTHEAD */
+  .masthead {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0;
+    border-bottom: 4px solid var(--red);
+  }
+  .masthead-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 1rem;
+  }
+  .masthead-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--paper-dark);
+    margin-bottom: 0.4rem;
+  }
+  .masthead h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--paper);
+    margin-bottom: 0.5rem;
+  }
+  .masthead-sub {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: var(--paper-dark);
+    border-top: 1px solid #3d3830;
+    padding-top: 0.6rem;
+    margin-top: 0.6rem;
+    display: flex;
+    gap: 2rem;
+  }
+  .masthead-sub span { display: flex; align-items: center; gap: 0.4rem; }
+
+  /* LEGEND BAR */
+  .legend-bar {
+    background: var(--paper-mid);
+    border-bottom: 1px solid var(--rule-light);
+    padding: 0.5rem 0;
+  }
+  .legend-bar-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .legend-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-right: 0.5rem;
+  }
+  .pill {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .pill-hard { background: var(--hard-bg); color: var(--hard); border: 1px solid #b0d4b0; }
+  .pill-soft { background: var(--paper-dark); color: var(--ink-mid); border: 1px solid var(--rule-light); }
+  .pill-open { background: var(--open-bg); color: var(--open); border: 1px solid #b0c8d8; }
+  .pill-disrupt { background: #fce8e8; color: var(--red); border: 1px solid #e0b0b0; }
+
+  /* MAIN LAYOUT */
+  .layout {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .sidebar { grid-column: 1; }
+  .main-content { grid-column: 2; }
+  .sidebar {
+    position: sticky;
+    top: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--rule-light) transparent;
+  }
+  .sidebar-box {
+    border: 1px solid var(--rule-light);
+    margin-bottom: 1.5rem;
+    background: var(--paper);
+  }
+  .sidebar-head {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.75rem;
+  }
+  .sidebar-body { padding: 0.75rem; }
+  .toc-item {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: var(--ink-mid);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-item:hover { color: var(--red); }
+  .toc-item .toc-years {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+  .toc-phase {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: 0.4rem 0 0.15rem;
+  }
+  .stat-row {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: var(--ink-mid);
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    display: flex;
+    justify-content: space-between;
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .open-canvas-list {
+    list-style: none;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: var(--ink-mid);
+  }
+  .open-canvas-list li {
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    display: flex;
+    gap: 0.4rem;
+    align-items: baseline;
+  }
+  .open-canvas-list li:last-child { border-bottom: none; }
+  .oc-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--open);
+    flex-shrink: 0;
+    width: 16px;
+  }
+
+  /* MAIN CONTENT */
+  .main-content {}
+
+  /* SECTION HEADERS */
+  .phase-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--ink);
+  }
+  .phase-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.2rem;
+  }
+  .phase-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .phase-years {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    margin-top: 0.2rem;
+  }
+
+  /* MILESTONE ENTRIES */
+  .milestone {
+    margin-bottom: 1.8rem;
+    padding-bottom: 1.8rem;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .milestone:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .milestone-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .milestone-year {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    width: 52px;
+  }
+  .milestone-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    flex: 1;
+  }
+  .milestone-pres {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+  }
+
+  .milestone-body {
+    padding-left: 64px;
+  }
+  .milestone-body p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-mid);
+    margin-bottom: 0.5rem;
+  }
+  .milestone-body p:last-child { margin-bottom: 0; }
+
+  /* OPEN CANVAS INLINE */
+  .oc-inline {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: var(--open);
+    background: var(--open-bg);
+    border-left: 3px solid var(--open);
+    padding: 0.4rem 0.6rem;
+    margin-top: 0.5rem;
+  }
+  .oc-inline strong {
+    font-weight: 600;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.15rem;
+    color: var(--open);
+  }
+
+  /* DISRUPTION BANNER */
+  .disruption-banner {
+    background: #fce8e8;
+    border: 1px solid #e0b0b0;
+    border-left: 4px solid var(--red);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .disruption-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .disruption-text {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: #5a1a1a;
+    line-height: 1.5;
+  }
+  .disruption-text strong { font-weight: 600; }
+
+  /* POLITICAL TABLE */
+  .pol-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    margin-top: 1rem;
+  }
+  .pol-table th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-align: left;
+    padding: 0.4rem 0.6rem;
+    border-bottom: 2px solid var(--rule);
+    background: var(--paper-mid);
+  }
+  .pol-table td {
+    padding: 0.45rem 0.6rem;
+    border-bottom: 1px solid var(--rule-light);
+    color: var(--ink-mid);
+    vertical-align: top;
+  }
+  .pol-table tr:last-child td { border-bottom: none; }
+  .pol-table .milestone-col { font-weight: 500; color: var(--ink); }
+  .party-soc { color: #8b1a1a; font-weight: 600; }
+  .party-fed { color: #1a4d1a; font-weight: 600; }
+  .party-dem { color: #1a1a6e; font-weight: 600; }
+  .party-jca { color: #5d3a00; font-weight: 600; }
+
+  /* PHASE DIVIDER */
+  .phase-section {
+    margin-bottom: 3rem;
+  }
+
+  /* BACKGROUND BOX */
+  .background-box {
+    background: var(--paper-mid);
+    border: 1px solid var(--rule-light);
+    border-left: 4px solid var(--gold);
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-mid);
+  }
+  .background-box strong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: var(--paper-dark);
+    padding: 1.5rem 2rem;
+    margin-top: 3rem;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    border-top: 3px solid var(--red);
+    text-align: center;
+  }
+  footer em { font-style: italic; color: var(--ink-faint); }
+
+  @media (max-width: 700px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; grid-column: 1; }
+    .main-content { grid-column: 1; }
+    .masthead h1 { font-size: 2rem; }
+  }
+
+  /* === AVIATION BIBLE SUPPLEMENT === */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.9rem;
+    margin: 1rem 0;
+  }
+  .card {
+    border: 1px solid var(--rule-light);
+    border-left: 4px solid var(--gold);
+    background: var(--paper-mid);
+    padding: 0.8rem 0.9rem;
+  }
+  .card.ink { border-left-color: var(--ink); }
+  .card.red { border-left-color: var(--red); }
+  .card.slate { border-left-color: var(--open); }
+  .card.green { border-left-color: var(--hard); }
+  .card-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.2rem;
+  }
+  .card h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    line-height: 1.2;
+  }
+  .card p {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-mid);
+    margin-bottom: 0.4rem;
+  }
+  .card p:last-child { margin-bottom: 0; }
+
+  .subhead {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin: 1.4rem 0 0.5rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--rule-light);
+  }
+
+  .prose p {
+    font-size: 15px;
+    line-height: 1.68;
+    color: var(--ink-mid);
+    margin-bottom: 0.7rem;
+  }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+
+  .dtable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.9rem 0;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+  }
+  .dtable th {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 0.4rem 0.6rem;
+  }
+  .dtable td {
+    border: 1px solid var(--rule-light);
+    padding: 0.4rem 0.6rem;
+    vertical-align: top;
+    color: var(--ink-mid);
+  }
+  .dtable tr:nth-child(even) td { background: var(--paper-mid); }
+  .dtable td.yr {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    color: var(--red);
+    white-space: nowrap;
+  }
+
+  .rule-box {
+    background: var(--warn-bg);
+    border: 1px solid #e0cba0;
+    border-left: 4px solid var(--warn);
+    padding: 0.7rem 0.9rem;
+    margin: 1rem 0;
+    font-size: 14px;
+    color: var(--warn);
+    line-height: 1.6;
+  }
+  .rule-box strong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .numbered {
+    margin: 0.8rem 0 0.8rem 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: cz;
+  }
+  .numbered li {
+    counter-increment: cz;
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-mid);
+  }
+  .numbered li::before {
+    content: counter(cz);
+    position: absolute;
+    left: 0;
+    top: 0.05rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--paper);
+    background: var(--ink);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .numbered li strong { color: var(--ink); font-weight: 600; }
+
+  .plainlist { list-style: none; margin: 0.6rem 0; }
+  .plainlist li {
+    position: relative;
+    padding-left: 1.1rem;
+    margin-bottom: 0.35rem;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-mid);
+  }
+  .plainlist li::before {
+    content: "\25AA";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+  .plainlist li strong { color: var(--ink); font-weight: 600; }
+
+  .flag-inline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+  }
+  .flag-hard { background: var(--hard-bg); color: var(--hard); border: 1px solid #b0d4b0; }
+  .flag-soft { background: var(--paper-dark); color: var(--ink-mid); border: 1px solid var(--rule-light); }
+  .flag-open { background: var(--open-bg); color: var(--open); border: 1px solid #b0c8d8; }
+
+  .quote-canon {
+    border-left: 3px solid var(--ink);
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+    font-size: 14.5px;
+    color: var(--ink-mid);
+    line-height: 1.65;
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-eyebrow">Washington Burns Timeline — Reference Document</div>
+    <h1>Aviation &amp; Aeronautics</h1>
+    <div class="masthead-sub">
+      <span>Soft canon unless noted</span>
+      <span>Coverage: 1899–2026</span>
+      <span>Last revised: August 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="legend-bar">
+  <div class="legend-bar-inner">
+    <span class="legend-label">Status:</span>
+    <span class="pill pill-hard">Hard Canon</span>
+    <span class="pill pill-soft">Soft Canon</span>
+    <span class="pill pill-open">Open Canvas</span>
+    <span class="pill pill-disrupt">Unresolved Consequence</span>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-box">
+      <div class="sidebar-head">Contents</div>
+      <div class="sidebar-body">
+        <div class="toc-phase">Framework</div>
+        <a class="toc-item" href="#principles">Governing principles</a>
+        <a class="toc-item" href="#lag">The HTA lag <span class="toc-years">1901–1970</span></a>
+        <a class="toc-item" href="#fuel">The fuel split</a>
+        <div class="toc-phase">Lighter-Than-Air</div>
+        <a class="toc-item" href="#lta">Three centers</a>
+        <a class="toc-item" href="#helium">Helium politics <span class="toc-years">1900–1931</span></a>
+        <a class="toc-item" href="#texas">The Texian industry <span class="toc-years">1889–</span></a>
+        <div class="toc-phase">United States</div>
+        <a class="toc-item" href="#usa">Firms &amp; federal structure</a>
+        <div class="toc-phase">Long Arc</div>
+        <a class="toc-item" href="#arc">The airship arc <span class="toc-years">1899–2026</span></a>
+        <a class="toc-item" href="#shift">The 1960s shift</a>
+        <div class="toc-phase">Reference</div>
+        <a class="toc-item" href="#open">Open canvas items</a>
+      </div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sidebar-head">Key Dates</div>
+      <div class="sidebar-body">
+        <div class="stat-row"><span>First powered flight</span><span class="stat-val">1901</span></div>
+        <div class="stat-row"><span>Weiss Machine Works</span><span class="stat-val">1889</span></div>
+        <div class="stat-row" style="color: var(--red);"><span>New Frankfurt hurricane</span><span class="stat-val">1900</span></div>
+        <div class="stat-row"><span>Vanguard founded</span><span class="stat-val">1903</span></div>
+        <div class="stat-row"><span>Trinity-Gulf founded</span><span class="stat-val">1906</span></div>
+        <div class="stat-row"><span>Boiler Safety Act</span><span class="stat-val">1919</span></div>
+        <div class="stat-row"><span>Rare Gas Consortium</span><span class="stat-val">~1917–25</span></div>
+        <div class="stat-row"><span>Bureau of Air Commerce</span><span class="stat-val">1929–31</span></div>
+        <div class="stat-row"><span>NAOTA / helium curb</span><span class="stat-val">1930</span></div>
+        <div class="stat-row" style="color: var(--red);"><span>Prussian disaster</span><span class="stat-val">1931</span></div>
+        <div class="stat-row"><span>Global War</span><span class="stat-val">1932–40</span></div>
+        <div class="stat-row" style="color: var(--red);"><span>Rigid line service ends</span><span class="stat-val">~1965–70</span></div>
+        <div class="stat-row"><span>Cargo airship revival</span><span class="stat-val">2010s–</span></div>
+      </div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sidebar-head">Canon Anchors</div>
+      <div class="sidebar-body">
+        <div class="stat-row"><span>Vaughn &amp; Harcourt</span><span class="stat-val">Hard</span></div>
+        <div class="stat-row"><span>Jefferson "First in Flight"</span><span class="stat-val">Hard</span></div>
+        <div class="stat-row"><span>Kerosene motor, 1901</span><span class="stat-val">Hard</span></div>
+        <div class="stat-row"><span>Texas is a foreign nation</span><span class="stat-val">Hard</span></div>
+        <div class="stat-row"><span>USRC passenger priority</span><span class="stat-val">Hard</span></div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <div class="background-box" id="principles">
+      <strong>Governing principles</strong>
+      WBT aviation diverges from OTL not by being uniformly behind, but by being <em>differently shaped</em>. The absence of a 1910s general war removes the single greatest accelerant in OTL aviation history, and the presence of a large, helium-fed lighter-than-air industry gives the early twentieth century a long-haul air transport option that OTL never had at scale. The result is a civil aviation sector that is slower, smaller, later-forming and more institutionally regulated than OTL's — and simultaneously world-leading in airways infrastructure, safety certification, meteorology, large lightweight structures and long-endurance engines. Nothing in this document requires airships to be better than they were. It requires airplanes to be worse for longer.
+    </div>
+
+    <!-- ================= HTA LAG ================= -->
+    <div class="phase-section" id="lag">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Framework</div>
+        <div class="phase-title">The Heavier-Than-Air Lag</div>
+        <div class="phase-years">1901–1970</div>
+      </div>
+
+      <div class="prose">
+        <p>The point of origin is fixed. <span class="flag-inline flag-hard">Hard Canon</span></p>
+      </div>
+
+      <div class="quote-canon">
+        On June 14th, 1901, two machinists from the small community of Red Fork — Oscar Vaughn and Levi Harcourt — fitted a lightweight kerosene motor to a canvas-and-wood biplane glider and coaxed it into a brief, steady flight of several hundred feet… the state of Jefferson proudly claims the moniker "First in Flight."
+      </div>
+
+      <div class="subhead">Six causes of the lag</div>
+      <div class="prose">
+        <p>The lag is deliberately over-determined so that no single mechanism carries suspicious weight. These divide into <strong>capability</strong> causes, which slow the technology itself, and <strong>market</strong> causes, which shrink and reshape the industry without making the machines worse.</p>
+      </div>
+      <ol class="numbered">
+        <li><strong>No 1910s forcing function.</strong> <em>(capability)</em> The Great European War ends in 1904; the Matanzas War in 1906; the Global War does not begin until 1932. That is roughly twenty-six years of peace covering exactly the window in which OTL's WWI drove aero engines from ~80hp to ~400hp in four years. This cause alone accounts for most of the deficit.</li>
+        <li><strong>No 1919 surplus dump.</strong> <em>(capability)</em> No cheap war-surplus airframes or engines, no demobilised pilot pool, no trained mechanic generation, and therefore <em>no barnstorming culture</em> — see below.</li>
+        <li><strong>No mature mass-market gasoline engine industry.</strong> <em>(capability)</em> WBT's automobile market never consolidated on internal combustion; steam, gasoline and electric hold durable separate niches. American aviation cannot draw on an OTL-scale gasoline engine sector in the 1900s–1920s because one does not exist.</li>
+        <li><strong>The V&amp;H patent thicket, ~1906–1932.</strong> <em>(capability)</em> See §United States.</li>
+        <li><strong>USRC owns short and medium haul.</strong> <em>(market)</em> An excellent, publicly beloved, politically unassailable state railway with passenger priority. Domestic aviation's natural market is occupied from the start.</li>
+        <li><strong>USP&amp;T flies its own mail.</strong> <em>(market)</em> In OTL, federal airmail contracts to private carriers were the seed capital of the entire American airline industry. In WBT that seed is never planted.</li>
+      </ol>
+      <div class="prose">
+        <p><em>Minor, seventh:</em> gasoline distribution is regional, expensive and strategically exposed until NAOTA (1930), while kerosene — the airship fuel — has a nationwide retail network from the lamp-oil era. A real advantage, but second-order: ground handling, not fuel, is the binding constraint on airship networks.</p>
+      </div>
+
+      <div class="oc-inline"><strong>Counter-pressure</strong>WBT's airship industry is much larger than OTL's and employs aerodynamicists, structural engineers, metallurgists and meteorologists at scale from the 1900s. A meaningful fraction of that knowledge transfers to large aircraft. The net figures below already account for this spillover.</div>
+
+      <div class="subhead">Calibration</div>
+      <table class="dtable">
+        <tr><th>Year</th><th>WBT civil HTA ≈ OTL</th><th>Lag</th></tr>
+        <tr><td class="yr">1932</td><td>1925</td><td>~7–10 years</td></tr>
+        <tr><td class="yr">1940</td><td>1939–40</td><td>~0–1 year <em>(war compression)</em></td></tr>
+        <tr><td class="yr">1950</td><td>1945</td><td>~5 years</td></tr>
+        <tr><td class="yr">1960</td><td>1953</td><td>~7 years</td></tr>
+        <tr><td class="yr">1970</td><td>1963</td><td>~7 years</td></tr>
+        <tr><td class="yr">1985</td><td>1980</td><td>~5 years</td></tr>
+      </table>
+      <div class="prose">
+        <p>The lag <strong>never closes and never widens</strong>, stabilising at five to seven years. Two splits govern it:</p>
+      </div>
+      <ul class="plainlist">
+        <li><strong>Military aviation catches up fully by ~1950.</strong> Fission weapons (1951–52), the China rivalry and the Choson War (1966–68) supply as much pressure as OTL. No military lag survives contact with a nuclear rival.</li>
+        <li><strong>Civil aviation carries the lag.</strong> Cabin pressurisation is the load-bearing item: worked on but not solved in service during the Global War, reaching military high-altitude aircraft ~1938–40 and <em>not</em> becoming a usable civil product until the late 1940s at the earliest. An unpressurised airliner cannot climb over weather, so 1940s WBT air travel is low, bumpy, frequently cancelled and genuinely unpleasant.</li>
+      </ul>
+
+      <div class="subhead">Where WBT leads OTL</div>
+      <div class="prose">
+        <p>Essential to the framing. WBT is not behind; it is differently shaped.</p>
+      </div>
+      <table class="dtable">
+        <tr><th>Domain</th><th>Position</th><th>Cause</th></tr>
+        <tr><td>Airways infrastructure</td><td>Well ahead</td><td>FAS plus the Rural Electrification Act of 1910 — standardised current nationwide 26 years early makes lighted airways, beacons and weather stations far cheaper to build</td></tr>
+        <tr><td>Safety certification</td><td>Ahead</td><td>Boiler Safety and Certification Act of 1919 — a mature standards-and-reciprocity culture exists before aviation needs one</td></tr>
+        <tr><td>Diesel aero engines</td><td>Genuinely leading</td><td>A niche failure in OTL; in WBT the airship industry needs and funds them for decades</td></tr>
+        <tr><td>Large lightweight structures</td><td>Ahead</td><td>Airship yards are the world's only builders at that scale</td></tr>
+        <tr><td>Meteorology &amp; forecasting</td><td>Ahead</td><td>Privately funded from New Frankfurt by an industry whose survival depends on hurricane prediction</td></tr>
+        <tr><td>Soaring &amp; aerodynamic efficiency</td><td>Ahead</td><td>The amateur glider movement — high aspect ratio, thermal knowledge, homebuilt tradition</td></tr>
+        <tr><td>Kerosene distribution</td><td>Ahead</td><td>Universal retail network, already in place when turbines eventually arrive</td></tr>
+      </table>
+
+      <div class="subhead">Cultural consequence: gliding, not barnstorming</div>
+      <div class="prose">
+        <p>With no surplus dump, OTL's barnstorming culture has no fuel supply and does not occur. Its replacement arises from the same constraint that killed it: V&amp;H's patents make powered flight expensive and legally hazardous, while <strong>gliders are cheap, buildable in a barn, and commercially uninteresting to litigate over</strong>. Once the core patents lapse around 1922, gliding is entirely free while powered flight remains costly.</p>
+        <p>American amateur aviation in the 1920s is therefore a <strong>soaring movement</strong> — clubs, ridge sites, duration and altitude records, a homebuilt tradition. Bluffs and ridgelines instead of cow pastures; quieter, more middle-class, more club-based, less carnival. It produces the pilot pool that would otherwise be missing in 1932, and it adds an edge to V&amp;H's legacy: the firm that made flight expensive is the reason a generation learned to fly without engines.</p>
+        <p>1920s American commercial aviation is correspondingly <strong>institutional, professional and elite</strong> — manufacturer teams and federal pilots, not stunt fliers at county fairs. Air racing exists as a corporate showcase.</p>
+      </div>
+    </div>
+
+    <!-- ================= FUEL ================= -->
+    <div class="phase-section" id="fuel">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Framework</div>
+        <div class="phase-title">The Fuel Split</div>
+      </div>
+      <div class="prose">
+        <p>WBT aviation divides permanently by fuel, on physical grounds.</p>
+      </div>
+      <div class="card-grid">
+        <div class="card red">
+          <div class="card-label">Heavier-than-air</div>
+          <h4>Gasoline</h4>
+          <p>Spark-ignition piston engines need octane. Kerosene vaporises poorly in a carburettor, forces low compression and caps power. The <em>Prairie Hawk</em> runs kerosene in 1901 because that is what every general store sold — but the moment anyone wants real horsepower, gasoline is the only road.</p>
+        </div>
+        <div class="card slate">
+          <div class="card-label">Lighter-than-air</div>
+          <h4>Kerosene / diesel</h4>
+          <p>Airships are weight-indifferent and need multi-day endurance and fuel economy; volatile fuel beside a gas envelope is a poor idea. Diesel is the correct airship fuel and WBT's industry funds its development for decades.</p>
+        </div>
+      </div>
+      <div class="prose">
+        <p><strong>NAOTA (1930) is the hinge.</strong> Texian crude floods in, gasoline becomes cheap and widely distributed, and the airplane's fuel-logistics disadvantage collapses — two years before the Global War forces the issue. The kerosene lineage never dies, because the airship industry keeps kerosene infrastructure commercially important right through the era when OTL America consolidated on gasoline.</p>
+      </div>
+      <div class="oc-inline"><strong>Open Canvas — Turbines</strong>With the automotive sector explicitly <em>not</em> entering turbine development, WBT's turbine metallurgy descends from naval steam turbines and aero-engine hot-section work, as OTL. Turbines therefore proceed roughly on schedule, but civil adoption is turboprop-first and jets arrive military-first, late and grudgingly. Detailed timeline deferred to a postwar session.</div>
+    </div>
+
+    <!-- ================= LTA THREE CENTERS ================= -->
+    <div class="phase-section" id="lta">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Lighter-Than-Air</div>
+        <div class="phase-title">Three Centers, Three Philosophies</div>
+      </div>
+      <div class="prose">
+        <p>Rigid airship development is genuinely parallel, but the three centers differ by <em>function and constraint</em> rather than by simultaneous identical invention. Ferdinand von Zeppelin is <strong>not</strong> transplanted to Texas; the older draft's version of that origin is retired.</p>
+      </div>
+      <div class="card-grid">
+        <div class="card ink">
+          <div class="card-label">Prussia — the engineering rival</div>
+          <h4>Hydrogen</h4>
+          <p>Military-origin, descended directly from Great European War balloon experience. High performance, structurally aggressive, better lift-to-size, worse safety. Prestige-driven. The UER inherits and continues a parallel line after 1904.</p>
+          <p>Prussia has no helium and never will.</p>
+        </div>
+        <div class="card">
+          <div class="card-label">Texas Federation — the builder</div>
+          <h4>Helium</h4>
+          <p>Helium-first from the start because that is what lies under the Panhandle. Ships are bigger and more conservative for the same payload. German-Texan machine shops are the industrial substrate — canon since the 1830s, reinforced by the 1841 refugee wave. Strong semi-rigid and non-rigid tradition alongside the rigids.</p>
+        </div>
+        <div class="card slate">
+          <div class="card-label">United States — buyer &amp; regulator</div>
+          <h4>Not an independent inventor</h4>
+          <p>The US buys (chiefly through the Navy), certifies, and provides the continental market. Texian firms build American subsidiaries inside the tariff wall on the Oststein precedent. Texas builds them; America regulates and flies them.</p>
+        </div>
+      </div>
+
+      <div class="rule-box">
+        <strong>Permanent limits — do not soften</strong>
+        Speed ceiling ~80–100 mph, forever. Weather-limited permanently: routes and seasons, not schedules; radar and modern forecasting make them <em>safer</em>, not more punctual. Ground handling never becomes casual — masts, sheds, 100–200 crew — which alone bars airships from point-to-point service and caps North America at roughly 6–12 terminals ever. Short and medium haul are lost immediately and permanently. Payload fraction is poor: airships beat <em>roads that do not exist</em>, carrying outsize loads to places without runways. They never compete with ships on bulk or rail on anything.
+      </div>
+
+      <div class="rule-box">
+        <strong>Helium does not make airships safe</strong>
+        It prevents one failure mode out of several. Large rigids break up in weather because they are enormous, lightly built, and cannot outrun or outclimb a storm. WBT's airship industry carries a <strong>real and continuous accident record</strong> — a major loss every few years across the 1920s–50s, with fatalities. It is a premium mode with a genuinely bad safety record, accepted because the alternative is six days at sea.
+      </div>
+
+      <div class="subhead">Scale — the honest figures</div>
+      <table class="dtable">
+        <tr><th>Category</th><th>Scale</th><th>Role</th></tr>
+        <tr><td>Large rigids</td><td>15–25 worldwide at peak</td><td>Prestige, glamour, small volume, real losses</td></tr>
+        <tr><td>Non-rigids</td><td>Hundreds</td><td>The volume business: patrol, ASW, survey, utility, cargo</td></tr>
+        <tr><td>N. American terminals</td><td>6–12, ever</td><td>Trunk routes only; never a network</td></tr>
+        <tr><td>True competitor</td><td>Ocean liners</td><td>2.5 days against a liner's 5–7, at a premium fare</td></tr>
+      </table>
+      <div class="prose">
+        <p>Passenger airships are therefore <strong>a rich person's shortcut, not a transport system</strong>, carrying well under 10% of any given ocean route's traffic. They are the <em>beneficiary</em> of the HTA lag, not a cause of it — an industry of this size cannot suppress a continent's demand for pressurised airliners, and is not asked to.</p>
+      </div>
+    </div>
+
+    <!-- ================= HELIUM ================= -->
+    <div class="phase-section" id="helium">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Lighter-Than-Air</div>
+        <div class="phase-title">Helium Politics &amp; the Prussian Disaster</div>
+        <div class="phase-years">1900–1931</div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">Geology</span>
+          <span class="milestone-title">The Hugoton–Panhandle field</span>
+        </div>
+        <div class="milestone-body">
+          <p>The world's only significant helium source, shared between the United States (Jefferson and Kansas) and the Texas Federation, and <strong>weighted toward Texas</strong>. The Oklahoma Panhandle is Texian territory in this timeline. Neither nation can exploit the field alone, which manufactures a decades-long technical and regulatory partnership out of pure geology and gives the North American Conference framework a material rationale that predates its trade logic.</p>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1900s–20s</span>
+          <span class="milestone-title">Export open — Prussia buys North American helium</span>
+        </div>
+        <div class="milestone-body">
+          <p>Transatlantic shipment in cylinders is brutally expensive, so Prussia can afford it only for flagship passenger and state airships. Prussian aviation is consequently <strong>split</strong>: prestige ships on imported helium, military and second-line ships still on hydrogen.</p>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1930</span>
+          <span class="milestone-title">Restriction under NAOTA</span>
+        </div>
+        <div class="milestone-body">
+          <p>Helium export is curtailed as part of the North American Open Trade Agreement, in reaction to escalating rhetoric from Berlin. The counterparty on the Texian side is the Texian Rare Gas Consortium. Prussia's best ships lose their gas.</p>
+          <div class="oc-inline"><strong>Open Canvas</strong>Precise legislative mechanism and whether a gray transshipment market persists after 1930. NAOTA is a trade agreement rather than an administrative body, so enforcement architecture is unresolved.</div>
+        </div>
+      </div>
+
+      <div class="disruption-banner">
+        <span class="disruption-label">Disaster<br>1931</span>
+        <div class="disruption-text"><strong>The Prussian airship disaster</strong> — A prestige demonstration flight during the height of Nationalist consolidation, in the same year Prussia formally demands referenda in UER German territories and begins its military buildup. The ship was <strong>designed for helium and completed as a hydrogen ship</strong> because the gas never arrived after the 1930 curtailment. It burns. Lost aboard: a senior Nationalist party figure — the airship programme's political champion — and a minor royal.</div>
+      </div>
+
+      <div class="prose">
+        <p><strong>Consequences.</strong> The Prussian LTA programme collapses; with its patron dead nobody will defend it, and Prussia enters the Global War in 1932 with no credible lighter-than-air arm while North America has a mature helium airship capability. Prussian U-boats will face an airborne threat they cannot answer in kind.</p>
+        <p><strong>And the moral complication.</strong> Prussian propaganda blames North America for the deaths, and is <em>not entirely wrong</em>. The embargo is the proximate cause of the ship flying hydrogen. This is deliberate: the pre-war buildup should carry genuine culpability rather than clean lines.</p>
+      </div>
+
+      <div class="oc-inline"><strong>Open Canvas</strong>Ship name; route and crash site; the party figure's name and portfolio; the royal's identity and relationship to Karl-Albrecht II (a sibling or cousin fits the ages better than a child). Whether a British hydrogen disaster ~1929–31 precedes it and drives Britain out of rigids entirely.</div>
+    </div>
+
+    <!-- ================= TEXAS ================= -->
+    <div class="phase-section" id="texas">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Lighter-Than-Air</div>
+        <div class="phase-title">The Texian Airship Industry</div>
+        <div class="phase-years">1889 onward</div>
+      </div>
+
+      <div class="subhead">Geography</div>
+      <ul class="plainlist">
+        <li><strong>Panhandle</strong> — helium extraction, purification and storage. Roughly 600 miles from the yards; the cylinder rail link is the industry's critical strategic vulnerability in wartime.</li>
+        <li><strong>New Frankfurt</strong> — construction, sheds, operations, headquarters. A major city in the state of Austin, centred somewhat inland rather than on Trinity Bay. There is no Houston in this timeline. The name carries the German-Texan settlement history that produced the industry, and echoes the 1839 Frankfurt republic whose collapse drove the 1841 refugee wave.</li>
+        <li><strong>Texopolis</strong> — political operation and government relations.</li>
+      </ul>
+
+      <div class="subhead">The 1900 hurricane — founding trauma</div>
+      <div class="prose">
+        <p>A Galveston-analogue storm strikes with the firms already in existence and their sheds on the bayside, southeast of the city. The sheds are destroyed. The industry rebuilds <strong>north of New Frankfurt</strong>, away from the worst of any landfall — a move that is a scar rather than a plan, and from which everything afterward descends.</p>
+      </div>
+      <ul class="plainlist">
+        <li><strong>Hurricane season is a permanent operating constraint.</strong> Ships are walked or flown inland on warning. Gulf and Caribbean service becomes effectively a winter-and-spring product; insurance and scheduling are built around the season.</li>
+        <li><strong>Texian meteorology becomes world-leading</strong>, privately funded from the 1900s by an industry whose survival depends on forecasting hurricanes days out — decades before OTL states took forecasting seriously. Storm warning is a public good, so the institution likely becomes quasi-public, and is a natural candidate for early NAU-era continental science.</li>
+      </ul>
+
+      <div class="subhead">The firms</div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1889</span>
+          <span class="milestone-title">Weiss Machine Works / Weiss Maschinenwerke</span>
+          <span class="milestone-pres">Gustav Weiss</span>
+        </div>
+        <div class="milestone-body">
+          <p>Founded in southeast New Frankfurt near Trinity Bay. Dual-named in German and English, as was common in pre-twentieth-century Texas. German-Texan machine shop descent; the prestige house.</p>
+          <p>Renamed <strong>Weiss Aeronautical Engineering (WAE)</strong> in 1902 following the post-hurricane relocation to the north side of the city — the company's name changes because its address did, and both changed because of the storm.</p>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1903</span>
+          <span class="milestone-title">Vanguard Aeronautics</span>
+          <span class="milestone-pres">Raymond Patterson</span>
+        </div>
+        <div class="milestone-body">
+          <p>Patterson — an Anglo-Texian engineer inside a German-Texan machine-shop culture, and therefore structurally an outsider — had warned about the bayside siting and been ignored. The storm vindicated him. He was then ignored <em>again</em> on the rebuild. He departs, raises outside capital, and founds a rival firm in New Frankfurt.</p>
+          <p>The two firms compete for <strong>both rigid and non-rigid contracts, permanently and head to head</strong>. The rivalry has a grievance at its root and the ethnic, generational and commercial fault lines all run the same direction.</p>
+        </div>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">~1917–25</span>
+          <span class="milestone-title">Texian Rare Gas Consortium</span>
+        </div>
+        <div class="milestone-body">
+          <p>A regulated cartel under Texian charter, Panhandle-based, formed once helium's strategic value became obvious. <strong>Not a shipbuilder</strong> — deliberately separated from the yards so that no single entity both sells the gas and builds the ships. The counterparty for all helium export policy from the 1920s onward, and unaffected by the later collapse of passenger service.</p>
+        </div>
+      </div>
+
+      <div class="subhead">The operators</div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-label">WAE subsidiary · 1902–04</div>
+          <h4>Texian Airship Service (TAS)</h4>
+          <p>Founded as <strong>Trinity Airship Service</strong>, renamed 1904. Holds a bundle of small standing government contracts: trunk and ocean mail, coastal and maritime patrol, aerial survey and mapping, storm reconnaissance, frontier patrol in Nuevo Mexico and Alta Chihuahua, and official transport.</p>
+          <p>No single subsidy exists — nobody in Texopolis ever votes for one, which suits a laissez-faire federation. But TAS enters every season with revenue already booked. It is a pseudo-subsidy nobody has to defend, and an incumbency accident that hardened into structure.</p>
+        </div>
+        <div class="card slate">
+          <div class="card-label">Vanguard-backed · 1906</div>
+          <h4>Trinity-Gulf Airline → TGA</h4>
+          <p>Founded by Vanguard's financial backers. Fully private, no cushion, mixed rigid and non-rigid passenger service. Competes on price and service because it cannot compete on politics — which sharpens the engineering rivalry rather than turning it into a lobbying war.</p>
+          <p>By the 1950s the name has contracted to <strong>TGA</strong> and the letters stop standing for anything.</p>
+        </div>
+      </div>
+
+      <div class="subhead">Support model</div>
+      <div class="prose">
+        <p>Rigids are lumpy business, with years between hulls. The industry is carried by <strong>US Navy procurement</strong> — foreign money, deep pockets — combined with <strong>internal cross-subsidy from non-rigid volume</strong>. Texas's most glamorous industry is therefore structurally dependent on decisions made in Franklin, and quietly hostage to any US–Texas friction.</p>
+      </div>
+
+      <div class="oc-inline"><strong>Open Canvas</strong>Whether the 1900 storm is the same event as OTL's Galveston hurricane or a near-analogue. Ship classes and named hulls. The industry's labour history — Austin abolished slavery in the 1870s, within a few years of the War Between the States, so the workforce of the 1889–1900 founding era is a full generation past emancipation; no OTL Southern industrial pattern should be imported.</div>
+    </div>
+
+    <!-- ================= USA ================= -->
+    <div class="phase-section" id="usa">
+      <div class="phase-header">
+        <div class="phase-eyebrow">United States</div>
+        <div class="phase-title">Firms &amp; Federal Structure</div>
+      </div>
+
+      <div class="subhead">V&amp;H Aeronautics</div>
+      <div class="prose">
+        <p>Vaughn and Harcourt's partnership <strong>holds</strong>. Red Fork Machine Works becomes <strong>V&amp;H Aeronautics</strong> by ordinary commercial contraction. Canon establishes them as machinists supplying engines and parts, so the firm's natural descent is as an <strong>engine house</strong> that broadens into airframes later — engines being the highest barrier to entry in aviation and the reason a 1901 machine shop is still a major firm in 2026.</p>
+        <p>They are also, deliberately, <strong>the patent aggressors</strong>. They hold the foundational claims, litigate ferociously, and layer improvement patents as core claims lapse. They get rich. They stunt American heavier-than-air growth for a generation.</p>
+      </div>
+      <table class="dtable">
+        <tr><th>Period</th><th>State of the thicket</th></tr>
+        <tr><td class="yr">~1903–08</td><td>Core claims granted. Enforcement begins.</td></tr>
+        <tr><td class="yr">~1906–22</td><td>The hard years. Maximum suppression — anyone building airframes in America is paying V&amp;H or in court with them. This is the window that must be starved to put WBT at OTL-mid-1920s levels in 1932.</td></tr>
+        <tr><td class="yr">~1922–30</td><td>Core patents lapse; V&amp;H sustain the fight on improvement claims. Grip weakening, litigiousness undiminished. By 1925 they are widely understood to be litigating on fumes and doing it anyway. The 1920s boom begins.</td></tr>
+        <tr><td class="yr">1932</td><td>The Preparation Act imposes a war-production patent pool — less a liberation than a coup de grâce on a fading position.</td></tr>
+      </table>
+      <div class="prose">
+        <p>Because patents are federal, licensees cannot escape by relocating. The industry that emerges is <strong>small and concentrated</strong> — a handful of licensed firms rather than OTL's hundreds of garage builders. V&amp;H's legacy is permanently complicated, and "Jefferson: First in Flight" acquires a rueful edge: there is a live historiographical argument in 2026 about whether the men who invented flight also held it back a generation.</p>
+      </div>
+
+      <div class="subhead">Federal structure</div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-label">~1922–26 onward</div>
+          <h4>USP&amp;T Air Service</h4>
+          <p>The Post &amp; Telegraph operates federal air mail with its own aircraft plus contracted private work, and maintains a <strong>uniformed federal pilot corps</strong>. Later than OTL's 1918 start because there is no war-surplus aircraft and no military pilot pool.</p>
+          <p>By 1932 this corps is the largest pool of trained American aviators in the country — a major mobilisation asset. WBT's wartime air arm is built substantially out of postal pilots.</p>
+        </div>
+        <div class="card slate">
+          <div class="card-label">Late 1920s</div>
+          <h4>Federal Airways System (FAS)</h4>
+          <p>Created by USP&amp;T. Owns the ground: airfields, lighted beacons, emergency fields, weather reporting, navigation. Private carriers license access. Substantially cheaper to build than its OTL counterpart thanks to the Rural Electrification Act of 1910.</p>
+        </div>
+        <div class="card ink">
+          <div class="card-label">1929–31 · King administration</div>
+          <h4>Bureau of Air Commerce</h4>
+          <p>The capstone regulator, arriving as the culmination of thirty years of federal infrastructure-building rather than as a bolt from the blue. Built on the <strong>Boiler Safety and Certification Act of 1919 model</strong>: federal minimum airworthiness standards plus reciprocal recognition of state certification — not a federal inspectorate.</p>
+          <p><em>Naming note:</em> replaces the working title "Federal Aviation Bureau," which collided with Fleak's Federal Arbitration Bureau (~1900).</p>
+        </div>
+        <div class="card green">
+          <div class="card-label">Explicitly not</div>
+          <h4>USRC has no air arm</h4>
+          <p>The state railway does not enter aviation. Its passenger priority and political untouchability instead squeeze domestic aviation out of short and medium haul entirely.</p>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p><strong>International airworthiness</strong> is handled by <strong>bilateral treaty between the United States and Texas</strong>, not by the Bureau, which is a domestic body. A continent-wide air commerce regulator arrives later — either through NAOTA machinery or, more likely, with the postwar establishment of the NAU.</p>
+      </div>
+
+      <div class="subhead">Rail–air intermodal</div>
+      <div class="prose">
+        <p>Coordinated between USRC, USP&amp;T and FAS. Fly by day, rail by night. In OTL this model lasted about two years because aircraft improved fast enough to kill it; <strong>in WBT aircraft do not</strong>, and it becomes the way Americans cross the continent for a generation. Joint ticketing; airfields sited adjacent to rail termini; purpose-built transfer halls. It survives into the 1950s and leaves permanent marks on WBT transport geography after it fades.</p>
+      </div>
+
+      <div class="subhead">American airship use</div>
+      <ul class="plainlist">
+        <li><strong>Navy</strong> — long-range maritime patrol; scouting for the battle fleet, including rigid "flying carriers" operating parasite scout aircraft, viable far longer than OTL because carrier aviation sits at OTL-1925 levels in 1932; convoy escort and ASW 1932–40; postwar picket and early warning into the 1960s.</li>
+        <li><strong>Federal Airways System</strong> — beacon and station resupply into remote country; airships as survey platforms for building the airway itself.</li>
+        <li><strong>Federal Parks Service and geological survey</strong> — aerial mapping of the West.</li>
+        <li><strong>Heavy and outsize cargo</strong> into roadless country — Alaska, the northern Rockies. The niche that never dies.</li>
+        <li><strong>Home Guard</strong> — flood and hurricane survey, relief delivery, consistent with its FEMA-equivalent role.</li>
+        <li><strong>Not</strong> a dense domestic passenger network. Americans encounter airships as ocean crossings, freight to hard places, and things the Navy flies.</li>
+      </ul>
+
+      <div class="oc-inline"><strong>Open Canvas</strong>Whether a genuinely American airship builder emerges from the wartime Texian subsidiaries or the US simply keeps buying Texian after NAOTA drops the tariff wall in 1930. Terminal geography — the 6–12 North American airship ports. Where the American HTA industry lands geographically; deferred pending the automotive thread, though the Jefferson metro (V&amp;H and RMC sharing machining capacity), a Navy-adjacent coastal cluster and a Gulf cluster near the Texian yards are the likely anchors.</div>
+    </div>
+
+    <!-- ================= ARC ================= -->
+    <div class="phase-section" id="arc">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Long Arc</div>
+        <div class="phase-title">The Airship Arc</div>
+        <div class="phase-years">1899–2026</div>
+      </div>
+      <table class="dtable">
+        <tr><th>Period</th><th>Role</th></tr>
+        <tr><td class="yr">1899–1904</td><td>Observation balloons in the Great European War; early dirigible reconnaissance. Europe accumulates four years of institutional LTA experience and none with airplanes.</td></tr>
+        <tr><td class="yr">1905–06</td><td>Matanzas War — US Army and Navy balloon observation over Cuba. The era's only American military air experience; the service learns LTA has value.</td></tr>
+        <tr><td class="yr">1910s–20s</td><td>Commercial rigid golden age. Transoceanic and transcontinental prestige routes; New Frankfurt and the Gulf as the industry's hub.</td></tr>
+        <tr><td class="yr">1932–40</td><td><strong>Patronage bridge, not pause.</strong> Long-range maritime patrol, convoy escort and ASW against Prussian U-boats and Spanish raiders, flying-carrier scouting, trans-Pacific heavy logistics. The Navy buys non-rigids by the hundred; yards stay hot, crews stay trained, helium infrastructure stays funded. Rigids ride along on the same industrial base.</td></tr>
+        <tr><td class="yr">1941–</td><td>Intact yards, trained crews, no war. An industry looking for a customer.</td></tr>
+        <tr><td class="yr">1940s–60s</td><td>Rigid long-haul passenger service continues — unpressurised airliners still cannot beat it on comfort or range.</td></tr>
+        <tr><td class="yr">~1958–70</td><td>Civil HTA crosses the threshold. Scheduled point-to-point rigid service ends. <em>See below.</em></td></tr>
+        <tr><td class="yr">1970s–2000s</td><td>Cruise and tourism model plus outsize cargo to roadless regions. Diminished but continuous.</td></tr>
+        <tr><td class="yr">2010s–2026</td><td>Revival. Hybrid air vehicles for heavy cargo into northern Canada, Alaska and NAU Arctic logistics; low-carbon slow freight. A live Green Party and Nakamura-era policy argument, not retro-futurism.</td></tr>
+      </table>
+      <div class="disruption-banner">
+        <span class="disruption-label">Unresolved<br>consequence</span>
+        <div class="disruption-text">The Global War spans the HTA transition: it <strong>begins as a WWI-style air war and ends as a WWII-style one</strong>. Fabric biplanes over Bavaria in 1933; all-metal monoplanes by 1939. Two consequences require deliberate decisions: strategic bombing is feeble until the last two or three years, so <strong>European cities likely emerge less destroyed than OTL's</strong>, with knock-on effects for postwar reconstruction and the cinema bible; and naval aviation is weak, so <strong>battleships stay dominant longer</strong> and the Pacific theatre against China is fought substantially by surface fleets.</div>
+      </div>
+    </div>
+
+    <!-- ================= SHIFT ================= -->
+    <div class="phase-section" id="shift">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Long Arc</div>
+        <div class="phase-title">The 1960s Shift</div>
+        <div class="phase-years">~1958–1975</div>
+      </div>
+      <div class="prose">
+        <p>The shift is not caused by airships getting worse. It is caused by <strong>the passenger disappearing</strong>. By the mid-1960s WBT civil aviation reaches roughly OTL-1958 — pressurised, long-range, reliable — and the transatlantic run drops from two and a half days to hours. The business traveller and anyone who simply needs to <em>arrive</em> leaves in a rush.</p>
+        <p>What remains is the passenger who was never buying transport: the crossing itself, the observation lounge, the dining room, three days of being nowhere. That customer barely shrinks. The collapse in volume is also a <strong>clarification of what the industry was actually selling</strong>.</p>
+        <p>The precedent is exact and is the reason this is credible: OTL jets killed scheduled transatlantic liner service in the same decade, and the liner companies did not vanish — they became the cruise industry. Same ships, same crews, same ports, entirely different product.</p>
+      </div>
+
+      <table class="dtable">
+        <tr><th>Period</th><th>Stage</th></tr>
+        <tr><td class="yr">~1958–65</td><td><strong>Erosion.</strong> Business traffic goes first; load factors fall on the fast routes. Both operators cut frequency and begin marketing the experience rather than the schedule — a defensive move that turns out to be the future.</td></tr>
+        <tr><td class="yr">~1965–70</td><td><strong>The break.</strong> Scheduled point-to-point rigid service ends. Not by announcement; routes are withdrawn one at a time until nothing is left. The last scheduled crossing is a news item nobody planned.</td></tr>
+        <tr><td class="yr">~1968–75</td><td><strong>The new product.</strong> Circuits and cruises rather than routes: Caribbean and Gulf in winter, the Pacific Northwest, Alaska and the northern parks in summer — which conveniently inverts the hurricane problem, since the ships are elsewhere when the Gulf is dangerous. Fewer, larger, more comfortable ships; fares aimed at people with time.</td></tr>
+      </table>
+
+      <div class="subhead">Who survives, and why</div>
+      <div class="prose">
+        <p>The decisive divergence has a date decades earlier than the collapse. <strong>TAS could not diversify because its advantages did not transfer</strong> — its entire position was a bundle of government contracts written around airships, for a state that already had an incumbent, and its parent built airships, so a fixed-wing subsidiary would have competed with WAE's own product line. <strong>TGA diversified because it had nothing to protect.</strong> Its first fixed-wing feeder routes appear in the 1950s, initially framed as connecting traffic to its airship trunk routes.</p>
+        <p>By the time the break arrives, TGA is already half an airline and TAS is still purely an airship operator, shifting to cruising only at the last moment and unable to compete. <strong>The company that was hostage to its own success dies of it.</strong></p>
+      </div>
+
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-year">1960s</span>
+          <span class="milestone-title">TAS folds; Vanguard absorbs WAE</span>
+        </div>
+        <div class="milestone-body">
+          <p>TAS folds first. With its operator gone, WAE is doomed, and Vanguard buys the firm — acquiring the yards, the sheds and the naval contracts. What Vanguard is buying is the <strong>non-rigid utility line</strong>, which is still valuable; the prestige rigid business is the liability.</p>
+          <p>Vanguard shifts all rigid construction to the old Weiss yards, operating as <strong>Weiss-Vanguard Rigid Airship Works</strong>, and converts its own primary yards to semi-rigid and non-rigid volume production. All other Vanguard output carries the primary name. The founder's name survives on the prestige line specifically — Patterson's company keeping the name it beat, on the product he was originally denied a voice in. The 1889 name is still on a shed in 2026.</p>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p><strong>Large rigids become rare, not extinct.</strong> The cruise market sustains only a handful of hulls and rigids last decades, so new construction runs to roughly one hull every ten to fifteen years. A keel laid at Weiss-Vanguard is national news in Texas, and the yard spends most of its life on refits and overhauls rather than building — which makes keeping rigid-building expertise alive between hulls a genuine and permanent workforce problem.</p>
+      </div>
+
+      <div class="subhead">What TGA becomes</div>
+      <div class="prose">
+        <p>A major continental passenger airline headquartered in New Frankfurt, flying throughout the NAU — <strong>a Texian flag carrier by accident, having never taken a dollar of state support</strong>, which is the joke at TAS's expense. It retains a heritage rigid cruise division, so the company still flies the thing it was founded to fly, as a boutique line inside a modern airline. The 2010s cargo revival gives it a third airship generation.</p>
+        <p>Sixty years, end to end, from a founder ignoring his engineer to that engineer's company owning his.</p>
+      </div>
+
+      <div class="oc-inline"><strong>Open Canvas</strong>NAU cabotage and open-skies friction — a Texian airline flying US domestic routes is exactly the kind of integration dispute the NAU generates, and is directly relevant to the Secretary of Transportation portfolio. Whether TGA renames again after the 1970s.</div>
+    </div>
+
+    <!-- ================= OPEN CANVAS ================= -->
+    <div class="phase-section" id="open">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Reference</div>
+        <div class="phase-title">Open Canvas — Consolidated</div>
+      </div>
+      <ol class="numbered">
+        <li><strong>Prussian disaster specifics.</strong> Ship name, route, crash site; the Nationalist figure's name and portfolio; the royal's identity. Whether a British hydrogen disaster ~1929–31 precedes it.</li>
+        <li><strong>American HTA industry geography.</strong> Deferred pending the automotive thread; likely 2–3 clusters rather than a single centre.</li>
+        <li><strong>Terminal geography.</strong> The 6–12 North American airship ports.</li>
+        <li><strong>Domestic American builder.</strong> Whether one emerges from the wartime Texian subsidiaries.</li>
+        <li><strong>Global War air campaign consequences.</strong> Late-arriving strategic bombing and less-destroyed European cities; battleship dominance and the Pacific surface war.</li>
+        <li><strong>Turbine timeline.</strong> Deferred to a postwar session. Automotive turbine involvement is explicitly ruled out.</li>
+        <li><strong>Named ships and classes</strong> for both Texian firms, and the New Frankfurt industry's labour history.</li>
+        <li><strong>Helium enforcement architecture</strong> after 1930, and whether a gray transshipment market persists.</li>
+      </ol>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <em>Soft canon unless marked otherwise. All dates subject to revision. Open canvas items flagged throughout.</em>
+</footer>
+
+</body>
+</html>
