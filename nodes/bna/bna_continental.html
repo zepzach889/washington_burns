@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>The Continental — Bank of North America</title>
+<link rel="stylesheet" href="../../shared.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bna-paper: #F5EFE1;
+    --bna-paper2: #FBF8F0;
+    --bna-ink: #123A38;
+    --bna-ink2: #0C2A29;
+    --bna-copper: #A85A24;
+    --bna-copper-deep: #7E3F16;
+    --bna-green: #2C7A66;
+    --bna-gold: #C6972F;
+    --bna-nickel: #8C918F;
+    --bna-line: #E0D6C2;
+    --bna-muted: #6E655A;
+    --bna-serif: 'Spectral', Georgia, serif;
+    --bna-sans: 'Public Sans', system-ui, sans-serif;
+    --bna-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  .bna-scope { background: var(--bna-paper); font-family: var(--bna-sans); color: var(--bna-ink); }
+
+  /* ── MASTHEAD + NAV (shared with home) ── */
+  .bna-masthead { background: var(--bna-ink); color: var(--bna-paper); padding: 18px 26px; display: flex; align-items: center; gap: 16px; }
+  .bna-seal { flex: 0 0 auto; }
+  .bna-mast-wm { font-family: var(--bna-serif); font-weight: 500; font-size: 22px; line-height: 1.1; letter-spacing: .01em; }
+  .bna-mast-sub { font-size: 12px; color: #B9CCC7; margin-top: 3px; }
+  .bna-mast-right { margin-left: auto; text-align: right; }
+  .bna-mast-gov-k { font-family: var(--bna-mono); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #8FB8AE; }
+  .bna-mast-gov { font-family: var(--bna-serif); font-size: 14px; color: var(--bna-paper); margin-top: 2px; }
+
+  .bna-nav { background: var(--bna-ink2); display: flex; overflow-x: auto; border-bottom: 2px solid var(--bna-copper); }
+  .bna-nav a { font-size: 12px; color: rgba(245,239,225,0.72); text-decoration: none; padding: 10px 16px; font-weight: 500; white-space: nowrap; border-right: .5px solid rgba(245,239,225,0.08); transition: all .1s; }
+  .bna-nav a:hover { background: rgba(245,239,225,0.06); color: #fff; }
+  .bna-nav a.active { color: var(--bna-paper); border-bottom: 2px solid var(--bna-copper); }
+
+  /* ── PAGE ── */
+  .bna-body { max-width: 1080px; margin: 0 auto; padding: 30px 24px 44px; }
+  .bna-page-head { max-width: 720px; margin-bottom: 30px; }
+  .bna-page-head h1 { font-family: var(--bna-serif); font-weight: 500; font-size: 34px; color: var(--bna-ink); line-height: 1.1; margin-bottom: 10px; }
+  .bna-page-head p { font-size: 15px; color: var(--bna-ink); line-height: 1.6; }
+  .bna-page-head .Cmark { color: var(--bna-copper); font-weight: 600; }
+
+  .bna-lbl { font-family: var(--bna-mono); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--bna-copper); margin: 0 0 6px; display: flex; align-items: center; gap: 12px; }
+  .bna-lbl::after { content: ""; flex: 1; height: 1px; background: var(--bna-line); }
+  .bna-lbl-note { font-size: 12.5px; color: var(--bna-muted); line-height: 1.5; margin-bottom: 18px; max-width: 680px; }
+
+  /* ── BANKNOTES ── */
+  .bna-notes { display: flex; flex-direction: column; gap: 18px; margin-bottom: 40px; }
+  .bna-note { background: var(--bna-paper2); border: 1px solid var(--bna-line); border-radius: 12px; overflow: hidden; }
+  .bna-note-faces { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--bna-line); }
+  @media (max-width: 640px) { .bna-note-faces { grid-template-columns: 1fr; } }
+  .bna-face { background: var(--bna-paper); position: relative; }
+  .bna-face img { width: 100%; display: block; aspect-ratio: 2 / 1; object-fit: cover; background: var(--bna-paper); }
+  .bna-face-tag { position: absolute; top: 8px; left: 8px; font-family: var(--bna-mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; background: rgba(18,58,56,.82); color: var(--bna-paper); padding: 2px 7px; border-radius: 4px; }
+  .bna-note-cap { padding: 16px 20px; }
+  .bna-note-top { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .bna-note-den { font-family: var(--bna-serif); font-size: 30px; font-weight: 600; color: var(--bna-copper); line-height: 1; }
+  .bna-note-theme { font-family: var(--bna-serif); font-size: 20px; font-weight: 500; font-style: italic; color: var(--bna-ink); }
+  .bna-note-desc { font-size: 13.5px; color: var(--bna-ink); line-height: 1.55; margin-top: 9px; }
+  .bna-note-back { font-size: 12.5px; color: var(--bna-muted); margin-top: 9px; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+  .bna-note-back .bna-dot { margin-top: 6px; flex-shrink: 0; }
+  .bna-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--bna-copper); display: inline-block; }
+  .bna-note-ser { font-family: var(--bna-mono); font-size: 10.5px; color: var(--bna-muted); letter-spacing: .06em; border-top: 1px dashed var(--bna-line); margin-top: 12px; padding-top: 10px; }
+
+  /* ── COINS ── */
+  .bna-coins { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .bna-coin { background: var(--bna-paper2); border: 1px solid var(--bna-line); border-radius: 12px; padding: 16px; display: flex; gap: 15px; align-items: center; }
+  .bna-coin.metal { border-color: var(--bna-gold); box-shadow: inset 0 0 0 1px rgba(198,151,47,.25); }
+  .bna-coin-img { width: 128px; flex: 0 0 auto; }
+  .bna-coin-img img { width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: contain; background: var(--bna-paper); border-radius: 6px; }
+  .bna-coin-den { font-family: var(--bna-serif); font-size: 24px; font-weight: 600; color: var(--bna-copper); line-height: 1; }
+  .bna-coin-den .glyph { color: var(--bna-gold); }
+  .bna-coin-desc { font-size: 12.5px; color: var(--bna-ink); line-height: 1.5; margin-top: 6px; }
+  .bna-coin-pill { display: inline-block; font-family: var(--bna-mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; background: rgba(140,145,143,.2); color: #55605c; padding: 3px 8px; border-radius: 4px; margin-top: 8px; }
+  .bna-coin-pill.gold { background: rgba(198,151,47,.18); color: #8a6410; }
+
+  /* ── CLOSER ── */
+  .bna-closer { margin-top: 40px; background: var(--bna-ink); color: var(--bna-paper); border-radius: 12px; padding: 26px; display: flex; align-items: center; gap: 20px; }
+  @media (max-width: 560px) { .bna-closer { flex-direction: column; text-align: center; } }
+  .bna-closer-motto { font-family: var(--bna-serif); font-style: italic; font-size: 22px; color: var(--bna-gold); }
+  .bna-closer-sub { font-size: 12.5px; color: #B9CCC7; margin-top: 4px; }
+  .bna-closer-meta { margin-left: auto; text-align: right; font-family: var(--bna-mono); font-size: 10.5px; color: #8FB8AE; letter-spacing: .08em; line-height: 1.7; }
+  @media (max-width: 560px) { .bna-closer-meta { margin-left: 0; text-align: center; } }
+</style>
+</head>
+<body>
+
+<div class="arc-chrome bna-scope">
+  <div class="wm-topbar">
+    <div class="arc-navbtns">
+      <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+      <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+    </div>
+    <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+    <div class="wm-address-wrap" id="wm-address-wrap">
+      <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+      <button class="wm-go-btn" id="wm-go-btn">→</button>
+    </div>
+    <div class="arc-clock" id="arc-clock"></div>
+  </div>
+
+  <div class="bna-masthead">
+    <span class="bna-seal">
+      <svg width="52" height="52" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="47" fill="none" stroke="#8FB8AE" stroke-width="1.5"/>
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#8FB8AE" stroke-width="0.7"/>
+        <g fill="#C6972F" id="bna-stars"></g>
+        <path d="M40 30 Q35 41 41 47 Q37 57 45 63 Q43 72 52 74 Q61 70 58 60 Q66 54 60 46 Q64 39 56 33 Q49 28 40 30 Z" fill="#8FB8AE" opacity="0.92"/>
+      </svg>
+    </span>
+    <div>
+      <div class="bna-mast-wm">Bank of North America</div>
+      <div class="bna-mast-sub">link://nan.bna.org.nau &nbsp;·&nbsp; Central bank of the North American Union &nbsp;·&nbsp; issuer of the Continental</div>
+    </div>
+    <div class="bna-mast-right">
+      <div class="bna-mast-gov-k">Governor</div>
+      <div class="bna-mast-gov">Elena M. Hartley</div>
+    </div>
+  </div>
+
+  <nav class="bna-nav">
+    <a href="index.html">Home</a>
+    <a href="bna_continental.html" class="active">The Continental</a>
+    <a href="#">Monetary policy</a>
+    <a href="#">About the BNA</a>
+    <a href="#">Statistics</a>
+  </nav>
+</div>
+
+<div class="bna-scope">
+<div class="bna-body">
+
+  <div class="bna-page-head">
+    <h1>The Continental</h1>
+    <p>The <span class="Cmark">Continental</span> (Ȼ · CTL) is the common currency of the North American Union. Its banknotes are standard across every member state; its coins are struck by each member's own mint — a single Union face on one side, a national design on the other. The notes and coins below are the Series 2026 issue now in circulation.</p>
+  </div>
+
+  <div class="bna-lbl">Banknotes</div>
+  <div class="bna-lbl-note">Five denominations, issued by the Bank of North America and identical Union-wide. Each note carries a theme on the front and a member state's landscape on the back.</div>
+
+  <div class="bna-notes">
+
+    <div class="bna-note">
+      <div class="bna-note-faces">
+        <div class="bna-face"><span class="bna-face-tag">Front</span><img src="../../images/bna/note-5-front.png" alt="Five Continental note, front — Peace" loading="lazy"></div>
+        <div class="bna-face"><span class="bna-face-tag">Back</span><img src="../../images/bna/note-5-back.png" alt="Five Continental note, back — Crater Lake Federal Park" loading="lazy"></div>
+      </div>
+      <div class="bna-note-cap">
+        <div class="bna-note-top"><span class="bna-note-den">Ȼ5</span><span class="bna-note-theme">Peace</span></div>
+        <div class="bna-note-desc">The founding leaders of the Union's predecessor, established in the 1920s.</div>
+        <div class="bna-note-back"><span class="bna-dot"></span> Reverse · Crater Lake Federal Park, United States</div>
+        <div class="bna-note-ser">Series 2026 · Gov. Elena M. Hartley</div>
+      </div>
+    </div>
+
+    <div class="bna-note">
+      <div class="bna-note-faces">
+        <div class="bna-face"><span class="bna-face-tag">Front</span><img src="../../images/bna/note-10-front.png" alt="Ten Continental note, front — Industry" loading="lazy"></div>
+        <div class="bna-face"><span class="bna-face-tag">Back</span><img src="../../images/bna/note-10-back.png" alt="Ten Continental note, back — Popocatépetl" loading="lazy"></div>
+      </div>
+      <div class="bna-note-cap">
+        <div class="bna-note-top"><span class="bna-note-den">Ȼ10</span><span class="bna-note-theme">Industry</span></div>
+        <div class="bna-note-desc">Workers drawn from across the modern trades of the Union.</div>
+        <div class="bna-note-back"><span class="bna-dot"></span> Reverse · Popocatépetl, Parque Imperial, Mexico</div>
+        <div class="bna-note-ser">Series 2026 · Gov. Elena M. Hartley</div>
+      </div>
+    </div>
+
+    <div class="bna-note">
+      <div class="bna-note-faces">
+        <div class="bna-face"><span class="bna-face-tag">Front</span><img src="../../images/bna/note-20-front.png" alt="Twenty Continental note, front — Discovery" loading="lazy"></div>
+        <div class="bna-face"><span class="bna-face-tag">Back</span><img src="../../images/bna/note-20-back.png" alt="Twenty Continental note, back — Diamond Head" loading="lazy"></div>
+      </div>
+      <div class="bna-note-cap">
+        <div class="bna-note-top"><span class="bna-note-den">Ȼ20</span><span class="bna-note-theme">Discovery</span></div>
+        <div class="bna-note-desc">The crew of Hermes 8, the 1976 Moon landing — Waverly, Stirling, Carrera and Lyons.</div>
+        <div class="bna-note-back"><span class="bna-dot"></span> Reverse · Diamond Head, Leʻahi Royal Reserve Park, Kingdom of Hawaii</div>
+        <div class="bna-note-ser">Series 2026 · Gov. Elena M. Hartley</div>
+      </div>
+    </div>
+
+    <div class="bna-note">
+      <div class="bna-note-faces">
+        <div class="bna-face"><span class="bna-face-tag">Front</span><img src="../../images/bna/note-50-front.png" alt="Fifty Continental note, front — Liberty" loading="lazy"></div>
+        <div class="bna-face"><span class="bna-face-tag">Back</span><img src="../../images/bna/note-50-back.png" alt="Fifty Continental note, back — Mount Tahoma Dominion Park" loading="lazy"></div>
+      </div>
+      <div class="bna-note-cap">
+        <div class="bna-note-top"><span class="bna-note-den">Ȼ50</span><span class="bna-note-theme">Liberty</span></div>
+        <div class="bna-note-desc">Three firsts of the Union: VP Frederick Bailey, first Black Vice President of the United States; Councilor Chen Yong-fa, first Chinese-Californian elected to office (San Francisco, 1897); and PM Margaret Dunbar, Canada's first woman Prime Minister.</div>
+        <div class="bna-note-back"><span class="bna-dot"></span> Reverse · Mount Tahoma Dominion Park, Canada</div>
+        <div class="bna-note-ser">Series 2026 · Gov. Elena M. Hartley</div>
+      </div>
+    </div>
+
+    <div class="bna-note">
+      <div class="bna-note-faces">
+        <div class="bna-face"><span class="bna-face-tag">Front</span><img src="../../images/bna/note-100-front.png" alt="One hundred Continental note, front — Unity" loading="lazy"></div>
+        <div class="bna-face"><span class="bna-face-tag">Back</span><img src="../../images/bna/note-100-back.png" alt="One hundred Continental note, back — Grand Canyon International Park" loading="lazy"></div>
+      </div>
+      <div class="bna-note-cap">
+        <div class="bna-note-top"><span class="bna-note-den">Ȼ100</span><span class="bna-note-theme">Unity</span></div>
+        <div class="bna-note-desc">Three young North Americans joining hands — a portrait of the Union's shared future.</div>
+        <div class="bna-note-back"><span class="bna-dot"></span> Reverse · Grand Canyon International Park, on the Texas–California border</div>
+        <div class="bna-note-ser">Series 2026 · Gov. Elena M. Hartley</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bna-lbl">Coins</div>
+  <div class="bna-lbl-note">Every Union coin shares a common face — the denomination, the star-ringed continent, and the motto <em>Foedus Aequorum</em> — while its reverse is designed and struck by the minting member state. The coins below are struck by the United States Mint. The bimetallic Ȼ1 and Ȼ2 are the Union's highest-value coins.</div>
+
+  <div class="bna-coins">
+
+    <div class="bna-coin">
+      <div class="bna-coin-img"><img src="../../images/bna/coin-0-01.png" alt="One cent coin, both faces" loading="lazy"></div>
+      <div>
+        <div class="bna-coin-den">1¢</div>
+        <div class="bna-coin-desc">Reverse: buffalo.</div>
+        <span class="bna-coin-pill">United States Mint</span>
+      </div>
+    </div>
+
+    <div class="bna-coin">
+      <div class="bna-coin-img"><img src="../../images/bna/coin-0-05.png" alt="Five cent coin, both faces" loading="lazy"></div>
+      <div>
+        <div class="bna-coin-den">5¢</div>
+        <div class="bna-coin-desc">Reverse: Independence Hall.</div>
+        <span class="bna-coin-pill">United States Mint</span>
+      </div>
+    </div>
+
+    <div class="bna-coin">
+      <div class="bna-coin-img"><img src="../../images/bna/coin-0-10.png" alt="Ten cent coin, both faces" loading="lazy"></div>
+      <div>
+        <div class="bna-coin-den">10¢</div>
+        <div class="bna-coin-desc">Reverse: George Washington.</div>
+        <span class="bna-coin-pill">United States Mint</span>
+      </div>
+    </div>
+
+    <div class="bna-coin">
+      <div class="bna-coin-img"><img src="../../images/bna/coin-0-25.png" alt="Twenty-five cent coin, both faces" loading="lazy"></div>
+      <div>
+        <div class="bna-coin-den">25¢</div>
+        <div class="bna-coin-desc">Reverse: a rotating themed series since the early 2000s. The current series honors the US states — shown here, Oregon.</div>
+        <span class="bna-coin-pill">United States Mint</span>
+      </div>
+    </div>
+
+    <div class="bna-coin">
+      <div class="bna-coin-img"><img src="../../images/bna/coin-0-50.png" alt="Fifty cent coin, both faces" loading="lazy"></div>
+      <div>
+        <div class="bna-coin-den">50¢</div>
+        <div class="bna-coin-desc">Reverse: a naturalistic eagle.</div>
+        <span class="bna-coin-pill">United States Mint</span>
+      </div>
+    </div>
+
+    <div class="bna-coin metal">
+      <div class="bna-coin-img"><img src="../../images/bna/coin-1-00.png" alt="One Continental coin, both faces" loading="lazy"></div>
+      <div>
+        <div class="bna-coin-den"><span class="glyph">Ȼ</span>1</div>
+        <div class="bna-coin-desc">Bimetallic — silver ring, gold center. Reverse: Georgina Lincoln, first female President of the United States.</div>
+        <span class="bna-coin-pill gold">Bimetallic · US Mint</span>
+      </div>
+    </div>
+
+    <div class="bna-coin metal">
+      <div class="bna-coin-img"><img src="../../images/bna/coin-2-00.png" alt="Two Continental coin, both faces" loading="lazy"></div>
+      <div>
+        <div class="bna-coin-den"><span class="glyph">Ȼ</span>2</div>
+        <div class="bna-coin-desc">Bimetallic — gold ring, silver center. Reverse: Hugo Brandt, Free States leader in the War Between the States, later President and architect of Reconstruction — the "Savior of the Union."</div>
+        <span class="bna-coin-pill gold">Bimetallic · US Mint</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bna-closer">
+    <span class="bna-seal">
+      <svg width="60" height="60" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="47" fill="none" stroke="#C6972F" stroke-width="1.3"/>
+        <g fill="#8FB8AE" id="bna-stars2"></g>
+        <path d="M40 30 Q35 41 41 47 Q37 57 45 63 Q43 72 52 74 Q61 70 58 60 Q66 54 60 46 Q64 39 56 33 Q49 28 40 30 Z" fill="#C6972F" opacity="0.92"/>
+      </svg>
+    </span>
+    <div>
+      <div class="bna-closer-motto">Foedus Aequorum</div>
+      <div class="bna-closer-sub">"A covenant of equals" — the motto borne on every Union coin.</div>
+    </div>
+    <div class="bna-closer-meta">Series 2026<br>Issued by the Bank of North America<br>Gov. Elena M. Hartley</div>
+  </div>
+
+</div>
+</div>
+
+<div class="wm-footer">
+  <span>link://nan.bna.org.nau &nbsp;·&nbsp; Bank of North America &nbsp;·&nbsp; Calumet, Federal District of Dearborn</span>
+  <div class="wm-footer-links">
+    <a href="index.html">Home</a>
+    <a href="#">Monetary policy</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script>
+initAddressBar('nan.bna.org.nau/continental');
+
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+
+(function(){
+  function ring(id, r, rad){
+    const g = document.getElementById(id); if(!g) return;
+    let s = '';
+    for (let a = 0; a < 360; a += 30){
+      const x = 50 + r * Math.cos(a*Math.PI/180);
+      const y = 50 + r * Math.sin(a*Math.PI/180);
+      s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rad}"/>`;
+    }
+    g.innerHTML = s;
+  }
+  ring('bna-stars', 43, 1.6);
+  ring('bna-stars2', 43, 1.7);
+})();
+</script>
+
+</body>
+</html>

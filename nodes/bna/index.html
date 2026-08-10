@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<title>Bank of North America — Central Bank of the NAU</title>
+<link rel="stylesheet" href="../../shared.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bna-paper: #F5EFE1;
+    --bna-paper2: #FBF8F0;
+    --bna-ink: #123A38;
+    --bna-ink2: #0C2A29;
+    --bna-copper: #A85A24;
+    --bna-copper-deep: #7E3F16;
+    --bna-green: #2C7A66;
+    --bna-gold: #C6972F;
+    --bna-nickel: #8C918F;
+    --bna-line: #E0D6C2;
+    --bna-muted: #6E655A;
+    --bna-serif: 'Spectral', Georgia, serif;
+    --bna-sans: 'Public Sans', system-ui, sans-serif;
+    --bna-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  .bna-scope { background: var(--bna-paper); font-family: var(--bna-sans); color: var(--bna-ink); }
+
+  /* ── MASTHEAD ── */
+  .bna-masthead { background: var(--bna-ink); color: var(--bna-paper); padding: 18px 26px; display: flex; align-items: center; gap: 16px; }
+  .bna-seal { flex: 0 0 auto; }
+  .bna-mast-wm { font-family: var(--bna-serif); font-weight: 500; font-size: 22px; line-height: 1.1; letter-spacing: .01em; }
+  .bna-mast-sub { font-size: 12px; color: #B9CCC7; margin-top: 3px; }
+  .bna-mast-right { margin-left: auto; text-align: right; }
+  .bna-mast-gov-k { font-family: var(--bna-mono); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #8FB8AE; }
+  .bna-mast-gov { font-family: var(--bna-serif); font-size: 14px; color: var(--bna-paper); margin-top: 2px; }
+
+  /* ── NAV ── */
+  .bna-nav { background: var(--bna-ink2); display: flex; overflow-x: auto; border-bottom: 2px solid var(--bna-copper); }
+  .bna-nav a { font-size: 12px; color: rgba(245,239,225,0.72); text-decoration: none; padding: 10px 16px; font-weight: 500; white-space: nowrap; border-right: .5px solid rgba(245,239,225,0.08); transition: all .1s; }
+  .bna-nav a:hover { background: rgba(245,239,225,0.06); color: #fff; }
+  .bna-nav a.active { color: var(--bna-paper); border-bottom: 2px solid var(--bna-copper); }
+
+  /* ── LAYOUT ── */
+  .bna-body { max-width: 1080px; margin: 0 auto; padding: 26px 24px 40px; }
+  .bna-lbl { font-family: var(--bna-mono); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--bna-copper); margin: 0 0 14px; display: flex; align-items: center; gap: 12px; }
+  .bna-lbl::after { content: ""; flex: 1; height: 1px; background: var(--bna-line); }
+  .bna-section { margin-bottom: 34px; }
+
+  /* ── HERO ── */
+  .bna-hero { display: grid; grid-template-columns: 300px 1fr; gap: 22px; margin-bottom: 34px; }
+  @media (max-width: 760px) { .bna-hero { grid-template-columns: 1fr; } }
+
+  .bna-rate { background: var(--bna-ink); color: var(--bna-paper); border-radius: 12px; padding: 22px 24px; }
+  .bna-rate-k { font-family: var(--bna-mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #8FB8AE; }
+  .bna-rate-big { font-family: var(--bna-serif); font-size: 58px; font-weight: 400; line-height: 1; margin: 10px 0 6px; }
+  .bna-rate-big span { font-size: 28px; color: var(--bna-gold); }
+  .bna-rate-note { font-size: 12px; color: #B9CCC7; line-height: 1.5; }
+  .bna-rate-tag { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 11.5px; background: rgba(143,184,174,.16); color: #Bfe0d8; padding: 4px 11px; border-radius: 20px; font-family: var(--bna-mono); }
+  .bna-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--bna-green); display: inline-block; }
+
+  .bna-mandate { }
+  .bna-mandate h1 { font-family: var(--bna-serif); font-weight: 500; font-size: 26px; line-height: 1.2; color: var(--bna-ink); margin-bottom: 10px; }
+  .bna-mandate p { font-size: 14.5px; color: var(--bna-ink); line-height: 1.6; margin-bottom: 14px; }
+  .bna-figs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .bna-fig { background: var(--bna-paper2); border: 1px solid var(--bna-line); border-radius: 10px; padding: 12px 14px; }
+  .bna-fig-k { font-family: var(--bna-mono); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--bna-muted); }
+  .bna-fig-v { font-family: var(--bna-serif); font-size: 22px; color: var(--bna-ink); margin-top: 3px; }
+  .bna-fig-v small { font-size: 12px; color: var(--bna-copper); }
+
+  /* ── PRESS RELEASES ── */
+  .bna-pr { background: var(--bna-paper2); border: 1px solid var(--bna-line); border-radius: 10px; padding: 14px 16px; margin-bottom: 11px; }
+  .bna-pr:last-child { margin-bottom: 0; }
+  .bna-pr-meta { display: flex; gap: 10px; align-items: center; margin-bottom: 5px; }
+  .bna-pr-cat { font-family: var(--bna-mono); font-size: 9px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; background: rgba(44,122,102,.14); color: #1d5b4b; }
+  .bna-pr-cat.policy { background: rgba(168,90,36,.14); color: var(--bna-copper-deep); }
+  .bna-pr-cat.notice { background: rgba(198,151,47,.16); color: #8a6410; }
+  .bna-pr-date { font-family: var(--bna-mono); font-size: 10.5px; color: var(--bna-muted); }
+  .bna-pr-title { font-family: var(--bna-serif); font-size: 16px; color: var(--bna-ink); line-height: 1.3; margin-bottom: 3px; }
+  .bna-pr-dek { font-size: 12.5px; color: var(--bna-muted); line-height: 1.5; }
+
+  /* ── CONTINENTAL TEASER ── */
+  .bna-teaser { display: grid; grid-template-columns: 88px 1fr auto; gap: 18px; align-items: center; background: var(--bna-ink); color: var(--bna-paper); border-radius: 12px; padding: 22px 24px; }
+  @media (max-width: 620px) { .bna-teaser { grid-template-columns: 1fr; text-align: center; } }
+  .bna-teaser h2 { font-family: var(--bna-serif); font-weight: 500; font-size: 21px; margin-bottom: 5px; }
+  .bna-teaser p { font-size: 13px; color: #B9CCC7; line-height: 1.5; }
+  .bna-btn { display: inline-block; font-family: var(--bna-sans); font-weight: 600; font-size: 13px; color: var(--bna-ink); background: var(--bna-gold); padding: 10px 18px; border-radius: 8px; text-decoration: none; white-space: nowrap; }
+  .bna-btn:hover { background: #d8a838; }
+
+  /* ── REFORM STRIP ── */
+  .bna-reform { border-left: 3px solid var(--bna-copper); background: var(--bna-paper2); padding: 12px 16px; border-radius: 0 8px 8px 0; font-size: 12.5px; color: var(--bna-muted); line-height: 1.55; }
+  .bna-reform strong { color: var(--bna-ink); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="arc-chrome bna-scope">
+  <div class="wm-topbar">
+    <div class="arc-navbtns">
+      <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+      <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+    </div>
+    <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+    <div class="wm-address-wrap" id="wm-address-wrap">
+      <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+      <button class="wm-go-btn" id="wm-go-btn">→</button>
+    </div>
+    <div class="arc-clock" id="arc-clock"></div>
+  </div>
+
+  <div class="bna-masthead">
+    <span class="bna-seal">
+      <svg width="52" height="52" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="47" fill="none" stroke="#8FB8AE" stroke-width="1.5"/>
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#8FB8AE" stroke-width="0.7"/>
+        <g fill="#C6972F" id="bna-stars"></g>
+        <path d="M40 30 Q35 41 41 47 Q37 57 45 63 Q43 72 52 74 Q61 70 58 60 Q66 54 60 46 Q64 39 56 33 Q49 28 40 30 Z" fill="#8FB8AE" opacity="0.92"/>
+      </svg>
+    </span>
+    <div>
+      <div class="bna-mast-wm">Bank of North America</div>
+      <div class="bna-mast-sub">link://nan.bna.org.nau &nbsp;·&nbsp; Central bank of the North American Union &nbsp;·&nbsp; issuer of the Continental</div>
+    </div>
+    <div class="bna-mast-right">
+      <div class="bna-mast-gov-k">Governor</div>
+      <div class="bna-mast-gov">Elena M. Hartley</div>
+    </div>
+  </div>
+
+  <nav class="bna-nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="bna_continental.html">The Continental</a>
+    <a href="#">Monetary policy</a>
+    <a href="#">About the BNA</a>
+    <a href="#">Statistics</a>
+  </nav>
+</div>
+
+<div class="bna-scope">
+<div class="bna-body">
+
+  <div class="bna-hero">
+    <div class="bna-rate">
+      <div class="bna-rate-k">Benchmark rate</div>
+      <div class="bna-rate-big" id="bna-rate-num">3.25<span>%</span></div>
+      <div class="bna-rate-note">Set by the Board of Governors · effective 9 July 2026</div>
+      <div class="bna-rate-tag"><span class="bna-dot"></span> <span id="bna-rate-status">Held steady — next review 20 August</span></div>
+    </div>
+    <div class="bna-mandate">
+      <h1>Guardian of the Continental</h1>
+      <p>The Bank of North America is the central bank of the North American Union. It sets monetary policy for the Union, issues the Continental, and safeguards the stability of prices and the financial system across the member states.</p>
+      <div class="bna-figs">
+        <div class="bna-fig"><div class="bna-fig-k">Inflation (12-mo)</div><div class="bna-fig-v">2.1<small>%</small></div></div>
+        <div class="bna-fig"><div class="bna-fig-k">Currency</div><div class="bna-fig-v">Continental <small>CTL</small></div></div>
+        <div class="bna-fig"><div class="bna-fig-k">Ȼ1 vs UKP</div><div class="bna-fig-v">£0.79</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bna-section">
+    <div class="bna-lbl">Latest from the Bank</div>
+    <div id="bna-releases"></div>
+  </div>
+
+  <div class="bna-section">
+    <div class="bna-teaser">
+      <span class="bna-seal" style="justify-self:center">
+        <svg width="80" height="80" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="#C6972F" stroke-width="1.4"/>
+          <g fill="#8FB8AE" id="bna-stars2"></g>
+          <path d="M40 30 Q35 41 41 47 Q37 57 45 63 Q43 72 52 74 Q61 70 58 60 Q66 54 60 46 Q64 39 56 33 Q49 28 40 30 Z" fill="#C6972F" opacity="0.92"/>
+        </svg>
+      </span>
+      <div>
+        <h2>The Continental</h2>
+        <p>Five banknotes shared across the Union; coins minted by each member state — a common face, a national reverse. Explore the notes and coins now in circulation.</p>
+      </div>
+      <a class="bna-btn" href="bna_continental.html">Explore the Continental →</a>
+    </div>
+  </div>
+
+  <div class="bna-reform">
+    Founded as the <strong>Continental Bank</strong> under the mid-century monetary agreements, the institution was reconstituted as the <strong>Bank of North America</strong> following the monetary reforms of <strong>[YEAR]</strong>, which unified note issuance and broadened the Bank's mandate across the Union.
+  </div>
+
+</div>
+</div>
+
+<div class="wm-footer">
+  <span>link://nan.bna.org.nau &nbsp;·&nbsp; Bank of North America &nbsp;·&nbsp; Calumet, Federal District of Dearborn</span>
+  <div class="wm-footer-links">
+    <a href="bna_continental.html">The Continental</a>
+    <a href="#">Monetary policy</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script>
+initAddressBar('nan.bna.org.nau');
+
+// ── CLOCK ──
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+
+// ── STAR RINGS (emblem) ──
+(function(){
+  function ring(id, r, rad){
+    const g = document.getElementById(id); if(!g) return;
+    let s = '';
+    for (let a = 0; a < 360; a += 30){
+      const x = 50 + r * Math.cos(a*Math.PI/180);
+      const y = 50 + r * Math.sin(a*Math.PI/180);
+      s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rad}"/>`;
+    }
+    g.innerHTML = s;
+  }
+  ring('bna-stars', 43, 1.6);
+  ring('bna-stars2', 43, 1.7);
+})();
+
+// ── PRESS RELEASES (pool, rotate daily) ──
+(function(){
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const now = new Date();
+  const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+
+  function backDate(daysAgo){
+    const d = new Date(now); d.setDate(d.getDate() - daysAgo);
+    return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+  }
+
+  const POOL = [
+    { cat:'policy', label:'Monetary policy', title:'Board of Governors holds the benchmark rate at 3.25%', dek:'The Board judged that inflation remains on a path toward the Bank\'s medium-term objective and left the policy rate unchanged.' },
+    { cat:'statement', label:'Statement', title:'Governor Hartley addresses the Assembly on price stability', dek:'In testimony before the NAU Assembly, the Governor reaffirmed the Bank\'s independence and its commitment to a stable Continental.' },
+    { cat:'notice', label:'Currency', title:'Series 2026 banknotes now the standard issue Union-wide', dek:'The refreshed Continental series enters general circulation across all member states, with enhanced security features on every denomination.' },
+    { cat:'policy', label:'Monetary policy', title:'Quarterly Monetary Review published', dek:'The Bank\'s assessment of growth, employment, and credit conditions across the member states is now available to the public.' },
+    { cat:'statement', label:'Statement', title:'Joint statement with member-state mints on coinage supply', dek:'The Bank and the national mints confirmed sufficient coinage stocks and reaffirmed the shared-face, national-reverse standard.' },
+    { cat:'notice', label:'Currency', title:'Guidance issued on the withdrawal of pre-reform notes', dek:'Legacy Continental Bank notes remain exchangeable at par at member-state central banks until further notice.' },
+    { cat:'statement', label:'Statement', title:'Bank welcomes progress on the Currency Stabilisation Framework', dek:'The Bank noted the Assembly\'s continued work to harmonise exchange arrangements across the Union.' },
+  ];
+
+  const picks = [0,2,4,6].map(o => POOL[(dayOfYear + o) % POOL.length]);
+  const ages  = [1, 4, 9, 16];
+  document.getElementById('bna-releases').innerHTML = picks.map((p,i) => `
+    <div class="bna-pr">
+      <div class="bna-pr-meta">
+        <span class="bna-pr-cat ${p.cat}">${p.label}</span>
+        <span class="bna-pr-date">${backDate(ages[i])}</span>
+      </div>
+      <div class="bna-pr-title">${p.title}</div>
+      <div class="bna-pr-dek">${p.dek}</div>
+    </div>
+  `).join('');
+})();
+</script>
+
+</body>
+</html>
