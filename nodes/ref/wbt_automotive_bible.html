@@ -566,6 +566,12 @@
 .arc-address-input { flex: 1; border: none; background: transparent; font-size: 12px; font-family: monospace; color: var(--arc-text-secondary); outline: none; padding: 7px 0; min-width: 0; }
 .arc-go-btn { background: none; border: none; cursor: pointer; color: var(--arc-text-tertiary); font-size: 15px; padding: 2px; flex-shrink: 0; line-height: 1; }
 .arc-clock { font-size: 11px; color: var(--arc-text-tertiary); font-family: monospace; flex-shrink: 0; white-space: nowrap; }
+.arc-bookmarks { display: flex; align-items: center; padding: 3px 16px; gap: 2px; background: var(--arc-bg-secondary); border-bottom: 0.5px solid var(--arc-border); overflow-x: auto; scrollbar-width: none; }
+.arc-bookmarks::-webkit-scrollbar { display: none; }
+.arc-bmark { display: flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 5px; font-size: 11.5px; font-weight: 500; color: var(--arc-text-secondary); text-decoration: none; white-space: nowrap; font-family: 'DM Sans', sans-serif; }
+.arc-bmark:hover { background: var(--arc-bg-tertiary); color: var(--arc-text-primary); }
+.arc-bmark.active { background: var(--arc-blue-light); color: var(--arc-blue); }
+.arc-bmark-icon { font-size: 13px; }
 </style>
 
 <link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
