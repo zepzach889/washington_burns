@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WBT — Automotive History</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1714;
+    --ink-mid: #3d3830;
+    --ink-muted: #6b6358;
+    --ink-faint: #9c9488;
+    --paper: #f5f0e8;
+    --paper-mid: #ede8dc;
+    --paper-dark: #ddd7c8;
+    --red: #8b1a1a;
+    --red-light: #c0392b;
+    --gold: #b8860b;
+    --rule: #1a1714;
+    --rule-light: #c8c0b0;
+    --rule-mid: #8b8070;
+    --open: #1a4d6e;
+    --open-bg: #e8f2f8;
+    --hard: #1a4d1a;
+    --hard-bg: #e8f5e8;
+    --warn: #5d3a00;
+    --warn-bg: #fdf3e0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* MASTHEAD */
+  .masthead {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0;
+    border-bottom: 4px solid var(--red);
+  }
+  .masthead-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 1rem;
+  }
+  .masthead-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--paper-dark);
+    margin-bottom: 0.4rem;
+  }
+  .masthead h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--paper);
+    margin-bottom: 0.5rem;
+  }
+  .masthead-sub {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: var(--paper-dark);
+    border-top: 1px solid #3d3830;
+    padding-top: 0.6rem;
+    margin-top: 0.6rem;
+    display: flex;
+    gap: 2rem;
+  }
+  .masthead-sub span { display: flex; align-items: center; gap: 0.4rem; }
+
+  /* LEGEND BAR */
+  .legend-bar {
+    background: var(--paper-mid);
+    border-bottom: 1px solid var(--rule-light);
+    padding: 0.5rem 0;
+  }
+  .legend-bar-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .legend-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-right: 0.5rem;
+  }
+  .pill {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .pill-hard { background: var(--hard-bg); color: var(--hard); border: 1px solid #b0d4b0; }
+  .pill-soft { background: var(--paper-dark); color: var(--ink-mid); border: 1px solid var(--rule-light); }
+  .pill-open { background: var(--open-bg); color: var(--open); border: 1px solid #b0c8d8; }
+  .pill-disrupt { background: #fce8e8; color: var(--red); border: 1px solid #e0b0b0; }
+
+  /* MAIN LAYOUT */
+  .layout {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .sidebar { grid-column: 1; }
+  .main-content { grid-column: 2; }
+  .sidebar {
+    position: sticky;
+    top: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--rule-light) transparent;
+  }
+  .sidebar-box {
+    border: 1px solid var(--rule-light);
+    margin-bottom: 1.5rem;
+    background: var(--paper);
+  }
+  .sidebar-head {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.75rem;
+  }
+  .sidebar-body { padding: 0.75rem; }
+  .toc-item {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: var(--ink-mid);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-item:hover { color: var(--red); }
+  .toc-item .toc-years {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+  .toc-phase {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: 0.4rem 0 0.15rem;
+  }
+  .stat-row {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: var(--ink-mid);
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--rule-light);
+    display: flex;
+    justify-content: space-between;
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* MAIN CONTENT */
+  .main-content {}
+
+  /* SECTION HEADERS */
+  .phase-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--ink);
+  }
+  .phase-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.2rem;
+  }
+  .phase-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .phase-years {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    margin-top: 0.2rem;
+  }
+
+  /* OPEN CANVAS INLINE */
+  .oc-inline {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: var(--open);
+    background: var(--open-bg);
+    border-left: 3px solid var(--open);
+    padding: 0.4rem 0.6rem;
+    margin-top: 0.5rem;
+  }
+  .oc-inline strong {
+    font-weight: 600;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.15rem;
+    color: var(--open);
+  }
+
+  /* DISRUPTION BANNER */
+  .disruption-banner {
+    background: #fce8e8;
+    border: 1px solid #e0b0b0;
+    border-left: 4px solid var(--red);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .disruption-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .disruption-text {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: #5a1a1a;
+    line-height: 1.5;
+  }
+  .disruption-text strong { font-weight: 600; }
+
+  /* PHASE DIVIDER */
+  .phase-section {
+    margin-bottom: 3rem;
+  }
+
+  /* BACKGROUND BOX */
+  .background-box {
+    background: var(--paper-mid);
+    border: 1px solid var(--rule-light);
+    border-left: 4px solid var(--gold);
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-mid);
+  }
+  .background-box strong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: var(--paper-dark);
+    padding: 1.5rem 2rem;
+    margin-top: 3rem;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    border-top: 3px solid var(--red);
+    text-align: center;
+  }
+  footer em { font-style: italic; color: var(--ink-faint); }
+
+  @media (max-width: 700px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; grid-column: 1; }
+    .main-content { grid-column: 1; }
+    .masthead h1 { font-size: 2rem; }
+  }
+
+  /* === BIBLE SUPPLEMENT === */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.9rem;
+    margin: 1rem 0;
+  }
+  .card {
+    border: 1px solid var(--rule-light);
+    border-left: 4px solid var(--gold);
+    background: var(--paper-mid);
+    padding: 0.8rem 0.9rem;
+  }
+  .card.ink { border-left-color: var(--ink); }
+  .card.red { border-left-color: var(--red); }
+  .card.slate { border-left-color: var(--open); }
+  .card.green { border-left-color: var(--hard); }
+  .card-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.2rem;
+  }
+  .card h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    line-height: 1.2;
+  }
+  .card p {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-mid);
+    margin-bottom: 0.4rem;
+  }
+  .card p:last-child { margin-bottom: 0; }
+
+  .subhead {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin: 1.4rem 0 0.5rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--rule-light);
+  }
+
+  .prose p {
+    font-size: 15px;
+    line-height: 1.68;
+    color: var(--ink-mid);
+    margin-bottom: 0.7rem;
+  }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+
+  .dtable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.9rem 0;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+  }
+  .dtable th {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 0.4rem 0.6rem;
+  }
+  .dtable td {
+    border: 1px solid var(--rule-light);
+    padding: 0.4rem 0.6rem;
+    vertical-align: top;
+    color: var(--ink-mid);
+  }
+  .dtable tr:nth-child(even) td { background: var(--paper-mid); }
+  .dtable td.yr {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    color: var(--red);
+    white-space: nowrap;
+  }
+  .dtable td.firm {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .tech {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 2px;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  .tech-steam { background: #fce8e8; color: var(--red); border: 1px solid #e0b0b0; }
+  .tech-gas { background: var(--paper-dark); color: var(--ink-mid); border: 1px solid var(--rule-light); }
+  .tech-elec { background: var(--hard-bg); color: var(--hard); border: 1px solid #b0d4b0; }
+  .tech-mixed { background: var(--warn-bg); color: var(--warn); border: 1px solid #e0cba0; }
+
+  .rule-box {
+    background: var(--warn-bg);
+    border: 1px solid #e0cba0;
+    border-left: 4px solid var(--warn);
+    padding: 0.7rem 0.9rem;
+    margin: 1rem 0;
+    font-size: 14px;
+    color: var(--warn);
+    line-height: 1.6;
+  }
+  .rule-box strong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .numbered {
+    margin: 0.8rem 0 0.8rem 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: cz;
+  }
+  .numbered li {
+    counter-increment: cz;
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-mid);
+  }
+  .numbered li::before {
+    content: counter(cz);
+    position: absolute;
+    left: 0;
+    top: 0.05rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--paper);
+    background: var(--ink);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .numbered li strong { color: var(--ink); font-weight: 600; }
+
+  .plainlist { list-style: none; margin: 0.6rem 0; }
+  .plainlist li {
+    position: relative;
+    padding-left: 1.1rem;
+    margin-bottom: 0.35rem;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-mid);
+  }
+  .plainlist li::before {
+    content: "\25AA";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+  .plainlist li strong { color: var(--ink); font-weight: 600; }
+
+  .flag-inline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+    display: inline-block;
+  }
+  .flag-hard { background: var(--hard-bg); color: var(--hard); border: 1px solid #b0d4b0; }
+  .flag-soft { background: var(--paper-dark); color: var(--ink-mid); border: 1px solid var(--rule-light); }
+  .flag-open { background: var(--open-bg); color: var(--open); border: 1px solid #b0c8d8; }
+
+  .quote-canon {
+    border-left: 3px solid var(--ink);
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+    font-size: 14.5px;
+    color: var(--ink-mid);
+    line-height: 1.65;
+  }
+</style>
+
+<!-- WM ARC CHROME CSS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+.arc-chrome, .arc-chrome * { box-sizing: border-box; }
+.arc-chrome {
+  --arc-paper: #f9f8f6; --arc-border: rgba(0,0,0,0.10); --arc-border-mid: rgba(0,0,0,0.16);
+  --arc-text-primary: #1a1410; --arc-text-secondary: #4a4a48; --arc-text-tertiary: #88887f;
+  --arc-bg-secondary: #f2f1ee; --arc-bg-tertiary: #eae9e5;
+  --arc-blue: #185FA5; --arc-blue-light: #E6F1FB;
+  position: sticky; top: 0; z-index: 9999;
+  display: flex; flex-direction: column; font-family: 'DM Sans', sans-serif;
+}
+.arc-topbar { display: flex; align-items: center; padding: 7px 20px; border-bottom: 0.5px solid var(--arc-border); background: var(--arc-paper); gap: 10px; }
+.arc-navbtns { display: flex; gap: 4px; flex-shrink: 0; }
+.arc-navbtn { width: 26px; height: 26px; border-radius: 50%; border: 0.5px solid var(--arc-border-mid); background: var(--arc-bg-secondary); display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--arc-text-tertiary); cursor: pointer; text-decoration: none; line-height: 1; flex-shrink: 0; }
+.arc-navbtn:hover { background: var(--arc-bg-tertiary); color: var(--arc-text-primary); }
+.arc-navbtn:visited { color: var(--arc-text-tertiary); }
+.arc-logo { text-decoration: none; font-family: 'DM Serif Display', serif; font-size: 18px; letter-spacing: 0.04em; flex-shrink: 0; white-space: nowrap; }
+.arc-logo:visited { color: inherit; }
+.arc-logo .arc-w { color: #1a1410; } .arc-logo .arc-m { color: #185FA5; } .arc-logo .arc-tag { color: #5A6A8A; font-style: italic; font-size: 16px; }
+.arc-address-wrap { display: flex; align-items: center; flex: 1; min-width: 0; background: var(--arc-bg-secondary); border: 1px solid var(--arc-border-mid); border-radius: 22px; padding: 0 12px 0 14px; gap: 6px; }
+.arc-address-input { flex: 1; border: none; background: transparent; font-size: 12px; font-family: monospace; color: var(--arc-text-secondary); outline: none; padding: 7px 0; min-width: 0; }
+.arc-go-btn { background: none; border: none; cursor: pointer; color: var(--arc-text-tertiary); font-size: 15px; padding: 2px; flex-shrink: 0; line-height: 1; }
+.arc-clock { font-size: 11px; color: var(--arc-text-tertiary); font-family: monospace; flex-shrink: 0; white-space: nowrap; }
+</style>
+
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="arc-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">&#8592;</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">&#8594;</a>
+  </div>
+  <a class="arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="arc-address-wrap">
+    <input class="arc-address-input" id="arc-address-input" type="text" value="link://nan.div814.gov.usa/wbt_automotive_bible">
+    <button class="arc-go-btn">&#8594;</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+</div>
+
+<a href="../ref/" style="position:fixed;bottom:20px;right:20px;z-index:9998;background:#1a1410;color:#f9f8f6;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;padding:7px 13px;border-radius:20px;opacity:0.5;transition:opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">&#11041; Div814</a>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-eyebrow">Washington Burns Timeline &mdash; Reference Document</div>
+    <h1>Automotive History</h1>
+    <div class="masthead-sub">
+      <span>Soft canon unless noted</span>
+      <span>Coverage: 1883&ndash;2026</span>
+      <span>Last revised: August 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="legend-bar">
+  <div class="legend-bar-inner">
+    <span class="legend-label">Status:</span>
+    <span class="pill pill-hard">Hard Canon</span>
+    <span class="pill pill-soft">Soft Canon</span>
+    <span class="pill pill-open">Open Canvas</span>
+    <span class="pill pill-disrupt">Unresolved Consequence</span>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-box">
+      <div class="sidebar-head">Contents</div>
+      <div class="sidebar-body">
+        <div class="toc-phase">Framework</div>
+        <a class="toc-item" href="#principles">Governing principles</a>
+        <a class="toc-item" href="#three">The three technologies</a>
+        <a class="toc-item" href="#causes">Why it never consolidated</a>
+        <a class="toc-item" href="#geography">Industrial geography</a>
+        <div class="toc-phase">Origins</div>
+        <a class="toc-item" href="#origins">Lowry &amp; the early field <span class="toc-years">1883&ndash;1906</span></a>
+        <a class="toc-item" href="#volume">The volume commitment <span class="toc-years">1906</span></a>
+        <div class="toc-phase">Undecided Decade</div>
+        <a class="toc-item" href="#fixes">Three fixes at once <span class="toc-years">1906&ndash;19</span></a>
+        <a class="toc-item" href="#stlouis">The St. Louis disaster <span class="toc-years">1917&ndash;19</span></a>
+        <div class="toc-phase">Consolidation</div>
+        <a class="toc-item" href="#gasoline">Gasoline organises <span class="toc-years">1919&ndash;30</span></a>
+        <a class="toc-item" href="#naota">NAOTA &amp; the crunch <span class="toc-years">1930&ndash;32</span></a>
+        <div class="toc-phase">Global War</div>
+        <a class="toc-item" href="#war">Crisis &amp; reprieve <span class="toc-years">1932&ndash;46</span></a>
+        <div class="toc-phase">Long Arc</div>
+        <a class="toc-item" href="#postwar">The long postwar <span class="toc-years">1946&ndash;70</span></a>
+        <a class="toc-item" href="#renaissance">Regulation &amp; renaissance <span class="toc-years">1970&ndash;90</span></a>
+        <a class="toc-item" href="#reckoning">The reckoning <span class="toc-years">1990&ndash;2026</span></a>
+        <div class="toc-phase">Reference</div>
+        <a class="toc-item" href="#roster-us">Roster &mdash; United States</a>
+        <a class="toc-item" href="#roster-nau">Roster &mdash; NAU</a>
+        <a class="toc-item" href="#roster-overseas">Roster &mdash; Overseas</a>
+        <a class="toc-item" href="#aviation">Aviation cross-reference</a>
+        <a class="toc-item" href="#open">Open canvas items</a>
+      </div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sidebar-head">Key Dates</div>
+      <div class="sidebar-body">
+        <div class="stat-row"><span>Type 4 Steamer Buggy</span><span class="stat-val">1883</span></div>
+        <div class="stat-row"><span>Steamer mass production</span><span class="stat-val">1886</span></div>
+        <div class="stat-row"><span>Fleak rides the Type-12</span><span class="stat-val">1902</span></div>
+        <div class="stat-row"><span>Lowry volume commitment</span><span class="stat-val">1906</span></div>
+        <div class="stat-row"><span>Rural Electrification Act</span><span class="stat-val">1910</span></div>
+        <div class="stat-row" style="color: var(--red);"><span>St. Louis boiler disaster</span><span class="stat-val">1917</span></div>
+        <div class="stat-row"><span>Boiler Safety Act</span><span class="stat-val">1919</span></div>
+        <div class="stat-row"><span>Julius Lowry dies</span><span class="stat-val">1921</span></div>
+        <div class="stat-row" style="color: var(--red);"><span>NAOTA opens the border</span><span class="stat-val">1930</span></div>
+        <div class="stat-row"><span>Global War</span><span class="stat-val">1932&ndash;40</span></div>
+        <div class="stat-row"><span>Crash standards</span><span class="stat-val">1959&ndash;65</span></div>
+        <div class="stat-row"><span>Emissions rules</span><span class="stat-val">1970s</span></div>
+        <div class="stat-row" style="color: var(--red);"><span>Fuel economy mandate</span><span class="stat-val">1990s&ndash;2000s</span></div>
+      </div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sidebar-head">Fleet Share</div>
+      <div class="sidebar-body">
+        <div class="stat-row"><span>Motors (gasoline)</span><span class="stat-val">55&ndash;60%</span></div>
+        <div class="stat-row"><span>Autos (electric)</span><span class="stat-val">25&ndash;30%</span></div>
+        <div class="stat-row"><span>Steamers</span><span class="stat-val">10&ndash;15%</span></div>
+        <div class="stat-row"><span>Electric low point</span><span class="stat-val">1950s&ndash;60s</span></div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <div class="background-box" id="principles">
+      <strong>Governing principles</strong>
+      The American automobile market never consolidated on gasoline. Three drivetrain technologies hold durable, separate niches across the whole twentieth century, and the words describing them never collapse into a single generic term. This is not because gasoline was defeated &mdash; it wins the general-purpose private passenger car, as physics and economics dictate it must. It simply never wins <em>everything</em>, because in WBT the private car is asked to do far less work than its OTL counterpart and because the structural conditions that made the American car total in OTL are absent. Nothing here requires steam or electric drive to be better than they were. It requires the private car to matter less, and gasoline to be dearer for longer.
+    </div>
+
+    <!-- ================= THREE TECHNOLOGIES ================= -->
+    <div class="phase-section" id="three">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Framework</div>
+        <div class="phase-title">The Three Technologies</div>
+      </div>
+
+      <div class="prose">
+        <p>The vocabulary is permanent, not transitional. <span class="flag-inline flag-hard">Hard Canon</span></p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card red">
+          <div class="card-label">Steam</div>
+          <h4>The Steamer</h4>
+          <p>Prestige and upper-middle passenger cars; heavy road haulage, buses, agriculture. Roughly 10&ndash;15% of household vehicles, skewed hard to high income. Silence, no gearshift, effortless torque from rest, and indifference to what it burns.</p>
+        </div>
+        <div class="card slate">
+          <div class="card-label">Internal combustion</div>
+          <h4>The Motor</h4>
+          <p>The economy tier and the default general-purpose car. Universal in rural areas, small towns, the West and the South. Roughly 55&ndash;60% of household vehicles. What you buy when you are buying one car and do not know what you will ask of it.</p>
+        </div>
+        <div class="card green">
+          <div class="card-label">Electric</div>
+          <h4>The Auto</h4>
+          <p>Urban and streetcar-suburb commuters plus institutional and commercial fleets. Roughly 25&ndash;30% nationally at midcentury; a plurality or majority in the electrified metros. High purchase price, very low running cost, very long service life.</p>
+        </div>
+      </div>
+
+      <div class="rule-box">
+        <strong>Naming rule</strong>
+        Steamer, motor and auto describe three different kinds of vehicle doing three different jobs. <strong>No single generic word for "car" develops in WBT English.</strong> Firms follow either the founder-surname pattern (Lowry, Henderson, Mercer, Doughty, Harper) or the descriptive-corporate pattern (Republic Motor Company, Oststein Motorwerks). Suffix conventions: <em>Steam Motors / Steamcarriage / Roadworks</em> for steam, <em>Motor Company / Motors</em> for gasoline, <em>Elector-Motor / Automobiles</em> for electric.
+      </div>
+    </div>
+
+    <!-- ================= CAUSES ================= -->
+    <div class="phase-section" id="causes">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Framework</div>
+        <div class="phase-title">Why the Market Never Consolidated</div>
+      </div>
+
+      <div class="prose">
+        <p>Deliberately over-determined, so that no single mechanism carries suspicious weight.</p>
+      </div>
+
+      <ol class="numbered">
+        <li><strong>The car does less work.</strong> The USRC (state-owned railway, 1834) holds passenger priority; every National Road is built paired with a rail line; federal funding for municipal streetcars and interurbans dates to 1899. In OTL the car won intercity travel, commuting, errands and freight at once. In WBT its job is what the 1900 canon says it is &mdash; short trips beyond the reach of streetcars or rail. Range never becomes the binding constraint.</li>
+        <li><strong>Early universal electrification.</strong> The Rural Electrification Act of 1910 brings power nationwide twenty-six years ahead of OTL, with federal standardisation of current attached. OTL's electric car died partly because half the country could not charge one and no two systems were compatible. WBT solves both a generation early, before the market consolidates.</li>
+        <li><strong>Poor oil geography.</strong> Texas <em>and</em> California are foreign nations, so the USA loses both of OTL's great oil provinces &mdash; Spindletop, East Texas, Kern County, Signal Hill. Domestic crude is Pennsylvania, Ohio, Louisiana, Kansas and Jefferson. American gasoline is structurally dearer and strategically exposed until 1930.</li>
+        <li><strong>No 1910s war.</strong> The Great European War ends 1904, Matanzas 1906, and the Global War does not begin until 1932 &mdash; twenty-six years without American mobilisation, spanning exactly the window in which OTL's WWI standardised military logistics on petrol, mass-produced trucks by the hundred thousand, trained a generation of mechanics on internal combustion, and dumped enormous surplus onto the civilian market in 1919.</li>
+        <li><strong>Kerosene already had a network.</strong> Steamers burn kerosene, which by 1900 reached every general store in the country because of lamp lighting. Gasoline was a near-worthless refinery byproduct sold in cans at pharmacies, with distribution that had to be built from nothing.</li>
+        <li><strong>Steam's usability advantage.</strong> A steam engine makes maximum torque at zero RPM and reverses by reversing the valve gear, so it needs no transmission at all &mdash; against an early gasoline car demanding hand spark advance, planetary transmission and three counterintuitive pedals. This is the advantage OTL never tested at scale, because nobody mass-produced steam.</li>
+      </ol>
+
+      <div class="oc-inline"><strong>Note</strong>The physical limits are respected throughout. Lead-acid stores roughly one hundredth the usable energy per kilogram of gasoline, and no POD reaches into electrochemistry; steam converts ~10% of its fuel to motion against a piston engine's 25&ndash;35% and a diesel's 40&ndash;45%. Neither figure is ever waved away &mdash; they set the boundaries every outcome here must fit inside.</div>
+    </div>
+
+    <!-- ================= GEOGRAPHY ================= -->
+    <div class="phase-section" id="geography">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Framework</div>
+        <div class="phase-title">Industrial Geography</div>
+      </div>
+
+      <div class="prose">
+        <p><strong>Michigan is Canadian territory.</strong> There is no Detroit in the American automotive story and no National Road in the Detroit basin. The industry grows in three separate centres, each with its own drivetrain and its own regional politics.</p>
+      </div>
+
+      <table class="dtable">
+        <tr><th>Centre</th><th>Technology</th><th>Rationale</th></tr>
+        <tr><td class="firm">Pittsburgh, PA</td><td>Steam</td><td>Lowry Steammobile. Steel on hand; National Roads 1, 16 and 17 in immediate reach, NR 2 east to Philadelphia and New York, NR 17 south to Franklin. Eastern, old industrial, prestige.</td></tr>
+        <tr><td class="firm">Prosperity metro, JE</td><td>Gasoline</td><td>One metro on the Arkansas River containing <strong>Red Fork</strong> (first powered flight; light engine shops), <strong>Andersonville</strong> (Republic Motor Company) and <strong>Prosperity</strong> (Oststein's American works; NR 12/15 junction with a direct spur into Texas). Western, new money, oil-adjacent.</td></tr>
+        <tr><td class="firm">Franklin &amp; Philadelphia</td><td>Electric</td><td>Harper Elector-Motor in the capital; Penn Electric and CEVCo forming a genuine Philadelphia cluster with their battery and component suppliers. Dense, early-electrified, close to the utilities.</td></tr>
+      </table>
+
+      <div class="subhead">Emergent party geometry</div>
+      <div class="prose">
+        <p>Motors align with the JCA and the West &mdash; Senator Andrew VanNess (JCA&ndash;Jefferson) is the 1928 vice-presidential nominee. Steamers align with Pennsylvania industrial Federalism. Autos align with the urban SPA and Democrat districts. Every fuel tax, boiler standard and road bill for a century carries a built-in sectional geometry, and none of it had to be invented.</p>
+      </div>
+
+      <div class="rule-box">
+        <strong>Clustering is expected, not avoided</strong>
+        OTL Detroit hosted well over a hundred automotive firms at its height; even in the mature era Ford, GM's divisions, Chrysler, Packard, Hudson and Dodge shared one metro. WBT's twelve to thirteen significant domestic firms is a <em>sparse</em> industry by historical standards. Shared suppliers, machining capacity and labour pools concentrate manufacturers &mdash; hence the Prosperity metro and the Philadelphia electric cluster. Two firms in one city is normal, not a duplication error.
+      </div>
+    </div>
+
+    <!-- ================= ORIGINS ================= -->
+    <div class="phase-section" id="origins">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Origins</div>
+        <div class="phase-title">Lowry &amp; the Early Field</div>
+        <div class="phase-years">1883&ndash;1906</div>
+      </div>
+
+      <div class="prose">
+        <p><strong>Julius Lowry</strong> is born enslaved in 1846 and relocates to Pittsburgh in 1861. In 1883, at thirty-seven, he unveils the <strong>Type 4 Steamer Buggy</strong> and founds the Lowry Steammobile Company; mass production begins in 1886.</p>
+        <p>That a formerly enslaved man founds and builds the dominant early American automotive concern is <em>notable but not remarkable</em> in WBT terms &mdash; the country has already seen Vice President Bailey (1875) and Secretary General Helms (1899). The press notes it and moves past.</p>
+      </div>
+
+      <div class="quote-canon">
+        &hellip; the emerging motorcarriage technology, popularized by the Lowry Steammobile Company and its various competitors, like Henderson Steam Motors, Doughty Automobiles (which was experimenting with electric battery vehicles in several cities), and Oststein Motorwerks (an import from the Texas Federation, and experimenting in gasoline-powered internal combustion engines).
+      </div>
+
+      <div class="subhead">The geographic split is physical, not cultural</div>
+      <div class="prose">
+        <p>Steam leads nationally; electric owns the dense cities; gasoline owns the West and Texas. The reason for that last is <strong>water</strong>. Pre-condenser steamers needed a refill every thirty to fifty miles. In Jefferson, Kanasaw and Washingtonia that is disqualifying, and gasoline wins by default. The canon's geographic split is physically correct as written.</p>
+      </div>
+
+      <table class="dtable">
+        <tr><th>Year</th><th>Event</th></tr>
+        <tr><td class="yr">1883</td><td>Type 4 Steamer Buggy unveiled in Pittsburgh; Lowry Steammobile Company founded.</td></tr>
+        <tr><td class="yr">1886</td><td>Mass production of steamers begins.</td></tr>
+        <tr><td class="yr">1899</td><td>National Roads paving plan cites the emerging technology. Federal funding for municipal streetcars and interurbans begins the same year.</td></tr>
+        <tr><td class="yr">1900</td><td>The three-way vocabulary appears in print &mdash; steamers (Lowry, Bell Roadworks, Mercer), "motors" popular in western states and Texas, and "autos" in the largest cities.</td></tr>
+        <tr><td class="yr">1902</td><td><strong>The July 4th Parade.</strong> President Fleak rides the Lowry Type-12 "Liberty Cruiser" from Washington House up Union Avenue to Congress Hall. VP Landon rides a Mercer; Transportation Secretary Jameson rides a Harper auto built in Franklin. The first American president to ride in a motorised carriage.</td></tr>
+      </table>
+    </div>
+
+    <!-- ================= VOLUME ================= -->
+    <div class="phase-section" id="volume">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Origins</div>
+        <div class="phase-title">The Volume Commitment</div>
+        <div class="phase-years">1906</div>
+      </div>
+
+      <div class="prose">
+        <p>At sixty, Julius Lowry commits the company to assembly-line volume production &mdash; the single most consequential decision in American automotive history. It works because of the two advantages above: <strong>"anyone can drive a Lowry"</strong> is a true claim rather than a slogan in a market where nobody's parents drove, and a rural buyer can fuel the car at the general store the same week he buys it.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-label">The accidental subsidy</div>
+          <h4>Electric Light Kills Lamp Kerosene</h4>
+          <p>Rural electrification collapses lamp-fuel demand exactly as Lowry needs volume. The distribution network stays standing, kerosene gets cheap, and steam cars absorb the surplus. The federal government subsidises the steamer by electrifying the countryside.</p>
+        </div>
+        <div class="card ink">
+          <div class="card-label">The price floor</div>
+          <h4>Steam Cannot Reach $300</h4>
+          <p>A boiler, burner, condenser, feedwater pump and certified pressure vessel put the floor near $500 against mass gasoline's $300. Lowry never competes on sticker price and never tries.</p>
+        </div>
+      </div>
+
+      <div class="subhead">The class inversion</div>
+      <div class="prose">
+        <p>The result is inverted from OTL's associations. <strong>Gasoline takes the bottom of the market and the volume; steam holds the mid-market and above as the quality product.</strong> "Motor" carries a faintly downmarket connotation; a Lowry steamer is what you buy when you have arrived.</p>
+        <p>Consolidation follows. <strong>Mercer</strong> survives by moving <em>above</em> Lowry as coachbuilt ultra-luxury. <strong>Bell Roadworks</strong> is absorbed or folds. <strong>Ferris Steam Motors</strong> of Cleveland establishes itself <em>below</em> Lowry on price. <strong>Henderson</strong> of Brooklyn survives on thin margins &mdash; which matters enormously in 1917.</p>
+      </div>
+    </div>
+
+    <!-- ================= FIXES ================= -->
+    <div class="phase-section" id="fixes">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Undecided Decade</div>
+        <div class="phase-title">Three Fixes at Once</div>
+        <div class="phase-years">1906&ndash;1919</div>
+      </div>
+
+      <div class="prose">
+        <p>The 1910s are the decade OTL's market quietly consolidated on gasoline. In WBT they are genuinely undecided, because every technology solves its defining weakness within roughly the same five years &mdash; and because there is no war to tip the scales.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card red">
+          <div class="card-label">Steam &mdash; c. 1910&ndash;12</div>
+          <h4>Automatic Controls</h4>
+          <p>Flash and semi-flash generators are 1890s technology; the hard part was always automatic regulation. A well-capitalised firm with thirty years of institutional steam engineering reaches it decades before a lone inventor would. Thermostatic burner control, electric ignition, automatic feedwater regulation. Startup falls from twenty minutes to under two.</p>
+        </div>
+        <div class="card slate">
+          <div class="card-label">Gasoline &mdash; c. 1912</div>
+          <h4>The Electric Self-Starter</h4>
+          <p>Kills the hand crank. Note the irony: it is an <em>electrical</em> device, and the firms best placed to build starters, generators and ignition are Doughty and Harper. The electric makers may earn more selling components to the motor manufacturers than selling autos &mdash; a survival mechanism through the lean decades that has nothing to do with winning the car market.</p>
+        </div>
+        <div class="card green">
+          <div class="card-label">Electric &mdash; 1910</div>
+          <h4>Rural Electrification</h4>
+          <p>Standardised current nationwide means an auto can charge anywhere, twenty-plus years before OTL &mdash; and makes national battery leasing and depot swap viable at scale, where OTL's equivalent died as a local experiment.</p>
+        </div>
+      </div>
+
+      <div class="subhead">The two-tier line</div>
+      <div class="prose">
+        <p>Volume production and precision controls pull against each other. Lowry's answer sets the class structure of American motoring for fifty years: a <strong>volume tier</strong> on a simple fire-tube boiler, rural-serviceable, five to fifteen minutes to warm (tolerable when the car is a supplement to rail rather than primary mobility, and when a standing pilot keeps it hot overnight); and a <strong>premium tier</strong> on the flash generator with automatic controls, starting in under two minutes. The flash system migrates to mid-market in the early 1920s and is standard across the range by about 1930 &mdash; two decades of selling the same aspirational ladder.</p>
+      </div>
+    </div>
+
+    <!-- ================= ST LOUIS ================= -->
+    <div class="phase-section" id="stlouis">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Undecided Decade</div>
+        <div class="phase-title">The St. Louis Disaster</div>
+        <div class="phase-years">1917&ndash;1919</div>
+      </div>
+
+      <div class="disruption-banner">
+        <div class="disruption-label">Disaster</div>
+        <div class="disruption-text">Autumn 1917 &mdash; a <strong>Henderson Steam Motors omnibus</strong> suffers a boiler failure on a crowded St. Louis street, killing roughly thirty fare-paying passengers. Henderson, squeezed by Lowry's volume commitment since 1906, had been cutting cost on boiler steel and skipping hydrostatic testing to stay alive. The old firm kills people trying not to die.</div>
+      </div>
+
+      <div class="prose">
+        <p>Mass-market steam puts millions of pressure vessels in the hands of untrained drivers; a patchwork of state inspection regimes emerges through the 1910s, uneven and unenforced. The choice of a <strong>public conveyance</strong> is deliberate &mdash; the dead did not choose the vehicle, they bought a ticket. A wealthy man destroying himself in his own steamer produces sympathy; a working family killed in a bus produces legislation.</p>
+        <p>The victims are Missourians and Illinoisans both; the manufacturer is headquartered in a third state. Missouri cannot inspect an Illinois-registered bus; Illinois cannot certify a boiler built in New York. <strong>The three-state tangle makes federal action unavoidable</strong> &mdash; and hands a states-rights party the narrowest possible bill that actually solves the problem.</p>
+      </div>
+
+      <table class="dtable">
+        <tr><th>Date</th><th>Event</th></tr>
+        <tr><td class="yr">Aut. 1917</td><td>The disaster. Roughly thirty dead.</td></tr>
+        <tr><td class="yr">1918</td><td><strong>Julius Lowry testifies in support of federal standards at 72</strong> &mdash; genuinely concerned about safety and fully aware that certification at scale is trivial for him and fatal for every undercapitalised rival. Both are true and he probably knows it. His last public act.</td></tr>
+        <tr><td class="yr">Nov 1918</td><td>Midterms. The JCA has slow-walked the bill on principle for a year; the delay costs them seats.</td></tr>
+        <tr><td class="yr">1919</td><td><strong>Boiler Safety and Certification Act</strong> passes, signed by President JP Roosevelt (JCA) after a year of resistance. Henderson does not survive the decade.</td></tr>
+      </table>
+
+      <div class="subhead">The architecture, and why it matters for a century</div>
+      <div class="prose">
+        <p>The Act establishes <strong>federal minimum standards plus reciprocal recognition of state certification</strong>. It is not a federal inspectorate: states keep their own inspectors, Washington sets the floor and makes an out-of-state certificate valid elsewhere. That is defensible on interstate-commerce grounds and lets Roosevelt argue he constrained the federal role rather than expanded it.</p>
+        <p>America therefore has a federal vehicle safety apparatus from 1919 &mdash; roughly forty-seven years ahead of OTL &mdash; architecturally a <em>standards-and-reciprocity body</em> rather than a direct regulator. Every later expansion inherits that shape, including the Federal Aviation Bureau under President Benjamin King. By the time the statute governs crash standards and seatbelts, nobody outside the agency remembers why the foundational law of American vehicle safety is named for <em>boilers</em>.</p>
+      </div>
+
+      <div class="oc-inline"><strong>Open Canvas</strong>Exact casualty figure and an in-world name for the disaster. The statute's confirmed title &mdash; "Boiler Safety and Certification Act" follows WBT's descriptive convention (cf. Neutral Commerce Act, Telegraph Standardization Act, Rural Electrification Act) but is not locked.</div>
+    </div>
+
+    <!-- ================= GASOLINE ================= -->
+    <div class="phase-section" id="gasoline">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Consolidation</div>
+        <div class="phase-title">Gasoline Organises</div>
+        <div class="phase-years">1919&ndash;1930</div>
+      </div>
+
+      <div class="prose">
+        <p><strong>Julius Lowry dies in 1921 at seventy-five</strong>, with the volume gamble vindicated and the premium line ascendant. He sees it work and does not have to face what comes next &mdash; dying four years before the North American Trade Council is founded. The man who built the company never learns of the thing that nearly kills it.</p>
+        <p><strong>Jonathan Lowry</strong> (b. 1882, one year before the Type 4) takes the helm at thirty-nine, having worked alongside his father for years. The 1920s are the boom decade.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card slate">
+          <div class="card-label">c. 1912&ndash;15 &mdash; Andersonville</div>
+          <h4>Republic Motor Company</h4>
+          <p>A machine-shop spinoff from the Red Fork engine trade going vertical. Engineering-led, unglamorous, slow-growing &mdash; a firm that emerged from a cluster rather than a single inventor, which is why it carries an idea for a name rather than a surname. Later hires defecting Oststein engineers, who do not have to move house to do it.</p>
+        </div>
+        <div class="card slate">
+          <div class="card-label">Prosperity, Jefferson</div>
+          <h4>Oststein's American Works</h4>
+          <p>Oststein is Texian &mdash; a foreign firm behind a tariff wall. It resolves this by assembling inside the wall at the NR 12/15 junction with a direct spur into Texas. The motor is culturally Texian and physically American-assembled; Texian-built models stay expensive and slightly exotic in the East.</p>
+        </div>
+        <div class="card">
+          <div class="card-label">Indianapolis</div>
+          <h4>Wabash Motors &mdash; the Convert</h4>
+          <p>Built steamers through the 1900s; switched to gasoline in the 1920s once it was clear where volume was going. A long history, a slightly awkward relationship with its own past, and a name that predates the technology it becomes known for.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= NAOTA ================= -->
+    <div class="phase-section" id="naota">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Consolidation</div>
+        <div class="phase-title">NAOTA &amp; the Crunch</div>
+        <div class="phase-years">1930&ndash;1932</div>
+      </div>
+
+      <div class="prose">
+        <p>The North American Trade Council forms in 1925&ndash;26. In 1930 the Second North American Conference produces the <strong>North American Open Trade Agreement</strong> under President Benjamin King. Barriers drop across the continent; Texian crude and Texian motors flood the American market; gasoline becomes cheap for the first time in American history.</p>
+        <p>NAOTA erases at a stroke the structural fuel-cost disadvantage that protected steam and electric for thirty years. Steamer passenger sales collapse. It is Jonathan Lowry's crisis, arriving nine years into his tenure, and by every reasonable projection it should be the end of the American steam car.</p>
+        <p>The danger window is short &mdash; <strong>two years, not four</strong> &mdash; but genuinely frightening. Jonathan is forty-eight. With the passenger line bleeding he pivots into <strong>trucks and heavy road haulage</strong>, where steam's torque and fuel flexibility still command a premium. In 1932 war breaks out in Europe and American military preparation begins; domestic orders start flowing to a firm that builds heavy vehicles. That is what carries him across the gap.</p>
+      </div>
+
+      <div class="oc-inline"><strong>Open Canvas</strong>The <strong>Neutral Commerce Act (1899)</strong> forbids US firms selling arms and munitions to belligerents while the United States remains neutral, and probably stays on the books until American entry in 1934. It constrains <em>export</em> sales to warring Europe, not domestic rearmament orders &mdash; a subplot about lost European business and attempts to work around the law, affecting at most two years of trade, rather than an existential threat.</div>
+    </div>
+
+    <!-- ================= WAR ================= -->
+    <div class="phase-section" id="war">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Global War</div>
+        <div class="phase-title">Crisis &amp; Reprieve</div>
+        <div class="phase-years">1932&ndash;1946</div>
+      </div>
+
+      <div class="prose">
+        <p>American entry comes in 1934; the European armistice falls in autumn 1938 and the Asian ceasefire in late 1940. Civilian passenger production winds down under full mobilisation, as it must. What the war saves is not sales &mdash; it is the <strong>installed base and the reputation</strong>.</p>
+        <p>Rationing arrives, and the steamer in the driveway is suddenly the car that still moves. It burns kerosene, fuel oil, or whatever is available, while the motor sits idle waiting for coupons. Used steamer values climb. Six years of that rehabilitates the marque completely.</p>
+        <p>Rationing in a country with a state railway, priority passenger service, universal standardised electrification and federally funded streetcars has an obvious wartime answer: <em>take the train, and run local delivery on batteries.</em> The electric commercial fleet is not merely preserved through the war &mdash; it is expanded and re-equipped with war-built infrastructure.</p>
+      </div>
+
+      <div class="subhead">Mercer absorbed</div>
+      <div class="prose">
+        <p>Wartime production halts starve low-volume luxury firms of cash &mdash; the mechanism that killed most coachbuilders in OTL. <strong>Mercer Steamcarriage is bought by Lowry during the Global War</strong> and survives as a nameplate positioned above the parent marque. The arrangement pays off decades later: the boutique steam cars of the twenty-first century may well be Mercers rather than Lowrys.</p>
+      </div>
+
+      <div class="subhead">Reconversion</div>
+      <div class="prose">
+        <p>Lowry re-enters premium passenger in 1946 with enormous goodwill and a war-modernised plant. President Henry Freeman (Federalist, 1941&ndash;47) handles reconversion and veterans' housing; as a Federalist presiding over a rail-and-transit state, development is channelled along existing corridors rather than into a new automotive form. That sets the postwar pattern. <strong>Cavalier Motors</strong> of Atlanta is founded in this window from converted war industry &mdash; the first firm to spread the industry beyond the Ohio Valley and Jefferson.</p>
+      </div>
+    </div>
+
+    <!-- ================= POSTWAR ================= -->
+    <div class="phase-section" id="postwar">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Long Arc</div>
+        <div class="phase-title">The Long Postwar</div>
+        <div class="phase-years">1946&ndash;1970</div>
+      </div>
+
+      <div class="subhead">Roads &mdash; what does not happen</div>
+      <div class="prose">
+        <p>There is <strong>no Interstate or Defense Roads programme</strong>. <span class="flag-inline flag-hard">Hard Canon</span> The National Road network already exists and is sufficient. Postwar work is widening to more lanes, selective conversion of segments to limited access, and bypasses <em>around</em> cities. No urban corridor construction, no downtown demolition.</p>
+        <p>This matters more than it sounds. OTL's urban expressways destroyed the dense neighbourhoods where electric cars made sense, then made long commutes normal. Bypasses do the opposite &mdash; they pull through-traffic out of city centres and leave them intact. Suburbs remain streetcar and interurban suburbs; household ownership runs below OTL rates throughout, and multi-car households are rare before the 1950s because the second car's job is done by the interurban.</p>
+        <p>The twelve JCA years under Nolan (1947&ndash;53) and Priest (1953&ndash;59) map onto OTL's highway moment exactly, and the nuclear anxiety following the 1951 and 1952 fission tests supplies the same justification OTL used. It does not happen anyway &mdash; the institutional weight of a century of paired road-and-rail, the USRC's constituency, and a JCA with no working congressional majority all cut against it.</p>
+      </div>
+
+      <div class="subhead">The counterintuitive squeeze</div>
+      <div class="prose">
+        <p><strong>Cheap postwar energy hurts the auto, not the steamer.</strong></p>
+        <p>The electric's entire case is total cost of ownership. That works when energy is expensive; when gasoline gets cheap the running-cost gap compresses in absolute dollars and competition shifts to purchase price and features &mdash; precisely where the electric is weakest, with lead-acid still lead-acid after fifty years. Steam is insulated: its penalty is a fuel burn its buyers do not check.</p>
+        <p><strong>The electric's low point is therefore the 1950s and 60s, not the 1920s</strong> &mdash; the inverse of OTL, which makes the eventual revival land far harder. Share falls from roughly 30% to 22&ndash;25% by 1970; preserved city centres keep the decline shallow.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card green">
+          <div class="card-label">Counter-mechanism</div>
+          <h4>The Second Car</h4>
+          <p>Rising prosperity produces two-car households, and in an electrified metro the second car is naturally the auto. Absolute numbers grow while share falls. Because electric motors barely wear, the national fleet is also meaningfully more electric than new-vehicle sales suggest &mdash; a statistical artifact WBT's economists notice and argue about.</p>
+        </div>
+        <div class="card">
+          <div class="card-label">Cultural detail</div>
+          <h4>"Drives Like a Steamer"</h4>
+          <p>Steamers and autos never had gearboxes. When motors receive automatic transmissions postwar, the advertising copy writes itself. The automatic arrives in WBT as <em>catching up</em>, not as revolution &mdash; gasoline spending the 1950s buying its way toward an experience the other two always delivered natively.</p>
+        </div>
+        <div class="card slate">
+          <div class="card-label">Regulatory</div>
+          <h4>Safety Extends Early</h4>
+          <p>The 1919 Act's body is forty years old by 1959 and has spent that time building competence. Crash standards, safety glass and seatbelts land in the Lincoln years (1959&ndash;65) &mdash; roughly a decade ahead of OTL, and through an existing agency rather than a new one.</p>
+        </div>
+      </div>
+
+      <div class="subhead">Peter Lowry and the narrowing margin</div>
+      <div class="prose">
+        <p><strong>Peter Lowry</strong> (b. 1916), a Global War veteran of the European theatre, takes over in the mid-1950s at about thirty-eight. His real problem is not cheap gasoline. It is that <strong>gasoline luxury is catching up</strong> &mdash; automatics, sound deadening, bigger smoother engines, every year a little closer to what a steamer always delivered. He spends twenty-five years defending a margin of distinction that narrows from obvious to arguable.</p>
+      </div>
+
+      <div class="subhead">Diesel takes the trucks</div>
+      <div class="prose">
+        <p>Lowry's heavy haulage business does not survive contact with cheap postwar diesel. Fleet operators are the most fuel-cost-sensitive buyers in the market, and diesel's 40&ndash;45% efficiency against steam's 10% is a four-to-one penalty aimed at the customer least able to ignore it. Steam retreats into <strong>specialist heavy work</strong> &mdash; logging, mining, oilfield, heavy recovery, extreme-tonnage hauling &mdash; where torque and fuel flexibility outweigh efficiency. Small, profitable, unglamorous, long-lived. <strong>Pruitt Heavy Motors</strong> of Texas is the natural inheritor of general freight. WBT road freight is a smaller market than OTL's regardless, because most freight moves on the USRC.</p>
+        <p>Under President Cassandra Schultz, the <strong>High-Speed Corridor Commission reports in 1969/70</strong> &mdash; the moment America visibly confirms it chose rail, and the bookend to a postwar era that never built a freeway network.</p>
+      </div>
+    </div>
+
+    <!-- ================= RENAISSANCE ================= -->
+    <div class="phase-section" id="renaissance">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Long Arc</div>
+        <div class="phase-title">Regulation &amp; Renaissance</div>
+        <div class="phase-years">1970&ndash;1990</div>
+      </div>
+
+      <div class="prose">
+        <p>Emissions regulation arrives, and <strong>steam sails through untouched.</strong> A steamer burns fuel in a steady, continuous, controllable flame outside the engine at lower peak temperatures, producing very little of what smog rules target. This is not speculation &mdash; OTL ran serious steam-car revival programmes in the late 1960s for exactly this reason, and California came close to mandating steam bus trials around 1970.</p>
+        <p>Meanwhile piston engines are strangled: lowered compression, choked intakes, early catalytic converters, terrible drivability. Luxury marques are hit hardest, because effortless power is precisely what the regulations take away first.</p>
+        <p><strong>The moment gasoline luxury finally caught up, regulation knocked it back down.</strong> A Lowry steamer in 1975 needs no modification, loses no performance, and is suddenly the most refined car in America again &mdash; a late renaissance handed to Peter Lowry at fifty-nine, and vindication for a company that spent thirty years being told it was obsolete. RMC's century runs opposite throughout: the decade Lowry sails through is the decade Republic spends choking its engines.</p>
+      </div>
+
+      <div class="subhead">The handoff</div>
+      <div class="prose">
+        <p>Peter retires around 1980 as the man who had the last great decade of steam, leaving the company profitable and the marque respected. The <strong>fourth-generation Lowry</strong> (b. c. 1945&ndash;50) inherits a business whose core product is about to be regulated out of existence, and <strong>sees it coming</strong> &mdash; beginning electric development in the 1980s, well before he has to, spending seriously on a technology the company does not sell while the steam business is still healthy. He is arguing against his own current success, which boards do not enjoy. Whether he was vindicated or merely lucky is still argued about in the WBT business press in 2026.</p>
+      </div>
+
+      <div class="subhead">The battery curve</div>
+      <div class="prose">
+        <p>Eight decades of sustained demand from a quarter of the market does what OTL never got. Nickel-iron cells were available in 1901 and last essentially forever but never reached manufacturing scale; sustained demand also pulls the <em>next</em> chemistries forward. Not into the 1930s &mdash; that remains fantasy &mdash; but a NiMH-equivalent in the 1970s rather than the 1990s, and lithium in the 1980s rather than 1991, is defensible. In a country that never lost its charging infrastructure, the electric share begins climbing again in the <strong>1990s, market-driven, before the politics arrive.</strong> <span class="flag-inline flag-soft">Soft Canon</span></p>
+      </div>
+    </div>
+
+    <!-- ================= RECKONING ================= -->
+    <div class="phase-section" id="reckoning">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Long Arc</div>
+        <div class="phase-title">The Reckoning &amp; the Electric Return</div>
+        <div class="phase-years">1990&ndash;2026</div>
+      </div>
+
+      <div class="prose">
+        <p>What kills steam is not emissions but <strong>fuel economy regulation</strong>. Roughly 10% thermal efficiency against 25&ndash;35% means two and a half to three times the fuel and carbon per mile, permanently. It is the Rankine cycle; no engineering fixes it, and it is indefensible under a fuel-economy mandate.</p>
+        <p>The trigger is the <strong>Mesopotamian crises of the late 1990s and 2000s</strong>, and the framing is <em>energy security, not climate.</em> That distinction does most of the work.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-label">Why security framing matters</div>
+          <h4>A Coalition Steam Cannot Survive</h4>
+          <p>Rules born of an energy security crisis are bipartisan &mdash; the JCA can vote for energy independence without conceding anything about the environment. And electricity becomes attractive for a reason with nothing to do with carbon: domestic generation, no foreign supply chain, no strategic exposure. <strong>An auto is an energy-independent car by definition.</strong></p>
+        </div>
+        <div class="card green">
+          <div class="card-label">Why the response works</div>
+          <h4>The Infrastructure Is Already There</h4>
+          <p>OTL's 1973 shock arrived when batteries were useless, so the answer was small gasoline cars. WBT's arrives with 22&ndash;25% of the fleet already electric, standardised charging ninety years old, utilities in the battery business since the 1910s, and chemistry two decades ahead. The country does not have to build the response &mdash; it has to scale it.</p>
+        </div>
+      </div>
+
+      <div class="rule-box">
+        <strong>Resolves the 2010s outline tension</strong>
+        The 2010s energy bill's electric vehicle incentives and fossil-fuel-sector transition support are the <em>second act</em> of a policy already running since the Mesopotamia-era standards &mdash; not a standing-start EV push. No revision to the presidential outline is required.
+      </div>
+
+      <div class="subhead">Lowry in 2026</div>
+      <div class="prose">
+        <p>One of the oldest continuously operating car companies in the world &mdash; roughly 140 years old, founded by a man born into slavery, still family-associated. Premium electrics as the core business; specialist heavy vehicles as the quiet profitable remainder; and a <strong>boutique steam line of a few hundred cars a year</strong>, preserved under small-volume manufacturer exemption, absurdly expensive, one of the most distinctive luxury objects on the planet.</p>
+        <p>The pivot is culturally seamless in a way it would be for no other manufacturer on earth. Lowry customers have expected silence, no gearshift and instant torque for a century &mdash; every one of which an electric delivers natively. The marque's identity lived in what steam <em>delivered</em>, not in steam itself.</p>
+      </div>
+    </div>
+
+    <!-- ================= ROSTER US ================= -->
+    <div class="phase-section" id="roster-us">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Reference</div>
+        <div class="phase-title">Roster &mdash; United States</div>
+      </div>
+
+      <table class="dtable">
+        <tr><th>Firm</th><th>Base</th><th>Tech</th><th>Profile</th></tr>
+        <tr><td class="firm">Lowry Steammobile</td><td>Pittsburgh, PA</td><td><span class="tech tech-steam">Steam</span></td><td>Founded 1883 by Julius Lowry. Volume from 1906. Premium/prestige; trucks from 1930; specialist heavy work from the 1950s; premium electrics by the 2010s. Boutique steam survives to 2026.</td></tr>
+        <tr><td class="firm">Mercer Steamcarriage</td><td>&mdash;</td><td><span class="tech tech-steam">Steam</span></td><td>Coachbuilt ultra-luxury above Lowry; carried VP Landon in 1902. Bought by Lowry during the Global War; survives as a nameplate.</td></tr>
+        <tr><td class="firm">Ferris Steam Motors</td><td>Cleveland, OH</td><td><span class="tech tech-steam">Steam</span></td><td>Lowry's mid-market rival from the 1920s. Competes on value, not prestige &mdash; sharpens Lowry's premium identity by existing.</td></tr>
+        <tr><td class="firm">Vandermeer Roadworks</td><td>St. Louis, MO</td><td><span class="tech tech-steam">Steam</span></td><td>Commercial only &mdash; trucks, buses, municipal equipment; never a passenger car. The city of the 1917 disaster also produced a steam maker that survived it. Absorbed or dies when diesel takes freight.</td></tr>
+        <tr><td class="firm">Henderson Steam Motors</td><td>Brooklyn, NY</td><td><span class="tech tech-steam">Steam</span></td><td><strong>Defunct.</strong> Squeezed since 1906; cut cost on boiler steel. Its St. Louis omnibus explosion produced the 1919 Act. Does not survive the decade.</td></tr>
+        <tr><td class="firm">Bell Roadworks</td><td>&mdash;</td><td><span class="tech tech-steam">Steam</span></td><td><strong>Defunct.</strong> Early competitor named in the 1900 canon; absorbed or folded after 1906.</td></tr>
+        <tr><td class="firm">Republic Motor Co.</td><td>Andersonville, JE</td><td><span class="tech tech-gas">Gasoline</span></td><td>Founded c. 1912&ndash;15. Structurally the largest American car company from the 1930s. Pivots to electric in the 21st century after dragging its feet.</td></tr>
+        <tr><td class="firm">Wabash Motors</td><td>Indianapolis, IN</td><td><span class="tech tech-gas">Gasoline</span></td><td>The convert &mdash; steamers in the 1900s, gasoline from the 1920s. Name predates the technology it is known for.</td></tr>
+        <tr><td class="firm">Cavalier Motors</td><td>Atlanta, GA</td><td><span class="tech tech-gas">Gasoline</span></td><td>Founded c. 1946&ndash;50 from war industry. Styling-led and brash against RMC's engineering conservatism. Most likely domestic firm to die in the 1970s or 80s.</td></tr>
+        <tr><td class="firm">Doughty Automobiles</td><td>Multi-city</td><td><span class="tech tech-elec">Electric</span></td><td>Established by 1899. The fleet and commercial supplier, closest to the utilities and the battery-swap business. A century of quiet unfashionable competence; best-positioned firm in WBT by 2026, and the least celebrated for it.</td></tr>
+        <tr><td class="firm">Harper Elector-Motor</td><td>Franklin, D.W.</td><td><span class="tech tech-elec">Electric</span></td><td>Consumer and premium-urban marque; carried Secretary Jameson in 1902. Marginal by 1970; survives barely; full revival with the electric boom.</td></tr>
+        <tr><td class="firm">Penn Electric Carriage</td><td>Philadelphia, PA</td><td><span class="tech tech-elec">Electric</span></td><td>Cheap city runabouts &mdash; the auto as appliance, not luxury. Deliberately below Harper; the segment's likeliest casualty.</td></tr>
+        <tr><td class="firm">CEVCo</td><td>Philadelphia, PA</td><td><span class="tech tech-elec">Electric</span></td><td>Consolidated Electric Vehicle Company. Grew out of battery leasing and depot swap rather than carriage building &mdash; a service operation that worked backward into manufacturing. Explains why the charging infrastructure never went away.</td></tr>
+        <tr><td class="firm">Ellsworth Motor Co.</td><td>Columbus, OH</td><td><span class="tech tech-mixed">Gas + Elec</span></td><td>The hedger &mdash; two directly substitutable technologies for decades; never quite committed, never quite failed; nearly acquired several times. Vindicated c. 2005 as the only established American firm with continuous expertise in both.</td></tr>
+      </table>
+    </div>
+
+    <!-- ================= ROSTER NAU ================= -->
+    <div class="phase-section" id="roster-nau">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Reference</div>
+        <div class="phase-title">Roster &mdash; North American Union</div>
+      </div>
+
+      <div class="prose">
+        <p>After NAOTA (1930) and the NAU thereafter, Canadian, Texian, Californian and Mexican manufacturers sell into the American market freely and are not meaningfully foreign. <strong>"Domestic versus import" is a far blurrier distinction in WBT than in OTL</strong> &mdash; the Oststein pattern generalises across the continent.</p>
+      </div>
+
+      <table class="dtable">
+        <tr><th>Firm</th><th>Base</th><th>Tech</th><th>Profile</th></tr>
+        <tr><td class="firm">Oststein Motorwerks</td><td>Texas Fed. / Prosperity</td><td><span class="tech tech-gas">Gasoline</span></td><td>German-Texan. The volume exporter, with American works inside the tariff wall pre-1930. Foreign-feeling until midcentury; simply part of the landscape by the 21st.</td></tr>
+        <tr><td class="firm">Trinity Motor Works</td><td>Texas Federation</td><td><span class="tech tech-gas">Gasoline</span></td><td>The volume rival &mdash; Oststein's real competitor in the home market.</td></tr>
+        <tr><td class="firm">Pruitt Heavy Motors</td><td>Texas Federation</td><td><span class="tech tech-gas">Gasoline</span></td><td>Heavy trucks and oilfield equipment; continental reputation for working vehicles. Inheritor of general freight when diesel pushes Lowry into specialist work.</td></tr>
+        <tr><td class="firm">Alvarado Motors</td><td>Texas Federation</td><td><span class="tech tech-gas">Gasoline</span></td><td>The large premium car. Big, thirsty, unapologetic &mdash; the Texian answer to Lowry, arriving at luxury from the opposite direction. Where Lowry sells silence, Alvarado sells size and power.</td></tr>
+        <tr><td class="firm">Sierra Motor Co.</td><td>Union of the Californias</td><td><span class="tech tech-gas">Gasoline</span></td><td>Interior gasoline &mdash; built for the long distances and sparse territory of the mountain and desert states.</td></tr>
+        <tr><td class="firm">Presidio Automobiles</td><td>Union of the Californias</td><td><span class="tech tech-elec">Electric</span></td><td>Coastal. The dense Pacific cities.</td></tr>
+        <tr><td class="firm">Dominion Motor Co.</td><td>Hamilton, Ontario</td><td><span class="tech tech-gas">Gasoline</span></td><td>Steel city, Ontario industrial base, border proximity for post-NAOTA export. Built for cold and distance. Small until 1930; transformed by open access to a market ten times its own.</td></tr>
+        <tr><td class="firm">Cie. &Eacute;lectrique Laurentienne</td><td>Montreal, Quebec</td><td><span class="tech tech-elec">Electric</span></td><td>CEL. Justified by enormous cheap Quebec hydroelectric power &mdash; what makes urban electric transport rational there when it is not elsewhere in Canada. French-speaking, distinct design tradition, genuinely foreign in character rather than a mirror of the American industry.</td></tr>
+      </table>
+
+      <div class="rule-box">
+        <strong>National profiles</strong>
+        <strong style="display:inline;font-size:inherit;letter-spacing:0;text-transform:none;">Texas</strong> is the oil power of the continent &mdash; cheapest fuel anywhere, hot climate, enormous distances, ranching and oilfield economy. Gasoline exclusively, and large. Settlement mix is Anglo-American, Hispanic and German; Oststein is <em>the</em> German-Texan firm and others must not default to German naming. <strong style="display:inline;font-size:inherit;letter-spacing:0;text-transform:none;">Canada</strong> is cold with thin population and long distances, which favour gasoline; steam has freezing problems and batteries lose capacity badly in cold, so Canadian steam is small and does not survive. Detroit is deliberately <em>not</em> the Canadian hub &mdash; its OTL dominance was contingent on a few accidents of biography, and siting the industry there would read as too on-the-nose.
+      </div>
+
+      <div class="oc-inline"><strong>Open Canvas &mdash; Empire of Mexico</strong>NAOTA gave Mexico special provisions and longer transition periods, implying a protected, later-developing industry &mdash; the classic profile for cheap, simple, extremely durable vehicles built for bad roads and easy repair, which then become quietly beloved across the continent. Deferred pending Mexican industrial and political history.</div>
+    </div>
+
+    <!-- ================= ROSTER OVERSEAS ================= -->
+    <div class="phase-section" id="roster-overseas">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Reference</div>
+        <div class="phase-title">Roster &mdash; Overseas</div>
+      </div>
+
+      <div class="prose">
+        <p><strong>There is no import beachhead.</strong> OTL's import wave entered through a specific gap: America built only large cars, so Volkswagen, then the British and French, then Japan walked in through the small, cheap, economical door &mdash; and the 1973 oil shock blew it open.</p>
+        <p>WBT has no such gap. The cheap small urban car is the electric auto, and it has been a domestic product since 1899. A foreign small gasoline car arriving in 1955 is not filling a hole; it is attacking an entrenched, beloved, century-old domestic segment on its home ground. And there is no 1973 shock. Imports therefore arrive <strong>later, smaller, and through different doors</strong> &mdash; sports cars, luxury, technical novelty, commercial vehicles. Never economy.</p>
+      </div>
+
+      <table class="dtable">
+        <tr><th>Firm</th><th>Base</th><th>Tech</th><th>Profile</th></tr>
+        <tr><td class="firm">Preussische Motorenwerke</td><td>Prussia</td><td><span class="tech tech-gas">Gasoline</span></td><td>PMW. The prewar prestige marque, split by the Global War; the Prussian successor retains the original name and identity outright.</td></tr>
+        <tr><td class="firm">Pr&auml;zisions-Motorenwerke</td><td>UGR</td><td><span class="tech tech-gas">Gasoline</span></td><td>PMW. The UGR successor &mdash; same initials, different word, <strong>different logo and visual identity</strong>. Transparently a workaround, which hands the Prussian side a permanent talking point about the western firm being ashamed of its own name. (Precedent: Auto Union kept its four rings after losing its Saxon factories.)</td></tr>
+        <tr><td class="firm">Motorenfabrik Hannover</td><td>UGR</td><td><span class="tech tech-gas">Gasoline</span></td><td>Founded postwar, no prewar lineage &mdash; a creature of the republic. The plainest possible name: a firm with nothing to prove and no heritage to claim. Deliberate contrast to the PMW succession fight.</td></tr>
+        <tr><td class="firm">Tsurumi Motors</td><td>Japan</td><td><span class="tech tech-gas">Gas; elec late</span></td><td>Named for the industrial ward of Yokohama. Japan was exhausted but undefeated &mdash; no occupation, no American-supervised reconstruction &mdash; so the industry develops continuously on its own terms: slower recovery, no discontinuity, a distinctly Japanese engineering tradition. Poor in oil, so small efficient engines. The most significant overseas exporter by late century, entering through technical credibility rather than price.</td></tr>
+        <tr><td class="firm">V&eacute;hicules Populaires</td><td>UER</td><td><span class="tech tech-mixed">Gas + Elec early</span></td><td>VP. State-directed and utilitarian &mdash; durable, repairable, designed against model-year churn. UER/NAU relations are at worst cordial, so genuine exports. Ideological commitment to durability plus the worst fuel economics on the continent is a double motivation: <strong>the strongest real reason of any overseas firm to build electrics seriously and early.</strong></td></tr>
+        <tr><td class="firm">Ravensworth Motors</td><td>Britain</td><td><span class="tech tech-gas">Gasoline</span></td><td>Imperial resources depleted by the war. Low-volume, high-character &mdash; sports and luxury, the one segment where the engine <em>is</em> the product.</td></tr>
+        <tr><td class="firm">Carrozzeria Bellandi</td><td>Italy</td><td><span class="tech tech-gas">Gasoline</span></td><td>Design and sports cars. <em>Carrozzeria</em> is the correct term for an Italian design house.</td></tr>
+      </table>
+
+      <div class="rule-box">
+        <strong>Why European firms stay gasoline</strong>
+        Europe is oil-poor &mdash; almost no domestic crude before the North Sea in the late 1960s, everything imported and heavily taxed. But scarce fuel does not push a market <em>off</em> gasoline, because the alternatives fail worse: steam burns two to three times more per mile, and batteries are still lead-acid. Expensive fuel instead produces <strong>small, light, efficient</strong> cars &mdash; and heavy <strong>diesel</strong> adoption in passenger cars, at 40&ndash;45% efficiency against gasoline's 25&ndash;35%. That American/European gap should be <em>wider</em> than OTL's, since American fuel is cheaper still after NAOTA. Ravensworth and Bellandi are exempt: sports and luxury buyers are the least fuel-sensitive there are, which is part of why those countries specialised there.
+      </div>
+
+      <div class="oc-inline"><strong>Open Canvas &mdash; China</strong>Constitutional monarchy, undefeated, kept the treaty ports, a great power throughout. <strong>Not an exporter for most of the century</strong> &mdash; enters North America in the twenty-first century only, which lands exactly as the electric transition begins: a very different entry from Japan's slow quality-reputation climb. Requires a properly Chinese name, not a Western-style corporate one. Deferred to a 21st-century pass.</div>
+    </div>
+
+    <!-- ================= AVIATION ================= -->
+    <div class="phase-section" id="aviation">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Reference</div>
+        <div class="phase-title">Aviation Cross-Reference</div>
+      </div>
+
+      <div class="prose">
+        <p>Points where this document constrains, or is constrained by, the Aviation &amp; Aeronautics reference.</p>
+      </div>
+
+      <table class="dtable">
+        <tr><th>Point</th><th>Consequence</th></tr>
+        <tr><td class="firm">No mature ICE industry</td><td>Aviation cannot draw on a mass-market gasoline engine industry in the 1900s&ndash;20s, because it does not exist at OTL scale. Aircraft engines matter to the gasoline firms out of all proportion to those firms' size in the car market.</td></tr>
+        <tr><td class="firm">Only ICE flies</td><td>Steam is disqualified by power-to-weight; electric by energy density. Aviation is internal combustion from 1901 onward, uncontested, forever &mdash; the opposite of the ground-vehicle situation.</td></tr>
+        <tr><td class="firm">The Prosperity metro</td><td>American aviation and American gasoline-engine manufacturing share one metropolitan area, one labour pool and one machining base. Vaughn &amp; Harcourt stay on aviation; RMC rises separately from the same ecosystem &mdash; cousins, not one heroic origin.</td></tr>
+        <tr><td class="firm">Kerosene first</td><td>The <em>Prairie Hawk</em> runs kerosene in 1901 because that is what every general store sold. Aviation's need for higher-performance fuel may pull gasoline distribution forward, rather than automobiles doing it &mdash; the reverse of OTL.</td></tr>
+        <tr><td class="firm">The 1919 Act</td><td>Standards-and-reciprocity architecture is the most likely precedent for the Federal Aviation Bureau under President King &mdash; a mature safety-certification culture exists before aviation needs one.</td></tr>
+        <tr><td class="firm">Rail competition</td><td>Strong intercity rail with passenger priority is domestic aviation's main competitor. Expect a weaker short- and medium-haul domestic air market than OTL, and relatively stronger long-haul and international.</td></tr>
+        <tr><td class="firm">Turbines</td><td><strong>Automotive turbine development is explicitly ruled out.</strong> WBT turbine metallurgy descends from naval steam turbines and aero-engine hot-section work, as OTL. Lowry is a car company and does not enter engine or industrial-plant supply.</td></tr>
+      </table>
+    </div>
+
+    <!-- ================= OPEN CANVAS ================= -->
+    <div class="phase-section" id="open">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Reference</div>
+        <div class="phase-title">Open Canvas &mdash; Consolidated</div>
+      </div>
+
+      <div class="rule-box">
+        <strong>Canon correction required</strong>
+        The 1899 National Roads infrastructure passage in <em>WBT_FINAL_Outline.docx</em> reads "Lowery Steammobile Company." Every other canon instance &mdash; 1883, 1900, 1902 &mdash; reads <strong>Lowry</strong>, which is correct. A one-word fix whenever the outline is next open.
+      </div>
+
+      <ol class="numbered">
+        <li><strong>The fourth Lowry.</strong> Name and exact birth year (b. c. 1945&ndash;50); takes over c. 1980 for roughly a thirty-year tenure.</li>
+        <li><strong>The 1919 Act's confirmed title.</strong> "Boiler Safety and Certification Act" follows the descriptive convention but is not locked.</li>
+        <li><strong>The Mesopotamia-era standards.</strong> No in-world name, sponsor or administration attached yet.</li>
+        <li><strong>St. Louis casualty figure</strong> and an in-world name for the disaster.</li>
+        <li><strong>Cavalier's fate.</strong> Flagged as most likely to die in the 1970s or 80s; not yet decided.</li>
+        <li><strong>Ferris and Vandermeer endpoints.</strong> Ferris past midcentury is unset; Vandermeer is "absorbed or dies" in the 1950s &mdash; which, and by whom, undecided.</li>
+        <li><strong>Empire of Mexico.</strong> Whole national industry deferred pending Mexican industrial history.</li>
+        <li><strong>China's 21st-century entry.</strong> Firm name and timing, for a later pass.</li>
+        <li><strong>Motorsport.</strong> Deliberately out of scope &mdash; downstream of everything here and load-bearing on nothing. A racing culture where the interesting question is <em>which kind of engine</em> rather than which driver is a genuinely different institution from OTL's, and worth a paragraph in the Sports Bible if ever wanted.</li>
+      </ol>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <em>Soft canon unless marked otherwise. All dates subject to revision. Open canvas items flagged throughout.</em>
+</footer>
+
+<script>
+(function() {
+  function updateArcClock() {
+    var n = new Date();
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var hh = String(n.getHours()).padStart(2,'0');
+    var mm = String(n.getMinutes()).padStart(2,'0');
+    var el = document.getElementById('arc-clock');
+    if (el) el.textContent = days[n.getDay()] + ' ' + n.getDate() + ' \u00b7 ' + hh + ':' + mm;
+  }
+  setInterval(updateArcClock, 10000);
+  updateArcClock();
+})();
+</script>
+
+<script src="/washington_burns/router.js"></script>
+</body>
+</html>
