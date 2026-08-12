@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WBT — Aviation &amp; Aeronautics</title>
+<title>WBT — Space Exploration History</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -615,6 +615,90 @@
   .flag-soft { background: var(--paper-dark); color: var(--ink-mid); border: 1px solid var(--rule-light); }
   .flag-open { background: var(--open-bg); color: var(--open); border: 1px solid #b0c8d8; }
 
+  .chron {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.6rem 0 1.2rem;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+  }
+  .chron th {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 0.35rem 0.5rem;
+  }
+  .chron td {
+    border-bottom: 1px solid var(--rule-light);
+    padding: 0.35rem 0.5rem;
+    vertical-align: top;
+    color: var(--ink-mid);
+    line-height: 1.45;
+  }
+  .chron td.cyr {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--red);
+    white-space: nowrap;
+    width: 68px;
+  }
+  .chron td.ctag { width: 58px; white-space: nowrap; }
+  .chron tr.anchor td { background: var(--paper-dark); }
+  .chron tr.anchor td.cyr { color: var(--ink-faint); }
+  .chron tr.anchor td.cev { color: var(--ink-faint); font-style: italic; }
+  .chron tr.key td { background: #fdf6e8; }
+  .chron tr.key td.cev { font-weight: 600; color: var(--ink); }
+  .ctg {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 1px 5px;
+    border-radius: 2px;
+    border: 1px solid;
+  }
+  .tg-lta { background: #eaf0f6; color: #2c5578; border-color: #b8cddd; }
+  .tg-hta { background: #f6ece8; color: #8a4630; border-color: #dcbdb0; }
+  .tg-reg { background: #eef1ea; color: #4a5c3a; border-color: #c3cfb8; }
+  .tg-war { background: #f7e9e9; color: #8f3232; border-color: #e0b6b6; }
+  .tg-ind { background: #f2eef6; color: #5a4372; border-color: #cdc0dd; }
+  .tg-ext { background: var(--paper-dark); color: var(--ink-faint); border-color: var(--rule-light); }
+  .era-head {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 1.6rem 0 0.1rem;
+  }
+  .era-sub {
+    font-size: 13px;
+    color: var(--ink-faint);
+    font-style: italic;
+    margin-bottom: 0.3rem;
+  }
+  .key-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    align-items: center;
+    padding: 0.6rem 0.8rem;
+    background: var(--paper-mid);
+    border: 1px solid var(--rule-light);
+    margin: 0.8rem 0 1rem;
+    font-size: 12px;
+    color: var(--ink-mid);
+  }
+
   .quote-canon {
     border-left: 3px solid var(--ink);
     padding: 0.5rem 0 0.5rem 1rem;
@@ -626,7 +710,7 @@
   }
 </style>
 
-
+<!-- WM ARC CHROME CSS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -735,6 +819,7 @@
         <a class="toc-item" href="#arc">The airship arc <span class="toc-years">1899–2026</span></a>
         <a class="toc-item" href="#shift">The 1960s shift</a>
         <div class="toc-phase">Reference</div>
+        <a class="toc-item" href="#chronology">Master chronology <span class="toc-years">1889–2026</span></a>
         <a class="toc-item" href="#open">Open canvas items</a>
       </div>
     </div>
@@ -1572,6 +1657,142 @@
       </div>
 
       <div class="oc-inline"><strong>Open Canvas</strong>NAU cabotage and open-skies friction — a Texian airline flying US domestic routes is exactly the kind of integration dispute the NAU generates, and is directly relevant to the Secretary of Transportation portfolio. Whether TGA renames again after the 1970s.</div>
+    </div>
+
+
+    <!-- ================= CHRONOLOGY ================= -->
+    <div class="phase-section" id="chronology">
+      <div class="phase-header">
+        <div class="phase-eyebrow">Reference</div>
+        <div class="phase-title">Master Chronology</div>
+        <div class="phase-years">1889&ndash;2026</div>
+      </div>
+
+      <div class="prose">
+        <p>Everything in this document, in date order, as a drafting reference. <strong>Greyed italic rows are external canon anchors</strong> — wars, presidencies and events established elsewhere in the timeline — included so aviation events can be placed against them at a glance. Highlighted rows are the load-bearing turning points.</p>
+      </div>
+
+      <div class="key-legend">
+        <span><span class="ctg tg-lta">LTA</span> airships</span>
+        <span><span class="ctg tg-hta">HTA</span> aircraft</span>
+        <span><span class="ctg tg-reg">REG</span> regulation &amp; infrastructure</span>
+        <span><span class="ctg tg-ind">IND</span> industry &amp; firms</span>
+        <span><span class="ctg tg-war">WAR</span> military</span>
+        <span><span class="ctg tg-ext">EXT</span> external canon</span>
+      </div>
+
+      <div class="era-head">I. Origins</div>
+      <div class="era-sub">1889&ndash;1906 — two industries begin, twenty years apart in temperament</div>
+      <table class="chron">
+        <tr><th>Year</th><th>Tag</th><th>Event</th></tr>
+        <tr><td class="cyr">1889</td><td class="ctag"><span class="ctg tg-ind">IND</span></td><td class="cev"><strong>Weiss Machine Works / Weiss Maschinenwerke</strong> founded by Gustav Weiss in southeast New Frankfurt, near Trinity Bay. Dual-named, German-Texan machine shop descent.</td></tr>
+        <tr class="anchor"><td class="cyr">1899</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">Great European War begins.</td></tr>
+        <tr><td class="cyr">1899–1904</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev">Observation balloons on both sides; early dirigible reconnaissance experiments. Europe accumulates four years of institutional lighter-than-air experience and none with aeroplanes.</td></tr>
+        <tr class="key"><td class="cyr">1900</td><td class="ctag"><span class="ctg tg-ind">IND</span></td><td class="cev"><strong>The New Frankfurt hurricane.</strong> Bayside sheds destroyed. Raymond Patterson had warned about the siting and been ignored; the storm vindicates him. Everything afterward descends from this — the inland move, the rivalry, the meteorology programme, the evacuation doctrine.</td></tr>
+        <tr><td class="cyr">c.1900–05</td><td class="ctag"><span class="ctg tg-ind">IND</span></td><td class="cev"><em>Luftschiffbau Schütz-Lehmann</em> founded in Prussia out of Great European War balloon work. Ships marked <strong>LSL-##</strong>. At least one rival firm exists.</td></tr>
+        <tr class="key"><td class="cyr">1901</td><td class="ctag"><span class="ctg tg-hta">HTA</span></td><td class="cev"><strong>14 June — first powered flight.</strong> Oscar Vaughn and Levi Harcourt fly the <em>Prairie Hawk</em> at Red Fork, Jefferson: a kerosene motor on a canvas-and-wood biplane glider, several hundred feet. Jefferson claims "First in Flight."</td></tr>
+        <tr><td class="cyr">1902</td><td class="ctag"><span class="ctg tg-ind">IND</span></td><td class="cev">Relocation north of New Frankfurt complete. Renamed <strong>Weiss Aeronautical Engineering (WAE)</strong> — the name changes because the address did.</td></tr>
+        <tr><td class="cyr">c.1902–04</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev"><strong>Trinity Airship Service</strong> founded as a WAE subsidiary.</td></tr>
+        <tr class="key"><td class="cyr">1903</td><td class="ctag"><span class="ctg tg-ind">IND</span></td><td class="cev"><strong>Patterson founds Vanguard Aeronautics.</strong> Vindicated on the siting and then ignored again on the rebuild, he leaves with outside capital. The two firms compete for rigid <em>and</em> non-rigid contracts, permanently.</td></tr>
+        <tr><td class="cyr">c.1903–08</td><td class="ctag"><span class="ctg tg-hta">HTA</span></td><td class="cev">V&amp;H core patents granted. Enforcement begins.</td></tr>
+        <tr class="anchor"><td class="cyr">1904</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">Great European War ends. Federal officials first visit Red Fork.</td></tr>
+        <tr><td class="cyr">1904</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev">Renamed <strong>Texian Airship Service (TAS)</strong>. Acquires the government contract bundle — trunk and ocean mail, coastal and maritime patrol, aerial survey, storm reconnaissance, frontier patrol, official transport.</td></tr>
+        <tr class="anchor"><td class="cyr">1905–06</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">Matanzas War.</td></tr>
+        <tr><td class="cyr">1905–06</td><td class="ctag"><span class="ctg tg-war">WAR</span></td><td class="cev">US Army and Navy balloon observation over Cuba — the era's only American military air experience. The service learns LTA has value.</td></tr>
+        <tr><td class="cyr">1906</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev"><strong>Trinity-Gulf Airline</strong> founded by Vanguard's financial backers. Fully private, no cushion.</td></tr>
+      </table>
+
+      <div class="era-head">II. The Long Peace</div>
+      <div class="era-sub">1906&ndash;1931 — the airship's golden age; aviation's suppressed one</div>
+      <table class="chron">
+        <tr><th>Year</th><th>Tag</th><th>Event</th></tr>
+        <tr class="key"><td class="cyr">1906–22</td><td class="ctag"><span class="ctg tg-hta">HTA</span></td><td class="cev"><strong>The V&amp;H patent thicket — hard years.</strong> Maximum suppression. Anyone building airframes in America is paying V&amp;H or in court with them. This is the window that must be starved to reach OTL-1925 levels by 1932.</td></tr>
+        <tr><td class="cyr">1910s–20s</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev">Commercial rigid golden age. Transoceanic and transcontinental prestige routes; New Frankfurt and the Gulf as the hub. <strong>Pan-Continental Airways (PanCon)</strong> founded on Texian-built airships with American capital.</td></tr>
+        <tr><td class="cyr">1910s–20s</td><td class="ctag"><span class="ctg tg-hta">HTA</span></td><td class="cev">Regional hopper services and USRC intermodal day-legs. Uncomfortable, unglamorous, weather-cancelled. Carriers are connecting operators, not independent airlines.</td></tr>
+        <tr class="anchor"><td class="cyr">1910</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">Rural Electrification Act — standardised current nationwide, 26 years ahead of OTL.</td></tr>
+        <tr class="anchor"><td class="cyr">1917</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">October — St. Louis omnibus boiler disaster.</td></tr>
+        <tr class="anchor"><td class="cyr">1919</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">Boiler Safety and Certification Act — standards-and-reciprocity, the architectural precedent aviation will later break.</td></tr>
+        <tr><td class="cyr">c.1917–25</td><td class="ctag"><span class="ctg tg-ind">IND</span></td><td class="cev"><strong>Texian Rare Gas Consortium</strong> formed. Regulated cartel under Texian charter, Panhandle-based. Not a shipbuilder. Counterparty for all helium export policy.</td></tr>
+        <tr class="key"><td class="cyr">c.1922</td><td class="ctag"><span class="ctg tg-hta">HTA</span></td><td class="cev"><strong>V&amp;H core patents lapse.</strong> The firm sustains the fight on improvement claims — grip weakening, litigiousness undiminished. Gliding is now entirely free while powered flight remains costly, and the <strong>amateur soaring movement</strong> takes hold.</td></tr>
+        <tr><td class="cyr">c.1922–26</td><td class="ctag"><span class="ctg tg-reg">REG</span></td><td class="cev">First <strong>USP&amp;T air mail routes</strong>. Later than OTL's 1918 because there is no war-surplus aircraft and no military pilot pool. A uniformed federal pilot corps is established.</td></tr>
+        <tr class="anchor"><td class="cyr">1925–26</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">First North American Conference; North American Trade Council founded.</td></tr>
+        <tr><td class="cyr">late 1920s</td><td class="ctag"><span class="ctg tg-reg">REG</span></td><td class="cev"><strong>Division of Air Navigation</strong> created inside USP&amp;T. Airfields, lighted beacons, radio ranges, weather stations, emergency grounds. Cheap to build thanks to the 1910 Act. USRC takes equity in its main intermodal contractor.</td></tr>
+        <tr class="key"><td class="cyr">1929–31</td><td class="ctag"><span class="ctg tg-reg">REG</span></td><td class="cev"><strong>Bureau of Air Commerce</strong> established under King. A <em>direct federal inspectorate</em> — WBT's first genuinely centralised regulator, and a live constitutional fight, landing hardest on JCA-held Jefferson. Founding mandate is safety and standards only; no route or fare authority.</td></tr>
+        <tr class="key"><td class="cyr">1930</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev"><strong>NAOTA. Helium export restricted</strong> in reaction to escalating rhetoric from Berlin. Prussia's flagship ships lose their gas. Simultaneously, cheap Texian crude floods in and the aeroplane's fuel-logistics disadvantage collapses.</td></tr>
+        <tr><td class="cyr">1930s</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev">Britain adopts a similar restriction, then finds the <strong>Canadian loophole</strong> — Canada is inside NAOTA and can buy.</td></tr>
+        <tr class="key"><td class="cyr">1931</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev"><strong>April — LSL-44 <em>Hohenzollern</em>.</strong> Returning from a state visit to Vienna, she explodes on approach to Berlin before invited foreign press. 112 aboard, ~40 survive. Lost: Ernst Reimers, Royal Prussian Minister of Aeronautics, and Prince Joachim Hohenzollern, 26. Designed for helium, completed on hydrogen. State propaganda blames North America — and is substantially right.</td></tr>
+        <tr><td class="cyr">1931</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev">Prussian LTA programme collapses. The UER withdraws civilian rigid use, retaining military, scientific and exhibition flying.</td></tr>
+      </table>
+
+      <div class="era-head">III. The Global War</div>
+      <div class="era-sub">1932&ndash;1940 — the compression event</div>
+      <table class="chron">
+        <tr><th>Year</th><th>Tag</th><th>Event</th></tr>
+        <tr class="anchor"><td class="cyr">1932</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">Global War begins in Europe. American military preparation starts.</td></tr>
+        <tr class="key"><td class="cyr">1932</td><td class="ctag"><span class="ctg tg-hta">HTA</span></td><td class="cev"><strong>Starting position:</strong> civil HTA at roughly OTL 1925 — structurally modern and underpowered. All-metal cantilever monoplanes on engines that cannot exploit them. Carrier aviation as scouting auxiliaries; battleships genuinely dominant.</td></tr>
+        <tr><td class="cyr">1932</td><td class="ctag"><span class="ctg tg-hta">HTA</span></td><td class="cev"><strong>The Preparation Act</strong> imposes a war-production patent pool — a coup de grâce on V&amp;H's fading position rather than a liberation.</td></tr>
+        <tr class="key"><td class="cyr">1932–33</td><td class="ctag"><span class="ctg tg-war">WAR</span></td><td class="cev"><strong>Saint-Dié.</strong> A Prussian raid on a Vosges town of ~20,000, nominally aimed at the rail line through the passes. It missed. 400–700 dead, historic centre destroyed. Saint-Dié is where America was named — so the interventionist argument in Franklin acquires a name and a place.</td></tr>
+        <tr><td class="cyr">1932–40</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev"><strong>The patronage bridge.</strong> Hundreds of non-rigids on convoy escort and ASW against Prussian U-boats and Spanish raiders. Yards stay hot, crews trained, helium infrastructure funded. Prussia has no comparable arm.</td></tr>
+        <tr><td class="cyr">1932–37</td><td class="ctag"><span class="ctg tg-war">WAR</span></td><td class="cev"><strong>The surface war.</strong> Gun engagements, night gunnery, blockade, shore bombardment — closer to Jutland than Midway. Rigid airships with parasite scouts are the fleet's only long-range eyes.</td></tr>
+        <tr><td class="cyr">1933–36</td><td class="ctag"><span class="ctg tg-war">WAR</span></td><td class="cev">Precision bombing attempted and achieves little; the aircraft cannot hit what they aim at.</td></tr>
+        <tr class="anchor"><td class="cyr">1934</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">Full American entry (Spain).</td></tr>
+        <tr class="anchor"><td class="cyr">1935</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">American entry in the Pacific.</td></tr>
+        <tr class="key"><td class="cyr">c.1936</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev"><strong>Rigids withdrawn from contested forward waters</strong> — stage one. Losses to weather and improving fighters make forward operation unaffordable. Non-rigids and carrier scouts absorb the coastal work.</td></tr>
+        <tr><td class="cyr">1936–38</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev">Rigids retained for deep-ocean work in safe areas — mid-Atlantic convoy routes, eastern Pacific approaches, home waters.</td></tr>
+        <tr><td class="cyr">c.1936–37</td><td class="ctag"><span class="ctg tg-war">WAR</span></td><td class="cev">The fork. Area bombing proposed and tried a handful of times.</td></tr>
+        <tr class="key"><td class="cyr">1937</td><td class="ctag"><span class="ctg tg-war">WAR</span></td><td class="cev"><strong>Hamburg.</strong> A joint British–UER–American mission; America participates but does not lead. Aimed at the docks and yards. 2,000–3,000 dead. <em>The docks kept working.</em> Area bombing abandoned the same year. No single government owns the decision.</td></tr>
+        <tr class="anchor"><td class="cyr">1937–38</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">Prussian revolution. European armistice, autumn 1938.</td></tr>
+        <tr class="key"><td class="cyr">1938–39</td><td class="ctag"><span class="ctg tg-war">WAR</span></td><td class="cev"><strong>The demonstration.</strong> Chinese land-based aircraft destroy Allied capital ships at anchor and in coastal waters. It is a defeat; the battleship age ends on the receiving end. The same event finishes the rigid scout — aircraft that can sink capital ships can certainly kill an airship. Rigids go fully rear-area.</td></tr>
+        <tr><td class="cyr">1939–40</td><td class="ctag"><span class="ctg tg-war">WAR</span></td><td class="cev">Capability built for a 1939 European campaign transfers to the Pacific. The area-bombing argument reopens against China; the ceasefire arrives before it is settled. First successful carrier strikes; a carrier building scramble that outlasts the war.</td></tr>
+        <tr class="anchor"><td class="cyr">1940</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">Asian ceasefire; war ends. Pan-American passport union adopted.</td></tr>
+        <tr class="key"><td class="cyr">1940</td><td class="ctag"><span class="ctg tg-hta">HTA</span></td><td class="cev"><strong>End position:</strong> civil HTA at roughly OTL 1939–40 — the lag briefly closed. Military pressurisation arrives; civil pressurisation does not. The carrier age is one year old.</td></tr>
+      </table>
+
+      <div class="era-head">IV. Formation</div>
+      <div class="era-sub">1941&ndash;1957 — the founding era of American commercial aviation</div>
+      <table class="chron">
+        <tr><th>Year</th><th>Tag</th><th>Event</th></tr>
+        <tr class="key"><td class="cyr">1941</td><td class="ctag"><span class="ctg tg-hta">HTA</span></td><td class="cev"><strong>The surplus dump — twenty-two years late.</strong> Cheap transports, abundant pilots and mechanics, a national airfield network, and a public that has watched aviation work. American commercial aviation's founding era begins here, not in the 1920s.</td></tr>
+        <tr class="anchor"><td class="cyr">1941–47</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">Freeman presidency. Air Force established as a separate service. Continental Defense Command, spring 1942.</td></tr>
+        <tr><td class="cyr">1941–47</td><td class="ctag"><span class="ctg tg-hta">HTA</span></td><td class="cev"><strong>The chaos.</strong> Hundreds of new entrants and no economic regulator. Fare wars, undercapitalised carriers failing mid-route, stranded passengers, safety corners cut under competitive pressure.</td></tr>
+        <tr><td class="cyr">1941–45</td><td class="ctag"><span class="ctg tg-reg">REG</span></td><td class="cev">Wartime transports with real range enter service; the intermodal day-legs join up and the rail night-leg becomes an inconvenience. Not because flying got comfortable — it did not.</td></tr>
+        <tr><td class="cyr">c.1946</td><td class="ctag"><span class="ctg tg-ind">IND</span></td><td class="cev"><strong>Standard</strong> founded, St. Louis. Low-fare, plain, and named for a promise.</td></tr>
+        <tr class="anchor"><td class="cyr">1947</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">Nolan takes office.</td></tr>
+        <tr class="key"><td class="cyr">1949–50</td><td class="ctag"><span class="ctg tg-reg">REG</span></td><td class="cev"><strong>The Nolan settlement.</strong> The Bureau of Air Commerce acquires route and fare authority by statute. Prewar regionals are consolidated — <strong>Coronado</strong> is assembled from them. USRC is required to divest its airline equity, selling a declining asset rather than defending a prize.</td></tr>
+        <tr><td class="cyr">late 1940s</td><td class="ctag"><span class="ctg tg-hta">HTA</span></td><td class="cev">Civil cabin pressurisation finally becomes a usable product — roughly a decade behind the military.</td></tr>
+        <tr class="anchor"><td class="cyr">1951–52</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">The sun bomb. It arrives into a force that has not settled its conventional doctrine, and into a world with <em>no image of a destroyed city</em>.</td></tr>
+        <tr class="key"><td class="cyr">1950s</td><td class="ctag"><span class="ctg tg-ind">IND</span></td><td class="cev"><strong>TGA adds fixed-wing feeder routes</strong> — the decision that saves it, made a decade before it matters. TAS does not. The name contracts to <strong>TGA</strong> and the letters stop standing for anything.</td></tr>
+        <tr><td class="cyr">1940s–60s</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev">Rigid long-haul passenger service continues — unpressurised airliners cannot beat it on comfort or range. The fleet is scarce and ageing; wartime losses were never replaced.</td></tr>
+      </table>
+
+      <div class="era-head">V. The Shift</div>
+      <div class="era-sub">1958&ndash;1975 — the passenger disappears</div>
+      <table class="chron">
+        <tr><th>Year</th><th>Tag</th><th>Event</th></tr>
+        <tr><td class="cyr">c.1958–65</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev"><strong>Erosion.</strong> Business traffic goes first. Load factors fall; both operators cut frequency and start marketing the experience rather than the schedule — a defensive move that turns out to be the future.</td></tr>
+        <tr class="anchor"><td class="cyr">1959–65</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">Lincoln presidency.</td></tr>
+        <tr class="key"><td class="cyr">1960s</td><td class="ctag"><span class="ctg tg-reg">REG</span></td><td class="cev"><strong>First NAU air opening.</strong> More gateway cities, expanded route rights, the right to carry beyond a first stop. Not cabotage — but enough to hurt PanCon badly while leaving the domestic trunks untouched.</td></tr>
+        <tr class="key"><td class="cyr">c.1965–70</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev"><strong>The break.</strong> Scheduled point-to-point rigid service ends — not by announcement, but route by route until nothing is left. <strong>TAS folds</strong>, having shifted to cruising too late. WAE is doomed with it; <strong>Vanguard absorbs WAE</strong>, taking the yards and the naval contracts.</td></tr>
+        <tr><td class="cyr">c.1965–70</td><td class="ctag"><span class="ctg tg-ind">IND</span></td><td class="cev">Rigid construction moves to the old Weiss yards as <strong>Weiss-Vanguard Rigid Airship Works</strong>; Vanguard's own yards convert to non-rigid volume. New rigid construction falls to roughly one hull every ten to fifteen years.</td></tr>
+        <tr class="anchor"><td class="cyr">1966–68</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">Choson War. CDC bombing of Beijing and Shanghai — the 1937 argument finally lost, twenty-six years later, against the same country.</td></tr>
+        <tr><td class="cyr">1966–68</td><td class="ctag"><span class="ctg tg-war">WAR</span></td><td class="cev">The battleship question is finally settled — by a second war, a full generation after the first.</td></tr>
+        <tr><td class="cyr">c.1968–75</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev"><strong>The cruise model.</strong> Circuits rather than routes — Caribbean and Gulf in winter, the Pacific Northwest, Alaska and the northern parks in summer, which conveniently inverts the hurricane problem. Havana and San Juan, ancillary in the golden age, become premier and are substantially upgraded.</td></tr>
+        <tr class="anchor"><td class="cyr">1969/70</td><td class="ctag"><span class="ctg tg-ext">EXT</span></td><td class="cev">Schultz's High-Speed Corridor Commission reports — the moment America visibly confirms it chose rail.</td></tr>
+      </table>
+
+      <div class="era-head">VI. Integration</div>
+      <div class="era-sub">1970&ndash;2026 — settlement, and the third airship generation</div>
+      <table class="chron">
+        <tr><th>Year</th><th>Tag</th><th>Event</th></tr>
+        <tr><td class="cyr">1970s+</td><td class="ctag"><span class="ctg tg-ind">IND</span></td><td class="cev"><strong>TGA becomes a major NAU continental carrier</strong>, headquartered in New Frankfurt — a Texian flag carrier by accident, having never taken a dollar of state support. It retains a heritage rigid cruise division.</td></tr>
+        <tr class="key"><td class="cyr">1980s</td><td class="ctag"><span class="ctg tg-reg">REG</span></td><td class="cev"><strong>The final NAU air settlement</strong>, closed by the early 1990s at the latest. Cabotage resolved, cross-border ownership rules set. The question never reopens.</td></tr>
+        <tr class="key"><td class="cyr">c.1988–92</td><td class="ctag"><span class="ctg tg-ind">IND</span></td><td class="cev"><strong>Coronado fails.</strong> The most stylish carrier in America, assembled by a regulator, carrying the weakest balance sheet, killed by the liberalisation settlement. The nostalgia object: livery still recognised in 2026, merchandise, a preserved aircraft, a terminal still called by its name.</td></tr>
+        <tr><td class="cyr">1990s–2000s</td><td class="ctag"><span class="ctg tg-reg">REG</span></td><td class="cev">Mesopotamian crises drive fuel economy regulation on energy-security grounds — bipartisan, and reaching aviation fuel policy.</td></tr>
+        <tr class="key"><td class="cyr">2010s–26</td><td class="ctag"><span class="ctg tg-lta">LTA</span></td><td class="cev"><strong>The cargo airship revival — a third generation.</strong> Hybrid air vehicles into northern Canada, Alaska and NAU Arctic logistics; low-carbon slow freight. No sheds and no permanent terminals; temporary private pads, with permanent nodes at southern railheads. NAU Arctic policy infrastructure, not commercial aviation — and a live Green Party and Nakamura-era argument.</td></tr>
+        <tr><td class="cyr">2026</td><td class="ctag"><span class="ctg tg-ind">IND</span></td><td class="cev"><strong>Surviving carriers:</strong> PanCon (Brooklyn), Columbia (Calumet), Frontier (Astoria), Standard (St. Louis), TGA (New Frankfurt, flying American domestic routes without anyone finding it remarkable). V&amp;H Aeronautics still trading, its legacy still argued over.</td></tr>
+      </table>
+
+      <div class="oc-inline"><strong>Drafting note</strong>Dates given as "c." are deliberately soft and can be pinned as chapters require. The <strong>hard anchors</strong> — those that other events hang from and should not move without consequence — are 14 June 1901, the 1900 hurricane, 1930 NAOTA, April 1931, 1932–40, 1949–50, and the c.1965–70 break.</div>
     </div>
 
     <!-- ================= OPEN CANVAS ================= -->
