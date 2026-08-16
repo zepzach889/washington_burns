@@ -198,6 +198,8 @@ const ROUTES = {
   'nan.nedex.org.nau/peter-landon':           '/nodes/nedex/peter-landon.html',
   'nan.nedex.org.nau/cornelius-roosevelt-ii': '/nodes/nedex/cornelius-roosevelt-ii.html',
   'nan.nedex.org.nau/patrick-hannah':         '/nodes/nedex/patrick-hannah.html',
+  'nan.nedex.org.nau/james-p-roosevelt-jr':   '/nodes/nedex/james-p-roosevelt-jr.html',
+  'nan.nedex.org.nau/alden-gunther':          '/nodes/nedex/alden-gunther.html',
 
   
   // ════════════════════════════════════════════════════════
