@@ -132,6 +132,7 @@ const ROUTES = {
   'nan.nedex.org.nau/sixteenth-amendment-1787':  '/nodes/nedex/sixteenth-amendment-1787.html',
   'nan.nedex.org.nau/grand-compromise-1817':  '/nodes/nedex/grand-compromise-1817.html',
   'nan.nedex.org.nau/istanbul-accord-1919':   '/nodes/nedex/istanbul-accord-1919.html',
+  'nan.nedex.org.nau/matanzas-bay-compact':   '/nodes/nedex/matanzas-bay-compact.html',
   'nan.nedex.org.nau/ottoman-constitution-1883': '/nodes/nedex/ottoman-constitution-1883.html',
   'nan.nedex.org.nau/treaty-of-geneva':       '/nodes/nedex/treaty-of-geneva.html',
   'nan.nedex.org.nau/treaty-of-managua':      '/nodes/nedex/treaty-of-managua.html',
@@ -142,6 +143,7 @@ const ROUTES = {
   // NEDEX — Historical events
   // ════════════════════════════════════════════════════════
   'nan.nedex.org.nau/karahan-interlude':      '/nodes/nedex/karahan-interlude.html',
+  'nan.nedex.org.nau/belle-of-matanzas-affair':      '/nodes/nedex/belle-of-matanzas-affair.html',
   'nan.nedex.org.nau/macedonian-crisis':      '/nodes/nedex/macedonian-crisis.html',
   'nan.nedex.org.nau/russian-constitutional-crisis-1907': '/nodes/nedex/russian-constitutional-crisis-1907.html',
   'nan.nedex.org.nau/ss-hesperia':            '/nodes/nedex/ss-hesperia.html',
