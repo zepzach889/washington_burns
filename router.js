@@ -135,6 +135,8 @@ const ROUTES = {
   'nan.nedex.org.nau/ottoman-constitution-1883': '/nodes/nedex/ottoman-constitution-1883.html',
   'nan.nedex.org.nau/treaty-of-geneva':       '/nodes/nedex/treaty-of-geneva.html',
   'nan.nedex.org.nau/treaty-of-managua':      '/nodes/nedex/treaty-of-managua.html',
+  'nan.nedex.org.nau/treaty-of-new-orleans':  '/nodes/nedex/treaty-of-new-orleans.html',
+  'nan.nedex.org.nau/second-treaty-of-new-orleans':  '/nodes/nedex/second-treaty-of-new-orleans.html',
 
   // ════════════════════════════════════════════════════════
   // NEDEX — Historical events
