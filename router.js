@@ -76,11 +76,14 @@ const ROUTES = {
   // ════════════════════════════════════════════════════════
   // NEDEX — Landmarks, locations & geography
   // ════════════════════════════════════════════════════════
+  'nan.nedex.org.nau/brandt-memorial':        '/nodes/nedex/brandt-memorial.html',
   'nan.nedex.org.nau/congress-hall':          '/nodes/nedex/congress-hall.html',
   'nan.nedex.org.nau/first-capital-park':     '/nodes/nedex/first-capital-park.html',
   'nan.nedex.org.nau/franklin-dw':            '/nodes/nedex/franklin-dw.html',
+  'nan.nedex.org.nau/george-washington-bridge':            '/nodes/nedex/george-washington-bridge.html',
   'nan.nedex.org.nau/provinces-of-canada':    '/nodes/nedex/provinces-of-canada.html',
   'nan.nedex.org.nau/washington-house':       '/nodes/nedex/washington-house.html',
+  'nan.nedex.org.nau/union-avenue':       '/nodes/nedex/union-avenue.html',
 
   // ════════════════════════════════════════════════════════
   // NEDEX — Political parties
