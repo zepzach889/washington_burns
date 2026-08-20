@@ -222,7 +222,7 @@
 .dp-photo {
   background: linear-gradient(135deg, #d3e4e8, #b3ced6);
   border-radius: 10px;
-  height: 170px;
+  aspect-ratio: 4 / 3;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
