@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/washington_burns/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/washington_burns/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/washington_burns/favicon-16x16.png">
+<link rel="manifest" href="/washington_burns/site.webmanifest">
+<!-- TEMPLATE: FILM
+     1. Replace all [PLACEHOLDERS] with real content
+     2. Delete any infobox rows you don't need
+     3. CODE SEAL ROW: keep only for films released 1927-1964. Delete for
+        anything outside that window.
+     4. ACS RATING ROW: films released 1964 onward carry a rating.
+        Pre-1964 films may carry a retroactive rating, or "None assigned"
+        if the ACS never got to it.
+     5. Posters and stills live in ../../images/pop_culture/
+        Naming: cinema_[film_id]_poster.png / cinema_[film_id]_still.png
+     6. Add this article to nedex_index.js (with added: 'YYYY-MM-DD')
+     7. Save as: nodes/nedex/[film-slug]-[year].html
+     8. Update initAddressBar() and the footer link below
+-->
+<title>[FILM TITLE] — Nedex</title>
+<link rel="stylesheet" href="../../shared.css">
+<link rel="stylesheet" href="nedex.css">
+</head>
+<body>
+
+<div class="arc-chrome">
+<div class="wm-topbar">
+  <div class="arc-navbtns">
+    <a class="arc-navbtn" onclick="history.back(); return false;" href="#">←</a>
+    <a class="arc-navbtn" onclick="history.forward(); return false;" href="#">→</a>
+  </div>
+  <a class="wm-arc-logo" href="../../"><span class="arc-w">W</span><span class="arc-m">M</span> <em class="arc-tag">Arc</em></a>
+  <div class="wm-address-wrap" id="wm-address-wrap">
+    <input class="wm-address-input" id="wm-address-input" type="text" spellcheck="false" autocomplete="off" />
+    <button class="wm-go-btn" id="wm-go-btn">→</button>
+  </div>
+  <div class="arc-clock" id="arc-clock"></div>
+</div>
+
+<div class="ndx-header">
+  <a class="ndx-logo" href="./">Nedex</a>
+  <span class="ndx-tagline">The Free Encyclopaedia</span>
+  <div class="ndx-search-wrap">
+  <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
+  <button class="ndx-search-btn" type="button">Search</button>
+</div>
+</div>
+
+<div class="ndx-subnav">
+  <a href="./">Main Page</a>
+  <a href="#" class="active">Article</a>
+  <a href="#">Talk</a>
+  <a href="#">Edit</a>
+  <a href="#">History</a>
+</div>
+</div>
+
+<div class="ndx-article-wrap">
+  <div class="ndx-article-body">
+
+    <div class="ndx-article-title">[FILM TITLE]</div>
+    <div class="ndx-article-subtitle">[YEAR] [GENRE] film directed by [DIRECTOR]</div>
+
+    <!-- TOC -->
+    <div class="ndx-toc">
+      <div class="ndx-toc-title">Contents</div>
+      <ol>
+        <li><a href="#plot">Plot</a></li>
+        <li><a href="#cast">Cast</a></li>
+        <li><a href="#production">Production</a>
+          <ol>
+            <li><a href="#development">Development</a></li>
+            <li><a href="#filming">Filming</a></li>
+          </ol>
+        </li>
+        <li><a href="#release">Release</a></li>
+        <li><a href="#reception">Reception</a></li>
+        <li><a href="#legacy">Legacy</a></li>
+      </ol>
+    </div>
+
+    <div class="ndx-prose">
+
+      <p><strong><em>[FILM TITLE]</em></strong> is a [YEAR] [NATIONALITY] [GENRE] film directed by [DIRECTOR] and produced by [STUDIO]. [ONE SENTENCE ON WHAT IT IS ABOUT AND WHO STARS IN IT.]</p>
+
+      <p>[SECOND INTRODUCTORY PARAGRAPH — why the film matters. Commercial performance, critical standing, what it changed, where it sits in the era.]</p>
+
+      <div class="ndx-clearfix"></div>
+
+      <h2 class="ndx-section-head" id="plot">Plot</h2>
+
+      <p>[PLOT SUMMARY — written in present tense. Two or three paragraphs for a feature; one for a short.]</p>
+
+      <h2 class="ndx-section-head" id="cast">Cast</h2>
+
+      <table class="ndx-table">
+        <thead>
+          <tr><th>Performer</th><th>Role</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><a href="[performer-slug].html">[PERFORMER]</a></td><td>[ROLE]</td></tr>
+          <tr><td><a href="[performer-slug].html">[PERFORMER]</a></td><td>[ROLE]</td></tr>
+          <tr><td>[PERFORMER]</td><td>[ROLE]</td></tr>
+        </tbody>
+      </table>
+
+      <h2 class="ndx-section-head" id="production">Production</h2>
+
+      <h3 class="ndx-sub-head" id="development">Development</h3>
+
+      <p>[HOW THE FILM CAME TOGETHER — origin of the material, who championed it, studio politics, casting.]</p>
+
+      <h3 class="ndx-sub-head" id="filming">Filming</h3>
+
+      <p>[SHOOTING LOCATIONS, TECHNIQUE, CINEMATOGRAPHY, ANY TECHNICAL FIRSTS.]</p>
+
+      <!-- OPTIONAL: floating still -->
+      <div class="ndx-prose-img">
+        <img src="../../images/pop_culture/cinema_[film_id]_still.png" alt="Still from [FILM TITLE]" />
+        <div class="ndx-prose-caption">[Caption — e.g. [ACTOR] as [ROLE], in the film's closing sequence.]</div>
+      </div>
+
+      <h2 class="ndx-section-head" id="release">Release</h2>
+
+      <p>[PREMIERE VENUE AND DATE, DISTRIBUTION, BOX OFFICE.]</p>
+
+      <!-- OPTIONAL: for 1927-1964 films where the seal was contested.
+           Delete this block if the seal was routine or the film falls
+           outside the Code era. -->
+      <div class="ndx-annotation">
+        <div class="ndx-annotation-head">Code Review</div>
+        [WHAT THE ACS DEMANDED, WHAT THE STUDIO DID, HOW IT RESOLVED.]
+      </div>
+
+      <h2 class="ndx-section-head" id="reception">Reception</h2>
+
+      <p>[CONTEMPORARY CRITICAL RESPONSE. Keep the reviewers in-world.]</p>
+
+      <p>[AWARDS — Benji nominations and wins, other recognition.]</p>
+
+      <h2 class="ndx-section-head" id="legacy">Legacy</h2>
+
+      <p>[LATER REPUTATION, INFLUENCE, RESTORATION, REMAKES, PRESERVATION STATUS.]</p>
+
+      <div class="ndx-categories">
+        <strong>Categories:</strong>
+        <a href="#">Films</a>
+        <a href="#">[DECADE] films</a>
+        <a href="#">[STUDIO] films</a>
+        <a href="#">[GENRE] films</a>
+        <a href="#">American cinema</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ndx-article-sidebar">
+
+    <div class="ndx-infobox">
+      <div class="ndx-infobox-img">
+        <img src="../../images/pop_culture/cinema_[film_id]_poster.png" alt="Release poster for [FILM TITLE]" />
+      </div>
+      <div class="ndx-infobox-title">[FILM TITLE]</div>
+      <div class="ndx-infobox-sub">[YEAR] · [GENRE]</div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Directed by</span><span class="ndx-infobox-val">[DIRECTOR]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Written by</span><span class="ndx-infobox-val">[SCREENWRITER]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Starring</span><span class="ndx-infobox-val">[NAME]<br>[NAME]<br>[NAME]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Cinematography</span><span class="ndx-infobox-val">[CINEMATOGRAPHER]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Studio</span><span class="ndx-infobox-val">[STUDIO]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Released</span><span class="ndx-infobox-val">[MONTH YEAR]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Running time</span><span class="ndx-infobox-val">[NN] minutes</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Country</span><span class="ndx-infobox-val">United States</span></div>
+      <!-- CODE SEAL — 1927-1964 releases only. Values:
+           Granted · Granted with cuts · Refused · Distributed without seal -->
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Code seal</span><span class="ndx-infobox-val">[SEAL STATUS]</span></div>
+      <!-- ACS RATING — A / G / M / R, or "None assigned" -->
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">ACS rating</span><span class="ndx-infobox-val">[RATING]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Benji Awards</span><span class="ndx-infobox-val">[N] wins, [N] nominations</span></div>
+      <!-- FRANCHISE ENTRIES ONLY -->
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Preceded by</span><span class="ndx-infobox-val">[PREVIOUS FILM]</span></div>
+      <div class="ndx-infobox-row"><span class="ndx-infobox-label">Followed by</span><span class="ndx-infobox-val">[NEXT FILM]</span></div>
+    </div>
+
+    <div class="ndx-widget">
+      <div class="ndx-widget-head">See Also</div>
+      <div class="ndx-widget-body">
+        <a class="ndx-widget-link" href="#">[RELATED FILM]</a>
+        <a class="ndx-widget-link" href="#">[DIRECTOR]</a>
+        <a class="ndx-widget-link" href="#">[STUDIO]</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="ndx-footer">
+  <span>link://nan.nedex.org.nau/[ARTICLE-SLUG] &nbsp;·&nbsp; Nedex — The Free Encyclopaedia</span>
+  <div class="ndx-footer-links">
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<script src="../../router.js"></script>
+<script src="../../content.js"></script>
+<script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
+<script>
+initAddressBar('nan.nedex.org.nau/[ARTICLE-SLUG]');
+function updateArcClock() {
+  const n = new Date();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const hh = String(n.getHours()).padStart(2,'0');
+  const mm = String(n.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('arc-clock');
+  if (el) el.textContent = `${days[n.getDay()]} ${n.getDate()} · ${hh}:${mm}`;
+}
+setInterval(updateArcClock, 10000);
+updateArcClock();
+</script>
+</body>
+</html>
