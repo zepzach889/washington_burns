@@ -10,7 +10,7 @@
 <!-- TEMPLATE: BIOGRAPHY
      1. Replace all [PLACEHOLDERS] with real content
      2. Delete any infobox rows you don't need
-     3. Add this article to nedex_index.js
+     3. Add this article to nedex_index.js (with added: 'YYYY-MM-DD')
      4. Save as: nodes/nedex/[article-name].html
      5. Update initAddressBar() and the footer link below
 -->
@@ -33,14 +33,13 @@
   </div>
   <div class="arc-clock" id="arc-clock"></div>
 </div>
-</div>
 
 <div class="ndx-header">
   <a class="ndx-logo" href="./">Nedex</a>
   <span class="ndx-tagline">The Free Encyclopaedia</span>
   <div class="ndx-search-wrap">
-    <input class="ndx-search" type="text" placeholder="Search Nedex…" />
-    <button class="ndx-search-btn">Search</button>
+    <input class="ndx-search" type="text" placeholder="Search Nedex…" id="ndx-search-input" />
+    <button class="ndx-search-btn" type="button">Search</button>
   </div>
 </div>
 
@@ -50,6 +49,7 @@
   <a href="#">Talk</a>
   <a href="#">Edit</a>
   <a href="#">History</a>
+</div>
 </div>
 
 <div class="ndx-article-wrap">
@@ -106,7 +106,7 @@
       <!-- OPTIONAL: annotation box for historical context -->
       <div class="ndx-annotation">
         <div class="ndx-annotation-head">Historical Note</div>
-        [Any divergence from OTL or context worth flagging for readers.]
+        [In-world context worth flagging for readers — a term, an institution, or a background event the article assumes.]
       </div>
 
       <h2 class="ndx-section-head" id="later-life">Later life</h2>
@@ -177,7 +177,9 @@
 </div>
 
 <script src="../../router.js"></script>
+<script src="../../content.js"></script>
 <script src="nedex_index.js"></script>
+<script src="nedex-search.js"></script>
 <script>
 initAddressBar('nan.nedex.org.nau/[ARTICLE-SLUG]');
 function updateArcClock() {
