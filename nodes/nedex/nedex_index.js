@@ -194,6 +194,11 @@ const NEDEX_ARTICLES = [
   // BIOGRAPHIES — HISTORICAL FIGURES
   // ══════════════════════════════════════════════════════
   { title: 'Abraham Lincoln',                      file: 'bio-abraham-lincoln.html',    categories: ['Biographies', 'US Senators', 'Supreme Court Justices', 'Constitutional Convention of 1861', 'War Between the States', 'Reconstruction Era'], blurb: 'Indiana senator and abolitionist; president of the Constitutional Convention of 1861; Associate Justice (1863) then Chief Justice (1869) of the Supreme Court; ancestor of President Georgina Lincoln.', added: '2026-06-15' },
+  // ══════════════════════════════════════════════════════
+  // CULTURE — CINEMA
+  // ══════════════════════════════════════════════════════
+  { title: 'Cinema of the United States',          file: 'cinema-of-the-united-states.html', categories: ['American cinema', 'Culture & society', 'Film industry', 'St. Augustine, Florida'], blurb: 'Overview of the American film industry, centered in the Anastasia District of St. Augustine, Florida since the 1910s; covers the Brooklyn origins, the silent and sound eras, the Brennerman Code and its 1964 replacement, and the four major studios.', added: '2026-09-04' },
+
 ];
 
 // ── DERIVED DATA ──
